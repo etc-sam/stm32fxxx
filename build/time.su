@@ -1,0 +1,11 @@
+./basic/time.cpp:25:10:uint8_t _timeout(uint8_t*, uint8_t)	24	static
+./basic/time.cpp:38:6:void _decrment(uint8_t*, uint8_t)	16	static
+./basic/time.cpp:67:9:uint8_t minute_timeout(minute_t*)	16	static
+./basic/time.cpp:74:9:uint8_t hour_timeout(hour_t*)	16	static
+./basic/time.cpp:81:9:uint8_t period_timeout(period_t*)	16	static
+./basic/time.cpp:88:9:uint8_t ext_period_timeout(ext_period_t*)	16	static
+./basic/time.cpp:95:9:uint8_t time_timeout(_time_t*)	16	static
+./basic/time.cpp:102:6:void minute_dec(minute_t*)	16	static
+./basic/time.cpp:112:6:void period_dec(period_t*)	16	static
+./basic/time.cpp:117:6:void ext_period_dec(ext_period_t*)	16	static
+./basic/time.cpp:122:6:void time_dec(_time_t*)	16	static

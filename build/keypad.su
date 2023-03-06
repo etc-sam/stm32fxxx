@@ -1,0 +1,14 @@
+./keypad/keypad.c:53:6:keypad_port_input_pullup	16	static
+./keypad/keypad.c:60:9:keypad_port_get_input_data	16	static
+./keypad/keypad.c:70:9:keypad_read	16	static
+./keypad/keypad.c:100:6:keypad_handle	8	static
+./keypad/keypad.c:119:6:keypad_init	16	static
+./keypad/keypad.c:131:9:keypad_scan	8	static
+./keypad/keypad.c:138:6:keypad_process	8	static
+./keypad/keypad.c:151:9:keypad_is_pressed	4	static
+./keypad/keypad.c:158:6:keypad_up_key_handle	8	static
+./keypad/keypad.c:165:6:keypad_down_key_handle	8	static
+./keypad/keypad.c:172:6:keypad_set_key_handle	8	static
+./keypad/keypad.c:179:6:keypad_esc_key_handle	8	static
+./keypad/keypad.c:187:6:keypad_shft_key_handle	8	static
+./keypad/keypad.c:193:6:keypad_info_key_handle	8	static

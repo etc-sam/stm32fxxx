@@ -1,0 +1,65 @@
+{
+    "configurations": [
+        {
+            "name": "Stm32f103_IMU6050App",
+            "includePath": [
+
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/.driver/CMSIS/Core",
+                "${workspaceFolder}/.driver/CMSIS/Device/STM32F10x",
+                "${workspaceFolder}/.driver/STM32F10x_StdPeriph_Driver/inc",                
+                "${workspaceFolder}/.start_up/inc",
+
+                "${workspaceFolder}/basic",
+                "${workspaceFolder}/init",
+                "${workspaceFolder}/lcd",
+                "${workspaceFolder}/keypad",
+                "${workspaceFolder}/system"
+                
+            ],
+            "defines": [
+                "STM32F10X_MD",
+                "USE_STDPERIPH_DRIVER"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "browse": {
+                "path": [
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+    
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}/.driver/CMSIS/Core",
+                    "${workspaceFolder}/.driver/CMSIS/Device/STM32F10x",
+                    "${workspaceFolder}/.driver/STM32F10x_StdPeriph_Driver/inc",                
+                    "${workspaceFolder}/.start_up/inc",
+    
+                    "${workspaceFolder}/basic",
+                    "${workspaceFolder}/init",
+                    "${workspaceFolder}/lcd",
+                    "${workspaceFolder}/keypad",
+                    "${workspaceFolder}/system"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db"
+            }
+            
+        }
+    ],
+    "version": 4
+}

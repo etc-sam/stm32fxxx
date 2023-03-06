@@ -1,0 +1,6 @@
+./basic/array.c:58:5:mem_indexOf	32	static
+./basic/array.c:85:5:mem_lastindexOf	32	static
+./basic/array.c:106:5:mem_find_aslist	32	static
+./basic/array.c:132:5:mem_find_asArray	40	static
+./basic/array.c:174:5:cmd_split	32	static
+./basic/array.c:202:5:param_split	48	static

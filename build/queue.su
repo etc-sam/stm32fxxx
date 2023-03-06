@@ -1,0 +1,13 @@
+./basic/queue.c:59:11:queue_is_empty_printable	16	static
+./basic/queue.c:81:10:queue_get_length_printable	24	static
+./basic/queue.c:104:10:queue_getch_printable	16	static
+./basic/queue.c:132:6:queue_init	24	static
+./basic/queue.c:146:6:queue_reset	16	static
+./basic/queue.c:167:10:queue_is_full	16	static
+./basic/queue.c:184:11:queue_is_empty	16	static
+./basic/queue.c:202:10:queue_get_length	24	static
+./basic/queue.c:215:10:queue_get_capacity	16	static
+./basic/queue.c:232:10:queue_write	16	static
+./basic/queue.c:258:9:queue_read	16	static
+./basic/queue.c:276:11:queue_Array	16	static
+./basic/queue.c:287:8:queue_toCharArray	16	static

@@ -1,0 +1,1382 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+ 
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Feb 27 22:20:09 2023
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = cinnamon
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# makefile (from 'Makefile.mk', line 200)
+LDSCRIPT = $(STARTUP_DIR)/stm32_flash.ld
+# environment
+XDG_SESSION_TYPE = x11
+# makefile (from 'Makefile.mk', line 8)
+TARGET = $(lastword $(subst /, ,$(CURDIR)))
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile.mk', line 158)
+AS_DEFS = -g
+# makefile (from 'Makefile.mk', line 109)
+AS_INCLUDES = 
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/sam/.Xauthority
+# environment
+GDMSESSION = cinnamon
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /media/sam/33BD-1B7E/Work_ws22_23/STM32_lab_workspace/STM32F103/std_periph_lib_Tutorials/STM32F103_IMU6050App
+# makefile (from 'Makefile.mk', line 160)
+CC_DEFS = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -mlittle-endian  -mthumb-interwork -Wno-misleading-indentation -Wno-unused-variable -Wno-maybe-uninitialized 
+# makefile
+SHELL = /bin/sh
+# makefile (from 'Makefile.mk', line 136)
+BIN = $(CP) -O binary -S    
+# environment
+GDM_LANG = en_US
+# makefile (from 'Makefile.mk', line 113)
+CC_INCLUDES = $(foreach dir,$(EXT_INC_DIR),-I$(dir)) $(foreach dir,$(INC_DIR),-I$(dir)) -I.
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile.mk', line 127)
+SZ = $(GCC_PATH)/$(PREFIX)size
+# environment
+_ = /usr/share/code/code
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 1
+# makefile (from 'Makefile.mk', line 1)
+MAKEFILE_LIST :=  Makefile Makefile.mk
+# makefile (from 'Makefile.mk', line 33)
+LIB_DIR = 
+# automatic
+@F = $(notdir $@)
+# makefile (from 'Makefile.mk', line 126)
+CP = $(GCC_PATH)/$(PREFIX)objcopy
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# makefile (from 'Makefile.mk', line 181)
+DEBUG = 1
+# 'override' directive
+GNUMAKEFLAGS := 
+# makefile (from 'Makefile.mk', line 178)
+CX_OPT = $(CC_OPT) -fno-rtti -fno-exceptions -fno-threadsafe-statics  
+# environment
+XDG_DATA_DIRS = /usr/share/gnome:/usr/share/cinnamon:/home/sam/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# makefile (from 'Makefile.mk', line 125)
+AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
+# makefile (from 'Makefile.mk', line 40)
+EXT_SRC_DIR = ./.driver/STM32F10x_StdPeriph_Driver/src
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = de_DE.UTF-8
+# environment
+VSCODE_CWD = /home/sam
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/gcc-arm-none-eabi-10.3-2021.10/bin/:/opt/stlink-1.7.0/build/Release/bin:/opt/GNAT/2018/bin:/opt/ghdl:/usr/share/dotnet
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/sam-Asus:@/tmp/.ICE-unix/1009,unix/sam-Asus:/tmp/.ICE-unix/1009
+# environment
+CINNAMON_SOFTWARE_RENDERING = 1
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# makefile (from 'Makefile.mk', line 189)
+CCFLAGS = $(MCU) $(CC_DEFS) $(CC_INCLUDES) $(CC_OPT)  -g3 -gdwarf-2
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'Makefile.mk', line 204)
+LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile.mk', line 36)
+ASM_DIR = 
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/sam
+# environment
+XDG_SESSION_DESKTOP = cinnamon
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 116462
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# makefile (from 'Makefile.mk', line 77)
+ASM_SOURCES = $(wildcard $(STARTUP_DIR)/startup_stm32f10x_md.s)
+# makefile (from 'Makefile.mk', line 121)
+GCC_PATH = /opt/gcc-arm-none-eabi-10.3-2021.10/bin
+# environment
+PWD = /media/sam/33BD-1B7E/Work_ws22_23/STM32_lab_workspace/STM32F103/std_periph_lib_Tutorials/STM32F103_IMU6050App
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# environment
+DOTNET_ROOT = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/gcc-arm-none-eabi-10.3-2021.10/bin/:/opt/stlink-1.7.0/build/Release/bin:/opt/GNAT/2018/bin:/opt/ghdl:/usr/share/dotnet
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1094
+# makefile (from 'Makefile.mk', line 67)
+PROGRAMMER = $(PROGRAMMER_PATH)/st-flash
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
+# makefile (from 'Makefile', line 36)
+INC_DIR = $(STARTUP_DIR)/inc ./basic ./init ./lcd ./keypad ./system ./TIM ./uart 
+# makefile (from 'Makefile', line 29)
+SRC_DIR = $(STARTUP_DIR)/src ./basic ./init ./lcd ./keypad ./system ./TIM ./uart 
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/sam
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/sam/.config/Code/CachedData/441438abd1ac652551dbe4d408dfcec8a499b8bf
+# environment
+LOGNAME = sam
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
++F = $(notdir $+)
+# environment
+CINNAMON_SLOWDOWN_FACTOR = 0.0001
+# makefile (from 'Makefile.mk', line 120)
+PREFIX = arm-none-eabi-
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile.mk', line 30)
+STARTUP_DIR = ./.start_up
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# makefile (from 'Makefile.mk', line 151)
+FLOAT-ABI = -mfloat-abi=soft
+# makefile (from 'Makefile.mk', line 42)
+EXT_INC_DIR = ./.driver/CMSIS/Core ./.driver/CMSIS/Device/STM32F10x ./.driver/STM32F10x_StdPeriph_Driver/inc
+# makefile (from 'Makefile.mk', line 135)
+HEX = $(CP) -O ihex			
+# makefile (from 'Makefile.mk', line 123)
+CC = $(GCC_PATH)/$(PREFIX)gcc
+# makefile (from 'Makefile.mk', line 27)
+BUILD_DIR = build
+# makefile (from 'Makefile.mk', line 184)
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(CC_OPT) 
+# environment
+XDG_SESSION_ID = c1
+# environment
+USER = sam
+# environment
+LC_MONETARY = de_DE.UTF-8
+# makefile
+.DEFAULT_GOAL := build/STM32F103_IMU6050App.elf
+# environment
+XDG_CURRENT_DESKTOP = X-Cinnamon
+# makefile (from 'Makefile.mk', line 68)
+PROGRAMMER_ARGS = 
+# makefile (from 'Makefile.mk', line 65)
+PROGRAMMER_PATH = /opt/stlink-1.7.0/build/Release/bin
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile (from 'Makefile.mk', line 99)
+CX_SOURCES = $(wildcard *.cpp)  $(foreach dir,$(EXT_SRC_DIR),$(wildcard $(dir)/*.cpp)) $(foreach dir,$(SRC_DIR),$(wildcard $(dir)/*.cpp))
+# makefile (from 'Makefile.mk', line 143)
+CPU = -mcpu=cortex-m3
+# environment
+LC_TELEPHONE = de_DE.UTF-8
+# makefile (from 'Makefile.mk', line 146)
+FPU = 
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile.mk', line 203)
+LIBDIR = 
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en_US
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-a3bf6175-1.75.1-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile.mk', line 190)
+CXFLAGS = $(MCU) $(CC_DEFS) $(CC_INCLUDES) $(CX_OPT)  -g3 -gdwarf-2
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+VSCODE_L10N_BUNDLE_LOCATION = 
+# environment
+GDK_BACKEND = x11
+# makefile (from 'Makefile.mk', line 66)
+PROGRAMMER_INFO = $(PROGRAMMER_PATH)/st-info
+# makefile (from 'Makefile.mk', line 24)
+DOXYFILE = $(wildcard *.conf)
+# environment
+LC_PAPER = de_DE.UTF-8
+# environment
+CINNAMON_VERSION = 5.2.7
+# environment
+LC_IDENTIFICATION = de_DE.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+# makefile (from 'Makefile.mk', line 155)
+MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = de_DE.UTF-8
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile.mk', line 124)
+CX = $(GCC_PATH)/$(PREFIX)g++
+# environment
+LC_MEASUREMENT = de_DE.UTF-8
+# environment
+ 
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# makefile (from 'Makefile.mk', line 202)
+LIBS = -lc -lm -lnosys 
+# automatic
+^F = $(notdir $^)
+# makefile (from 'Makefile.mk', line 88)
+C_SOURCES = $(wildcard *.c)  $(foreach dir,$(EXT_SRC_DIR),$(wildcard $(dir)/*.c))  $(foreach dir,$(SRC_DIR),$(wildcard $(dir)/*.c))
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# makefile (from 'Makefile.mk', line 177)
+CC_OPT = -O0 -ffunction-sections -fdata-sections -fstack-usage -Wall -specs=nano.specs 
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile.mk', line 220)
+OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o))) $(addprefix $(BUILD_DIR)/,$(notdir $(CX_SOURCES:.cpp=.o))) $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
+# environment
+LC_ADDRESS = de_DE.UTF-8
+# environment
+LANG = C
+# environment
+VSCODE_PID = 116462
+# variable set hash-table stats:
+# Load=150/1024=15%, Rehash=0, Collisions=27/263=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# ./init (device 2057, inode 218990): 4 files, no impossibilities.
+# ./keypad (device 2057, inode 218991): 4 files, no impossibilities.
+# . (device 2057, inode 217918): 21 files, no impossibilities.
+# ./basic (device 2057, inode 218988): 15 files, no impossibilities.
+# ./TIM (device 2057, inode 219003): 4 files, no impossibilities.
+# ./system (device 2057, inode 218993): 6 files, no impossibilities.
+# build (device 2057, inode 218999): 130 files, no impossibilities.
+# ./.driver/STM32F10x_StdPeriph_Driver/src (device 2057, inode 219328): 25 files, no impossibilities.
+# ./.start_up/src (device 2057, inode 219304): 4 files, no impossibilities.
+# ./uart (device 2057, inode 219002): 6 files, no impossibilities.
+# ./.start_up (device 2057, inode 218995): 4 files, no impossibilities so far.
+# ./lcd (device 2057, inode 218992): 4 files, no impossibilities.
+
+# 227 files, no impossibilities in 12 directories.
+
+# Implicit Rules
+
+build/%.o: %.c Makefile | build
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/%.o: %.cpp Makefile | build
+#  recipe to execute (from 'Makefile.mk', line 229):
+	$(CX) -c $(CXFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cpp=.lst)) $< -o $@
+
+build/%.o: %.s Makefile | build
+#  recipe to execute (from 'Makefile.mk', line 232):
+	@echo "Building asm"
+	$(AS) -c $(CCFLAGS) $< -o $@
+
+build/%.hex: build/%.elf | build
+#  recipe to execute (from 'Makefile.mk', line 241):
+	@echo " generate hex..."
+	$(HEX) $< $@
+	
+
+build/%.bin: build/%.elf | build
+#  recipe to execute (from 'Makefile.mk', line 245):
+	@echo " generate bin..."
+	$(BIN) $< $@	
+	
+
+# 5 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+./basic/queue.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 19:07:46
+#  File has been updated.
+#  Successfully updated.
+
+build/crc.o: ./basic/crc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'crc'
+#  Last modified 2023-02-27 14:27:30
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_rtc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_rtc'
+#  Last modified 2023-02-27 14:27:18
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_dbgmcu.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dbgmcu.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_dbgmcu'
+#  Last modified 2023-02-27 14:27:16
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+clean_doc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 375):
+	@echo " Cleaning html documents..."; 
+	rm -r *html
+
+build/stm32f10x_exti.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_exti'
+#  Last modified 2023-02-27 14:27:28
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/keypad.o: ./keypad/keypad.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'keypad'
+#  Last modified 2023-02-27 14:27:36
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/system-task.o: ./system/system-task.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'system-task'
+#  Last modified 2023-02-27 14:27:36
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_wwdg.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_wwdg.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_wwdg'
+#  Last modified 2023-02-27 14:27:24
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dac.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+erase:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 306):
+	$(PROGRAMMER) erase  
+
+build/main.o: main.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2023-02-27 14:27:16
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_it.o: ./.start_up/src/stm32f10x_it.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_it'
+#  Last modified 2023-02-27 14:27:30
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/TIM.o: ./TIM/TIM.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'TIM'
+#  Last modified 2023-02-27 14:27:38
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_bkp.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+all: build/STM32F103_IMU6050App.elf build/STM32F103_IMU6050App.bin build/STM32F103_IMU6050App.hex size
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+
+arch:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 343):
+	@echo "MCU:"  $(MCU)
+
+.PHONY: all clean erase reset flash program
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+build/STM32F103_IMU6050App.bin: build/STM32F103_IMU6050App.elf | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'STM32F103_IMU6050App'
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 245):
+	@echo " generate bin..."
+	$(BIN) $< $@	
+	
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_sdio.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 20:23:02
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./uart/uart.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 23:44:36
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_pwr.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.start_up/startup_stm32f10x_md.s:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 19:05:18
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_fsmc.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_usart.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_usart'
+#  Last modified 2023-02-27 14:27:22
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/uart.o: ./uart/uart.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'uart'
+#  Last modified 2023-02-27 14:27:38
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+tgt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 341):
+	@echo "TARGET files:"   $(TARGET)
+
+# Not a target:
+./uart/uart-cmd.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 23:39:42
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./lcd/lcd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-12-31 22:07:54
+#  File has been updated.
+#  Successfully updated.
+
+cx_src_file:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 323):
+	@echo "Source files:" $(CX_SOURCES)
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_cec.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_i2c.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_i2c'
+#  Last modified 2023-02-27 14:27:20
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/misc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-04 00:13:10
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+./basic/time.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-12-31 22:05:56
+#  File has been updated.
+#  Successfully updated.
+
+build/uart-cmd.o: ./uart/uart-cmd.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'uart-cmd'
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_flash.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 18:35:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile.mk:
+#  Implicit rule search has been done.
+#  Last modified 2023-02-27 22:19:48
+#  File has been updated.
+#  Successfully updated.
+
+debug:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 358):
+	@echo
+	@echo "C Source files:"     $(C_SOURCES)
+	@echo "Cpp Source files:"   $(CX_SOURCES)
+	@echo "header files:"   	$(HEADERS)
+	@echo "object files:"   	$(OBJECTS)
+	@echo "TARGET files:"   $(TARGET)
+	@echo "MCU:"  $(MCU)
+	@echo	
+
+build/startup_stm32f10x_md.o: ./.start_up/startup_stm32f10x_md.s Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'startup_stm32f10x_md'
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 232):
+	@echo "Building asm"
+	$(AS) -c $(CCFLAGS) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dma.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+inc_file:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 327):
+	@echo "header files"$(HEADERS)
+
+build/gpio.o: ./basic/gpio.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'gpio'
+#  Last modified 2023-02-27 14:27:32
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+src_dir:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 319):
+	@echo "Source Dir:" $(SRC_DIR)
+
+build:
+#  Implicit rule search has not been done.
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 249):
+	mkdir $@		
+	@echo "Building Code ...."
+
+program: clean all erase flash reset
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+build/stm32f10x_dac.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dac.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_dac'
+#  Last modified 2023-02-27 14:27:16
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+size:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := size
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/17=12%
+#  recipe to execute (from 'Makefile.mk', line 262):
+	   $(SZ) $(BUILD_DIR)/$(TARGET).elf
+
+build/stm32f10x_bkp.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_bkp.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_bkp'
+#  Last modified 2023-02-27 14:27:28
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+flash_write:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 300):
+	   $(PROGRAMMER) write $(BUILD_DIR)/$(TARGET).hex 0x08000000
+
+build/stm32f10x_adc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_adc'
+#  Last modified 2023-02-27 14:27:26
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_tim.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_tim'
+#  Last modified 2023-02-27 14:27:24
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/time.o: ./basic/time.cpp Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'time'
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 229):
+	$(CX) -c $(CXFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cpp=.lst)) $< -o $@
+
+build/queue.o: ./basic/queue.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'queue'
+ 
+#  Last modified 2023-02-27 14:27:32
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./basic/structs.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 15:09:44
+#  File has been updated.
+#  Successfully updated.
+
+flash_read:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 303):
+	   $(PROGRAMMER) read
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_spi.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_sdio.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_sdio.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_sdio'
+#  Last modified 2023-02-27 14:27:20
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+c_src_file:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 321):
+	@echo "Source files:" $(C_SOURCES)
+
+build/init.o: ./init/init.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init'
+#  Last modified 2023-02-27 14:27:34
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_pwr.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_pwr.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_pwr'
+#  Last modified 2023-02-27 14:27:18
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.start_up/src/stm32f10x_it.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-04 13:29:26
+#  File has been updated.
+#  Successfully updated.
+
+dir:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 333):
+	@echo "header Dir:"$(INC_DIR)
+	@echo "Source Dir:"$(SRC_DIR)
+	@echo "asm Dir:"$(ASM_DIR)
+
+build/stm32f10x_fsmc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_fsmc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_fsmc'
+#  Last modified 2023-02-27 14:27:28
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+obj:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 338):
+	@echo "object files:"   $(OBJECTS)
+
+ldflg:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 355):
+	@echo "aflg:"  $(LDFLAGS)
+
+# Not a target:
+./basic/array.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 17:51:32
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./basic/crc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-12-31 23:30:48
+#  File has been updated.
+#  Successfully updated.
+
+build/system_stm32f10x.o: ./.start_up/src/system_stm32f10x.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'system_stm32f10x'
+#  Last modified 2023-02-27 14:27:30
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_cec.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_cec.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_cec'
+#  Last modified 2023-02-27 14:27:24
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/misc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/misc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'misc'
+#  Last modified 2023-02-27 14:27:24
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/system.o: ./system/system.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'system'
+#  Last modified 2023-02-27 14:27:36
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_flash.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_flash.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_flash'
+#  Last modified 2023-02-27 14:27:22
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_iwdg.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/STM32F103_IMU6050App.hex: build/STM32F103_IMU6050App.elf | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'STM32F103_IMU6050App'
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 241):
+	@echo " generate hex..."
+	$(HEX) $< $@
+	
+
+# Not a target:
+./system/system-task.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 23:43:12
+#  File has been updated.
+#  Successfully updated.
+
+reset:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 308):
+	$(PROGRAMMER) reset  
+	 
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_crc.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_dma.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dma.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_dma'
+#  Last modified 2023-02-27 14:27:16
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-10-04 01:42:10
+#  File has been updated.
+#  Successfully updated.
+
+aflg:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 352):
+	@echo "aflg:"  $(ASFLAGS)
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 279):
+	@echo " Cleaning..."; 
+	rm -fr $(BUILD_DIR)
+		
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_dbgmcu.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_exti.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_wwdg.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_can.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 20:27:52
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./init/init.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-12-31 22:05:30
+#  File has been updated.
+#  Successfully updated.
+
+build/lcd.o: ./lcd/lcd.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'lcd'
+#  Last modified 2023-02-27 14:27:34
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+asm_dir:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 329):
+	@echo "asm Dir:"$(ASM_DIR)
+
+build/STM32F103_IMU6050App.elf: build/main.o build/stm32f10x_dma.o build/stm32f10x_dbgmcu.o build/stm32f10x_dac.o build/stm32f10x_can.o build/stm32f10x_rtc.o build/stm32f10x_pwr.o build/stm32f10x_i2c.o build/stm32f10x_sdio.o build/stm32f10x_rcc.o build/stm32f10x_flash.o build/stm32f10x_crc.o build/stm32f10x_usart.o build/stm32f10x_tim.o build/stm32f10x_wwdg.o build/stm32f10x_cec.o build/misc.o build/stm32f10x_iwdg.o build/stm32f10x_adc.o build/stm32f10x_spi.o build/stm32f10x_bkp.o build/stm32f10x_exti.o build/stm32f10x_fsmc.o build/stm32f10x_gpio.o build/stm32f10x_it.o build/system_stm32f10x.o build/crc.o build/queue.o build/gpio.o build/structs.o build/array.o build/init.o build/lcd.o build/keypad.o build/system.o build/system-task.o build/TIM.o build/uart.o build/uart_com.o build/uart-cmd.o build/time.o build/startup_stm32f10x_md.o Makefile
+#  Implicit rule search has not been done.
+#  Last modified 2023-02-27 14:27:40
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 236):
+	@echo "linking ...."
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+
+cflg:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 346):
+	@echo "cflg:"  $(CFLAGS)
+
+build/stm32f10x_spi.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_spi.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_spi'
+#  Last modified 2023-02-27 14:27:26
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+flash:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 297):
+	   $(PROGRAMMER) write $(BUILD_DIR)/$(TARGET).bin 0x08000000
+
+# Not a target:
+./keypad/keypad.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 13:29:26
+#  File has been updated.
+#  Successfully updated.
+
+cxflg:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 349):
+	@echo "cxflg:"  $(CXFLAGS)
+
+clean_all:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 283):
+	rm -f $(BUILD_DIR)/*.elf $(BUILDDIR)/*~
+	rm -f $(BUILD_DIR)/*.obj $(BUILDDIR)/*.o 
+	rm -f $(BUILD_DIR)/*.lst $(BUILDDIR)/*.lss    
+	rm -f $(BUILD_DIR)/*.hex $(BUILDDIR)/*.d  
+
+asm:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 331):
+	@echo "asm file:"$(ASM_SOURCES)
+
+inc_dir:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 325):
+	@echo "header Dir:"$(INC_DIR)
+
+build/stm32f10x_can.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_can.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_can'
+#  Last modified 2023-02-27 14:27:18
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./basic/gpio.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-12-31 22:06:54
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/structs.o: ./basic/structs.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'structs'
+#  Last modified 2023-02-27 14:27:32
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./uart/uart_com.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 22:25:16
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_i2c.c:
+#  Implicit rule search has been done.
+#  Last modified 2021-10-08 16:23:00
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_gpio.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_gpio'
+#  Last modified 2023-02-27 14:27:30
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# Not a target:
+./system/system.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 22:06:14
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+./TIM/TIM.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 21:15:42
+#  File has been updated.
+#  Successfully updated.
+
+build/stm32f10x_iwdg.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_iwdg.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_iwdg'
+#  Last modified 2023-02-27 14:27:26
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/uart_com.o: ./uart/uart_com.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'uart_com'
+#  Last modified 2023-02-27 14:27:38
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+doc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 372):
+	doxygen $(DOXYFILE)
+
+build/stm32f10x_crc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_crc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_crc'
+#  Last modified 2023-02-27 14:27:22
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+build/stm32f10x_rcc.o: ./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'stm32f10x_rcc'
+#  Last modified 2023-02-27 14:27:20
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile.mk', line 311):
+	st-info --probe
+
+# Not a target:
+./.start_up/src/system_stm32f10x.c:
+#  Implicit rule search has been done.
+#  Last modified 2023-01-01 17:54:58
+#  File has been updated.
+#  Successfully updated.
+
+build/array.o: ./basic/array.c Makefile | build
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'array'
+#  Last modified 2023-02-27 14:27:34
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile.mk', line 225):
+	$(CC) -c $(CCFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@
+
+# files hash-table stats:
+# Load=122/1024=12%, Rehash=0, Collisions=72/918=8%
+# VPATH Search Paths
+
+vpath %.c ./.driver/STM32F10x_StdPeriph_Driver/src:./.start_up/src:./TIM:./basic:./init:./keypad:./lcd:./system:./uart
+vpath %.cpp ./basic
+vpath %.s ./.start_up
+
+# 3 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 383 / storage = 6252 B / avg = 16 B
+# current buf: size = 8162 B / used = 6252 B / count = 383 / avg = 16 B
+
+# strcache performance: lookups = 793 / hit rate = 51%
+# hash-table stats:
+# Load=383/8192=5%, Rehash=0, Collisions=40/793=5%
+# Finished Make data base on Mon Feb 27 22:20:09 2023
+
+ 

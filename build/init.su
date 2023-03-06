@@ -1,0 +1,9 @@
+./init/init.c:52:6:pilot_init	16	static
+./init/init.c:60:6:rly_init	16	static
+./init/init.c:66:6:pilot_write	24	static
+./init/init.c:84:6:rly_write	24	static
+./init/init.c:94:6:blink_init	24	static
+./init/init.c:173:6:blink	8	static
+./init/init.c:190:6:disable_buffer	8	static
+./init/init.c:222:6:_delay_us	16	static
+./init/init.c:232:6:_delay_ms	16	static

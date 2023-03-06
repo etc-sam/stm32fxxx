@@ -1,0 +1,7 @@
+./system/system-task.c:45:6:adc_task	4	static
+./system/system-task.c:59:6:uart_task	24	static
+./system/system-task.c:85:6:input_task	4	static
+./system/system-task.c:90:6:keypad_task	16	static
+./system/system-task.c:122:6:lcd_task	16	static
+./system/system-task.c:163:6:pilot_task	4	static
+./system/system-task.c:168:6:rtc_task	8	static

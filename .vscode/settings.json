@@ -1,0 +1,8 @@
+{
+    "cortex-debug.gdbPath":"/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+    "cortex-debug-armToolchainPath":"/opt/gcc-arm-none-eabi-10.3-2021.10/bin/",
+    "cortex-debug.stutilPath": "/opt/stlink-1.7.0/build/Release/bin/st-util",
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "C_Cpp.errorSquiggles": "Disabled"
+    
+}

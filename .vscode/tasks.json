@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "Build All",
+			"command":"make",
+			"args": ["all"]
+		},
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "Build Clean",
+			"command":"make",
+			"args": ["clean"]
+		},
+
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "reBuild & Upload",
+			"command":"make",
+			"args": ["clean","all","flash","reset"]
+		},
+
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "Upload Program to flash",
+			"command":"make",
+			"args": ["flash"]
+		},
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "Erase Program in the flash",
+			"command":"make",
+			"args": ["erase"]
+		},
+	
+		{
+			"group": "build",
+			"type": "shell",
+			"label": "Reset Microcontroller ",
+			"command":"make",
+			"args": ["reset"]
+		},
+
+		{
+			"group": "build",
+			"type": "make",
+			"targetName": "erase",
+			"makeFileRelativePath": "Makefile",
+			"problemMatcher": [],
+			"label": "Erase flash",
+			"detail": "./Makefile"
+		},
+	]
+}

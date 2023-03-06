@@ -1,0 +1,67 @@
+{
+    "version": "0.2.0",
+    "ProjectName":"STM32F103_IMU6050App",
+    "configurations": [
+        {
+          "name": "St-Link Debug",
+          "type": "cortex-debug",   
+          "request": "launch",
+          "servertype": "stutil",
+          "interface": "swd",
+          "device": "stm32f103c8T6",
+          "cwd": "${workspaceFolder}",
+          "executable":"${workspaceFolder}/build/STM32F103_IMU6050App.elf",
+          "preLaunchTask":"reBuild & Upload",
+          "runToMain": true,
+          "svdFile": "",
+          "swoConfig": {
+            "enabled": true,
+            "cpuFrequency": 72000000,
+            "swoFrequency": 4000000,
+            "source": "probe",
+            "decoders": [
+               { 
+                "label":"ITM port",
+                "type": "console",
+                "port": 0,
+                "showOnStartup": true,
+                "encoding": "ascii"
+
+               }
+            ]
+          }
+        },
+
+        {
+          "name": "St-Link Debug",
+          "type": "cortex-debug",   
+          "request": "attach",
+          "servertype": "stutil",
+          "interface": "swd",
+          "device": "stm32f103c8T6",
+          "cwd": "${workspaceFolder}",
+          "executable":"${workspaceFolder}/build/STM32F103_IMU6050App.elf",
+          "preLaunchCommands": ["make clean all"],
+          "svdFile": "",
+          "runToMain": true,
+          "swoConfig": {
+            "enabled": true,
+            "cpuFrequency": 72000000,
+            "swoFrequency": 4000000,
+            "source": "probe",
+            "decoders": [
+               { 
+                "label":"ITM port",
+                "type": "console",
+                "port": 0,
+                "showOnStartup": true,
+                "encoding": "ascii"
+
+               }
+            ]
+          }
+
+        },
+
+    ]
+}

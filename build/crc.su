@@ -1,0 +1,6 @@
+./basic/crc.c:46:6:crc32b_calc_byte	24	static
+./basic/crc.c:71:10:crc32b_calc	32	static
+./basic/crc.c:94:6:crc32a_calc_byte	24	static
+./basic/crc.c:119:10:crc32a_calc	32	static
+./basic/crc.c:140:10:crc32_calc_as	24	static
+./basic/crc.c:150:10:crc32_calc	16	static
