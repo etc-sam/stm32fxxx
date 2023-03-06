@@ -290,8 +290,8 @@ clean_all:
 ##########          Programmer-specific details                 ##########
 ##########   Flashing code to STM32 using OpenOCD st-link       ##########
 ##########------------------------------------------------------##########
-openocd_inteface= intreface/stlink.cfg
-openocd_target= target/stm32f1x.cfg
+openocd_inteface = intreface/stlink.cfg
+openocd_target	 = target/stm32f1x.cfg
 openocd: clean all
 	openocd -f  $(openocd_inteface) -f $(openocd_target) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 ##########------------------------------------------------------##########
