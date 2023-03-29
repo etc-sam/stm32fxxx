@@ -1,0 +1,1219 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart_com.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.USART1_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	USART1_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	USART1_init:
+  25              	.LFB33:
+  26              		.file 1 "./uart/uart_com.c"
+   1:./uart/uart_com.c **** /**
+   2:./uart/uart_com.c ****  * @brief uart-common.c
+   3:./uart/uart_com.c ****  *
+   4:./uart/uart_com.c ****  * @param student: Sameer Almaldein
+   5:./uart/uart_com.c ****  * @param ID: 679699
+   6:./uart/uart_com.c ****  * @param University TU-Chemnitz
+   7:./uart/uart_com.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./uart/uart_com.c ****  */ 
+   9:./uart/uart_com.c **** //********************************************************************************************
+  10:./uart/uart_com.c **** //
+  11:./uart/uart_com.c **** // including header  files
+  12:./uart/uart_com.c **** //
+  13:./uart/uart_com.c **** //********************************************************************************************
+  14:./uart/uart_com.c ****  #include "init.h"
+  15:./uart/uart_com.c **** //********************************************************************************************
+  16:./uart/uart_com.c **** //
+  17:./uart/uart_com.c **** // Global variables 
+  18:./uart/uart_com.c **** //
+  19:./uart/uart_com.c **** //********************************************************************************************
+  20:./uart/uart_com.c **** 
+  21:./uart/uart_com.c **** //********************************************************************************************
+  22:./uart/uart_com.c **** //
+  23:./uart/uart_com.c **** // Method definitions
+  24:./uart/uart_com.c **** //
+  25:./uart/uart_com.c **** //********************************************************************************************
+  26:./uart/uart_com.c **** 
+  27:./uart/uart_com.c **** /**
+  28:./uart/uart_com.c ****    * @brief To Configure any Pripheral Module you have to follow the following:
+  29:./uart/uart_com.c ****    * 1. Enable the Clock of peripheral Module (RCC_APBXPeriphClockCmd or RCC_AHBPeriphClockCmd)
+  30:./uart/uart_com.c ****    * 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG ...) & remap incase of
+  31:./uart/uart_com.c ****    * 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority
+  32:./uart/uart_com.c ****    * 4. Configure the peripheral hardware 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 2
+
+
+  33:./uart/uart_com.c ****    * 5. Configure the peripheral interrupt @ level of the peripheral or DMA
+  34:./uart/uart_com.c ****    * 6. Enable the peripheral Module 
+  35:./uart/uart_com.c ****    * 7. Implement the the IRQ_handler a function 
+  36:./uart/uart_com.c ****    * 
+  37:./uart/uart_com.c ****    */
+  38:./uart/uart_com.c **** 
+  39:./uart/uart_com.c **** 
+  40:./uart/uart_com.c **** //********************************************************************************************
+  41:./uart/uart_com.c **** //
+  42:./uart/uart_com.c **** //  USART initialization methods
+  43:./uart/uart_com.c **** //
+  44:./uart/uart_com.c **** //********************************************************************************************
+  45:./uart/uart_com.c ****     /**
+  46:./uart/uart_com.c ****     * @brief in stm32f1038ct6 USART2 is shared with ADC define in the following pins
+  47:./uart/uart_com.c ****     * @param PA9 ---   TX1   /SCL1/T4C2
+  48:./uart/uart_com.c ****     * @param PA10 ---  RX1   /SDA1/T4C1
+  49:./uart/uart_com.c ****     * @param PA11 ---  CTS1  /USB-/CANRX
+  50:./uart/uart_com.c ****     * @param PA12 ---  RTS1  /USB+/CANTX
+  51:./uart/uart_com.c ****     * 
+  52:./uart/uart_com.c ****     */ 
+  53:./uart/uart_com.c **** 
+  54:./uart/uart_com.c **** void USART1_init(void)
+  55:./uart/uart_com.c **** {
+  27              		.loc 1 55 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 24
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 86B0     		sub	sp, sp, #24
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 32
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  56:./uart/uart_com.c **** 
+  57:./uart/uart_com.c ****   //1. Enable the Clock of peripheral USART1/AFIO/GPIOA Modules using RCC_APB2PeriphClockCmd
+  58:./uart/uart_com.c ****     //RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
+  59:./uart/uart_com.c ****     //RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO|
+  60:./uart/uart_com.c ****     //                       RCC_APB2Periph_GPIOA,ENABLE);
+  61:./uart/uart_com.c ****    RCC->APB2ENR|=RCC_APB2ENR_AFIOEN|RCC_APB2ENR_IOPAEN|RCC_APB2ENR_USART1EN;
+  42              		.loc 1 61 16
+  43 0006 224B     		ldr	r3, .L2
+  44 0008 9B69     		ldr	r3, [r3, #24]
+  45 000a 214A     		ldr	r2, .L2
+  46 000c 43F48043 		orr	r3, r3, #16384
+  47 0010 43F00503 		orr	r3, r3, #5
+  48 0014 9361     		str	r3, [r2, #24]
+  62:./uart/uart_com.c ****    
+  63:./uart/uart_com.c **** 
+  64:./uart/uart_com.c ****   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) 
+  65:./uart/uart_com.c ****       & remap incase of requirement */
+  66:./uart/uart_com.c ****       gpio_pin_mode(uart_tx,GPIO_MODE_AF_PP_50MHZ);
+  49              		.loc 1 66 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 3
+
+
+  50 0016 1F4B     		ldr	r3, .L2+4
+  51 0018 0B22     		movs	r2, #11
+  52 001a 93E80300 		ldm	r3, {r0, r1}
+  53 001e FFF7FEFF 		bl	gpio_pin_mode
+  67:./uart/uart_com.c ****       /*GPIO_InitTypeDef _gpio_init_struct;
+  68:./uart/uart_com.c ****       GPIO_StructInit((GPIO_InitTypeDef*)& _gpio_init_struct);
+  69:./uart/uart_com.c ****       // init TX1=PA9
+  70:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_9;
+  71:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+  72:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_AF_PP;
+  73:./uart/uart_com.c ****       GPIO_Init(GPIOA,&_gpio_init_struct);
+  74:./uart/uart_com.c ****       */
+  75:./uart/uart_com.c ****     // PA9 as a AFIO_PP_50MHZ MODE2[1:0]=11,CNF2[1:0]=10
+  76:./uart/uart_com.c ****     // GPIOA->CRH& =~(GPIO_CRH_MODE9|GPIO_CRH_CNF9); // at register level
+  77:./uart/uart_com.c ****     // GPIOA->CRH|=GPIO_CRH_MODE9 | GPIO_CRH_CNF9_1;
+  78:./uart/uart_com.c ****    
+  79:./uart/uart_com.c ****       // init RX1=PA10
+  80:./uart/uart_com.c ****       gpio_pin_mode(uart_rx,GPIO_MODE_IN_FLOATING);
+  54              		.loc 1 80 7
+  55 0022 1D4B     		ldr	r3, .L2+8
+  56 0024 0422     		movs	r2, #4
+  57 0026 93E80300 		ldm	r3, {r0, r1}
+  58 002a FFF7FEFF 		bl	gpio_pin_mode
+  81:./uart/uart_com.c ****     /*  
+  82:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_10;
+  83:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+  84:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+  85:./uart/uart_com.c ****       GPIO_Init(GPIOA,&_gpio_init_struct);
+  86:./uart/uart_com.c ****       //GPIOA->ODR|=GPIO_ODR_ODR10;
+  87:./uart/uart_com.c ****     */
+  88:./uart/uart_com.c ****     // PA10 as a floating input MODE10[1:0]=00,CNF10[1:0]=01
+  89:./uart/uart_com.c ****     // GPIOA->CRH & =~(GPIO_CRH_MODE10|GPIO_CRH_CNF10);
+  90:./uart/uart_com.c ****     // GPIOA->CRH | =  GPIO_CRH_CNF10_0;
+  91:./uart/uart_com.c **** 
+  92:./uart/uart_com.c **** 
+  93:./uart/uart_com.c ****   /* 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority 
+  94:./uart/uart_com.c ****      NVIC_InitTypeDef NVIC_InitStruct;
+  95:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannel=USART1_IRQn;
+  59              		.loc 1 95 37
+  60 002e 2523     		movs	r3, #37
+  61 0030 3B75     		strb	r3, [r7, #20]
+  96:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
+  62              		.loc 1 96 55
+  63 0032 0023     		movs	r3, #0
+  64 0034 7B75     		strb	r3, [r7, #21]
+  97:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelSubPriority=8;
+  65              		.loc 1 97 48
+  66 0036 0823     		movs	r3, #8
+  67 0038 BB75     		strb	r3, [r7, #22]
+  98:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
+  68              		.loc 1 98 40
+  69 003a 0123     		movs	r3, #1
+  70 003c FB75     		strb	r3, [r7, #23]
+  99:./uart/uart_com.c ****      NVIC_Init((NVIC_InitTypeDef*) &NVIC_InitStruct);
+  71              		.loc 1 99 6
+  72 003e 07F11403 		add	r3, r7, #20
+  73 0042 1846     		mov	r0, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 4
+
+
+  74 0044 FFF7FEFF 		bl	NVIC_Init
+ 100:./uart/uart_com.c **** 
+ 101:./uart/uart_com.c ****   /* 4. Configure the peripheral hardware  of the USART3 */
+ 102:./uart/uart_com.c ****     USART_InitTypeDef _usart_init_struct;
+ 103:./uart/uart_com.c ****     USART_StructInit((USART_InitTypeDef *)& _usart_init_struct);
+  75              		.loc 1 103 5
+  76 0048 3B1D     		adds	r3, r7, #4
+  77 004a 1846     		mov	r0, r3
+  78 004c FFF7FEFF 		bl	USART_StructInit
+ 104:./uart/uart_com.c ****     _usart_init_struct.USART_BaudRate=115200;
+  79              		.loc 1 104 38
+  80 0050 4FF4E133 		mov	r3, #115200
+  81 0054 7B60     		str	r3, [r7, #4]
+ 105:./uart/uart_com.c ****     _usart_init_struct.USART_Mode=USART_Mode_Rx | USART_Mode_Tx ;
+  82              		.loc 1 105 34
+  83 0056 0C23     		movs	r3, #12
+  84 0058 FB81     		strh	r3, [r7, #14]	@ movhi
+ 106:./uart/uart_com.c ****     _usart_init_struct.USART_Parity=USART_Parity_No;
+  85              		.loc 1 106 36
+  86 005a 0023     		movs	r3, #0
+  87 005c BB81     		strh	r3, [r7, #12]	@ movhi
+ 107:./uart/uart_com.c ****     _usart_init_struct.USART_StopBits=USART_StopBits_1;
+  88              		.loc 1 107 38
+  89 005e 0023     		movs	r3, #0
+  90 0060 7B81     		strh	r3, [r7, #10]	@ movhi
+ 108:./uart/uart_com.c ****     _usart_init_struct.USART_WordLength=USART_WordLength_8b;
+  91              		.loc 1 108 40
+  92 0062 0023     		movs	r3, #0
+  93 0064 3B81     		strh	r3, [r7, #8]	@ movhi
+ 109:./uart/uart_com.c ****     _usart_init_struct.USART_HardwareFlowControl=USART_HardwareFlowControl_None;
+  94              		.loc 1 109 49
+  95 0066 0023     		movs	r3, #0
+  96 0068 3B82     		strh	r3, [r7, #16]	@ movhi
+ 110:./uart/uart_com.c ****     USART_Init((USART_TypeDef*)USART1,(USART_InitTypeDef *)& _usart_init_struct);
+  97              		.loc 1 110 5
+  98 006a 3B1D     		adds	r3, r7, #4
+  99 006c 1946     		mov	r1, r3
+ 100 006e 0B48     		ldr	r0, .L2+12
+ 101 0070 FFF7FEFF 		bl	USART_Init
+ 111:./uart/uart_com.c **** 
+ 112:./uart/uart_com.c **** /* 5. Configure the peripheral interrupt @ level of the peripheral or DMA */
+ 113:./uart/uart_com.c ****   USART_ITConfig(USART1,USART_IT_RXNE,ENABLE);
+ 102              		.loc 1 113 3
+ 103 0074 0122     		movs	r2, #1
+ 104 0076 40F22551 		movw	r1, #1317
+ 105 007a 0848     		ldr	r0, .L2+12
+ 106 007c FFF7FEFF 		bl	USART_ITConfig
+ 114:./uart/uart_com.c **** 
+ 115:./uart/uart_com.c **** /* 6. Enable the peripheral Module */
+ 116:./uart/uart_com.c ****   USART_Cmd(USART1,ENABLE);
+ 107              		.loc 1 116 3
+ 108 0080 0121     		movs	r1, #1
+ 109 0082 0648     		ldr	r0, .L2+12
+ 110 0084 FFF7FEFF 		bl	USART_Cmd
+ 117:./uart/uart_com.c ****    
+ 118:./uart/uart_com.c **** }
+ 111              		.loc 1 118 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 5
+
+
+ 112 0088 00BF     		nop
+ 113 008a 1837     		adds	r7, r7, #24
+ 114              	.LCFI3:
+ 115              		.cfi_def_cfa_offset 8
+ 116 008c BD46     		mov	sp, r7
+ 117              	.LCFI4:
+ 118              		.cfi_def_cfa_register 13
+ 119              		@ sp needed
+ 120 008e 80BD     		pop	{r7, pc}
+ 121              	.L3:
+ 122              		.align	2
+ 123              	.L2:
+ 124 0090 00100240 		.word	1073876992
+ 125 0094 00000000 		.word	uart_tx
+ 126 0098 00000000 		.word	uart_rx
+ 127 009c 00380140 		.word	1073821696
+ 128              		.cfi_endproc
+ 129              	.LFE33:
+ 131              		.section	.text.USART2_init,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	USART2_init
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	USART2_init:
+ 139              	.LFB34:
+ 119:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 120:./uart/uart_com.c **** void USART2_init(void)
+ 121:./uart/uart_com.c **** {
+ 140              		.loc 1 121 1
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 24
+ 143              		@ frame_needed = 1, uses_anonymous_args = 0
+ 144 0000 80B5     		push	{r7, lr}
+ 145              	.LCFI5:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 86B0     		sub	sp, sp, #24
+ 150              	.LCFI6:
+ 151              		.cfi_def_cfa_offset 32
+ 152 0004 00AF     		add	r7, sp, #0
+ 153              	.LCFI7:
+ 154              		.cfi_def_cfa_register 7
+ 122:./uart/uart_com.c ****     /**
+ 123:./uart/uart_com.c ****     * @brief in stm32f1038ct6 USART2 is shared with ADC define in the following pins
+ 124:./uart/uart_com.c ****     * @param PA3 ---  RX2  /ADC3
+ 125:./uart/uart_com.c ****     * @param PA2 ---  TX2  /ADC2
+ 126:./uart/uart_com.c ****     * @param PA1 ---  RTS2 /ADC1
+ 127:./uart/uart_com.c ****     * @param PA0 ---  CTS2 /ADC0
+ 128:./uart/uart_com.c ****     * 
+ 129:./uart/uart_com.c ****     */ 
+ 130:./uart/uart_com.c ****   // 1. Enable the Clock of peripheral USART2 Module using RCC_APB1PeriphClockCmd
+ 131:./uart/uart_com.c ****     RCC->APB1ENR |=RCC_APB1Periph_USART2;  //RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2,ENABLE);
+ 155              		.loc 1 131 18
+ 156 0006 2D4B     		ldr	r3, .L5
+ 157 0008 DB69     		ldr	r3, [r3, #28]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 6
+
+
+ 158 000a 2C4A     		ldr	r2, .L5
+ 159 000c 43F40033 		orr	r3, r3, #131072
+ 160 0010 D361     		str	r3, [r2, #28]
+ 132:./uart/uart_com.c ****     RCC->APB2ENR |=RCC_APB2Periph_AFIO | RCC_APB2Periph_GPIOA;
+ 161              		.loc 1 132 18
+ 162 0012 2A4B     		ldr	r3, .L5
+ 163 0014 9B69     		ldr	r3, [r3, #24]
+ 164 0016 294A     		ldr	r2, .L5
+ 165 0018 43F00503 		orr	r3, r3, #5
+ 166 001c 9361     		str	r3, [r2, #24]
+ 133:./uart/uart_com.c **** 
+ 134:./uart/uart_com.c ****   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) 
+ 135:./uart/uart_com.c ****       & remap incase of requirement */
+ 136:./uart/uart_com.c ****       GPIO_InitTypeDef _gpio_init_struct;
+ 137:./uart/uart_com.c ****       GPIO_StructInit((GPIO_InitTypeDef*)& _gpio_init_struct);
+ 167              		.loc 1 137 7
+ 168 001e 07F11403 		add	r3, r7, #20
+ 169 0022 1846     		mov	r0, r3
+ 170 0024 FFF7FEFF 		bl	GPIO_StructInit
+ 138:./uart/uart_com.c ****       // init TX2=PA2
+ 139:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_2;
+ 171              		.loc 1 139 33
+ 172 0028 0423     		movs	r3, #4
+ 173 002a BB82     		strh	r3, [r7, #20]	@ movhi
+ 140:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+ 174              		.loc 1 140 35
+ 175 002c 0323     		movs	r3, #3
+ 176 002e BB75     		strb	r3, [r7, #22]
+ 141:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_AF_PP;
+ 177              		.loc 1 141 34
+ 178 0030 1823     		movs	r3, #24
+ 179 0032 FB75     		strb	r3, [r7, #23]
+ 142:./uart/uart_com.c ****       GPIO_Init(GPIOA,&_gpio_init_struct);
+ 180              		.loc 1 142 7
+ 181 0034 07F11403 		add	r3, r7, #20
+ 182 0038 1946     		mov	r1, r3
+ 183 003a 2148     		ldr	r0, .L5+4
+ 184 003c FFF7FEFF 		bl	GPIO_Init
+ 143:./uart/uart_com.c ****    
+ 144:./uart/uart_com.c ****    // PA2 as a AFIO_PP_50MHZ MODE2[1:0]=11,CNF2[1:0]=10
+ 145:./uart/uart_com.c ****     // GPIOA->CRL& =~(GPIO_CRL_MODE2|GPIO_CRL_CNF2); // at register level
+ 146:./uart/uart_com.c ****     // GPIOA->CRL|=GPIO_CRL_MODE2 | GPIO_CRL_CNF2_1;
+ 147:./uart/uart_com.c **** 
+ 148:./uart/uart_com.c ****       // init RX2=PA3
+ 149:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_3;
+ 185              		.loc 1 149 33
+ 186 0040 0823     		movs	r3, #8
+ 187 0042 BB82     		strh	r3, [r7, #20]	@ movhi
+ 150:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+ 188              		.loc 1 150 35
+ 189 0044 0323     		movs	r3, #3
+ 190 0046 BB75     		strb	r3, [r7, #22]
+ 151:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+ 191              		.loc 1 151 34
+ 192 0048 0423     		movs	r3, #4
+ 193 004a FB75     		strb	r3, [r7, #23]
+ 152:./uart/uart_com.c ****       GPIO_Init(GPIOA,&_gpio_init_struct);
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 7
+
+
+ 194              		.loc 1 152 7
+ 195 004c 07F11403 		add	r3, r7, #20
+ 196 0050 1946     		mov	r1, r3
+ 197 0052 1B48     		ldr	r0, .L5+4
+ 198 0054 FFF7FEFF 		bl	GPIO_Init
+ 153:./uart/uart_com.c **** 
+ 154:./uart/uart_com.c ****   // PA3 as a floating input MODE3[1:0]=00,CNF3[1:0]=01
+ 155:./uart/uart_com.c ****     // GPIOA->CRL& =~(GPIO_CRL_MODE3|GPIO_CRL_CNF3);
+ 156:./uart/uart_com.c ****     // GPIOA->CRL| =  GPIO_CRL_CNF3_0;
+ 157:./uart/uart_com.c **** 
+ 158:./uart/uart_com.c **** 
+ 159:./uart/uart_com.c ****   /* 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority 
+ 160:./uart/uart_com.c ****      NVIC_InitTypeDef NVIC_InitStruct;
+ 161:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannel=USART2_IRQn;
+ 199              		.loc 1 161 37
+ 200 0058 2623     		movs	r3, #38
+ 201 005a 3B74     		strb	r3, [r7, #16]
+ 162:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
+ 202              		.loc 1 162 55
+ 203 005c 0023     		movs	r3, #0
+ 204 005e 7B74     		strb	r3, [r7, #17]
+ 163:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelSubPriority=8;
+ 205              		.loc 1 163 48
+ 206 0060 0823     		movs	r3, #8
+ 207 0062 BB74     		strb	r3, [r7, #18]
+ 164:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
+ 208              		.loc 1 164 40
+ 209 0064 0123     		movs	r3, #1
+ 210 0066 FB74     		strb	r3, [r7, #19]
+ 165:./uart/uart_com.c ****      NVIC_Init((NVIC_InitTypeDef*) &NVIC_InitStruct);
+ 211              		.loc 1 165 6
+ 212 0068 07F11003 		add	r3, r7, #16
+ 213 006c 1846     		mov	r0, r3
+ 214 006e FFF7FEFF 		bl	NVIC_Init
+ 166:./uart/uart_com.c **** 
+ 167:./uart/uart_com.c **** /* 4. Configure the peripheral hardware  of the USART2 */
+ 168:./uart/uart_com.c ****     USART_InitTypeDef _usart_init_struct;
+ 169:./uart/uart_com.c ****     USART_StructInit((USART_InitTypeDef*)& _usart_init_struct);
+ 215              		.loc 1 169 5
+ 216 0072 3B46     		mov	r3, r7
+ 217 0074 1846     		mov	r0, r3
+ 218 0076 FFF7FEFF 		bl	USART_StructInit
+ 170:./uart/uart_com.c ****     _usart_init_struct.USART_BaudRate=115200;
+ 219              		.loc 1 170 38
+ 220 007a 4FF4E133 		mov	r3, #115200
+ 221 007e 3B60     		str	r3, [r7]
+ 171:./uart/uart_com.c ****     _usart_init_struct.USART_Mode=USART_Mode_Rx | USART_Mode_Tx ;
+ 222              		.loc 1 171 34
+ 223 0080 0C23     		movs	r3, #12
+ 224 0082 7B81     		strh	r3, [r7, #10]	@ movhi
+ 172:./uart/uart_com.c ****     _usart_init_struct.USART_Parity=USART_Parity_No;
+ 225              		.loc 1 172 36
+ 226 0084 0023     		movs	r3, #0
+ 227 0086 3B81     		strh	r3, [r7, #8]	@ movhi
+ 173:./uart/uart_com.c ****     _usart_init_struct.USART_StopBits=USART_StopBits_1;
+ 228              		.loc 1 173 38
+ 229 0088 0023     		movs	r3, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 8
+
+
+ 230 008a FB80     		strh	r3, [r7, #6]	@ movhi
+ 174:./uart/uart_com.c ****     _usart_init_struct.USART_WordLength=USART_WordLength_8b;
+ 231              		.loc 1 174 40
+ 232 008c 0023     		movs	r3, #0
+ 233 008e BB80     		strh	r3, [r7, #4]	@ movhi
+ 175:./uart/uart_com.c ****     _usart_init_struct.USART_HardwareFlowControl=USART_HardwareFlowControl_None;
+ 234              		.loc 1 175 49
+ 235 0090 0023     		movs	r3, #0
+ 236 0092 BB81     		strh	r3, [r7, #12]	@ movhi
+ 176:./uart/uart_com.c ****     USART_Init(USART2,&_usart_init_struct);
+ 237              		.loc 1 176 5
+ 238 0094 3B46     		mov	r3, r7
+ 239 0096 1946     		mov	r1, r3
+ 240 0098 0A48     		ldr	r0, .L5+8
+ 241 009a FFF7FEFF 		bl	USART_Init
+ 177:./uart/uart_com.c **** 
+ 178:./uart/uart_com.c **** /* 5. Configure the peripheral interrupt @ level of the peripheral or DMA */
+ 179:./uart/uart_com.c ****     USART_ITConfig(USART2,USART_IT_RXNE | USART_IT_TXE,ENABLE);
+ 242              		.loc 1 179 5
+ 243 009e 0122     		movs	r2, #1
+ 244 00a0 40F22771 		movw	r1, #1831
+ 245 00a4 0748     		ldr	r0, .L5+8
+ 246 00a6 FFF7FEFF 		bl	USART_ITConfig
+ 180:./uart/uart_com.c **** 
+ 181:./uart/uart_com.c **** /* 6. Enable the peripheral Module */
+ 182:./uart/uart_com.c ****     USART_Cmd(USART2,ENABLE);
+ 247              		.loc 1 182 5
+ 248 00aa 0121     		movs	r1, #1
+ 249 00ac 0548     		ldr	r0, .L5+8
+ 250 00ae FFF7FEFF 		bl	USART_Cmd
+ 183:./uart/uart_com.c ****   
+ 184:./uart/uart_com.c **** 
+ 185:./uart/uart_com.c **** }
+ 251              		.loc 1 185 1
+ 252 00b2 00BF     		nop
+ 253 00b4 1837     		adds	r7, r7, #24
+ 254              	.LCFI8:
+ 255              		.cfi_def_cfa_offset 8
+ 256 00b6 BD46     		mov	sp, r7
+ 257              	.LCFI9:
+ 258              		.cfi_def_cfa_register 13
+ 259              		@ sp needed
+ 260 00b8 80BD     		pop	{r7, pc}
+ 261              	.L6:
+ 262 00ba 00BF     		.align	2
+ 263              	.L5:
+ 264 00bc 00100240 		.word	1073876992
+ 265 00c0 00080140 		.word	1073809408
+ 266 00c4 00440040 		.word	1073759232
+ 267              		.cfi_endproc
+ 268              	.LFE34:
+ 270              		.section	.text.USART3_init,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	USART3_init
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 9
+
+
+ 277              	USART3_init:
+ 278              	.LFB35:
+ 186:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 187:./uart/uart_com.c **** void USART3_init(void)
+ 188:./uart/uart_com.c **** {
+ 279              		.loc 1 188 1
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 24
+ 282              		@ frame_needed = 1, uses_anonymous_args = 0
+ 283 0000 80B5     		push	{r7, lr}
+ 284              	.LCFI10:
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 7, -8
+ 287              		.cfi_offset 14, -4
+ 288 0002 86B0     		sub	sp, sp, #24
+ 289              	.LCFI11:
+ 290              		.cfi_def_cfa_offset 32
+ 291 0004 00AF     		add	r7, sp, #0
+ 292              	.LCFI12:
+ 293              		.cfi_def_cfa_register 7
+ 189:./uart/uart_com.c ****    /**
+ 190:./uart/uart_com.c ****     * @brief in stm32f1038ct6 USART3 is shared with I2c2 define in the following pins
+ 191:./uart/uart_com.c ****     * @param PB11 --- RX3/SDA2
+ 192:./uart/uart_com.c ****     * @param PB10 --- TX3/SCL2
+ 193:./uart/uart_com.c ****     * 
+ 194:./uart/uart_com.c ****     */
+ 195:./uart/uart_com.c ****   //1. Enable the Clock of peripheral USART3 Module using RCC_APB1PeriphClockCmd
+ 196:./uart/uart_com.c ****     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE);
+ 294              		.loc 1 196 5
+ 295 0006 0121     		movs	r1, #1
+ 296 0008 4FF48020 		mov	r0, #262144
+ 297 000c FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 197:./uart/uart_com.c ****     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO|
+ 298              		.loc 1 197 5
+ 299 0010 0121     		movs	r1, #1
+ 300 0012 0920     		movs	r0, #9
+ 301 0014 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 198:./uart/uart_com.c ****                            RCC_APB2Periph_GPIOB,ENABLE);
+ 199:./uart/uart_com.c ****    
+ 200:./uart/uart_com.c ****   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) 
+ 201:./uart/uart_com.c ****       & remap incase of requirement */
+ 202:./uart/uart_com.c ****       GPIO_InitTypeDef _gpio_init_struct;
+ 203:./uart/uart_com.c ****       GPIO_StructInit((GPIO_InitTypeDef*)& _gpio_init_struct);
+ 302              		.loc 1 203 7
+ 303 0018 07F11403 		add	r3, r7, #20
+ 304 001c 1846     		mov	r0, r3
+ 305 001e FFF7FEFF 		bl	GPIO_StructInit
+ 204:./uart/uart_com.c ****       // init TX3=PB10
+ 205:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_10;
+ 306              		.loc 1 205 33
+ 307 0022 4FF48063 		mov	r3, #1024
+ 308 0026 BB82     		strh	r3, [r7, #20]	@ movhi
+ 206:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+ 309              		.loc 1 206 35
+ 310 0028 0323     		movs	r3, #3
+ 311 002a BB75     		strb	r3, [r7, #22]
+ 207:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_AF_PP;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 10
+
+
+ 312              		.loc 1 207 34
+ 313 002c 1823     		movs	r3, #24
+ 314 002e FB75     		strb	r3, [r7, #23]
+ 208:./uart/uart_com.c ****       GPIO_Init(GPIOB,&_gpio_init_struct);
+ 315              		.loc 1 208 7
+ 316 0030 07F11403 		add	r3, r7, #20
+ 317 0034 1946     		mov	r1, r3
+ 318 0036 2048     		ldr	r0, .L8
+ 319 0038 FFF7FEFF 		bl	GPIO_Init
+ 209:./uart/uart_com.c **** 
+ 210:./uart/uart_com.c ****       // init RX3=PB11
+ 211:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Pin=GPIO_Pin_11;
+ 320              		.loc 1 211 33
+ 321 003c 4FF40063 		mov	r3, #2048
+ 322 0040 BB82     		strh	r3, [r7, #20]	@ movhi
+ 212:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
+ 323              		.loc 1 212 35
+ 324 0042 0323     		movs	r3, #3
+ 325 0044 BB75     		strb	r3, [r7, #22]
+ 213:./uart/uart_com.c ****       _gpio_init_struct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
+ 326              		.loc 1 213 34
+ 327 0046 0423     		movs	r3, #4
+ 328 0048 FB75     		strb	r3, [r7, #23]
+ 214:./uart/uart_com.c ****       GPIO_Init(GPIOB,&_gpio_init_struct);
+ 329              		.loc 1 214 7
+ 330 004a 07F11403 		add	r3, r7, #20
+ 331 004e 1946     		mov	r1, r3
+ 332 0050 1948     		ldr	r0, .L8
+ 333 0052 FFF7FEFF 		bl	GPIO_Init
+ 215:./uart/uart_com.c **** 
+ 216:./uart/uart_com.c **** 
+ 217:./uart/uart_com.c ****   /* 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority 
+ 218:./uart/uart_com.c ****      NVIC_InitTypeDef NVIC_InitStruct;
+ 219:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannel=USART3_IRQn;
+ 334              		.loc 1 219 37
+ 335 0056 2723     		movs	r3, #39
+ 336 0058 3B74     		strb	r3, [r7, #16]
+ 220:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0;
+ 337              		.loc 1 220 55
+ 338 005a 0023     		movs	r3, #0
+ 339 005c 7B74     		strb	r3, [r7, #17]
+ 221:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelSubPriority=8;
+ 340              		.loc 1 221 48
+ 341 005e 0823     		movs	r3, #8
+ 342 0060 BB74     		strb	r3, [r7, #18]
+ 222:./uart/uart_com.c ****      NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
+ 343              		.loc 1 222 40
+ 344 0062 0123     		movs	r3, #1
+ 345 0064 FB74     		strb	r3, [r7, #19]
+ 223:./uart/uart_com.c ****      NVIC_Init((NVIC_InitTypeDef*) &NVIC_InitStruct);
+ 346              		.loc 1 223 6
+ 347 0066 07F11003 		add	r3, r7, #16
+ 348 006a 1846     		mov	r0, r3
+ 349 006c FFF7FEFF 		bl	NVIC_Init
+ 224:./uart/uart_com.c **** 
+ 225:./uart/uart_com.c ****   /* 4. Configure the peripheral hardware  of the USART3 */
+ 226:./uart/uart_com.c ****     USART_InitTypeDef _usart_init_struct;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 11
+
+
+ 227:./uart/uart_com.c ****     USART_StructInit((USART_InitTypeDef *)& _usart_init_struct);
+ 350              		.loc 1 227 5
+ 351 0070 3B46     		mov	r3, r7
+ 352 0072 1846     		mov	r0, r3
+ 353 0074 FFF7FEFF 		bl	USART_StructInit
+ 228:./uart/uart_com.c ****     _usart_init_struct.USART_BaudRate=115200;
+ 354              		.loc 1 228 38
+ 355 0078 4FF4E133 		mov	r3, #115200
+ 356 007c 3B60     		str	r3, [r7]
+ 229:./uart/uart_com.c ****     _usart_init_struct.USART_Mode=USART_Mode_Rx | USART_Mode_Tx ;
+ 357              		.loc 1 229 34
+ 358 007e 0C23     		movs	r3, #12
+ 359 0080 7B81     		strh	r3, [r7, #10]	@ movhi
+ 230:./uart/uart_com.c ****     _usart_init_struct.USART_Parity=USART_Parity_No;
+ 360              		.loc 1 230 36
+ 361 0082 0023     		movs	r3, #0
+ 362 0084 3B81     		strh	r3, [r7, #8]	@ movhi
+ 231:./uart/uart_com.c ****     _usart_init_struct.USART_StopBits=USART_StopBits_1;
+ 363              		.loc 1 231 38
+ 364 0086 0023     		movs	r3, #0
+ 365 0088 FB80     		strh	r3, [r7, #6]	@ movhi
+ 232:./uart/uart_com.c ****     _usart_init_struct.USART_WordLength=USART_WordLength_8b;
+ 366              		.loc 1 232 40
+ 367 008a 0023     		movs	r3, #0
+ 368 008c BB80     		strh	r3, [r7, #4]	@ movhi
+ 233:./uart/uart_com.c ****     _usart_init_struct.USART_HardwareFlowControl=USART_HardwareFlowControl_None;
+ 369              		.loc 1 233 49
+ 370 008e 0023     		movs	r3, #0
+ 371 0090 BB81     		strh	r3, [r7, #12]	@ movhi
+ 234:./uart/uart_com.c ****     USART_Init((USART_TypeDef*)USART3,(USART_InitTypeDef *)& _usart_init_struct);
+ 372              		.loc 1 234 5
+ 373 0092 3B46     		mov	r3, r7
+ 374 0094 1946     		mov	r1, r3
+ 375 0096 0948     		ldr	r0, .L8+4
+ 376 0098 FFF7FEFF 		bl	USART_Init
+ 235:./uart/uart_com.c **** 
+ 236:./uart/uart_com.c **** /* 5. Configure the peripheral interrupt @ level of the peripheral or DMA */
+ 237:./uart/uart_com.c ****     USART_ITConfig(USART3,USART_IT_RXNE|USART_IT_TXE,ENABLE);
+ 377              		.loc 1 237 5
+ 378 009c 0122     		movs	r2, #1
+ 379 009e 40F22771 		movw	r1, #1831
+ 380 00a2 0648     		ldr	r0, .L8+4
+ 381 00a4 FFF7FEFF 		bl	USART_ITConfig
+ 238:./uart/uart_com.c **** 
+ 239:./uart/uart_com.c **** /* 6. Enable the peripheral Module */
+ 240:./uart/uart_com.c ****     USART_Cmd(USART3,ENABLE);
+ 382              		.loc 1 240 5
+ 383 00a8 0121     		movs	r1, #1
+ 384 00aa 0448     		ldr	r0, .L8+4
+ 385 00ac FFF7FEFF 		bl	USART_Cmd
+ 241:./uart/uart_com.c **** 
+ 242:./uart/uart_com.c **** }
+ 386              		.loc 1 242 1
+ 387 00b0 00BF     		nop
+ 388 00b2 1837     		adds	r7, r7, #24
+ 389              	.LCFI13:
+ 390              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 12
+
+
+ 391 00b4 BD46     		mov	sp, r7
+ 392              	.LCFI14:
+ 393              		.cfi_def_cfa_register 13
+ 394              		@ sp needed
+ 395 00b6 80BD     		pop	{r7, pc}
+ 396              	.L9:
+ 397              		.align	2
+ 398              	.L8:
+ 399 00b8 000C0140 		.word	1073810432
+ 400 00bc 00480040 		.word	1073760256
+ 401              		.cfi_endproc
+ 402              	.LFE35:
+ 404              		.section	.text.USART1_IRQHandler,"ax",%progbits
+ 405              		.align	1
+ 406              		.global	USART1_IRQHandler
+ 407              		.syntax unified
+ 408              		.thumb
+ 409              		.thumb_func
+ 411              	USART1_IRQHandler:
+ 412              	.LFB36:
+ 243:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 244:./uart/uart_com.c **** 
+ 245:./uart/uart_com.c **** //********************************************************************************************
+ 246:./uart/uart_com.c **** //
+ 247:./uart/uart_com.c **** // Interrupt Handler Method definitions
+ 248:./uart/uart_com.c **** //
+ 249:./uart/uart_com.c **** //********************************************************************************************
+ 250:./uart/uart_com.c **** /**
+ 251:./uart/uart_com.c ****  * @brief USART1_IRQHandler Interrupt request for USART3 peripheral
+ 252:./uart/uart_com.c ****  * @details 1. it checks: 
+ 253:./uart/uart_com.c ****  *             a. the receive  data interrupt 
+ 254:./uart/uart_com.c ****  *             b. the transmit data complete interrupt 
+ 255:./uart/uart_com.c ****  *          2. it pushs in the received data to the received Queue to be later handled
+ 256:./uart/uart_com.c ****  *          3. it pop up the data from the transmit Queue to be send through USART transmit buffer
+ 257:./uart/uart_com.c ****  * @param  void
+ 258:./uart/uart_com.c ****  * @returns void 
+ 259:./uart/uart_com.c ****  */
+ 260:./uart/uart_com.c **** void USART1_IRQHandler(void)
+ 261:./uart/uart_com.c **** {
+ 413              		.loc 1 261 1
+ 414              		.cfi_startproc
+ 415              		@ args = 0, pretend = 0, frame = 8
+ 416              		@ frame_needed = 1, uses_anonymous_args = 0
+ 417 0000 80B5     		push	{r7, lr}
+ 418              	.LCFI15:
+ 419              		.cfi_def_cfa_offset 8
+ 420              		.cfi_offset 7, -8
+ 421              		.cfi_offset 14, -4
+ 422 0002 82B0     		sub	sp, sp, #8
+ 423              	.LCFI16:
+ 424              		.cfi_def_cfa_offset 16
+ 425 0004 00AF     		add	r7, sp, #0
+ 426              	.LCFI17:
+ 427              		.cfi_def_cfa_register 7
+ 262:./uart/uart_com.c ****     // clear the Interrupt 
+ 263:./uart/uart_com.c ****      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+ 264:./uart/uart_com.c ****      volatile uint8_t data=0;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 13
+
+
+ 428              		.loc 1 264 23
+ 429 0006 0023     		movs	r3, #0
+ 430 0008 FB71     		strb	r3, [r7, #7]
+ 265:./uart/uart_com.c ****      volatile uint16_t t=0;
+ 431              		.loc 1 265 24
+ 432 000a 0023     		movs	r3, #0
+ 433 000c BB80     		strh	r3, [r7, #4]	@ movhi
+ 266:./uart/uart_com.c ****     
+ 267:./uart/uart_com.c ****     if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+ 434              		.loc 1 267 8
+ 435 000e 40F22551 		movw	r1, #1317
+ 436 0012 0648     		ldr	r0, .L13
+ 437 0014 FFF7FEFF 		bl	USART_GetITStatus
+ 438 0018 0346     		mov	r3, r0
+ 439              		.loc 1 267 7
+ 440 001a 002B     		cmp	r3, #0
+ 441 001c 02D0     		beq	.L12
+ 268:./uart/uart_com.c ****       uart_receive(USART1);
+ 442              		.loc 1 268 7
+ 443 001e 0348     		ldr	r0, .L13
+ 444 0020 FFF7FEFF 		bl	uart_receive
+ 445              	.L12:
+ 269:./uart/uart_com.c **** 
+ 270:./uart/uart_com.c ****     //  TX : check if data is sent
+ 271:./uart/uart_com.c ****     /*if(USART_GetITStatus(USART1,USART_IT_TXE)!=RESET)
+ 272:./uart/uart_com.c ****     {
+ 273:./uart/uart_com.c ****      
+ 274:./uart/uart_com.c ****       // pop data  from the transmit queue to send 
+ 275:./uart/uart_com.c ****         
+ 276:./uart/uart_com.c ****       // reset the transmit interrupt flag by software optional,
+ 277:./uart/uart_com.c ****         //USART_ClearITPendingBit(USART1,USART_IT_TXE);
+ 278:./uart/uart_com.c **** 
+ 279:./uart/uart_com.c ****        //data=0x37;//relays.val;       
+ 280:./uart/uart_com.c ****       // send data to USART1 transmit buffer
+ 281:./uart/uart_com.c ****         USART_SendData(USART1,data);
+ 282:./uart/uart_com.c ****     }
+ 283:./uart/uart_com.c ****     */
+ 284:./uart/uart_com.c **** }
+ 446              		.loc 1 284 1
+ 447 0024 00BF     		nop
+ 448 0026 0837     		adds	r7, r7, #8
+ 449              	.LCFI18:
+ 450              		.cfi_def_cfa_offset 8
+ 451 0028 BD46     		mov	sp, r7
+ 452              	.LCFI19:
+ 453              		.cfi_def_cfa_register 13
+ 454              		@ sp needed
+ 455 002a 80BD     		pop	{r7, pc}
+ 456              	.L14:
+ 457              		.align	2
+ 458              	.L13:
+ 459 002c 00380140 		.word	1073821696
+ 460              		.cfi_endproc
+ 461              	.LFE36:
+ 463              		.section	.text.USART2_IRQHandler,"ax",%progbits
+ 464              		.align	1
+ 465              		.global	USART2_IRQHandler
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 14
+
+
+ 466              		.syntax unified
+ 467              		.thumb
+ 468              		.thumb_func
+ 470              	USART2_IRQHandler:
+ 471              	.LFB37:
+ 285:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 286:./uart/uart_com.c **** /**
+ 287:./uart/uart_com.c ****  * @brief USART2_IRQHandler Interrupt request for USART3 peripheral
+ 288:./uart/uart_com.c ****  * @details 1. it checks: 
+ 289:./uart/uart_com.c ****  *             a. the receive  data interrupt 
+ 290:./uart/uart_com.c ****  *             b. the transmit data complete interrupt 
+ 291:./uart/uart_com.c ****  *          2. it pushs in the received data to the received Queue to be later handled
+ 292:./uart/uart_com.c ****  *          3. it pop up the data from the transmit Queue to be send through USART transmit buffer
+ 293:./uart/uart_com.c ****  * @param  void
+ 294:./uart/uart_com.c ****  * @returns void 
+ 295:./uart/uart_com.c ****  */
+ 296:./uart/uart_com.c **** void USART2_IRQHandler(void)
+ 297:./uart/uart_com.c **** {
+ 472              		.loc 1 297 1
+ 473              		.cfi_startproc
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 1, uses_anonymous_args = 0
+ 476              		@ link register save eliminated.
+ 477 0000 80B4     		push	{r7}
+ 478              	.LCFI20:
+ 479              		.cfi_def_cfa_offset 4
+ 480              		.cfi_offset 7, -4
+ 481 0002 00AF     		add	r7, sp, #0
+ 482              	.LCFI21:
+ 483              		.cfi_def_cfa_register 7
+ 298:./uart/uart_com.c ****     // clear the Interrupt 
+ 299:./uart/uart_com.c ****      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+ 300:./uart/uart_com.c ****    /* 
+ 301:./uart/uart_com.c ****     // RX: check if a data is received 
+ 302:./uart/uart_com.c ****     if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
+ 303:./uart/uart_com.c ****     {
+ 304:./uart/uart_com.c ****         uint8_t data=0;
+ 305:./uart/uart_com.c ****         // read the received data from the usart receive buffer
+ 306:./uart/uart_com.c ****         data=USART_ReceiveData(USART2) & 0x00ff;    // onlu 8_bit
+ 307:./uart/uart_com.c ****         // reset the receive interrupt flag by software optional, reading data  reset IT_RXNE by ha
+ 308:./uart/uart_com.c ****         USART_ClearITPendingBit(USART2,USART_IT_RXNE);
+ 309:./uart/uart_com.c ****         // push it to the receive queue
+ 310:./uart/uart_com.c ****           USART_SendData(USART2,data); // for test only
+ 311:./uart/uart_com.c ****     }
+ 312:./uart/uart_com.c **** 
+ 313:./uart/uart_com.c ****     //  TX : check if data is sent
+ 314:./uart/uart_com.c ****     if(USART_GetITStatus(USART2,USART_IT_TXE)!=RESET)
+ 315:./uart/uart_com.c ****     {
+ 316:./uart/uart_com.c ****       uint8_t data=0;
+ 317:./uart/uart_com.c ****       // pop data  from the transmit queue to send 
+ 318:./uart/uart_com.c ****         
+ 319:./uart/uart_com.c ****       // reset the transmit interrupt flag by software optional,
+ 320:./uart/uart_com.c ****         USART_ClearITPendingBit(USART2,USART_IT_TXE);
+ 321:./uart/uart_com.c ****       // send data to USART1 transmit buffer
+ 322:./uart/uart_com.c ****       USART_SendData(USART2,data);
+ 323:./uart/uart_com.c ****     }
+ 324:./uart/uart_com.c ****    */
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 15
+
+
+ 325:./uart/uart_com.c **** }
+ 484              		.loc 1 325 1
+ 485 0004 00BF     		nop
+ 486 0006 BD46     		mov	sp, r7
+ 487              	.LCFI22:
+ 488              		.cfi_def_cfa_register 13
+ 489              		@ sp needed
+ 490 0008 80BC     		pop	{r7}
+ 491              	.LCFI23:
+ 492              		.cfi_restore 7
+ 493              		.cfi_def_cfa_offset 0
+ 494 000a 7047     		bx	lr
+ 495              		.cfi_endproc
+ 496              	.LFE37:
+ 498              		.section	.text.USART3_IRQHandler,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	USART3_IRQHandler
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 505              	USART3_IRQHandler:
+ 506              	.LFB38:
+ 326:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 327:./uart/uart_com.c **** /**
+ 328:./uart/uart_com.c ****  * @brief USART3_IRQHandler Interrupt request for USART3 peripheral
+ 329:./uart/uart_com.c ****  * @details 1. it checks: 
+ 330:./uart/uart_com.c ****  *             a. the receive  data interrupt 
+ 331:./uart/uart_com.c ****  *             b. the transmit data complete interrupt 
+ 332:./uart/uart_com.c ****  *          2. it pushs in the received data to the received Queue to be later handled
+ 333:./uart/uart_com.c ****  *          3. it pop up the data from the transmit Queue to be send through USART transmit buffer
+ 334:./uart/uart_com.c ****  * @param  void
+ 335:./uart/uart_com.c ****  * @returns void 
+ 336:./uart/uart_com.c ****  */
+ 337:./uart/uart_com.c **** 
+ 338:./uart/uart_com.c **** void USART3_IRQHandler(void)
+ 339:./uart/uart_com.c **** {
+ 507              		.loc 1 339 1
+ 508              		.cfi_startproc
+ 509              		@ args = 0, pretend = 0, frame = 0
+ 510              		@ frame_needed = 1, uses_anonymous_args = 0
+ 511              		@ link register save eliminated.
+ 512 0000 80B4     		push	{r7}
+ 513              	.LCFI24:
+ 514              		.cfi_def_cfa_offset 4
+ 515              		.cfi_offset 7, -4
+ 516 0002 00AF     		add	r7, sp, #0
+ 517              	.LCFI25:
+ 518              		.cfi_def_cfa_register 7
+ 340:./uart/uart_com.c ****     // clear the Interrupt 
+ 341:./uart/uart_com.c ****      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+ 342:./uart/uart_com.c ****    /* 
+ 343:./uart/uart_com.c ****     // RX: check if a data is received 
+ 344:./uart/uart_com.c ****     if(USART_GetITStatus(USART3,USART_IT_RXNE)!=RESET)
+ 345:./uart/uart_com.c ****     {
+ 346:./uart/uart_com.c ****         uint8_t data=0;
+ 347:./uart/uart_com.c ****         // read the received data from the usart receive buffer
+ 348:./uart/uart_com.c ****         data=USART_ReceiveData(USART3) & 0x00ff;    // onlu 8_bit
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 16
+
+
+ 349:./uart/uart_com.c ****         // reset the receive interrupt flag by software optional, reading data  reset IT_RXNE by ha
+ 350:./uart/uart_com.c ****         USART_ClearITPendingBit(USART3,USART_IT_RXNE);
+ 351:./uart/uart_com.c ****         // push it to the receive queue
+ 352:./uart/uart_com.c ****           USART_SendData(USART3,data); // for test only
+ 353:./uart/uart_com.c ****     }
+ 354:./uart/uart_com.c **** 
+ 355:./uart/uart_com.c ****     //  TX : check if data is sent
+ 356:./uart/uart_com.c ****     if(USART_GetITStatus(USART3,USART_IT_TXE)!=RESET)
+ 357:./uart/uart_com.c ****     {
+ 358:./uart/uart_com.c ****       uint8_t data=0;
+ 359:./uart/uart_com.c ****       // pop data  from the transmit queue to send 
+ 360:./uart/uart_com.c ****         
+ 361:./uart/uart_com.c ****       // reset the transmit interrupt flag by software optional,
+ 362:./uart/uart_com.c ****         USART_ClearITPendingBit(USART3,USART_IT_TXE);
+ 363:./uart/uart_com.c ****       // send data to USART1 transmit buffer
+ 364:./uart/uart_com.c ****         USART_SendData(USART3,data);
+ 365:./uart/uart_com.c ****     }
+ 366:./uart/uart_com.c ****  */
+ 367:./uart/uart_com.c **** }
+ 519              		.loc 1 367 1
+ 520 0004 00BF     		nop
+ 521 0006 BD46     		mov	sp, r7
+ 522              	.LCFI26:
+ 523              		.cfi_def_cfa_register 13
+ 524              		@ sp needed
+ 525 0008 80BC     		pop	{r7}
+ 526              	.LCFI27:
+ 527              		.cfi_restore 7
+ 528              		.cfi_def_cfa_offset 0
+ 529 000a 7047     		bx	lr
+ 530              		.cfi_endproc
+ 531              	.LFE38:
+ 533              		.section	.text.uart_put_char,"ax",%progbits
+ 534              		.align	1
+ 535              		.global	uart_put_char
+ 536              		.syntax unified
+ 537              		.thumb
+ 538              		.thumb_func
+ 540              	uart_put_char:
+ 541              	.LFB39:
+ 368:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 369:./uart/uart_com.c **** 
+ 370:./uart/uart_com.c **** //********************************************************************************************
+ 371:./uart/uart_com.c **** //
+ 372:./uart/uart_com.c **** // uart Method definitions
+ 373:./uart/uart_com.c **** //
+ 374:./uart/uart_com.c **** //********************************************************************************************
+ 375:./uart/uart_com.c **** uint8_t uart_put_char(USART_TypeDef * usartx,uint8_t data)
+ 376:./uart/uart_com.c **** {
+ 542              		.loc 1 376 1
+ 543              		.cfi_startproc
+ 544              		@ args = 0, pretend = 0, frame = 8
+ 545              		@ frame_needed = 1, uses_anonymous_args = 0
+ 546 0000 80B5     		push	{r7, lr}
+ 547              	.LCFI28:
+ 548              		.cfi_def_cfa_offset 8
+ 549              		.cfi_offset 7, -8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 17
+
+
+ 550              		.cfi_offset 14, -4
+ 551 0002 82B0     		sub	sp, sp, #8
+ 552              	.LCFI29:
+ 553              		.cfi_def_cfa_offset 16
+ 554 0004 00AF     		add	r7, sp, #0
+ 555              	.LCFI30:
+ 556              		.cfi_def_cfa_register 7
+ 557 0006 7860     		str	r0, [r7, #4]
+ 558 0008 0B46     		mov	r3, r1
+ 559 000a FB70     		strb	r3, [r7, #3]
+ 377:./uart/uart_com.c ****   while(USART_GetFlagStatus(usartx,USART_FLAG_TXE)==RESET);
+ 560              		.loc 1 377 8
+ 561 000c 00BF     		nop
+ 562              	.L18:
+ 563              		.loc 1 377 9 discriminator 1
+ 564 000e 8021     		movs	r1, #128
+ 565 0010 7868     		ldr	r0, [r7, #4]
+ 566 0012 FFF7FEFF 		bl	USART_GetFlagStatus
+ 567 0016 0346     		mov	r3, r0
+ 568              		.loc 1 377 8 discriminator 1
+ 569 0018 002B     		cmp	r3, #0
+ 570 001a F8D0     		beq	.L18
+ 378:./uart/uart_com.c ****   usartx->DR=(data & (uint16_t) 0x00ff);
+ 571              		.loc 1 378 13
+ 572 001c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 573 001e 9AB2     		uxth	r2, r3
+ 574 0020 7B68     		ldr	r3, [r7, #4]
+ 575 0022 9A80     		strh	r2, [r3, #4]	@ movhi
+ 379:./uart/uart_com.c ****   return 0;
+ 576              		.loc 1 379 10
+ 577 0024 0023     		movs	r3, #0
+ 380:./uart/uart_com.c **** }
+ 578              		.loc 1 380 1
+ 579 0026 1846     		mov	r0, r3
+ 580 0028 0837     		adds	r7, r7, #8
+ 581              	.LCFI31:
+ 582              		.cfi_def_cfa_offset 8
+ 583 002a BD46     		mov	sp, r7
+ 584              	.LCFI32:
+ 585              		.cfi_def_cfa_register 13
+ 586              		@ sp needed
+ 587 002c 80BD     		pop	{r7, pc}
+ 588              		.cfi_endproc
+ 589              	.LFE39:
+ 591              		.section	.text.uart_get_char,"ax",%progbits
+ 592              		.align	1
+ 593              		.global	uart_get_char
+ 594              		.syntax unified
+ 595              		.thumb
+ 596              		.thumb_func
+ 598              	uart_get_char:
+ 599              	.LFB40:
+ 381:./uart/uart_com.c **** //--------------------------------------------------------------------------------------------
+ 382:./uart/uart_com.c **** 
+ 383:./uart/uart_com.c **** uint8_t uart_get_char(USART_TypeDef * usartx)
+ 384:./uart/uart_com.c **** {
+ 600              		.loc 1 384 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 18
+
+
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 8
+ 603              		@ frame_needed = 1, uses_anonymous_args = 0
+ 604 0000 80B5     		push	{r7, lr}
+ 605              	.LCFI33:
+ 606              		.cfi_def_cfa_offset 8
+ 607              		.cfi_offset 7, -8
+ 608              		.cfi_offset 14, -4
+ 609 0002 82B0     		sub	sp, sp, #8
+ 610              	.LCFI34:
+ 611              		.cfi_def_cfa_offset 16
+ 612 0004 00AF     		add	r7, sp, #0
+ 613              	.LCFI35:
+ 614              		.cfi_def_cfa_register 7
+ 615 0006 7860     		str	r0, [r7, #4]
+ 385:./uart/uart_com.c **** 
+ 386:./uart/uart_com.c ****   while(USART_GetFlagStatus(usartx,USART_FLAG_RXNE)==RESET);
+ 616              		.loc 1 386 8
+ 617 0008 00BF     		nop
+ 618              	.L21:
+ 619              		.loc 1 386 9 discriminator 1
+ 620 000a 2021     		movs	r1, #32
+ 621 000c 7868     		ldr	r0, [r7, #4]
+ 622 000e FFF7FEFF 		bl	USART_GetFlagStatus
+ 623 0012 0346     		mov	r3, r0
+ 624              		.loc 1 386 8 discriminator 1
+ 625 0014 002B     		cmp	r3, #0
+ 626 0016 F8D0     		beq	.L21
+ 387:./uart/uart_com.c ****   return usartx->DR & (uint16_t) 0x00ff;  
+ 627              		.loc 1 387 16
+ 628 0018 7B68     		ldr	r3, [r7, #4]
+ 629 001a 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 630 001c 9BB2     		uxth	r3, r3
+ 631              		.loc 1 387 21
+ 632 001e DBB2     		uxtb	r3, r3
+ 388:./uart/uart_com.c **** }
+ 633              		.loc 1 388 1
+ 634 0020 1846     		mov	r0, r3
+ 635 0022 0837     		adds	r7, r7, #8
+ 636              	.LCFI36:
+ 637              		.cfi_def_cfa_offset 8
+ 638 0024 BD46     		mov	sp, r7
+ 639              	.LCFI37:
+ 640              		.cfi_def_cfa_register 13
+ 641              		@ sp needed
+ 642 0026 80BD     		pop	{r7, pc}
+ 643              		.cfi_endproc
+ 644              	.LFE40:
+ 646              		.text
+ 647              	.Letext0:
+ 648              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 649              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 650              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 651              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 652              		.file 6 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h"
+ 653              		.file 7 "./.driver/STM32F10x_StdPeriph_Driver/inc/misc.h"
+ 654              		.file 8 "./basic/gpio.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 19
+
+
+ 655              		.file 9 "./uart/uart.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart_com.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:18     .text.USART1_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:24     .text.USART1_init:00000000 USART1_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:124    .text.USART1_init:00000090 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:132    .text.USART2_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:138    .text.USART2_init:00000000 USART2_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:264    .text.USART2_init:000000bc $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:271    .text.USART3_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:277    .text.USART3_init:00000000 USART3_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:399    .text.USART3_init:000000b8 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:405    .text.USART1_IRQHandler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:411    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:459    .text.USART1_IRQHandler:0000002c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:464    .text.USART2_IRQHandler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:470    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:499    .text.USART3_IRQHandler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:505    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:534    .text.uart_put_char:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:540    .text.uart_put_char:00000000 uart_put_char
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:592    .text.uart_get_char:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s:598    .text.uart_get_char:00000000 uart_get_char
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 21
+
+
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+gpio_pin_mode
+NVIC_Init
+USART_StructInit
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccfsuxpk.s 			page 22
+
+
+USART_Init
+USART_ITConfig
+USART_Cmd
+uart_tx
+uart_rx
+GPIO_StructInit
+GPIO_Init
+RCC_APB1PeriphClockCmd
+RCC_APB2PeriphClockCmd
+USART_GetITStatus
+uart_receive
+USART_GetFlagStatus

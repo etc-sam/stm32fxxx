@@ -7,6 +7,7 @@
 ## Or name it automatically after the enclosing directory
 TARGET = $(lastword $(subst /, ,$(CURDIR)))
 
+
 ########-------------------------------------------------------------##########
 ########                   Directroy Paths!                   		 ##########
 ########         			 										 ##########
@@ -20,6 +21,18 @@ TARGET = $(lastword $(subst /, ,$(CURDIR)))
 ######## 		dirs := a b c d 									 ##########
 ########   		files := $(foreach dir,$(dirs),$(wildcard $(dir)/*)) ##########
 ########-------------------------------------------------------------##########
+
+# gcc Directory path based on the OS
+OS=Win
+GCC_Win_DIR=C:/arm-tool
+GCC_linux_DIR= /opt
+
+ifeq ($(OS),Win)
+    GCC_DIR=$(GCC_Win_DIR)
+else
+    GCC_DIR=$(GCC_linux_DIR)
+endif
+
 
 # libraries Directory paths
 LIB_DIR =
@@ -50,5 +63,5 @@ EXT_INC_DIR=
 ##########        You shouldn't need to edit below.             ##########
 ##########------------------------------------------------------##########
 
+#include ./Makefile-linux.mk
 include ./Makefile.mk
-

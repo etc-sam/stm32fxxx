@@ -1,0 +1,1324 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"init.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	TimingDelay
+  18              		.section	.bss.TimingDelay,"aw",%nobits
+  19              		.align	2
+  22              	TimingDelay:
+  23 0000 00000000 		.space	4
+  24              		.global	BlinkTimingDelay
+  25              		.section	.bss.BlinkTimingDelay,"aw",%nobits
+  26              		.align	2
+  29              	BlinkTimingDelay:
+  30 0000 00000000 		.space	4
+  31              		.global	lcd_update
+  32              		.section	.bss.lcd_update,"aw",%nobits
+  35              	lcd_update:
+  36 0000 00       		.space	1
+  37              		.global	blink_update
+  38              		.section	.bss.blink_update,"aw",%nobits
+  41              	blink_update:
+  42 0000 00       		.space	1
+  43              		.global	pilots
+  44              		.section	.bss.pilots,"aw",%nobits
+  45              		.align	2
+  48              	pilots:
+  49 0000 00       		.space	1
+  50              		.global	relays
+  51              		.section	.bss.relays,"aw",%nobits
+  52              		.align	2
+  55              	relays:
+  56 0000 00       		.space	1
+  57              		.global	blink_led
+  58              		.section	.data.blink_led,"aw"
+  59              		.align	2
+  62              	blink_led:
+  63 0000 00100140 		.word	1073811456
+  64 0004 0D00     		.short	13
+  65 0006 0000     		.space	2
+  66              		.global	pilot_en
+  67              		.section	.data.pilot_en,"aw"
+  68              		.align	2
+  71              	pilot_en:
+  72 0000 00100140 		.word	1073811456
+  73 0004 0F00     		.short	15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 2
+
+
+  74 0006 0000     		.space	2
+  75              		.global	pilot_db
+  76              		.section	.data.pilot_db,"aw"
+  77              		.align	2
+  80              	pilot_db:
+  81 0000 00080140 		.word	1073809408
+  82 0004 0700     		.short	7
+  83 0006 0000     		.space	2
+  84 0008 00080140 		.word	1073809408
+  85 000c 0600     		.short	6
+  86 000e 0000     		.space	2
+  87 0010 00080140 		.word	1073809408
+  88 0014 0500     		.short	5
+  89 0016 0000     		.space	2
+  90 0018 00080140 		.word	1073809408
+  91 001c 0400     		.short	4
+  92 001e 0000     		.space	2
+  93 0020 00080140 		.word	1073809408
+  94 0024 0300     		.short	3
+  95 0026 0000     		.space	2
+  96 0028 00080140 		.word	1073809408
+  97 002c 0200     		.short	2
+  98 002e 0000     		.space	2
+  99 0030 00080140 		.word	1073809408
+ 100 0034 0100     		.short	1
+ 101 0036 0000     		.space	2
+ 102 0038 00080140 		.word	1073809408
+ 103 003c 0000     		.short	0
+ 104 003e 0000     		.space	2
+ 105              		.global	rly
+ 106              		.section	.data.rly,"aw"
+ 107              		.align	2
+ 110              	rly:
+ 111 0000 000C0140 		.word	1073810432
+ 112 0004 0C00     		.short	12
+ 113 0006 0000     		.space	2
+ 114 0008 000C0140 		.word	1073810432
+ 115 000c 0D00     		.short	13
+ 116 000e 0000     		.space	2
+ 117 0010 000C0140 		.word	1073810432
+ 118 0014 0E00     		.short	14
+ 119 0016 0000     		.space	2
+ 120 0018 000C0140 		.word	1073810432
+ 121 001c 0F00     		.short	15
+ 122 001e 0000     		.space	2
+ 123 0020 00080140 		.word	1073809408
+ 124 0024 0800     		.short	8
+ 125 0026 0000     		.space	2
+ 126 0028 00080140 		.word	1073809408
+ 127 002c 0B00     		.short	11
+ 128 002e 0000     		.space	2
+ 129              		.section	.text.pilot_init,"ax",%progbits
+ 130              		.align	1
+ 131              		.global	pilot_init
+ 132              		.syntax unified
+ 133              		.thumb
+ 134              		.thumb_func
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 3
+
+
+ 136              	pilot_init:
+ 137              	.LFB33:
+ 138              		.file 1 "./init/init.c"
+   1:./init/init.c **** /**
+   2:./init/init.c ****  * @brief init.c
+   3:./init/init.c ****  *
+   4:./init/init.c ****  * @param student: Sameer Almaldein
+   5:./init/init.c ****  * @param ID: 679699
+   6:./init/init.c ****  * @param University TU-Chemnitz
+   7:./init/init.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./init/init.c ****  */ 
+   9:./init/init.c **** 
+  10:./init/init.c **** //********************************************************************************************
+  11:./init/init.c **** //
+  12:./init/init.c **** // including header  files
+  13:./init/init.c **** //
+  14:./init/init.c **** //********************************************************************************************
+  15:./init/init.c ****  #include "init.h"
+  16:./init/init.c **** //********************************************************************************************
+  17:./init/init.c **** //
+  18:./init/init.c **** // Global variables 
+  19:./init/init.c **** //
+  20:./init/init.c **** //********************************************************************************************
+  21:./init/init.c **** uint32_t TimingDelay =0,BlinkTimingDelay=0;
+  22:./init/init.c **** uint8_t lcd_update=0,blink_update=0;
+  23:./init/init.c **** 
+  24:./init/init.c **** pilot_t pilots;
+  25:./init/init.c **** rly_t relays;
+  26:./init/init.c **** 
+  27:./init/init.c **** gpio_t blink_led={GPIOC,13};
+  28:./init/init.c **** gpio_t pilot_en={GPIOC,15};
+  29:./init/init.c **** gpio_t pilot_db[8]={
+  30:./init/init.c **** {GPIOA,7},   // pilot_db0=PA7
+  31:./init/init.c **** {GPIOA,6},   // pilot_db0=PA6
+  32:./init/init.c **** {GPIOA,5},   // pilot_db0=PA5
+  33:./init/init.c **** {GPIOA,4},   // pilot_db0=PA4
+  34:./init/init.c **** {GPIOA,3},   // pilot_db0=PA3
+  35:./init/init.c **** {GPIOA,2},   // pilot_db0=PA2   
+  36:./init/init.c **** {GPIOA,1},   // pilot_db0=PA1
+  37:./init/init.c **** {GPIOA,0},   // pilot_db0=PA0
+  38:./init/init.c **** };
+  39:./init/init.c **** gpio_t rly[6]={
+  40:./init/init.c **** {GPIOB, 12},     // rly0
+  41:./init/init.c **** {GPIOB, 13},     // rly1
+  42:./init/init.c **** {GPIOB, 14},     // rly2
+  43:./init/init.c **** {GPIOB, 15},     // rly3
+  44:./init/init.c **** {GPIOA, 8},     // rly4
+  45:./init/init.c **** {GPIOA, 11},     // rly5
+  46:./init/init.c **** };
+  47:./init/init.c **** //********************************************************************************************
+  48:./init/init.c **** //
+  49:./init/init.c **** // Method definitions
+  50:./init/init.c **** //
+  51:./init/init.c **** //********************************************************************************************
+  52:./init/init.c **** void pilot_init(void)
+  53:./init/init.c **** {
+ 139              		.loc 1 53 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 4
+
+
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 8
+ 142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 143 0000 80B5     		push	{r7, lr}
+ 144              	.LCFI0:
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ 147              		.cfi_offset 14, -4
+ 148 0002 82B0     		sub	sp, sp, #8
+ 149              	.LCFI1:
+ 150              		.cfi_def_cfa_offset 16
+ 151 0004 00AF     		add	r7, sp, #0
+ 152              	.LCFI2:
+ 153              		.cfi_def_cfa_register 7
+ 154              	.LBB2:
+  54:./init/init.c ****     for(uint8_t i=0;i<8;i++)
+ 155              		.loc 1 54 17
+ 156 0006 0023     		movs	r3, #0
+ 157 0008 FB71     		strb	r3, [r7, #7]
+ 158              		.loc 1 54 5
+ 159 000a 0BE0     		b	.L2
+ 160              	.L3:
+  55:./init/init.c ****     gpio_pin_mode(pilot_db[i],GPIO_MODE_OUT_PP_2MHZ);
+ 161              		.loc 1 55 5 discriminator 3
+ 162 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 163 000e 0C49     		ldr	r1, .L4
+ 164 0010 0222     		movs	r2, #2
+ 165 0012 DB00     		lsls	r3, r3, #3
+ 166 0014 0B44     		add	r3, r3, r1
+ 167 0016 93E80300 		ldm	r3, {r0, r1}
+ 168 001a FFF7FEFF 		bl	gpio_pin_mode
+  54:./init/init.c ****     for(uint8_t i=0;i<8;i++)
+ 169              		.loc 1 54 26 discriminator 3
+ 170 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 171 0020 0133     		adds	r3, r3, #1
+ 172 0022 FB71     		strb	r3, [r7, #7]
+ 173              	.L2:
+  54:./init/init.c ****     for(uint8_t i=0;i<8;i++)
+ 174              		.loc 1 54 5 discriminator 1
+ 175 0024 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 176 0026 072B     		cmp	r3, #7
+ 177 0028 F0D9     		bls	.L3
+ 178              	.LBE2:
+  56:./init/init.c **** 
+  57:./init/init.c ****     gpio_pin_mode(pilot_en,GPIO_MODE_OUT_PP_2MHZ);
+ 179              		.loc 1 57 5
+ 180 002a 064B     		ldr	r3, .L4+4
+ 181 002c 0222     		movs	r2, #2
+ 182 002e 93E80300 		ldm	r3, {r0, r1}
+ 183 0032 FFF7FEFF 		bl	gpio_pin_mode
+  58:./init/init.c **** }
+ 184              		.loc 1 58 1
+ 185 0036 00BF     		nop
+ 186 0038 0837     		adds	r7, r7, #8
+ 187              	.LCFI3:
+ 188              		.cfi_def_cfa_offset 8
+ 189 003a BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 5
+
+
+ 190              	.LCFI4:
+ 191              		.cfi_def_cfa_register 13
+ 192              		@ sp needed
+ 193 003c 80BD     		pop	{r7, pc}
+ 194              	.L5:
+ 195 003e 00BF     		.align	2
+ 196              	.L4:
+ 197 0040 00000000 		.word	pilot_db
+ 198 0044 00000000 		.word	pilot_en
+ 199              		.cfi_endproc
+ 200              	.LFE33:
+ 202              		.section	.text.rly_init,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	rly_init
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	rly_init:
+ 210              	.LFB34:
+  59:./init/init.c **** //--------------------------------------------------------------------------------------------
+  60:./init/init.c **** void rly_init(void)
+  61:./init/init.c **** {
+ 211              		.loc 1 61 1
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 8
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215 0000 80B5     		push	{r7, lr}
+ 216              	.LCFI5:
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 7, -8
+ 219              		.cfi_offset 14, -4
+ 220 0002 82B0     		sub	sp, sp, #8
+ 221              	.LCFI6:
+ 222              		.cfi_def_cfa_offset 16
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              	.LCFI7:
+ 225              		.cfi_def_cfa_register 7
+ 226              	.LBB3:
+  62:./init/init.c ****   for(uint8_t i=0;i<6;i++)
+ 227              		.loc 1 62 15
+ 228 0006 0023     		movs	r3, #0
+ 229 0008 FB71     		strb	r3, [r7, #7]
+ 230              		.loc 1 62 3
+ 231 000a 0BE0     		b	.L7
+ 232              	.L8:
+  63:./init/init.c ****    gpio_pin_mode(rly[i],GPIO_MODE_OUT_PP_2MHZ);
+ 233              		.loc 1 63 4 discriminator 3
+ 234 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 235 000e 0949     		ldr	r1, .L9
+ 236 0010 0222     		movs	r2, #2
+ 237 0012 DB00     		lsls	r3, r3, #3
+ 238 0014 0B44     		add	r3, r3, r1
+ 239 0016 93E80300 		ldm	r3, {r0, r1}
+ 240 001a FFF7FEFF 		bl	gpio_pin_mode
+  62:./init/init.c ****   for(uint8_t i=0;i<6;i++)
+ 241              		.loc 1 62 24 discriminator 3
+ 242 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 6
+
+
+ 243 0020 0133     		adds	r3, r3, #1
+ 244 0022 FB71     		strb	r3, [r7, #7]
+ 245              	.L7:
+  62:./init/init.c ****   for(uint8_t i=0;i<6;i++)
+ 246              		.loc 1 62 3 discriminator 1
+ 247 0024 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 248 0026 052B     		cmp	r3, #5
+ 249 0028 F0D9     		bls	.L8
+ 250              	.LBE3:
+  64:./init/init.c **** }
+ 251              		.loc 1 64 1
+ 252 002a 00BF     		nop
+ 253 002c 00BF     		nop
+ 254 002e 0837     		adds	r7, r7, #8
+ 255              	.LCFI8:
+ 256              		.cfi_def_cfa_offset 8
+ 257 0030 BD46     		mov	sp, r7
+ 258              	.LCFI9:
+ 259              		.cfi_def_cfa_register 13
+ 260              		@ sp needed
+ 261 0032 80BD     		pop	{r7, pc}
+ 262              	.L10:
+ 263              		.align	2
+ 264              	.L9:
+ 265 0034 00000000 		.word	rly
+ 266              		.cfi_endproc
+ 267              	.LFE34:
+ 269              		.section	.text.pilot_write,"ax",%progbits
+ 270              		.align	1
+ 271              		.global	pilot_write
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 276              	pilot_write:
+ 277              	.LFB35:
+  65:./init/init.c **** //--------------------------------------------------------------------------------------------
+  66:./init/init.c **** void pilot_write(uint8_t val)
+  67:./init/init.c **** {
+ 278              		.loc 1 67 1
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 16
+ 281              		@ frame_needed = 1, uses_anonymous_args = 0
+ 282 0000 80B5     		push	{r7, lr}
+ 283              	.LCFI10:
+ 284              		.cfi_def_cfa_offset 8
+ 285              		.cfi_offset 7, -8
+ 286              		.cfi_offset 14, -4
+ 287 0002 84B0     		sub	sp, sp, #16
+ 288              	.LCFI11:
+ 289              		.cfi_def_cfa_offset 24
+ 290 0004 00AF     		add	r7, sp, #0
+ 291              	.LCFI12:
+ 292              		.cfi_def_cfa_register 7
+ 293 0006 0346     		mov	r3, r0
+ 294 0008 FB71     		strb	r3, [r7, #7]
+  68:./init/init.c **** 	gpio_set(pilot_en);
+ 295              		.loc 1 68 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 7
+
+
+ 296 000a 1C4B     		ldr	r3, .L16
+ 297 000c 93E80300 		ldm	r3, {r0, r1}
+ 298 0010 FFF7FEFF 		bl	gpio_set
+ 299              	.LBB4:
+  69:./init/init.c ****     
+  70:./init/init.c ****    for(uint8_t i=0;i<8;i++)    
+ 300              		.loc 1 70 16
+ 301 0014 0023     		movs	r3, #0
+ 302 0016 FB73     		strb	r3, [r7, #15]
+ 303              		.loc 1 70 4
+ 304 0018 1BE0     		b	.L12
+ 305              	.L15:
+  71:./init/init.c ****    if(bit_is_set(val,i))
+ 306              		.loc 1 71 7
+ 307 001a FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 308 001c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 309 001e 42FA03F3 		asr	r3, r2, r3
+ 310 0022 03F00103 		and	r3, r3, #1
+ 311              		.loc 1 71 6
+ 312 0026 002B     		cmp	r3, #0
+ 313 0028 08D0     		beq	.L13
+  72:./init/init.c ****      gpio_set(pilot_db[i]);
+ 314              		.loc 1 72 6
+ 315 002a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 316 002c 144A     		ldr	r2, .L16+4
+ 317 002e DB00     		lsls	r3, r3, #3
+ 318 0030 1344     		add	r3, r3, r2
+ 319 0032 93E80300 		ldm	r3, {r0, r1}
+ 320 0036 FFF7FEFF 		bl	gpio_set
+ 321 003a 07E0     		b	.L14
+ 322              	.L13:
+  73:./init/init.c ****    else
+  74:./init/init.c ****      gpio_clear(pilot_db[i]);
+ 323              		.loc 1 74 6
+ 324 003c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 325 003e 104A     		ldr	r2, .L16+4
+ 326 0040 DB00     		lsls	r3, r3, #3
+ 327 0042 1344     		add	r3, r3, r2
+ 328 0044 93E80300 		ldm	r3, {r0, r1}
+ 329 0048 FFF7FEFF 		bl	gpio_clear
+ 330              	.L14:
+  70:./init/init.c ****    if(bit_is_set(val,i))
+ 331              		.loc 1 70 25 discriminator 2
+ 332 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 333 004e 0133     		adds	r3, r3, #1
+ 334 0050 FB73     		strb	r3, [r7, #15]
+ 335              	.L12:
+  70:./init/init.c ****    if(bit_is_set(val,i))
+ 336              		.loc 1 70 4 discriminator 1
+ 337 0052 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 338 0054 072B     		cmp	r3, #7
+ 339 0056 E0D9     		bls	.L15
+ 340              	.LBE4:
+  75:./init/init.c **** 
+  76:./init/init.c ****     gpio_clear(pilot_en);
+ 341              		.loc 1 76 5
+ 342 0058 084B     		ldr	r3, .L16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 8
+
+
+ 343 005a 93E80300 		ldm	r3, {r0, r1}
+ 344 005e FFF7FEFF 		bl	gpio_clear
+  77:./init/init.c **** 	    asm("nop");
+ 345              		.loc 1 77 6
+ 346              		.syntax unified
+ 347              	@ 77 "./init/init.c" 1
+ 348 0062 00BF     		nop
+ 349              	@ 0 "" 2
+  78:./init/init.c **** 	    asm("nop");
+ 350              		.loc 1 78 6
+ 351              	@ 78 "./init/init.c" 1
+ 352 0064 00BF     		nop
+ 353              	@ 0 "" 2
+  79:./init/init.c **** 	    asm("nop");
+ 354              		.loc 1 79 6
+ 355              	@ 79 "./init/init.c" 1
+ 356 0066 00BF     		nop
+ 357              	@ 0 "" 2
+  80:./init/init.c **** 	    asm("nop");
+ 358              		.loc 1 80 6
+ 359              	@ 80 "./init/init.c" 1
+ 360 0068 00BF     		nop
+ 361              	@ 0 "" 2
+  81:./init/init.c **** 	gpio_set(pilot_en); 
+ 362              		.loc 1 81 2
+ 363              		.thumb
+ 364              		.syntax unified
+ 365 006a 044B     		ldr	r3, .L16
+ 366 006c 93E80300 		ldm	r3, {r0, r1}
+ 367 0070 FFF7FEFF 		bl	gpio_set
+  82:./init/init.c **** }
+ 368              		.loc 1 82 1
+ 369 0074 00BF     		nop
+ 370 0076 1037     		adds	r7, r7, #16
+ 371              	.LCFI13:
+ 372              		.cfi_def_cfa_offset 8
+ 373 0078 BD46     		mov	sp, r7
+ 374              	.LCFI14:
+ 375              		.cfi_def_cfa_register 13
+ 376              		@ sp needed
+ 377 007a 80BD     		pop	{r7, pc}
+ 378              	.L17:
+ 379              		.align	2
+ 380              	.L16:
+ 381 007c 00000000 		.word	pilot_en
+ 382 0080 00000000 		.word	pilot_db
+ 383              		.cfi_endproc
+ 384              	.LFE35:
+ 386              		.section	.text.rly_write,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	rly_write
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	rly_write:
+ 394              	.LFB36:
+  83:./init/init.c **** //--------------------------------------------------------------------------------------------
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 9
+
+
+  84:./init/init.c **** void rly_write(uint8_t val)
+  85:./init/init.c **** {    
+ 395              		.loc 1 85 1
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 16
+ 398              		@ frame_needed = 1, uses_anonymous_args = 0
+ 399 0000 80B5     		push	{r7, lr}
+ 400              	.LCFI15:
+ 401              		.cfi_def_cfa_offset 8
+ 402              		.cfi_offset 7, -8
+ 403              		.cfi_offset 14, -4
+ 404 0002 84B0     		sub	sp, sp, #16
+ 405              	.LCFI16:
+ 406              		.cfi_def_cfa_offset 24
+ 407 0004 00AF     		add	r7, sp, #0
+ 408              	.LCFI17:
+ 409              		.cfi_def_cfa_register 7
+ 410 0006 0346     		mov	r3, r0
+ 411 0008 FB71     		strb	r3, [r7, #7]
+ 412              	.LBB5:
+  86:./init/init.c ****    for(uint8_t i=0;i<6;i++)    
+ 413              		.loc 1 86 16
+ 414 000a 0023     		movs	r3, #0
+ 415 000c FB73     		strb	r3, [r7, #15]
+ 416              		.loc 1 86 4
+ 417 000e 1BE0     		b	.L19
+ 418              	.L22:
+  87:./init/init.c ****    if(bit_is_set(val,i))
+ 419              		.loc 1 87 7
+ 420 0010 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 421 0012 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 422 0014 42FA03F3 		asr	r3, r2, r3
+ 423 0018 03F00103 		and	r3, r3, #1
+ 424              		.loc 1 87 6
+ 425 001c 002B     		cmp	r3, #0
+ 426 001e 08D0     		beq	.L20
+  88:./init/init.c ****      gpio_set(rly[i]);
+ 427              		.loc 1 88 6
+ 428 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 429 0022 0D4A     		ldr	r2, .L23
+ 430 0024 DB00     		lsls	r3, r3, #3
+ 431 0026 1344     		add	r3, r3, r2
+ 432 0028 93E80300 		ldm	r3, {r0, r1}
+ 433 002c FFF7FEFF 		bl	gpio_set
+ 434 0030 07E0     		b	.L21
+ 435              	.L20:
+  89:./init/init.c ****    else
+  90:./init/init.c ****      gpio_clear(rly[i]); 
+ 436              		.loc 1 90 6
+ 437 0032 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 438 0034 084A     		ldr	r2, .L23
+ 439 0036 DB00     		lsls	r3, r3, #3
+ 440 0038 1344     		add	r3, r3, r2
+ 441 003a 93E80300 		ldm	r3, {r0, r1}
+ 442 003e FFF7FEFF 		bl	gpio_clear
+ 443              	.L21:
+  86:./init/init.c ****    if(bit_is_set(val,i))
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 10
+
+
+ 444              		.loc 1 86 25 discriminator 2
+ 445 0042 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 446 0044 0133     		adds	r3, r3, #1
+ 447 0046 FB73     		strb	r3, [r7, #15]
+ 448              	.L19:
+  86:./init/init.c ****    if(bit_is_set(val,i))
+ 449              		.loc 1 86 4 discriminator 1
+ 450 0048 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 451 004a 052B     		cmp	r3, #5
+ 452 004c E0D9     		bls	.L22
+ 453              	.LBE5:
+  91:./init/init.c **** }
+ 454              		.loc 1 91 1
+ 455 004e 00BF     		nop
+ 456 0050 00BF     		nop
+ 457 0052 1037     		adds	r7, r7, #16
+ 458              	.LCFI18:
+ 459              		.cfi_def_cfa_offset 8
+ 460 0054 BD46     		mov	sp, r7
+ 461              	.LCFI19:
+ 462              		.cfi_def_cfa_register 13
+ 463              		@ sp needed
+ 464 0056 80BD     		pop	{r7, pc}
+ 465              	.L24:
+ 466              		.align	2
+ 467              	.L23:
+ 468 0058 00000000 		.word	rly
+ 469              		.cfi_endproc
+ 470              	.LFE36:
+ 472              		.section	.text.blink_init,"ax",%progbits
+ 473              		.align	1
+ 474              		.global	blink_init
+ 475              		.syntax unified
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	blink_init:
+ 480              	.LFB37:
+  92:./init/init.c **** //--------------------------------------------------------------------------------------------
+  93:./init/init.c **** 
+  94:./init/init.c **** void blink_init(void)
+  95:./init/init.c **** {
+ 481              		.loc 1 95 1
+ 482              		.cfi_startproc
+ 483              		@ args = 0, pretend = 0, frame = 16
+ 484              		@ frame_needed = 1, uses_anonymous_args = 0
+ 485 0000 80B5     		push	{r7, lr}
+ 486              	.LCFI20:
+ 487              		.cfi_def_cfa_offset 8
+ 488              		.cfi_offset 7, -8
+ 489              		.cfi_offset 14, -4
+ 490 0002 84B0     		sub	sp, sp, #16
+ 491              	.LCFI21:
+ 492              		.cfi_def_cfa_offset 24
+ 493 0004 00AF     		add	r7, sp, #0
+ 494              	.LCFI22:
+ 495              		.cfi_def_cfa_register 7
+  96:./init/init.c ****  /**
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 11
+
+
+  97:./init/init.c ****   * @brief Configure the blink led using the stander peripheral library
+  98:./init/init.c ****   * @details a full details steps is used to configure it 
+  99:./init/init.c ****   *          as a digital output with push-pull and low speed 2MHz
+ 100:./init/init.c ****   */
+ 101:./init/init.c ****     GPIO_InitTypeDef gpio;
+ 102:./init/init.c ****     GPIO_StructInit((GPIO_InitTypeDef *)&gpio);
+ 496              		.loc 1 102 5
+ 497 0006 3B1D     		adds	r3, r7, #4
+ 498 0008 1846     		mov	r0, r3
+ 499 000a FFF7FEFF 		bl	GPIO_StructInit
+ 103:./init/init.c ****     gpio.GPIO_Speed=GPIO_Speed_2MHz;
+ 500              		.loc 1 103 20
+ 501 000e 0223     		movs	r3, #2
+ 502 0010 BB71     		strb	r3, [r7, #6]
+ 104:./init/init.c ****     gpio.GPIO_Pin=GPIO_Pin_13;
+ 503              		.loc 1 104 18
+ 504 0012 4FF40053 		mov	r3, #8192
+ 505 0016 BB80     		strh	r3, [r7, #4]	@ movhi
+ 105:./init/init.c ****     GPIO_Init(GPIOC,&gpio);    
+ 506              		.loc 1 105 5
+ 507 0018 3B1D     		adds	r3, r7, #4
+ 508 001a 1946     		mov	r1, r3
+ 509 001c 3A48     		ldr	r0, .L26
+ 510 001e FFF7FEFF 		bl	GPIO_Init
+ 106:./init/init.c ****  /**
+ 107:./init/init.c ****   * @brief a number of methods to write data to gpio pin or pins or port
+ 108:./init/init.c ****     
+ 109:./init/init.c ****   *  void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 110:./init/init.c ****   *  void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 111:./init/init.c ****   *  void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
+ 112:./init/init.c ****   *  void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)
+ 113:./init/init.c ****   */
+ 114:./init/init.c **** 
+ 115:./init/init.c ****      GPIO_SetBits(GPIOC,GPIO_Pin_13);
+ 511              		.loc 1 115 6
+ 512 0022 4FF40051 		mov	r1, #8192
+ 513 0026 3848     		ldr	r0, .L26
+ 514 0028 FFF7FEFF 		bl	GPIO_SetBits
+ 116:./init/init.c ****      //GPIO_ResetBits(GPIOC,GPIO_Pin_13);
+ 117:./init/init.c ****      //GPIO_WriteBit(GPIOC,GPIO_Pin_13,Bit_RESET);
+ 118:./init/init.c ****      //GPIO_WriteBit(GPIOC,GPIO_Pin_13,Bit_SET);
+ 119:./init/init.c ****      //GPIO_Write(GPIOC,0b1110111111111111);
+ 120:./init/init.c **** 
+ 121:./init/init.c **** /**
+ 122:./init/init.c ****   * @brief a number of methods to read data from 
+ 123:./init/init.c ****   *             IDR (input data register)  as pins or port 
+ 124:./init/init.c ****   *             ODR (output data register) as pins or port 
+ 125:./init/init.c ****   *   uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)  
+ 126:./init/init.c ****   *   uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 127:./init/init.c ****   *     
+ 128:./init/init.c ****   *   uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
+ 129:./init/init.c ****   *   uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
+ 130:./init/init.c ****   *
+ 131:./init/init.c ****   */
+ 132:./init/init.c ****    uint8_t in_bit_val=0, out_bit_val=0;
+ 515              		.loc 1 132 12
+ 516 002c 0023     		movs	r3, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 12
+
+
+ 517 002e FB73     		strb	r3, [r7, #15]
+ 518              		.loc 1 132 26
+ 519 0030 0023     		movs	r3, #0
+ 520 0032 BB73     		strb	r3, [r7, #14]
+ 133:./init/init.c ****    uint16_t in_port_val=0,out_port_val=0;
+ 521              		.loc 1 133 13
+ 522 0034 0023     		movs	r3, #0
+ 523 0036 BB81     		strh	r3, [r7, #12]	@ movhi
+ 524              		.loc 1 133 27
+ 525 0038 0023     		movs	r3, #0
+ 526 003a 7B81     		strh	r3, [r7, #10]	@ movhi
+ 134:./init/init.c ****    
+ 135:./init/init.c ****    in_bit_val=GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13);    // read IDR bit
+ 527              		.loc 1 135 15
+ 528 003c 4FF40051 		mov	r1, #8192
+ 529 0040 3148     		ldr	r0, .L26
+ 530 0042 FFF7FEFF 		bl	GPIO_ReadInputDataBit
+ 531 0046 0346     		mov	r3, r0
+ 532 0048 FB73     		strb	r3, [r7, #15]
+ 136:./init/init.c ****    out_bit_val=GPIO_ReadOutputDataBit(GPIOC,GPIO_Pin_13); // read ODR  bit
+ 533              		.loc 1 136 16
+ 534 004a 4FF40051 		mov	r1, #8192
+ 535 004e 2E48     		ldr	r0, .L26
+ 536 0050 FFF7FEFF 		bl	GPIO_ReadOutputDataBit
+ 537 0054 0346     		mov	r3, r0
+ 538 0056 BB73     		strb	r3, [r7, #14]
+ 137:./init/init.c ****    
+ 138:./init/init.c ****    in_port_val=GPIO_ReadInputData(GPIOC);                // read IDR for port C
+ 539              		.loc 1 138 16
+ 540 0058 2B48     		ldr	r0, .L26
+ 541 005a FFF7FEFF 		bl	GPIO_ReadInputData
+ 542 005e 0346     		mov	r3, r0
+ 543 0060 BB81     		strh	r3, [r7, #12]	@ movhi
+ 139:./init/init.c ****    out_port_val=GPIO_ReadOutputData(GPIOC);               // read IDR for port C
+ 544              		.loc 1 139 17
+ 545 0062 2948     		ldr	r0, .L26
+ 546 0064 FFF7FEFF 		bl	GPIO_ReadOutputData
+ 547 0068 0346     		mov	r3, r0
+ 548 006a 7B81     		strh	r3, [r7, #10]	@ movhi
+ 140:./init/init.c **** 
+ 141:./init/init.c **** /**
+ 142:./init/init.c ****   * @brief Configure the blink led using the stander peripheral library
+ 143:./init/init.c ****   * @details a full detailed steps in one function gpio_init in which it defines
+ 144:./init/init.c ****   *         the mode and speed as parameters
+ 145:./init/init.c ****   *          as a digital output with push-pull and low speed 2MHz
+ 146:./init/init.c ****   */ 
+ 147:./init/init.c ****   gpio_init(blink_led.port,blink_led.pin,GPIO_Mode_Out_PP,GPIO_Speed_2MHz);
+ 549              		.loc 1 147 3
+ 550 006c 274B     		ldr	r3, .L26+4
+ 551 006e 1868     		ldr	r0, [r3]
+ 552 0070 264B     		ldr	r3, .L26+4
+ 553 0072 9988     		ldrh	r1, [r3, #4]
+ 554 0074 0223     		movs	r3, #2
+ 555 0076 1022     		movs	r2, #16
+ 556 0078 FFF7FEFF 		bl	gpio_init
+ 148:./init/init.c ****   GPIO_SetBits(blink_led.port,(uint32_t)(1<<blink_led.pin));
+ 557              		.loc 1 148 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 13
+
+
+ 558 007c 234B     		ldr	r3, .L26+4
+ 559 007e 1B68     		ldr	r3, [r3]
+ 560              		.loc 1 148 54
+ 561 0080 224A     		ldr	r2, .L26+4
+ 562 0082 9288     		ldrh	r2, [r2, #4]
+ 563 0084 1146     		mov	r1, r2
+ 564              		.loc 1 148 43
+ 565 0086 0122     		movs	r2, #1
+ 566 0088 8A40     		lsls	r2, r2, r1
+ 567              		.loc 1 148 3
+ 568 008a 92B2     		uxth	r2, r2
+ 569 008c 1146     		mov	r1, r2
+ 570 008e 1846     		mov	r0, r3
+ 571 0090 FFF7FEFF 		bl	GPIO_SetBits
+ 149:./init/init.c ****   GPIO_WriteBit(blink_led.port,(uint32_t)(1<<blink_led.pin),Bit_RESET);
+ 572              		.loc 1 149 3
+ 573 0094 1D4B     		ldr	r3, .L26+4
+ 574 0096 1B68     		ldr	r3, [r3]
+ 575              		.loc 1 149 55
+ 576 0098 1C4A     		ldr	r2, .L26+4
+ 577 009a 9288     		ldrh	r2, [r2, #4]
+ 578 009c 1146     		mov	r1, r2
+ 579              		.loc 1 149 44
+ 580 009e 0122     		movs	r2, #1
+ 581 00a0 8A40     		lsls	r2, r2, r1
+ 582              		.loc 1 149 3
+ 583 00a2 91B2     		uxth	r1, r2
+ 584 00a4 0022     		movs	r2, #0
+ 585 00a6 1846     		mov	r0, r3
+ 586 00a8 FFF7FEFF 		bl	GPIO_WriteBit
+ 150:./init/init.c **** 
+ 151:./init/init.c **** /**
+ 152:./init/init.c ****   * @brief Configure the blink led using the stander peripheral library
+ 153:./init/init.c ****   * @details short detailed steps in one function gpio_pinmode in which it defines
+ 154:./init/init.c ****   *         the mode and speed as parameters and pass a gpio_t
+ 155:./init/init.c ****   *          as a digital output with push-pull and low speed 2MHz
+ 156:./init/init.c ****   */ 
+ 157:./init/init.c ****    gpio_pinmode(blink_led,GPIO_Mode_Out_PP,GPIO_Speed_2MHz);
+ 587              		.loc 1 157 4
+ 588 00ac 1749     		ldr	r1, .L26+4
+ 589 00ae 0223     		movs	r3, #2
+ 590 00b0 1022     		movs	r2, #16
+ 591 00b2 03C9     		ldm	r1, {r0, r1}
+ 592 00b4 FFF7FEFF 		bl	gpio_pinmode
+ 158:./init/init.c ****    GPIO_SetBits(blink_led.port,(uint32_t)(1<<blink_led.pin));
+ 593              		.loc 1 158 4
+ 594 00b8 144B     		ldr	r3, .L26+4
+ 595 00ba 1B68     		ldr	r3, [r3]
+ 596              		.loc 1 158 55
+ 597 00bc 134A     		ldr	r2, .L26+4
+ 598 00be 9288     		ldrh	r2, [r2, #4]
+ 599 00c0 1146     		mov	r1, r2
+ 600              		.loc 1 158 44
+ 601 00c2 0122     		movs	r2, #1
+ 602 00c4 8A40     		lsls	r2, r2, r1
+ 603              		.loc 1 158 4
+ 604 00c6 92B2     		uxth	r2, r2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 14
+
+
+ 605 00c8 1146     		mov	r1, r2
+ 606 00ca 1846     		mov	r0, r3
+ 607 00cc FFF7FEFF 		bl	GPIO_SetBits
+ 159:./init/init.c ****    GPIO_WriteBit(blink_led.port,(uint32_t)(1<<blink_led.pin),Bit_RESET);
+ 608              		.loc 1 159 4
+ 609 00d0 0E4B     		ldr	r3, .L26+4
+ 610 00d2 1B68     		ldr	r3, [r3]
+ 611              		.loc 1 159 56
+ 612 00d4 0D4A     		ldr	r2, .L26+4
+ 613 00d6 9288     		ldrh	r2, [r2, #4]
+ 614 00d8 1146     		mov	r1, r2
+ 615              		.loc 1 159 45
+ 616 00da 0122     		movs	r2, #1
+ 617 00dc 8A40     		lsls	r2, r2, r1
+ 618              		.loc 1 159 4
+ 619 00de 91B2     		uxth	r1, r2
+ 620 00e0 0022     		movs	r2, #0
+ 621 00e2 1846     		mov	r0, r3
+ 622 00e4 FFF7FEFF 		bl	GPIO_WriteBit
+ 160:./init/init.c **** 
+ 161:./init/init.c **** // Configure the blink led using the    
+ 162:./init/init.c **** /**
+ 163:./init/init.c ****   * @brief Configure the blink led using the stander peripheral library
+ 164:./init/init.c ****   * @details short detailed steps in one function gpio_pinmode in which it defines
+ 165:./init/init.c ****   *         the mode and speed as parameters and pass a gpio_t
+ 166:./init/init.c ****   *          as a digital output with push-pull and low speed 2MHz
+ 167:./init/init.c ****   */ 
+ 168:./init/init.c ****     gpio_pin_mode(blink_led,GPIO_MODE_OUT_PP_2MHZ);  
+ 623              		.loc 1 168 5
+ 624 00e8 084B     		ldr	r3, .L26+4
+ 625 00ea 0222     		movs	r2, #2
+ 626 00ec 93E80300 		ldm	r3, {r0, r1}
+ 627 00f0 FFF7FEFF 		bl	gpio_pin_mode
+ 169:./init/init.c ****     gpio_clear(blink_led);
+ 628              		.loc 1 169 5
+ 629 00f4 054B     		ldr	r3, .L26+4
+ 630 00f6 93E80300 		ldm	r3, {r0, r1}
+ 631 00fa FFF7FEFF 		bl	gpio_clear
+ 170:./init/init.c ****   
+ 171:./init/init.c **** }
+ 632              		.loc 1 171 1
+ 633 00fe 00BF     		nop
+ 634 0100 1037     		adds	r7, r7, #16
+ 635              	.LCFI23:
+ 636              		.cfi_def_cfa_offset 8
+ 637 0102 BD46     		mov	sp, r7
+ 638              	.LCFI24:
+ 639              		.cfi_def_cfa_register 13
+ 640              		@ sp needed
+ 641 0104 80BD     		pop	{r7, pc}
+ 642              	.L27:
+ 643 0106 00BF     		.align	2
+ 644              	.L26:
+ 645 0108 00100140 		.word	1073811456
+ 646 010c 00000000 		.word	blink_led
+ 647              		.cfi_endproc
+ 648              	.LFE37:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 15
+
+
+ 650              		.section	.text.blink,"ax",%progbits
+ 651              		.align	1
+ 652              		.global	blink
+ 653              		.syntax unified
+ 654              		.thumb
+ 655              		.thumb_func
+ 657              	blink:
+ 658              	.LFB38:
+ 172:./init/init.c **** //--------------------------------------------------------------------------------------------
+ 173:./init/init.c **** void blink(void)
+ 174:./init/init.c **** {
+ 659              		.loc 1 174 1
+ 660              		.cfi_startproc
+ 661              		@ args = 0, pretend = 0, frame = 0
+ 662              		@ frame_needed = 1, uses_anonymous_args = 0
+ 663 0000 80B5     		push	{r7, lr}
+ 664              	.LCFI25:
+ 665              		.cfi_def_cfa_offset 8
+ 666              		.cfi_offset 7, -8
+ 667              		.cfi_offset 14, -4
+ 668 0002 00AF     		add	r7, sp, #0
+ 669              	.LCFI26:
+ 670              		.cfi_def_cfa_register 7
+ 175:./init/init.c **** 
+ 176:./init/init.c ****     // write Hi to PC13
+ 177:./init/init.c ****     GPIO_SetBits(GPIOC,GPIO_Pin_13);
+ 671              		.loc 1 177 5
+ 672 0004 4FF40051 		mov	r1, #8192
+ 673 0008 0848     		ldr	r0, .L29
+ 674 000a FFF7FEFF 		bl	GPIO_SetBits
+ 178:./init/init.c **** 
+ 179:./init/init.c ****     //GPIO_SetBits(blink_led.port,(uint32_t)(1<<blink_led.pin)); 
+ 180:./init/init.c ****     //gpio_set(blink_led);
+ 181:./init/init.c ****     _delay_ms(500);
+ 675              		.loc 1 181 5
+ 676 000e 4FF4FA70 		mov	r0, #500
+ 677 0012 FFF7FEFF 		bl	_delay_ms
+ 182:./init/init.c ****     // write LOW to PC13
+ 183:./init/init.c ****     GPIO_ResetBits(GPIOC,GPIO_Pin_13);
+ 678              		.loc 1 183 5
+ 679 0016 4FF40051 		mov	r1, #8192
+ 680 001a 0448     		ldr	r0, .L29
+ 681 001c FFF7FEFF 		bl	GPIO_ResetBits
+ 184:./init/init.c ****     //GPIO_ResetBits(blink_led.port,(uint32_t)(1<<blink_led.pin)); 
+ 185:./init/init.c ****     //gpio_clear(blink_led);
+ 186:./init/init.c ****     _delay_ms(500);
+ 682              		.loc 1 186 5
+ 683 0020 4FF4FA70 		mov	r0, #500
+ 684 0024 FFF7FEFF 		bl	_delay_ms
+ 187:./init/init.c ****     
+ 188:./init/init.c **** }
+ 685              		.loc 1 188 1
+ 686 0028 00BF     		nop
+ 687 002a 80BD     		pop	{r7, pc}
+ 688              	.L30:
+ 689              		.align	2
+ 690              	.L29:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 16
+
+
+ 691 002c 00100140 		.word	1073811456
+ 692              		.cfi_endproc
+ 693              	.LFE38:
+ 695              		.section	.text.disable_buffer,"ax",%progbits
+ 696              		.align	1
+ 697              		.global	disable_buffer
+ 698              		.syntax unified
+ 699              		.thumb
+ 700              		.thumb_func
+ 702              	disable_buffer:
+ 703              	.LFB39:
+ 189:./init/init.c **** //--------------------------------------------------------------------------------------------
+ 190:./init/init.c **** void disable_buffer()
+ 191:./init/init.c **** {
+ 704              		.loc 1 191 1
+ 705              		.cfi_startproc
+ 706              		@ args = 0, pretend = 0, frame = 0
+ 707              		@ frame_needed = 1, uses_anonymous_args = 0
+ 708 0000 80B5     		push	{r7, lr}
+ 709              	.LCFI27:
+ 710              		.cfi_def_cfa_offset 8
+ 711              		.cfi_offset 7, -8
+ 712              		.cfi_offset 14, -4
+ 713 0002 00AF     		add	r7, sp, #0
+ 714              	.LCFI28:
+ 715              		.cfi_def_cfa_register 7
+ 192:./init/init.c **** 
+ 193:./init/init.c ****     // set pin mode of output latch as an output
+ 194:./init/init.c **** 	  gpio_pin_mode(pilot_en,GPIO_MODE_OUT_PP_2MHZ);
+ 716              		.loc 1 194 4
+ 717 0004 124B     		ldr	r3, .L32
+ 718 0006 0222     		movs	r2, #2
+ 719 0008 93E80300 		ldm	r3, {r0, r1}
+ 720 000c FFF7FEFF 		bl	gpio_pin_mode
+ 195:./init/init.c ****     // disable output latch
+ 196:./init/init.c ****     gpio_set(pilot_en); 
+ 721              		.loc 1 196 5
+ 722 0010 0F4B     		ldr	r3, .L32
+ 723 0012 93E80300 		ldm	r3, {r0, r1}
+ 724 0016 FFF7FEFF 		bl	gpio_set
+ 197:./init/init.c **** 
+ 198:./init/init.c ****     // set pin mode of lcd_en as an output
+ 199:./init/init.c **** 	  gpio_pin_mode(lcd_en,GPIO_MODE_OUT_PP_2MHZ);
+ 725              		.loc 1 199 4
+ 726 001a 0E4B     		ldr	r3, .L32+4
+ 727 001c 0222     		movs	r2, #2
+ 728 001e 93E80300 		ldm	r3, {r0, r1}
+ 729 0022 FFF7FEFF 		bl	gpio_pin_mode
+ 200:./init/init.c ****     // disable lcd
+ 201:./init/init.c ****     gpio_set(lcd_en); 
+ 730              		.loc 1 201 5
+ 731 0026 0B4B     		ldr	r3, .L32+4
+ 732 0028 93E80300 		ldm	r3, {r0, r1}
+ 733 002c FFF7FEFF 		bl	gpio_set
+ 202:./init/init.c **** 
+ 203:./init/init.c ****     // set pin mode of keypad as an output
+ 204:./init/init.c **** 	  gpio_pin_mode(keypad_en,GPIO_MODE_OUT_PP_2MHZ);
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 17
+
+
+ 734              		.loc 1 204 4
+ 735 0030 094B     		ldr	r3, .L32+8
+ 736 0032 0222     		movs	r2, #2
+ 737 0034 93E80300 		ldm	r3, {r0, r1}
+ 738 0038 FFF7FEFF 		bl	gpio_pin_mode
+ 205:./init/init.c ****     // disable keypad
+ 206:./init/init.c ****     gpio_set(keypad_en); 
+ 739              		.loc 1 206 5
+ 740 003c 064B     		ldr	r3, .L32+8
+ 741 003e 93E80300 		ldm	r3, {r0, r1}
+ 742 0042 FFF7FEFF 		bl	gpio_set
+ 207:./init/init.c **** 
+ 208:./init/init.c **** 
+ 209:./init/init.c ****   //set pin mode of keypad port as an input
+ 210:./init/init.c ****   // which is shared with lcd and output latch 
+ 211:./init/init.c ****    keypad_port_input_pullup();
+ 743              		.loc 1 211 4
+ 744 0046 FFF7FEFF 		bl	keypad_port_input_pullup
+ 212:./init/init.c **** 
+ 213:./init/init.c **** }
+ 745              		.loc 1 213 1
+ 746 004a 00BF     		nop
+ 747 004c 80BD     		pop	{r7, pc}
+ 748              	.L33:
+ 749 004e 00BF     		.align	2
+ 750              	.L32:
+ 751 0050 00000000 		.word	pilot_en
+ 752 0054 00000000 		.word	lcd_en
+ 753 0058 00000000 		.word	keypad_en
+ 754              		.cfi_endproc
+ 755              	.LFE39:
+ 757              		.section	.text._delay_us,"ax",%progbits
+ 758              		.align	1
+ 759              		.global	_delay_us
+ 760              		.syntax unified
+ 761              		.thumb
+ 762              		.thumb_func
+ 764              	_delay_us:
+ 765              	.LFB40:
+ 214:./init/init.c **** //--------------------------------------------------------------------------------------------
+ 215:./init/init.c **** 
+ 216:./init/init.c **** 
+ 217:./init/init.c **** //********************************************************************************************
+ 218:./init/init.c **** //
+ 219:./init/init.c **** //  definition of delay methods
+ 220:./init/init.c **** //
+ 221:./init/init.c **** //********************************************************************************************
+ 222:./init/init.c **** void _delay_us(uint32_t mTime)
+ 223:./init/init.c **** {
+ 766              		.loc 1 223 1
+ 767              		.cfi_startproc
+ 768              		@ args = 0, pretend = 0, frame = 8
+ 769              		@ frame_needed = 1, uses_anonymous_args = 0
+ 770              		@ link register save eliminated.
+ 771 0000 80B4     		push	{r7}
+ 772              	.LCFI29:
+ 773              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 18
+
+
+ 774              		.cfi_offset 7, -4
+ 775 0002 83B0     		sub	sp, sp, #12
+ 776              	.LCFI30:
+ 777              		.cfi_def_cfa_offset 16
+ 778 0004 00AF     		add	r7, sp, #0
+ 779              	.LCFI31:
+ 780              		.cfi_def_cfa_register 7
+ 781 0006 7860     		str	r0, [r7, #4]
+ 224:./init/init.c ****     TimingDelay=mTime;
+ 782              		.loc 1 224 16
+ 783 0008 064A     		ldr	r2, .L36
+ 784 000a 7B68     		ldr	r3, [r7, #4]
+ 785 000c 1360     		str	r3, [r2]
+ 225:./init/init.c ****     while(TimingDelay!=0);
+ 786              		.loc 1 225 10
+ 787 000e 00BF     		nop
+ 788              	.L35:
+ 789              		.loc 1 225 22 discriminator 1
+ 790 0010 044B     		ldr	r3, .L36
+ 791 0012 1B68     		ldr	r3, [r3]
+ 792              		.loc 1 225 10 discriminator 1
+ 793 0014 002B     		cmp	r3, #0
+ 794 0016 FBD1     		bne	.L35
+ 226:./init/init.c **** 
+ 227:./init/init.c ****     //uint32_t time=mTime*SystemCoreClock/1000000;
+ 228:./init/init.c ****     //for (uint32_t i=0;i<time;i++)
+ 229:./init/init.c ****     //  asm("nop");
+ 230:./init/init.c **** }
+ 795              		.loc 1 230 1
+ 796 0018 00BF     		nop
+ 797 001a 00BF     		nop
+ 798 001c 0C37     		adds	r7, r7, #12
+ 799              	.LCFI32:
+ 800              		.cfi_def_cfa_offset 4
+ 801 001e BD46     		mov	sp, r7
+ 802              	.LCFI33:
+ 803              		.cfi_def_cfa_register 13
+ 804              		@ sp needed
+ 805 0020 80BC     		pop	{r7}
+ 806              	.LCFI34:
+ 807              		.cfi_restore 7
+ 808              		.cfi_def_cfa_offset 0
+ 809 0022 7047     		bx	lr
+ 810              	.L37:
+ 811              		.align	2
+ 812              	.L36:
+ 813 0024 00000000 		.word	TimingDelay
+ 814              		.cfi_endproc
+ 815              	.LFE40:
+ 817              		.section	.text._delay_ms,"ax",%progbits
+ 818              		.align	1
+ 819              		.global	_delay_ms
+ 820              		.syntax unified
+ 821              		.thumb
+ 822              		.thumb_func
+ 824              	_delay_ms:
+ 825              	.LFB41:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 19
+
+
+ 231:./init/init.c **** //--------------------------------------------------------------------------------------------
+ 232:./init/init.c **** void _delay_ms(uint32_t mTime)
+ 233:./init/init.c **** {
+ 826              		.loc 1 233 1
+ 827              		.cfi_startproc
+ 828              		@ args = 0, pretend = 0, frame = 8
+ 829              		@ frame_needed = 1, uses_anonymous_args = 0
+ 830              		@ link register save eliminated.
+ 831 0000 80B4     		push	{r7}
+ 832              	.LCFI35:
+ 833              		.cfi_def_cfa_offset 4
+ 834              		.cfi_offset 7, -4
+ 835 0002 83B0     		sub	sp, sp, #12
+ 836              	.LCFI36:
+ 837              		.cfi_def_cfa_offset 16
+ 838 0004 00AF     		add	r7, sp, #0
+ 839              	.LCFI37:
+ 840              		.cfi_def_cfa_register 7
+ 841 0006 7860     		str	r0, [r7, #4]
+ 234:./init/init.c ****   //uint32_t time=mTime*SystemCoreClock/5000;
+ 235:./init/init.c ****   //for (uint32_t i=0;i<time;i++)
+ 236:./init/init.c ****   //    asm("nop");
+ 237:./init/init.c **** 
+ 238:./init/init.c **** 	 TimingDelay=mTime*1000;
+ 842              		.loc 1 238 20
+ 843 0008 7B68     		ldr	r3, [r7, #4]
+ 844 000a 4FF47A72 		mov	r2, #1000
+ 845 000e 02FB03F3 		mul	r3, r2, r3
+ 846              		.loc 1 238 14
+ 847 0012 064A     		ldr	r2, .L40
+ 848 0014 1360     		str	r3, [r2]
+ 239:./init/init.c ****    while(TimingDelay!=0);
+ 849              		.loc 1 239 9
+ 850 0016 00BF     		nop
+ 851              	.L39:
+ 852              		.loc 1 239 21 discriminator 1
+ 853 0018 044B     		ldr	r3, .L40
+ 854 001a 1B68     		ldr	r3, [r3]
+ 855              		.loc 1 239 9 discriminator 1
+ 856 001c 002B     		cmp	r3, #0
+ 857 001e FBD1     		bne	.L39
+ 240:./init/init.c **** }
+ 858              		.loc 1 240 1
+ 859 0020 00BF     		nop
+ 860 0022 00BF     		nop
+ 861 0024 0C37     		adds	r7, r7, #12
+ 862              	.LCFI38:
+ 863              		.cfi_def_cfa_offset 4
+ 864 0026 BD46     		mov	sp, r7
+ 865              	.LCFI39:
+ 866              		.cfi_def_cfa_register 13
+ 867              		@ sp needed
+ 868 0028 80BC     		pop	{r7}
+ 869              	.LCFI40:
+ 870              		.cfi_restore 7
+ 871              		.cfi_def_cfa_offset 0
+ 872 002a 7047     		bx	lr
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 20
+
+
+ 873              	.L41:
+ 874              		.align	2
+ 875              	.L40:
+ 876 002c 00000000 		.word	TimingDelay
+ 877              		.cfi_endproc
+ 878              	.LFE41:
+ 880              		.text
+ 881              	.Letext0:
+ 882              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 883              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 884              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 885              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 886              		.file 6 "./basic/gpio.h"
+ 887              		.file 7 "./lcd/lcd.h"
+ 888              		.file 8 "./keypad/keypad.h"
+ 889              		.file 9 "./system/system.h"
+ 890              		.file 10 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:22     .bss.TimingDelay:00000000 TimingDelay
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:19     .bss.TimingDelay:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:29     .bss.BlinkTimingDelay:00000000 BlinkTimingDelay
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:26     .bss.BlinkTimingDelay:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:35     .bss.lcd_update:00000000 lcd_update
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:36     .bss.lcd_update:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:41     .bss.blink_update:00000000 blink_update
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:42     .bss.blink_update:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:48     .bss.pilots:00000000 pilots
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:45     .bss.pilots:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:55     .bss.relays:00000000 relays
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:52     .bss.relays:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:62     .data.blink_led:00000000 blink_led
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:59     .data.blink_led:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:71     .data.pilot_en:00000000 pilot_en
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:68     .data.pilot_en:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:80     .data.pilot_db:00000000 pilot_db
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:77     .data.pilot_db:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:110    .data.rly:00000000 rly
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:107    .data.rly:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:130    .text.pilot_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:136    .text.pilot_init:00000000 pilot_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:197    .text.pilot_init:00000040 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:203    .text.rly_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:209    .text.rly_init:00000000 rly_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:265    .text.rly_init:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:270    .text.pilot_write:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:276    .text.pilot_write:00000000 pilot_write
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:381    .text.pilot_write:0000007c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:387    .text.rly_write:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:393    .text.rly_write:00000000 rly_write
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:468    .text.rly_write:00000058 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:473    .text.blink_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:479    .text.blink_init:00000000 blink_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:645    .text.blink_init:00000108 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:651    .text.blink:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:657    .text.blink:00000000 blink
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:824    .text._delay_ms:00000000 _delay_ms
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:691    .text.blink:0000002c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:696    .text.disable_buffer:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:702    .text.disable_buffer:00000000 disable_buffer
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:751    .text.disable_buffer:00000050 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:758    .text._delay_us:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:764    .text._delay_us:00000000 _delay_us
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:813    .text._delay_us:00000024 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:818    .text._delay_ms:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s:876    .text._delay_ms:0000002c $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 22
+
+
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc89sote.s 			page 23
+
+
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+gpio_pin_mode
+gpio_set
+gpio_clear
+GPIO_StructInit
+GPIO_Init
+GPIO_SetBits
+GPIO_ReadInputDataBit
+GPIO_ReadOutputDataBit
+GPIO_ReadInputData
+GPIO_ReadOutputData
+gpio_init
+GPIO_WriteBit
+gpio_pinmode
+GPIO_ResetBits
+keypad_port_input_pullup
+lcd_en
+keypad_en

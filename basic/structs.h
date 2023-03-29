@@ -570,6 +570,10 @@ typedef union _usreal_t
 		uint8_t integer;
 	};
 }usreal_t;
+
+
+
+
 //********************************************************************************************
 //
 // Prototype functions

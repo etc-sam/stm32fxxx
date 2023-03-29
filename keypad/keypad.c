@@ -33,16 +33,16 @@ uint8_t keypad_unpressed_mask=0;
 //uint8_t keypad_Enter_cnt=0,keypad_Timeout_cnt=0;
 //uint8_t keypad_Reset_cnt=0,keypad_Start_cnt=0;
 
-gpio_t keypad_en={GPIOB,11};
+gpio_t keypad_en={GPIOC,14};
 gpio_t keypad_port[8]={
-{GPIOA,0},   // keypad_DQ0=PA7
-{GPIOA,1},   // keypad_DQ1=PA6
-{GPIOA,2},   // keypad_DQ2=PA5
-{GPIOA,3},   // keypad_DQ3=PA4
-{GPIOA,4},   // keypad_DQ4=PA3
-{GPIOA,5},   // keypad_DQ5=PA2   
-{GPIOA,6},   // keypad_DQ5=PA2   
-{GPIOA,7},   // keypad_DQ5=PA2   
+{GPIOA,7},   // keypad_DQ0=PA7
+{GPIOA,6},   // keypad_DQ1=PA6
+{GPIOA,5},   // keypad_DQ2=PA5
+{GPIOA,4},   // keypad_DQ3=PA4
+{GPIOA,3},   // keypad_DQ4=PA3
+{GPIOA,2},   // keypad_DQ5=PA2   
+{GPIOA,1},   // keypad_DQ5=PA1   
+{GPIOA,0},   // keypad_DQ5=PA0   
 };
 
 //********************************************************************************************

@@ -75,7 +75,7 @@ extern void system_init(void);
 extern void system_run(void);
 extern void system_ticks(void);
 extern void system_rtc(void);
-
+extern void system_tasks_init(void);
 
 
 #endif /* _SYSTEM_H */

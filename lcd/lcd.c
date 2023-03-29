@@ -38,17 +38,17 @@ volatile uint8_t lcd_buf[2][16]={0};
 //
 //************************************************************
 gpio_t lcd_db[8]={
-{GPIOA,7},   // lcd_db0=PA7
-{GPIOA,6},   // lcd_db0=PA6
-{GPIOA,5},   // lcd_db0=PA5
-{GPIOA,4},   // lcd_db0=PA4
-{GPIOA,3},   // lcd_db0=PA3
-{GPIOA,2},   // lcd_db0=PA2   
-{GPIOA,1},   // lcd_db0=PA1
-{GPIOA,0},   // lcd_db0=PA0
+{GPIOA,0},   // lcd_db0=PA7
+{GPIOA,1},   // lcd_db0=PA6
+{GPIOA,2},   // lcd_db0=PA5
+{GPIOA,3},   // lcd_db0=PA4
+{GPIOA,4},   // lcd_db0=PA3
+{GPIOA,5},   // lcd_db0=PA2   
+{GPIOA,6},   // lcd_db0=PA1
+{GPIOA,7},   // lcd_db0=PA0
  };
-gpio_t lcd_rs={GPIOB,1};    // lcd_rs=PB1
-gpio_t lcd_en={GPIOB,0};    // lcd_db0=PB0
+gpio_t lcd_rs={GPIOB,9};    // lcd_rs=PB1
+gpio_t lcd_en={GPIOB,8};    // lcd_db0=PB0
 
 //************************************************************
 //

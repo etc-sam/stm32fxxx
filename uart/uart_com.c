@@ -55,29 +55,36 @@ void USART1_init(void)
 {
 
   //1. Enable the Clock of peripheral USART1/AFIO/GPIOA Modules using RCC_APB2PeriphClockCmd
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO|
-                           RCC_APB2Periph_GPIOA,ENABLE);
+    //RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
+    //RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO|
+    //                       RCC_APB2Periph_GPIOA,ENABLE);
+   RCC->APB2ENR|=RCC_APB2ENR_AFIOEN|RCC_APB2ENR_IOPAEN|RCC_APB2ENR_USART1EN;
    
+
   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) 
       & remap incase of requirement */
-      GPIO_InitTypeDef _gpio_init_struct;
+      gpio_pin_mode(uart_tx,GPIO_MODE_AF_PP_50MHZ);
+      /*GPIO_InitTypeDef _gpio_init_struct;
       GPIO_StructInit((GPIO_InitTypeDef*)& _gpio_init_struct);
       // init TX1=PA9
       _gpio_init_struct.GPIO_Pin=GPIO_Pin_9;
       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
       _gpio_init_struct.GPIO_Mode=GPIO_Mode_AF_PP;
       GPIO_Init(GPIOA,&_gpio_init_struct);
+      */
     // PA9 as a AFIO_PP_50MHZ MODE2[1:0]=11,CNF2[1:0]=10
     // GPIOA->CRH& =~(GPIO_CRH_MODE9|GPIO_CRH_CNF9); // at register level
     // GPIOA->CRH|=GPIO_CRH_MODE9 | GPIO_CRH_CNF9_1;
-
+   
       // init RX1=PA10
+      gpio_pin_mode(uart_rx,GPIO_MODE_IN_FLOATING);
+    /*  
       _gpio_init_struct.GPIO_Pin=GPIO_Pin_10;
       _gpio_init_struct.GPIO_Speed=GPIO_Speed_50MHz;
       _gpio_init_struct.GPIO_Mode=GPIO_Mode_IN_FLOATING;
       GPIO_Init(GPIOA,&_gpio_init_struct);
       //GPIOA->ODR|=GPIO_ODR_ODR10;
+    */
     // PA10 as a floating input MODE10[1:0]=00,CNF10[1:0]=01
     // GPIOA->CRH & =~(GPIO_CRH_MODE10|GPIO_CRH_CNF10);
     // GPIOA->CRH | =  GPIO_CRH_CNF10_0;

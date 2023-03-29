@@ -47,6 +47,7 @@ void TIM2_init(void)
 {
   //1. Enable the Clock of peripheral TIM2 Module using RCC_APB1PeriphClockCmd
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
+    //RCC->APB1ENR|=RCC_APB1ENR_TIM2EN;
    
   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) & remap incase of requirement */
    // no need to implement an pin Configuration Just event update @ overflow 
@@ -58,6 +59,7 @@ void TIM2_init(void)
      NVIC_InitStruct.NVIC_IRQChannelSubPriority=10;
      NVIC_InitStruct.NVIC_IRQChannelCmd=ENABLE;
      NVIC_Init((NVIC_InitTypeDef*) &NVIC_InitStruct);
+     
 
   /* 4. Configure the peripheral hardware  of the TIM2 */
     

@@ -1,0 +1,811 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"crc.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.crc32b_calc_byte,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	crc32b_calc_byte:
+  24              	.LFB33:
+  25              		.file 1 "./basic/crc.c"
+   1:./basic/crc.c **** /**
+   2:./basic/crc.c ****  * @brief crc.c
+   3:./basic/crc.c ****  *  this source code for crc implementation 
+   4:./basic/crc.c ****  * @param student: Sameer Almaldein
+   5:./basic/crc.c ****  * @param ID: 679699
+   6:./basic/crc.c ****  * @param University TU-Chemnitz
+   7:./basic/crc.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./basic/crc.c ****  */ 
+   9:./basic/crc.c **** //********************************************************************************************
+  10:./basic/crc.c **** //
+  11:./basic/crc.c **** // include header files
+  12:./basic/crc.c **** //
+  13:./basic/crc.c **** //********************************************************************************************
+  14:./basic/crc.c **** #include "init.h"
+  15:./basic/crc.c **** 
+  16:./basic/crc.c **** //********************************************************************************************
+  17:./basic/crc.c **** //
+  18:./basic/crc.c **** // global variables' declarations 
+  19:./basic/crc.c **** //
+  20:./basic/crc.c **** //********************************************************************************************
+  21:./basic/crc.c **** 
+  22:./basic/crc.c **** //********************************************************************************************
+  23:./basic/crc.c **** //
+  24:./basic/crc.c **** // static variables' declarations 
+  25:./basic/crc.c **** //
+  26:./basic/crc.c **** //********************************************************************************************
+  27:./basic/crc.c **** static void crc32a_calc_byte(uint8_t val, uint32_t * crc);
+  28:./basic/crc.c **** static void crc32b_calc_byte(uint8_t val, uint32_t * crc);
+  29:./basic/crc.c **** 
+  30:./basic/crc.c **** //********************************************************************************************
+  31:./basic/crc.c **** //
+  32:./basic/crc.c **** //  function definitions
+  33:./basic/crc.c **** //
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 2
+
+
+  34:./basic/crc.c **** //********************************************************************************************
+  35:./basic/crc.c ****  /**
+  36:./basic/crc.c ****  * @brief  implements the polynom shifting and xor 
+  37:./basic/crc.c ****  * 
+  38:./basic/crc.c ****  * @details implements the polynom shifting and xor 
+  39:./basic/crc.c ****  *          due to one byte and for each bit of its bits
+  40:./basic/crc.c ****  *          it uses the reversed Generatorpolynom= 0xEDB88320
+  41:./basic/crc.c ****  *  
+  42:./basic/crc.c ****  * @param val  a byte value from the message
+  43:./basic/crc.c ****  * @param crc   a 32bit pointer to allow nested call for
+  44:./basic/crc.c ****  * @return nothing 
+  45:./basic/crc.c **** */ 
+  46:./basic/crc.c **** void crc32b_calc_byte(uint8_t val, uint32_t * crc)
+  47:./basic/crc.c **** {
+  26              		.loc 1 47 1
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 16
+  29              		@ frame_needed = 1, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31 0000 80B4     		push	{r7}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 7, -4
+  35 0002 85B0     		sub	sp, sp, #20
+  36              	.LCFI1:
+  37              		.cfi_def_cfa_offset 24
+  38 0004 00AF     		add	r7, sp, #0
+  39              	.LCFI2:
+  40              		.cfi_def_cfa_register 7
+  41 0006 0346     		mov	r3, r0
+  42 0008 3960     		str	r1, [r7]
+  43 000a FB71     		strb	r3, [r7, #7]
+  48:./basic/crc.c ****   uint8_t i=0;
+  44              		.loc 1 48 11
+  45 000c 0023     		movs	r3, #0
+  46 000e FB73     		strb	r3, [r7, #15]
+  49:./basic/crc.c ****   uint32_t polynom = 0xEDB88320;// Generatorpolynom
+  47              		.loc 1 49 12
+  48 0010 144B     		ldr	r3, .L6
+  49 0012 BB60     		str	r3, [r7, #8]
+  50:./basic/crc.c ****   for (i=0; i<8; i++)
+  50              		.loc 1 50 9
+  51 0014 0023     		movs	r3, #0
+  52 0016 FB73     		strb	r3, [r7, #15]
+  53              		.loc 1 50 3
+  54 0018 1AE0     		b	.L2
+  55              	.L5:
+  51:./basic/crc.c ****   {      
+  52:./basic/crc.c ****     if ((*crc&1) != (val&1))
+  56              		.loc 1 52 10
+  57 001a 3B68     		ldr	r3, [r7]
+  58 001c 1A68     		ldr	r2, [r3]
+  59              		.loc 1 52 25
+  60 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  61              		.loc 1 52 18
+  62 0020 5340     		eors	r3, r3, r2
+  63 0022 03F00103 		and	r3, r3, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 3
+
+
+  64              		.loc 1 52 8
+  65 0026 002B     		cmp	r3, #0
+  66 0028 07D0     		beq	.L3
+  53:./basic/crc.c ****         *crc = (*crc>>1) ^polynom; 
+  67              		.loc 1 53 17
+  68 002a 3B68     		ldr	r3, [r7]
+  69 002c 1B68     		ldr	r3, [r3]
+  70              		.loc 1 53 21
+  71 002e 5A08     		lsrs	r2, r3, #1
+  72              		.loc 1 53 26
+  73 0030 BB68     		ldr	r3, [r7, #8]
+  74 0032 5A40     		eors	r2, r2, r3
+  75              		.loc 1 53 14
+  76 0034 3B68     		ldr	r3, [r7]
+  77 0036 1A60     		str	r2, [r3]
+  78 0038 04E0     		b	.L4
+  79              	.L3:
+  54:./basic/crc.c ****     else 
+  55:./basic/crc.c ****         (*crc) = *crc >>1;
+  80              		.loc 1 55 18
+  81 003a 3B68     		ldr	r3, [r7]
+  82 003c 1B68     		ldr	r3, [r3]
+  83              		.loc 1 55 23
+  84 003e 5A08     		lsrs	r2, r3, #1
+  85              		.loc 1 55 16
+  86 0040 3B68     		ldr	r3, [r7]
+  87 0042 1A60     		str	r2, [r3]
+  88              	.L4:
+  56:./basic/crc.c ****     val >>= 1;
+  89              		.loc 1 56 9 discriminator 2
+  90 0044 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  91 0046 5B08     		lsrs	r3, r3, #1
+  92 0048 FB71     		strb	r3, [r7, #7]
+  50:./basic/crc.c ****   {      
+  93              		.loc 1 50 19 discriminator 2
+  94 004a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  95 004c 0133     		adds	r3, r3, #1
+  96 004e FB73     		strb	r3, [r7, #15]
+  97              	.L2:
+  50:./basic/crc.c ****   {      
+  98              		.loc 1 50 3 discriminator 1
+  99 0050 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 100 0052 072B     		cmp	r3, #7
+ 101 0054 E1D9     		bls	.L5
+  57:./basic/crc.c ****   }
+  58:./basic/crc.c **** 
+  59:./basic/crc.c **** }
+ 102              		.loc 1 59 1
+ 103 0056 00BF     		nop
+ 104 0058 00BF     		nop
+ 105 005a 1437     		adds	r7, r7, #20
+ 106              	.LCFI3:
+ 107              		.cfi_def_cfa_offset 4
+ 108 005c BD46     		mov	sp, r7
+ 109              	.LCFI4:
+ 110              		.cfi_def_cfa_register 13
+ 111              		@ sp needed
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 4
+
+
+ 112 005e 80BC     		pop	{r7}
+ 113              	.LCFI5:
+ 114              		.cfi_restore 7
+ 115              		.cfi_def_cfa_offset 0
+ 116 0060 7047     		bx	lr
+ 117              	.L7:
+ 118 0062 00BF     		.align	2
+ 119              	.L6:
+ 120 0064 2083B8ED 		.word	-306674912
+ 121              		.cfi_endproc
+ 122              	.LFE33:
+ 124              		.section	.text.crc32b_calc,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	crc32b_calc
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 131              	crc32b_calc:
+ 132              	.LFB34:
+  60:./basic/crc.c **** //----------------------------------------------------------------------------------------------
+  61:./basic/crc.c ****  /**
+  62:./basic/crc.c ****  * @brief  calculate the crc32 as a 32-bit for an array of bytes
+  63:./basic/crc.c ****  * 
+  64:./basic/crc.c ****  * @details it uses a reversed crc32 polynominal algorithm that allows to calculate
+  65:./basic/crc.c ****  *          the crc32 value starting form the least significant bit in the lowest byte in the 
+  66:./basic/crc.c ****  *          array 
+  67:./basic/crc.c ****  * @param msg  an array of bytes as the message to calculate the crc32
+  68:./basic/crc.c ****  * @param len  length of the message 
+  69:./basic/crc.c ****  * @return 32bit crc 
+  70:./basic/crc.c **** */ 
+  71:./basic/crc.c **** uint32_t crc32b_calc(uint8_t * msg,size_t len)
+  72:./basic/crc.c **** {
+ 133              		.loc 1 72 1
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 24
+ 136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 137 0000 80B5     		push	{r7, lr}
+ 138              	.LCFI6:
+ 139              		.cfi_def_cfa_offset 8
+ 140              		.cfi_offset 7, -8
+ 141              		.cfi_offset 14, -4
+ 142 0002 86B0     		sub	sp, sp, #24
+ 143              	.LCFI7:
+ 144              		.cfi_def_cfa_offset 32
+ 145 0004 00AF     		add	r7, sp, #0
+ 146              	.LCFI8:
+ 147              		.cfi_def_cfa_register 7
+ 148 0006 7860     		str	r0, [r7, #4]
+ 149 0008 3960     		str	r1, [r7]
+  73:./basic/crc.c ****   uint32_t crc=0xFFFFFFFF;
+ 150              		.loc 1 73 12
+ 151 000a 4FF0FF33 		mov	r3, #-1
+ 152 000e FB60     		str	r3, [r7, #12]
+  74:./basic/crc.c ****   uint8_t val=0;
+ 153              		.loc 1 74 11
+ 154 0010 0023     		movs	r3, #0
+ 155 0012 FB74     		strb	r3, [r7, #19]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 5
+
+
+ 156              	.LBB2:
+  75:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 157              		.loc 1 75 14
+ 158 0014 0023     		movs	r3, #0
+ 159 0016 7B61     		str	r3, [r7, #20]
+ 160              		.loc 1 75 3
+ 161 0018 0EE0     		b	.L9
+ 162              	.L10:
+  76:./basic/crc.c ****   {
+  77:./basic/crc.c **** 	val=msg[i];
+ 163              		.loc 1 77 9 discriminator 3
+ 164 001a 7A68     		ldr	r2, [r7, #4]
+ 165 001c 7B69     		ldr	r3, [r7, #20]
+ 166 001e 1344     		add	r3, r3, r2
+ 167              		.loc 1 77 5 discriminator 3
+ 168 0020 1B78     		ldrb	r3, [r3]
+ 169 0022 FB74     		strb	r3, [r7, #19]
+  78:./basic/crc.c ****     crc32b_calc_byte(val,(uint32_t*)&crc);
+ 170              		.loc 1 78 5 discriminator 3
+ 171 0024 07F10C02 		add	r2, r7, #12
+ 172 0028 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 173 002a 1146     		mov	r1, r2
+ 174 002c 1846     		mov	r0, r3
+ 175 002e FFF7FEFF 		bl	crc32b_calc_byte
+  75:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 176              		.loc 1 75 25 discriminator 3
+ 177 0032 7B69     		ldr	r3, [r7, #20]
+ 178 0034 0133     		adds	r3, r3, #1
+ 179 0036 7B61     		str	r3, [r7, #20]
+ 180              	.L9:
+  75:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 181              		.loc 1 75 3 discriminator 1
+ 182 0038 7A69     		ldr	r2, [r7, #20]
+ 183 003a 3B68     		ldr	r3, [r7]
+ 184 003c 9A42     		cmp	r2, r3
+ 185 003e ECD3     		bcc	.L10
+ 186              	.LBE2:
+  79:./basic/crc.c ****   }	
+  80:./basic/crc.c **** 	return ~crc;
+ 187              		.loc 1 80 9
+ 188 0040 FB68     		ldr	r3, [r7, #12]
+ 189 0042 DB43     		mvns	r3, r3
+  81:./basic/crc.c **** }
+ 190              		.loc 1 81 1
+ 191 0044 1846     		mov	r0, r3
+ 192 0046 1837     		adds	r7, r7, #24
+ 193              	.LCFI9:
+ 194              		.cfi_def_cfa_offset 8
+ 195 0048 BD46     		mov	sp, r7
+ 196              	.LCFI10:
+ 197              		.cfi_def_cfa_register 13
+ 198              		@ sp needed
+ 199 004a 80BD     		pop	{r7, pc}
+ 200              		.cfi_endproc
+ 201              	.LFE34:
+ 203              		.section	.text.crc32a_calc_byte,"ax",%progbits
+ 204              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 6
+
+
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	crc32a_calc_byte:
+ 210              	.LFB35:
+  82:./basic/crc.c **** //----------------------------------------------------------------------------------------------
+  83:./basic/crc.c ****  /**
+  84:./basic/crc.c ****  * @brief  implements the polynom shifting and xor 
+  85:./basic/crc.c ****  * 
+  86:./basic/crc.c ****  * @details implements the polynom shifting and xor 
+  87:./basic/crc.c ****  *          due to one byte and for each bit of its bits
+  88:./basic/crc.c ****  *          it uses the reversed Generatorpolynom= 0xEDB88320
+  89:./basic/crc.c ****  *  
+  90:./basic/crc.c ****  * @param val  a byte value from the message
+  91:./basic/crc.c ****  * @param crc   a 32bit pointer to allow nested call for
+  92:./basic/crc.c ****  * @return nothing 
+  93:./basic/crc.c **** */ 
+  94:./basic/crc.c **** void crc32a_calc_byte(uint8_t val, uint32_t * crc)
+  95:./basic/crc.c **** {
+ 211              		.loc 1 95 1
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 16
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215              		@ link register save eliminated.
+ 216 0000 80B4     		push	{r7}
+ 217              	.LCFI11:
+ 218              		.cfi_def_cfa_offset 4
+ 219              		.cfi_offset 7, -4
+ 220 0002 85B0     		sub	sp, sp, #20
+ 221              	.LCFI12:
+ 222              		.cfi_def_cfa_offset 24
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              	.LCFI13:
+ 225              		.cfi_def_cfa_register 7
+ 226 0006 0346     		mov	r3, r0
+ 227 0008 3960     		str	r1, [r7]
+ 228 000a FB71     		strb	r3, [r7, #7]
+  96:./basic/crc.c ****   
+  97:./basic/crc.c ****   int8_t i=0;
+ 229              		.loc 1 97 10
+ 230 000c 0023     		movs	r3, #0
+ 231 000e FB73     		strb	r3, [r7, #15]
+  98:./basic/crc.c ****   uint32_t polynom = 0x04C11DB7;// Generatorpolynom
+ 232              		.loc 1 98 12
+ 233 0010 164B     		ldr	r3, .L17
+ 234 0012 BB60     		str	r3, [r7, #8]
+  99:./basic/crc.c ****   for (i=0; i<8; i++)
+ 235              		.loc 1 99 9
+ 236 0014 0023     		movs	r3, #0
+ 237 0016 FB73     		strb	r3, [r7, #15]
+ 238              		.loc 1 99 3
+ 239 0018 1DE0     		b	.L13
+ 240              	.L16:
+ 100:./basic/crc.c ****   {      
+ 101:./basic/crc.c ****     if (((*crc>>31)&1) != (val&1))
+ 241              		.loc 1 101 11
+ 242 001a 3B68     		ldr	r3, [r7]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 7
+
+
+ 243 001c 1B68     		ldr	r3, [r3]
+ 244              		.loc 1 101 15
+ 245 001e DA0F     		lsrs	r2, r3, #31
+ 246              		.loc 1 101 31
+ 247 0020 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 248 0022 03F00103 		and	r3, r3, #1
+ 249              		.loc 1 101 8
+ 250 0026 9A42     		cmp	r2, r3
+ 251 0028 07D0     		beq	.L14
+ 102:./basic/crc.c ****         *crc = (*crc<<1) ^polynom; 
+ 252              		.loc 1 102 17
+ 253 002a 3B68     		ldr	r3, [r7]
+ 254 002c 1B68     		ldr	r3, [r3]
+ 255              		.loc 1 102 21
+ 256 002e 5A00     		lsls	r2, r3, #1
+ 257              		.loc 1 102 26
+ 258 0030 BB68     		ldr	r3, [r7, #8]
+ 259 0032 5A40     		eors	r2, r2, r3
+ 260              		.loc 1 102 14
+ 261 0034 3B68     		ldr	r3, [r7]
+ 262 0036 1A60     		str	r2, [r3]
+ 263 0038 04E0     		b	.L15
+ 264              	.L14:
+ 103:./basic/crc.c ****     else 
+ 104:./basic/crc.c ****         (*crc) = *crc <<1;
+ 265              		.loc 1 104 18
+ 266 003a 3B68     		ldr	r3, [r7]
+ 267 003c 1B68     		ldr	r3, [r3]
+ 268              		.loc 1 104 23
+ 269 003e 5A00     		lsls	r2, r3, #1
+ 270              		.loc 1 104 16
+ 271 0040 3B68     		ldr	r3, [r7]
+ 272 0042 1A60     		str	r2, [r3]
+ 273              	.L15:
+ 105:./basic/crc.c ****     val >>= 1;
+ 274              		.loc 1 105 9 discriminator 2
+ 275 0044 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 276 0046 5B08     		lsrs	r3, r3, #1
+ 277 0048 FB71     		strb	r3, [r7, #7]
+  99:./basic/crc.c ****   {      
+ 278              		.loc 1 99 19 discriminator 2
+ 279 004a 97F90F30 		ldrsb	r3, [r7, #15]
+ 280 004e DBB2     		uxtb	r3, r3
+ 281 0050 0133     		adds	r3, r3, #1
+ 282 0052 DBB2     		uxtb	r3, r3
+ 283 0054 FB73     		strb	r3, [r7, #15]
+ 284              	.L13:
+  99:./basic/crc.c ****   {      
+ 285              		.loc 1 99 3 discriminator 1
+ 286 0056 97F90F30 		ldrsb	r3, [r7, #15]
+ 287 005a 072B     		cmp	r3, #7
+ 288 005c DDDD     		ble	.L16
+ 106:./basic/crc.c ****   }
+ 107:./basic/crc.c **** }
+ 289              		.loc 1 107 1
+ 290 005e 00BF     		nop
+ 291 0060 00BF     		nop
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 8
+
+
+ 292 0062 1437     		adds	r7, r7, #20
+ 293              	.LCFI14:
+ 294              		.cfi_def_cfa_offset 4
+ 295 0064 BD46     		mov	sp, r7
+ 296              	.LCFI15:
+ 297              		.cfi_def_cfa_register 13
+ 298              		@ sp needed
+ 299 0066 80BC     		pop	{r7}
+ 300              	.LCFI16:
+ 301              		.cfi_restore 7
+ 302              		.cfi_def_cfa_offset 0
+ 303 0068 7047     		bx	lr
+ 304              	.L18:
+ 305 006a 00BF     		.align	2
+ 306              	.L17:
+ 307 006c B71DC104 		.word	79764919
+ 308              		.cfi_endproc
+ 309              	.LFE35:
+ 311              		.section	.text.crc32a_calc,"ax",%progbits
+ 312              		.align	1
+ 313              		.global	crc32a_calc
+ 314              		.syntax unified
+ 315              		.thumb
+ 316              		.thumb_func
+ 318              	crc32a_calc:
+ 319              	.LFB36:
+ 108:./basic/crc.c **** //----------------------------------------------------------------------------------------------
+ 109:./basic/crc.c ****  /**
+ 110:./basic/crc.c ****  * @brief  calculate the crc32 as a 32-bit for an array of bytes
+ 111:./basic/crc.c ****  * 
+ 112:./basic/crc.c ****  * @details it uses a reversed crc32 polynominal algorithm that allows to calculate
+ 113:./basic/crc.c ****  *          the crc32 value starting form the least significant bit in the lowest byte in the 
+ 114:./basic/crc.c ****  *          array 
+ 115:./basic/crc.c ****  * @param msg  an array of bytes as the message to calculate the crc32
+ 116:./basic/crc.c ****  * @param len  length of the message 
+ 117:./basic/crc.c ****  * @return 32bit crc 
+ 118:./basic/crc.c **** */ 
+ 119:./basic/crc.c **** uint32_t crc32a_calc(uint8_t * msg,size_t len)
+ 120:./basic/crc.c **** {
+ 320              		.loc 1 120 1
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 24
+ 323              		@ frame_needed = 1, uses_anonymous_args = 0
+ 324 0000 80B5     		push	{r7, lr}
+ 325              	.LCFI17:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 7, -8
+ 328              		.cfi_offset 14, -4
+ 329 0002 86B0     		sub	sp, sp, #24
+ 330              	.LCFI18:
+ 331              		.cfi_def_cfa_offset 32
+ 332 0004 00AF     		add	r7, sp, #0
+ 333              	.LCFI19:
+ 334              		.cfi_def_cfa_register 7
+ 335 0006 7860     		str	r0, [r7, #4]
+ 336 0008 3960     		str	r1, [r7]
+ 121:./basic/crc.c ****   uint32_t crc=0xffffffff;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 9
+
+
+ 337              		.loc 1 121 12
+ 338 000a 4FF0FF33 		mov	r3, #-1
+ 339 000e FB60     		str	r3, [r7, #12]
+ 122:./basic/crc.c ****   uint8_t val=0;
+ 340              		.loc 1 122 11
+ 341 0010 0023     		movs	r3, #0
+ 342 0012 FB74     		strb	r3, [r7, #19]
+ 343              	.LBB3:
+ 123:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 344              		.loc 1 123 14
+ 345 0014 0023     		movs	r3, #0
+ 346 0016 7B61     		str	r3, [r7, #20]
+ 347              		.loc 1 123 3
+ 348 0018 0EE0     		b	.L20
+ 349              	.L21:
+ 124:./basic/crc.c ****   {
+ 125:./basic/crc.c **** 	  val=msg[i];
+ 350              		.loc 1 125 11 discriminator 3
+ 351 001a 7A68     		ldr	r2, [r7, #4]
+ 352 001c 7B69     		ldr	r3, [r7, #20]
+ 353 001e 1344     		add	r3, r3, r2
+ 354              		.loc 1 125 7 discriminator 3
+ 355 0020 1B78     		ldrb	r3, [r3]
+ 356 0022 FB74     		strb	r3, [r7, #19]
+ 126:./basic/crc.c ****     crc32a_calc_byte(val,(uint32_t*)&crc);
+ 357              		.loc 1 126 5 discriminator 3
+ 358 0024 07F10C02 		add	r2, r7, #12
+ 359 0028 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
+ 360 002a 1146     		mov	r1, r2
+ 361 002c 1846     		mov	r0, r3
+ 362 002e FFF7FEFF 		bl	crc32a_calc_byte
+ 123:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 363              		.loc 1 123 25 discriminator 3
+ 364 0032 7B69     		ldr	r3, [r7, #20]
+ 365 0034 0133     		adds	r3, r3, #1
+ 366 0036 7B61     		str	r3, [r7, #20]
+ 367              	.L20:
+ 123:./basic/crc.c ****   for(size_t i=0;i<len;i++) 
+ 368              		.loc 1 123 3 discriminator 1
+ 369 0038 7A69     		ldr	r2, [r7, #20]
+ 370 003a 3B68     		ldr	r3, [r7]
+ 371 003c 9A42     		cmp	r2, r3
+ 372 003e ECD3     		bcc	.L21
+ 373              	.LBE3:
+ 127:./basic/crc.c ****   }	
+ 128:./basic/crc.c ****   crc=reverse_dword(crc);
+ 374              		.loc 1 128 7
+ 375 0040 FB68     		ldr	r3, [r7, #12]
+ 376 0042 1846     		mov	r0, r3
+ 377 0044 FFF7FEFF 		bl	reverse_dword
+ 378 0048 0346     		mov	r3, r0
+ 379              		.loc 1 128 6
+ 380 004a FB60     		str	r3, [r7, #12]
+ 129:./basic/crc.c **** 	return ~crc;
+ 381              		.loc 1 129 9
+ 382 004c FB68     		ldr	r3, [r7, #12]
+ 383 004e DB43     		mvns	r3, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 10
+
+
+ 130:./basic/crc.c **** }
+ 384              		.loc 1 130 1
+ 385 0050 1846     		mov	r0, r3
+ 386 0052 1837     		adds	r7, r7, #24
+ 387              	.LCFI20:
+ 388              		.cfi_def_cfa_offset 8
+ 389 0054 BD46     		mov	sp, r7
+ 390              	.LCFI21:
+ 391              		.cfi_def_cfa_register 13
+ 392              		@ sp needed
+ 393 0056 80BD     		pop	{r7, pc}
+ 394              		.cfi_endproc
+ 395              	.LFE36:
+ 397              		.section	.text.crc32_calc_as,"ax",%progbits
+ 398              		.align	1
+ 399              		.global	crc32_calc_as
+ 400              		.syntax unified
+ 401              		.thumb
+ 402              		.thumb_func
+ 404              	crc32_calc_as:
+ 405              	.LFB37:
+ 131:./basic/crc.c **** //----------------------------------------------------------------------------------------------
+ 132:./basic/crc.c **** /**
+ 133:./basic/crc.c ****  * @brief calculate the crc 32 as reversed or normal one for a given message based on a type given
+ 134:./basic/crc.c ****  * 
+ 135:./basic/crc.c ****  * @param msg       the message to calculate the crc32
+ 136:./basic/crc.c ****  * @param len       the message length   
+ 137:./basic/crc.c ****  * @param type      type of crc to calculate 
+ 138:./basic/crc.c ****  * @return uint32_t 
+ 139:./basic/crc.c ****  */
+ 140:./basic/crc.c **** uint32_t crc32_calc_as(uint8_t * msg,size_t len,uint8_t type)
+ 141:./basic/crc.c **** {
+ 406              		.loc 1 141 1
+ 407              		.cfi_startproc
+ 408              		@ args = 0, pretend = 0, frame = 16
+ 409              		@ frame_needed = 1, uses_anonymous_args = 0
+ 410 0000 80B5     		push	{r7, lr}
+ 411              	.LCFI22:
+ 412              		.cfi_def_cfa_offset 8
+ 413              		.cfi_offset 7, -8
+ 414              		.cfi_offset 14, -4
+ 415 0002 84B0     		sub	sp, sp, #16
+ 416              	.LCFI23:
+ 417              		.cfi_def_cfa_offset 24
+ 418 0004 00AF     		add	r7, sp, #0
+ 419              	.LCFI24:
+ 420              		.cfi_def_cfa_register 7
+ 421 0006 F860     		str	r0, [r7, #12]
+ 422 0008 B960     		str	r1, [r7, #8]
+ 423 000a 1346     		mov	r3, r2
+ 424 000c FB71     		strb	r3, [r7, #7]
+ 142:./basic/crc.c ****   switch (type)
+ 425              		.loc 1 142 3
+ 426 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 427 0010 002B     		cmp	r3, #0
+ 428 0012 02D0     		beq	.L24
+ 429 0014 012B     		cmp	r3, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 11
+
+
+ 430 0016 06D0     		beq	.L25
+ 431 0018 0BE0     		b	.L28
+ 432              	.L24:
+ 143:./basic/crc.c ****   {
+ 144:./basic/crc.c ****     case 0: return crc32a_calc(msg,len); // normal crc
+ 433              		.loc 1 144 20
+ 434 001a B968     		ldr	r1, [r7, #8]
+ 435 001c F868     		ldr	r0, [r7, #12]
+ 436 001e FFF7FEFF 		bl	crc32a_calc
+ 437 0022 0346     		mov	r3, r0
+ 438 0024 0AE0     		b	.L27
+ 439              	.L25:
+ 145:./basic/crc.c ****     case 1: return crc32b_calc(msg,len); // reversed crc
+ 440              		.loc 1 145 20
+ 441 0026 B968     		ldr	r1, [r7, #8]
+ 442 0028 F868     		ldr	r0, [r7, #12]
+ 443 002a FFF7FEFF 		bl	crc32b_calc
+ 444 002e 0346     		mov	r3, r0
+ 445 0030 04E0     		b	.L27
+ 446              	.L28:
+ 146:./basic/crc.c ****   }
+ 147:./basic/crc.c ****     return crc32b_calc(msg,len); 
+ 447              		.loc 1 147 12
+ 448 0032 B968     		ldr	r1, [r7, #8]
+ 449 0034 F868     		ldr	r0, [r7, #12]
+ 450 0036 FFF7FEFF 		bl	crc32b_calc
+ 451 003a 0346     		mov	r3, r0
+ 452              	.L27:
+ 148:./basic/crc.c **** }
+ 453              		.loc 1 148 1
+ 454 003c 1846     		mov	r0, r3
+ 455 003e 1037     		adds	r7, r7, #16
+ 456              	.LCFI25:
+ 457              		.cfi_def_cfa_offset 8
+ 458 0040 BD46     		mov	sp, r7
+ 459              	.LCFI26:
+ 460              		.cfi_def_cfa_register 13
+ 461              		@ sp needed
+ 462 0042 80BD     		pop	{r7, pc}
+ 463              		.cfi_endproc
+ 464              	.LFE37:
+ 466              		.section	.text.crc32_calc,"ax",%progbits
+ 467              		.align	1
+ 468              		.global	crc32_calc
+ 469              		.syntax unified
+ 470              		.thumb
+ 471              		.thumb_func
+ 473              	crc32_calc:
+ 474              	.LFB38:
+ 149:./basic/crc.c **** //----------------------------------------------------------------------------------------------
+ 150:./basic/crc.c **** uint32_t crc32_calc(uint8_t * msg,size_t len)
+ 151:./basic/crc.c **** {
+ 475              		.loc 1 151 1
+ 476              		.cfi_startproc
+ 477              		@ args = 0, pretend = 0, frame = 8
+ 478              		@ frame_needed = 1, uses_anonymous_args = 0
+ 479 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 12
+
+
+ 480              	.LCFI27:
+ 481              		.cfi_def_cfa_offset 8
+ 482              		.cfi_offset 7, -8
+ 483              		.cfi_offset 14, -4
+ 484 0002 82B0     		sub	sp, sp, #8
+ 485              	.LCFI28:
+ 486              		.cfi_def_cfa_offset 16
+ 487 0004 00AF     		add	r7, sp, #0
+ 488              	.LCFI29:
+ 489              		.cfi_def_cfa_register 7
+ 490 0006 7860     		str	r0, [r7, #4]
+ 491 0008 3960     		str	r1, [r7]
+ 152:./basic/crc.c ****   return crc32b_calc(msg,len);
+ 492              		.loc 1 152 10
+ 493 000a 3968     		ldr	r1, [r7]
+ 494 000c 7868     		ldr	r0, [r7, #4]
+ 495 000e FFF7FEFF 		bl	crc32b_calc
+ 496 0012 0346     		mov	r3, r0
+ 153:./basic/crc.c **** }
+ 497              		.loc 1 153 1
+ 498 0014 1846     		mov	r0, r3
+ 499 0016 0837     		adds	r7, r7, #8
+ 500              	.LCFI30:
+ 501              		.cfi_def_cfa_offset 8
+ 502 0018 BD46     		mov	sp, r7
+ 503              	.LCFI31:
+ 504              		.cfi_def_cfa_register 13
+ 505              		@ sp needed
+ 506 001a 80BD     		pop	{r7, pc}
+ 507              		.cfi_endproc
+ 508              	.LFE38:
+ 510              		.text
+ 511              	.Letext0:
+ 512              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 513              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 514              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 crc.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:18     .text.crc32b_calc_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:23     .text.crc32b_calc_byte:00000000 crc32b_calc_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:120    .text.crc32b_calc_byte:00000064 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:125    .text.crc32b_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:131    .text.crc32b_calc:00000000 crc32b_calc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:204    .text.crc32a_calc_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:209    .text.crc32a_calc_byte:00000000 crc32a_calc_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:307    .text.crc32a_calc_byte:0000006c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:312    .text.crc32a_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:318    .text.crc32a_calc:00000000 crc32a_calc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:398    .text.crc32_calc_as:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:404    .text.crc32_calc_as:00000000 crc32_calc_as
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:467    .text.crc32_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:473    .text.crc32_calc:00000000 crc32_calc
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 14
+
+
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+reverse_dword

@@ -1,0 +1,1729 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"system_stm32f10x.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	SystemCoreClock
+  18              		.section	.data.SystemCoreClock,"aw"
+  19              		.align	2
+  22              	SystemCoreClock:
+  23 0000 00A24A04 		.word	72000000
+  24              		.global	AHBPrescTable
+  25              		.section	.data.AHBPrescTable,"aw"
+  26              		.align	2
+  29              	AHBPrescTable:
+  30 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+  30      00000000 
+  30      01020304 
+  30      06
+  31 000d 070809   		.ascii	"\007\010\011"
+  32              		.section	.text.SystemInit,"ax",%progbits
+  33              		.align	1
+  34              		.global	SystemInit
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	SystemInit:
+  40              	.LFB29:
+  41              		.file 1 "./.startup/src/system_stm32f10x.c"
+   1:./.startup/src/system_stm32f10x.c **** /**
+   2:./.startup/src/system_stm32f10x.c ****   ******************************************************************************
+   3:./.startup/src/system_stm32f10x.c ****   * @file    system_stm32f10x.c
+   4:./.startup/src/system_stm32f10x.c ****   * @author  MCD Application Team
+   5:./.startup/src/system_stm32f10x.c ****   * @version V3.5.1
+   6:./.startup/src/system_stm32f10x.c ****   * @date    08-September-2021
+   7:./.startup/src/system_stm32f10x.c ****   * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer System Source File.
+   8:./.startup/src/system_stm32f10x.c ****   * 
+   9:./.startup/src/system_stm32f10x.c ****   * 1.  This file provides two functions and one global variable to be called from 
+  10:./.startup/src/system_stm32f10x.c ****   *     user application:
+  11:./.startup/src/system_stm32f10x.c ****   *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+  12:./.startup/src/system_stm32f10x.c ****   *                      factors, AHB/APBx prescalers and Flash settings). 
+  13:./.startup/src/system_stm32f10x.c ****   *                      This function is called at startup just after reset and 
+  14:./.startup/src/system_stm32f10x.c ****   *                      before branch to main program. This call is made inside
+  15:./.startup/src/system_stm32f10x.c ****   *                      the "startup_stm32f10x_xx.s" file.
+  16:./.startup/src/system_stm32f10x.c ****   *
+  17:./.startup/src/system_stm32f10x.c ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  18:./.startup/src/system_stm32f10x.c ****   *                                  by the user application to setup the SysTick 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 2
+
+
+  19:./.startup/src/system_stm32f10x.c ****   *                                  timer or configure other parameters.
+  20:./.startup/src/system_stm32f10x.c ****   *                                     
+  21:./.startup/src/system_stm32f10x.c ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  22:./.startup/src/system_stm32f10x.c ****   *                                 be called whenever the core clock is changed
+  23:./.startup/src/system_stm32f10x.c ****   *                                 during program execution.
+  24:./.startup/src/system_stm32f10x.c ****   *
+  25:./.startup/src/system_stm32f10x.c ****   * 2. After each device reset the HSI (8 MHz) is used as system clock source.
+  26:./.startup/src/system_stm32f10x.c ****   *    Then SystemInit() function is called, in "startup_stm32f10x_xx.s" file, to
+  27:./.startup/src/system_stm32f10x.c ****   *    configure the system clock before to branch to main program.
+  28:./.startup/src/system_stm32f10x.c ****   *
+  29:./.startup/src/system_stm32f10x.c ****   * 3. If the system clock source selected by user fails to startup, the SystemInit()
+  30:./.startup/src/system_stm32f10x.c ****   *    function will do nothing and HSI still used as system clock source. User can 
+  31:./.startup/src/system_stm32f10x.c ****   *    add some code to deal with this issue inside the SetSysClock() function.
+  32:./.startup/src/system_stm32f10x.c ****   *
+  33:./.startup/src/system_stm32f10x.c ****   * 4. The default value of HSE crystal is set to 8 MHz (or 25 MHz, depedning on
+  34:./.startup/src/system_stm32f10x.c ****   *    the product used), refer to "HSE_VALUE" define in "stm32f10x.h" file. 
+  35:./.startup/src/system_stm32f10x.c ****   *    When HSE is used as system clock source, directly or through PLL, and you
+  36:./.startup/src/system_stm32f10x.c ****   *    are using different crystal you have to adapt the HSE value to your own
+  37:./.startup/src/system_stm32f10x.c ****   *    configuration.
+  38:./.startup/src/system_stm32f10x.c ****   *        
+  39:./.startup/src/system_stm32f10x.c ****   ******************************************************************************
+  40:./.startup/src/system_stm32f10x.c ****   * @attention
+  41:./.startup/src/system_stm32f10x.c ****   *
+  42:./.startup/src/system_stm32f10x.c ****   * Copyright (c) 2011 STMicroelectronics.
+  43:./.startup/src/system_stm32f10x.c ****   * All rights reserved.
+  44:./.startup/src/system_stm32f10x.c ****   *
+  45:./.startup/src/system_stm32f10x.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  46:./.startup/src/system_stm32f10x.c ****   * in the root directory of this software component.
+  47:./.startup/src/system_stm32f10x.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  48:./.startup/src/system_stm32f10x.c ****   *
+  49:./.startup/src/system_stm32f10x.c ****   ******************************************************************************
+  50:./.startup/src/system_stm32f10x.c ****   */
+  51:./.startup/src/system_stm32f10x.c **** 
+  52:./.startup/src/system_stm32f10x.c **** /** @addtogroup CMSIS
+  53:./.startup/src/system_stm32f10x.c ****   * @{
+  54:./.startup/src/system_stm32f10x.c ****   */
+  55:./.startup/src/system_stm32f10x.c **** 
+  56:./.startup/src/system_stm32f10x.c **** /** @addtogroup stm32f10x_system
+  57:./.startup/src/system_stm32f10x.c ****   * @{
+  58:./.startup/src/system_stm32f10x.c ****   */  
+  59:./.startup/src/system_stm32f10x.c ****   
+  60:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_Includes
+  61:./.startup/src/system_stm32f10x.c ****   * @{
+  62:./.startup/src/system_stm32f10x.c ****   */
+  63:./.startup/src/system_stm32f10x.c **** 
+  64:./.startup/src/system_stm32f10x.c **** #include "stm32f10x.h"
+  65:./.startup/src/system_stm32f10x.c **** 
+  66:./.startup/src/system_stm32f10x.c **** /**
+  67:./.startup/src/system_stm32f10x.c ****   * @}
+  68:./.startup/src/system_stm32f10x.c ****   */
+  69:./.startup/src/system_stm32f10x.c **** 
+  70:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_TypesDefinitions
+  71:./.startup/src/system_stm32f10x.c ****   * @{
+  72:./.startup/src/system_stm32f10x.c ****   */
+  73:./.startup/src/system_stm32f10x.c **** 
+  74:./.startup/src/system_stm32f10x.c **** /**
+  75:./.startup/src/system_stm32f10x.c ****   * @}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 3
+
+
+  76:./.startup/src/system_stm32f10x.c ****   */
+  77:./.startup/src/system_stm32f10x.c **** 
+  78:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_Defines
+  79:./.startup/src/system_stm32f10x.c ****   * @{
+  80:./.startup/src/system_stm32f10x.c ****   */
+  81:./.startup/src/system_stm32f10x.c **** 
+  82:./.startup/src/system_stm32f10x.c **** /*!< Uncomment the line corresponding to the desired System clock (SYSCLK)
+  83:./.startup/src/system_stm32f10x.c ****    frequency (after reset the HSI is used as SYSCLK source)
+  84:./.startup/src/system_stm32f10x.c ****    
+  85:./.startup/src/system_stm32f10x.c ****    IMPORTANT NOTE:
+  86:./.startup/src/system_stm32f10x.c ****    ============== 
+  87:./.startup/src/system_stm32f10x.c ****    1. After each device reset the HSI is used as System clock source.
+  88:./.startup/src/system_stm32f10x.c **** 
+  89:./.startup/src/system_stm32f10x.c ****    2. Please make sure that the selected System clock doesn't exceed your device's
+  90:./.startup/src/system_stm32f10x.c ****       maximum frequency.
+  91:./.startup/src/system_stm32f10x.c ****       
+  92:./.startup/src/system_stm32f10x.c ****    3. If none of the define below is enabled, the HSI is used as System clock
+  93:./.startup/src/system_stm32f10x.c ****     source.
+  94:./.startup/src/system_stm32f10x.c **** 
+  95:./.startup/src/system_stm32f10x.c ****    4. The System clock configuration functions provided within this file assume that:
+  96:./.startup/src/system_stm32f10x.c ****         - For Low, Medium and High density Value line devices an external 8MHz 
+  97:./.startup/src/system_stm32f10x.c ****           crystal is used to drive the System clock.
+  98:./.startup/src/system_stm32f10x.c ****         - For Low, Medium and High density devices an external 8MHz crystal is
+  99:./.startup/src/system_stm32f10x.c ****           used to drive the System clock.
+ 100:./.startup/src/system_stm32f10x.c ****         - For Connectivity line devices an external 25MHz crystal is used to drive
+ 101:./.startup/src/system_stm32f10x.c ****           the System clock.
+ 102:./.startup/src/system_stm32f10x.c ****      If you are using different crystal you have to adapt those functions accordingly.
+ 103:./.startup/src/system_stm32f10x.c ****     */
+ 104:./.startup/src/system_stm32f10x.c ****     
+ 105:./.startup/src/system_stm32f10x.c **** #if defined (STM32F10X_LD_VL) || (defined STM32F10X_MD_VL) || (defined STM32F10X_HD_VL)
+ 106:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_HSE    HSE_VALUE */
+ 107:./.startup/src/system_stm32f10x.c ****  #define SYSCLK_FREQ_24MHz  24000000
+ 108:./.startup/src/system_stm32f10x.c **** #else
+ 109:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_HSE    HSE_VALUE */
+ 110:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_24MHz  24000000 */ 
+ 111:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_36MHz  36000000 */
+ 112:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_48MHz  48000000 */
+ 113:./.startup/src/system_stm32f10x.c **** /* #define SYSCLK_FREQ_56MHz  56000000 */
+ 114:./.startup/src/system_stm32f10x.c **** #define SYSCLK_FREQ_72MHz  72000000
+ 115:./.startup/src/system_stm32f10x.c **** #endif
+ 116:./.startup/src/system_stm32f10x.c **** 
+ 117:./.startup/src/system_stm32f10x.c **** /*!< Uncomment the following line if you need to use external SRAM mounted
+ 118:./.startup/src/system_stm32f10x.c ****      on STM3210E-EVAL board (STM32 High density and XL-density devices) or on 
+ 119:./.startup/src/system_stm32f10x.c ****      STM32100E-EVAL board (STM32 High-density value line devices) as data memory */ 
+ 120:./.startup/src/system_stm32f10x.c **** #if defined (STM32F10X_HD) || (defined STM32F10X_XL) || (defined STM32F10X_HD_VL)
+ 121:./.startup/src/system_stm32f10x.c **** /* #define DATA_IN_ExtSRAM */
+ 122:./.startup/src/system_stm32f10x.c **** #endif
+ 123:./.startup/src/system_stm32f10x.c **** 
+ 124:./.startup/src/system_stm32f10x.c **** /*!< Uncomment the following line if you need to relocate your vector Table in
+ 125:./.startup/src/system_stm32f10x.c ****      Internal SRAM. */ 
+ 126:./.startup/src/system_stm32f10x.c **** /* #define VECT_TAB_SRAM */
+ 127:./.startup/src/system_stm32f10x.c **** #define VECT_TAB_OFFSET  0x0 /*!< Vector Table base offset field. 
+ 128:./.startup/src/system_stm32f10x.c ****                                   This value must be a multiple of 0x200. */
+ 129:./.startup/src/system_stm32f10x.c **** 
+ 130:./.startup/src/system_stm32f10x.c **** 
+ 131:./.startup/src/system_stm32f10x.c **** /**
+ 132:./.startup/src/system_stm32f10x.c ****   * @}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 4
+
+
+ 133:./.startup/src/system_stm32f10x.c ****   */
+ 134:./.startup/src/system_stm32f10x.c **** 
+ 135:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_Macros
+ 136:./.startup/src/system_stm32f10x.c ****   * @{
+ 137:./.startup/src/system_stm32f10x.c ****   */
+ 138:./.startup/src/system_stm32f10x.c **** 
+ 139:./.startup/src/system_stm32f10x.c **** /**
+ 140:./.startup/src/system_stm32f10x.c ****   * @}
+ 141:./.startup/src/system_stm32f10x.c ****   */
+ 142:./.startup/src/system_stm32f10x.c **** 
+ 143:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_Variables
+ 144:./.startup/src/system_stm32f10x.c ****   * @{
+ 145:./.startup/src/system_stm32f10x.c ****   */
+ 146:./.startup/src/system_stm32f10x.c **** 
+ 147:./.startup/src/system_stm32f10x.c **** /*******************************************************************************
+ 148:./.startup/src/system_stm32f10x.c **** *  Clock Definitions
+ 149:./.startup/src/system_stm32f10x.c **** *******************************************************************************/
+ 150:./.startup/src/system_stm32f10x.c **** #ifdef SYSCLK_FREQ_HSE
+ 151:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_HSE;        /*!< System Clock Frequency (Core Cloc
+ 152:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_24MHz
+ 153:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_24MHz;        /*!< System Clock Frequency (Core Cl
+ 154:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_36MHz
+ 155:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_36MHz;        /*!< System Clock Frequency (Core Cl
+ 156:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_48MHz
+ 157:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_48MHz;        /*!< System Clock Frequency (Core Cl
+ 158:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_56MHz
+ 159:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_56MHz;        /*!< System Clock Frequency (Core Cl
+ 160:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_72MHz
+ 161:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = SYSCLK_FREQ_72MHz;        /*!< System Clock Frequency (Core Cl
+ 162:./.startup/src/system_stm32f10x.c **** #else /*!< HSI Selected as System Clock source */
+ 163:./.startup/src/system_stm32f10x.c ****   uint32_t SystemCoreClock         = HSI_VALUE;        /*!< System Clock Frequency (Core Clock) */
+ 164:./.startup/src/system_stm32f10x.c **** #endif
+ 165:./.startup/src/system_stm32f10x.c **** 
+ 166:./.startup/src/system_stm32f10x.c **** __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 167:./.startup/src/system_stm32f10x.c **** /**
+ 168:./.startup/src/system_stm32f10x.c ****   * @}
+ 169:./.startup/src/system_stm32f10x.c ****   */
+ 170:./.startup/src/system_stm32f10x.c **** 
+ 171:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_FunctionPrototypes
+ 172:./.startup/src/system_stm32f10x.c ****   * @{
+ 173:./.startup/src/system_stm32f10x.c ****   */
+ 174:./.startup/src/system_stm32f10x.c **** 
+ 175:./.startup/src/system_stm32f10x.c **** static void SetSysClock(void);
+ 176:./.startup/src/system_stm32f10x.c **** 
+ 177:./.startup/src/system_stm32f10x.c **** #ifdef SYSCLK_FREQ_HSE
+ 178:./.startup/src/system_stm32f10x.c ****   static void SetSysClockToHSE(void);
+ 179:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_24MHz
+ 180:./.startup/src/system_stm32f10x.c ****   static void SetSysClockTo24(void);
+ 181:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_36MHz
+ 182:./.startup/src/system_stm32f10x.c ****   static void SetSysClockTo36(void);
+ 183:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_48MHz
+ 184:./.startup/src/system_stm32f10x.c ****   static void SetSysClockTo48(void);
+ 185:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_56MHz
+ 186:./.startup/src/system_stm32f10x.c ****   static void SetSysClockTo56(void);  
+ 187:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_72MHz
+ 188:./.startup/src/system_stm32f10x.c ****   static void SetSysClockTo72(void);
+ 189:./.startup/src/system_stm32f10x.c **** #endif
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 5
+
+
+ 190:./.startup/src/system_stm32f10x.c **** 
+ 191:./.startup/src/system_stm32f10x.c **** #ifdef DATA_IN_ExtSRAM
+ 192:./.startup/src/system_stm32f10x.c ****   static void SystemInit_ExtMemCtl(void); 
+ 193:./.startup/src/system_stm32f10x.c **** #endif /* DATA_IN_ExtSRAM */
+ 194:./.startup/src/system_stm32f10x.c **** 
+ 195:./.startup/src/system_stm32f10x.c **** /**
+ 196:./.startup/src/system_stm32f10x.c ****   * @}
+ 197:./.startup/src/system_stm32f10x.c ****   */
+ 198:./.startup/src/system_stm32f10x.c **** 
+ 199:./.startup/src/system_stm32f10x.c **** /** @addtogroup STM32F10x_System_Private_Functions
+ 200:./.startup/src/system_stm32f10x.c ****   * @{
+ 201:./.startup/src/system_stm32f10x.c ****   */
+ 202:./.startup/src/system_stm32f10x.c **** 
+ 203:./.startup/src/system_stm32f10x.c **** /**
+ 204:./.startup/src/system_stm32f10x.c ****   * @brief  Setup the microcontroller system
+ 205:./.startup/src/system_stm32f10x.c ****   *         Initialize the Embedded Flash Interface, the PLL and update the 
+ 206:./.startup/src/system_stm32f10x.c ****   *         SystemCoreClock variable.
+ 207:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 208:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 209:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 210:./.startup/src/system_stm32f10x.c ****   */
+ 211:./.startup/src/system_stm32f10x.c **** void SystemInit (void)
+ 212:./.startup/src/system_stm32f10x.c **** {
+  42              		.loc 1 212 1
+  43              		.cfi_startproc
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+  46 0000 80B5     		push	{r7, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 7, -8
+  50              		.cfi_offset 14, -4
+  51 0002 00AF     		add	r7, sp, #0
+  52              	.LCFI1:
+  53              		.cfi_def_cfa_register 7
+ 213:./.startup/src/system_stm32f10x.c ****   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
+ 214:./.startup/src/system_stm32f10x.c ****   /* Set HSION bit */
+ 215:./.startup/src/system_stm32f10x.c ****   RCC->CR |= (uint32_t)0x00000001;
+  54              		.loc 1 215 11
+  55 0004 154B     		ldr	r3, .L2
+  56 0006 1B68     		ldr	r3, [r3]
+  57 0008 144A     		ldr	r2, .L2
+  58 000a 43F00103 		orr	r3, r3, #1
+  59 000e 1360     		str	r3, [r2]
+ 216:./.startup/src/system_stm32f10x.c **** 
+ 217:./.startup/src/system_stm32f10x.c ****   /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+ 218:./.startup/src/system_stm32f10x.c **** #ifndef STM32F10X_CL
+ 219:./.startup/src/system_stm32f10x.c ****   RCC->CFGR &= (uint32_t)0xF8FF0000;
+  60              		.loc 1 219 13
+  61 0010 124B     		ldr	r3, .L2
+  62 0012 5A68     		ldr	r2, [r3, #4]
+  63 0014 1149     		ldr	r1, .L2
+  64 0016 124B     		ldr	r3, .L2+4
+  65 0018 1340     		ands	r3, r3, r2
+  66 001a 4B60     		str	r3, [r1, #4]
+ 220:./.startup/src/system_stm32f10x.c **** #else
+ 221:./.startup/src/system_stm32f10x.c ****   RCC->CFGR &= (uint32_t)0xF0FF0000;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 6
+
+
+ 222:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */   
+ 223:./.startup/src/system_stm32f10x.c ****   
+ 224:./.startup/src/system_stm32f10x.c ****   /* Reset HSEON, CSSON and PLLON bits */
+ 225:./.startup/src/system_stm32f10x.c ****   RCC->CR &= (uint32_t)0xFEF6FFFF;
+  67              		.loc 1 225 11
+  68 001c 0F4B     		ldr	r3, .L2
+  69 001e 1B68     		ldr	r3, [r3]
+  70 0020 0E4A     		ldr	r2, .L2
+  71 0022 23F08473 		bic	r3, r3, #17301504
+  72 0026 23F48033 		bic	r3, r3, #65536
+  73 002a 1360     		str	r3, [r2]
+ 226:./.startup/src/system_stm32f10x.c **** 
+ 227:./.startup/src/system_stm32f10x.c ****   /* Reset HSEBYP bit */
+ 228:./.startup/src/system_stm32f10x.c ****   RCC->CR &= (uint32_t)0xFFFBFFFF;
+  74              		.loc 1 228 11
+  75 002c 0B4B     		ldr	r3, .L2
+  76 002e 1B68     		ldr	r3, [r3]
+  77 0030 0A4A     		ldr	r2, .L2
+  78 0032 23F48023 		bic	r3, r3, #262144
+  79 0036 1360     		str	r3, [r2]
+ 229:./.startup/src/system_stm32f10x.c **** 
+ 230:./.startup/src/system_stm32f10x.c ****   /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+ 231:./.startup/src/system_stm32f10x.c ****   RCC->CFGR &= (uint32_t)0xFF80FFFF;
+  80              		.loc 1 231 13
+  81 0038 084B     		ldr	r3, .L2
+  82 003a 5B68     		ldr	r3, [r3, #4]
+  83 003c 074A     		ldr	r2, .L2
+  84 003e 23F4FE03 		bic	r3, r3, #8323072
+  85 0042 5360     		str	r3, [r2, #4]
+ 232:./.startup/src/system_stm32f10x.c **** 
+ 233:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+ 234:./.startup/src/system_stm32f10x.c ****   /* Reset PLL2ON and PLL3ON bits */
+ 235:./.startup/src/system_stm32f10x.c ****   RCC->CR &= (uint32_t)0xEBFFFFFF;
+ 236:./.startup/src/system_stm32f10x.c **** 
+ 237:./.startup/src/system_stm32f10x.c ****   /* Disable all interrupts and clear pending bits  */
+ 238:./.startup/src/system_stm32f10x.c ****   RCC->CIR = 0x00FF0000;
+ 239:./.startup/src/system_stm32f10x.c **** 
+ 240:./.startup/src/system_stm32f10x.c ****   /* Reset CFGR2 register */
+ 241:./.startup/src/system_stm32f10x.c ****   RCC->CFGR2 = 0x00000000;
+ 242:./.startup/src/system_stm32f10x.c **** #elif defined (STM32F10X_LD_VL) || defined (STM32F10X_MD_VL) || (defined STM32F10X_HD_VL)
+ 243:./.startup/src/system_stm32f10x.c ****   /* Disable all interrupts and clear pending bits  */
+ 244:./.startup/src/system_stm32f10x.c ****   RCC->CIR = 0x009F0000;
+ 245:./.startup/src/system_stm32f10x.c **** 
+ 246:./.startup/src/system_stm32f10x.c ****   /* Reset CFGR2 register */
+ 247:./.startup/src/system_stm32f10x.c ****   RCC->CFGR2 = 0x00000000;      
+ 248:./.startup/src/system_stm32f10x.c **** #else
+ 249:./.startup/src/system_stm32f10x.c ****   /* Disable all interrupts and clear pending bits  */
+ 250:./.startup/src/system_stm32f10x.c ****   RCC->CIR = 0x009F0000;
+  86              		.loc 1 250 6
+  87 0044 054B     		ldr	r3, .L2
+  88              		.loc 1 250 12
+  89 0046 4FF41F02 		mov	r2, #10420224
+  90 004a 9A60     		str	r2, [r3, #8]
+ 251:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 252:./.startup/src/system_stm32f10x.c ****     
+ 253:./.startup/src/system_stm32f10x.c **** #if defined (STM32F10X_HD) || (defined STM32F10X_XL) || (defined STM32F10X_HD_VL)
+ 254:./.startup/src/system_stm32f10x.c ****   #ifdef DATA_IN_ExtSRAM
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 7
+
+
+ 255:./.startup/src/system_stm32f10x.c ****     SystemInit_ExtMemCtl(); 
+ 256:./.startup/src/system_stm32f10x.c ****   #endif /* DATA_IN_ExtSRAM */
+ 257:./.startup/src/system_stm32f10x.c **** #endif 
+ 258:./.startup/src/system_stm32f10x.c **** 
+ 259:./.startup/src/system_stm32f10x.c ****   /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
+ 260:./.startup/src/system_stm32f10x.c ****   /* Configure the Flash Latency cycles and enable prefetch buffer */
+ 261:./.startup/src/system_stm32f10x.c ****   SetSysClock();
+  91              		.loc 1 261 3
+  92 004c FFF7FEFF 		bl	SetSysClock
+ 262:./.startup/src/system_stm32f10x.c **** 
+ 263:./.startup/src/system_stm32f10x.c **** #ifdef VECT_TAB_SRAM
+ 264:./.startup/src/system_stm32f10x.c ****   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
+ 265:./.startup/src/system_stm32f10x.c **** #else
+ 266:./.startup/src/system_stm32f10x.c ****   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+  93              		.loc 1 266 6
+  94 0050 044B     		ldr	r3, .L2+8
+  95              		.loc 1 266 13
+  96 0052 4FF00062 		mov	r2, #134217728
+  97 0056 9A60     		str	r2, [r3, #8]
+ 267:./.startup/src/system_stm32f10x.c **** #endif 
+ 268:./.startup/src/system_stm32f10x.c **** }
+  98              		.loc 1 268 1
+  99 0058 00BF     		nop
+ 100 005a 80BD     		pop	{r7, pc}
+ 101              	.L3:
+ 102              		.align	2
+ 103              	.L2:
+ 104 005c 00100240 		.word	1073876992
+ 105 0060 0000FFF8 		.word	-117506048
+ 106 0064 00ED00E0 		.word	-536810240
+ 107              		.cfi_endproc
+ 108              	.LFE29:
+ 110              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 111              		.align	1
+ 112              		.global	SystemCoreClockUpdate
+ 113              		.syntax unified
+ 114              		.thumb
+ 115              		.thumb_func
+ 117              	SystemCoreClockUpdate:
+ 118              	.LFB30:
+ 269:./.startup/src/system_stm32f10x.c **** 
+ 270:./.startup/src/system_stm32f10x.c **** /**
+ 271:./.startup/src/system_stm32f10x.c ****   * @brief  Update SystemCoreClock variable according to Clock Register Values.
+ 272:./.startup/src/system_stm32f10x.c ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 273:./.startup/src/system_stm32f10x.c ****   *         be used by the user application to setup the SysTick timer or configure
+ 274:./.startup/src/system_stm32f10x.c ****   *         other parameters.
+ 275:./.startup/src/system_stm32f10x.c ****   *           
+ 276:./.startup/src/system_stm32f10x.c ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 277:./.startup/src/system_stm32f10x.c ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ 278:./.startup/src/system_stm32f10x.c ****   *         based on this variable will be incorrect.         
+ 279:./.startup/src/system_stm32f10x.c ****   *     
+ 280:./.startup/src/system_stm32f10x.c ****   * @note   - The system frequency computed by this function is not the real 
+ 281:./.startup/src/system_stm32f10x.c ****   *           frequency in the chip. It is calculated based on the predefined 
+ 282:./.startup/src/system_stm32f10x.c ****   *           constant and the selected clock source:
+ 283:./.startup/src/system_stm32f10x.c ****   *             
+ 284:./.startup/src/system_stm32f10x.c ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 285:./.startup/src/system_stm32f10x.c ****   *                                              
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 8
+
+
+ 286:./.startup/src/system_stm32f10x.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 287:./.startup/src/system_stm32f10x.c ****   *                          
+ 288:./.startup/src/system_stm32f10x.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+ 289:./.startup/src/system_stm32f10x.c ****   *             or HSI_VALUE(*) multiplied by the PLL factors.
+ 290:./.startup/src/system_stm32f10x.c ****   *         
+ 291:./.startup/src/system_stm32f10x.c ****   *         (*) HSI_VALUE is a constant defined in stm32f1xx.h file (default value
+ 292:./.startup/src/system_stm32f10x.c ****   *             8 MHz) but the real value may vary depending on the variations
+ 293:./.startup/src/system_stm32f10x.c ****   *             in voltage and temperature.   
+ 294:./.startup/src/system_stm32f10x.c ****   *    
+ 295:./.startup/src/system_stm32f10x.c ****   *         (**) HSE_VALUE is a constant defined in stm32f1xx.h file (default value
+ 296:./.startup/src/system_stm32f10x.c ****   *              8 MHz or 25 MHz, depending on the product used), user has to ensure
+ 297:./.startup/src/system_stm32f10x.c ****   *              that HSE_VALUE is same as the real frequency of the crystal used.
+ 298:./.startup/src/system_stm32f10x.c ****   *              Otherwise, this function may have wrong result.
+ 299:./.startup/src/system_stm32f10x.c ****   *                
+ 300:./.startup/src/system_stm32f10x.c ****   *         - The result of this function could be not correct when using fractional
+ 301:./.startup/src/system_stm32f10x.c ****   *           value for HSE crystal.
+ 302:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 303:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 304:./.startup/src/system_stm32f10x.c ****   */
+ 305:./.startup/src/system_stm32f10x.c **** void SystemCoreClockUpdate (void)
+ 306:./.startup/src/system_stm32f10x.c **** {
+ 119              		.loc 1 306 1
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 16
+ 122              		@ frame_needed = 1, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 80B4     		push	{r7}
+ 125              	.LCFI2:
+ 126              		.cfi_def_cfa_offset 4
+ 127              		.cfi_offset 7, -4
+ 128 0002 85B0     		sub	sp, sp, #20
+ 129              	.LCFI3:
+ 130              		.cfi_def_cfa_offset 24
+ 131 0004 00AF     		add	r7, sp, #0
+ 132              	.LCFI4:
+ 133              		.cfi_def_cfa_register 7
+ 307:./.startup/src/system_stm32f10x.c ****   uint32_t tmp = 0, pllmull = 0, pllsource = 0;
+ 134              		.loc 1 307 12
+ 135 0006 0023     		movs	r3, #0
+ 136 0008 FB60     		str	r3, [r7, #12]
+ 137              		.loc 1 307 21
+ 138 000a 0023     		movs	r3, #0
+ 139 000c BB60     		str	r3, [r7, #8]
+ 140              		.loc 1 307 34
+ 141 000e 0023     		movs	r3, #0
+ 142 0010 7B60     		str	r3, [r7, #4]
+ 308:./.startup/src/system_stm32f10x.c **** 
+ 309:./.startup/src/system_stm32f10x.c **** #ifdef  STM32F10X_CL
+ 310:./.startup/src/system_stm32f10x.c ****   uint32_t prediv1source = 0, prediv1factor = 0, prediv2factor = 0, pll2mull = 0;
+ 311:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 312:./.startup/src/system_stm32f10x.c **** 
+ 313:./.startup/src/system_stm32f10x.c **** #if defined (STM32F10X_LD_VL) || defined (STM32F10X_MD_VL) || (defined STM32F10X_HD_VL)
+ 314:./.startup/src/system_stm32f10x.c ****   uint32_t prediv1factor = 0;
+ 315:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_LD_VL or STM32F10X_MD_VL or STM32F10X_HD_VL */
+ 316:./.startup/src/system_stm32f10x.c ****     
+ 317:./.startup/src/system_stm32f10x.c ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 318:./.startup/src/system_stm32f10x.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 9
+
+
+ 143              		.loc 1 318 12
+ 144 0012 2F4B     		ldr	r3, .L13
+ 145 0014 5B68     		ldr	r3, [r3, #4]
+ 146              		.loc 1 318 7
+ 147 0016 03F00C03 		and	r3, r3, #12
+ 148 001a FB60     		str	r3, [r7, #12]
+ 319:./.startup/src/system_stm32f10x.c ****   
+ 320:./.startup/src/system_stm32f10x.c ****   switch (tmp)
+ 149              		.loc 1 320 3
+ 150 001c FB68     		ldr	r3, [r7, #12]
+ 151 001e 082B     		cmp	r3, #8
+ 152 0020 11D0     		beq	.L5
+ 153 0022 FB68     		ldr	r3, [r7, #12]
+ 154 0024 082B     		cmp	r3, #8
+ 155 0026 3AD8     		bhi	.L6
+ 156 0028 FB68     		ldr	r3, [r7, #12]
+ 157 002a 002B     		cmp	r3, #0
+ 158 002c 03D0     		beq	.L7
+ 159 002e FB68     		ldr	r3, [r7, #12]
+ 160 0030 042B     		cmp	r3, #4
+ 161 0032 04D0     		beq	.L8
+ 162 0034 33E0     		b	.L6
+ 163              	.L7:
+ 321:./.startup/src/system_stm32f10x.c ****   {
+ 322:./.startup/src/system_stm32f10x.c ****     case 0x00:  /* HSI used as system clock */
+ 323:./.startup/src/system_stm32f10x.c ****       SystemCoreClock = HSI_VALUE;
+ 164              		.loc 1 323 23
+ 165 0036 274B     		ldr	r3, .L13+4
+ 166 0038 274A     		ldr	r2, .L13+8
+ 167 003a 1A60     		str	r2, [r3]
+ 324:./.startup/src/system_stm32f10x.c ****       break;
+ 168              		.loc 1 324 7
+ 169 003c 33E0     		b	.L9
+ 170              	.L8:
+ 325:./.startup/src/system_stm32f10x.c ****     case 0x04:  /* HSE used as system clock */
+ 326:./.startup/src/system_stm32f10x.c ****       SystemCoreClock = HSE_VALUE;
+ 171              		.loc 1 326 23
+ 172 003e 254B     		ldr	r3, .L13+4
+ 173 0040 254A     		ldr	r2, .L13+8
+ 174 0042 1A60     		str	r2, [r3]
+ 327:./.startup/src/system_stm32f10x.c ****       break;
+ 175              		.loc 1 327 7
+ 176 0044 2FE0     		b	.L9
+ 177              	.L5:
+ 328:./.startup/src/system_stm32f10x.c ****     case 0x08:  /* PLL used as system clock */
+ 329:./.startup/src/system_stm32f10x.c **** 
+ 330:./.startup/src/system_stm32f10x.c ****       /* Get PLL clock source and multiplication factor ----------------------*/
+ 331:./.startup/src/system_stm32f10x.c ****       pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+ 178              		.loc 1 331 20
+ 179 0046 224B     		ldr	r3, .L13
+ 180 0048 5B68     		ldr	r3, [r3, #4]
+ 181              		.loc 1 331 15
+ 182 004a 03F47013 		and	r3, r3, #3932160
+ 183 004e BB60     		str	r3, [r7, #8]
+ 332:./.startup/src/system_stm32f10x.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 184              		.loc 1 332 22
+ 185 0050 1F4B     		ldr	r3, .L13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 10
+
+
+ 186 0052 5B68     		ldr	r3, [r3, #4]
+ 187              		.loc 1 332 17
+ 188 0054 03F48033 		and	r3, r3, #65536
+ 189 0058 7B60     		str	r3, [r7, #4]
+ 333:./.startup/src/system_stm32f10x.c ****       
+ 334:./.startup/src/system_stm32f10x.c **** #ifndef STM32F10X_CL      
+ 335:./.startup/src/system_stm32f10x.c ****       pllmull = ( pllmull >> 18) + 2;
+ 190              		.loc 1 335 27
+ 191 005a BB68     		ldr	r3, [r7, #8]
+ 192 005c 9B0C     		lsrs	r3, r3, #18
+ 193              		.loc 1 335 15
+ 194 005e 0233     		adds	r3, r3, #2
+ 195 0060 BB60     		str	r3, [r7, #8]
+ 336:./.startup/src/system_stm32f10x.c ****       
+ 337:./.startup/src/system_stm32f10x.c ****       if (pllsource == 0x00)
+ 196              		.loc 1 337 10
+ 197 0062 7B68     		ldr	r3, [r7, #4]
+ 198 0064 002B     		cmp	r3, #0
+ 199 0066 06D1     		bne	.L10
+ 338:./.startup/src/system_stm32f10x.c ****       {
+ 339:./.startup/src/system_stm32f10x.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
+ 340:./.startup/src/system_stm32f10x.c ****         SystemCoreClock = (HSI_VALUE >> 1) * pllmull;
+ 200              		.loc 1 340 44
+ 201 0068 BB68     		ldr	r3, [r7, #8]
+ 202 006a 1C4A     		ldr	r2, .L13+12
+ 203 006c 02FB03F3 		mul	r3, r2, r3
+ 204              		.loc 1 340 25
+ 205 0070 184A     		ldr	r2, .L13+4
+ 206 0072 1360     		str	r3, [r2]
+ 341:./.startup/src/system_stm32f10x.c ****       }
+ 342:./.startup/src/system_stm32f10x.c ****       else
+ 343:./.startup/src/system_stm32f10x.c ****       {
+ 344:./.startup/src/system_stm32f10x.c ****  #if defined (STM32F10X_LD_VL) || defined (STM32F10X_MD_VL) || (defined STM32F10X_HD_VL)
+ 345:./.startup/src/system_stm32f10x.c ****        prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1;
+ 346:./.startup/src/system_stm32f10x.c ****        /* HSE oscillator clock selected as PREDIV1 clock entry */
+ 347:./.startup/src/system_stm32f10x.c ****        SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull; 
+ 348:./.startup/src/system_stm32f10x.c ****  #else
+ 349:./.startup/src/system_stm32f10x.c ****         /* HSE selected as PLL clock entry */
+ 350:./.startup/src/system_stm32f10x.c ****         if ((RCC->CFGR & RCC_CFGR_PLLXTPRE) != (uint32_t)RESET)
+ 351:./.startup/src/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 352:./.startup/src/system_stm32f10x.c ****           SystemCoreClock = (HSE_VALUE >> 1) * pllmull;
+ 353:./.startup/src/system_stm32f10x.c ****         }
+ 354:./.startup/src/system_stm32f10x.c ****         else
+ 355:./.startup/src/system_stm32f10x.c ****         {
+ 356:./.startup/src/system_stm32f10x.c ****           SystemCoreClock = HSE_VALUE * pllmull;
+ 357:./.startup/src/system_stm32f10x.c ****         }
+ 358:./.startup/src/system_stm32f10x.c ****  #endif
+ 359:./.startup/src/system_stm32f10x.c ****       }
+ 360:./.startup/src/system_stm32f10x.c **** #else
+ 361:./.startup/src/system_stm32f10x.c ****       pllmull = pllmull >> 18;
+ 362:./.startup/src/system_stm32f10x.c ****       
+ 363:./.startup/src/system_stm32f10x.c ****       if (pllmull != 0x0D)
+ 364:./.startup/src/system_stm32f10x.c ****       {
+ 365:./.startup/src/system_stm32f10x.c ****          pllmull += 2;
+ 366:./.startup/src/system_stm32f10x.c ****       }
+ 367:./.startup/src/system_stm32f10x.c ****       else
+ 368:./.startup/src/system_stm32f10x.c ****       { /* PLL multiplication factor = PLL input clock * 6.5 */
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 11
+
+
+ 369:./.startup/src/system_stm32f10x.c ****         pllmull = 13 / 2; 
+ 370:./.startup/src/system_stm32f10x.c ****       }
+ 371:./.startup/src/system_stm32f10x.c ****             
+ 372:./.startup/src/system_stm32f10x.c ****       if (pllsource == 0x00)
+ 373:./.startup/src/system_stm32f10x.c ****       {
+ 374:./.startup/src/system_stm32f10x.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
+ 375:./.startup/src/system_stm32f10x.c ****         SystemCoreClock = (HSI_VALUE >> 1) * pllmull;
+ 376:./.startup/src/system_stm32f10x.c ****       }
+ 377:./.startup/src/system_stm32f10x.c ****       else
+ 378:./.startup/src/system_stm32f10x.c ****       {/* PREDIV1 selected as PLL clock entry */
+ 379:./.startup/src/system_stm32f10x.c ****         
+ 380:./.startup/src/system_stm32f10x.c ****         /* Get PREDIV1 clock source and division factor */
+ 381:./.startup/src/system_stm32f10x.c ****         prediv1source = RCC->CFGR2 & RCC_CFGR2_PREDIV1SRC;
+ 382:./.startup/src/system_stm32f10x.c ****         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1;
+ 383:./.startup/src/system_stm32f10x.c ****         
+ 384:./.startup/src/system_stm32f10x.c ****         if (prediv1source == 0)
+ 385:./.startup/src/system_stm32f10x.c ****         { 
+ 386:./.startup/src/system_stm32f10x.c ****           /* HSE oscillator clock selected as PREDIV1 clock entry */
+ 387:./.startup/src/system_stm32f10x.c ****           SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull;          
+ 388:./.startup/src/system_stm32f10x.c ****         }
+ 389:./.startup/src/system_stm32f10x.c ****         else
+ 390:./.startup/src/system_stm32f10x.c ****         {/* PLL2 clock selected as PREDIV1 clock entry */
+ 391:./.startup/src/system_stm32f10x.c ****           
+ 392:./.startup/src/system_stm32f10x.c ****           /* Get PREDIV2 division factor and PLL2 multiplication factor */
+ 393:./.startup/src/system_stm32f10x.c ****           prediv2factor = ((RCC->CFGR2 & RCC_CFGR2_PREDIV2) >> 4) + 1;
+ 394:./.startup/src/system_stm32f10x.c ****           pll2mull = ((RCC->CFGR2 & RCC_CFGR2_PLL2MUL) >> 8 ) + 2; 
+ 395:./.startup/src/system_stm32f10x.c ****           SystemCoreClock = (((HSE_VALUE / prediv2factor) * pll2mull) / prediv1factor) * pllmull;  
+ 396:./.startup/src/system_stm32f10x.c ****         }
+ 397:./.startup/src/system_stm32f10x.c ****       }
+ 398:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */ 
+ 399:./.startup/src/system_stm32f10x.c ****       break;
+ 207              		.loc 1 399 7
+ 208 0074 17E0     		b	.L9
+ 209              	.L10:
+ 350:./.startup/src/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 210              		.loc 1 350 17
+ 211 0076 164B     		ldr	r3, .L13
+ 212 0078 5B68     		ldr	r3, [r3, #4]
+ 350:./.startup/src/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 213              		.loc 1 350 24
+ 214 007a 03F40033 		and	r3, r3, #131072
+ 350:./.startup/src/system_stm32f10x.c ****         {/* HSE oscillator clock divided by 2 */
+ 215              		.loc 1 350 12
+ 216 007e 002B     		cmp	r3, #0
+ 217 0080 06D0     		beq	.L12
+ 352:./.startup/src/system_stm32f10x.c ****         }
+ 218              		.loc 1 352 46
+ 219 0082 BB68     		ldr	r3, [r7, #8]
+ 220 0084 154A     		ldr	r2, .L13+12
+ 221 0086 02FB03F3 		mul	r3, r2, r3
+ 352:./.startup/src/system_stm32f10x.c ****         }
+ 222              		.loc 1 352 27
+ 223 008a 124A     		ldr	r2, .L13+4
+ 224 008c 1360     		str	r3, [r2]
+ 225              		.loc 1 399 7
+ 226 008e 0AE0     		b	.L9
+ 227              	.L12:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 12
+
+
+ 356:./.startup/src/system_stm32f10x.c ****         }
+ 228              		.loc 1 356 39
+ 229 0090 BB68     		ldr	r3, [r7, #8]
+ 230 0092 114A     		ldr	r2, .L13+8
+ 231 0094 02FB03F3 		mul	r3, r2, r3
+ 356:./.startup/src/system_stm32f10x.c ****         }
+ 232              		.loc 1 356 27
+ 233 0098 0E4A     		ldr	r2, .L13+4
+ 234 009a 1360     		str	r3, [r2]
+ 235              		.loc 1 399 7
+ 236 009c 03E0     		b	.L9
+ 237              	.L6:
+ 400:./.startup/src/system_stm32f10x.c **** 
+ 401:./.startup/src/system_stm32f10x.c ****     default:
+ 402:./.startup/src/system_stm32f10x.c ****       SystemCoreClock = HSI_VALUE;
+ 238              		.loc 1 402 23
+ 239 009e 0D4B     		ldr	r3, .L13+4
+ 240 00a0 0D4A     		ldr	r2, .L13+8
+ 241 00a2 1A60     		str	r2, [r3]
+ 403:./.startup/src/system_stm32f10x.c ****       break;
+ 242              		.loc 1 403 7
+ 243 00a4 00BF     		nop
+ 244              	.L9:
+ 404:./.startup/src/system_stm32f10x.c ****   }
+ 405:./.startup/src/system_stm32f10x.c ****   
+ 406:./.startup/src/system_stm32f10x.c ****   /* Compute HCLK clock frequency ----------------*/
+ 407:./.startup/src/system_stm32f10x.c ****   /* Get HCLK prescaler */
+ 408:./.startup/src/system_stm32f10x.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 245              		.loc 1 408 28
+ 246 00a6 0A4B     		ldr	r3, .L13
+ 247 00a8 5B68     		ldr	r3, [r3, #4]
+ 248              		.loc 1 408 52
+ 249 00aa 1B09     		lsrs	r3, r3, #4
+ 250 00ac 03F00F03 		and	r3, r3, #15
+ 251              		.loc 1 408 22
+ 252 00b0 0B4A     		ldr	r2, .L13+16
+ 253 00b2 D35C     		ldrb	r3, [r2, r3]
+ 254 00b4 DBB2     		uxtb	r3, r3
+ 255              		.loc 1 408 7
+ 256 00b6 FB60     		str	r3, [r7, #12]
+ 409:./.startup/src/system_stm32f10x.c ****   /* HCLK clock frequency */
+ 410:./.startup/src/system_stm32f10x.c ****   SystemCoreClock >>= tmp;  
+ 257              		.loc 1 410 19
+ 258 00b8 064B     		ldr	r3, .L13+4
+ 259 00ba 1A68     		ldr	r2, [r3]
+ 260 00bc FB68     		ldr	r3, [r7, #12]
+ 261 00be 22FA03F3 		lsr	r3, r2, r3
+ 262 00c2 044A     		ldr	r2, .L13+4
+ 263 00c4 1360     		str	r3, [r2]
+ 411:./.startup/src/system_stm32f10x.c **** }
+ 264              		.loc 1 411 1
+ 265 00c6 00BF     		nop
+ 266 00c8 1437     		adds	r7, r7, #20
+ 267              	.LCFI5:
+ 268              		.cfi_def_cfa_offset 4
+ 269 00ca BD46     		mov	sp, r7
+ 270              	.LCFI6:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 13
+
+
+ 271              		.cfi_def_cfa_register 13
+ 272              		@ sp needed
+ 273 00cc 80BC     		pop	{r7}
+ 274              	.LCFI7:
+ 275              		.cfi_restore 7
+ 276              		.cfi_def_cfa_offset 0
+ 277 00ce 7047     		bx	lr
+ 278              	.L14:
+ 279              		.align	2
+ 280              	.L13:
+ 281 00d0 00100240 		.word	1073876992
+ 282 00d4 00000000 		.word	SystemCoreClock
+ 283 00d8 00127A00 		.word	8000000
+ 284 00dc 00093D00 		.word	4000000
+ 285 00e0 00000000 		.word	AHBPrescTable
+ 286              		.cfi_endproc
+ 287              	.LFE30:
+ 289              		.section	.text.SetSysClock,"ax",%progbits
+ 290              		.align	1
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 295              	SetSysClock:
+ 296              	.LFB31:
+ 412:./.startup/src/system_stm32f10x.c **** 
+ 413:./.startup/src/system_stm32f10x.c **** /**
+ 414:./.startup/src/system_stm32f10x.c ****   * @brief  Configures the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers.
+ 415:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 416:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 417:./.startup/src/system_stm32f10x.c ****   */
+ 418:./.startup/src/system_stm32f10x.c **** static void SetSysClock(void)
+ 419:./.startup/src/system_stm32f10x.c **** {
+ 297              		.loc 1 419 1
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 301 0000 80B5     		push	{r7, lr}
+ 302              	.LCFI8:
+ 303              		.cfi_def_cfa_offset 8
+ 304              		.cfi_offset 7, -8
+ 305              		.cfi_offset 14, -4
+ 306 0002 00AF     		add	r7, sp, #0
+ 307              	.LCFI9:
+ 308              		.cfi_def_cfa_register 7
+ 420:./.startup/src/system_stm32f10x.c **** #ifdef SYSCLK_FREQ_HSE
+ 421:./.startup/src/system_stm32f10x.c ****   SetSysClockToHSE();
+ 422:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_24MHz
+ 423:./.startup/src/system_stm32f10x.c ****   SetSysClockTo24();
+ 424:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_36MHz
+ 425:./.startup/src/system_stm32f10x.c ****   SetSysClockTo36();
+ 426:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_48MHz
+ 427:./.startup/src/system_stm32f10x.c ****   SetSysClockTo48();
+ 428:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_56MHz
+ 429:./.startup/src/system_stm32f10x.c ****   SetSysClockTo56();  
+ 430:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_72MHz
+ 431:./.startup/src/system_stm32f10x.c ****   SetSysClockTo72();
+ 309              		.loc 1 431 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 14
+
+
+ 310 0004 FFF7FEFF 		bl	SetSysClockTo72
+ 432:./.startup/src/system_stm32f10x.c **** #endif
+ 433:./.startup/src/system_stm32f10x.c ****  
+ 434:./.startup/src/system_stm32f10x.c ****  /* If none of the define above is enabled, the HSI is used as System clock
+ 435:./.startup/src/system_stm32f10x.c ****     source (default after reset) */ 
+ 436:./.startup/src/system_stm32f10x.c **** }
+ 311              		.loc 1 436 1
+ 312 0008 00BF     		nop
+ 313 000a 80BD     		pop	{r7, pc}
+ 314              		.cfi_endproc
+ 315              	.LFE31:
+ 317              		.section	.text.SetSysClockTo72,"ax",%progbits
+ 318              		.align	1
+ 319              		.syntax unified
+ 320              		.thumb
+ 321              		.thumb_func
+ 323              	SetSysClockTo72:
+ 324              	.LFB32:
+ 437:./.startup/src/system_stm32f10x.c **** 
+ 438:./.startup/src/system_stm32f10x.c **** /**
+ 439:./.startup/src/system_stm32f10x.c ****   * @brief  Setup the external memory controller. Called in startup_stm32f10x.s 
+ 440:./.startup/src/system_stm32f10x.c ****   *          before jump to __main
+ 441:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 442:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 443:./.startup/src/system_stm32f10x.c ****   */ 
+ 444:./.startup/src/system_stm32f10x.c **** #ifdef DATA_IN_ExtSRAM
+ 445:./.startup/src/system_stm32f10x.c **** /**
+ 446:./.startup/src/system_stm32f10x.c ****   * @brief  Setup the external memory controller. 
+ 447:./.startup/src/system_stm32f10x.c ****   *         Called in startup_stm32f10x_xx.s/.c before jump to main.
+ 448:./.startup/src/system_stm32f10x.c ****   * 	      This function configures the external SRAM mounted on STM3210E-EVAL
+ 449:./.startup/src/system_stm32f10x.c ****   *         board (STM32 High density devices). This SRAM will be used as program
+ 450:./.startup/src/system_stm32f10x.c ****   *         data memory (including heap and stack).
+ 451:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 452:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 453:./.startup/src/system_stm32f10x.c ****   */ 
+ 454:./.startup/src/system_stm32f10x.c **** void SystemInit_ExtMemCtl(void) 
+ 455:./.startup/src/system_stm32f10x.c **** {
+ 456:./.startup/src/system_stm32f10x.c **** /*!< FSMC Bank1 NOR/SRAM3 is used for the STM3210E-EVAL, if another Bank is 
+ 457:./.startup/src/system_stm32f10x.c ****   required, then adjust the Register Addresses */
+ 458:./.startup/src/system_stm32f10x.c **** 
+ 459:./.startup/src/system_stm32f10x.c ****   /* Enable FSMC clock */
+ 460:./.startup/src/system_stm32f10x.c ****   RCC->AHBENR = 0x00000114;
+ 461:./.startup/src/system_stm32f10x.c ****   
+ 462:./.startup/src/system_stm32f10x.c ****   /* Enable GPIOD, GPIOE, GPIOF and GPIOG clocks */  
+ 463:./.startup/src/system_stm32f10x.c ****   RCC->APB2ENR = 0x000001E0;
+ 464:./.startup/src/system_stm32f10x.c ****   
+ 465:./.startup/src/system_stm32f10x.c **** /* ---------------  SRAM Data lines, NOE and NWE configuration ---------------*/
+ 466:./.startup/src/system_stm32f10x.c **** /*----------------  SRAM Address lines configuration -------------------------*/
+ 467:./.startup/src/system_stm32f10x.c **** /*----------------  NOE and NWE configuration --------------------------------*/  
+ 468:./.startup/src/system_stm32f10x.c **** /*----------------  NE3 configuration ----------------------------------------*/
+ 469:./.startup/src/system_stm32f10x.c **** /*----------------  NBL0, NBL1 configuration ---------------------------------*/
+ 470:./.startup/src/system_stm32f10x.c ****   
+ 471:./.startup/src/system_stm32f10x.c ****   GPIOD->CRL = 0x44BB44BB;  
+ 472:./.startup/src/system_stm32f10x.c ****   GPIOD->CRH = 0xBBBBBBBB;
+ 473:./.startup/src/system_stm32f10x.c **** 
+ 474:./.startup/src/system_stm32f10x.c ****   GPIOE->CRL = 0xB44444BB;  
+ 475:./.startup/src/system_stm32f10x.c ****   GPIOE->CRH = 0xBBBBBBBB;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 15
+
+
+ 476:./.startup/src/system_stm32f10x.c **** 
+ 477:./.startup/src/system_stm32f10x.c ****   GPIOF->CRL = 0x44BBBBBB;  
+ 478:./.startup/src/system_stm32f10x.c ****   GPIOF->CRH = 0xBBBB4444;
+ 479:./.startup/src/system_stm32f10x.c **** 
+ 480:./.startup/src/system_stm32f10x.c ****   GPIOG->CRL = 0x44BBBBBB;  
+ 481:./.startup/src/system_stm32f10x.c ****   GPIOG->CRH = 0x44444B44;
+ 482:./.startup/src/system_stm32f10x.c ****    
+ 483:./.startup/src/system_stm32f10x.c **** /*----------------  FSMC Configuration ---------------------------------------*/  
+ 484:./.startup/src/system_stm32f10x.c **** /*----------------  Enable FSMC Bank1_SRAM Bank ------------------------------*/
+ 485:./.startup/src/system_stm32f10x.c ****   
+ 486:./.startup/src/system_stm32f10x.c ****   FSMC_Bank1->BTCR[4] = 0x00001011;
+ 487:./.startup/src/system_stm32f10x.c ****   FSMC_Bank1->BTCR[5] = 0x00000200;
+ 488:./.startup/src/system_stm32f10x.c **** }
+ 489:./.startup/src/system_stm32f10x.c **** #endif /* DATA_IN_ExtSRAM */
+ 490:./.startup/src/system_stm32f10x.c **** 
+ 491:./.startup/src/system_stm32f10x.c **** #ifdef SYSCLK_FREQ_HSE
+ 492:./.startup/src/system_stm32f10x.c **** /**
+ 493:./.startup/src/system_stm32f10x.c ****   * @brief  Selects HSE as System clock source and configure HCLK, PCLK2
+ 494:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers.
+ 495:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 496:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 497:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 498:./.startup/src/system_stm32f10x.c ****   */
+ 499:./.startup/src/system_stm32f10x.c **** static void SetSysClockToHSE(void)
+ 500:./.startup/src/system_stm32f10x.c **** {
+ 501:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 502:./.startup/src/system_stm32f10x.c ****   
+ 503:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
+ 504:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 505:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 506:./.startup/src/system_stm32f10x.c ****  
+ 507:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 508:./.startup/src/system_stm32f10x.c ****   do
+ 509:./.startup/src/system_stm32f10x.c ****   {
+ 510:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 511:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 512:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 513:./.startup/src/system_stm32f10x.c **** 
+ 514:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 515:./.startup/src/system_stm32f10x.c ****   {
+ 516:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 517:./.startup/src/system_stm32f10x.c ****   }
+ 518:./.startup/src/system_stm32f10x.c ****   else
+ 519:./.startup/src/system_stm32f10x.c ****   {
+ 520:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ 521:./.startup/src/system_stm32f10x.c ****   }  
+ 522:./.startup/src/system_stm32f10x.c **** 
+ 523:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 524:./.startup/src/system_stm32f10x.c ****   {
+ 525:./.startup/src/system_stm32f10x.c **** 
+ 526:./.startup/src/system_stm32f10x.c **** #if !defined STM32F10X_LD_VL && !defined STM32F10X_MD_VL && !defined STM32F10X_HD_VL
+ 527:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+ 528:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 529:./.startup/src/system_stm32f10x.c **** 
+ 530:./.startup/src/system_stm32f10x.c ****     /* Flash 0 wait state */
+ 531:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 532:./.startup/src/system_stm32f10x.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 16
+
+
+ 533:./.startup/src/system_stm32f10x.c **** #ifndef STM32F10X_CL
+ 534:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_0;
+ 535:./.startup/src/system_stm32f10x.c **** #else
+ 536:./.startup/src/system_stm32f10x.c ****     if (HSE_VALUE <= 24000000)
+ 537:./.startup/src/system_stm32f10x.c **** 	{
+ 538:./.startup/src/system_stm32f10x.c ****       FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_0;
+ 539:./.startup/src/system_stm32f10x.c **** 	}
+ 540:./.startup/src/system_stm32f10x.c **** 	else
+ 541:./.startup/src/system_stm32f10x.c **** 	{
+ 542:./.startup/src/system_stm32f10x.c ****       FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_1;
+ 543:./.startup/src/system_stm32f10x.c **** 	}
+ 544:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 545:./.startup/src/system_stm32f10x.c **** #endif
+ 546:./.startup/src/system_stm32f10x.c ****  
+ 547:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+ 548:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 549:./.startup/src/system_stm32f10x.c ****       
+ 550:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+ 551:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 552:./.startup/src/system_stm32f10x.c ****     
+ 553:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+ 554:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV1;
+ 555:./.startup/src/system_stm32f10x.c ****     
+ 556:./.startup/src/system_stm32f10x.c ****     /* Select HSE as system clock source */
+ 557:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 558:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_HSE;    
+ 559:./.startup/src/system_stm32f10x.c **** 
+ 560:./.startup/src/system_stm32f10x.c ****     /* Wait till HSE is used as system clock source */
+ 561:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x04)
+ 562:./.startup/src/system_stm32f10x.c ****     {
+ 563:./.startup/src/system_stm32f10x.c ****     }
+ 564:./.startup/src/system_stm32f10x.c ****   }
+ 565:./.startup/src/system_stm32f10x.c ****   else
+ 566:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+ 567:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+ 568:./.startup/src/system_stm32f10x.c ****   }  
+ 569:./.startup/src/system_stm32f10x.c **** }
+ 570:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_24MHz
+ 571:./.startup/src/system_stm32f10x.c **** /**
+ 572:./.startup/src/system_stm32f10x.c ****   * @brief  Sets System clock frequency to 24MHz and configure HCLK, PCLK2 
+ 573:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers.
+ 574:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 575:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 576:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 577:./.startup/src/system_stm32f10x.c ****   */
+ 578:./.startup/src/system_stm32f10x.c **** static void SetSysClockTo24(void)
+ 579:./.startup/src/system_stm32f10x.c **** {
+ 580:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 581:./.startup/src/system_stm32f10x.c ****   
+ 582:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
+ 583:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 584:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 585:./.startup/src/system_stm32f10x.c ****  
+ 586:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 587:./.startup/src/system_stm32f10x.c ****   do
+ 588:./.startup/src/system_stm32f10x.c ****   {
+ 589:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 17
+
+
+ 590:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 591:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 592:./.startup/src/system_stm32f10x.c **** 
+ 593:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 594:./.startup/src/system_stm32f10x.c ****   {
+ 595:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 596:./.startup/src/system_stm32f10x.c ****   }
+ 597:./.startup/src/system_stm32f10x.c ****   else
+ 598:./.startup/src/system_stm32f10x.c ****   {
+ 599:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ 600:./.startup/src/system_stm32f10x.c ****   }  
+ 601:./.startup/src/system_stm32f10x.c **** 
+ 602:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 603:./.startup/src/system_stm32f10x.c ****   {
+ 604:./.startup/src/system_stm32f10x.c **** #if !defined STM32F10X_LD_VL && !defined STM32F10X_MD_VL && !defined STM32F10X_HD_VL 
+ 605:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+ 606:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 607:./.startup/src/system_stm32f10x.c **** 
+ 608:./.startup/src/system_stm32f10x.c ****     /* Flash 0 wait state */
+ 609:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 610:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_0;    
+ 611:./.startup/src/system_stm32f10x.c **** #endif
+ 612:./.startup/src/system_stm32f10x.c ****  
+ 613:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+ 614:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 615:./.startup/src/system_stm32f10x.c ****       
+ 616:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+ 617:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 618:./.startup/src/system_stm32f10x.c ****     
+ 619:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+ 620:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV1;
+ 621:./.startup/src/system_stm32f10x.c ****     
+ 622:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+ 623:./.startup/src/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
+ 624:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 6 = 24 MHz */ 
+ 625:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+ 626:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+ 627:./.startup/src/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL6); 
+ 628:./.startup/src/system_stm32f10x.c **** 
+ 629:./.startup/src/system_stm32f10x.c ****     /* PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+ 630:./.startup/src/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 10 = 4 MHz */       
+ 631:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+ 632:./.startup/src/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
+ 633:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
+ 634:./.startup/src/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV10);
+ 635:./.startup/src/system_stm32f10x.c ****   
+ 636:./.startup/src/system_stm32f10x.c ****     /* Enable PLL2 */
+ 637:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
+ 638:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
+ 639:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLL2RDY) == 0)
+ 640:./.startup/src/system_stm32f10x.c ****     {
+ 641:./.startup/src/system_stm32f10x.c ****     }   
+ 642:./.startup/src/system_stm32f10x.c **** #elif defined (STM32F10X_LD_VL) || defined (STM32F10X_MD_VL) || defined (STM32F10X_HD_VL)
+ 643:./.startup/src/system_stm32f10x.c ****     /*  PLL configuration:  = (HSE / 2) * 6 = 24 MHz */
+ 644:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 645:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_PREDIV1 | RCC_CFGR_PLLXTPRE_PREDIV1_Div2 | RCC_CFGR_PLL
+ 646:./.startup/src/system_stm32f10x.c **** #else    
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 18
+
+
+ 647:./.startup/src/system_stm32f10x.c ****     /*  PLL configuration:  = (HSE / 2) * 6 = 24 MHz */
+ 648:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 649:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL6);
+ 650:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 651:./.startup/src/system_stm32f10x.c **** 
+ 652:./.startup/src/system_stm32f10x.c ****     /* Enable PLL */
+ 653:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
+ 654:./.startup/src/system_stm32f10x.c **** 
+ 655:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is ready */
+ 656:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 657:./.startup/src/system_stm32f10x.c ****     {
+ 658:./.startup/src/system_stm32f10x.c ****     }
+ 659:./.startup/src/system_stm32f10x.c **** 
+ 660:./.startup/src/system_stm32f10x.c ****     /* Select PLL as system clock source */
+ 661:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 662:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 663:./.startup/src/system_stm32f10x.c **** 
+ 664:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
+ 665:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+ 666:./.startup/src/system_stm32f10x.c ****     {
+ 667:./.startup/src/system_stm32f10x.c ****     }
+ 668:./.startup/src/system_stm32f10x.c ****   }
+ 669:./.startup/src/system_stm32f10x.c ****   else
+ 670:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+ 671:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+ 672:./.startup/src/system_stm32f10x.c ****   } 
+ 673:./.startup/src/system_stm32f10x.c **** }
+ 674:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_36MHz
+ 675:./.startup/src/system_stm32f10x.c **** /**
+ 676:./.startup/src/system_stm32f10x.c ****   * @brief  Sets System clock frequency to 36MHz and configure HCLK, PCLK2 
+ 677:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers. 
+ 678:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 679:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 680:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 681:./.startup/src/system_stm32f10x.c ****   */
+ 682:./.startup/src/system_stm32f10x.c **** static void SetSysClockTo36(void)
+ 683:./.startup/src/system_stm32f10x.c **** {
+ 684:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 685:./.startup/src/system_stm32f10x.c ****   
+ 686:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
+ 687:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 688:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 689:./.startup/src/system_stm32f10x.c ****  
+ 690:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 691:./.startup/src/system_stm32f10x.c ****   do
+ 692:./.startup/src/system_stm32f10x.c ****   {
+ 693:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 694:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 695:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 696:./.startup/src/system_stm32f10x.c **** 
+ 697:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 698:./.startup/src/system_stm32f10x.c ****   {
+ 699:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 700:./.startup/src/system_stm32f10x.c ****   }
+ 701:./.startup/src/system_stm32f10x.c ****   else
+ 702:./.startup/src/system_stm32f10x.c ****   {
+ 703:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 19
+
+
+ 704:./.startup/src/system_stm32f10x.c ****   }  
+ 705:./.startup/src/system_stm32f10x.c **** 
+ 706:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 707:./.startup/src/system_stm32f10x.c ****   {
+ 708:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+ 709:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 710:./.startup/src/system_stm32f10x.c **** 
+ 711:./.startup/src/system_stm32f10x.c ****     /* Flash 1 wait state */
+ 712:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 713:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_1;    
+ 714:./.startup/src/system_stm32f10x.c ****  
+ 715:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+ 716:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 717:./.startup/src/system_stm32f10x.c ****       
+ 718:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+ 719:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 720:./.startup/src/system_stm32f10x.c ****     
+ 721:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+ 722:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV1;
+ 723:./.startup/src/system_stm32f10x.c ****     
+ 724:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+ 725:./.startup/src/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
+ 726:./.startup/src/system_stm32f10x.c ****     
+ 727:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 9 = 36 MHz */ 
+ 728:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+ 729:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+ 730:./.startup/src/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL9); 
+ 731:./.startup/src/system_stm32f10x.c **** 
+ 732:./.startup/src/system_stm32f10x.c **** 	/*!< PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+ 733:./.startup/src/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 10 = 4 MHz */
+ 734:./.startup/src/system_stm32f10x.c ****         
+ 735:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+ 736:./.startup/src/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
+ 737:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
+ 738:./.startup/src/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV10);
+ 739:./.startup/src/system_stm32f10x.c ****   
+ 740:./.startup/src/system_stm32f10x.c ****     /* Enable PLL2 */
+ 741:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
+ 742:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
+ 743:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLL2RDY) == 0)
+ 744:./.startup/src/system_stm32f10x.c ****     {
+ 745:./.startup/src/system_stm32f10x.c ****     }
+ 746:./.startup/src/system_stm32f10x.c ****     
+ 747:./.startup/src/system_stm32f10x.c **** #else    
+ 748:./.startup/src/system_stm32f10x.c ****     /*  PLL configuration: PLLCLK = (HSE / 2) * 9 = 36 MHz */
+ 749:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 750:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLXTPRE_HSE_Div2 | RCC_CFGR_PLLMULL9);
+ 751:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 752:./.startup/src/system_stm32f10x.c **** 
+ 753:./.startup/src/system_stm32f10x.c ****     /* Enable PLL */
+ 754:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
+ 755:./.startup/src/system_stm32f10x.c **** 
+ 756:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is ready */
+ 757:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 758:./.startup/src/system_stm32f10x.c ****     {
+ 759:./.startup/src/system_stm32f10x.c ****     }
+ 760:./.startup/src/system_stm32f10x.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 20
+
+
+ 761:./.startup/src/system_stm32f10x.c ****     /* Select PLL as system clock source */
+ 762:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 763:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 764:./.startup/src/system_stm32f10x.c **** 
+ 765:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
+ 766:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+ 767:./.startup/src/system_stm32f10x.c ****     {
+ 768:./.startup/src/system_stm32f10x.c ****     }
+ 769:./.startup/src/system_stm32f10x.c ****   }
+ 770:./.startup/src/system_stm32f10x.c ****   else
+ 771:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+ 772:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+ 773:./.startup/src/system_stm32f10x.c ****   } 
+ 774:./.startup/src/system_stm32f10x.c **** }
+ 775:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_48MHz
+ 776:./.startup/src/system_stm32f10x.c **** /**
+ 777:./.startup/src/system_stm32f10x.c ****   * @brief  Sets System clock frequency to 48MHz and configure HCLK, PCLK2 
+ 778:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers. 
+ 779:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 780:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 781:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 782:./.startup/src/system_stm32f10x.c ****   */
+ 783:./.startup/src/system_stm32f10x.c **** static void SetSysClockTo48(void)
+ 784:./.startup/src/system_stm32f10x.c **** {
+ 785:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 786:./.startup/src/system_stm32f10x.c ****   
+ 787:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
+ 788:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 789:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 790:./.startup/src/system_stm32f10x.c ****  
+ 791:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 792:./.startup/src/system_stm32f10x.c ****   do
+ 793:./.startup/src/system_stm32f10x.c ****   {
+ 794:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 795:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 796:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 797:./.startup/src/system_stm32f10x.c **** 
+ 798:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 799:./.startup/src/system_stm32f10x.c ****   {
+ 800:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 801:./.startup/src/system_stm32f10x.c ****   }
+ 802:./.startup/src/system_stm32f10x.c ****   else
+ 803:./.startup/src/system_stm32f10x.c ****   {
+ 804:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ 805:./.startup/src/system_stm32f10x.c ****   }  
+ 806:./.startup/src/system_stm32f10x.c **** 
+ 807:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 808:./.startup/src/system_stm32f10x.c ****   {
+ 809:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+ 810:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 811:./.startup/src/system_stm32f10x.c **** 
+ 812:./.startup/src/system_stm32f10x.c ****     /* Flash 1 wait state */
+ 813:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 814:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_1;    
+ 815:./.startup/src/system_stm32f10x.c ****  
+ 816:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+ 817:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 21
+
+
+ 818:./.startup/src/system_stm32f10x.c ****       
+ 819:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+ 820:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 821:./.startup/src/system_stm32f10x.c ****     
+ 822:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+ 823:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
+ 824:./.startup/src/system_stm32f10x.c ****     
+ 825:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+ 826:./.startup/src/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
+ 827:./.startup/src/system_stm32f10x.c ****     /* PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+ 828:./.startup/src/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 5 = 8 MHz */
+ 829:./.startup/src/system_stm32f10x.c ****         
+ 830:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+ 831:./.startup/src/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
+ 832:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
+ 833:./.startup/src/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV5);
+ 834:./.startup/src/system_stm32f10x.c ****   
+ 835:./.startup/src/system_stm32f10x.c ****     /* Enable PLL2 */
+ 836:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
+ 837:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
+ 838:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLL2RDY) == 0)
+ 839:./.startup/src/system_stm32f10x.c ****     {
+ 840:./.startup/src/system_stm32f10x.c ****     }
+ 841:./.startup/src/system_stm32f10x.c ****     
+ 842:./.startup/src/system_stm32f10x.c ****    
+ 843:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 6 = 48 MHz */ 
+ 844:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+ 845:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+ 846:./.startup/src/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL6); 
+ 847:./.startup/src/system_stm32f10x.c **** #else    
+ 848:./.startup/src/system_stm32f10x.c ****     /*  PLL configuration: PLLCLK = HSE * 6 = 48 MHz */
+ 849:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 850:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL6);
+ 851:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 852:./.startup/src/system_stm32f10x.c **** 
+ 853:./.startup/src/system_stm32f10x.c ****     /* Enable PLL */
+ 854:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
+ 855:./.startup/src/system_stm32f10x.c **** 
+ 856:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is ready */
+ 857:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 858:./.startup/src/system_stm32f10x.c ****     {
+ 859:./.startup/src/system_stm32f10x.c ****     }
+ 860:./.startup/src/system_stm32f10x.c **** 
+ 861:./.startup/src/system_stm32f10x.c ****     /* Select PLL as system clock source */
+ 862:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 863:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 864:./.startup/src/system_stm32f10x.c **** 
+ 865:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
+ 866:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+ 867:./.startup/src/system_stm32f10x.c ****     {
+ 868:./.startup/src/system_stm32f10x.c ****     }
+ 869:./.startup/src/system_stm32f10x.c ****   }
+ 870:./.startup/src/system_stm32f10x.c ****   else
+ 871:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+ 872:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+ 873:./.startup/src/system_stm32f10x.c ****   } 
+ 874:./.startup/src/system_stm32f10x.c **** }
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 22
+
+
+ 875:./.startup/src/system_stm32f10x.c **** 
+ 876:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_56MHz
+ 877:./.startup/src/system_stm32f10x.c **** /**
+ 878:./.startup/src/system_stm32f10x.c ****   * @brief  Sets System clock frequency to 56MHz and configure HCLK, PCLK2 
+ 879:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers. 
+ 880:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 881:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 882:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 883:./.startup/src/system_stm32f10x.c ****   */
+ 884:./.startup/src/system_stm32f10x.c **** static void SetSysClockTo56(void)
+ 885:./.startup/src/system_stm32f10x.c **** {
+ 886:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 887:./.startup/src/system_stm32f10x.c ****   
+ 888:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/   
+ 889:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 890:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 891:./.startup/src/system_stm32f10x.c ****  
+ 892:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 893:./.startup/src/system_stm32f10x.c ****   do
+ 894:./.startup/src/system_stm32f10x.c ****   {
+ 895:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 896:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 897:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 898:./.startup/src/system_stm32f10x.c **** 
+ 899:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 900:./.startup/src/system_stm32f10x.c ****   {
+ 901:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 902:./.startup/src/system_stm32f10x.c ****   }
+ 903:./.startup/src/system_stm32f10x.c ****   else
+ 904:./.startup/src/system_stm32f10x.c ****   {
+ 905:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ 906:./.startup/src/system_stm32f10x.c ****   }  
+ 907:./.startup/src/system_stm32f10x.c **** 
+ 908:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 909:./.startup/src/system_stm32f10x.c ****   {
+ 910:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+ 911:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 912:./.startup/src/system_stm32f10x.c **** 
+ 913:./.startup/src/system_stm32f10x.c ****     /* Flash 2 wait state */
+ 914:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 915:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_2;    
+ 916:./.startup/src/system_stm32f10x.c ****  
+ 917:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+ 918:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 919:./.startup/src/system_stm32f10x.c ****       
+ 920:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+ 921:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 922:./.startup/src/system_stm32f10x.c ****     
+ 923:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+ 924:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
+ 925:./.startup/src/system_stm32f10x.c **** 
+ 926:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+ 927:./.startup/src/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
+ 928:./.startup/src/system_stm32f10x.c ****     /* PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+ 929:./.startup/src/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 5 = 8 MHz */
+ 930:./.startup/src/system_stm32f10x.c ****         
+ 931:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 23
+
+
+ 932:./.startup/src/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
+ 933:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
+ 934:./.startup/src/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV5);
+ 935:./.startup/src/system_stm32f10x.c ****   
+ 936:./.startup/src/system_stm32f10x.c ****     /* Enable PLL2 */
+ 937:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
+ 938:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
+ 939:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLL2RDY) == 0)
+ 940:./.startup/src/system_stm32f10x.c ****     {
+ 941:./.startup/src/system_stm32f10x.c ****     }
+ 942:./.startup/src/system_stm32f10x.c ****     
+ 943:./.startup/src/system_stm32f10x.c ****    
+ 944:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 7 = 56 MHz */ 
+ 945:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+ 946:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+ 947:./.startup/src/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL7); 
+ 948:./.startup/src/system_stm32f10x.c **** #else     
+ 949:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = HSE * 7 = 56 MHz */
+ 950:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL));
+ 951:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL7);
+ 952:./.startup/src/system_stm32f10x.c **** 
+ 953:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+ 954:./.startup/src/system_stm32f10x.c **** 
+ 955:./.startup/src/system_stm32f10x.c ****     /* Enable PLL */
+ 956:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
+ 957:./.startup/src/system_stm32f10x.c **** 
+ 958:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is ready */
+ 959:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 960:./.startup/src/system_stm32f10x.c ****     {
+ 961:./.startup/src/system_stm32f10x.c ****     }
+ 962:./.startup/src/system_stm32f10x.c **** 
+ 963:./.startup/src/system_stm32f10x.c ****     /* Select PLL as system clock source */
+ 964:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 965:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 966:./.startup/src/system_stm32f10x.c **** 
+ 967:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
+ 968:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+ 969:./.startup/src/system_stm32f10x.c ****     {
+ 970:./.startup/src/system_stm32f10x.c ****     }
+ 971:./.startup/src/system_stm32f10x.c ****   }
+ 972:./.startup/src/system_stm32f10x.c ****   else
+ 973:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+ 974:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+ 975:./.startup/src/system_stm32f10x.c ****   } 
+ 976:./.startup/src/system_stm32f10x.c **** }
+ 977:./.startup/src/system_stm32f10x.c **** 
+ 978:./.startup/src/system_stm32f10x.c **** #elif defined SYSCLK_FREQ_72MHz
+ 979:./.startup/src/system_stm32f10x.c **** /**
+ 980:./.startup/src/system_stm32f10x.c ****   * @brief  Sets System clock frequency to 72MHz and configure HCLK, PCLK2 
+ 981:./.startup/src/system_stm32f10x.c ****   *         and PCLK1 prescalers. 
+ 982:./.startup/src/system_stm32f10x.c ****   * @note   This function should be used only after reset.
+ 983:./.startup/src/system_stm32f10x.c ****   * @param  None
+ 984:./.startup/src/system_stm32f10x.c ****   * @retval None
+ 985:./.startup/src/system_stm32f10x.c ****   */
+ 986:./.startup/src/system_stm32f10x.c **** static void SetSysClockTo72(void)
+ 987:./.startup/src/system_stm32f10x.c **** {
+ 325              		.loc 1 987 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 24
+
+
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 8
+ 328              		@ frame_needed = 1, uses_anonymous_args = 0
+ 329              		@ link register save eliminated.
+ 330 0000 80B4     		push	{r7}
+ 331              	.LCFI10:
+ 332              		.cfi_def_cfa_offset 4
+ 333              		.cfi_offset 7, -4
+ 334 0002 83B0     		sub	sp, sp, #12
+ 335              	.LCFI11:
+ 336              		.cfi_def_cfa_offset 16
+ 337 0004 00AF     		add	r7, sp, #0
+ 338              	.LCFI12:
+ 339              		.cfi_def_cfa_register 7
+ 988:./.startup/src/system_stm32f10x.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 340              		.loc 1 988 17
+ 341 0006 0023     		movs	r3, #0
+ 342 0008 7B60     		str	r3, [r7, #4]
+ 343              		.loc 1 988 37
+ 344 000a 0023     		movs	r3, #0
+ 345 000c 3B60     		str	r3, [r7]
+ 989:./.startup/src/system_stm32f10x.c ****   
+ 990:./.startup/src/system_stm32f10x.c ****   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
+ 991:./.startup/src/system_stm32f10x.c ****   /* Enable HSE */    
+ 992:./.startup/src/system_stm32f10x.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 346              		.loc 1 992 11
+ 347 000e 3A4B     		ldr	r3, .L25
+ 348 0010 1B68     		ldr	r3, [r3]
+ 349 0012 394A     		ldr	r2, .L25
+ 350 0014 43F48033 		orr	r3, r3, #65536
+ 351 0018 1360     		str	r3, [r2]
+ 352              	.L18:
+ 993:./.startup/src/system_stm32f10x.c ****  
+ 994:./.startup/src/system_stm32f10x.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 995:./.startup/src/system_stm32f10x.c ****   do
+ 996:./.startup/src/system_stm32f10x.c ****   {
+ 997:./.startup/src/system_stm32f10x.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 353              		.loc 1 997 20 discriminator 2
+ 354 001a 374B     		ldr	r3, .L25
+ 355 001c 1B68     		ldr	r3, [r3]
+ 356              		.loc 1 997 25 discriminator 2
+ 357 001e 03F40033 		and	r3, r3, #131072
+ 358              		.loc 1 997 15 discriminator 2
+ 359 0022 3B60     		str	r3, [r7]
+ 998:./.startup/src/system_stm32f10x.c ****     StartUpCounter++;  
+ 360              		.loc 1 998 19 discriminator 2
+ 361 0024 7B68     		ldr	r3, [r7, #4]
+ 362 0026 0133     		adds	r3, r3, #1
+ 363 0028 7B60     		str	r3, [r7, #4]
+ 999:./.startup/src/system_stm32f10x.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 364              		.loc 1 999 22 discriminator 2
+ 365 002a 3B68     		ldr	r3, [r7]
+ 366              		.loc 1 999 3 discriminator 2
+ 367 002c 002B     		cmp	r3, #0
+ 368 002e 03D1     		bne	.L17
+ 369              		.loc 1 999 47 discriminator 1
+ 370 0030 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 25
+
+
+ 371              		.loc 1 999 28 discriminator 1
+ 372 0032 B3F5A06F 		cmp	r3, #1280
+ 373 0036 F0D1     		bne	.L18
+ 374              	.L17:
+1000:./.startup/src/system_stm32f10x.c **** 
+1001:./.startup/src/system_stm32f10x.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ 375              		.loc 1 1001 11
+ 376 0038 2F4B     		ldr	r3, .L25
+ 377 003a 1B68     		ldr	r3, [r3]
+ 378              		.loc 1 1001 16
+ 379 003c 03F40033 		and	r3, r3, #131072
+ 380              		.loc 1 1001 6
+ 381 0040 002B     		cmp	r3, #0
+ 382 0042 02D0     		beq	.L19
+1002:./.startup/src/system_stm32f10x.c ****   {
+1003:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x01;
+ 383              		.loc 1 1003 15
+ 384 0044 0123     		movs	r3, #1
+ 385 0046 3B60     		str	r3, [r7]
+ 386 0048 01E0     		b	.L20
+ 387              	.L19:
+1004:./.startup/src/system_stm32f10x.c ****   }
+1005:./.startup/src/system_stm32f10x.c ****   else
+1006:./.startup/src/system_stm32f10x.c ****   {
+1007:./.startup/src/system_stm32f10x.c ****     HSEStatus = (uint32_t)0x00;
+ 388              		.loc 1 1007 15
+ 389 004a 0023     		movs	r3, #0
+ 390 004c 3B60     		str	r3, [r7]
+ 391              	.L20:
+1008:./.startup/src/system_stm32f10x.c ****   }  
+1009:./.startup/src/system_stm32f10x.c **** 
+1010:./.startup/src/system_stm32f10x.c ****   if (HSEStatus == (uint32_t)0x01)
+ 392              		.loc 1 1010 17
+ 393 004e 3B68     		ldr	r3, [r7]
+ 394              		.loc 1 1010 6
+ 395 0050 012B     		cmp	r3, #1
+ 396 0052 4BD1     		bne	.L24
+1011:./.startup/src/system_stm32f10x.c ****   {
+1012:./.startup/src/system_stm32f10x.c ****     /* Enable Prefetch Buffer */
+1013:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= FLASH_ACR_PRFTBE;
+ 397              		.loc 1 1013 16
+ 398 0054 294B     		ldr	r3, .L25+4
+ 399 0056 1B68     		ldr	r3, [r3]
+ 400 0058 284A     		ldr	r2, .L25+4
+ 401 005a 43F01003 		orr	r3, r3, #16
+ 402 005e 1360     		str	r3, [r2]
+1014:./.startup/src/system_stm32f10x.c **** 
+1015:./.startup/src/system_stm32f10x.c ****     /* Flash 2 wait state */
+1016:./.startup/src/system_stm32f10x.c ****     FLASH->ACR &= (uint32_t)((uint32_t)~FLASH_ACR_LATENCY);
+ 403              		.loc 1 1016 16
+ 404 0060 264B     		ldr	r3, .L25+4
+ 405 0062 1B68     		ldr	r3, [r3]
+ 406 0064 254A     		ldr	r2, .L25+4
+ 407 0066 23F00703 		bic	r3, r3, #7
+ 408 006a 1360     		str	r3, [r2]
+1017:./.startup/src/system_stm32f10x.c ****     FLASH->ACR |= (uint32_t)FLASH_ACR_LATENCY_2;    
+ 409              		.loc 1 1017 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 26
+
+
+ 410 006c 234B     		ldr	r3, .L25+4
+ 411 006e 1B68     		ldr	r3, [r3]
+ 412 0070 224A     		ldr	r2, .L25+4
+ 413 0072 43F00203 		orr	r3, r3, #2
+ 414 0076 1360     		str	r3, [r2]
+1018:./.startup/src/system_stm32f10x.c **** 
+1019:./.startup/src/system_stm32f10x.c ****  
+1020:./.startup/src/system_stm32f10x.c ****     /* HCLK = SYSCLK */
+1021:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+ 415              		.loc 1 1021 15
+ 416 0078 1F4B     		ldr	r3, .L25
+ 417 007a 1F4A     		ldr	r2, .L25
+ 418 007c 5B68     		ldr	r3, [r3, #4]
+ 419 007e 5360     		str	r3, [r2, #4]
+1022:./.startup/src/system_stm32f10x.c ****       
+1023:./.startup/src/system_stm32f10x.c ****     /* PCLK2 = HCLK */
+1024:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+ 420              		.loc 1 1024 15
+ 421 0080 1D4B     		ldr	r3, .L25
+ 422 0082 1D4A     		ldr	r2, .L25
+ 423 0084 5B68     		ldr	r3, [r3, #4]
+ 424 0086 5360     		str	r3, [r2, #4]
+1025:./.startup/src/system_stm32f10x.c ****     
+1026:./.startup/src/system_stm32f10x.c ****     /* PCLK1 = HCLK */
+1027:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
+ 425              		.loc 1 1027 15
+ 426 0088 1B4B     		ldr	r3, .L25
+ 427 008a 5B68     		ldr	r3, [r3, #4]
+ 428 008c 1A4A     		ldr	r2, .L25
+ 429 008e 43F48063 		orr	r3, r3, #1024
+ 430 0092 5360     		str	r3, [r2, #4]
+1028:./.startup/src/system_stm32f10x.c **** 
+1029:./.startup/src/system_stm32f10x.c **** #ifdef STM32F10X_CL
+1030:./.startup/src/system_stm32f10x.c ****     /* Configure PLLs ------------------------------------------------------*/
+1031:./.startup/src/system_stm32f10x.c ****     /* PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
+1032:./.startup/src/system_stm32f10x.c ****     /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 5 = 8 MHz */
+1033:./.startup/src/system_stm32f10x.c ****         
+1034:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
+1035:./.startup/src/system_stm32f10x.c ****                               RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
+1036:./.startup/src/system_stm32f10x.c ****     RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | RCC_CFGR2_PLL2MUL8 |
+1037:./.startup/src/system_stm32f10x.c ****                              RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV5);
+1038:./.startup/src/system_stm32f10x.c ****   
+1039:./.startup/src/system_stm32f10x.c ****     /* Enable PLL2 */
+1040:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLL2ON;
+1041:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL2 is ready */
+1042:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLL2RDY) == 0)
+1043:./.startup/src/system_stm32f10x.c ****     {
+1044:./.startup/src/system_stm32f10x.c ****     }
+1045:./.startup/src/system_stm32f10x.c ****     
+1046:./.startup/src/system_stm32f10x.c ****    
+1047:./.startup/src/system_stm32f10x.c ****     /* PLL configuration: PLLCLK = PREDIV1 * 9 = 72 MHz */ 
+1048:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
+1049:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 | 
+1050:./.startup/src/system_stm32f10x.c ****                             RCC_CFGR_PLLMULL9); 
+1051:./.startup/src/system_stm32f10x.c **** #else    
+1052:./.startup/src/system_stm32f10x.c ****     /*  PLL configuration: PLLCLK = HSE * 9 = 72 MHz */
+1053:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE |
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 27
+
+
+ 431              		.loc 1 1053 15
+ 432 0094 184B     		ldr	r3, .L25
+ 433 0096 5B68     		ldr	r3, [r3, #4]
+ 434 0098 174A     		ldr	r2, .L25
+ 435 009a 23F47C13 		bic	r3, r3, #4128768
+ 436 009e 5360     		str	r3, [r2, #4]
+1054:./.startup/src/system_stm32f10x.c ****                                         RCC_CFGR_PLLMULL));
+1055:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9);
+ 437              		.loc 1 1055 15
+ 438 00a0 154B     		ldr	r3, .L25
+ 439 00a2 5B68     		ldr	r3, [r3, #4]
+ 440 00a4 144A     		ldr	r2, .L25
+ 441 00a6 43F4E813 		orr	r3, r3, #1900544
+ 442 00aa 5360     		str	r3, [r2, #4]
+1056:./.startup/src/system_stm32f10x.c **** #endif /* STM32F10X_CL */
+1057:./.startup/src/system_stm32f10x.c **** 
+1058:./.startup/src/system_stm32f10x.c ****     /* Enable PLL */
+1059:./.startup/src/system_stm32f10x.c ****     RCC->CR |= RCC_CR_PLLON;
+ 443              		.loc 1 1059 13
+ 444 00ac 124B     		ldr	r3, .L25
+ 445 00ae 1B68     		ldr	r3, [r3]
+ 446 00b0 114A     		ldr	r2, .L25
+ 447 00b2 43F08073 		orr	r3, r3, #16777216
+ 448 00b6 1360     		str	r3, [r2]
+1060:./.startup/src/system_stm32f10x.c **** 
+1061:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is ready */
+1062:./.startup/src/system_stm32f10x.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 449              		.loc 1 1062 10
+ 450 00b8 00BF     		nop
+ 451              	.L22:
+ 452              		.loc 1 1062 15 discriminator 1
+ 453 00ba 0F4B     		ldr	r3, .L25
+ 454 00bc 1B68     		ldr	r3, [r3]
+ 455              		.loc 1 1062 20 discriminator 1
+ 456 00be 03F00073 		and	r3, r3, #33554432
+ 457              		.loc 1 1062 10 discriminator 1
+ 458 00c2 002B     		cmp	r3, #0
+ 459 00c4 F9D0     		beq	.L22
+1063:./.startup/src/system_stm32f10x.c ****     {
+1064:./.startup/src/system_stm32f10x.c ****     }
+1065:./.startup/src/system_stm32f10x.c ****     
+1066:./.startup/src/system_stm32f10x.c ****     /* Select PLL as system clock source */
+1067:./.startup/src/system_stm32f10x.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 460              		.loc 1 1067 15
+ 461 00c6 0C4B     		ldr	r3, .L25
+ 462 00c8 5B68     		ldr	r3, [r3, #4]
+ 463 00ca 0B4A     		ldr	r2, .L25
+ 464 00cc 23F00303 		bic	r3, r3, #3
+ 465 00d0 5360     		str	r3, [r2, #4]
+1068:./.startup/src/system_stm32f10x.c ****     RCC->CFGR |= (uint32_t)RCC_CFGR_SW_PLL;    
+ 466              		.loc 1 1068 15
+ 467 00d2 094B     		ldr	r3, .L25
+ 468 00d4 5B68     		ldr	r3, [r3, #4]
+ 469 00d6 084A     		ldr	r2, .L25
+ 470 00d8 43F00203 		orr	r3, r3, #2
+ 471 00dc 5360     		str	r3, [r2, #4]
+1069:./.startup/src/system_stm32f10x.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 28
+
+
+1070:./.startup/src/system_stm32f10x.c ****     /* Wait till PLL is used as system clock source */
+1071:./.startup/src/system_stm32f10x.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != (uint32_t)0x08)
+ 472              		.loc 1 1071 11
+ 473 00de 00BF     		nop
+ 474              	.L23:
+ 475              		.loc 1 1071 16 discriminator 1
+ 476 00e0 054B     		ldr	r3, .L25
+ 477 00e2 5B68     		ldr	r3, [r3, #4]
+ 478              		.loc 1 1071 23 discriminator 1
+ 479 00e4 03F00C03 		and	r3, r3, #12
+ 480              		.loc 1 1071 11 discriminator 1
+ 481 00e8 082B     		cmp	r3, #8
+ 482 00ea F9D1     		bne	.L23
+ 483              	.L24:
+1072:./.startup/src/system_stm32f10x.c ****     {
+1073:./.startup/src/system_stm32f10x.c ****     }
+1074:./.startup/src/system_stm32f10x.c ****   }
+1075:./.startup/src/system_stm32f10x.c ****   else
+1076:./.startup/src/system_stm32f10x.c ****   { /* If HSE fails to start-up, the application will have wrong clock 
+1077:./.startup/src/system_stm32f10x.c ****          configuration. User can add here some code to deal with this error */
+1078:./.startup/src/system_stm32f10x.c ****   }
+1079:./.startup/src/system_stm32f10x.c **** }
+ 484              		.loc 1 1079 1
+ 485 00ec 00BF     		nop
+ 486 00ee 0C37     		adds	r7, r7, #12
+ 487              	.LCFI13:
+ 488              		.cfi_def_cfa_offset 4
+ 489 00f0 BD46     		mov	sp, r7
+ 490              	.LCFI14:
+ 491              		.cfi_def_cfa_register 13
+ 492              		@ sp needed
+ 493 00f2 80BC     		pop	{r7}
+ 494              	.LCFI15:
+ 495              		.cfi_restore 7
+ 496              		.cfi_def_cfa_offset 0
+ 497 00f4 7047     		bx	lr
+ 498              	.L26:
+ 499 00f6 00BF     		.align	2
+ 500              	.L25:
+ 501 00f8 00100240 		.word	1073876992
+ 502 00fc 00200240 		.word	1073881088
+ 503              		.cfi_endproc
+ 504              	.LFE32:
+ 506              		.text
+ 507              	.Letext0:
+ 508              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 509              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 510              		.file 4 "./.driver/CMSIS/Core/core_cm3.h"
+ 511              		.file 5 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 512              		.file 6 "./.driver/CMSIS/Device/STM32F10x/system_stm32f10x.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f10x.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:22     .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:19     .data.SystemCoreClock:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:29     .data.AHBPrescTable:00000000 AHBPrescTable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:26     .data.AHBPrescTable:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:33     .text.SystemInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:39     .text.SystemInit:00000000 SystemInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:295    .text.SetSysClock:00000000 SetSysClock
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:104    .text.SystemInit:0000005c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:111    .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:117    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:281    .text.SystemCoreClockUpdate:000000d0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:290    .text.SetSysClock:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:323    .text.SetSysClockTo72:00000000 SetSysClockTo72
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:318    .text.SetSysClockTo72:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccPFBkIu.s:501    .text.SetSysClockTo72:000000f8 $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+
+NO UNDEFINED SYMBOLS

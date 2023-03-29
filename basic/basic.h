@@ -38,19 +38,21 @@
 // Macros
 //
 //********************************************************************************************
-#define cbit(reg,b)	                        reg&=~((uint32_t)1<<b)
-#define sbit(reg,b)	                        reg|=((uint32_t)1<<b)
-#define tbit(reg,b)	                        reg^=((uint32_t)1<<b)
+#define cbit(reg,b)	                reg&=~(1<<b)
+#define sbit(reg,b)	                reg|= (1<<b)
+#define tbit(reg,b)	                reg^= (1<<b)
 
-#define bit_is_set(data,b)	                ((data)&((uint32_t)1<<b))
-#define bit_is_clear(data,b)                !((data)&((uint32_t)1<<b))
 
-#define c_bits(reg,bits)	                reg&=~((uint32_t)bits)
-#define s_bits(reg,bits)	                reg|= ((uint32_t)bits)
-#define t_bits(reg,bits)	                reg^= ((uint32_t)bits)
+#define bit_is_set(data,b)	        ((data)&(1<<b))
+#define bit_is_clear(data,b)        !((data)&(1<<b))
 
-#define check_bits_is_set(data,bits)        ((data)&((uint32_t)bits)
-#define check_bits_is_clear(data,bits)      !((data)&((uint32_t)bits)
+
+#define cbits(reg,bits)	                reg&=~bits
+#define sbits(reg,bits)	                reg|= bits
+#define tbits(reg,bits)	                reg^= bits
+
+#define bits_is_set(data,bits)        (data & bits)
+#define bits_is_clear(data,bits)     !(data & bits)
 
 //********************************************************************************************
 //
@@ -82,4 +84,6 @@
 
 
 
-#endif /* BASIC_BASIC_H_ */
+
+
+#endif /* _BASIC_H_ */

@@ -1,0 +1,629 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	NMI_Handler:
+  25              	.LFB33:
+  26              		.file 1 "./.startup/src/stm32f10x_it.c"
+   1:./.startup/src/stm32f10x_it.c **** /**
+   2:./.startup/src/stm32f10x_it.c ****   ******************************************************************************
+   3:./.startup/src/stm32f10x_it.c ****   * @file    Project/STM32F10x_StdPeriph_Template/stm32f10x_it.c 
+   4:./.startup/src/stm32f10x_it.c ****   * @author  MCD Application Team
+   5:./.startup/src/stm32f10x_it.c ****   * @version V3.6.0
+   6:./.startup/src/stm32f10x_it.c ****   * @date    20-September-2021
+   7:./.startup/src/stm32f10x_it.c ****   * @brief   Main Interrupt Service Routines.
+   8:./.startup/src/stm32f10x_it.c ****   *          This file provides template for all exceptions handler and 
+   9:./.startup/src/stm32f10x_it.c ****   *          peripherals interrupt service routine.
+  10:./.startup/src/stm32f10x_it.c ****   ******************************************************************************
+  11:./.startup/src/stm32f10x_it.c ****   * @attention
+  12:./.startup/src/stm32f10x_it.c ****   *
+  13:./.startup/src/stm32f10x_it.c ****   * Copyright (c) 2011 STMicroelectronics.
+  14:./.startup/src/stm32f10x_it.c ****   * All rights reserved.
+  15:./.startup/src/stm32f10x_it.c ****   *
+  16:./.startup/src/stm32f10x_it.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  17:./.startup/src/stm32f10x_it.c ****   * in the root directory of this software component.
+  18:./.startup/src/stm32f10x_it.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  19:./.startup/src/stm32f10x_it.c ****   *
+  20:./.startup/src/stm32f10x_it.c ****   ******************************************************************************
+  21:./.startup/src/stm32f10x_it.c ****   */
+  22:./.startup/src/stm32f10x_it.c **** 
+  23:./.startup/src/stm32f10x_it.c **** /* Includes ------------------------------------------------------------------*/
+  24:./.startup/src/stm32f10x_it.c **** #include "stm32f10x_it.h"
+  25:./.startup/src/stm32f10x_it.c **** #include "init.h"
+  26:./.startup/src/stm32f10x_it.c **** /** @addtogroup STM32F10x_StdPeriph_Template
+  27:./.startup/src/stm32f10x_it.c ****   * @{
+  28:./.startup/src/stm32f10x_it.c ****   */
+  29:./.startup/src/stm32f10x_it.c **** 
+  30:./.startup/src/stm32f10x_it.c **** /* Private typedef -----------------------------------------------------------*/
+  31:./.startup/src/stm32f10x_it.c **** /* Private define ------------------------------------------------------------*/
+  32:./.startup/src/stm32f10x_it.c **** /* Private macro -------------------------------------------------------------*/
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 2
+
+
+  33:./.startup/src/stm32f10x_it.c **** /* Private variables ---------------------------------------------------------*/
+  34:./.startup/src/stm32f10x_it.c **** /* Private function prototypes----------------------------------------------*/
+  35:./.startup/src/stm32f10x_it.c **** /* Private functions -------------------- --------------------------------------*/
+  36:./.startup/src/stm32f10x_it.c **** 
+  37:./.startup/src/stm32f10x_it.c **** //********************************************************************************************
+  38:./.startup/src/stm32f10x_it.c **** //
+  39:./.startup/src/stm32f10x_it.c **** // extern Global variables 
+  40:./.startup/src/stm32f10x_it.c **** //
+  41:./.startup/src/stm32f10x_it.c **** //********************************************************************************************
+  42:./.startup/src/stm32f10x_it.c **** 
+  43:./.startup/src/stm32f10x_it.c **** /******************************************************************************/
+  44:./.startup/src/stm32f10x_it.c **** /*            Cortex-M3 Processor Exceptions Handlers                         */
+  45:./.startup/src/stm32f10x_it.c **** /******************************************************************************/
+  46:./.startup/src/stm32f10x_it.c **** 
+  47:./.startup/src/stm32f10x_it.c **** /**
+  48:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles NMI exception.
+  49:./.startup/src/stm32f10x_it.c ****   * @param  None
+  50:./.startup/src/stm32f10x_it.c ****   * @retval None
+  51:./.startup/src/stm32f10x_it.c ****   */
+  52:./.startup/src/stm32f10x_it.c **** void NMI_Handler(void)
+  53:./.startup/src/stm32f10x_it.c **** {
+  27              		.loc 1 53 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_register 7
+  54:./.startup/src/stm32f10x_it.c **** }
+  39              		.loc 1 54 1
+  40 0004 00BF     		nop
+  41 0006 BD46     		mov	sp, r7
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 13
+  44              		@ sp needed
+  45 0008 80BC     		pop	{r7}
+  46              	.LCFI3:
+  47              		.cfi_restore 7
+  48              		.cfi_def_cfa_offset 0
+  49 000a 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE33:
+  53              		.section	.text.HardFault_Handler,"ax",%progbits
+  54              		.align	1
+  55              		.global	HardFault_Handler
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	HardFault_Handler:
+  61              	.LFB34:
+  55:./.startup/src/stm32f10x_it.c **** 
+  56:./.startup/src/stm32f10x_it.c **** /**
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 3
+
+
+  57:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Hard Fault exception.
+  58:./.startup/src/stm32f10x_it.c ****   * @param  None
+  59:./.startup/src/stm32f10x_it.c ****   * @retval None
+  60:./.startup/src/stm32f10x_it.c ****   */
+  61:./.startup/src/stm32f10x_it.c **** void HardFault_Handler(void)
+  62:./.startup/src/stm32f10x_it.c **** {
+  62              		.loc 1 62 1
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 1, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67 0000 80B4     		push	{r7}
+  68              	.LCFI4:
+  69              		.cfi_def_cfa_offset 4
+  70              		.cfi_offset 7, -4
+  71 0002 00AF     		add	r7, sp, #0
+  72              	.LCFI5:
+  73              		.cfi_def_cfa_register 7
+  74              	.L3:
+  63:./.startup/src/stm32f10x_it.c ****   /* Go to infinite loop when Hard Fault exception occurs */
+  64:./.startup/src/stm32f10x_it.c ****   while (1)
+  75              		.loc 1 64 9 discriminator 1
+  76 0004 FEE7     		b	.L3
+  77              		.cfi_endproc
+  78              	.LFE34:
+  80              		.section	.text.MemManage_Handler,"ax",%progbits
+  81              		.align	1
+  82              		.global	MemManage_Handler
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	MemManage_Handler:
+  88              	.LFB35:
+  65:./.startup/src/stm32f10x_it.c ****   {
+  66:./.startup/src/stm32f10x_it.c ****   }
+  67:./.startup/src/stm32f10x_it.c **** }
+  68:./.startup/src/stm32f10x_it.c **** 
+  69:./.startup/src/stm32f10x_it.c **** /**
+  70:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Memory Manage exception.
+  71:./.startup/src/stm32f10x_it.c ****   * @param  None
+  72:./.startup/src/stm32f10x_it.c ****   * @retval None
+  73:./.startup/src/stm32f10x_it.c ****   */
+  74:./.startup/src/stm32f10x_it.c **** void MemManage_Handler(void)
+  75:./.startup/src/stm32f10x_it.c **** {
+  89              		.loc 1 75 1
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94 0000 80B4     		push	{r7}
+  95              	.LCFI6:
+  96              		.cfi_def_cfa_offset 4
+  97              		.cfi_offset 7, -4
+  98 0002 00AF     		add	r7, sp, #0
+  99              	.LCFI7:
+ 100              		.cfi_def_cfa_register 7
+ 101              	.L5:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 4
+
+
+  76:./.startup/src/stm32f10x_it.c ****   /* Go to infinite loop when Memory Manage exception occurs */
+  77:./.startup/src/stm32f10x_it.c ****   while (1)
+ 102              		.loc 1 77 9 discriminator 1
+ 103 0004 FEE7     		b	.L5
+ 104              		.cfi_endproc
+ 105              	.LFE35:
+ 107              		.section	.text.BusFault_Handler,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	BusFault_Handler
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	BusFault_Handler:
+ 115              	.LFB36:
+  78:./.startup/src/stm32f10x_it.c ****   {
+  79:./.startup/src/stm32f10x_it.c ****   }
+  80:./.startup/src/stm32f10x_it.c **** }
+  81:./.startup/src/stm32f10x_it.c **** 
+  82:./.startup/src/stm32f10x_it.c **** /**
+  83:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Bus Fault exception.
+  84:./.startup/src/stm32f10x_it.c ****   * @param  None
+  85:./.startup/src/stm32f10x_it.c ****   * @retval None
+  86:./.startup/src/stm32f10x_it.c ****   */
+  87:./.startup/src/stm32f10x_it.c **** void BusFault_Handler(void)
+  88:./.startup/src/stm32f10x_it.c **** {
+ 116              		.loc 1 88 1
+ 117              		.cfi_startproc
+ 118              		@ args = 0, pretend = 0, frame = 0
+ 119              		@ frame_needed = 1, uses_anonymous_args = 0
+ 120              		@ link register save eliminated.
+ 121 0000 80B4     		push	{r7}
+ 122              	.LCFI8:
+ 123              		.cfi_def_cfa_offset 4
+ 124              		.cfi_offset 7, -4
+ 125 0002 00AF     		add	r7, sp, #0
+ 126              	.LCFI9:
+ 127              		.cfi_def_cfa_register 7
+ 128              	.L7:
+  89:./.startup/src/stm32f10x_it.c ****   /* Go to infinite loop when Bus Fault exception occurs */
+  90:./.startup/src/stm32f10x_it.c ****   while (1)
+ 129              		.loc 1 90 9 discriminator 1
+ 130 0004 FEE7     		b	.L7
+ 131              		.cfi_endproc
+ 132              	.LFE36:
+ 134              		.section	.text.UsageFault_Handler,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	UsageFault_Handler
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	UsageFault_Handler:
+ 142              	.LFB37:
+  91:./.startup/src/stm32f10x_it.c ****   {
+  92:./.startup/src/stm32f10x_it.c ****   }
+  93:./.startup/src/stm32f10x_it.c **** }
+  94:./.startup/src/stm32f10x_it.c **** 
+  95:./.startup/src/stm32f10x_it.c **** /**
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 5
+
+
+  96:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Usage Fault exception.
+  97:./.startup/src/stm32f10x_it.c ****   * @param  None
+  98:./.startup/src/stm32f10x_it.c ****   * @retval None
+  99:./.startup/src/stm32f10x_it.c ****   */
+ 100:./.startup/src/stm32f10x_it.c **** void UsageFault_Handler(void)
+ 101:./.startup/src/stm32f10x_it.c **** {
+ 143              		.loc 1 101 1
+ 144              		.cfi_startproc
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 1, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 80B4     		push	{r7}
+ 149              	.LCFI10:
+ 150              		.cfi_def_cfa_offset 4
+ 151              		.cfi_offset 7, -4
+ 152 0002 00AF     		add	r7, sp, #0
+ 153              	.LCFI11:
+ 154              		.cfi_def_cfa_register 7
+ 155              	.L9:
+ 102:./.startup/src/stm32f10x_it.c ****   /* Go to infinite loop when Usage Fault exception occurs */
+ 103:./.startup/src/stm32f10x_it.c ****   while (1)
+ 156              		.loc 1 103 9 discriminator 1
+ 157 0004 FEE7     		b	.L9
+ 158              		.cfi_endproc
+ 159              	.LFE37:
+ 161              		.section	.text.SVC_Handler,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	SVC_Handler
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	SVC_Handler:
+ 169              	.LFB38:
+ 104:./.startup/src/stm32f10x_it.c ****   {
+ 105:./.startup/src/stm32f10x_it.c ****   }
+ 106:./.startup/src/stm32f10x_it.c **** }
+ 107:./.startup/src/stm32f10x_it.c **** 
+ 108:./.startup/src/stm32f10x_it.c **** /**
+ 109:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles SVCall exception.
+ 110:./.startup/src/stm32f10x_it.c ****   * @param  None
+ 111:./.startup/src/stm32f10x_it.c ****   * @retval None
+ 112:./.startup/src/stm32f10x_it.c ****   */
+ 113:./.startup/src/stm32f10x_it.c **** void SVC_Handler(void)
+ 114:./.startup/src/stm32f10x_it.c **** {
+ 170              		.loc 1 114 1
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 1, uses_anonymous_args = 0
+ 174              		@ link register save eliminated.
+ 175 0000 80B4     		push	{r7}
+ 176              	.LCFI12:
+ 177              		.cfi_def_cfa_offset 4
+ 178              		.cfi_offset 7, -4
+ 179 0002 00AF     		add	r7, sp, #0
+ 180              	.LCFI13:
+ 181              		.cfi_def_cfa_register 7
+ 115:./.startup/src/stm32f10x_it.c **** }
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 6
+
+
+ 182              		.loc 1 115 1
+ 183 0004 00BF     		nop
+ 184 0006 BD46     		mov	sp, r7
+ 185              	.LCFI14:
+ 186              		.cfi_def_cfa_register 13
+ 187              		@ sp needed
+ 188 0008 80BC     		pop	{r7}
+ 189              	.LCFI15:
+ 190              		.cfi_restore 7
+ 191              		.cfi_def_cfa_offset 0
+ 192 000a 7047     		bx	lr
+ 193              		.cfi_endproc
+ 194              	.LFE38:
+ 196              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	DebugMon_Handler
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	DebugMon_Handler:
+ 204              	.LFB39:
+ 116:./.startup/src/stm32f10x_it.c **** 
+ 117:./.startup/src/stm32f10x_it.c **** /**
+ 118:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Debug Monitor exception.
+ 119:./.startup/src/stm32f10x_it.c ****   * @param  None
+ 120:./.startup/src/stm32f10x_it.c ****   * @retval None
+ 121:./.startup/src/stm32f10x_it.c ****   */
+ 122:./.startup/src/stm32f10x_it.c **** void DebugMon_Handler(void)
+ 123:./.startup/src/stm32f10x_it.c **** {
+ 205              		.loc 1 123 1
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 1, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 210 0000 80B4     		push	{r7}
+ 211              	.LCFI16:
+ 212              		.cfi_def_cfa_offset 4
+ 213              		.cfi_offset 7, -4
+ 214 0002 00AF     		add	r7, sp, #0
+ 215              	.LCFI17:
+ 216              		.cfi_def_cfa_register 7
+ 124:./.startup/src/stm32f10x_it.c **** }
+ 217              		.loc 1 124 1
+ 218 0004 00BF     		nop
+ 219 0006 BD46     		mov	sp, r7
+ 220              	.LCFI18:
+ 221              		.cfi_def_cfa_register 13
+ 222              		@ sp needed
+ 223 0008 80BC     		pop	{r7}
+ 224              	.LCFI19:
+ 225              		.cfi_restore 7
+ 226              		.cfi_def_cfa_offset 0
+ 227 000a 7047     		bx	lr
+ 228              		.cfi_endproc
+ 229              	.LFE39:
+ 231              		.section	.text.PendSV_Handler,"ax",%progbits
+ 232              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 7
+
+
+ 233              		.global	PendSV_Handler
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	PendSV_Handler:
+ 239              	.LFB40:
+ 125:./.startup/src/stm32f10x_it.c **** 
+ 126:./.startup/src/stm32f10x_it.c **** /**
+ 127:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles PendSVC exception.
+ 128:./.startup/src/stm32f10x_it.c ****   * @param  None
+ 129:./.startup/src/stm32f10x_it.c ****   * @retval None
+ 130:./.startup/src/stm32f10x_it.c ****   */
+ 131:./.startup/src/stm32f10x_it.c **** void PendSV_Handler(void)
+ 132:./.startup/src/stm32f10x_it.c **** {
+ 240              		.loc 1 132 1
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 244              		@ link register save eliminated.
+ 245 0000 80B4     		push	{r7}
+ 246              	.LCFI20:
+ 247              		.cfi_def_cfa_offset 4
+ 248              		.cfi_offset 7, -4
+ 249 0002 00AF     		add	r7, sp, #0
+ 250              	.LCFI21:
+ 251              		.cfi_def_cfa_register 7
+ 133:./.startup/src/stm32f10x_it.c **** }
+ 252              		.loc 1 133 1
+ 253 0004 00BF     		nop
+ 254 0006 BD46     		mov	sp, r7
+ 255              	.LCFI22:
+ 256              		.cfi_def_cfa_register 13
+ 257              		@ sp needed
+ 258 0008 80BC     		pop	{r7}
+ 259              	.LCFI23:
+ 260              		.cfi_restore 7
+ 261              		.cfi_def_cfa_offset 0
+ 262 000a 7047     		bx	lr
+ 263              		.cfi_endproc
+ 264              	.LFE40:
+ 266              		.section	.text.SysTick_Handler,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	SysTick_Handler
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 273              	SysTick_Handler:
+ 274              	.LFB41:
+ 134:./.startup/src/stm32f10x_it.c **** 
+ 135:./.startup/src/stm32f10x_it.c **** /**
+ 136:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles SysTick Handler.
+ 137:./.startup/src/stm32f10x_it.c ****   * @param  None
+ 138:./.startup/src/stm32f10x_it.c ****   * @retval None
+ 139:./.startup/src/stm32f10x_it.c ****   */
+ 140:./.startup/src/stm32f10x_it.c **** void SysTick_Handler(void)
+ 141:./.startup/src/stm32f10x_it.c **** {
+ 275              		.loc 1 141 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 8
+
+
+ 276              		.cfi_startproc
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 1, uses_anonymous_args = 0
+ 279 0000 80B5     		push	{r7, lr}
+ 280              	.LCFI24:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 7, -8
+ 283              		.cfi_offset 14, -4
+ 284 0002 00AF     		add	r7, sp, #0
+ 285              	.LCFI25:
+ 286              		.cfi_def_cfa_register 7
+ 142:./.startup/src/stm32f10x_it.c ****  	if(TimingDelay!=0)
+ 287              		.loc 1 142 17
+ 288 0004 0C4B     		ldr	r3, .L18
+ 289 0006 1B68     		ldr	r3, [r3]
+ 290              		.loc 1 142 5
+ 291 0008 002B     		cmp	r3, #0
+ 292 000a 04D0     		beq	.L14
+ 143:./.startup/src/stm32f10x_it.c **** 		TimingDelay--;
+ 293              		.loc 1 143 14
+ 294 000c 0A4B     		ldr	r3, .L18
+ 295 000e 1B68     		ldr	r3, [r3]
+ 296 0010 013B     		subs	r3, r3, #1
+ 297 0012 094A     		ldr	r2, .L18
+ 298 0014 1360     		str	r3, [r2]
+ 299              	.L14:
+ 144:./.startup/src/stm32f10x_it.c **** 
+ 145:./.startup/src/stm32f10x_it.c **** if(I2Cx_Timeout!=0)
+ 300              		.loc 1 145 16
+ 301 0016 094B     		ldr	r3, .L18+4
+ 302 0018 1B68     		ldr	r3, [r3]
+ 303              		.loc 1 145 3
+ 304 001a 002B     		cmp	r3, #0
+ 305 001c 04D0     		beq	.L15
+ 146:./.startup/src/stm32f10x_it.c ****    I2Cx_Timeout--;
+ 306              		.loc 1 146 16
+ 307 001e 074B     		ldr	r3, .L18+4
+ 308 0020 1B68     		ldr	r3, [r3]
+ 309 0022 013B     		subs	r3, r3, #1
+ 310 0024 054A     		ldr	r2, .L18+4
+ 311 0026 1360     		str	r3, [r2]
+ 312              	.L15:
+ 147:./.startup/src/stm32f10x_it.c ****   //if(BlinkTimingDelay!=0)  
+ 148:./.startup/src/stm32f10x_it.c ****   //  BlinkTimingDelay--;
+ 149:./.startup/src/stm32f10x_it.c ****   //else
+ 150:./.startup/src/stm32f10x_it.c ****   //  blink_update=1;  
+ 151:./.startup/src/stm32f10x_it.c ****     
+ 152:./.startup/src/stm32f10x_it.c ****     //my_gnc.is_tick=true;    
+ 153:./.startup/src/stm32f10x_it.c ****     //my_gnc.tick();
+ 154:./.startup/src/stm32f10x_it.c ****     if(is_tick)
+ 313              		.loc 1 154 8
+ 314 0028 054B     		ldr	r3, .L18+8
+ 315 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 316              		.loc 1 154 7
+ 317 002c 002B     		cmp	r3, #0
+ 318 002e 01D0     		beq	.L17
+ 155:./.startup/src/stm32f10x_it.c ****       system_ticks();
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 9
+
+
+ 319              		.loc 1 155 7
+ 320 0030 FFF7FEFF 		bl	system_ticks
+ 321              	.L17:
+ 156:./.startup/src/stm32f10x_it.c **** 
+ 157:./.startup/src/stm32f10x_it.c **** }
+ 322              		.loc 1 157 1
+ 323 0034 00BF     		nop
+ 324 0036 80BD     		pop	{r7, pc}
+ 325              	.L19:
+ 326              		.align	2
+ 327              	.L18:
+ 328 0038 00000000 		.word	TimingDelay
+ 329 003c 00000000 		.word	I2Cx_Timeout
+ 330 0040 00000000 		.word	is_tick
+ 331              		.cfi_endproc
+ 332              	.LFE41:
+ 334              		.text
+ 335              	.Letext0:
+ 336              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 337              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 338              		.file 4 "./i2c/i2c-std.h"
+ 339              		.file 5 "./system/system.h"
+ 340              		.file 6 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_it.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:18     .text.NMI_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:24     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:54     .text.HardFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:60     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:81     .text.MemManage_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:87     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:108    .text.BusFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:114    .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:135    .text.UsageFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:141    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:162    .text.SVC_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:168    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:197    .text.DebugMon_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:203    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:232    .text.PendSV_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:238    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:267    .text.SysTick_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:273    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s:328    .text.SysTick_Handler:00000038 $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 11
+
+
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+system_ticks
+TimingDelay
+I2Cx_Timeout
+is_tick
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccOrioH7.s 			page 12
+
+

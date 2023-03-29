@@ -1,0 +1,10 @@
+digraph "MPU6050_t"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [label="MPU6050_t",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Main MPU6050 structure."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",style="dashed",label=" data" ];
+  Node2 [label="mpu6050_raw_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__MPU6050.html#unionmpu6050__raw__t",tooltip=" "];
+}

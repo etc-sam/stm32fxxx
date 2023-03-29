@@ -45,7 +45,7 @@ void system_init(void)
 //
 //
 //********************************************************************************************
-    //Configure SysTick Timer interrupt for 10 uS micro second
+    //Configure SysTick Timer interrupt for 100 uS micro second
     if(SysTick_Config(SystemCoreClock/100000)) while(1);	 
 
     systemticks=0;
@@ -64,7 +64,7 @@ void system_init(void)
 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
-	 //RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
+	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
 
 	 TimingDelay=0; 
  
@@ -113,24 +113,21 @@ void system_init(void)
 //********************************************************************************************
     //USART1_init();
     uart_init();
-   
+//********************************************************************************************
+//
+//  Configure I2c module
+//
+//********************************************************************************************
+	/* Initialize I2C */
+  i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
+
 //********************************************************************************************
 //
 //  Configure  module
 //
 //********************************************************************************************
-  keypad_state=0;
-  keypad_ticks=0;
-  keypad_debounce_cnt=0;
- 
-  lcd_state=0;
-  lcd_ticks=0;
- 
-  pilot_state=0;
-  pilot_ticks=0;
-  
-  rtc_state=0;
-  rtc_ticks=0;
+  system_tasks_init();
+   is_tick=1;
 }
 //--------------------------------------------------------------------------------------------
 void system_run(void)
@@ -143,7 +140,10 @@ void system_run(void)
   keypad_task();	
 
 // Task3 to read input buffer
-  //inbuf_task();	
+  //inbuf_task();
+
+// Task3 to read MPU
+  mpu6050_task();	
 
  // Task4 to read usb buffer
   //uart_task();	
@@ -160,6 +160,10 @@ void system_ticks(void)
   if(keypad_state==KEYPAD_WAIT)
      keypad_ticks++;
 
+// mpu task tick
+  if(mpu_state==MPU_WAIT)
+      mpu_ticks++;
+
 // keypad debounce tick
   if(keypad_state==KEYPAD_DEBOUNCE)
       keypad_debounce_cnt++;
@@ -168,6 +172,26 @@ void system_ticks(void)
   if(rtc_state==RTC_WAIT)
      rtc_ticks++;
 
+}
+//--------------------------------------------------------------------------------------------
+void system_tasks_init(void)
+{
+  keypad_state=0;
+  keypad_ticks=0;
+  keypad_debounce_cnt=0;
+ 
+  mpu_state=0;
+  mpu_ticks=0;
+  mpu_init_sucess=0;
+  
+  lcd_state=0;
+  lcd_ticks=0;
+ 
+  pilot_state=0;
+  pilot_ticks=0;
+  
+  rtc_state=0;
+  rtc_ticks=0;  
 }
 //--------------------------------------------------------------------------------------------
 void system_rtc(void)

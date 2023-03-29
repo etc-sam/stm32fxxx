@@ -1,0 +1,1367 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	i2cx
+  18              		.section	.data.i2cx,"aw"
+  19              		.align	2
+  22              	i2cx:
+  23 0000 00540040 		.word	1073763328
+  24              		.global	myi2c
+  25              		.section	.data.myi2c,"aw"
+  26              		.align	2
+  29              	myi2c:
+  30 0000 00540040 		.word	1073763328
+  31 0004 000C0140 		.word	1073810432
+  32 0008 0600     		.short	6
+  33 000a 0000     		.space	2
+  34 000c 000C0140 		.word	1073810432
+  35 0010 0700     		.short	7
+  36 0012 0000     		.space	2
+  37 0014 18100240 		.word	1073877016
+  38 0018 01000000 		.word	1
+  39 001c 18100240 		.word	1073877016
+  40 0020 08000000 		.word	8
+  41 0024 04000140 		.word	1073807364
+  42 0028 02000000 		.word	2
+  43 002c 1C100240 		.word	1073877020
+  44 0030 00002000 		.word	2097152
+  45 0034 10100240 		.word	1073877008
+  46 0038 00002000 		.word	2097152
+  47 003c 01000000 		.word	1
+  48 0040 FF3F0000 		.word	16383
+  49              		.section	.text.i2c_init,"ax",%progbits
+  50              		.align	1
+  51              		.global	i2c_init
+  52              		.syntax unified
+  53              		.thumb
+  54              		.thumb_func
+  56              	i2c_init:
+  57              	.LFB33:
+  58              		.file 1 "./i2c/i2c.c"
+   1:./i2c/i2c.c   **** /**
+   2:./i2c/i2c.c   ****  * @brief i2c.c
+   3:./i2c/i2c.c   ****  *
+   4:./i2c/i2c.c   ****  * @param student: Sameer Almaldein
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 2
+
+
+   5:./i2c/i2c.c   ****  * @param ID: 679699
+   6:./i2c/i2c.c   ****  * @param University TU-Chemnitz
+   7:./i2c/i2c.c   ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./i2c/i2c.c   ****  */ 
+   9:./i2c/i2c.c   **** 
+  10:./i2c/i2c.c   **** //********************************************************************************************
+  11:./i2c/i2c.c   **** //
+  12:./i2c/i2c.c   **** //  header  files
+  13:./i2c/i2c.c   **** //
+  14:./i2c/i2c.c   **** //********************************************************************************************
+  15:./i2c/i2c.c   **** #include "init.h"
+  16:./i2c/i2c.c   **** //********************************************************************************************
+  17:./i2c/i2c.c   **** //
+  18:./i2c/i2c.c   **** //  static Methods
+  19:./i2c/i2c.c   **** //
+  20:./i2c/i2c.c   **** //********************************************************************************************
+  21:./i2c/i2c.c   **** 
+  22:./i2c/i2c.c   **** //********************************************************************************************
+  23:./i2c/i2c.c   **** //
+  24:./i2c/i2c.c   **** //  extern variables
+  25:./i2c/i2c.c   **** //
+  26:./i2c/i2c.c   **** //********************************************************************************************
+  27:./i2c/i2c.c   **** I2C_TypeDef_t * i2cx= (I2C_TypeDef_t *) I2C1_BASE; 
+  28:./i2c/i2c.c   **** 
+  29:./i2c/i2c.c   **** //gpio_t i2c_scl={GPIOB,6};
+  30:./i2c/i2c.c   **** //gpio_t i2c_sda={GPIOB,7};
+  31:./i2c/i2c.c   **** 
+  32:./i2c/i2c.c   **** i2c_t myi2c={
+  33:./i2c/i2c.c   ****  ((I2C_TypeDef_t *) I2C1_BASE),
+  34:./i2c/i2c.c   **** {GPIOB,6},
+  35:./i2c/i2c.c   **** {GPIOB,7},
+  36:./i2c/i2c.c   **** 
+  37:./i2c/i2c.c   **** //  Enable clock related to the alternative function & GPIO
+  38:./i2c/i2c.c   **** {(__IO uint32_t *)&RCC->APB2ENR, RCC_APB2ENR_AFIOEN},
+  39:./i2c/i2c.c   **** 
+  40:./i2c/i2c.c   **** {(__IO uint32_t *)&RCC->APB2ENR,RCC_APB2ENR_IOPBEN},
+  41:./i2c/i2c.c   **** {(__IO uint32_t *)& AFIO->MAPR,AFIO_MAPR_I2C1_REMAP},
+  42:./i2c/i2c.c   **** // Enable clock related to i2c peripheral
+  43:./i2c/i2c.c   **** {(__IO uint32_t *)& RCC->APB1ENR,RCC_APB1ENR_I2C1EN}, 
+  44:./i2c/i2c.c   **** 
+  45:./i2c/i2c.c   ****  // reset i2c peripheral
+  46:./i2c/i2c.c   **** {(__IO uint32_t *)& RCC->APB1RSTR,RCC_APB1RSTR_I2C1RST},
+  47:./i2c/i2c.c   ****  
+  48:./i2c/i2c.c   ****   i2c_speed_fm_400k,//400000,
+  49:./i2c/i2c.c   ****  0x3fff// reset i2c peripheral
+  50:./i2c/i2c.c   ****  
+  51:./i2c/i2c.c   **** };
+  52:./i2c/i2c.c   **** 
+  53:./i2c/i2c.c   **** 
+  54:./i2c/i2c.c   **** //********************************************************************************************
+  55:./i2c/i2c.c   **** //
+  56:./i2c/i2c.c   **** //  i2c Methods defnitions 
+  57:./i2c/i2c.c   **** //
+  58:./i2c/i2c.c   **** //********************************************************************************************
+  59:./i2c/i2c.c   **** void i2c_init()//(I2C_TypeDef_t *i2c,gpio_t sdl,gpio_t scl, uint32_t clock_speed)
+  60:./i2c/i2c.c   **** {
+  59              		.loc 1 60 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 3
+
+
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63 0000 80B5     		push	{r7, lr}
+  64              	.LCFI0:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 7, -8
+  67              		.cfi_offset 14, -4
+  68 0002 00AF     		add	r7, sp, #0
+  69              	.LCFI1:
+  70              		.cfi_def_cfa_register 7
+  61:./i2c/i2c.c   ****   /* 1. Enable the Clock for the peripheral module AFIO/GPIO modules using */
+  62:./i2c/i2c.c   ****   /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) & remap incase of 
+  63:./i2c/i2c.c   ****   /* 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority 
+  64:./i2c/i2c.c   ****   /* 4.  the peripheral hardware  of the I2C */
+  65:./i2c/i2c.c   ****   /* 5. Configure the peripheral interrupt @ level of the peripheral or DMA */
+  66:./i2c/i2c.c   ****   /* 6. Enable the peripheral Module */
+  67:./i2c/i2c.c   **** 
+  68:./i2c/i2c.c   ****   /* 1. Enable the Clock for AFIO/GPIO modules then the peripheral module using  either
+  69:./i2c/i2c.c   ****       registers :  RCC_APB1ENR |RCC_APB2ENR | RCC_AHBENR  or 
+  70:./i2c/i2c.c   ****       methods periphstdlib  :  RCC_APBxPeriphClockCmd or using
+  71:./i2c/i2c.c   ****   */
+  72:./i2c/i2c.c   **** 
+  73:./i2c/i2c.c   ****   // disable the i2c 
+  74:./i2c/i2c.c   ****   myi2c.ptr->CR1.PE=0;
+  71              		.loc 1 74 8
+  72 0004 1D4B     		ldr	r3, .L2
+  73 0006 1A68     		ldr	r2, [r3]
+  74              		.loc 1 74 20
+  75 0008 1378     		ldrb	r3, [r2]
+  76 000a 6FF30003 		bfc	r3, #0, #1
+  77 000e 1370     		strb	r3, [r2]
+  75:./i2c/i2c.c   **** 
+  76:./i2c/i2c.c   **** /* 1. Enable the Clock for the  AFIO/GPIO modules and the I2c peripheral module */
+  77:./i2c/i2c.c   ****   
+  78:./i2c/i2c.c   ****   //RCC->APB2ENR|=RCC_APB2ENR_AFIOEN;
+  79:./i2c/i2c.c   ****    reg_sbits(myi2c.RCC_APBxENR_AFIO.reg,myi2c.RCC_APBxENR_AFIO.bits);
+  78              		.loc 1 79 4
+  79 0010 1A4B     		ldr	r3, .L2
+  80 0012 5B69     		ldr	r3, [r3, #20]
+  81 0014 194A     		ldr	r2, .L2
+  82 0016 9269     		ldr	r2, [r2, #24]
+  83 0018 1146     		mov	r1, r2
+  84 001a 1846     		mov	r0, r3
+  85 001c FFF7FEFF 		bl	reg_sbits
+  80:./i2c/i2c.c   **** 
+  81:./i2c/i2c.c   ****  //*(myi2c.RCC_APBxENR_AFIO_reg)|=myi2c.RCC_APBxENR_AFIOEN_val;
+  82:./i2c/i2c.c   ****  // sbits(*myi2c.RCC_APBxENR_AFIO_reg,myi2c.RCC_APBxENR_AFIOEN_val);
+  83:./i2c/i2c.c   ****  //RCC->APB2ENR|=RCC_APB2ENR_IOPBEN;
+  84:./i2c/i2c.c   ****   reg_sbits(myi2c.RCC_APBxENR_IOP.reg,myi2c.RCC_APBxENR_IOP.bits);
+  86              		.loc 1 84 3
+  87 0020 164B     		ldr	r3, .L2
+  88 0022 DB69     		ldr	r3, [r3, #28]
+  89 0024 154A     		ldr	r2, .L2
+  90 0026 126A     		ldr	r2, [r2, #32]
+  91 0028 1146     		mov	r1, r2
+  92 002a 1846     		mov	r0, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 4
+
+
+  93 002c FFF7FEFF 		bl	reg_sbits
+  85:./i2c/i2c.c   ****   
+  86:./i2c/i2c.c   ****   reg_cbits(myi2c.AFIO_MAPR_I2C.reg,myi2c.AFIO_MAPR_I2C.bits);
+  94              		.loc 1 86 3
+  95 0030 124B     		ldr	r3, .L2
+  96 0032 5B6A     		ldr	r3, [r3, #36]
+  97 0034 114A     		ldr	r2, .L2
+  98 0036 926A     		ldr	r2, [r2, #40]
+  99 0038 1146     		mov	r1, r2
+ 100 003a 1846     		mov	r0, r3
+ 101 003c FFF7FEFF 		bl	reg_cbits
+  87:./i2c/i2c.c   **** //*(myi2c.RCC_APBxENR_IOP_reg)|=myi2c.RCC_APBxENR_IOPEN_val;
+  88:./i2c/i2c.c   **** //  sbits(*myi2c.RCC_APBxENR_IOP_reg,myi2c.RCC_APBxENR_IOPEN_val);
+  89:./i2c/i2c.c   ****  //RCC->APB1ENR|=RCC_APB1ENR_I2C1EN;
+  90:./i2c/i2c.c   ****  reg_sbits(myi2c.RCC_APBxENR_I2C.reg,myi2c.RCC_APBxENR_I2C.bits);
+ 102              		.loc 1 90 2
+ 103 0040 0E4B     		ldr	r3, .L2
+ 104 0042 DB6A     		ldr	r3, [r3, #44]
+ 105 0044 0D4A     		ldr	r2, .L2
+ 106 0046 126B     		ldr	r2, [r2, #48]
+ 107 0048 1146     		mov	r1, r2
+ 108 004a 1846     		mov	r0, r3
+ 109 004c FFF7FEFF 		bl	reg_sbits
+  91:./i2c/i2c.c   ****   //*(myi2c.RCC_APBxENR_I2C_reg)|=myi2c.RCC_APBxENR_I2CEN_reg;
+  92:./i2c/i2c.c   ****   //  sbits(*myi2c.RCC_APBxENR_I2C_reg,myi2c.RCC_APBxENR_I2CEN_val);
+  93:./i2c/i2c.c   **** /* 2. Configure the pins required by the Module (AFIO_OUT or INPUT, ANALOG...) & remap incase of re
+  94:./i2c/i2c.c   ****   
+  95:./i2c/i2c.c   ****   gpio_pin_mode(myi2c.scl,GPIO_MODE_AF_OD_50MHZ);
+ 110              		.loc 1 95 3
+ 111 0050 0A4B     		ldr	r3, .L2
+ 112 0052 0F22     		movs	r2, #15
+ 113 0054 0433     		adds	r3, r3, #4
+ 114 0056 93E80300 		ldm	r3, {r0, r1}
+ 115 005a FFF7FEFF 		bl	gpio_pin_mode
+  96:./i2c/i2c.c   ****   gpio_pin_mode(myi2c.sda,GPIO_MODE_AF_OD_50MHZ);
+ 116              		.loc 1 96 3
+ 117 005e 074B     		ldr	r3, .L2
+ 118 0060 0F22     		movs	r2, #15
+ 119 0062 0C33     		adds	r3, r3, #12
+ 120 0064 93E80300 		ldm	r3, {r0, r1}
+ 121 0068 FFF7FEFF 		bl	gpio_pin_mode
+  97:./i2c/i2c.c   **** 
+  98:./i2c/i2c.c   **** 
+  99:./i2c/i2c.c   **** 
+ 100:./i2c/i2c.c   ****   /* 3. Configure the peripheral hardware interrupt @ level of  NVIC  link to IRQ and set priority 
+ 101:./i2c/i2c.c   ****   /* 4.  the peripheral hardware  of the I2C */
+ 102:./i2c/i2c.c   ****   /* 5. Configure the peripheral interrupt @ level of the peripheral or DMA */
+ 103:./i2c/i2c.c   ****   /* 6. Enable the peripheral Module */
+ 104:./i2c/i2c.c   **** myi2c.ptr->CR1.PE=1; //AFIO_MAPR_I2C1_REMAP;
+ 122              		.loc 1 104 6
+ 123 006c 034B     		ldr	r3, .L2
+ 124 006e 1A68     		ldr	r2, [r3]
+ 125              		.loc 1 104 18
+ 126 0070 1378     		ldrb	r3, [r2]
+ 127 0072 43F00103 		orr	r3, r3, #1
+ 128 0076 1370     		strb	r3, [r2]
+ 105:./i2c/i2c.c   **** /*  if(i2c==(I2C_TypeDef_t *) I2C1_BASE)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 5
+
+
+ 106:./i2c/i2c.c   ****   {
+ 107:./i2c/i2c.c   ****    RCC->APB1ENR|=RCC_APB1ENR_I2C1EN;
+ 108:./i2c/i2c.c   ****    RCC->APB1RSTR|=RCC_APB1RSTR_I2C1RST;
+ 109:./i2c/i2c.c   ****    RCC->APB1RSTR&=~RCC_APB1RSTR_I2C1RST;    
+ 110:./i2c/i2c.c   ****   }
+ 111:./i2c/i2c.c   ****   else
+ 112:./i2c/i2c.c   ****   {
+ 113:./i2c/i2c.c   **** 
+ 114:./i2c/i2c.c   ****   }
+ 115:./i2c/i2c.c   ****   */
+ 116:./i2c/i2c.c   **** }
+ 129              		.loc 1 116 1
+ 130 0078 00BF     		nop
+ 131 007a 80BD     		pop	{r7, pc}
+ 132              	.L3:
+ 133              		.align	2
+ 134              	.L2:
+ 135 007c 00000000 		.word	myi2c
+ 136              		.cfi_endproc
+ 137              	.LFE33:
+ 139              		.section	.rodata
+ 140              		.align	2
+ 141              	.LC0:
+ 142 0000 09207063 		.ascii	"\011 pclk1:\000"
+ 142      6C6B313A 
+ 142      00
+ 143 0009 000000   		.align	2
+ 144              	.LC1:
+ 145 000c 09206672 		.ascii	"\011 frq:\000"
+ 145      713A00
+ 146 0013 00       		.align	2
+ 147              	.LC2:
+ 148 0014 09204343 		.ascii	"\011 CCR:\000"
+ 148      523A00
+ 149 001b 00       		.align	2
+ 150              	.LC3:
+ 151 001c 0900     		.ascii	"\011\000"
+ 152 001e 0000     		.align	2
+ 153              	.LC4:
+ 154 0020 09207472 		.ascii	"\011 tris:\000"
+ 154      69733A00 
+ 155              		.align	2
+ 156              	.LC5:
+ 157 0028 090D0A00 		.ascii	"\011\015\012\000"
+ 158              		.align	2
+ 159              	.LC6:
+ 160 002c 09204932 		.ascii	"\011 I2C1_CR1:\000"
+ 160      43315F43 
+ 160      52313A00 
+ 161              		.align	2
+ 162              	.LC7:
+ 163 0038 09204932 		.ascii	"\011 I2C1_CR2:\000"
+ 163      43315F43 
+ 163      52323A00 
+ 164              		.align	2
+ 165              	.LC8:
+ 166 0044 09204932 		.ascii	"\011 I2C1_OAR1:\000"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 6
+
+
+ 166      43315F4F 
+ 166      4152313A 
+ 166      00
+ 167 0051 000000   		.align	2
+ 168              	.LC9:
+ 169 0054 09204932 		.ascii	"\011 I2C1_OAR2:\000"
+ 169      43315F4F 
+ 169      4152323A 
+ 169      00
+ 170 0061 000000   		.align	2
+ 171              	.LC10:
+ 172 0064 0D0A00   		.ascii	"\015\012\000"
+ 173 0067 00       		.align	2
+ 174              	.LC11:
+ 175 0068 09204932 		.ascii	"\011 I2C1_SR1:\000"
+ 175      43315F53 
+ 175      52313A00 
+ 176              		.align	2
+ 177              	.LC12:
+ 178 0074 09204932 		.ascii	"\011 I2C1_SR2:\000"
+ 178      43315F53 
+ 178      52323A00 
+ 179              		.align	2
+ 180              	.LC13:
+ 181 0080 09204932 		.ascii	"\011 I2C1_CCR:\000"
+ 181      43315F43 
+ 181      43523A00 
+ 182              		.align	2
+ 183              	.LC14:
+ 184 008c 09204932 		.ascii	"\011 I2C1_TRISE:\000"
+ 184      43315F54 
+ 184      52495345 
+ 184      3A00
+ 185 009a 0000     		.align	2
+ 186              	.LC15:
+ 187 009c 09204932 		.ascii	"\011 I2C1_DR:\000"
+ 187      43315F44 
+ 187      523A00
+ 188              		.section	.text.i2c_uart_print,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	i2c_uart_print
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	i2c_uart_print:
+ 196              	.LFB34:
+ 117:./i2c/i2c.c   **** //-------------------------------------------------------------------------
+ 118:./i2c/i2c.c   **** 
+ 119:./i2c/i2c.c   **** 
+ 120:./i2c/i2c.c   **** 
+ 121:./i2c/i2c.c   **** 
+ 122:./i2c/i2c.c   **** 
+ 123:./i2c/i2c.c   **** void i2c_uart_print(USART_TypeDef *uart)
+ 124:./i2c/i2c.c   **** {
+ 197              		.loc 1 124 1
+ 198              		.cfi_startproc
+ 199              		@ args = 0, pretend = 0, frame = 40
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 7
+
+
+ 200              		@ frame_needed = 1, uses_anonymous_args = 0
+ 201 0000 80B5     		push	{r7, lr}
+ 202              	.LCFI2:
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 7, -8
+ 205              		.cfi_offset 14, -4
+ 206 0002 8AB0     		sub	sp, sp, #40
+ 207              	.LCFI3:
+ 208              		.cfi_def_cfa_offset 48
+ 209 0004 00AF     		add	r7, sp, #0
+ 210              	.LCFI4:
+ 211              		.cfi_def_cfa_register 7
+ 212 0006 7860     		str	r0, [r7, #4]
+ 125:./i2c/i2c.c   ****   WORD_BYTES t;	 
+ 126:./i2c/i2c.c   ****    RCC_ClocksTypeDef  rcc_clocks; 
+ 127:./i2c/i2c.c   ****    uint32_t pclk1 =0;
+ 213              		.loc 1 127 13
+ 214 0008 0023     		movs	r3, #0
+ 215 000a 7B62     		str	r3, [r7, #36]
+ 128:./i2c/i2c.c   ****     RCC_GetClocksFreq(&rcc_clocks);
+ 216              		.loc 1 128 5
+ 217 000c 07F10C03 		add	r3, r7, #12
+ 218 0010 1846     		mov	r0, r3
+ 219 0012 FFF7FEFF 		bl	RCC_GetClocksFreq
+ 129:./i2c/i2c.c   ****     pclk1 = rcc_clocks.PCLK1_Frequency;
+ 220              		.loc 1 129 11
+ 221 0016 7B69     		ldr	r3, [r7, #20]
+ 222 0018 7B62     		str	r3, [r7, #36]
+ 130:./i2c/i2c.c   **** 
+ 131:./i2c/i2c.c   **** 	uart_print(uart,"\t pclk1:");  
+ 223              		.loc 1 131 2
+ 224 001a 7549     		ldr	r1, .L5
+ 225 001c 7868     		ldr	r0, [r7, #4]
+ 226 001e FFF7FEFF 		bl	uart_print
+ 132:./i2c/i2c.c   ****   uart_print_integer(uart,pclk1,10);
+ 227              		.loc 1 132 3
+ 228 0022 0A22     		movs	r2, #10
+ 229 0024 796A     		ldr	r1, [r7, #36]
+ 230 0026 7868     		ldr	r0, [r7, #4]
+ 231 0028 FFF7FEFF 		bl	uart_print_integer
+ 133:./i2c/i2c.c   ****   t.word= i2cx->CR2.FREQ;//I2C1->CR2 & 0x003f;// i2cx->CR2.FREQ
+ 232              		.loc 1 133 15
+ 233 002c 714B     		ldr	r3, .L5+4
+ 234 002e 1B68     		ldr	r3, [r3]
+ 235              		.loc 1 133 20
+ 236 0030 1B79     		ldrb	r3, [r3, #4]
+ 237 0032 C3F30503 		ubfx	r3, r3, #0, #6
+ 238 0036 DBB2     		uxtb	r3, r3
+ 239 0038 9BB2     		uxth	r3, r3
+ 240              		.loc 1 133 9
+ 241 003a 3B84     		strh	r3, [r7, #32]	@ movhi
+ 134:./i2c/i2c.c   **** 	uart_print(uart,"\t frq:");  
+ 242              		.loc 1 134 2
+ 243 003c 6E49     		ldr	r1, .L5+8
+ 244 003e 7868     		ldr	r0, [r7, #4]
+ 245 0040 FFF7FEFF 		bl	uart_print
+ 135:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,10); 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 8
+
+
+ 246              		.loc 1 135 28
+ 247 0044 3B8C     		ldrh	r3, [r7, #32]
+ 248              		.loc 1 135 3
+ 249 0046 0A22     		movs	r2, #10
+ 250 0048 1946     		mov	r1, r3
+ 251 004a 7868     		ldr	r0, [r7, #4]
+ 252 004c FFF7FEFF 		bl	uart_print_integer
+ 136:./i2c/i2c.c   ****   
+ 137:./i2c/i2c.c   ****   t.word=I2C1->CCR & 0x0FFF ;//i2cx->CCR.CCR;
+ 253              		.loc 1 137 14
+ 254 0050 6A4B     		ldr	r3, .L5+12
+ 255 0052 9B8B     		ldrh	r3, [r3, #28]	@ movhi
+ 256 0054 9BB2     		uxth	r3, r3
+ 257              		.loc 1 137 20
+ 258 0056 C3F30B03 		ubfx	r3, r3, #0, #12
+ 259 005a 9BB2     		uxth	r3, r3
+ 260              		.loc 1 137 9
+ 261 005c 3B84     		strh	r3, [r7, #32]	@ movhi
+ 138:./i2c/i2c.c   ****   uart_print(uart,"\t CCR:");
+ 262              		.loc 1 138 3
+ 263 005e 6849     		ldr	r1, .L5+16
+ 264 0060 7868     		ldr	r0, [r7, #4]
+ 265 0062 FFF7FEFF 		bl	uart_print
+ 139:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,10);
+ 266              		.loc 1 139 28
+ 267 0066 3B8C     		ldrh	r3, [r7, #32]
+ 268              		.loc 1 139 3
+ 269 0068 0A22     		movs	r2, #10
+ 270 006a 1946     		mov	r1, r3
+ 271 006c 7868     		ldr	r0, [r7, #4]
+ 272 006e FFF7FEFF 		bl	uart_print_integer
+ 140:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 273              		.loc 1 140 3
+ 274 0072 6449     		ldr	r1, .L5+20
+ 275 0074 7868     		ldr	r0, [r7, #4]
+ 276 0076 FFF7FEFF 		bl	uart_print
+ 141:./i2c/i2c.c   ****  // t.word=i2cx->CCR.CCR & 0x0FFF ;
+ 142:./i2c/i2c.c   ****  // uart_print(uart,"\t CCRx:");
+ 143:./i2c/i2c.c   ****  // uart_print_integer(uart,t.word,10);
+ 144:./i2c/i2c.c   ****  // uart_print(uart,"\t");
+ 145:./i2c/i2c.c   **** 
+ 146:./i2c/i2c.c   ****   t.word=I2C1->TRISE& 0x003f;
+ 277              		.loc 1 146 14
+ 278 007a 604B     		ldr	r3, .L5+12
+ 279 007c 1B8C     		ldrh	r3, [r3, #32]	@ movhi
+ 280 007e 9BB2     		uxth	r3, r3
+ 281              		.loc 1 146 21
+ 282 0080 03F03F03 		and	r3, r3, #63
+ 283 0084 9BB2     		uxth	r3, r3
+ 284              		.loc 1 146 9
+ 285 0086 3B84     		strh	r3, [r7, #32]	@ movhi
+ 147:./i2c/i2c.c   ****   uart_print(uart,"\t tris:");
+ 286              		.loc 1 147 3
+ 287 0088 5F49     		ldr	r1, .L5+24
+ 288 008a 7868     		ldr	r0, [r7, #4]
+ 289 008c FFF7FEFF 		bl	uart_print
+ 148:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,10);
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 9
+
+
+ 290              		.loc 1 148 28
+ 291 0090 3B8C     		ldrh	r3, [r7, #32]
+ 292              		.loc 1 148 3
+ 293 0092 0A22     		movs	r2, #10
+ 294 0094 1946     		mov	r1, r3
+ 295 0096 7868     		ldr	r0, [r7, #4]
+ 296 0098 FFF7FEFF 		bl	uart_print_integer
+ 149:./i2c/i2c.c   ****   uart_print(uart,"\t\r\n");
+ 297              		.loc 1 149 3
+ 298 009c 5B49     		ldr	r1, .L5+28
+ 299 009e 7868     		ldr	r0, [r7, #4]
+ 300 00a0 FFF7FEFF 		bl	uart_print
+ 150:./i2c/i2c.c   **** 
+ 151:./i2c/i2c.c   ****   //t.word=i2cx->TRISE.val & 0x003f;//I2C1->TRISE& 0x003f;//i2cx->TRISE.val;
+ 152:./i2c/i2c.c   ****   //uart_print(uart,"\t trisx:");
+ 153:./i2c/i2c.c   ****   //uart_print_integer(uart,t.word,10);
+ 154:./i2c/i2c.c   ****   //uart_print(uart,"\r\n");
+ 155:./i2c/i2c.c   **** 
+ 156:./i2c/i2c.c   **** 
+ 157:./i2c/i2c.c   **** //I2C1
+ 158:./i2c/i2c.c   **** //  I2C1->CR1=0x3456;
+ 159:./i2c/i2c.c   ****   t.word=I2C1->CR1;
+ 301              		.loc 1 159 14
+ 302 00a4 554B     		ldr	r3, .L5+12
+ 303 00a6 1B88     		ldrh	r3, [r3]	@ movhi
+ 304 00a8 9BB2     		uxth	r3, r3
+ 305              		.loc 1 159 9
+ 306 00aa 3B84     		strh	r3, [r7, #32]	@ movhi
+ 160:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_CR1:");
+ 307              		.loc 1 160 3
+ 308 00ac 5849     		ldr	r1, .L5+32
+ 309 00ae 7868     		ldr	r0, [r7, #4]
+ 310 00b0 FFF7FEFF 		bl	uart_print
+ 161:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 311              		.loc 1 161 28
+ 312 00b4 3B8C     		ldrh	r3, [r7, #32]
+ 313              		.loc 1 161 3
+ 314 00b6 1022     		movs	r2, #16
+ 315 00b8 1946     		mov	r1, r3
+ 316 00ba 7868     		ldr	r0, [r7, #4]
+ 317 00bc FFF7FEFF 		bl	uart_print_integer
+ 162:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 318              		.loc 1 162 3
+ 319 00c0 5049     		ldr	r1, .L5+20
+ 320 00c2 7868     		ldr	r0, [r7, #4]
+ 321 00c4 FFF7FEFF 		bl	uart_print
+ 163:./i2c/i2c.c   ****  
+ 164:./i2c/i2c.c   ****  // I2C1->CR2=0x1239;  
+ 165:./i2c/i2c.c   ****   t.word=I2C1->CR2;
+ 322              		.loc 1 165 14
+ 323 00c8 4C4B     		ldr	r3, .L5+12
+ 324 00ca 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 325 00cc 9BB2     		uxth	r3, r3
+ 326              		.loc 1 165 9
+ 327 00ce 3B84     		strh	r3, [r7, #32]	@ movhi
+ 166:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_CR2:");
+ 328              		.loc 1 166 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 10
+
+
+ 329 00d0 5049     		ldr	r1, .L5+36
+ 330 00d2 7868     		ldr	r0, [r7, #4]
+ 331 00d4 FFF7FEFF 		bl	uart_print
+ 167:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 332              		.loc 1 167 28
+ 333 00d8 3B8C     		ldrh	r3, [r7, #32]
+ 334              		.loc 1 167 3
+ 335 00da 1022     		movs	r2, #16
+ 336 00dc 1946     		mov	r1, r3
+ 337 00de 7868     		ldr	r0, [r7, #4]
+ 338 00e0 FFF7FEFF 		bl	uart_print_integer
+ 168:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 339              		.loc 1 168 3
+ 340 00e4 4749     		ldr	r1, .L5+20
+ 341 00e6 7868     		ldr	r0, [r7, #4]
+ 342 00e8 FFF7FEFF 		bl	uart_print
+ 169:./i2c/i2c.c   ****  
+ 170:./i2c/i2c.c   ****  // I2C1->OAR1;
+ 171:./i2c/i2c.c   ****   t.word=I2C1->OAR1;
+ 343              		.loc 1 171 14
+ 344 00ec 434B     		ldr	r3, .L5+12
+ 345 00ee 1B89     		ldrh	r3, [r3, #8]	@ movhi
+ 346 00f0 9BB2     		uxth	r3, r3
+ 347              		.loc 1 171 9
+ 348 00f2 3B84     		strh	r3, [r7, #32]	@ movhi
+ 172:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_OAR1:");
+ 349              		.loc 1 172 3
+ 350 00f4 4849     		ldr	r1, .L5+40
+ 351 00f6 7868     		ldr	r0, [r7, #4]
+ 352 00f8 FFF7FEFF 		bl	uart_print
+ 173:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 353              		.loc 1 173 28
+ 354 00fc 3B8C     		ldrh	r3, [r7, #32]
+ 355              		.loc 1 173 3
+ 356 00fe 1022     		movs	r2, #16
+ 357 0100 1946     		mov	r1, r3
+ 358 0102 7868     		ldr	r0, [r7, #4]
+ 359 0104 FFF7FEFF 		bl	uart_print_integer
+ 174:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 360              		.loc 1 174 3
+ 361 0108 3E49     		ldr	r1, .L5+20
+ 362 010a 7868     		ldr	r0, [r7, #4]
+ 363 010c FFF7FEFF 		bl	uart_print
+ 175:./i2c/i2c.c   ****   
+ 176:./i2c/i2c.c   ****  // I2C1->OAR2=0x342e;
+ 177:./i2c/i2c.c   ****   t.word=I2C1->OAR2;
+ 364              		.loc 1 177 14
+ 365 0110 3A4B     		ldr	r3, .L5+12
+ 366 0112 9B89     		ldrh	r3, [r3, #12]	@ movhi
+ 367 0114 9BB2     		uxth	r3, r3
+ 368              		.loc 1 177 9
+ 369 0116 3B84     		strh	r3, [r7, #32]	@ movhi
+ 178:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_OAR2:");
+ 370              		.loc 1 178 3
+ 371 0118 4049     		ldr	r1, .L5+44
+ 372 011a 7868     		ldr	r0, [r7, #4]
+ 373 011c FFF7FEFF 		bl	uart_print
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 11
+
+
+ 179:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 374              		.loc 1 179 28
+ 375 0120 3B8C     		ldrh	r3, [r7, #32]
+ 376              		.loc 1 179 3
+ 377 0122 1022     		movs	r2, #16
+ 378 0124 1946     		mov	r1, r3
+ 379 0126 7868     		ldr	r0, [r7, #4]
+ 380 0128 FFF7FEFF 		bl	uart_print_integer
+ 180:./i2c/i2c.c   ****   uart_print(uart,"\r\n");
+ 381              		.loc 1 180 3
+ 382 012c 3C49     		ldr	r1, .L5+48
+ 383 012e 7868     		ldr	r0, [r7, #4]
+ 384 0130 FFF7FEFF 		bl	uart_print
+ 181:./i2c/i2c.c   **** 
+ 182:./i2c/i2c.c   ****   //I2C1->SR1=0x4444;
+ 183:./i2c/i2c.c   ****   t.word=I2C1->SR1;
+ 385              		.loc 1 183 14
+ 386 0134 314B     		ldr	r3, .L5+12
+ 387 0136 9B8A     		ldrh	r3, [r3, #20]	@ movhi
+ 388 0138 9BB2     		uxth	r3, r3
+ 389              		.loc 1 183 9
+ 390 013a 3B84     		strh	r3, [r7, #32]	@ movhi
+ 184:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_SR1:");
+ 391              		.loc 1 184 3
+ 392 013c 3949     		ldr	r1, .L5+52
+ 393 013e 7868     		ldr	r0, [r7, #4]
+ 394 0140 FFF7FEFF 		bl	uart_print
+ 185:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 395              		.loc 1 185 28
+ 396 0144 3B8C     		ldrh	r3, [r7, #32]
+ 397              		.loc 1 185 3
+ 398 0146 1022     		movs	r2, #16
+ 399 0148 1946     		mov	r1, r3
+ 400 014a 7868     		ldr	r0, [r7, #4]
+ 401 014c FFF7FEFF 		bl	uart_print_integer
+ 186:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 402              		.loc 1 186 3
+ 403 0150 2C49     		ldr	r1, .L5+20
+ 404 0152 7868     		ldr	r0, [r7, #4]
+ 405 0154 FFF7FEFF 		bl	uart_print
+ 187:./i2c/i2c.c   ****   
+ 188:./i2c/i2c.c   ****   //I2C1->SR2=0x8888;
+ 189:./i2c/i2c.c   ****   t.word=I2C1->SR2;
+ 406              		.loc 1 189 14
+ 407 0158 284B     		ldr	r3, .L5+12
+ 408 015a 1B8B     		ldrh	r3, [r3, #24]	@ movhi
+ 409 015c 9BB2     		uxth	r3, r3
+ 410              		.loc 1 189 9
+ 411 015e 3B84     		strh	r3, [r7, #32]	@ movhi
+ 190:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_SR2:");
+ 412              		.loc 1 190 3
+ 413 0160 3149     		ldr	r1, .L5+56
+ 414 0162 7868     		ldr	r0, [r7, #4]
+ 415 0164 FFF7FEFF 		bl	uart_print
+ 191:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 416              		.loc 1 191 28
+ 417 0168 3B8C     		ldrh	r3, [r7, #32]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 12
+
+
+ 418              		.loc 1 191 3
+ 419 016a 1022     		movs	r2, #16
+ 420 016c 1946     		mov	r1, r3
+ 421 016e 7868     		ldr	r0, [r7, #4]
+ 422 0170 FFF7FEFF 		bl	uart_print_integer
+ 192:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 423              		.loc 1 192 3
+ 424 0174 2349     		ldr	r1, .L5+20
+ 425 0176 7868     		ldr	r0, [r7, #4]
+ 426 0178 FFF7FEFF 		bl	uart_print
+ 193:./i2c/i2c.c   ****   
+ 194:./i2c/i2c.c   ****  // I2C1->CCR=0x3024;
+ 195:./i2c/i2c.c   ****   t.word=I2C1->CCR;
+ 427              		.loc 1 195 14
+ 428 017c 1F4B     		ldr	r3, .L5+12
+ 429 017e 9B8B     		ldrh	r3, [r3, #28]	@ movhi
+ 430 0180 9BB2     		uxth	r3, r3
+ 431              		.loc 1 195 9
+ 432 0182 3B84     		strh	r3, [r7, #32]	@ movhi
+ 196:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_CCR:");
+ 433              		.loc 1 196 3
+ 434 0184 2949     		ldr	r1, .L5+60
+ 435 0186 7868     		ldr	r0, [r7, #4]
+ 436 0188 FFF7FEFF 		bl	uart_print
+ 197:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 437              		.loc 1 197 28
+ 438 018c 3B8C     		ldrh	r3, [r7, #32]
+ 439              		.loc 1 197 3
+ 440 018e 1022     		movs	r2, #16
+ 441 0190 1946     		mov	r1, r3
+ 442 0192 7868     		ldr	r0, [r7, #4]
+ 443 0194 FFF7FEFF 		bl	uart_print_integer
+ 198:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 444              		.loc 1 198 3
+ 445 0198 1A49     		ldr	r1, .L5+20
+ 446 019a 7868     		ldr	r0, [r7, #4]
+ 447 019c FFF7FEFF 		bl	uart_print
+ 199:./i2c/i2c.c   **** 
+ 200:./i2c/i2c.c   ****  // I2C1->TRISE=0x0040;
+ 201:./i2c/i2c.c   ****   t.word=I2C1->TRISE;
+ 448              		.loc 1 201 14
+ 449 01a0 164B     		ldr	r3, .L5+12
+ 450 01a2 1B8C     		ldrh	r3, [r3, #32]	@ movhi
+ 451 01a4 9BB2     		uxth	r3, r3
+ 452              		.loc 1 201 9
+ 453 01a6 3B84     		strh	r3, [r7, #32]	@ movhi
+ 202:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_TRISE:");
+ 454              		.loc 1 202 3
+ 455 01a8 2149     		ldr	r1, .L5+64
+ 456 01aa 7868     		ldr	r0, [r7, #4]
+ 457 01ac FFF7FEFF 		bl	uart_print
+ 203:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 458              		.loc 1 203 28
+ 459 01b0 3B8C     		ldrh	r3, [r7, #32]
+ 460              		.loc 1 203 3
+ 461 01b2 1022     		movs	r2, #16
+ 462 01b4 1946     		mov	r1, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 13
+
+
+ 463 01b6 7868     		ldr	r0, [r7, #4]
+ 464 01b8 FFF7FEFF 		bl	uart_print_integer
+ 204:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 465              		.loc 1 204 3
+ 466 01bc 1149     		ldr	r1, .L5+20
+ 467 01be 7868     		ldr	r0, [r7, #4]
+ 468 01c0 FFF7FEFF 		bl	uart_print
+ 205:./i2c/i2c.c   ****   //I2C1->DR=0x6734;
+ 206:./i2c/i2c.c   ****   t.word=I2C1->DR;
+ 469              		.loc 1 206 14
+ 470 01c4 0D4B     		ldr	r3, .L5+12
+ 471 01c6 1B8A     		ldrh	r3, [r3, #16]	@ movhi
+ 472 01c8 9BB2     		uxth	r3, r3
+ 473              		.loc 1 206 9
+ 474 01ca 3B84     		strh	r3, [r7, #32]	@ movhi
+ 207:./i2c/i2c.c   ****   uart_print(uart,"\t I2C1_DR:");
+ 475              		.loc 1 207 3
+ 476 01cc 1949     		ldr	r1, .L5+68
+ 477 01ce 7868     		ldr	r0, [r7, #4]
+ 478 01d0 FFF7FEFF 		bl	uart_print
+ 208:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 479              		.loc 1 208 28
+ 480 01d4 3B8C     		ldrh	r3, [r7, #32]
+ 481              		.loc 1 208 3
+ 482 01d6 1022     		movs	r2, #16
+ 483 01d8 1946     		mov	r1, r3
+ 484 01da 7868     		ldr	r0, [r7, #4]
+ 485 01dc FFF7FEFF 		bl	uart_print_integer
+ 209:./i2c/i2c.c   ****   uart_print(uart,"\r\n");
+ 486              		.loc 1 209 3
+ 487 01e0 0F49     		ldr	r1, .L5+48
+ 488 01e2 7868     		ldr	r0, [r7, #4]
+ 489 01e4 FFF7FEFF 		bl	uart_print
+ 210:./i2c/i2c.c   **** 
+ 211:./i2c/i2c.c   **** //I2Cx
+ 212:./i2c/i2c.c   **** /*
+ 213:./i2c/i2c.c   ****   t.word=i2cx->CR1.val;
+ 214:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_CR1:");
+ 215:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 216:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 217:./i2c/i2c.c   **** 
+ 218:./i2c/i2c.c   ****   t.word=i2cx->CR2.val;
+ 219:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_CR2:");
+ 220:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 221:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 222:./i2c/i2c.c   ****   
+ 223:./i2c/i2c.c   ****   t.word=i2cx->OAR1.val;
+ 224:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_OAR1:");
+ 225:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 226:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 227:./i2c/i2c.c   **** 
+ 228:./i2c/i2c.c   ****   t.word=i2cx->OAR2.val;
+ 229:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_OAR2:");
+ 230:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 231:./i2c/i2c.c   ****   uart_print(uart,"\r\n");
+ 232:./i2c/i2c.c   **** 
+ 233:./i2c/i2c.c   ****   t.word=i2cx->SR1.val;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 14
+
+
+ 234:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_SR1:");
+ 235:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 236:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 237:./i2c/i2c.c   **** 
+ 238:./i2c/i2c.c   ****   t.word=i2cx->SR2.val;
+ 239:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_SR2:");
+ 240:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 241:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 242:./i2c/i2c.c   **** 
+ 243:./i2c/i2c.c   ****   t.word=i2cx->CCR.val;
+ 244:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_CCR:");
+ 245:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 246:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 247:./i2c/i2c.c   **** 
+ 248:./i2c/i2c.c   ****   t.word=i2cx->TRISE.val;
+ 249:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_TRISE:");
+ 250:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 251:./i2c/i2c.c   ****   uart_print(uart,"\t");
+ 252:./i2c/i2c.c   **** 
+ 253:./i2c/i2c.c   ****   t.word=i2cx->DR.val;
+ 254:./i2c/i2c.c   ****   uart_print(uart,"\t I2Cx_DR:");
+ 255:./i2c/i2c.c   ****   uart_print_integer(uart,t.word,16);
+ 256:./i2c/i2c.c   ****   uart_print(uart,"\r\n");
+ 257:./i2c/i2c.c   ****  */
+ 258:./i2c/i2c.c   **** 
+ 259:./i2c/i2c.c   **** }
+ 490              		.loc 1 259 1
+ 491 01e8 00BF     		nop
+ 492 01ea 2837     		adds	r7, r7, #40
+ 493              	.LCFI5:
+ 494              		.cfi_def_cfa_offset 8
+ 495 01ec BD46     		mov	sp, r7
+ 496              	.LCFI6:
+ 497              		.cfi_def_cfa_register 13
+ 498              		@ sp needed
+ 499 01ee 80BD     		pop	{r7, pc}
+ 500              	.L6:
+ 501              		.align	2
+ 502              	.L5:
+ 503 01f0 00000000 		.word	.LC0
+ 504 01f4 00000000 		.word	i2cx
+ 505 01f8 0C000000 		.word	.LC1
+ 506 01fc 00540040 		.word	1073763328
+ 507 0200 14000000 		.word	.LC2
+ 508 0204 1C000000 		.word	.LC3
+ 509 0208 20000000 		.word	.LC4
+ 510 020c 28000000 		.word	.LC5
+ 511 0210 2C000000 		.word	.LC6
+ 512 0214 38000000 		.word	.LC7
+ 513 0218 44000000 		.word	.LC8
+ 514 021c 54000000 		.word	.LC9
+ 515 0220 64000000 		.word	.LC10
+ 516 0224 68000000 		.word	.LC11
+ 517 0228 74000000 		.word	.LC12
+ 518 022c 80000000 		.word	.LC13
+ 519 0230 8C000000 		.word	.LC14
+ 520 0234 9C000000 		.word	.LC15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 15
+
+
+ 521              		.cfi_endproc
+ 522              	.LFE34:
+ 524              		.section	.text.i2c_start,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	i2c_start
+ 527              		.syntax unified
+ 528              		.thumb
+ 529              		.thumb_func
+ 531              	i2c_start:
+ 532              	.LFB35:
+ 260:./i2c/i2c.c   **** //---------------------------------------------------------------------------------------------
+ 261:./i2c/i2c.c   **** 
+ 262:./i2c/i2c.c   **** 
+ 263:./i2c/i2c.c   **** 
+ 264:./i2c/i2c.c   **** 
+ 265:./i2c/i2c.c   **** 
+ 266:./i2c/i2c.c   **** 
+ 267:./i2c/i2c.c   **** 
+ 268:./i2c/i2c.c   **** /**
+ 269:./i2c/i2c.c   ****  * @brief initiate start condition
+ 270:./i2c/i2c.c   ****  * 
+ 271:./i2c/i2c.c   ****  * @return uint8_t 
+ 272:./i2c/i2c.c   ****  */
+ 273:./i2c/i2c.c   ****  uint8_t i2c_start()
+ 274:./i2c/i2c.c   ****  {
+ 533              		.loc 1 274 2
+ 534              		.cfi_startproc
+ 535              		@ args = 0, pretend = 0, frame = 0
+ 536              		@ frame_needed = 1, uses_anonymous_args = 0
+ 537              		@ link register save eliminated.
+ 538 0000 80B4     		push	{r7}
+ 539              	.LCFI7:
+ 540              		.cfi_def_cfa_offset 4
+ 541              		.cfi_offset 7, -4
+ 542 0002 00AF     		add	r7, sp, #0
+ 543              	.LCFI8:
+ 544              		.cfi_def_cfa_register 7
+ 275:./i2c/i2c.c   **** 
+ 276:./i2c/i2c.c   ****     return 0;
+ 545              		.loc 1 276 12
+ 546 0004 0023     		movs	r3, #0
+ 277:./i2c/i2c.c   ****  }
+ 547              		.loc 1 277 2
+ 548 0006 1846     		mov	r0, r3
+ 549 0008 BD46     		mov	sp, r7
+ 550              	.LCFI9:
+ 551              		.cfi_def_cfa_register 13
+ 552              		@ sp needed
+ 553 000a 80BC     		pop	{r7}
+ 554              	.LCFI10:
+ 555              		.cfi_restore 7
+ 556              		.cfi_def_cfa_offset 0
+ 557 000c 7047     		bx	lr
+ 558              		.cfi_endproc
+ 559              	.LFE35:
+ 561              		.section	.text.i2_stop,"ax",%progbits
+ 562              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 16
+
+
+ 563              		.global	i2_stop
+ 564              		.syntax unified
+ 565              		.thumb
+ 566              		.thumb_func
+ 568              	i2_stop:
+ 569              	.LFB36:
+ 278:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 279:./i2c/i2c.c   **** /**
+ 280:./i2c/i2c.c   ****  * @brief initiate stop condition
+ 281:./i2c/i2c.c   ****  * 
+ 282:./i2c/i2c.c   ****  * @return uint8_t 
+ 283:./i2c/i2c.c   ****  */
+ 284:./i2c/i2c.c   **** uint8_t i2_stop()
+ 285:./i2c/i2c.c   **** {
+ 570              		.loc 1 285 1
+ 571              		.cfi_startproc
+ 572              		@ args = 0, pretend = 0, frame = 0
+ 573              		@ frame_needed = 1, uses_anonymous_args = 0
+ 574              		@ link register save eliminated.
+ 575 0000 80B4     		push	{r7}
+ 576              	.LCFI11:
+ 577              		.cfi_def_cfa_offset 4
+ 578              		.cfi_offset 7, -4
+ 579 0002 00AF     		add	r7, sp, #0
+ 580              	.LCFI12:
+ 581              		.cfi_def_cfa_register 7
+ 286:./i2c/i2c.c   ****     return 0;
+ 582              		.loc 1 286 12
+ 583 0004 0023     		movs	r3, #0
+ 287:./i2c/i2c.c   **** }
+ 584              		.loc 1 287 1
+ 585 0006 1846     		mov	r0, r3
+ 586 0008 BD46     		mov	sp, r7
+ 587              	.LCFI13:
+ 588              		.cfi_def_cfa_register 13
+ 589              		@ sp needed
+ 590 000a 80BC     		pop	{r7}
+ 591              	.LCFI14:
+ 592              		.cfi_restore 7
+ 593              		.cfi_def_cfa_offset 0
+ 594 000c 7047     		bx	lr
+ 595              		.cfi_endproc
+ 596              	.LFE36:
+ 598              		.section	.text.i2c_send_byte,"ax",%progbits
+ 599              		.align	1
+ 600              		.global	i2c_send_byte
+ 601              		.syntax unified
+ 602              		.thumb
+ 603              		.thumb_func
+ 605              	i2c_send_byte:
+ 606              	.LFB37:
+ 288:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 289:./i2c/i2c.c   **** /**
+ 290:./i2c/i2c.c   ****  * @brief send a byte via TWI bus
+ 291:./i2c/i2c.c   ****  * 
+ 292:./i2c/i2c.c   ****  * @param data 
+ 293:./i2c/i2c.c   ****  * @return uint8_t 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 17
+
+
+ 294:./i2c/i2c.c   ****  */
+ 295:./i2c/i2c.c   **** uint8_t i2c_send_byte(uint8_t data)
+ 296:./i2c/i2c.c   **** {
+ 607              		.loc 1 296 1
+ 608              		.cfi_startproc
+ 609              		@ args = 0, pretend = 0, frame = 8
+ 610              		@ frame_needed = 1, uses_anonymous_args = 0
+ 611              		@ link register save eliminated.
+ 612 0000 80B4     		push	{r7}
+ 613              	.LCFI15:
+ 614              		.cfi_def_cfa_offset 4
+ 615              		.cfi_offset 7, -4
+ 616 0002 83B0     		sub	sp, sp, #12
+ 617              	.LCFI16:
+ 618              		.cfi_def_cfa_offset 16
+ 619 0004 00AF     		add	r7, sp, #0
+ 620              	.LCFI17:
+ 621              		.cfi_def_cfa_register 7
+ 622 0006 0346     		mov	r3, r0
+ 623 0008 FB71     		strb	r3, [r7, #7]
+ 297:./i2c/i2c.c   ****     return 0;
+ 624              		.loc 1 297 12
+ 625 000a 0023     		movs	r3, #0
+ 298:./i2c/i2c.c   **** }
+ 626              		.loc 1 298 1
+ 627 000c 1846     		mov	r0, r3
+ 628 000e 0C37     		adds	r7, r7, #12
+ 629              	.LCFI18:
+ 630              		.cfi_def_cfa_offset 4
+ 631 0010 BD46     		mov	sp, r7
+ 632              	.LCFI19:
+ 633              		.cfi_def_cfa_register 13
+ 634              		@ sp needed
+ 635 0012 80BC     		pop	{r7}
+ 636              	.LCFI20:
+ 637              		.cfi_restore 7
+ 638              		.cfi_def_cfa_offset 0
+ 639 0014 7047     		bx	lr
+ 640              		.cfi_endproc
+ 641              	.LFE37:
+ 643              		.section	.text.i2c_send_sla_wr,"ax",%progbits
+ 644              		.align	1
+ 645              		.global	i2c_send_sla_wr
+ 646              		.syntax unified
+ 647              		.thumb
+ 648              		.thumb_func
+ 650              	i2c_send_sla_wr:
+ 651              	.LFB38:
+ 299:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 300:./i2c/i2c.c   **** /**
+ 301:./i2c/i2c.c   ****  * @brief send a slave with write operation via TWI bus
+ 302:./i2c/i2c.c   ****  * 
+ 303:./i2c/i2c.c   ****  * @param SLA_W 
+ 304:./i2c/i2c.c   ****  * @return uint8_t 
+ 305:./i2c/i2c.c   ****  */
+ 306:./i2c/i2c.c   **** uint8_t i2c_send_sla_wr(uint8_t SLA_W)
+ 307:./i2c/i2c.c   **** {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 18
+
+
+ 652              		.loc 1 307 1
+ 653              		.cfi_startproc
+ 654              		@ args = 0, pretend = 0, frame = 8
+ 655              		@ frame_needed = 1, uses_anonymous_args = 0
+ 656              		@ link register save eliminated.
+ 657 0000 80B4     		push	{r7}
+ 658              	.LCFI21:
+ 659              		.cfi_def_cfa_offset 4
+ 660              		.cfi_offset 7, -4
+ 661 0002 83B0     		sub	sp, sp, #12
+ 662              	.LCFI22:
+ 663              		.cfi_def_cfa_offset 16
+ 664 0004 00AF     		add	r7, sp, #0
+ 665              	.LCFI23:
+ 666              		.cfi_def_cfa_register 7
+ 667 0006 0346     		mov	r3, r0
+ 668 0008 FB71     		strb	r3, [r7, #7]
+ 308:./i2c/i2c.c   ****   return 0;
+ 669              		.loc 1 308 10
+ 670 000a 0023     		movs	r3, #0
+ 309:./i2c/i2c.c   **** }
+ 671              		.loc 1 309 1
+ 672 000c 1846     		mov	r0, r3
+ 673 000e 0C37     		adds	r7, r7, #12
+ 674              	.LCFI24:
+ 675              		.cfi_def_cfa_offset 4
+ 676 0010 BD46     		mov	sp, r7
+ 677              	.LCFI25:
+ 678              		.cfi_def_cfa_register 13
+ 679              		@ sp needed
+ 680 0012 80BC     		pop	{r7}
+ 681              	.LCFI26:
+ 682              		.cfi_restore 7
+ 683              		.cfi_def_cfa_offset 0
+ 684 0014 7047     		bx	lr
+ 685              		.cfi_endproc
+ 686              	.LFE38:
+ 688              		.section	.text.i2c_send_sla_rd,"ax",%progbits
+ 689              		.align	1
+ 690              		.global	i2c_send_sla_rd
+ 691              		.syntax unified
+ 692              		.thumb
+ 693              		.thumb_func
+ 695              	i2c_send_sla_rd:
+ 696              	.LFB39:
+ 310:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 311:./i2c/i2c.c   **** /**
+ 312:./i2c/i2c.c   ****  * @brief send a slave with read operation via TWI bus
+ 313:./i2c/i2c.c   ****  * 
+ 314:./i2c/i2c.c   ****  * @param SLA_R 
+ 315:./i2c/i2c.c   ****  * @return uint8_t 
+ 316:./i2c/i2c.c   ****  */
+ 317:./i2c/i2c.c   **** uint8_t i2c_send_sla_rd(uint8_t SLA_R)
+ 318:./i2c/i2c.c   **** {
+ 697              		.loc 1 318 1
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 19
+
+
+ 700              		@ frame_needed = 1, uses_anonymous_args = 0
+ 701              		@ link register save eliminated.
+ 702 0000 80B4     		push	{r7}
+ 703              	.LCFI27:
+ 704              		.cfi_def_cfa_offset 4
+ 705              		.cfi_offset 7, -4
+ 706 0002 83B0     		sub	sp, sp, #12
+ 707              	.LCFI28:
+ 708              		.cfi_def_cfa_offset 16
+ 709 0004 00AF     		add	r7, sp, #0
+ 710              	.LCFI29:
+ 711              		.cfi_def_cfa_register 7
+ 712 0006 0346     		mov	r3, r0
+ 713 0008 FB71     		strb	r3, [r7, #7]
+ 319:./i2c/i2c.c   ****  return 0;
+ 714              		.loc 1 319 9
+ 715 000a 0023     		movs	r3, #0
+ 320:./i2c/i2c.c   **** }
+ 716              		.loc 1 320 1
+ 717 000c 1846     		mov	r0, r3
+ 718 000e 0C37     		adds	r7, r7, #12
+ 719              	.LCFI30:
+ 720              		.cfi_def_cfa_offset 4
+ 721 0010 BD46     		mov	sp, r7
+ 722              	.LCFI31:
+ 723              		.cfi_def_cfa_register 13
+ 724              		@ sp needed
+ 725 0012 80BC     		pop	{r7}
+ 726              	.LCFI32:
+ 727              		.cfi_restore 7
+ 728              		.cfi_def_cfa_offset 0
+ 729 0014 7047     		bx	lr
+ 730              		.cfi_endproc
+ 731              	.LFE39:
+ 733              		.section	.text.i2c_write_data,"ax",%progbits
+ 734              		.align	1
+ 735              		.global	i2c_write_data
+ 736              		.syntax unified
+ 737              		.thumb
+ 738              		.thumb_func
+ 740              	i2c_write_data:
+ 741              	.LFB40:
+ 321:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 322:./i2c/i2c.c   **** /**
+ 323:./i2c/i2c.c   ****  * @brief write data
+ 324:./i2c/i2c.c   ****  * 
+ 325:./i2c/i2c.c   ****  * @param data 
+ 326:./i2c/i2c.c   ****  * @return uint8_t 
+ 327:./i2c/i2c.c   ****  */
+ 328:./i2c/i2c.c   **** uint8_t i2c_write_data(uint8_t data)
+ 329:./i2c/i2c.c   **** {
+ 742              		.loc 1 329 1
+ 743              		.cfi_startproc
+ 744              		@ args = 0, pretend = 0, frame = 8
+ 745              		@ frame_needed = 1, uses_anonymous_args = 0
+ 746              		@ link register save eliminated.
+ 747 0000 80B4     		push	{r7}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 20
+
+
+ 748              	.LCFI33:
+ 749              		.cfi_def_cfa_offset 4
+ 750              		.cfi_offset 7, -4
+ 751 0002 83B0     		sub	sp, sp, #12
+ 752              	.LCFI34:
+ 753              		.cfi_def_cfa_offset 16
+ 754 0004 00AF     		add	r7, sp, #0
+ 755              	.LCFI35:
+ 756              		.cfi_def_cfa_register 7
+ 757 0006 0346     		mov	r3, r0
+ 758 0008 FB71     		strb	r3, [r7, #7]
+ 330:./i2c/i2c.c   ****  return 0;
+ 759              		.loc 1 330 9
+ 760 000a 0023     		movs	r3, #0
+ 331:./i2c/i2c.c   **** }
+ 761              		.loc 1 331 1
+ 762 000c 1846     		mov	r0, r3
+ 763 000e 0C37     		adds	r7, r7, #12
+ 764              	.LCFI36:
+ 765              		.cfi_def_cfa_offset 4
+ 766 0010 BD46     		mov	sp, r7
+ 767              	.LCFI37:
+ 768              		.cfi_def_cfa_register 13
+ 769              		@ sp needed
+ 770 0012 80BC     		pop	{r7}
+ 771              	.LCFI38:
+ 772              		.cfi_restore 7
+ 773              		.cfi_def_cfa_offset 0
+ 774 0014 7047     		bx	lr
+ 775              		.cfi_endproc
+ 776              	.LFE40:
+ 778              		.section	.text.i2c_read_data,"ax",%progbits
+ 779              		.align	1
+ 780              		.global	i2c_read_data
+ 781              		.syntax unified
+ 782              		.thumb
+ 783              		.thumb_func
+ 785              	i2c_read_data:
+ 786              	.LFB41:
+ 332:./i2c/i2c.c   **** //----------------------------------------------------------------------------------
+ 333:./i2c/i2c.c   **** uint8_t i2c_read_data(uint8_t *data,uint8_t ack)
+ 334:./i2c/i2c.c   **** {
+ 787              		.loc 1 334 1
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 8
+ 790              		@ frame_needed = 1, uses_anonymous_args = 0
+ 791              		@ link register save eliminated.
+ 792 0000 80B4     		push	{r7}
+ 793              	.LCFI39:
+ 794              		.cfi_def_cfa_offset 4
+ 795              		.cfi_offset 7, -4
+ 796 0002 83B0     		sub	sp, sp, #12
+ 797              	.LCFI40:
+ 798              		.cfi_def_cfa_offset 16
+ 799 0004 00AF     		add	r7, sp, #0
+ 800              	.LCFI41:
+ 801              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 21
+
+
+ 802 0006 7860     		str	r0, [r7, #4]
+ 803 0008 0B46     		mov	r3, r1
+ 804 000a FB70     		strb	r3, [r7, #3]
+ 335:./i2c/i2c.c   ****  return 0;
+ 805              		.loc 1 335 9
+ 806 000c 0023     		movs	r3, #0
+ 336:./i2c/i2c.c   **** }
+ 807              		.loc 1 336 1
+ 808 000e 1846     		mov	r0, r3
+ 809 0010 0C37     		adds	r7, r7, #12
+ 810              	.LCFI42:
+ 811              		.cfi_def_cfa_offset 4
+ 812 0012 BD46     		mov	sp, r7
+ 813              	.LCFI43:
+ 814              		.cfi_def_cfa_register 13
+ 815              		@ sp needed
+ 816 0014 80BC     		pop	{r7}
+ 817              	.LCFI44:
+ 818              		.cfi_restore 7
+ 819              		.cfi_def_cfa_offset 0
+ 820 0016 7047     		bx	lr
+ 821              		.cfi_endproc
+ 822              	.LFE41:
+ 824              		.text
+ 825              	.Letext0:
+ 826              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 827              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 828              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 829              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_rcc.h"
+ 830              		.file 6 "./basic/structs.h"
+ 831              		.file 7 "./basic/gpio.h"
+ 832              		.file 8 "./i2c/i2c-com.h"
+ 833              		.file 9 "./i2c/i2c.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:22     .data.i2cx:00000000 i2cx
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:19     .data.i2cx:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:29     .data.myi2c:00000000 myi2c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:26     .data.myi2c:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:50     .text.i2c_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:56     .text.i2c_init:00000000 i2c_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:135    .text.i2c_init:0000007c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:140    .rodata:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:189    .text.i2c_uart_print:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:195    .text.i2c_uart_print:00000000 i2c_uart_print
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:503    .text.i2c_uart_print:000001f0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:525    .text.i2c_start:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:531    .text.i2c_start:00000000 i2c_start
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:562    .text.i2_stop:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:568    .text.i2_stop:00000000 i2_stop
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:599    .text.i2c_send_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:605    .text.i2c_send_byte:00000000 i2c_send_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:644    .text.i2c_send_sla_wr:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:650    .text.i2c_send_sla_wr:00000000 i2c_send_sla_wr
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:689    .text.i2c_send_sla_rd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:695    .text.i2c_send_sla_rd:00000000 i2c_send_sla_rd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:734    .text.i2c_write_data:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:740    .text.i2c_write_data:00000000 i2c_write_data
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:779    .text.i2c_read_data:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s:785    .text.i2c_read_data:00000000 i2c_read_data
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 23
+
+
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccuy6WVf.s 			page 24
+
+
+
+UNDEFINED SYMBOLS
+reg_sbits
+reg_cbits
+gpio_pin_mode
+RCC_GetClocksFreq
+uart_print
+uart_print_integer

@@ -5,7 +5,7 @@
 ## The name of your project (without the .c or .cpp)
 # TARGET = blinkLED
 ## Or name it automatically after the enclosing directory
-TARGET = $(lastword $(subst /, ,$(CURDIR)))
+#TARGET = $(lastword $(subst /, ,$(CURDIR)))
 
 ########-------------------------------------------------------------##########
 ########                   Directroy Paths!                   		 ##########
@@ -21,13 +21,13 @@ TARGET = $(lastword $(subst /, ,$(CURDIR)))
 ########   		files := $(foreach dir,$(dirs),$(wildcard $(dir)/*)) ##########
 ########-------------------------------------------------------------##########
 # Doxygen configuration Directory paths
-DOXYFILE= $(wildcard *.conf)
+DOXYFILE= $(wildcard *.md)
 
 # Build path
 BUILD_DIR = build
 
 # startup Directory path
-STARTUP_DIR =./.start_up
+STARTUP_DIR =./.startup
 
 # libraries Directory paths
 LIB_DIR =
@@ -44,8 +44,8 @@ EXT_INC_DIR=./.driver/CMSIS/Core\
 ./.driver/STM32F10x_StdPeriph_Driver/inc
 
 #EXT_INC_DIR=/opt/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/CMSIS/CM3/CoreSupport \
-/arm-opt/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
-/arm-opt/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/STM32F10x_StdPeriph_Driver/inc
+$(GCC_OS_DIR)/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
+$(GCC_OS_DIR)/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/STM32F10x_StdPeriph_Driver/inc
 
 ##########------------------------------------------------------##########
 ##########                   Makefile Magic!                    ##########
@@ -61,8 +61,7 @@ EXT_INC_DIR=./.driver/CMSIS/Core\
 ##########          Set up once, then forget about it           ##########
 ##########        (Can override.  See bottom of file.)          ##########
 ##########------------------------------------------------------##########
-# st-link:
-PROGRAMMER_PATH = /arm-opt/stlink-1.7.0/build/Release/bin
+PROGRAMMER_PATH = /opt/stlink-1.7.0/build/Release/bin
 PROGRAMMER_INFO =$(PROGRAMMER_PATH)/st-info
 PROGRAMMER =$(PROGRAMMER_PATH)/st-flash
 PROGRAMMER_ARGS = 	
@@ -118,7 +117,8 @@ CC_INCLUDES +=-I.
 ##########        You shouldn't need to edit below.             ##########
 ##########------------------------------------------------------##########
 PREFIX = arm-none-eabi-
-GCC_PATH=C:/arm-opt/gcc-arm-none-eabi-10.3-2021.10/bin
+
+GCC_PATH=$(GCC_DIR)/gcc-arm-none-eabi-10.3-2021.10/bin
 ifdef GCC_PATH
 CC = $(GCC_PATH)/$(PREFIX)gcc
 CX = $(GCC_PATH)/$(PREFIX)g++
@@ -197,7 +197,7 @@ endif
 ##########        You shouldn't need to edit below.             ##########
 ##########------------------------------------------------------##########
 # link script
-LDSCRIPT = $(STARTUP_DIR)/stm32_flash.ld
+LDSCRIPT =$(STARTUP_DIR)/stm32_flash.ld
 # libraries
 LIBS = -lc -lm -lnosys 
 LIBDIR = 
@@ -290,10 +290,31 @@ clean_all:
 ##########          Programmer-specific details                 ##########
 ##########   Flashing code to STM32 using OpenOCD st-link       ##########
 ##########------------------------------------------------------##########
-openocd_inteface = intreface/stlink.cfg
+openocd_dir=C:/arm-opt/OpenOCD-20230202-0.12.0/share/openocd/scripts
+openocd_inteface = interface/stlink.cfg
 openocd_target	 = target/stm32f1x.cfg
-openocd: clean all
+
+openocd-upload:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "program $(BUILD_DIR)/$(TARGET).bin 0x08000000 verify reset exit"
+
+openocd-build: all
 	openocd -f  $(openocd_inteface) -f $(openocd_target) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+
+openocd-rebuild: clean all
+	openocd -f  $(openocd_inteface) -f $(openocd_target) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+
+# these commands not work will yet
+openocd-verify:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "verify"
+openocd-erase:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "erase"
+openocd-reset:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "reset"
+openocd-exit:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "exit"
+openocd-info:
+		openocd -f  $(openocd_inteface) -f $(openocd_target) -c "info"
+		
 ##########------------------------------------------------------##########
 ##########              Programmer-specific details             ##########
 ##########           Flashing code to STM32 using st-link       ##########
@@ -309,7 +330,8 @@ flash_write:
 	   $(PROGRAMMER) write $(BUILD_DIR)/$(TARGET).hex 0x08000000
 
 flash_read:
-	   $(PROGRAMMER) read
+	   $(PROGRAMMER) read  
+
 
 erase:  
 	$(PROGRAMMER) erase  
@@ -383,5 +405,4 @@ doc:
 clean_doc:
 	@echo " Cleaning html documents..."; 
 	rm -r *html
-
 

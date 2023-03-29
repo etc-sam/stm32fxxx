@@ -1,0 +1,3010 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c-com.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.i2c_peripheral_enable,"ax",%progbits
+  18              		.align	1
+  19              		.global	i2c_peripheral_enable
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	i2c_peripheral_enable:
+  25              	.LFB33:
+  26              		.file 1 "./i2c/i2c-com.c"
+   1:./i2c/i2c-com.c **** /**
+   2:./i2c/i2c-com.c ****  * @brief i2c-com.c
+   3:./i2c/i2c-com.c ****  *
+   4:./i2c/i2c-com.c ****  * @param student: Sameer Almaldein
+   5:./i2c/i2c-com.c ****  * @param ID: 679699
+   6:./i2c/i2c-com.c ****  * @param University TU-Chemnitz
+   7:./i2c/i2c-com.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./i2c/i2c-com.c ****  * 
+   9:./i2c/i2c-com.c ****  * 
+  10:./i2c/i2c-com.c ****  */
+  11:./i2c/i2c-com.c **** /**
+  12:./i2c/i2c-com.c **** * @brief Devices can have up to three I2C peripherals. The peripherals support SMBus and
+  13:./i2c/i2c-com.c ****           PMBus variants.
+  14:./i2c/i2c-com.c ****         A peripheral begins after reset in Slave mode. To become a Master a start
+  15:./i2c/i2c-com.c ****         condition must be generated. The peripheral will remain in Master mode unless
+  16:./i2c/i2c-com.c ****         a multimaster contention is lost or a stop condition is generated.
+  17:./i2c/i2c-com.c **** 
+  18:./i2c/i2c-com.c **** * @todo all sorts of lovely stuff like DMA, Interrupts, SMBus variant, Status
+  19:./i2c/i2c-com.c **** register access, Error conditions
+  20:./i2c/i2c-com.c ****  */ 
+  21:./i2c/i2c-com.c **** 
+  22:./i2c/i2c-com.c **** //********************************************************************************************
+  23:./i2c/i2c-com.c **** //
+  24:./i2c/i2c-com.c **** //  header  files
+  25:./i2c/i2c-com.c **** //
+  26:./i2c/i2c-com.c **** //********************************************************************************************
+  27:./i2c/i2c-com.c **** #include "init.h"
+  28:./i2c/i2c-com.c **** //********************************************************************************************
+  29:./i2c/i2c-com.c **** //
+  30:./i2c/i2c-com.c **** //  static Methods
+  31:./i2c/i2c-com.c **** //
+  32:./i2c/i2c-com.c **** //********************************************************************************************
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 2
+
+
+  33:./i2c/i2c-com.c **** 
+  34:./i2c/i2c-com.c **** //********************************************************************************************
+  35:./i2c/i2c-com.c **** //
+  36:./i2c/i2c-com.c **** //  extern variables
+  37:./i2c/i2c-com.c **** //
+  38:./i2c/i2c-com.c **** //********************************************************************************************
+  39:./i2c/i2c-com.c **** 
+  40:./i2c/i2c-com.c **** 
+  41:./i2c/i2c-com.c **** //********************************************************************************************
+  42:./i2c/i2c-com.c **** //
+  43:./i2c/i2c-com.c **** //  Methods defnitions
+  44:./i2c/i2c-com.c **** //
+  45:./i2c/i2c-com.c **** //********************************************************************************************
+  46:./i2c/i2c-com.c **** 
+  47:./i2c/i2c-com.c **** //********************************************************************************************
+  48:./i2c/i2c-com.c **** //
+  49:./i2c/i2c-com.c **** //  I2C Controller Generic methods  
+  50:./i2c/i2c-com.c **** //
+  51:./i2c/i2c-com.c **** //********************************************************************************************
+  52:./i2c/i2c-com.c **** /** 
+  53:./i2c/i2c-com.c ****  * @brief I2C Peripheral Enable.
+  54:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+  55:./i2c/i2c-com.c **** */
+  56:./i2c/i2c-com.c **** void i2c_peripheral_enable(I2C_TypeDef_t * i2c)
+  57:./i2c/i2c-com.c **** {
+  27              		.loc 1 57 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  58:./i2c/i2c-com.c ****   i2c->CR1.PE=1;          
+  43              		.loc 1 58 14
+  44 0008 7A68     		ldr	r2, [r7, #4]
+  45 000a 1378     		ldrb	r3, [r2]
+  46 000c 43F00103 		orr	r3, r3, #1
+  47 0010 1370     		strb	r3, [r2]
+  59:./i2c/i2c-com.c ****   //sbits(i2c->CR1.val,I2C_CR1_PE);
+  60:./i2c/i2c-com.c ****   //i2c->CR1.val|= I2C_CR1_PE;  
+  61:./i2c/i2c-com.c **** } 
+  48              		.loc 1 61 1
+  49 0012 00BF     		nop
+  50 0014 0C37     		adds	r7, r7, #12
+  51              	.LCFI3:
+  52              		.cfi_def_cfa_offset 4
+  53 0016 BD46     		mov	sp, r7
+  54              	.LCFI4:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 3
+
+
+  55              		.cfi_def_cfa_register 13
+  56              		@ sp needed
+  57 0018 80BC     		pop	{r7}
+  58              	.LCFI5:
+  59              		.cfi_restore 7
+  60              		.cfi_def_cfa_offset 0
+  61 001a 7047     		bx	lr
+  62              		.cfi_endproc
+  63              	.LFE33:
+  65              		.section	.text.i2c_peripheral_disable,"ax",%progbits
+  66              		.align	1
+  67              		.global	i2c_peripheral_disable
+  68              		.syntax unified
+  69              		.thumb
+  70              		.thumb_func
+  72              	i2c_peripheral_disable:
+  73              	.LFB34:
+  62:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+  63:./i2c/i2c-com.c **** /** 
+  64:./i2c/i2c-com.c ****  * @brief I2C Peripheral Disable.
+  65:./i2c/i2c-com.c ****  * @details This must not be reset while in Master mode until a communication has finished.
+  66:./i2c/i2c-com.c ****             In Slave mode, the peripheral is disabled only after communication has ended.
+  67:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+  68:./i2c/i2c-com.c **** */
+  69:./i2c/i2c-com.c **** void i2c_peripheral_disable(I2C_TypeDef_t * i2c)
+  70:./i2c/i2c-com.c **** {
+  74              		.loc 1 70 1
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 8
+  77              		@ frame_needed = 1, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79 0000 80B4     		push	{r7}
+  80              	.LCFI6:
+  81              		.cfi_def_cfa_offset 4
+  82              		.cfi_offset 7, -4
+  83 0002 83B0     		sub	sp, sp, #12
+  84              	.LCFI7:
+  85              		.cfi_def_cfa_offset 16
+  86 0004 00AF     		add	r7, sp, #0
+  87              	.LCFI8:
+  88              		.cfi_def_cfa_register 7
+  89 0006 7860     		str	r0, [r7, #4]
+  71:./i2c/i2c-com.c ****     i2c->CR1.PE=0; 
+  90              		.loc 1 71 16
+  91 0008 7A68     		ldr	r2, [r7, #4]
+  92 000a 1378     		ldrb	r3, [r2]
+  93 000c 6FF30003 		bfc	r3, #0, #1
+  94 0010 1370     		strb	r3, [r2]
+  72:./i2c/i2c-com.c ****     //cbits(i2c->CR1.val,I2C_CR1_PE);
+  73:./i2c/i2c-com.c ****     //i2c->CR1.val&=~(I2C_CR1_PE);
+  74:./i2c/i2c-com.c **** }
+  95              		.loc 1 74 1
+  96 0012 00BF     		nop
+  97 0014 0C37     		adds	r7, r7, #12
+  98              	.LCFI9:
+  99              		.cfi_def_cfa_offset 4
+ 100 0016 BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 4
+
+
+ 101              	.LCFI10:
+ 102              		.cfi_def_cfa_register 13
+ 103              		@ sp needed
+ 104 0018 80BC     		pop	{r7}
+ 105              	.LCFI11:
+ 106              		.cfi_restore 7
+ 107              		.cfi_def_cfa_offset 0
+ 108 001a 7047     		bx	lr
+ 109              		.cfi_endproc
+ 110              	.LFE34:
+ 112              		.section	.text.i2c_send_start,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	i2c_send_start
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	i2c_send_start:
+ 120              	.LFB35:
+  75:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+  76:./i2c/i2c-com.c **** //********************************************************************************************
+  77:./i2c/i2c-com.c **** //
+  78:./i2c/i2c-com.c **** //  Transmitter  Master Mode methods  
+  79:./i2c/i2c-com.c **** //
+  80:./i2c/i2c-com.c **** //********************************************************************************************
+  81:./i2c/i2c-com.c **** /** 
+  82:./i2c/i2c-com.c **** * @brief I2C Send Start Condition.
+  83:./i2c/i2c-com.c **** 
+  84:./i2c/i2c-com.c **** * @details If in Master mode this will cause a restart condition to occur at the end of the
+  85:./i2c/i2c-com.c ****             current transmission. If in Slave mode, this will initiate a start condition
+  86:./i2c/i2c-com.c ****             when the current bus activity is completed.
+  87:./i2c/i2c-com.c ****  
+  88:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+  89:./i2c/i2c-com.c **** */
+  90:./i2c/i2c-com.c **** void i2c_send_start(I2C_TypeDef_t * i2c)
+  91:./i2c/i2c-com.c **** {
+ 121              		.loc 1 91 1
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 8
+ 124              		@ frame_needed = 1, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ 126 0000 80B4     		push	{r7}
+ 127              	.LCFI12:
+ 128              		.cfi_def_cfa_offset 4
+ 129              		.cfi_offset 7, -4
+ 130 0002 83B0     		sub	sp, sp, #12
+ 131              	.LCFI13:
+ 132              		.cfi_def_cfa_offset 16
+ 133 0004 00AF     		add	r7, sp, #0
+ 134              	.LCFI14:
+ 135              		.cfi_def_cfa_register 7
+ 136 0006 7860     		str	r0, [r7, #4]
+  92:./i2c/i2c-com.c ****     i2c->CR1.START=1; 
+ 137              		.loc 1 92 19
+ 138 0008 7A68     		ldr	r2, [r7, #4]
+ 139 000a 5378     		ldrb	r3, [r2, #1]
+ 140 000c 43F00103 		orr	r3, r3, #1
+ 141 0010 5370     		strb	r3, [r2, #1]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 5
+
+
+  93:./i2c/i2c-com.c ****     //sbits(i2c->CR1.val,I2C_CR1_START);
+  94:./i2c/i2c-com.c ****     //i2c->CR1.val|= I2C_CR1_START;
+  95:./i2c/i2c-com.c **** }
+ 142              		.loc 1 95 1
+ 143 0012 00BF     		nop
+ 144 0014 0C37     		adds	r7, r7, #12
+ 145              	.LCFI15:
+ 146              		.cfi_def_cfa_offset 4
+ 147 0016 BD46     		mov	sp, r7
+ 148              	.LCFI16:
+ 149              		.cfi_def_cfa_register 13
+ 150              		@ sp needed
+ 151 0018 80BC     		pop	{r7}
+ 152              	.LCFI17:
+ 153              		.cfi_restore 7
+ 154              		.cfi_def_cfa_offset 0
+ 155 001a 7047     		bx	lr
+ 156              		.cfi_endproc
+ 157              	.LFE35:
+ 159              		.section	.text.i2c_send_stop,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	i2c_send_stop
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	i2c_send_stop:
+ 167              	.LFB36:
+  96:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+  97:./i2c/i2c-com.c **** /** 
+  98:./i2c/i2c-com.c ****  * @brief I2C Send Stop Condition.
+  99:./i2c/i2c-com.c ****  * @details After the current byte transfer this will initiate a stop condition if in Master
+ 100:./i2c/i2c-com.c ****             mode, or simply release the bus if in Slave mode.
+ 101:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 102:./i2c/i2c-com.c **** */
+ 103:./i2c/i2c-com.c **** void i2c_send_stop(I2C_TypeDef_t * i2c)
+ 104:./i2c/i2c-com.c **** {
+ 168              		.loc 1 104 1
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 8
+ 171              		@ frame_needed = 1, uses_anonymous_args = 0
+ 172              		@ link register save eliminated.
+ 173 0000 80B4     		push	{r7}
+ 174              	.LCFI18:
+ 175              		.cfi_def_cfa_offset 4
+ 176              		.cfi_offset 7, -4
+ 177 0002 83B0     		sub	sp, sp, #12
+ 178              	.LCFI19:
+ 179              		.cfi_def_cfa_offset 16
+ 180 0004 00AF     		add	r7, sp, #0
+ 181              	.LCFI20:
+ 182              		.cfi_def_cfa_register 7
+ 183 0006 7860     		str	r0, [r7, #4]
+ 105:./i2c/i2c-com.c ****   i2c->CR1.STOP=1; 
+ 184              		.loc 1 105 16
+ 185 0008 7A68     		ldr	r2, [r7, #4]
+ 186 000a 5378     		ldrb	r3, [r2, #1]
+ 187 000c 43F00203 		orr	r3, r3, #2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 6
+
+
+ 188 0010 5370     		strb	r3, [r2, #1]
+ 106:./i2c/i2c-com.c ****   //sbits(i2c->CR1.val,I2C_CR1_STOP);
+ 107:./i2c/i2c-com.c ****   //i2c->CR1.val|=I2C_CR1_STOP;  
+ 108:./i2c/i2c-com.c **** }
+ 189              		.loc 1 108 1
+ 190 0012 00BF     		nop
+ 191 0014 0C37     		adds	r7, r7, #12
+ 192              	.LCFI21:
+ 193              		.cfi_def_cfa_offset 4
+ 194 0016 BD46     		mov	sp, r7
+ 195              	.LCFI22:
+ 196              		.cfi_def_cfa_register 13
+ 197              		@ sp needed
+ 198 0018 80BC     		pop	{r7}
+ 199              	.LCFI23:
+ 200              		.cfi_restore 7
+ 201              		.cfi_def_cfa_offset 0
+ 202 001a 7047     		bx	lr
+ 203              		.cfi_endproc
+ 204              	.LFE36:
+ 206              		.section	.text.i2c_clear_stop,"ax",%progbits
+ 207              		.align	1
+ 208              		.global	i2c_clear_stop
+ 209              		.syntax unified
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	i2c_clear_stop:
+ 214              	.LFB37:
+ 109:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 110:./i2c/i2c-com.c **** /** 
+ 111:./i2c/i2c-com.c **** * @brief I2C Clear Stop Flag.
+ 112:./i2c/i2c-com.c **** * @details Clear the "Send Stop" flag in the I2C config register
+ 113:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 114:./i2c/i2c-com.c **** */
+ 115:./i2c/i2c-com.c **** void i2c_clear_stop(I2C_TypeDef_t* i2c)
+ 116:./i2c/i2c-com.c **** {
+ 215              		.loc 1 116 1
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 8
+ 218              		@ frame_needed = 1, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 220 0000 80B4     		push	{r7}
+ 221              	.LCFI24:
+ 222              		.cfi_def_cfa_offset 4
+ 223              		.cfi_offset 7, -4
+ 224 0002 83B0     		sub	sp, sp, #12
+ 225              	.LCFI25:
+ 226              		.cfi_def_cfa_offset 16
+ 227 0004 00AF     		add	r7, sp, #0
+ 228              	.LCFI26:
+ 229              		.cfi_def_cfa_register 7
+ 230 0006 7860     		str	r0, [r7, #4]
+ 117:./i2c/i2c-com.c ****   i2c->CR1.STOP=0; 
+ 231              		.loc 1 117 16
+ 232 0008 7A68     		ldr	r2, [r7, #4]
+ 233 000a 5378     		ldrb	r3, [r2, #1]
+ 234 000c 6FF34103 		bfc	r3, #1, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 7
+
+
+ 235 0010 5370     		strb	r3, [r2, #1]
+ 118:./i2c/i2c-com.c ****   //cbits(i2c->CR1.val,I2C_CR1_STOP);
+ 119:./i2c/i2c-com.c ****   //i2c->CR1.val&=I2C_CR1_STOP;
+ 120:./i2c/i2c-com.c **** }
+ 236              		.loc 1 120 1
+ 237 0012 00BF     		nop
+ 238 0014 0C37     		adds	r7, r7, #12
+ 239              	.LCFI27:
+ 240              		.cfi_def_cfa_offset 4
+ 241 0016 BD46     		mov	sp, r7
+ 242              	.LCFI28:
+ 243              		.cfi_def_cfa_register 13
+ 244              		@ sp needed
+ 245 0018 80BC     		pop	{r7}
+ 246              	.LCFI29:
+ 247              		.cfi_restore 7
+ 248              		.cfi_def_cfa_offset 0
+ 249 001a 7047     		bx	lr
+ 250              		.cfi_endproc
+ 251              	.LFE37:
+ 253              		.section	.text.i2c_send_7bit_address,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	i2c_send_7bit_address
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	i2c_send_7bit_address:
+ 261              	.LFB38:
+ 121:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 122:./i2c/i2c-com.c **** 
+ 123:./i2c/i2c-com.c **** /** 
+ 124:./i2c/i2c-com.c **** * @brief I2C Send the 7-bit Slave Address.
+ 125:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 126:./i2c/i2c-com.c **** * @param[in] slave Unsigned int16. Slave address 0...1023.
+ 127:./i2c/i2c-com.c **** * @param[in] readwrite Unsigned int8. Single bit to instruct slave to receive or send @ref i2c_rw.
+ 128:./i2c/i2c-com.c **** */ 
+ 129:./i2c/i2c-com.c **** void i2c_send_7bit_address(I2C_TypeDef_t* i2c, uint8_t slave, uint8_t readwrite)
+ 130:./i2c/i2c-com.c **** {
+ 262              		.loc 1 130 1
+ 263              		.cfi_startproc
+ 264              		@ args = 0, pretend = 0, frame = 8
+ 265              		@ frame_needed = 1, uses_anonymous_args = 0
+ 266              		@ link register save eliminated.
+ 267 0000 80B4     		push	{r7}
+ 268              	.LCFI30:
+ 269              		.cfi_def_cfa_offset 4
+ 270              		.cfi_offset 7, -4
+ 271 0002 83B0     		sub	sp, sp, #12
+ 272              	.LCFI31:
+ 273              		.cfi_def_cfa_offset 16
+ 274 0004 00AF     		add	r7, sp, #0
+ 275              	.LCFI32:
+ 276              		.cfi_def_cfa_register 7
+ 277 0006 7860     		str	r0, [r7, #4]
+ 278 0008 0B46     		mov	r3, r1
+ 279 000a FB70     		strb	r3, [r7, #3]
+ 280 000c 1346     		mov	r3, r2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 8
+
+
+ 281 000e BB70     		strb	r3, [r7, #2]
+ 131:./i2c/i2c-com.c **** //  I2C_DR(i2c) = (uint8_t)((slave << 1) | readwrite);
+ 132:./i2c/i2c-com.c ****     i2c->DR.byte = (uint8_t)((slave << 1) | readwrite);
+ 282              		.loc 1 132 37
+ 283 0010 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 284 0012 5B00     		lsls	r3, r3, #1
+ 285              		.loc 1 132 43
+ 286 0014 5AB2     		sxtb	r2, r3
+ 287 0016 97F90230 		ldrsb	r3, [r7, #2]
+ 288 001a 1343     		orrs	r3, r3, r2
+ 289 001c 5BB2     		sxtb	r3, r3
+ 290              		.loc 1 132 20
+ 291 001e DAB2     		uxtb	r2, r3
+ 292              		.loc 1 132 18
+ 293 0020 7B68     		ldr	r3, [r7, #4]
+ 294 0022 1A74     		strb	r2, [r3, #16]
+ 133:./i2c/i2c-com.c **** }
+ 295              		.loc 1 133 1
+ 296 0024 00BF     		nop
+ 297 0026 0C37     		adds	r7, r7, #12
+ 298              	.LCFI33:
+ 299              		.cfi_def_cfa_offset 4
+ 300 0028 BD46     		mov	sp, r7
+ 301              	.LCFI34:
+ 302              		.cfi_def_cfa_register 13
+ 303              		@ sp needed
+ 304 002a 80BC     		pop	{r7}
+ 305              	.LCFI35:
+ 306              		.cfi_restore 7
+ 307              		.cfi_def_cfa_offset 0
+ 308 002c 7047     		bx	lr
+ 309              		.cfi_endproc
+ 310              	.LFE38:
+ 312              		.section	.text.i2c_send_data,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	i2c_send_data
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 319              	i2c_send_data:
+ 320              	.LFB39:
+ 134:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 135:./i2c/i2c-com.c **** /** 
+ 136:./i2c/i2c-com.c **** * @brief I2C Send Data.
+ 137:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 138:./i2c/i2c-com.c **** * @param[in] data Unsigned int8. Byte to send.
+ 139:./i2c/i2c-com.c **** */
+ 140:./i2c/i2c-com.c **** void i2c_send_data(I2C_TypeDef_t* i2c, uint8_t data)
+ 141:./i2c/i2c-com.c **** {
+ 321              		.loc 1 141 1
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 8
+ 324              		@ frame_needed = 1, uses_anonymous_args = 0
+ 325              		@ link register save eliminated.
+ 326 0000 80B4     		push	{r7}
+ 327              	.LCFI36:
+ 328              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 9
+
+
+ 329              		.cfi_offset 7, -4
+ 330 0002 83B0     		sub	sp, sp, #12
+ 331              	.LCFI37:
+ 332              		.cfi_def_cfa_offset 16
+ 333 0004 00AF     		add	r7, sp, #0
+ 334              	.LCFI38:
+ 335              		.cfi_def_cfa_register 7
+ 336 0006 7860     		str	r0, [r7, #4]
+ 337 0008 0B46     		mov	r3, r1
+ 338 000a FB70     		strb	r3, [r7, #3]
+ 142:./i2c/i2c-com.c ****     i2c->DR.byte = data;
+ 339              		.loc 1 142 18
+ 340 000c 7B68     		ldr	r3, [r7, #4]
+ 341 000e FA78     		ldrb	r2, [r7, #3]
+ 342 0010 1A74     		strb	r2, [r3, #16]
+ 143:./i2c/i2c-com.c ****     i2c->DR.val &=0x00ff;
+ 343              		.loc 1 143 17
+ 344 0012 7B68     		ldr	r3, [r7, #4]
+ 345 0014 1B8A     		ldrh	r3, [r3, #16]	@ movhi
+ 346 0016 9BB2     		uxth	r3, r3
+ 347 0018 DBB2     		uxtb	r3, r3
+ 348 001a 9AB2     		uxth	r2, r3
+ 349 001c 7B68     		ldr	r3, [r7, #4]
+ 350 001e 1A82     		strh	r2, [r3, #16]	@ movhi
+ 144:./i2c/i2c-com.c **** }
+ 351              		.loc 1 144 1
+ 352 0020 00BF     		nop
+ 353 0022 0C37     		adds	r7, r7, #12
+ 354              	.LCFI39:
+ 355              		.cfi_def_cfa_offset 4
+ 356 0024 BD46     		mov	sp, r7
+ 357              	.LCFI40:
+ 358              		.cfi_def_cfa_register 13
+ 359              		@ sp needed
+ 360 0026 80BC     		pop	{r7}
+ 361              	.LCFI41:
+ 362              		.cfi_restore 7
+ 363              		.cfi_def_cfa_offset 0
+ 364 0028 7047     		bx	lr
+ 365              		.cfi_endproc
+ 366              	.LFE39:
+ 368              		.section	.text.i2c_get_data,"ax",%progbits
+ 369              		.align	1
+ 370              		.global	i2c_get_data
+ 371              		.syntax unified
+ 372              		.thumb
+ 373              		.thumb_func
+ 375              	i2c_get_data:
+ 376              	.LFB40:
+ 145:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 146:./i2c/i2c-com.c **** /** 
+ 147:./i2c/i2c-com.c **** * @brief I2C Get Data. 
+ 148:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 149:./i2c/i2c-com.c **** */
+ 150:./i2c/i2c-com.c **** uint8_t i2c_get_data(I2C_TypeDef_t * i2c)
+ 151:./i2c/i2c-com.c **** {
+ 377              		.loc 1 151 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 10
+
+
+ 378              		.cfi_startproc
+ 379              		@ args = 0, pretend = 0, frame = 8
+ 380              		@ frame_needed = 1, uses_anonymous_args = 0
+ 381              		@ link register save eliminated.
+ 382 0000 80B4     		push	{r7}
+ 383              	.LCFI42:
+ 384              		.cfi_def_cfa_offset 4
+ 385              		.cfi_offset 7, -4
+ 386 0002 83B0     		sub	sp, sp, #12
+ 387              	.LCFI43:
+ 388              		.cfi_def_cfa_offset 16
+ 389 0004 00AF     		add	r7, sp, #0
+ 390              	.LCFI44:
+ 391              		.cfi_def_cfa_register 7
+ 392 0006 7860     		str	r0, [r7, #4]
+ 152:./i2c/i2c-com.c ****     //return I2C_DR(i2c) & 0xff;
+ 153:./i2c/i2c-com.c ****     return i2c->DR.byte & 0xff;
+ 393              		.loc 1 153 25
+ 394 0008 7B68     		ldr	r3, [r7, #4]
+ 395 000a 1B7C     		ldrb	r3, [r3, #16]
+ 396 000c DBB2     		uxtb	r3, r3
+ 154:./i2c/i2c-com.c **** }
+ 397              		.loc 1 154 1
+ 398 000e 1846     		mov	r0, r3
+ 399 0010 0C37     		adds	r7, r7, #12
+ 400              	.LCFI45:
+ 401              		.cfi_def_cfa_offset 4
+ 402 0012 BD46     		mov	sp, r7
+ 403              	.LCFI46:
+ 404              		.cfi_def_cfa_register 13
+ 405              		@ sp needed
+ 406 0014 80BC     		pop	{r7}
+ 407              	.LCFI47:
+ 408              		.cfi_restore 7
+ 409              		.cfi_def_cfa_offset 0
+ 410 0016 7047     		bx	lr
+ 411              		.cfi_endproc
+ 412              	.LFE40:
+ 414              		.section	.text.i2c_set_own_7bit_slave_address,"ax",%progbits
+ 415              		.align	1
+ 416              		.global	i2c_set_own_7bit_slave_address
+ 417              		.syntax unified
+ 418              		.thumb
+ 419              		.thumb_func
+ 421              	i2c_set_own_7bit_slave_address:
+ 422              	.LFB41:
+ 155:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 156:./i2c/i2c-com.c **** //********************************************************************************************
+ 157:./i2c/i2c-com.c **** //
+ 158:./i2c/i2c-com.c **** //   slave Mode methods  
+ 159:./i2c/i2c-com.c **** //
+ 160:./i2c/i2c-com.c **** //********************************************************************************************
+ 161:./i2c/i2c-com.c **** /** 
+ 162:./i2c/i2c-com.c **** * @brief I2C Set the 7 bit Slave Address for the Peripheral.
+ 163:./i2c/i2c-com.c ****  
+ 164:./i2c/i2c-com.c **** * @details This sets an address for Slave mode operation, in 7 bit form.
+ 165:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 11
+
+
+ 166:./i2c/i2c-com.c **** * @param[in] slave Unsigned int8. Slave address 0...127.
+ 167:./i2c/i2c-com.c **** */
+ 168:./i2c/i2c-com.c **** void i2c_set_own_7bit_slave_address(I2C_TypeDef_t * i2c, uint8_t slave)
+ 169:./i2c/i2c-com.c **** {
+ 423              		.loc 1 169 1
+ 424              		.cfi_startproc
+ 425              		@ args = 0, pretend = 0, frame = 16
+ 426              		@ frame_needed = 1, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428 0000 80B4     		push	{r7}
+ 429              	.LCFI48:
+ 430              		.cfi_def_cfa_offset 4
+ 431              		.cfi_offset 7, -4
+ 432 0002 85B0     		sub	sp, sp, #20
+ 433              	.LCFI49:
+ 434              		.cfi_def_cfa_offset 24
+ 435 0004 00AF     		add	r7, sp, #0
+ 436              	.LCFI50:
+ 437              		.cfi_def_cfa_register 7
+ 438 0006 7860     		str	r0, [r7, #4]
+ 439 0008 0B46     		mov	r3, r1
+ 440 000a FB70     		strb	r3, [r7, #3]
+ 170:./i2c/i2c-com.c ****   uint16_t val = (uint16_t)(slave << 1);
+ 441              		.loc 1 170 18
+ 442 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 443 000e 9BB2     		uxth	r3, r3
+ 444              		.loc 1 170 12
+ 445 0010 5B00     		lsls	r3, r3, #1
+ 446 0012 FB81     		strh	r3, [r7, #14]	@ movhi
+ 171:./i2c/i2c-com.c ****   /* Datasheet: always keep 1 by software. */
+ 172:./i2c/i2c-com.c ****    val |= (1 << 14);
+ 447              		.loc 1 172 8
+ 448 0014 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 449 0016 43F48043 		orr	r3, r3, #16384
+ 450 001a FB81     		strh	r3, [r7, #14]	@ movhi
+ 173:./i2c/i2c-com.c ****    i2c->OAR1.val=val;//I2C_OAR1(i2c) = val;
+ 451              		.loc 1 173 17
+ 452 001c 7B68     		ldr	r3, [r7, #4]
+ 453 001e FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 454 0020 1A81     		strh	r2, [r3, #8]	@ movhi
+ 174:./i2c/i2c-com.c ****   /*  
+ 175:./i2c/i2c-com.c ****   i2c->OAR1.ADD0_9=(uint8_t)(slave<<1);
+ 176:./i2c/i2c-com.c ****   i2c->OAR1.ADD0=0;
+ 177:./i2c/i2c-com.c ****   i2c->OAR1.ADD8_9=0;
+ 178:./i2c/i2c-com.c ****   i2c->OAR1.AD_MODE=0;
+ 179:./i2c/i2c-com.c ****   i2c->OAR1.b10_13=0;
+ 180:./i2c/i2c-com.c ****   i2c->OAR1.b14=1;
+ 181:./i2c/i2c-com.c ****   */
+ 182:./i2c/i2c-com.c **** }
+ 455              		.loc 1 182 1
+ 456 0022 00BF     		nop
+ 457 0024 1437     		adds	r7, r7, #20
+ 458              	.LCFI51:
+ 459              		.cfi_def_cfa_offset 4
+ 460 0026 BD46     		mov	sp, r7
+ 461              	.LCFI52:
+ 462              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 12
+
+
+ 463              		@ sp needed
+ 464 0028 80BC     		pop	{r7}
+ 465              	.LCFI53:
+ 466              		.cfi_restore 7
+ 467              		.cfi_def_cfa_offset 0
+ 468 002a 7047     		bx	lr
+ 469              		.cfi_endproc
+ 470              	.LFE41:
+ 472              		.section	.text.i2c_set_own_10bit_slave_address,"ax",%progbits
+ 473              		.align	1
+ 474              		.global	i2c_set_own_10bit_slave_address
+ 475              		.syntax unified
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	i2c_set_own_10bit_slave_address:
+ 480              	.LFB42:
+ 183:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 184:./i2c/i2c-com.c **** /** 
+ 185:./i2c/i2c-com.c **** * @brief I2C Set the 10 bit Slave Address for the Peripheral.
+ 186:./i2c/i2c-com.c **** * @details This sets an address for Slave mode operation, in 10 bit form.
+ 187:./i2c/i2c-com.c ****  
+ 188:./i2c/i2c-com.c **** * @todo add "I2C_OAR1(i2c) |= (1 << 14);" as above
+ 189:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 190:./i2c/i2c-com.c **** * @param[in] slave Unsigned int16. Slave address 0...1023.
+ 191:./i2c/i2c-com.c **** */
+ 192:./i2c/i2c-com.c **** void i2c_set_own_10bit_slave_address(I2C_TypeDef_t * i2c, uint16_t slave)
+ 193:./i2c/i2c-com.c **** {
+ 481              		.loc 1 193 1
+ 482              		.cfi_startproc
+ 483              		@ args = 0, pretend = 0, frame = 16
+ 484              		@ frame_needed = 1, uses_anonymous_args = 0
+ 485              		@ link register save eliminated.
+ 486 0000 80B4     		push	{r7}
+ 487              	.LCFI54:
+ 488              		.cfi_def_cfa_offset 4
+ 489              		.cfi_offset 7, -4
+ 490 0002 85B0     		sub	sp, sp, #20
+ 491              	.LCFI55:
+ 492              		.cfi_def_cfa_offset 24
+ 493 0004 00AF     		add	r7, sp, #0
+ 494              	.LCFI56:
+ 495              		.cfi_def_cfa_register 7
+ 496 0006 7860     		str	r0, [r7, #4]
+ 497 0008 0B46     		mov	r3, r1
+ 498 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 194:./i2c/i2c-com.c ****  /*
+ 195:./i2c/i2c-com.c ****  I2C_OAR1_t AR;
+ 196:./i2c/i2c-com.c ****   AR.ADD0_9=slave;
+ 197:./i2c/i2c-com.c ****   AR.b10_13=0;
+ 198:./i2c/i2c-com.c ****   AR.b14=1;
+ 199:./i2c/i2c-com.c ****   AR.AD_MODE=1;
+ 200:./i2c/i2c-com.c ****   i2c->OAR1.val= AR.val;
+ 201:./i2c/i2c-com.c **** */
+ 202:./i2c/i2c-com.c ****   uint16_t val =slave &0x03ff;
+ 499              		.loc 1 202 12
+ 500 000c 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 501 000e C3F30903 		ubfx	r3, r3, #0, #10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 13
+
+
+ 502 0012 FB81     		strh	r3, [r7, #14]	@ movhi
+ 203:./i2c/i2c-com.c ****   val |=I2C_OAR1_ADDMODE;
+ 503              		.loc 1 203 7
+ 504 0014 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 505 0016 6FEA4343 		mvn	r3, r3, lsl #17
+ 506 001a 6FEA5343 		mvn	r3, r3, lsr #17
+ 507 001e FB81     		strh	r3, [r7, #14]	@ movhi
+ 204:./i2c/i2c-com.c ****   val |= (1 << 14);
+ 508              		.loc 1 204 7
+ 509 0020 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 510 0022 43F48043 		orr	r3, r3, #16384
+ 511 0026 FB81     		strh	r3, [r7, #14]	@ movhi
+ 205:./i2c/i2c-com.c ****   i2c->OAR1.val=val;
+ 512              		.loc 1 205 16
+ 513 0028 7B68     		ldr	r3, [r7, #4]
+ 514 002a FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 515 002c 1A81     		strh	r2, [r3, #8]	@ movhi
+ 206:./i2c/i2c-com.c ****   //i2c->OAR1.val = (uint16_t)(I2C_OAR1_ADDMODE |(1<<14) | slave);
+ 207:./i2c/i2c-com.c **** }
+ 516              		.loc 1 207 1
+ 517 002e 00BF     		nop
+ 518 0030 1437     		adds	r7, r7, #20
+ 519              	.LCFI57:
+ 520              		.cfi_def_cfa_offset 4
+ 521 0032 BD46     		mov	sp, r7
+ 522              	.LCFI58:
+ 523              		.cfi_def_cfa_register 13
+ 524              		@ sp needed
+ 525 0034 80BC     		pop	{r7}
+ 526              	.LCFI59:
+ 527              		.cfi_restore 7
+ 528              		.cfi_def_cfa_offset 0
+ 529 0036 7047     		bx	lr
+ 530              		.cfi_endproc
+ 531              	.LFE42:
+ 533              		.section	.text.i2c_set_own_7bit_slave_address_two,"ax",%progbits
+ 534              		.align	1
+ 535              		.global	i2c_set_own_7bit_slave_address_two
+ 536              		.syntax unified
+ 537              		.thumb
+ 538              		.thumb_func
+ 540              	i2c_set_own_7bit_slave_address_two:
+ 541              	.LFB43:
+ 208:./i2c/i2c-com.c ****  //---------------------------------------------------------------------------- 
+ 209:./i2c/i2c-com.c ****  /** 
+ 210:./i2c/i2c-com.c **** * @brief I2C Set the secondary 7 bit Slave Address for the Peripheral.
+ 211:./i2c/i2c-com.c ****  
+ 212:./i2c/i2c-com.c **** * @details This sets a secondary address for Slave mode operation, in 7 bit form.
+ 213:./i2c/i2c-com.c **** 
+ 214:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 215:./i2c/i2c-com.c **** * @param[in] slave Unsigned int8. Slave address 0...127.
+ 216:./i2c/i2c-com.c **** */
+ 217:./i2c/i2c-com.c ****  void i2c_set_own_7bit_slave_address_two(I2C_TypeDef_t * i2c, uint8_t slave)
+ 218:./i2c/i2c-com.c **** {
+ 542              		.loc 1 218 1
+ 543              		.cfi_startproc
+ 544              		@ args = 0, pretend = 0, frame = 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 14
+
+
+ 545              		@ frame_needed = 1, uses_anonymous_args = 0
+ 546              		@ link register save eliminated.
+ 547 0000 80B4     		push	{r7}
+ 548              	.LCFI60:
+ 549              		.cfi_def_cfa_offset 4
+ 550              		.cfi_offset 7, -4
+ 551 0002 85B0     		sub	sp, sp, #20
+ 552              	.LCFI61:
+ 553              		.cfi_def_cfa_offset 24
+ 554 0004 00AF     		add	r7, sp, #0
+ 555              	.LCFI62:
+ 556              		.cfi_def_cfa_register 7
+ 557 0006 7860     		str	r0, [r7, #4]
+ 558 0008 0B46     		mov	r3, r1
+ 559 000a FB70     		strb	r3, [r7, #3]
+ 219:./i2c/i2c-com.c ****   uint16_t val = (uint16_t)(slave << 1);
+ 560              		.loc 1 219 18
+ 561 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 562 000e 9BB2     		uxth	r3, r3
+ 563              		.loc 1 219 12
+ 564 0010 5B00     		lsls	r3, r3, #1
+ 565 0012 FB81     		strh	r3, [r7, #14]	@ movhi
+ 220:./i2c/i2c-com.c ****   i2c->OAR2.val=val;
+ 566              		.loc 1 220 16
+ 567 0014 7B68     		ldr	r3, [r7, #4]
+ 568 0016 FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 569 0018 9A81     		strh	r2, [r3, #12]	@ movhi
+ 221:./i2c/i2c-com.c **** 
+ 222:./i2c/i2c-com.c ****   /*  
+ 223:./i2c/i2c-com.c ****    i2c->OAR2.ADD2=(uint8_t)(slave << 1);
+ 224:./i2c/i2c-com.c ****   i2c->OAR2.ENDUAL=0; // enable dual mode in a different method
+ 225:./i2c/i2c-com.c ****   */      
+ 226:./i2c/i2c-com.c **** }
+ 570              		.loc 1 226 1
+ 571 001a 00BF     		nop
+ 572 001c 1437     		adds	r7, r7, #20
+ 573              	.LCFI63:
+ 574              		.cfi_def_cfa_offset 4
+ 575 001e BD46     		mov	sp, r7
+ 576              	.LCFI64:
+ 577              		.cfi_def_cfa_register 13
+ 578              		@ sp needed
+ 579 0020 80BC     		pop	{r7}
+ 580              	.LCFI65:
+ 581              		.cfi_restore 7
+ 582              		.cfi_def_cfa_offset 0
+ 583 0022 7047     		bx	lr
+ 584              		.cfi_endproc
+ 585              	.LFE43:
+ 587              		.section	.text.i2c_enable_dual_addressing_mode,"ax",%progbits
+ 588              		.align	1
+ 589              		.global	i2c_enable_dual_addressing_mode
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 594              	i2c_enable_dual_addressing_mode:
+ 595              	.LFB44:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 15
+
+
+ 227:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 228:./i2c/i2c-com.c ****  /** 
+ 229:./i2c/i2c-com.c ****  * @brief I2C Enable dual addressing mode for the Peripheral.
+ 230:./i2c/i2c-com.c ****  * @details Both OAR1 and OAR2 are recognised in 7-bit addressing mode.
+ 231:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 232:./i2c/i2c-com.c **** */
+ 233:./i2c/i2c-com.c **** void i2c_enable_dual_addressing_mode(I2C_TypeDef_t * i2c)
+ 234:./i2c/i2c-com.c **** {
+ 596              		.loc 1 234 1
+ 597              		.cfi_startproc
+ 598              		@ args = 0, pretend = 0, frame = 8
+ 599              		@ frame_needed = 1, uses_anonymous_args = 0
+ 600              		@ link register save eliminated.
+ 601 0000 80B4     		push	{r7}
+ 602              	.LCFI66:
+ 603              		.cfi_def_cfa_offset 4
+ 604              		.cfi_offset 7, -4
+ 605 0002 83B0     		sub	sp, sp, #12
+ 606              	.LCFI67:
+ 607              		.cfi_def_cfa_offset 16
+ 608 0004 00AF     		add	r7, sp, #0
+ 609              	.LCFI68:
+ 610              		.cfi_def_cfa_register 7
+ 611 0006 7860     		str	r0, [r7, #4]
+ 235:./i2c/i2c-com.c ****   i2c->OAR2.ENDUAL=1;  
+ 612              		.loc 1 235 19
+ 613 0008 7A68     		ldr	r2, [r7, #4]
+ 614 000a 137B     		ldrb	r3, [r2, #12]
+ 615 000c 43F00103 		orr	r3, r3, #1
+ 616 0010 1373     		strb	r3, [r2, #12]
+ 236:./i2c/i2c-com.c ****   //sbits(i2c->OAR2.val,I2C_OAR2_ENDUAL);
+ 237:./i2c/i2c-com.c ****   //i2c->OAR2.val|=I2C_OAR2_ENDUAL; 
+ 238:./i2c/i2c-com.c **** }
+ 617              		.loc 1 238 1
+ 618 0012 00BF     		nop
+ 619 0014 0C37     		adds	r7, r7, #12
+ 620              	.LCFI69:
+ 621              		.cfi_def_cfa_offset 4
+ 622 0016 BD46     		mov	sp, r7
+ 623              	.LCFI70:
+ 624              		.cfi_def_cfa_register 13
+ 625              		@ sp needed
+ 626 0018 80BC     		pop	{r7}
+ 627              	.LCFI71:
+ 628              		.cfi_restore 7
+ 629              		.cfi_def_cfa_offset 0
+ 630 001a 7047     		bx	lr
+ 631              		.cfi_endproc
+ 632              	.LFE44:
+ 634              		.section	.text.i2c_disable_dual_addressing_mode,"ax",%progbits
+ 635              		.align	1
+ 636              		.global	i2c_disable_dual_addressing_mode
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 641              	i2c_disable_dual_addressing_mode:
+ 642              	.LFB45:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 16
+
+
+ 239:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 240:./i2c/i2c-com.c **** /** 
+ 241:./i2c/i2c-com.c **** * @brief I2C Disable dual addressing mode for the Peripheral.
+ 242:./i2c/i2c-com.c **** * @details Only OAR1 is recognised in 7-bit addressing mode.
+ 243:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 244:./i2c/i2c-com.c **** */
+ 245:./i2c/i2c-com.c **** void i2c_disable_dual_addressing_mode(I2C_TypeDef_t * i2c)
+ 246:./i2c/i2c-com.c **** {
+ 643              		.loc 1 246 1
+ 644              		.cfi_startproc
+ 645              		@ args = 0, pretend = 0, frame = 8
+ 646              		@ frame_needed = 1, uses_anonymous_args = 0
+ 647              		@ link register save eliminated.
+ 648 0000 80B4     		push	{r7}
+ 649              	.LCFI72:
+ 650              		.cfi_def_cfa_offset 4
+ 651              		.cfi_offset 7, -4
+ 652 0002 83B0     		sub	sp, sp, #12
+ 653              	.LCFI73:
+ 654              		.cfi_def_cfa_offset 16
+ 655 0004 00AF     		add	r7, sp, #0
+ 656              	.LCFI74:
+ 657              		.cfi_def_cfa_register 7
+ 658 0006 7860     		str	r0, [r7, #4]
+ 247:./i2c/i2c-com.c ****   i2c->OAR2.ENDUAL=0;  
+ 659              		.loc 1 247 19
+ 660 0008 7A68     		ldr	r2, [r7, #4]
+ 661 000a 137B     		ldrb	r3, [r2, #12]
+ 662 000c 6FF30003 		bfc	r3, #0, #1
+ 663 0010 1373     		strb	r3, [r2, #12]
+ 248:./i2c/i2c-com.c ****   //cbits(i2c->OAR2.val,I2C_OAR2_ENDUAL);
+ 249:./i2c/i2c-com.c ****   //i2c->OAR2.val&=~I2C_OAR2_ENDUAL; 
+ 250:./i2c/i2c-com.c **** }
+ 664              		.loc 1 250 1
+ 665 0012 00BF     		nop
+ 666 0014 0C37     		adds	r7, r7, #12
+ 667              	.LCFI75:
+ 668              		.cfi_def_cfa_offset 4
+ 669 0016 BD46     		mov	sp, r7
+ 670              	.LCFI76:
+ 671              		.cfi_def_cfa_register 13
+ 672              		@ sp needed
+ 673 0018 80BC     		pop	{r7}
+ 674              	.LCFI77:
+ 675              		.cfi_restore 7
+ 676              		.cfi_def_cfa_offset 0
+ 677 001a 7047     		bx	lr
+ 678              		.cfi_endproc
+ 679              	.LFE45:
+ 681              		.section	.text.i2c_set_clock_frequency,"ax",%progbits
+ 682              		.align	1
+ 683              		.global	i2c_set_clock_frequency
+ 684              		.syntax unified
+ 685              		.thumb
+ 686              		.thumb_func
+ 688              	i2c_set_clock_frequency:
+ 689              	.LFB46:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 17
+
+
+ 251:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 252:./i2c/i2c-com.c **** //********************************************************************************************
+ 253:./i2c/i2c-com.c **** //
+ 254:./i2c/i2c-com.c **** //  set I2C Controller clock frequency methods : Master Mode 
+ 255:./i2c/i2c-com.c **** //
+ 256:./i2c/i2c-com.c **** //********************************************************************************************
+ 257:./i2c/i2c-com.c **** /** 
+ 258:./i2c/i2c-com.c **** * @brief I2C Set Peripheral Clock Frequency.
+ 259:./i2c/i2c-com.c **** 
+ 260:./i2c/i2c-com.c **** * @details Set the peripheral clock frequency: 2MHz to 36MHz (the APB frequency). 
+ 261:./i2c/i2c-com.c ****           Note:
+ 262:./i2c/i2c-com.c ****           that this is <b> not </b> the I2C bus clock. This is set in conjunction with
+ 263:./i2c/i2c-com.c ****           the Clock Control register to generate the Master bus clock, see @ref i2c_set_ccr
+ 264:./i2c/i2c-com.c ****  
+ 265:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 266:./i2c/i2c-com.c **** * @param[in] freq Clock Frequency Setting in MHz, valid range depends on part,+
+ 267:./i2c/i2c-com.c ****   normally 2Mhz->Max APB speed.
+ 268:./i2c/i2c-com.c **** */
+ 269:./i2c/i2c-com.c **** void i2c_set_clock_frequency(I2C_TypeDef_t* i2c, uint8_t freq)
+ 270:./i2c/i2c-com.c **** {
+ 690              		.loc 1 270 1
+ 691              		.cfi_startproc
+ 692              		@ args = 0, pretend = 0, frame = 16
+ 693              		@ frame_needed = 1, uses_anonymous_args = 0
+ 694              		@ link register save eliminated.
+ 695 0000 80B4     		push	{r7}
+ 696              	.LCFI78:
+ 697              		.cfi_def_cfa_offset 4
+ 698              		.cfi_offset 7, -4
+ 699 0002 85B0     		sub	sp, sp, #20
+ 700              	.LCFI79:
+ 701              		.cfi_def_cfa_offset 24
+ 702 0004 00AF     		add	r7, sp, #0
+ 703              	.LCFI80:
+ 704              		.cfi_def_cfa_register 7
+ 705 0006 7860     		str	r0, [r7, #4]
+ 706 0008 0B46     		mov	r3, r1
+ 707 000a FB70     		strb	r3, [r7, #3]
+ 271:./i2c/i2c-com.c ****         uint16_t reg16;
+ 272:./i2c/i2c-com.c ****         reg16 = i2c->CR2.val &0xffc0;  /* Clear bits [5:0]. */
+ 708              		.loc 1 272 25
+ 709 000c 7B68     		ldr	r3, [r7, #4]
+ 710 000e 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 711 0010 9BB2     		uxth	r3, r3
+ 712              		.loc 1 272 15
+ 713 0012 23F03F03 		bic	r3, r3, #63
+ 714 0016 FB81     		strh	r3, [r7, #14]	@ movhi
+ 273:./i2c/i2c-com.c ****         reg16 |= freq;
+ 715              		.loc 1 273 15
+ 716 0018 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 717 001a 9AB2     		uxth	r2, r3
+ 718 001c FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 719 001e 1343     		orrs	r3, r3, r2
+ 720 0020 FB81     		strh	r3, [r7, #14]	@ movhi
+ 274:./i2c/i2c-com.c ****         i2c->CR2.val = reg16;
+ 721              		.loc 1 274 22
+ 722 0022 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 18
+
+
+ 723 0024 FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 724 0026 9A80     		strh	r2, [r3, #4]	@ movhi
+ 275:./i2c/i2c-com.c ****         
+ 276:./i2c/i2c-com.c ****        // i2c->CR2.FREQ=freq;
+ 277:./i2c/i2c-com.c **** }
+ 725              		.loc 1 277 1
+ 726 0028 00BF     		nop
+ 727 002a 1437     		adds	r7, r7, #20
+ 728              	.LCFI81:
+ 729              		.cfi_def_cfa_offset 4
+ 730 002c BD46     		mov	sp, r7
+ 731              	.LCFI82:
+ 732              		.cfi_def_cfa_register 13
+ 733              		@ sp needed
+ 734 002e 80BC     		pop	{r7}
+ 735              	.LCFI83:
+ 736              		.cfi_restore 7
+ 737              		.cfi_def_cfa_offset 0
+ 738 0030 7047     		bx	lr
+ 739              		.cfi_endproc
+ 740              	.LFE46:
+ 742              		.section	.text.i2c_set_fast_mode,"ax",%progbits
+ 743              		.align	1
+ 744              		.global	i2c_set_fast_mode
+ 745              		.syntax unified
+ 746              		.thumb
+ 747              		.thumb_func
+ 749              	i2c_set_fast_mode:
+ 750              	.LFB47:
+ 278:./i2c/i2c-com.c **** //---------------------------------------------------------------------------- 
+ 279:./i2c/i2c-com.c **** /** 
+ 280:./i2c/i2c-com.c **** * @brief I2C Set Fast Mode. 
+ 281:./i2c/i2c-com.c **** * @details Set the clock frequency to the high clock rate mode (up to 400kHz). 
+ 282:./i2c/i2c-com.c ****             The actual clock frequency must be set with @ref i2c_set_clock_frequency
+ 283:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 284:./i2c/i2c-com.c **** */
+ 285:./i2c/i2c-com.c **** void i2c_set_fast_mode(I2C_TypeDef_t* i2c)
+ 286:./i2c/i2c-com.c **** {
+ 751              		.loc 1 286 1
+ 752              		.cfi_startproc
+ 753              		@ args = 0, pretend = 0, frame = 8
+ 754              		@ frame_needed = 1, uses_anonymous_args = 0
+ 755              		@ link register save eliminated.
+ 756 0000 80B4     		push	{r7}
+ 757              	.LCFI84:
+ 758              		.cfi_def_cfa_offset 4
+ 759              		.cfi_offset 7, -4
+ 760 0002 83B0     		sub	sp, sp, #12
+ 761              	.LCFI85:
+ 762              		.cfi_def_cfa_offset 16
+ 763 0004 00AF     		add	r7, sp, #0
+ 764              	.LCFI86:
+ 765              		.cfi_def_cfa_register 7
+ 766 0006 7860     		str	r0, [r7, #4]
+ 287:./i2c/i2c-com.c ****   i2c->CCR.FS=1;     
+ 767              		.loc 1 287 14
+ 768 0008 7A68     		ldr	r2, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 19
+
+
+ 769 000a 537F     		ldrb	r3, [r2, #29]
+ 770 000c 43F08003 		orr	r3, r3, #128
+ 771 0010 5377     		strb	r3, [r2, #29]
+ 288:./i2c/i2c-com.c ****   //sbits(i2c->CCR.val,I2C_CCR_FS);
+ 289:./i2c/i2c-com.c ****   //i2c->CCR.val|=I2C_CCR_FS;
+ 290:./i2c/i2c-com.c **** }
+ 772              		.loc 1 290 1
+ 773 0012 00BF     		nop
+ 774 0014 0C37     		adds	r7, r7, #12
+ 775              	.LCFI87:
+ 776              		.cfi_def_cfa_offset 4
+ 777 0016 BD46     		mov	sp, r7
+ 778              	.LCFI88:
+ 779              		.cfi_def_cfa_register 13
+ 780              		@ sp needed
+ 781 0018 80BC     		pop	{r7}
+ 782              	.LCFI89:
+ 783              		.cfi_restore 7
+ 784              		.cfi_def_cfa_offset 0
+ 785 001a 7047     		bx	lr
+ 786              		.cfi_endproc
+ 787              	.LFE47:
+ 789              		.section	.text.i2c_set_standard_mode,"ax",%progbits
+ 790              		.align	1
+ 791              		.global	i2c_set_standard_mode
+ 792              		.syntax unified
+ 793              		.thumb
+ 794              		.thumb_func
+ 796              	i2c_set_standard_mode:
+ 797              	.LFB48:
+ 291:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 292:./i2c/i2c-com.c **** /** 
+ 293:./i2c/i2c-com.c **** * @brief I2C Set Standard Mode.
+ 294:./i2c/i2c-com.c ****  
+ 295:./i2c/i2c-com.c **** * @details Set the clock frequency to the standard clock rate mode (up to 100kHz). 
+ 296:./i2c/i2c-com.c ****   The actual clock frequency must be set with @ref i2c_set_clock_frequency
+ 297:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 298:./i2c/i2c-com.c **** */
+ 299:./i2c/i2c-com.c **** void i2c_set_standard_mode(I2C_TypeDef_t* i2c)
+ 300:./i2c/i2c-com.c **** {
+ 798              		.loc 1 300 1
+ 799              		.cfi_startproc
+ 800              		@ args = 0, pretend = 0, frame = 8
+ 801              		@ frame_needed = 1, uses_anonymous_args = 0
+ 802              		@ link register save eliminated.
+ 803 0000 80B4     		push	{r7}
+ 804              	.LCFI90:
+ 805              		.cfi_def_cfa_offset 4
+ 806              		.cfi_offset 7, -4
+ 807 0002 83B0     		sub	sp, sp, #12
+ 808              	.LCFI91:
+ 809              		.cfi_def_cfa_offset 16
+ 810 0004 00AF     		add	r7, sp, #0
+ 811              	.LCFI92:
+ 812              		.cfi_def_cfa_register 7
+ 813 0006 7860     		str	r0, [r7, #4]
+ 301:./i2c/i2c-com.c ****   i2c->CCR.FS=0;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 20
+
+
+ 814              		.loc 1 301 14
+ 815 0008 7A68     		ldr	r2, [r7, #4]
+ 816 000a 537F     		ldrb	r3, [r2, #29]
+ 817 000c 6FF3C713 		bfc	r3, #7, #1
+ 818 0010 5377     		strb	r3, [r2, #29]
+ 302:./i2c/i2c-com.c ****   //cbits(i2c->CCR.val,I2C_CCR_FS);
+ 303:./i2c/i2c-com.c ****   // i2c->CCR.val&=~I2C_CCR_FS;
+ 304:./i2c/i2c-com.c **** }
+ 819              		.loc 1 304 1
+ 820 0012 00BF     		nop
+ 821 0014 0C37     		adds	r7, r7, #12
+ 822              	.LCFI93:
+ 823              		.cfi_def_cfa_offset 4
+ 824 0016 BD46     		mov	sp, r7
+ 825              	.LCFI94:
+ 826              		.cfi_def_cfa_register 13
+ 827              		@ sp needed
+ 828 0018 80BC     		pop	{r7}
+ 829              	.LCFI95:
+ 830              		.cfi_restore 7
+ 831              		.cfi_def_cfa_offset 0
+ 832 001a 7047     		bx	lr
+ 833              		.cfi_endproc
+ 834              	.LFE48:
+ 836              		.section	.text.i2c_set_ccr,"ax",%progbits
+ 837              		.align	1
+ 838              		.global	i2c_set_ccr
+ 839              		.syntax unified
+ 840              		.thumb
+ 841              		.thumb_func
+ 843              	i2c_set_ccr:
+ 844              	.LFB49:
+ 305:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 306:./i2c/i2c-com.c **** /** 
+ 307:./i2c/i2c-com.c **** * @brief I2C Set Bus Clock Frequency.
+ 308:./i2c/i2c-com.c ****  
+ 309:./i2c/i2c-com.c **** * @details Set the bus clock frequency. This is a 12 bit number (0...4095) calculated
+ 310:./i2c/i2c-com.c ****           from the formulae given in the STM32F1 reference manual in the description
+ 311:./i2c/i2c-com.c ****           of the CCR field. It is a divisor of the peripheral clock frequency
+ 312:./i2c/i2c-com.c ****           @ref i2c_set_clock_frequency modified by the fast mode setting
+ 313:./i2c/i2c-com.c ****           @ref i2c_set_fast_mode
+ 314:./i2c/i2c-com.c ****  
+ 315:./i2c/i2c-com.c ****   @todo provide additional API assitance to set the clock, eg macros
+ 316:./i2c/i2c-com.c ****  
+ 317:./i2c/i2c-com.c ****   @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 318:./i2c/i2c-com.c ****   @param[in] freq Unsigned int16. Bus Clock Frequency Setting 0...4095.
+ 319:./i2c/i2c-com.c **** */
+ 320:./i2c/i2c-com.c ****  void i2c_set_ccr(I2C_TypeDef_t * i2c, uint16_t freq)
+ 321:./i2c/i2c-com.c **** {
+ 845              		.loc 1 321 1
+ 846              		.cfi_startproc
+ 847              		@ args = 0, pretend = 0, frame = 16
+ 848              		@ frame_needed = 1, uses_anonymous_args = 0
+ 849              		@ link register save eliminated.
+ 850 0000 80B4     		push	{r7}
+ 851              	.LCFI96:
+ 852              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 21
+
+
+ 853              		.cfi_offset 7, -4
+ 854 0002 85B0     		sub	sp, sp, #20
+ 855              	.LCFI97:
+ 856              		.cfi_def_cfa_offset 24
+ 857 0004 00AF     		add	r7, sp, #0
+ 858              	.LCFI98:
+ 859              		.cfi_def_cfa_register 7
+ 860 0006 7860     		str	r0, [r7, #4]
+ 861 0008 0B46     		mov	r3, r1
+ 862 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 322:./i2c/i2c-com.c ****   uint16_t reg16;
+ 323:./i2c/i2c-com.c ****   reg16 = i2c->CCR.val & 0xf000; /* Clear bits [11:0]. */
+ 863              		.loc 1 323 19
+ 864 000c 7B68     		ldr	r3, [r7, #4]
+ 865 000e 9B8B     		ldrh	r3, [r3, #28]	@ movhi
+ 866 0010 9BB2     		uxth	r3, r3
+ 867              		.loc 1 323 9
+ 868 0012 23F47F63 		bic	r3, r3, #4080
+ 869 0016 23F00F03 		bic	r3, r3, #15
+ 870 001a FB81     		strh	r3, [r7, #14]	@ movhi
+ 324:./i2c/i2c-com.c ****   reg16 |= freq;
+ 871              		.loc 1 324 9
+ 872 001c FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 873 001e 7B88     		ldrh	r3, [r7, #2]	@ movhi
+ 874 0020 1343     		orrs	r3, r3, r2
+ 875 0022 FB81     		strh	r3, [r7, #14]	@ movhi
+ 325:./i2c/i2c-com.c ****   i2c->CCR.val = reg16;
+ 876              		.loc 1 325 16
+ 877 0024 7B68     		ldr	r3, [r7, #4]
+ 878 0026 FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 879 0028 9A83     		strh	r2, [r3, #28]	@ movhi
+ 326:./i2c/i2c-com.c **** 
+ 327:./i2c/i2c-com.c ****   //i2c->CCR.CCR=freq ; 
+ 328:./i2c/i2c-com.c **** }
+ 880              		.loc 1 328 1
+ 881 002a 00BF     		nop
+ 882 002c 1437     		adds	r7, r7, #20
+ 883              	.LCFI99:
+ 884              		.cfi_def_cfa_offset 4
+ 885 002e BD46     		mov	sp, r7
+ 886              	.LCFI100:
+ 887              		.cfi_def_cfa_register 13
+ 888              		@ sp needed
+ 889 0030 80BC     		pop	{r7}
+ 890              	.LCFI101:
+ 891              		.cfi_restore 7
+ 892              		.cfi_def_cfa_offset 0
+ 893 0032 7047     		bx	lr
+ 894              		.cfi_endproc
+ 895              	.LFE49:
+ 897              		.section	.text.i2c_set_trise,"ax",%progbits
+ 898              		.align	1
+ 899              		.global	i2c_set_trise
+ 900              		.syntax unified
+ 901              		.thumb
+ 902              		.thumb_func
+ 904              	i2c_set_trise:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 22
+
+
+ 905              	.LFB50:
+ 329:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 330:./i2c/i2c-com.c **** /** 
+ 331:./i2c/i2c-com.c ****  * @brief I2C Set the Rise Time.
+ 332:./i2c/i2c-com.c ****  
+ 333:./i2c/i2c-com.c ****  * @details Set the maximum rise time on the bus according to the I2C specification, 
+ 334:./i2c/i2c-com.c ****             as 1 more than the specified rise time in peripheral clock cycles. 
+ 335:./i2c/i2c-com.c ****             This is a 6 bit number.
+ 336:./i2c/i2c-com.c ****  @todo provide additional APIP assistance.
+ 337:./i2c/i2c-com.c ****  @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 338:./i2c/i2c-com.c ****  @param[in] trise Unsigned int16. Rise Time Setting 0...63.
+ 339:./i2c/i2c-com.c **** */
+ 340:./i2c/i2c-com.c ****  void i2c_set_trise(I2C_TypeDef_t * i2c, uint16_t trise)
+ 341:./i2c/i2c-com.c **** {
+ 906              		.loc 1 341 1
+ 907              		.cfi_startproc
+ 908              		@ args = 0, pretend = 0, frame = 8
+ 909              		@ frame_needed = 1, uses_anonymous_args = 0
+ 910              		@ link register save eliminated.
+ 911 0000 80B4     		push	{r7}
+ 912              	.LCFI102:
+ 913              		.cfi_def_cfa_offset 4
+ 914              		.cfi_offset 7, -4
+ 915 0002 83B0     		sub	sp, sp, #12
+ 916              	.LCFI103:
+ 917              		.cfi_def_cfa_offset 16
+ 918 0004 00AF     		add	r7, sp, #0
+ 919              	.LCFI104:
+ 920              		.cfi_def_cfa_register 7
+ 921 0006 7860     		str	r0, [r7, #4]
+ 922 0008 0B46     		mov	r3, r1
+ 923 000a 7B80     		strh	r3, [r7, #2]	@ movhi
+ 342:./i2c/i2c-com.c ****     //I2C_TRISE(i2c) = trise;
+ 343:./i2c/i2c-com.c ****     i2c->TRISE.val=trise;
+ 924              		.loc 1 343 19
+ 925 000c 7B68     		ldr	r3, [r7, #4]
+ 926 000e 7A88     		ldrh	r2, [r7, #2]	@ movhi
+ 927 0010 1A84     		strh	r2, [r3, #32]	@ movhi
+ 344:./i2c/i2c-com.c **** }
+ 928              		.loc 1 344 1
+ 929 0012 00BF     		nop
+ 930 0014 0C37     		adds	r7, r7, #12
+ 931              	.LCFI105:
+ 932              		.cfi_def_cfa_offset 4
+ 933 0016 BD46     		mov	sp, r7
+ 934              	.LCFI106:
+ 935              		.cfi_def_cfa_register 13
+ 936              		@ sp needed
+ 937 0018 80BC     		pop	{r7}
+ 938              	.LCFI107:
+ 939              		.cfi_restore 7
+ 940              		.cfi_def_cfa_offset 0
+ 941 001a 7047     		bx	lr
+ 942              		.cfi_endproc
+ 943              	.LFE50:
+ 945              		.section	.text.i2c_set_dutycycle,"ax",%progbits
+ 946              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 23
+
+
+ 947              		.global	i2c_set_dutycycle
+ 948              		.syntax unified
+ 949              		.thumb
+ 950              		.thumb_func
+ 952              	i2c_set_dutycycle:
+ 953              	.LFB51:
+ 345:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 346:./i2c/i2c-com.c **** /** 
+ 347:./i2c/i2c-com.c **** * @brief I2C Set clock duty cycle 
+ 348:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 349:./i2c/i2c-com.c **** * @param[in] dutycycle Unsigned int32. I2C duty cycle @ref i2c_duty_cycle.
+ 350:./i2c/i2c-com.c **** */
+ 351:./i2c/i2c-com.c **** void i2c_set_dutycycle(I2C_TypeDef_t* i2c, uint32_t dutycycle)
+ 352:./i2c/i2c-com.c **** {
+ 954              		.loc 1 352 1
+ 955              		.cfi_startproc
+ 956              		@ args = 0, pretend = 0, frame = 8
+ 957              		@ frame_needed = 1, uses_anonymous_args = 0
+ 958              		@ link register save eliminated.
+ 959 0000 80B4     		push	{r7}
+ 960              	.LCFI108:
+ 961              		.cfi_def_cfa_offset 4
+ 962              		.cfi_offset 7, -4
+ 963 0002 83B0     		sub	sp, sp, #12
+ 964              	.LCFI109:
+ 965              		.cfi_def_cfa_offset 16
+ 966 0004 00AF     		add	r7, sp, #0
+ 967              	.LCFI110:
+ 968              		.cfi_def_cfa_register 7
+ 969 0006 7860     		str	r0, [r7, #4]
+ 970 0008 3960     		str	r1, [r7]
+ 353:./i2c/i2c-com.c **** 
+ 354:./i2c/i2c-com.c ****     i2c->CCR.DUTY=0;
+ 971              		.loc 1 354 18
+ 972 000a 7A68     		ldr	r2, [r7, #4]
+ 973 000c 537F     		ldrb	r3, [r2, #29]
+ 974 000e 6FF38613 		bfc	r3, #6, #1
+ 975 0012 5377     		strb	r3, [r2, #29]
+ 355:./i2c/i2c-com.c ****     //cbits( i2c->CCR.val,I2C_CCR_DUTY);
+ 356:./i2c/i2c-com.c ****     //i2c->CCR.val&=~I2C_CCR_DUTY;
+ 357:./i2c/i2c-com.c ****   if (dutycycle == I2C_CCR_DUTY_16_DIV_9) 
+ 976              		.loc 1 357 6
+ 977 0014 3B68     		ldr	r3, [r7]
+ 978 0016 012B     		cmp	r3, #1
+ 979 0018 04D1     		bne	.L22
+ 358:./i2c/i2c-com.c ****   {
+ 359:./i2c/i2c-com.c ****     i2c->CCR.DUTY=1;
+ 980              		.loc 1 359 18
+ 981 001a 7A68     		ldr	r2, [r7, #4]
+ 982 001c 537F     		ldrb	r3, [r2, #29]
+ 983 001e 43F04003 		orr	r3, r3, #64
+ 984 0022 5377     		strb	r3, [r2, #29]
+ 985              	.L22:
+ 360:./i2c/i2c-com.c ****     //sbits(i2c->CCR.val,I2C_CCR_DUTY);
+ 361:./i2c/i2c-com.c ****     //i2c->CCR.val|=I2C_CCR_DUTY;
+ 362:./i2c/i2c-com.c ****   }   
+ 363:./i2c/i2c-com.c ****  // else 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 24
+
+
+ 364:./i2c/i2c-com.c ****  // {
+ 365:./i2c/i2c-com.c ****  //   i2c->CCR.DUTY=0;
+ 366:./i2c/i2c-com.c ****  //   //cbits( i2c->CCR.val,I2C_CCR_DUTY);
+ 367:./i2c/i2c-com.c ****  //   //i2c->CCR.val&=~I2C_CCR_DUTY;
+ 368:./i2c/i2c-com.c ****  // }
+ 369:./i2c/i2c-com.c **** }
+ 986              		.loc 1 369 1
+ 987 0024 00BF     		nop
+ 988 0026 0C37     		adds	r7, r7, #12
+ 989              	.LCFI111:
+ 990              		.cfi_def_cfa_offset 4
+ 991 0028 BD46     		mov	sp, r7
+ 992              	.LCFI112:
+ 993              		.cfi_def_cfa_register 13
+ 994              		@ sp needed
+ 995 002a 80BC     		pop	{r7}
+ 996              	.LCFI113:
+ 997              		.cfi_restore 7
+ 998              		.cfi_def_cfa_offset 0
+ 999 002c 7047     		bx	lr
+ 1000              		.cfi_endproc
+ 1001              	.LFE51:
+ 1003              		.section	.text.i2c_set_speed,"ax",%progbits
+ 1004              		.align	1
+ 1005              		.global	i2c_set_speed
+ 1006              		.syntax unified
+ 1007              		.thumb
+ 1008              		.thumb_func
+ 1010              	i2c_set_speed:
+ 1011              	.LFB52:
+ 370:./i2c/i2c-com.c **** //---------------------------------------------------------------------------
+ 371:./i2c/i2c-com.c **** /**
+ 372:./i2c/i2c-com.c ****  * @brief set  the i2c communication speed.
+ 373:./i2c/i2c-com.c ****  * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 374:./i2c/i2c-com.c ****  * @param speed one of the listed speed modes @ref i2c_speeds
+ 375:./i2c/i2c-com.c ****  * @param clock_megahz i2c peripheral clock speed in MHz. Usually, rcc_apb1_frequency / 1e6
+ 376:./i2c/i2c-com.c ****  */
+ 377:./i2c/i2c-com.c **** void i2c_set_speed(I2C_TypeDef_t* i2c, enum i2c_speeds speed, uint32_t clock_megahz)
+ 378:./i2c/i2c-com.c **** {
+ 1012              		.loc 1 378 1
+ 1013              		.cfi_startproc
+ 1014              		@ args = 0, pretend = 0, frame = 16
+ 1015              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1016 0000 80B5     		push	{r7, lr}
+ 1017              	.LCFI114:
+ 1018              		.cfi_def_cfa_offset 8
+ 1019              		.cfi_offset 7, -8
+ 1020              		.cfi_offset 14, -4
+ 1021 0002 84B0     		sub	sp, sp, #16
+ 1022              	.LCFI115:
+ 1023              		.cfi_def_cfa_offset 24
+ 1024 0004 00AF     		add	r7, sp, #0
+ 1025              	.LCFI116:
+ 1026              		.cfi_def_cfa_register 7
+ 1027 0006 F860     		str	r0, [r7, #12]
+ 1028 0008 0B46     		mov	r3, r1
+ 1029 000a 7A60     		str	r2, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 25
+
+
+ 1030 000c FB72     		strb	r3, [r7, #11]
+ 379:./i2c/i2c-com.c ****     i2c_set_clock_frequency(i2c, clock_megahz);
+ 1031              		.loc 1 379 5
+ 1032 000e 7B68     		ldr	r3, [r7, #4]
+ 1033 0010 DBB2     		uxtb	r3, r3
+ 1034 0012 1946     		mov	r1, r3
+ 1035 0014 F868     		ldr	r0, [r7, #12]
+ 1036 0016 FFF7FEFF 		bl	i2c_set_clock_frequency
+ 380:./i2c/i2c-com.c ****   switch(speed) 
+ 1037              		.loc 1 380 3
+ 1038 001a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 1039 001c 012B     		cmp	r3, #1
+ 1040 001e 18D1     		bne	.L24
+ 381:./i2c/i2c-com.c ****   {
+ 382:./i2c/i2c-com.c ****       case i2c_speed_fm_400k:
+ 383:./i2c/i2c-com.c ****           i2c_set_fast_mode(i2c);
+ 1041              		.loc 1 383 11
+ 1042 0020 F868     		ldr	r0, [r7, #12]
+ 1043 0022 FFF7FEFF 		bl	i2c_set_fast_mode
+ 384:./i2c/i2c-com.c ****           i2c_set_ccr(i2c, clock_megahz * 5 / 6);
+ 1044              		.loc 1 384 41
+ 1045 0026 7A68     		ldr	r2, [r7, #4]
+ 1046 0028 1346     		mov	r3, r2
+ 1047 002a 9B00     		lsls	r3, r3, #2
+ 1048 002c 1344     		add	r3, r3, r2
+ 1049              		.loc 1 384 45
+ 1050 002e 164A     		ldr	r2, .L26
+ 1051 0030 A2FB0323 		umull	r2, r3, r2, r3
+ 1052 0034 9B08     		lsrs	r3, r3, #2
+ 1053              		.loc 1 384 11
+ 1054 0036 9BB2     		uxth	r3, r3
+ 1055 0038 1946     		mov	r1, r3
+ 1056 003a F868     		ldr	r0, [r7, #12]
+ 1057 003c FFF7FEFF 		bl	i2c_set_ccr
+ 385:./i2c/i2c-com.c ****           i2c_set_trise(i2c, clock_megahz + 1);
+ 1058              		.loc 1 385 11
+ 1059 0040 7B68     		ldr	r3, [r7, #4]
+ 1060 0042 9BB2     		uxth	r3, r3
+ 1061 0044 0133     		adds	r3, r3, #1
+ 1062 0046 9BB2     		uxth	r3, r3
+ 1063 0048 1946     		mov	r1, r3
+ 1064 004a F868     		ldr	r0, [r7, #12]
+ 1065 004c FFF7FEFF 		bl	i2c_set_trise
+ 386:./i2c/i2c-com.c ****         break;      
+ 1066              		.loc 1 386 9
+ 1067 0050 15E0     		b	.L25
+ 1068              	.L24:
+ 387:./i2c/i2c-com.c ****       
+ 388:./i2c/i2c-com.c ****       case i2c_speed_sm_100k:
+ 389:./i2c/i2c-com.c ****       default:/* fall back to standard mode */                
+ 390:./i2c/i2c-com.c ****           i2c_set_standard_mode(i2c);
+ 1069              		.loc 1 390 11
+ 1070 0052 F868     		ldr	r0, [r7, #12]
+ 1071 0054 FFF7FEFF 		bl	i2c_set_standard_mode
+ 391:./i2c/i2c-com.c ****           i2c_set_ccr(i2c, clock_megahz * 5); /* x Mhz / (100kHz * 2) */
+ 1072              		.loc 1 391 11
+ 1073 0058 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 26
+
+
+ 1074 005a 9BB2     		uxth	r3, r3
+ 1075 005c 1A46     		mov	r2, r3	@ movhi
+ 1076 005e 9200     		lsls	r2, r2, #2
+ 1077 0060 1344     		add	r3, r3, r2
+ 1078 0062 9BB2     		uxth	r3, r3
+ 1079 0064 1946     		mov	r1, r3
+ 1080 0066 F868     		ldr	r0, [r7, #12]
+ 1081 0068 FFF7FEFF 		bl	i2c_set_ccr
+ 392:./i2c/i2c-com.c ****           i2c_set_trise(i2c, clock_megahz + 1); /* Sm mode, (100kHz) freqMhz + 1 */
+ 1082              		.loc 1 392 11
+ 1083 006c 7B68     		ldr	r3, [r7, #4]
+ 1084 006e 9BB2     		uxth	r3, r3
+ 1085 0070 0133     		adds	r3, r3, #1
+ 1086 0072 9BB2     		uxth	r3, r3
+ 1087 0074 1946     		mov	r1, r3
+ 1088 0076 F868     		ldr	r0, [r7, #12]
+ 1089 0078 FFF7FEFF 		bl	i2c_set_trise
+ 393:./i2c/i2c-com.c ****         break;
+ 1090              		.loc 1 393 9
+ 1091 007c 00BF     		nop
+ 1092              	.L25:
+ 394:./i2c/i2c-com.c ****   }
+ 395:./i2c/i2c-com.c **** }
+ 1093              		.loc 1 395 1
+ 1094 007e 00BF     		nop
+ 1095 0080 1037     		adds	r7, r7, #16
+ 1096              	.LCFI117:
+ 1097              		.cfi_def_cfa_offset 8
+ 1098 0082 BD46     		mov	sp, r7
+ 1099              	.LCFI118:
+ 1100              		.cfi_def_cfa_register 13
+ 1101              		@ sp needed
+ 1102 0084 80BD     		pop	{r7, pc}
+ 1103              	.L27:
+ 1104 0086 00BF     		.align	2
+ 1105              	.L26:
+ 1106 0088 ABAAAAAA 		.word	-1431655765
+ 1107              		.cfi_endproc
+ 1108              	.LFE52:
+ 1110              		.section	.text.i2c_enable_ack,"ax",%progbits
+ 1111              		.align	1
+ 1112              		.global	i2c_enable_ack
+ 1113              		.syntax unified
+ 1114              		.thumb
+ 1115              		.thumb_func
+ 1117              	i2c_enable_ack:
+ 1118              	.LFB53:
+ 396:./i2c/i2c-com.c **** //--------------------------------------------------------------------------- 
+ 397:./i2c/i2c-com.c **** //********************************************************************************************
+ 398:./i2c/i2c-com.c **** //
+ 399:./i2c/i2c-com.c **** //  Receiver mode both master and slave 
+ 400:./i2c/i2c-com.c **** //
+ 401:./i2c/i2c-com.c **** //********************************************************************************************
+ 402:./i2c/i2c-com.c **** /** 
+ 403:./i2c/i2c-com.c **** * @brief I2C Enable ACK
+ 404:./i2c/i2c-com.c **** * @details Enables acking of own 7/10 bit address
+ 405:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 27
+
+
+ 406:./i2c/i2c-com.c **** */
+ 407:./i2c/i2c-com.c **** void i2c_enable_ack(I2C_TypeDef_t* i2c)
+ 408:./i2c/i2c-com.c **** {
+ 1119              		.loc 1 408 1
+ 1120              		.cfi_startproc
+ 1121              		@ args = 0, pretend = 0, frame = 8
+ 1122              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1123              		@ link register save eliminated.
+ 1124 0000 80B4     		push	{r7}
+ 1125              	.LCFI119:
+ 1126              		.cfi_def_cfa_offset 4
+ 1127              		.cfi_offset 7, -4
+ 1128 0002 83B0     		sub	sp, sp, #12
+ 1129              	.LCFI120:
+ 1130              		.cfi_def_cfa_offset 16
+ 1131 0004 00AF     		add	r7, sp, #0
+ 1132              	.LCFI121:
+ 1133              		.cfi_def_cfa_register 7
+ 1134 0006 7860     		str	r0, [r7, #4]
+ 409:./i2c/i2c-com.c ****   i2c->CR1.ACK=1;
+ 1135              		.loc 1 409 15
+ 1136 0008 7A68     		ldr	r2, [r7, #4]
+ 1137 000a 5378     		ldrb	r3, [r2, #1]
+ 1138 000c 43F00403 		orr	r3, r3, #4
+ 1139 0010 5370     		strb	r3, [r2, #1]
+ 410:./i2c/i2c-com.c ****   //sbits(i2c->CR1.ACK,I2C_CR1_ACK);
+ 411:./i2c/i2c-com.c ****   //i2c->CR1.val|=I2C_CR1_ACK;
+ 412:./i2c/i2c-com.c **** }
+ 1140              		.loc 1 412 1
+ 1141 0012 00BF     		nop
+ 1142 0014 0C37     		adds	r7, r7, #12
+ 1143              	.LCFI122:
+ 1144              		.cfi_def_cfa_offset 4
+ 1145 0016 BD46     		mov	sp, r7
+ 1146              	.LCFI123:
+ 1147              		.cfi_def_cfa_register 13
+ 1148              		@ sp needed
+ 1149 0018 80BC     		pop	{r7}
+ 1150              	.LCFI124:
+ 1151              		.cfi_restore 7
+ 1152              		.cfi_def_cfa_offset 0
+ 1153 001a 7047     		bx	lr
+ 1154              		.cfi_endproc
+ 1155              	.LFE53:
+ 1157              		.section	.text.i2c_disable_ack,"ax",%progbits
+ 1158              		.align	1
+ 1159              		.global	i2c_disable_ack
+ 1160              		.syntax unified
+ 1161              		.thumb
+ 1162              		.thumb_func
+ 1164              	i2c_disable_ack:
+ 1165              	.LFB54:
+ 413:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 414:./i2c/i2c-com.c **** /** 
+ 415:./i2c/i2c-com.c **** * @brief I2C Disable ACK
+ 416:./i2c/i2c-com.c **** * @details  Disables acking of own 7/10 bit address
+ 417:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 28
+
+
+ 418:./i2c/i2c-com.c **** */
+ 419:./i2c/i2c-com.c **** void i2c_disable_ack(I2C_TypeDef_t* i2c)
+ 420:./i2c/i2c-com.c **** {
+ 1166              		.loc 1 420 1
+ 1167              		.cfi_startproc
+ 1168              		@ args = 0, pretend = 0, frame = 8
+ 1169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1170              		@ link register save eliminated.
+ 1171 0000 80B4     		push	{r7}
+ 1172              	.LCFI125:
+ 1173              		.cfi_def_cfa_offset 4
+ 1174              		.cfi_offset 7, -4
+ 1175 0002 83B0     		sub	sp, sp, #12
+ 1176              	.LCFI126:
+ 1177              		.cfi_def_cfa_offset 16
+ 1178 0004 00AF     		add	r7, sp, #0
+ 1179              	.LCFI127:
+ 1180              		.cfi_def_cfa_register 7
+ 1181 0006 7860     		str	r0, [r7, #4]
+ 421:./i2c/i2c-com.c ****   i2c->CR1.ACK=0;
+ 1182              		.loc 1 421 15
+ 1183 0008 7A68     		ldr	r2, [r7, #4]
+ 1184 000a 5378     		ldrb	r3, [r2, #1]
+ 1185 000c 6FF38203 		bfc	r3, #2, #1
+ 1186 0010 5370     		strb	r3, [r2, #1]
+ 422:./i2c/i2c-com.c ****   //cbits(i2c->CR1.ACK,I2C_CR1_ACK);
+ 423:./i2c/i2c-com.c ****   //i2c->CR1.val&=~I2C_CR1_ACK; 
+ 424:./i2c/i2c-com.c **** }
+ 1187              		.loc 1 424 1
+ 1188 0012 00BF     		nop
+ 1189 0014 0C37     		adds	r7, r7, #12
+ 1190              	.LCFI128:
+ 1191              		.cfi_def_cfa_offset 4
+ 1192 0016 BD46     		mov	sp, r7
+ 1193              	.LCFI129:
+ 1194              		.cfi_def_cfa_register 13
+ 1195              		@ sp needed
+ 1196 0018 80BC     		pop	{r7}
+ 1197              	.LCFI130:
+ 1198              		.cfi_restore 7
+ 1199              		.cfi_def_cfa_offset 0
+ 1200 001a 7047     		bx	lr
+ 1201              		.cfi_endproc
+ 1202              	.LFE54:
+ 1204              		.section	.text.i2c_nack_next,"ax",%progbits
+ 1205              		.align	1
+ 1206              		.global	i2c_nack_next
+ 1207              		.syntax unified
+ 1208              		.thumb
+ 1209              		.thumb_func
+ 1211              	i2c_nack_next:
+ 1212              	.LFB55:
+ 425:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 426:./i2c/i2c-com.c **** /** 
+ 427:./i2c/i2c-com.c **** * @brief I2C NACK Next Byte
+ 428:./i2c/i2c-com.c **** * @details Causes the I2C controller to NACK the reception of the next byte
+ 429:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 29
+
+
+ 430:./i2c/i2c-com.c **** */
+ 431:./i2c/i2c-com.c **** void i2c_nack_next(I2C_TypeDef_t* i2c)
+ 432:./i2c/i2c-com.c **** {
+ 1213              		.loc 1 432 1
+ 1214              		.cfi_startproc
+ 1215              		@ args = 0, pretend = 0, frame = 8
+ 1216              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1217              		@ link register save eliminated.
+ 1218 0000 80B4     		push	{r7}
+ 1219              	.LCFI131:
+ 1220              		.cfi_def_cfa_offset 4
+ 1221              		.cfi_offset 7, -4
+ 1222 0002 83B0     		sub	sp, sp, #12
+ 1223              	.LCFI132:
+ 1224              		.cfi_def_cfa_offset 16
+ 1225 0004 00AF     		add	r7, sp, #0
+ 1226              	.LCFI133:
+ 1227              		.cfi_def_cfa_register 7
+ 1228 0006 7860     		str	r0, [r7, #4]
+ 433:./i2c/i2c-com.c ****   i2c->CR1.POS=1;
+ 1229              		.loc 1 433 15
+ 1230 0008 7A68     		ldr	r2, [r7, #4]
+ 1231 000a 5378     		ldrb	r3, [r2, #1]
+ 1232 000c 43F00803 		orr	r3, r3, #8
+ 1233 0010 5370     		strb	r3, [r2, #1]
+ 434:./i2c/i2c-com.c ****   //sbits(i2c->CR1.val,I2C_CR1_POS);
+ 435:./i2c/i2c-com.c ****   //i2c->CR1.val|=I2C_CR1_POS;
+ 436:./i2c/i2c-com.c **** 
+ 437:./i2c/i2c-com.c **** }
+ 1234              		.loc 1 437 1
+ 1235 0012 00BF     		nop
+ 1236 0014 0C37     		adds	r7, r7, #12
+ 1237              	.LCFI134:
+ 1238              		.cfi_def_cfa_offset 4
+ 1239 0016 BD46     		mov	sp, r7
+ 1240              	.LCFI135:
+ 1241              		.cfi_def_cfa_register 13
+ 1242              		@ sp needed
+ 1243 0018 80BC     		pop	{r7}
+ 1244              	.LCFI136:
+ 1245              		.cfi_restore 7
+ 1246              		.cfi_def_cfa_offset 0
+ 1247 001a 7047     		bx	lr
+ 1248              		.cfi_endproc
+ 1249              	.LFE55:
+ 1251              		.section	.text.i2c_nack_current,"ax",%progbits
+ 1252              		.align	1
+ 1253              		.global	i2c_nack_current
+ 1254              		.syntax unified
+ 1255              		.thumb
+ 1256              		.thumb_func
+ 1258              	i2c_nack_current:
+ 1259              	.LFB56:
+ 438:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 439:./i2c/i2c-com.c **** /** 
+ 440:./i2c/i2c-com.c **** * @brief I2C NACK Next Byte
+ 441:./i2c/i2c-com.c **** * @details Causes the I2C controller to NACK the reception of the current byte
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 30
+
+
+ 442:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 443:./i2c/i2c-com.c **** */
+ 444:./i2c/i2c-com.c **** void i2c_nack_current(I2C_TypeDef_t* i2c)
+ 445:./i2c/i2c-com.c **** {
+ 1260              		.loc 1 445 1
+ 1261              		.cfi_startproc
+ 1262              		@ args = 0, pretend = 0, frame = 8
+ 1263              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1264              		@ link register save eliminated.
+ 1265 0000 80B4     		push	{r7}
+ 1266              	.LCFI137:
+ 1267              		.cfi_def_cfa_offset 4
+ 1268              		.cfi_offset 7, -4
+ 1269 0002 83B0     		sub	sp, sp, #12
+ 1270              	.LCFI138:
+ 1271              		.cfi_def_cfa_offset 16
+ 1272 0004 00AF     		add	r7, sp, #0
+ 1273              	.LCFI139:
+ 1274              		.cfi_def_cfa_register 7
+ 1275 0006 7860     		str	r0, [r7, #4]
+ 446:./i2c/i2c-com.c ****   i2c->CR1.POS=0;
+ 1276              		.loc 1 446 15
+ 1277 0008 7A68     		ldr	r2, [r7, #4]
+ 1278 000a 5378     		ldrb	r3, [r2, #1]
+ 1279 000c 6FF3C303 		bfc	r3, #3, #1
+ 1280 0010 5370     		strb	r3, [r2, #1]
+ 447:./i2c/i2c-com.c ****   //cbits(i2c->CR1.val,I2C_CR1_POS);
+ 448:./i2c/i2c-com.c ****   //i2c->CR1.val&=~I2C_CR1_POS;
+ 449:./i2c/i2c-com.c **** } 
+ 1281              		.loc 1 449 1
+ 1282 0012 00BF     		nop
+ 1283 0014 0C37     		adds	r7, r7, #12
+ 1284              	.LCFI140:
+ 1285              		.cfi_def_cfa_offset 4
+ 1286 0016 BD46     		mov	sp, r7
+ 1287              	.LCFI141:
+ 1288              		.cfi_def_cfa_register 13
+ 1289              		@ sp needed
+ 1290 0018 80BC     		pop	{r7}
+ 1291              	.LCFI142:
+ 1292              		.cfi_restore 7
+ 1293              		.cfi_def_cfa_offset 0
+ 1294 001a 7047     		bx	lr
+ 1295              		.cfi_endproc
+ 1296              	.LFE56:
+ 1298              		.section	.text.i2c_enable_interrupt,"ax",%progbits
+ 1299              		.align	1
+ 1300              		.global	i2c_enable_interrupt
+ 1301              		.syntax unified
+ 1302              		.thumb
+ 1303              		.thumb_func
+ 1305              	i2c_enable_interrupt:
+ 1306              	.LFB57:
+ 450:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 451:./i2c/i2c-com.c **** //********************************************************************************************
+ 452:./i2c/i2c-com.c **** //
+ 453:./i2c/i2c-com.c **** //  I2C interrupt & DMA Methods
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 31
+
+
+ 454:./i2c/i2c-com.c **** //
+ 455:./i2c/i2c-com.c **** //********************************************************************************************
+ 456:./i2c/i2c-com.c **** /** 
+ 457:./i2c/i2c-com.c **** * @brief I2C Enable Interrupt
+ 458:./i2c/i2c-com.c **** 
+ 459:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 460:./i2c/i2c-com.c **** * @param[in] interrupt Unsigned int32. Interrupt to enable.
+ 461:./i2c/i2c-com.c **** */
+ 462:./i2c/i2c-com.c **** void i2c_enable_interrupt(I2C_TypeDef_t * i2c, uint32_t interrupt)
+ 463:./i2c/i2c-com.c **** {
+ 1307              		.loc 1 463 1
+ 1308              		.cfi_startproc
+ 1309              		@ args = 0, pretend = 0, frame = 8
+ 1310              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1311              		@ link register save eliminated.
+ 1312 0000 80B4     		push	{r7}
+ 1313              	.LCFI143:
+ 1314              		.cfi_def_cfa_offset 4
+ 1315              		.cfi_offset 7, -4
+ 1316 0002 83B0     		sub	sp, sp, #12
+ 1317              	.LCFI144:
+ 1318              		.cfi_def_cfa_offset 16
+ 1319 0004 00AF     		add	r7, sp, #0
+ 1320              	.LCFI145:
+ 1321              		.cfi_def_cfa_register 7
+ 1322 0006 7860     		str	r0, [r7, #4]
+ 1323 0008 3960     		str	r1, [r7]
+ 464:./i2c/i2c-com.c ****     i2c->CR2.val |= interrupt;
+ 1324              		.loc 1 464 18
+ 1325 000a 7B68     		ldr	r3, [r7, #4]
+ 1326 000c 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 1327 000e 9AB2     		uxth	r2, r3
+ 1328 0010 3B68     		ldr	r3, [r7]
+ 1329 0012 9BB2     		uxth	r3, r3
+ 1330 0014 1343     		orrs	r3, r3, r2
+ 1331 0016 9AB2     		uxth	r2, r3
+ 1332 0018 7B68     		ldr	r3, [r7, #4]
+ 1333 001a 9A80     		strh	r2, [r3, #4]	@ movhi
+ 465:./i2c/i2c-com.c ****   //sbits(i2c->CR2,interrupt);  
+ 466:./i2c/i2c-com.c ****   //  i2c->CR2.ITEVTEN=1; // Enable Event Interrupt
+ 467:./i2c/i2c-com.c ****   //  i2c->CR2.ITBUFEN=1; // Enable TXE,RXNE buffered events
+ 468:./i2c/i2c-com.c ****   //  i2c->CR2.ITERREN=1; // Enable Error events 
+ 469:./i2c/i2c-com.c **** }
+ 1334              		.loc 1 469 1
+ 1335 001c 00BF     		nop
+ 1336 001e 0C37     		adds	r7, r7, #12
+ 1337              	.LCFI146:
+ 1338              		.cfi_def_cfa_offset 4
+ 1339 0020 BD46     		mov	sp, r7
+ 1340              	.LCFI147:
+ 1341              		.cfi_def_cfa_register 13
+ 1342              		@ sp needed
+ 1343 0022 80BC     		pop	{r7}
+ 1344              	.LCFI148:
+ 1345              		.cfi_restore 7
+ 1346              		.cfi_def_cfa_offset 0
+ 1347 0024 7047     		bx	lr
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 32
+
+
+ 1348              		.cfi_endproc
+ 1349              	.LFE57:
+ 1351              		.section	.text.i2c_disable_interrupt,"ax",%progbits
+ 1352              		.align	1
+ 1353              		.global	i2c_disable_interrupt
+ 1354              		.syntax unified
+ 1355              		.thumb
+ 1356              		.thumb_func
+ 1358              	i2c_disable_interrupt:
+ 1359              	.LFB58:
+ 470:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 471:./i2c/i2c-com.c **** /** 
+ 472:./i2c/i2c-com.c **** * @brief I2C Disable Interrupt
+ 473:./i2c/i2c-com.c ****  
+ 474:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 475:./i2c/i2c-com.c **** * @param[in] interrupt Unsigned int32. Interrupt to disable.
+ 476:./i2c/i2c-com.c **** */
+ 477:./i2c/i2c-com.c **** void i2c_disable_interrupt(I2C_TypeDef_t* i2c, uint32_t interrupt)
+ 478:./i2c/i2c-com.c **** {
+ 1360              		.loc 1 478 1
+ 1361              		.cfi_startproc
+ 1362              		@ args = 0, pretend = 0, frame = 8
+ 1363              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1364              		@ link register save eliminated.
+ 1365 0000 80B4     		push	{r7}
+ 1366              	.LCFI149:
+ 1367              		.cfi_def_cfa_offset 4
+ 1368              		.cfi_offset 7, -4
+ 1369 0002 83B0     		sub	sp, sp, #12
+ 1370              	.LCFI150:
+ 1371              		.cfi_def_cfa_offset 16
+ 1372 0004 00AF     		add	r7, sp, #0
+ 1373              	.LCFI151:
+ 1374              		.cfi_def_cfa_register 7
+ 1375 0006 7860     		str	r0, [r7, #4]
+ 1376 0008 3960     		str	r1, [r7]
+ 479:./i2c/i2c-com.c ****   i2c->CR2.val &= ~interrupt;
+ 1377              		.loc 1 479 16
+ 1378 000a 7B68     		ldr	r3, [r7, #4]
+ 1379 000c 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 1380 000e 9AB2     		uxth	r2, r3
+ 1381 0010 3B68     		ldr	r3, [r7]
+ 1382 0012 9BB2     		uxth	r3, r3
+ 1383 0014 DB43     		mvns	r3, r3
+ 1384 0016 9BB2     		uxth	r3, r3
+ 1385 0018 1340     		ands	r3, r3, r2
+ 1386 001a 9AB2     		uxth	r2, r3
+ 1387 001c 7B68     		ldr	r3, [r7, #4]
+ 1388 001e 9A80     		strh	r2, [r3, #4]	@ movhi
+ 480:./i2c/i2c-com.c ****   //cbits(i2c->CR2.val,interrupt);
+ 481:./i2c/i2c-com.c ****   //  i2c->CR2.ITEVTEN=0; // disable Event Interrupt
+ 482:./i2c/i2c-com.c ****   //  i2c->CR2.ITBUFEN=0; // disable TXE,RXNE buffered events
+ 483:./i2c/i2c-com.c ****   //  i2c->CR2.ITERREN=0; // disable Error events 
+ 484:./i2c/i2c-com.c ****   
+ 485:./i2c/i2c-com.c **** }
+ 1389              		.loc 1 485 1
+ 1390 0020 00BF     		nop
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 33
+
+
+ 1391 0022 0C37     		adds	r7, r7, #12
+ 1392              	.LCFI152:
+ 1393              		.cfi_def_cfa_offset 4
+ 1394 0024 BD46     		mov	sp, r7
+ 1395              	.LCFI153:
+ 1396              		.cfi_def_cfa_register 13
+ 1397              		@ sp needed
+ 1398 0026 80BC     		pop	{r7}
+ 1399              	.LCFI154:
+ 1400              		.cfi_restore 7
+ 1401              		.cfi_def_cfa_offset 0
+ 1402 0028 7047     		bx	lr
+ 1403              		.cfi_endproc
+ 1404              	.LFE58:
+ 1406              		.section	.text.i2c_enable_dma,"ax",%progbits
+ 1407              		.align	1
+ 1408              		.global	i2c_enable_dma
+ 1409              		.syntax unified
+ 1410              		.thumb
+ 1411              		.thumb_func
+ 1413              	i2c_enable_dma:
+ 1414              	.LFB59:
+ 486:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 487:./i2c/i2c-com.c **** /** 
+ 488:./i2c/i2c-com.c **** * @brief I2C Enable DMA
+ 489:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 490:./i2c/i2c-com.c **** */
+ 491:./i2c/i2c-com.c **** void i2c_enable_dma(I2C_TypeDef_t * i2c)
+ 492:./i2c/i2c-com.c **** {
+ 1415              		.loc 1 492 1
+ 1416              		.cfi_startproc
+ 1417              		@ args = 0, pretend = 0, frame = 8
+ 1418              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1419              		@ link register save eliminated.
+ 1420 0000 80B4     		push	{r7}
+ 1421              	.LCFI155:
+ 1422              		.cfi_def_cfa_offset 4
+ 1423              		.cfi_offset 7, -4
+ 1424 0002 83B0     		sub	sp, sp, #12
+ 1425              	.LCFI156:
+ 1426              		.cfi_def_cfa_offset 16
+ 1427 0004 00AF     		add	r7, sp, #0
+ 1428              	.LCFI157:
+ 1429              		.cfi_def_cfa_register 7
+ 1430 0006 7860     		str	r0, [r7, #4]
+ 493:./i2c/i2c-com.c ****   i2c->CR2.DMAEN=1;
+ 1431              		.loc 1 493 17
+ 1432 0008 7A68     		ldr	r2, [r7, #4]
+ 1433 000a 5379     		ldrb	r3, [r2, #5]
+ 1434 000c 43F00803 		orr	r3, r3, #8
+ 1435 0010 5371     		strb	r3, [r2, #5]
+ 494:./i2c/i2c-com.c ****   //sbits(i2c->CR2.val,I2C_CR2_DMAEN);
+ 495:./i2c/i2c-com.c ****   //i2c->CR2.val|=I2C_CR2_DMAEN;
+ 496:./i2c/i2c-com.c **** }
+ 1436              		.loc 1 496 1
+ 1437 0012 00BF     		nop
+ 1438 0014 0C37     		adds	r7, r7, #12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 34
+
+
+ 1439              	.LCFI158:
+ 1440              		.cfi_def_cfa_offset 4
+ 1441 0016 BD46     		mov	sp, r7
+ 1442              	.LCFI159:
+ 1443              		.cfi_def_cfa_register 13
+ 1444              		@ sp needed
+ 1445 0018 80BC     		pop	{r7}
+ 1446              	.LCFI160:
+ 1447              		.cfi_restore 7
+ 1448              		.cfi_def_cfa_offset 0
+ 1449 001a 7047     		bx	lr
+ 1450              		.cfi_endproc
+ 1451              	.LFE59:
+ 1453              		.section	.text.i2c_disable_dma,"ax",%progbits
+ 1454              		.align	1
+ 1455              		.global	i2c_disable_dma
+ 1456              		.syntax unified
+ 1457              		.thumb
+ 1458              		.thumb_func
+ 1460              	i2c_disable_dma:
+ 1461              	.LFB60:
+ 497:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 498:./i2c/i2c-com.c ****  /** 
+ 499:./i2c/i2c-com.c **** * @brief I2C Disable DMA 
+ 500:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 501:./i2c/i2c-com.c **** */
+ 502:./i2c/i2c-com.c **** void i2c_disable_dma(I2C_TypeDef_t * i2c)
+ 503:./i2c/i2c-com.c **** {
+ 1462              		.loc 1 503 1
+ 1463              		.cfi_startproc
+ 1464              		@ args = 0, pretend = 0, frame = 8
+ 1465              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1466              		@ link register save eliminated.
+ 1467 0000 80B4     		push	{r7}
+ 1468              	.LCFI161:
+ 1469              		.cfi_def_cfa_offset 4
+ 1470              		.cfi_offset 7, -4
+ 1471 0002 83B0     		sub	sp, sp, #12
+ 1472              	.LCFI162:
+ 1473              		.cfi_def_cfa_offset 16
+ 1474 0004 00AF     		add	r7, sp, #0
+ 1475              	.LCFI163:
+ 1476              		.cfi_def_cfa_register 7
+ 1477 0006 7860     		str	r0, [r7, #4]
+ 504:./i2c/i2c-com.c ****   i2c->CR2.DMAEN=0;
+ 1478              		.loc 1 504 17
+ 1479 0008 7A68     		ldr	r2, [r7, #4]
+ 1480 000a 5379     		ldrb	r3, [r2, #5]
+ 1481 000c 6FF3C303 		bfc	r3, #3, #1
+ 1482 0010 5371     		strb	r3, [r2, #5]
+ 505:./i2c/i2c-com.c ****   //cbits(i2c->CR2.val,I2C_CR2_DMAEN);
+ 506:./i2c/i2c-com.c ****   //i2c->CR2.val&=~I2C_CR2_DMAEN;
+ 507:./i2c/i2c-com.c **** }
+ 1483              		.loc 1 507 1
+ 1484 0012 00BF     		nop
+ 1485 0014 0C37     		adds	r7, r7, #12
+ 1486              	.LCFI164:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 35
+
+
+ 1487              		.cfi_def_cfa_offset 4
+ 1488 0016 BD46     		mov	sp, r7
+ 1489              	.LCFI165:
+ 1490              		.cfi_def_cfa_register 13
+ 1491              		@ sp needed
+ 1492 0018 80BC     		pop	{r7}
+ 1493              	.LCFI166:
+ 1494              		.cfi_restore 7
+ 1495              		.cfi_def_cfa_offset 0
+ 1496 001a 7047     		bx	lr
+ 1497              		.cfi_endproc
+ 1498              	.LFE60:
+ 1500              		.section	.text.i2c_set_dma_last_transfer,"ax",%progbits
+ 1501              		.align	1
+ 1502              		.global	i2c_set_dma_last_transfer
+ 1503              		.syntax unified
+ 1504              		.thumb
+ 1505              		.thumb_func
+ 1507              	i2c_set_dma_last_transfer:
+ 1508              	.LFB61:
+ 508:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 509:./i2c/i2c-com.c **** /** 
+ 510:./i2c/i2c-com.c **** * @brief I2C Set DMA last transfer
+ 511:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 512:./i2c/i2c-com.c **** */
+ 513:./i2c/i2c-com.c **** void i2c_set_dma_last_transfer(I2C_TypeDef_t * i2c)
+ 514:./i2c/i2c-com.c **** {
+ 1509              		.loc 1 514 1
+ 1510              		.cfi_startproc
+ 1511              		@ args = 0, pretend = 0, frame = 8
+ 1512              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1513              		@ link register save eliminated.
+ 1514 0000 80B4     		push	{r7}
+ 1515              	.LCFI167:
+ 1516              		.cfi_def_cfa_offset 4
+ 1517              		.cfi_offset 7, -4
+ 1518 0002 83B0     		sub	sp, sp, #12
+ 1519              	.LCFI168:
+ 1520              		.cfi_def_cfa_offset 16
+ 1521 0004 00AF     		add	r7, sp, #0
+ 1522              	.LCFI169:
+ 1523              		.cfi_def_cfa_register 7
+ 1524 0006 7860     		str	r0, [r7, #4]
+ 515:./i2c/i2c-com.c ****   i2c->CR2.LAST=1;
+ 1525              		.loc 1 515 16
+ 1526 0008 7A68     		ldr	r2, [r7, #4]
+ 1527 000a 5379     		ldrb	r3, [r2, #5]
+ 1528 000c 43F01003 		orr	r3, r3, #16
+ 1529 0010 5371     		strb	r3, [r2, #5]
+ 516:./i2c/i2c-com.c ****   //sbits(i2c->CR2.val,I2C_CR2_LAST);
+ 517:./i2c/i2c-com.c ****   //i2c->CR2.val|=I2C_CR2_LAST;
+ 518:./i2c/i2c-com.c **** }
+ 1530              		.loc 1 518 1
+ 1531 0012 00BF     		nop
+ 1532 0014 0C37     		adds	r7, r7, #12
+ 1533              	.LCFI170:
+ 1534              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 36
+
+
+ 1535 0016 BD46     		mov	sp, r7
+ 1536              	.LCFI171:
+ 1537              		.cfi_def_cfa_register 13
+ 1538              		@ sp needed
+ 1539 0018 80BC     		pop	{r7}
+ 1540              	.LCFI172:
+ 1541              		.cfi_restore 7
+ 1542              		.cfi_def_cfa_offset 0
+ 1543 001a 7047     		bx	lr
+ 1544              		.cfi_endproc
+ 1545              	.LFE61:
+ 1547              		.section	.text.i2c_clear_dma_last_transfer,"ax",%progbits
+ 1548              		.align	1
+ 1549              		.global	i2c_clear_dma_last_transfer
+ 1550              		.syntax unified
+ 1551              		.thumb
+ 1552              		.thumb_func
+ 1554              	i2c_clear_dma_last_transfer:
+ 1555              	.LFB62:
+ 519:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 520:./i2c/i2c-com.c **** /**
+ 521:./i2c/i2c-com.c **** * @brief I2C Clear DMA last transfer
+ 522:./i2c/i2c-com.c **** * @param[in] i2c a pointer to the  I2C register base address @ref i2c_reg_base.
+ 523:./i2c/i2c-com.c **** */
+ 524:./i2c/i2c-com.c **** void i2c_clear_dma_last_transfer(I2C_TypeDef_t * i2c)
+ 525:./i2c/i2c-com.c **** {
+ 1556              		.loc 1 525 1
+ 1557              		.cfi_startproc
+ 1558              		@ args = 0, pretend = 0, frame = 8
+ 1559              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1560              		@ link register save eliminated.
+ 1561 0000 80B4     		push	{r7}
+ 1562              	.LCFI173:
+ 1563              		.cfi_def_cfa_offset 4
+ 1564              		.cfi_offset 7, -4
+ 1565 0002 83B0     		sub	sp, sp, #12
+ 1566              	.LCFI174:
+ 1567              		.cfi_def_cfa_offset 16
+ 1568 0004 00AF     		add	r7, sp, #0
+ 1569              	.LCFI175:
+ 1570              		.cfi_def_cfa_register 7
+ 1571 0006 7860     		str	r0, [r7, #4]
+ 526:./i2c/i2c-com.c ****   i2c->CR2.LAST=0;
+ 1572              		.loc 1 526 16
+ 1573 0008 7A68     		ldr	r2, [r7, #4]
+ 1574 000a 5379     		ldrb	r3, [r2, #5]
+ 1575 000c 6FF30413 		bfc	r3, #4, #1
+ 1576 0010 5371     		strb	r3, [r2, #5]
+ 527:./i2c/i2c-com.c ****   //cbits(i2c->CR2.val,I2C_CR2_LAST);
+ 528:./i2c/i2c-com.c ****   //i2c->CR2.val&=~I2C_CR2_LAST;
+ 529:./i2c/i2c-com.c **** }
+ 1577              		.loc 1 529 1
+ 1578 0012 00BF     		nop
+ 1579 0014 0C37     		adds	r7, r7, #12
+ 1580              	.LCFI176:
+ 1581              		.cfi_def_cfa_offset 4
+ 1582 0016 BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 37
+
+
+ 1583              	.LCFI177:
+ 1584              		.cfi_def_cfa_register 13
+ 1585              		@ sp needed
+ 1586 0018 80BC     		pop	{r7}
+ 1587              	.LCFI178:
+ 1588              		.cfi_restore 7
+ 1589              		.cfi_def_cfa_offset 0
+ 1590 001a 7047     		bx	lr
+ 1591              		.cfi_endproc
+ 1592              	.LFE62:
+ 1594              		.section	.text.i2c_write7_v1,"ax",%progbits
+ 1595              		.align	1
+ 1596              		.global	i2c_write7_v1
+ 1597              		.syntax unified
+ 1598              		.thumb
+ 1599              		.thumb_func
+ 1601              	i2c_write7_v1:
+ 1602              	.LFB63:
+ 530:./i2c/i2c-com.c **** //----------------------------------------------------------------------------
+ 531:./i2c/i2c-com.c **** 
+ 532:./i2c/i2c-com.c **** //********************************************************************************************
+ 533:./i2c/i2c-com.c **** //
+ 534:./i2c/i2c-com.c **** //  I2C 
+ 535:./i2c/i2c-com.c **** //
+ 536:./i2c/i2c-com.c **** //********************************************************************************************
+ 537:./i2c/i2c-com.c **** 
+ 538:./i2c/i2c-com.c **** uint8_t i2c_write7_v1(I2C_TypeDef_t* i2c, int addr, const uint8_t *data, size_t n)
+ 539:./i2c/i2c-com.c **** {
+ 1603              		.loc 1 539 1
+ 1604              		.cfi_startproc
+ 1605              		@ args = 0, pretend = 0, frame = 24
+ 1606              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1607 0000 80B5     		push	{r7, lr}
+ 1608              	.LCFI179:
+ 1609              		.cfi_def_cfa_offset 8
+ 1610              		.cfi_offset 7, -8
+ 1611              		.cfi_offset 14, -4
+ 1612 0002 86B0     		sub	sp, sp, #24
+ 1613              	.LCFI180:
+ 1614              		.cfi_def_cfa_offset 32
+ 1615 0004 00AF     		add	r7, sp, #0
+ 1616              	.LCFI181:
+ 1617              		.cfi_def_cfa_register 7
+ 1618 0006 F860     		str	r0, [r7, #12]
+ 1619 0008 B960     		str	r1, [r7, #8]
+ 1620 000a 7A60     		str	r2, [r7, #4]
+ 1621 000c 3B60     		str	r3, [r7]
+ 540:./i2c/i2c-com.c ****   I2Cx_Timeout=I2C_MAX_BUSY_TIME;
+ 1622              		.loc 1 540 15
+ 1623 000e 3F4B     		ldr	r3, .L51
+ 1624 0010 40F6AC52 		movw	r2, #3500
+ 1625 0014 1A60     		str	r2, [r3]
+ 541:./i2c/i2c-com.c ****    // wait while busy
+ 542:./i2c/i2c-com.c ****   while(i2c->SR2.BUSY) //((I2C_SR2(i2c) & I2C_SR2_BUSY)) 
+ 1626              		.loc 1 542 8
+ 1627 0016 05E0     		b	.L39
+ 1628              	.L41:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 38
+
+
+ 543:./i2c/i2c-com.c ****    if(I2Cx_Timeout==0)
+ 1629              		.loc 1 543 19
+ 1630 0018 3C4B     		ldr	r3, .L51
+ 1631 001a 1B68     		ldr	r3, [r3]
+ 1632              		.loc 1 543 6
+ 1633 001c 002B     		cmp	r3, #0
+ 1634 001e 01D1     		bne	.L39
+ 544:./i2c/i2c-com.c ****     return 1;
+ 1635              		.loc 1 544 12
+ 1636 0020 0123     		movs	r3, #1
+ 1637 0022 6EE0     		b	.L40
+ 1638              	.L39:
+ 542:./i2c/i2c-com.c ****    if(I2Cx_Timeout==0)
+ 1639              		.loc 1 542 17
+ 1640 0024 FB68     		ldr	r3, [r7, #12]
+ 1641 0026 1B7E     		ldrb	r3, [r3, #24]
+ 1642 0028 C3F34003 		ubfx	r3, r3, #1, #1
+ 1643 002c DBB2     		uxtb	r3, r3
+ 542:./i2c/i2c-com.c ****    if(I2Cx_Timeout==0)
+ 1644              		.loc 1 542 8
+ 1645 002e 002B     		cmp	r3, #0
+ 1646 0030 F2D1     		bne	.L41
+ 545:./i2c/i2c-com.c ****  
+ 546:./i2c/i2c-com.c ****  // send start 
+ 547:./i2c/i2c-com.c ****   i2c_send_start(i2c);
+ 1647              		.loc 1 547 3
+ 1648 0032 F868     		ldr	r0, [r7, #12]
+ 1649 0034 FFF7FEFF 		bl	i2c_send_start
+ 548:./i2c/i2c-com.c ****    I2Cx_Timeout=I2C_MAX_WAIT_TIME;
+ 1650              		.loc 1 548 16
+ 1651 0038 344B     		ldr	r3, .L51
+ 1652 003a 40F6AC52 		movw	r2, #3500
+ 1653 003e 1A60     		str	r2, [r3]
+ 549:./i2c/i2c-com.c ****   /* Wait for the end of the start condition, master mode selected, and BUSY bit set */
+ 550:./i2c/i2c-com.c ****   while(!i2c->SR1.SB && i2c->SR2.MSL && i2c->SR2.BUSY)   //while( !( (I2C_SR1(i2c) & I2C_SR1_SB)  &
+ 1654              		.loc 1 550 8
+ 1655 0040 05E0     		b	.L42
+ 1656              	.L44:
+ 551:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1657              		.loc 1 551 21
+ 1658 0042 324B     		ldr	r3, .L51
+ 1659 0044 1B68     		ldr	r3, [r3]
+ 1660              		.loc 1 551 7
+ 1661 0046 002B     		cmp	r3, #0
+ 1662 0048 01D1     		bne	.L42
+ 552:./i2c/i2c-com.c ****       return 0;
+ 1663              		.loc 1 552 14
+ 1664 004a 0023     		movs	r3, #0
+ 1665 004c 59E0     		b	.L40
+ 1666              	.L42:
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1667              		.loc 1 550 18
+ 1668 004e FB68     		ldr	r3, [r7, #12]
+ 1669 0050 1B7D     		ldrb	r3, [r3, #20]
+ 1670 0052 C3F30003 		ubfx	r3, r3, #0, #1
+ 1671 0056 DBB2     		uxtb	r3, r3
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 39
+
+
+ 1672              		.loc 1 550 8
+ 1673 0058 002B     		cmp	r3, #0
+ 1674 005a 0DD1     		bne	.L43
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1675              		.loc 1 550 33 discriminator 1
+ 1676 005c FB68     		ldr	r3, [r7, #12]
+ 1677 005e 1B7E     		ldrb	r3, [r3, #24]
+ 1678 0060 C3F30003 		ubfx	r3, r3, #0, #1
+ 1679 0064 DBB2     		uxtb	r3, r3
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1680              		.loc 1 550 22 discriminator 1
+ 1681 0066 002B     		cmp	r3, #0
+ 1682 0068 06D0     		beq	.L43
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1683              		.loc 1 550 49 discriminator 2
+ 1684 006a FB68     		ldr	r3, [r7, #12]
+ 1685 006c 1B7E     		ldrb	r3, [r3, #24]
+ 1686 006e C3F34003 		ubfx	r3, r3, #1, #1
+ 1687 0072 DBB2     		uxtb	r3, r3
+ 550:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1688              		.loc 1 550 38 discriminator 2
+ 1689 0074 002B     		cmp	r3, #0
+ 1690 0076 E4D1     		bne	.L44
+ 1691              	.L43:
+ 553:./i2c/i2c-com.c ****                                                         
+ 554:./i2c/i2c-com.c ****   // send the slave address   
+ 555:./i2c/i2c-com.c ****   i2c_send_7bit_address(i2c, addr, I2C_WRITE);
+ 1692              		.loc 1 555 3
+ 1693 0078 BB68     		ldr	r3, [r7, #8]
+ 1694 007a DBB2     		uxtb	r3, r3
+ 1695 007c 0022     		movs	r2, #0
+ 1696 007e 1946     		mov	r1, r3
+ 1697 0080 F868     		ldr	r0, [r7, #12]
+ 1698 0082 FFF7FEFF 		bl	i2c_send_7bit_address
+ 556:./i2c/i2c-com.c ****  
+ 557:./i2c/i2c-com.c ****  /* Waiting for address is transferred. */
+ 558:./i2c/i2c-com.c ****  //while (!(I2C_SR1(i2c) & I2C_SR1_ADDR));
+ 559:./i2c/i2c-com.c ****    I2Cx_Timeout=I2C_MAX_WAIT_TIME;
+ 1699              		.loc 1 559 16
+ 1700 0086 214B     		ldr	r3, .L51
+ 1701 0088 40F6AC52 		movw	r2, #3500
+ 1702 008c 1A60     		str	r2, [r3]
+ 560:./i2c/i2c-com.c ****   while(!i2c->SR1.ADDR)  
+ 1703              		.loc 1 560 8
+ 1704 008e 05E0     		b	.L45
+ 1705              	.L46:
+ 561:./i2c/i2c-com.c ****     if( I2Cx_Timeout==0)
+ 1706              		.loc 1 561 21
+ 1707 0090 1E4B     		ldr	r3, .L51
+ 1708 0092 1B68     		ldr	r3, [r3]
+ 1709              		.loc 1 561 7
+ 1710 0094 002B     		cmp	r3, #0
+ 1711 0096 01D1     		bne	.L45
+ 562:./i2c/i2c-com.c ****       return 1;
+ 1712              		.loc 1 562 14
+ 1713 0098 0123     		movs	r3, #1
+ 1714 009a 32E0     		b	.L40
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 40
+
+
+ 1715              	.L45:
+ 560:./i2c/i2c-com.c ****   while(!i2c->SR1.ADDR)  
+ 1716              		.loc 1 560 18
+ 1717 009c FB68     		ldr	r3, [r7, #12]
+ 1718 009e 1B7D     		ldrb	r3, [r3, #20]
+ 1719 00a0 C3F34003 		ubfx	r3, r3, #1, #1
+ 1720 00a4 DBB2     		uxtb	r3, r3
+ 560:./i2c/i2c-com.c ****   while(!i2c->SR1.ADDR)  
+ 1721              		.loc 1 560 8
+ 1722 00a6 002B     		cmp	r3, #0
+ 1723 00a8 F2D0     		beq	.L46
+ 563:./i2c/i2c-com.c **** 
+ 564:./i2c/i2c-com.c ****   /* Clearing ADDR condition sequence. */
+ 565:./i2c/i2c-com.c ****     (void)i2c->SR1.val;
+ 1724              		.loc 1 565 5
+ 1725 00aa FB68     		ldr	r3, [r7, #12]
+ 1726 00ac 9B8A     		ldrh	r3, [r3, #20]	@ movhi
+ 566:./i2c/i2c-com.c ****     (void)i2c->SR2.val;    //(void)I2C_SR2(i2c);
+ 1727              		.loc 1 566 5
+ 1728 00ae FB68     		ldr	r3, [r7, #12]
+ 1729 00b0 1B8B     		ldrh	r3, [r3, #24]	@ movhi
+ 1730              	.LBB2:
+ 567:./i2c/i2c-com.c ****  // send the array of data 
+ 568:./i2c/i2c-com.c ****     for (size_t i = 0; i < n; i++) 
+ 1731              		.loc 1 568 17
+ 1732 00b2 0023     		movs	r3, #0
+ 1733 00b4 7B61     		str	r3, [r7, #20]
+ 1734              		.loc 1 568 5
+ 1735 00b6 1CE0     		b	.L47
+ 1736              	.L50:
+ 569:./i2c/i2c-com.c ****     {
+ 570:./i2c/i2c-com.c ****       i2c_send_data(i2c, data[i]);
+ 1737              		.loc 1 570 30
+ 1738 00b8 7A68     		ldr	r2, [r7, #4]
+ 1739 00ba 7B69     		ldr	r3, [r7, #20]
+ 1740 00bc 1344     		add	r3, r3, r2
+ 1741              		.loc 1 570 7
+ 1742 00be 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1743 00c0 1946     		mov	r1, r3
+ 1744 00c2 F868     		ldr	r0, [r7, #12]
+ 1745 00c4 FFF7FEFF 		bl	i2c_send_data
+ 571:./i2c/i2c-com.c ****        I2Cx_Timeout=I2C_MAX_WAIT_TIME;
+ 1746              		.loc 1 571 20
+ 1747 00c8 104B     		ldr	r3, .L51
+ 1748 00ca 40F6AC52 		movw	r2, #3500
+ 1749 00ce 1A60     		str	r2, [r3]
+ 572:./i2c/i2c-com.c ****       while(!i2c->SR1.BTF)// while (!(I2C_SR1(i2c) & (I2C_SR1_BTF)));
+ 1750              		.loc 1 572 12
+ 1751 00d0 05E0     		b	.L48
+ 1752              	.L49:
+ 573:./i2c/i2c-com.c ****         if( I2Cx_Timeout==0)
+ 1753              		.loc 1 573 25
+ 1754 00d2 0E4B     		ldr	r3, .L51
+ 1755 00d4 1B68     		ldr	r3, [r3]
+ 1756              		.loc 1 573 11
+ 1757 00d6 002B     		cmp	r3, #0
+ 1758 00d8 01D1     		bne	.L48
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 41
+
+
+ 574:./i2c/i2c-com.c ****           return 1;        
+ 1759              		.loc 1 574 18
+ 1760 00da 0123     		movs	r3, #1
+ 1761 00dc 11E0     		b	.L40
+ 1762              	.L48:
+ 572:./i2c/i2c-com.c ****       while(!i2c->SR1.BTF)// while (!(I2C_SR1(i2c) & (I2C_SR1_BTF)));
+ 1763              		.loc 1 572 22
+ 1764 00de FB68     		ldr	r3, [r7, #12]
+ 1765 00e0 1B7D     		ldrb	r3, [r3, #20]
+ 1766 00e2 C3F38003 		ubfx	r3, r3, #2, #1
+ 1767 00e6 DBB2     		uxtb	r3, r3
+ 572:./i2c/i2c-com.c ****       while(!i2c->SR1.BTF)// while (!(I2C_SR1(i2c) & (I2C_SR1_BTF)));
+ 1768              		.loc 1 572 12
+ 1769 00e8 002B     		cmp	r3, #0
+ 1770 00ea F2D0     		beq	.L49
+ 568:./i2c/i2c-com.c ****     {
+ 1771              		.loc 1 568 32 discriminator 2
+ 1772 00ec 7B69     		ldr	r3, [r7, #20]
+ 1773 00ee 0133     		adds	r3, r3, #1
+ 1774 00f0 7B61     		str	r3, [r7, #20]
+ 1775              	.L47:
+ 568:./i2c/i2c-com.c ****     {
+ 1776              		.loc 1 568 5 discriminator 1
+ 1777 00f2 7A69     		ldr	r2, [r7, #20]
+ 1778 00f4 3B68     		ldr	r3, [r7]
+ 1779 00f6 9A42     		cmp	r2, r3
+ 1780 00f8 DED3     		bcc	.L50
+ 1781              	.LBE2:
+ 575:./i2c/i2c-com.c ****     }
+ 576:./i2c/i2c-com.c ****   // send stop condition
+ 577:./i2c/i2c-com.c ****     i2c_send_stop(i2c);
+ 1782              		.loc 1 577 5
+ 1783 00fa F868     		ldr	r0, [r7, #12]
+ 1784 00fc FFF7FEFF 		bl	i2c_send_stop
+ 578:./i2c/i2c-com.c ****     return 1;
+ 1785              		.loc 1 578 12
+ 1786 0100 0123     		movs	r3, #1
+ 1787              	.L40:
+ 579:./i2c/i2c-com.c **** }
+ 1788              		.loc 1 579 1
+ 1789 0102 1846     		mov	r0, r3
+ 1790 0104 1837     		adds	r7, r7, #24
+ 1791              	.LCFI182:
+ 1792              		.cfi_def_cfa_offset 8
+ 1793 0106 BD46     		mov	sp, r7
+ 1794              	.LCFI183:
+ 1795              		.cfi_def_cfa_register 13
+ 1796              		@ sp needed
+ 1797 0108 80BD     		pop	{r7, pc}
+ 1798              	.L52:
+ 1799 010a 00BF     		.align	2
+ 1800              	.L51:
+ 1801 010c 00000000 		.word	I2Cx_Timeout
+ 1802              		.cfi_endproc
+ 1803              	.LFE63:
+ 1805              		.section	.text.i2c_read7_v1,"ax",%progbits
+ 1806              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 42
+
+
+ 1807              		.global	i2c_read7_v1
+ 1808              		.syntax unified
+ 1809              		.thumb
+ 1810              		.thumb_func
+ 1812              	i2c_read7_v1:
+ 1813              	.LFB64:
+ 580:./i2c/i2c-com.c **** //-------------------------------------------------------------------------------------------------
+ 581:./i2c/i2c-com.c **** uint8_t i2c_read7_v1(I2C_TypeDef_t* i2c, int addr, uint8_t *res, size_t n)
+ 582:./i2c/i2c-com.c **** {
+ 1814              		.loc 1 582 1
+ 1815              		.cfi_startproc
+ 1816              		@ args = 0, pretend = 0, frame = 24
+ 1817              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1818 0000 90B5     		push	{r4, r7, lr}
+ 1819              	.LCFI184:
+ 1820              		.cfi_def_cfa_offset 12
+ 1821              		.cfi_offset 4, -12
+ 1822              		.cfi_offset 7, -8
+ 1823              		.cfi_offset 14, -4
+ 1824 0002 87B0     		sub	sp, sp, #28
+ 1825              	.LCFI185:
+ 1826              		.cfi_def_cfa_offset 40
+ 1827 0004 00AF     		add	r7, sp, #0
+ 1828              	.LCFI186:
+ 1829              		.cfi_def_cfa_register 7
+ 1830 0006 F860     		str	r0, [r7, #12]
+ 1831 0008 B960     		str	r1, [r7, #8]
+ 1832 000a 7A60     		str	r2, [r7, #4]
+ 1833 000c 3B60     		str	r3, [r7]
+ 583:./i2c/i2c-com.c ****     I2Cx_Timeout=I2C_MAX_BUSY_TIME;
+ 1834              		.loc 1 583 17
+ 1835 000e 3B4B     		ldr	r3, .L65
+ 1836 0010 40F6AC52 		movw	r2, #3500
+ 1837 0014 1A60     		str	r2, [r3]
+ 584:./i2c/i2c-com.c ****     
+ 585:./i2c/i2c-com.c ****     i2c_send_start(i2c);
+ 1838              		.loc 1 585 5
+ 1839 0016 F868     		ldr	r0, [r7, #12]
+ 1840 0018 FFF7FEFF 		bl	i2c_send_start
+ 586:./i2c/i2c-com.c ****     i2c_enable_ack(i2c);
+ 1841              		.loc 1 586 5
+ 1842 001c F868     		ldr	r0, [r7, #12]
+ 1843 001e FFF7FEFF 		bl	i2c_enable_ack
+ 587:./i2c/i2c-com.c ****  
+ 588:./i2c/i2c-com.c ****    /* Wait for the end of the start condition, master mode selected, and BUSY bit set */
+ 589:./i2c/i2c-com.c ****     //while ( !( (I2C_SR1(i2c) & I2C_SR1_SB) && (I2C_SR2(i2c) & I2C_SR2_MSL) && (I2C_SR2(i2c) & I2C
+ 590:./i2c/i2c-com.c ****     
+ 591:./i2c/i2c-com.c ****     while(!i2c->SR1.SB && i2c->SR2.MSL && i2c->SR2.BUSY)   
+ 1844              		.loc 1 591 10
+ 1845 0022 05E0     		b	.L54
+ 1846              	.L57:
+ 592:./i2c/i2c-com.c ****     {
+ 593:./i2c/i2c-com.c ****       if(I2Cx_Timeout==0)
+ 1847              		.loc 1 593 22
+ 1848 0024 354B     		ldr	r3, .L65
+ 1849 0026 1B68     		ldr	r3, [r3]
+ 1850              		.loc 1 593 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 43
+
+
+ 1851 0028 002B     		cmp	r3, #0
+ 1852 002a 01D1     		bne	.L54
+ 594:./i2c/i2c-com.c ****         return 1;          
+ 1853              		.loc 1 594 16
+ 1854 002c 0123     		movs	r3, #1
+ 1855 002e 61E0     		b	.L55
+ 1856              	.L54:
+ 591:./i2c/i2c-com.c ****     {
+ 1857              		.loc 1 591 20
+ 1858 0030 FB68     		ldr	r3, [r7, #12]
+ 1859 0032 1B7D     		ldrb	r3, [r3, #20]
+ 1860 0034 C3F30003 		ubfx	r3, r3, #0, #1
+ 1861 0038 DBB2     		uxtb	r3, r3
+ 591:./i2c/i2c-com.c ****     {
+ 1862              		.loc 1 591 10
+ 1863 003a 002B     		cmp	r3, #0
+ 1864 003c 0DD1     		bne	.L56
+ 591:./i2c/i2c-com.c ****     {
+ 1865              		.loc 1 591 35 discriminator 1
+ 1866 003e FB68     		ldr	r3, [r7, #12]
+ 1867 0040 1B7E     		ldrb	r3, [r3, #24]
+ 1868 0042 C3F30003 		ubfx	r3, r3, #0, #1
+ 1869 0046 DBB2     		uxtb	r3, r3
+ 591:./i2c/i2c-com.c ****     {
+ 1870              		.loc 1 591 24 discriminator 1
+ 1871 0048 002B     		cmp	r3, #0
+ 1872 004a 06D0     		beq	.L56
+ 591:./i2c/i2c-com.c ****     {
+ 1873              		.loc 1 591 51 discriminator 2
+ 1874 004c FB68     		ldr	r3, [r7, #12]
+ 1875 004e 1B7E     		ldrb	r3, [r3, #24]
+ 1876 0050 C3F34003 		ubfx	r3, r3, #1, #1
+ 1877 0054 DBB2     		uxtb	r3, r3
+ 591:./i2c/i2c-com.c ****     {
+ 1878              		.loc 1 591 40 discriminator 2
+ 1879 0056 002B     		cmp	r3, #0
+ 1880 0058 E4D1     		bne	.L57
+ 1881              	.L56:
+ 595:./i2c/i2c-com.c ****     }                
+ 596:./i2c/i2c-com.c ****     i2c_send_7bit_address(i2c, addr, I2C_READ);
+ 1882              		.loc 1 596 5
+ 1883 005a BB68     		ldr	r3, [r7, #8]
+ 1884 005c DBB2     		uxtb	r3, r3
+ 1885 005e 0122     		movs	r2, #1
+ 1886 0060 1946     		mov	r1, r3
+ 1887 0062 F868     		ldr	r0, [r7, #12]
+ 1888 0064 FFF7FEFF 		bl	i2c_send_7bit_address
+ 597:./i2c/i2c-com.c ****    /* Waiting for address is transferred. */
+ 598:./i2c/i2c-com.c ****     //while (!(I2C_SR1(i2c) & I2C_SR1_ADDR));
+ 599:./i2c/i2c-com.c ****     I2Cx_Timeout=I2C_MAX_WAIT_TIME;
+ 1889              		.loc 1 599 17
+ 1890 0068 244B     		ldr	r3, .L65
+ 1891 006a 40F6AC52 		movw	r2, #3500
+ 1892 006e 1A60     		str	r2, [r3]
+ 600:./i2c/i2c-com.c ****     while(!i2c->SR1.ADDR)
+ 1893              		.loc 1 600 10
+ 1894 0070 05E0     		b	.L58
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 44
+
+
+ 1895              	.L59:
+ 601:./i2c/i2c-com.c ****     {
+ 602:./i2c/i2c-com.c ****       if(I2Cx_Timeout==0)
+ 1896              		.loc 1 602 22
+ 1897 0072 224B     		ldr	r3, .L65
+ 1898 0074 1B68     		ldr	r3, [r3]
+ 1899              		.loc 1 602 9
+ 1900 0076 002B     		cmp	r3, #0
+ 1901 0078 01D1     		bne	.L58
+ 603:./i2c/i2c-com.c ****       // set error and exit
+ 604:./i2c/i2c-com.c ****         return 1;
+ 1902              		.loc 1 604 16
+ 1903 007a 0123     		movs	r3, #1
+ 1904 007c 3AE0     		b	.L55
+ 1905              	.L58:
+ 600:./i2c/i2c-com.c ****     {
+ 1906              		.loc 1 600 20
+ 1907 007e FB68     		ldr	r3, [r7, #12]
+ 1908 0080 1B7D     		ldrb	r3, [r3, #20]
+ 1909 0082 C3F34003 		ubfx	r3, r3, #1, #1
+ 1910 0086 DBB2     		uxtb	r3, r3
+ 600:./i2c/i2c-com.c ****     {
+ 1911              		.loc 1 600 10
+ 1912 0088 002B     		cmp	r3, #0
+ 1913 008a F2D0     		beq	.L59
+ 605:./i2c/i2c-com.c ****     }
+ 606:./i2c/i2c-com.c ****     /* Clearing ADDR condition sequence. */
+ 607:./i2c/i2c-com.c ****     (void)i2c->SR1.val;
+ 1914              		.loc 1 607 5
+ 1915 008c FB68     		ldr	r3, [r7, #12]
+ 1916 008e 9B8A     		ldrh	r3, [r3, #20]	@ movhi
+ 608:./i2c/i2c-com.c ****     (void)i2c->SR2.val;  // (void)I2C_SR2(i2c);
+ 1917              		.loc 1 608 5
+ 1918 0090 FB68     		ldr	r3, [r7, #12]
+ 1919 0092 1B8B     		ldrh	r3, [r3, #24]	@ movhi
+ 1920              	.LBB3:
+ 609:./i2c/i2c-com.c ****  
+ 610:./i2c/i2c-com.c ****     for (size_t i = 0; i < n; ++i) 
+ 1921              		.loc 1 610 17
+ 1922 0094 0023     		movs	r3, #0
+ 1923 0096 7B61     		str	r3, [r7, #20]
+ 1924              		.loc 1 610 5
+ 1925 0098 24E0     		b	.L60
+ 1926              	.L64:
+ 611:./i2c/i2c-com.c ****     {
+ 612:./i2c/i2c-com.c ****       if (i == n - 1) 
+ 1927              		.loc 1 612 18
+ 1928 009a 3B68     		ldr	r3, [r7]
+ 1929 009c 013B     		subs	r3, r3, #1
+ 1930              		.loc 1 612 10
+ 1931 009e 7A69     		ldr	r2, [r7, #20]
+ 1932 00a0 9A42     		cmp	r2, r3
+ 1933 00a2 02D1     		bne	.L61
+ 613:./i2c/i2c-com.c ****         {
+ 614:./i2c/i2c-com.c ****           i2c_disable_ack(i2c);
+ 1934              		.loc 1 614 11
+ 1935 00a4 F868     		ldr	r0, [r7, #12]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 45
+
+
+ 1936 00a6 FFF7FEFF 		bl	i2c_disable_ack
+ 1937              	.L61:
+ 615:./i2c/i2c-com.c ****         }
+ 616:./i2c/i2c-com.c ****       //while (!(I2C_SR1(i2c) & I2C_SR1_RXNE));
+ 617:./i2c/i2c-com.c ****       I2Cx_Timeout=I2C_MAX_WAIT_TIME;
+ 1938              		.loc 1 617 19
+ 1939 00aa 144B     		ldr	r3, .L65
+ 1940 00ac 40F6AC52 		movw	r2, #3500
+ 1941 00b0 1A60     		str	r2, [r3]
+ 618:./i2c/i2c-com.c ****       while(!i2c->SR1.RXNE)
+ 1942              		.loc 1 618 12
+ 1943 00b2 05E0     		b	.L62
+ 1944              	.L63:
+ 619:./i2c/i2c-com.c ****       {
+ 620:./i2c/i2c-com.c ****         if(I2Cx_Timeout==0)
+ 1945              		.loc 1 620 24
+ 1946 00b4 114B     		ldr	r3, .L65
+ 1947 00b6 1B68     		ldr	r3, [r3]
+ 1948              		.loc 1 620 11
+ 1949 00b8 002B     		cmp	r3, #0
+ 1950 00ba 01D1     		bne	.L62
+ 621:./i2c/i2c-com.c ****           // set error and exit
+ 622:./i2c/i2c-com.c ****         return 1;
+ 1951              		.loc 1 622 16
+ 1952 00bc 0123     		movs	r3, #1
+ 1953 00be 19E0     		b	.L55
+ 1954              	.L62:
+ 618:./i2c/i2c-com.c ****       {
+ 1955              		.loc 1 618 22
+ 1956 00c0 FB68     		ldr	r3, [r7, #12]
+ 1957 00c2 1B7D     		ldrb	r3, [r3, #20]
+ 1958 00c4 C3F38013 		ubfx	r3, r3, #6, #1
+ 1959 00c8 DBB2     		uxtb	r3, r3
+ 618:./i2c/i2c-com.c ****       {
+ 1960              		.loc 1 618 12
+ 1961 00ca 002B     		cmp	r3, #0
+ 1962 00cc F2D0     		beq	.L63
+ 623:./i2c/i2c-com.c ****       
+ 624:./i2c/i2c-com.c ****       }
+ 625:./i2c/i2c-com.c ****        res[i] = i2c_get_data(i2c);
+ 1963              		.loc 1 625 11 discriminator 2
+ 1964 00ce 7A68     		ldr	r2, [r7, #4]
+ 1965 00d0 7B69     		ldr	r3, [r7, #20]
+ 1966 00d2 D418     		adds	r4, r2, r3
+ 1967              		.loc 1 625 17 discriminator 2
+ 1968 00d4 F868     		ldr	r0, [r7, #12]
+ 1969 00d6 FFF7FEFF 		bl	i2c_get_data
+ 1970 00da 0346     		mov	r3, r0
+ 1971              		.loc 1 625 15 discriminator 2
+ 1972 00dc 2370     		strb	r3, [r4]
+ 610:./i2c/i2c-com.c ****     {
+ 1973              		.loc 1 610 31 discriminator 2
+ 1974 00de 7B69     		ldr	r3, [r7, #20]
+ 1975 00e0 0133     		adds	r3, r3, #1
+ 1976 00e2 7B61     		str	r3, [r7, #20]
+ 1977              	.L60:
+ 610:./i2c/i2c-com.c ****     {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 46
+
+
+ 1978              		.loc 1 610 5 discriminator 1
+ 1979 00e4 7A69     		ldr	r2, [r7, #20]
+ 1980 00e6 3B68     		ldr	r3, [r7]
+ 1981 00e8 9A42     		cmp	r2, r3
+ 1982 00ea D6D3     		bcc	.L64
+ 1983              	.LBE3:
+ 626:./i2c/i2c-com.c ****     }
+ 627:./i2c/i2c-com.c ****     // send stop condition
+ 628:./i2c/i2c-com.c ****     i2c_send_stop(i2c);
+ 1984              		.loc 1 628 5
+ 1985 00ec F868     		ldr	r0, [r7, #12]
+ 1986 00ee FFF7FEFF 		bl	i2c_send_stop
+ 629:./i2c/i2c-com.c ****  
+ 630:./i2c/i2c-com.c ****   return 0;
+ 1987              		.loc 1 630 10
+ 1988 00f2 0023     		movs	r3, #0
+ 1989              	.L55:
+ 631:./i2c/i2c-com.c **** }
+ 1990              		.loc 1 631 1
+ 1991 00f4 1846     		mov	r0, r3
+ 1992 00f6 1C37     		adds	r7, r7, #28
+ 1993              	.LCFI187:
+ 1994              		.cfi_def_cfa_offset 12
+ 1995 00f8 BD46     		mov	sp, r7
+ 1996              	.LCFI188:
+ 1997              		.cfi_def_cfa_register 13
+ 1998              		@ sp needed
+ 1999 00fa 90BD     		pop	{r4, r7, pc}
+ 2000              	.L66:
+ 2001              		.align	2
+ 2002              	.L65:
+ 2003 00fc 00000000 		.word	I2Cx_Timeout
+ 2004              		.cfi_endproc
+ 2005              	.LFE64:
+ 2007              		.section	.text.i2c_transfer7,"ax",%progbits
+ 2008              		.align	1
+ 2009              		.global	i2c_transfer7
+ 2010              		.syntax unified
+ 2011              		.thumb
+ 2012              		.thumb_func
+ 2014              	i2c_transfer7:
+ 2015              	.LFB65:
+ 632:./i2c/i2c-com.c **** //-------------------------------------------------------------------------------------------------
+ 633:./i2c/i2c-com.c **** /**
+ 634:./i2c/i2c-com.c ****  * Run a write/read transaction to a given 7bit i2c address
+ 635:./i2c/i2c-com.c ****  * If both write & read are provided, the read will use repeated start.
+ 636:./i2c/i2c-com.c ****  * Both write and read are optional
+ 637:./i2c/i2c-com.c ****  * There are likely still issues with repeated start/stop condtions!
+ 638:./i2c/i2c-com.c ****  * @param i2c peripheral of choice, eg I2C1
+ 639:./i2c/i2c-com.c ****  * @param addr 7 bit i2c device address
+ 640:./i2c/i2c-com.c ****  * @param w buffer of data to write
+ 641:./i2c/i2c-com.c ****  * @param wn length of w
+ 642:./i2c/i2c-com.c ****  * @param r destination buffer to read into
+ 643:./i2c/i2c-com.c ****  * @param rn number of bytes to read (r should be at least this long)
+ 644:./i2c/i2c-com.c ****  */
+ 645:./i2c/i2c-com.c **** void i2c_transfer7(I2C_TypeDef_t * i2c, uint8_t addr, const uint8_t *w, size_t wn, uint8_t *r, size
+ 646:./i2c/i2c-com.c **** {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 47
+
+
+ 2016              		.loc 1 646 1
+ 2017              		.cfi_startproc
+ 2018              		@ args = 8, pretend = 0, frame = 16
+ 2019              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2020 0000 80B5     		push	{r7, lr}
+ 2021              	.LCFI189:
+ 2022              		.cfi_def_cfa_offset 8
+ 2023              		.cfi_offset 7, -8
+ 2024              		.cfi_offset 14, -4
+ 2025 0002 84B0     		sub	sp, sp, #16
+ 2026              	.LCFI190:
+ 2027              		.cfi_def_cfa_offset 24
+ 2028 0004 00AF     		add	r7, sp, #0
+ 2029              	.LCFI191:
+ 2030              		.cfi_def_cfa_register 7
+ 2031 0006 F860     		str	r0, [r7, #12]
+ 2032 0008 7A60     		str	r2, [r7, #4]
+ 2033 000a 3B60     		str	r3, [r7]
+ 2034 000c 0B46     		mov	r3, r1
+ 2035 000e FB72     		strb	r3, [r7, #11]
+ 647:./i2c/i2c-com.c ****     if (wn) i2c_write7_v1(i2c, addr, w, wn);
+ 2036              		.loc 1 647 8
+ 2037 0010 3B68     		ldr	r3, [r7]
+ 2038 0012 002B     		cmp	r3, #0
+ 2039 0014 05D0     		beq	.L68
+ 2040              		.loc 1 647 13 discriminator 1
+ 2041 0016 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
+ 2042 0018 3B68     		ldr	r3, [r7]
+ 2043 001a 7A68     		ldr	r2, [r7, #4]
+ 2044 001c F868     		ldr	r0, [r7, #12]
+ 2045 001e FFF7FEFF 		bl	i2c_write7_v1
+ 2046              	.L68:
+ 648:./i2c/i2c-com.c ****       
+ 649:./i2c/i2c-com.c ****     if (rn) i2c_read7_v1(i2c, addr, r, rn);
+ 2047              		.loc 1 649 8
+ 2048 0022 FB69     		ldr	r3, [r7, #28]
+ 2049 0024 002B     		cmp	r3, #0
+ 2050 0026 06D0     		beq	.L69
+ 2051              		.loc 1 649 13 discriminator 1
+ 2052 0028 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
+ 2053 002a FB69     		ldr	r3, [r7, #28]
+ 2054 002c BA69     		ldr	r2, [r7, #24]
+ 2055 002e F868     		ldr	r0, [r7, #12]
+ 2056 0030 FFF7FEFF 		bl	i2c_read7_v1
+ 650:./i2c/i2c-com.c ****      else    i2c_send_stop(i2c);
+ 651:./i2c/i2c-com.c ****         
+ 652:./i2c/i2c-com.c **** }
+ 2057              		.loc 1 652 1 discriminator 1
+ 2058 0034 02E0     		b	.L71
+ 2059              	.L69:
+ 650:./i2c/i2c-com.c ****      else    i2c_send_stop(i2c);
+ 2060              		.loc 1 650 14
+ 2061 0036 F868     		ldr	r0, [r7, #12]
+ 2062 0038 FFF7FEFF 		bl	i2c_send_stop
+ 2063              	.L71:
+ 2064              		.loc 1 652 1
+ 2065 003c 00BF     		nop
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 48
+
+
+ 2066 003e 1037     		adds	r7, r7, #16
+ 2067              	.LCFI192:
+ 2068              		.cfi_def_cfa_offset 8
+ 2069 0040 BD46     		mov	sp, r7
+ 2070              	.LCFI193:
+ 2071              		.cfi_def_cfa_register 13
+ 2072              		@ sp needed
+ 2073 0042 80BD     		pop	{r7, pc}
+ 2074              		.cfi_endproc
+ 2075              	.LFE65:
+ 2077              		.text
+ 2078              	.Letext0:
+ 2079              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 2080              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 2081              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
+ 2082              		.file 5 "./i2c/i2c-com.h"
+ 2083              		.file 6 "./i2c/i2c-std.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 49
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c-com.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:18     .text.i2c_peripheral_enable:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:24     .text.i2c_peripheral_enable:00000000 i2c_peripheral_enable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:66     .text.i2c_peripheral_disable:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:72     .text.i2c_peripheral_disable:00000000 i2c_peripheral_disable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:113    .text.i2c_send_start:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:119    .text.i2c_send_start:00000000 i2c_send_start
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:160    .text.i2c_send_stop:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:166    .text.i2c_send_stop:00000000 i2c_send_stop
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:207    .text.i2c_clear_stop:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:213    .text.i2c_clear_stop:00000000 i2c_clear_stop
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:254    .text.i2c_send_7bit_address:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:260    .text.i2c_send_7bit_address:00000000 i2c_send_7bit_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:313    .text.i2c_send_data:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:319    .text.i2c_send_data:00000000 i2c_send_data
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:369    .text.i2c_get_data:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:375    .text.i2c_get_data:00000000 i2c_get_data
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:415    .text.i2c_set_own_7bit_slave_address:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:421    .text.i2c_set_own_7bit_slave_address:00000000 i2c_set_own_7bit_slave_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:473    .text.i2c_set_own_10bit_slave_address:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:479    .text.i2c_set_own_10bit_slave_address:00000000 i2c_set_own_10bit_slave_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:534    .text.i2c_set_own_7bit_slave_address_two:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:540    .text.i2c_set_own_7bit_slave_address_two:00000000 i2c_set_own_7bit_slave_address_two
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:588    .text.i2c_enable_dual_addressing_mode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:594    .text.i2c_enable_dual_addressing_mode:00000000 i2c_enable_dual_addressing_mode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:635    .text.i2c_disable_dual_addressing_mode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:641    .text.i2c_disable_dual_addressing_mode:00000000 i2c_disable_dual_addressing_mode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:682    .text.i2c_set_clock_frequency:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:688    .text.i2c_set_clock_frequency:00000000 i2c_set_clock_frequency
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:743    .text.i2c_set_fast_mode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:749    .text.i2c_set_fast_mode:00000000 i2c_set_fast_mode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:790    .text.i2c_set_standard_mode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:796    .text.i2c_set_standard_mode:00000000 i2c_set_standard_mode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:837    .text.i2c_set_ccr:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:843    .text.i2c_set_ccr:00000000 i2c_set_ccr
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:898    .text.i2c_set_trise:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:904    .text.i2c_set_trise:00000000 i2c_set_trise
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:946    .text.i2c_set_dutycycle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:952    .text.i2c_set_dutycycle:00000000 i2c_set_dutycycle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1004   .text.i2c_set_speed:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1010   .text.i2c_set_speed:00000000 i2c_set_speed
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1106   .text.i2c_set_speed:00000088 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1111   .text.i2c_enable_ack:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1117   .text.i2c_enable_ack:00000000 i2c_enable_ack
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1158   .text.i2c_disable_ack:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1164   .text.i2c_disable_ack:00000000 i2c_disable_ack
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1205   .text.i2c_nack_next:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1211   .text.i2c_nack_next:00000000 i2c_nack_next
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1252   .text.i2c_nack_current:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1258   .text.i2c_nack_current:00000000 i2c_nack_current
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1299   .text.i2c_enable_interrupt:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1305   .text.i2c_enable_interrupt:00000000 i2c_enable_interrupt
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1352   .text.i2c_disable_interrupt:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1358   .text.i2c_disable_interrupt:00000000 i2c_disable_interrupt
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1407   .text.i2c_enable_dma:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1413   .text.i2c_enable_dma:00000000 i2c_enable_dma
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 50
+
+
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1454   .text.i2c_disable_dma:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1460   .text.i2c_disable_dma:00000000 i2c_disable_dma
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1501   .text.i2c_set_dma_last_transfer:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1507   .text.i2c_set_dma_last_transfer:00000000 i2c_set_dma_last_transfer
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1548   .text.i2c_clear_dma_last_transfer:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1554   .text.i2c_clear_dma_last_transfer:00000000 i2c_clear_dma_last_transfer
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1595   .text.i2c_write7_v1:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1601   .text.i2c_write7_v1:00000000 i2c_write7_v1
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1801   .text.i2c_write7_v1:0000010c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1806   .text.i2c_read7_v1:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:1812   .text.i2c_read7_v1:00000000 i2c_read7_v1
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:2003   .text.i2c_read7_v1:000000fc $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:2008   .text.i2c_transfer7:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s:2014   .text.i2c_transfer7:00000000 i2c_transfer7
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdqklyq.s 			page 51
+
+
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+I2Cx_Timeout

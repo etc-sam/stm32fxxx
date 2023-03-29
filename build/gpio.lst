@@ -1,0 +1,1224 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.reg_sbits,"ax",%progbits
+  18              		.align	1
+  19              		.global	reg_sbits
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	reg_sbits:
+  25              	.LFB33:
+  26              		.file 1 "./basic/gpio.c"
+   1:./basic/gpio.c **** /**
+   2:./basic/gpio.c ****  * @brief gpio.c
+   3:./basic/gpio.c ****  *
+   4:./basic/gpio.c ****  * @param student: Sameer Almaldein
+   5:./basic/gpio.c ****  * @param ID: 679699
+   6:./basic/gpio.c ****  * @param University TU-Chemnitz
+   7:./basic/gpio.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./basic/gpio.c ****  */ 
+   9:./basic/gpio.c **** 
+  10:./basic/gpio.c **** //********************************************************************************************
+  11:./basic/gpio.c **** //
+  12:./basic/gpio.c **** // including header  files
+  13:./basic/gpio.c **** //
+  14:./basic/gpio.c **** //********************************************************************************************
+  15:./basic/gpio.c ****  #include "init.h"
+  16:./basic/gpio.c **** //********************************************************************************************
+  17:./basic/gpio.c **** //
+  18:./basic/gpio.c **** // Global variables 
+  19:./basic/gpio.c **** //
+  20:./basic/gpio.c **** //********************************************************************************************
+  21:./basic/gpio.c **** //********************************************************************************************
+  22:./basic/gpio.c **** //
+  23:./basic/gpio.c **** // data struct register methods
+  24:./basic/gpio.c **** //
+  25:./basic/gpio.c **** //********************************************************************************************
+  26:./basic/gpio.c **** void reg_sbits(__IO uint32_t * reg,uint32_t bits)
+  27:./basic/gpio.c **** {
+  27              		.loc 1 27 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 2
+
+
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 3960     		str	r1, [r7]
+  28:./basic/gpio.c **** if(reg!=NULL)
+  44              		.loc 1 28 3
+  45 000a 7B68     		ldr	r3, [r7, #4]
+  46 000c 002B     		cmp	r3, #0
+  47 000e 05D0     		beq	.L3
+  29:./basic/gpio.c ****  {
+  30:./basic/gpio.c **** 		*reg|=bits;
+  48              		.loc 1 30 7
+  49 0010 7B68     		ldr	r3, [r7, #4]
+  50 0012 1A68     		ldr	r2, [r3]
+  51 0014 3B68     		ldr	r3, [r7]
+  52 0016 1A43     		orrs	r2, r2, r3
+  53 0018 7B68     		ldr	r3, [r7, #4]
+  54 001a 1A60     		str	r2, [r3]
+  55              	.L3:
+  31:./basic/gpio.c ****  }
+  32:./basic/gpio.c **** }
+  56              		.loc 1 32 1
+  57 001c 00BF     		nop
+  58 001e 0C37     		adds	r7, r7, #12
+  59              	.LCFI3:
+  60              		.cfi_def_cfa_offset 4
+  61 0020 BD46     		mov	sp, r7
+  62              	.LCFI4:
+  63              		.cfi_def_cfa_register 13
+  64              		@ sp needed
+  65 0022 80BC     		pop	{r7}
+  66              	.LCFI5:
+  67              		.cfi_restore 7
+  68              		.cfi_def_cfa_offset 0
+  69 0024 7047     		bx	lr
+  70              		.cfi_endproc
+  71              	.LFE33:
+  73              		.section	.text.reg_cbits,"ax",%progbits
+  74              		.align	1
+  75              		.global	reg_cbits
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  80              	reg_cbits:
+  81              	.LFB34:
+  33:./basic/gpio.c **** //-------------------------------------------------------------------------------
+  34:./basic/gpio.c **** void reg_cbits(__IO uint32_t * reg,uint32_t bits)
+  35:./basic/gpio.c **** {
+  82              		.loc 1 35 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 3
+
+
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 8
+  85              		@ frame_needed = 1, uses_anonymous_args = 0
+  86              		@ link register save eliminated.
+  87 0000 80B4     		push	{r7}
+  88              	.LCFI6:
+  89              		.cfi_def_cfa_offset 4
+  90              		.cfi_offset 7, -4
+  91 0002 83B0     		sub	sp, sp, #12
+  92              	.LCFI7:
+  93              		.cfi_def_cfa_offset 16
+  94 0004 00AF     		add	r7, sp, #0
+  95              	.LCFI8:
+  96              		.cfi_def_cfa_register 7
+  97 0006 7860     		str	r0, [r7, #4]
+  98 0008 3960     		str	r1, [r7]
+  36:./basic/gpio.c ****  if(reg!=NULL)
+  99              		.loc 1 36 4
+ 100 000a 7B68     		ldr	r3, [r7, #4]
+ 101 000c 002B     		cmp	r3, #0
+ 102 000e 06D0     		beq	.L6
+  37:./basic/gpio.c ****   {
+  38:./basic/gpio.c **** 	*reg&=~bits;
+ 103              		.loc 1 38 6
+ 104 0010 7B68     		ldr	r3, [r7, #4]
+ 105 0012 1A68     		ldr	r2, [r3]
+ 106              		.loc 1 38 8
+ 107 0014 3B68     		ldr	r3, [r7]
+ 108 0016 DB43     		mvns	r3, r3
+ 109              		.loc 1 38 6
+ 110 0018 1A40     		ands	r2, r2, r3
+ 111 001a 7B68     		ldr	r3, [r7, #4]
+ 112 001c 1A60     		str	r2, [r3]
+ 113              	.L6:
+  39:./basic/gpio.c ****   }
+  40:./basic/gpio.c **** 
+  41:./basic/gpio.c **** }
+ 114              		.loc 1 41 1
+ 115 001e 00BF     		nop
+ 116 0020 0C37     		adds	r7, r7, #12
+ 117              	.LCFI9:
+ 118              		.cfi_def_cfa_offset 4
+ 119 0022 BD46     		mov	sp, r7
+ 120              	.LCFI10:
+ 121              		.cfi_def_cfa_register 13
+ 122              		@ sp needed
+ 123 0024 80BC     		pop	{r7}
+ 124              	.LCFI11:
+ 125              		.cfi_restore 7
+ 126              		.cfi_def_cfa_offset 0
+ 127 0026 7047     		bx	lr
+ 128              		.cfi_endproc
+ 129              	.LFE34:
+ 131              		.section	.text.gpio_init,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	gpio_init
+ 134              		.syntax unified
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 4
+
+
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	gpio_init:
+ 139              	.LFB35:
+  42:./basic/gpio.c **** //----------------------------------------------------------------------------
+  43:./basic/gpio.c **** //********************************************************************************************
+  44:./basic/gpio.c **** //
+  45:./basic/gpio.c **** // Method definitions
+  46:./basic/gpio.c **** //
+  47:./basic/gpio.c **** //********************************************************************************************
+  48:./basic/gpio.c **** void gpio_init(GPIO_TypeDef * port,uint16_t pin,GPIOMode_TypeDef mode,GPIOSpeed_TypeDef speed)
+  49:./basic/gpio.c **** {
+ 140              		.loc 1 49 1
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 16
+ 143              		@ frame_needed = 1, uses_anonymous_args = 0
+ 144 0000 80B5     		push	{r7, lr}
+ 145              	.LCFI12:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 84B0     		sub	sp, sp, #16
+ 150              	.LCFI13:
+ 151              		.cfi_def_cfa_offset 24
+ 152 0004 00AF     		add	r7, sp, #0
+ 153              	.LCFI14:
+ 154              		.cfi_def_cfa_register 7
+ 155 0006 7860     		str	r0, [r7, #4]
+ 156 0008 0846     		mov	r0, r1
+ 157 000a 1146     		mov	r1, r2
+ 158 000c 1A46     		mov	r2, r3
+ 159 000e 0346     		mov	r3, r0	@ movhi
+ 160 0010 7B80     		strh	r3, [r7, #2]	@ movhi
+ 161 0012 0B46     		mov	r3, r1
+ 162 0014 7B70     		strb	r3, [r7, #1]
+ 163 0016 1346     		mov	r3, r2
+ 164 0018 3B70     		strb	r3, [r7]
+  50:./basic/gpio.c ****     GPIO_InitTypeDef gpioinit;
+  51:./basic/gpio.c ****     GPIO_StructInit((GPIO_InitTypeDef *)&gpioinit);
+ 165              		.loc 1 51 5
+ 166 001a 07F10C03 		add	r3, r7, #12
+ 167 001e 1846     		mov	r0, r3
+ 168 0020 FFF7FEFF 		bl	GPIO_StructInit
+  52:./basic/gpio.c ****     gpioinit.GPIO_Mode=mode;
+ 169              		.loc 1 52 23
+ 170 0024 7B78     		ldrb	r3, [r7, #1]
+ 171 0026 FB73     		strb	r3, [r7, #15]
+  53:./basic/gpio.c ****     gpioinit.GPIO_Speed=speed;
+ 172              		.loc 1 53 24
+ 173 0028 3B78     		ldrb	r3, [r7]
+ 174 002a BB73     		strb	r3, [r7, #14]
+  54:./basic/gpio.c ****     gpioinit.GPIO_Pin=(uint32_t)(1<<pin);
+ 175              		.loc 1 54 35
+ 176 002c 7B88     		ldrh	r3, [r7, #2]
+ 177 002e 0122     		movs	r2, #1
+ 178 0030 02FA03F3 		lsl	r3, r2, r3
+ 179              		.loc 1 54 22
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 5
+
+
+ 180 0034 9BB2     		uxth	r3, r3
+ 181 0036 BB81     		strh	r3, [r7, #12]	@ movhi
+  55:./basic/gpio.c ****     GPIO_Init(port,(GPIO_InitTypeDef *)&gpioinit);
+ 182              		.loc 1 55 5
+ 183 0038 07F10C03 		add	r3, r7, #12
+ 184 003c 1946     		mov	r1, r3
+ 185 003e 7868     		ldr	r0, [r7, #4]
+ 186 0040 FFF7FEFF 		bl	GPIO_Init
+  56:./basic/gpio.c **** }
+ 187              		.loc 1 56 1
+ 188 0044 00BF     		nop
+ 189 0046 1037     		adds	r7, r7, #16
+ 190              	.LCFI15:
+ 191              		.cfi_def_cfa_offset 8
+ 192 0048 BD46     		mov	sp, r7
+ 193              	.LCFI16:
+ 194              		.cfi_def_cfa_register 13
+ 195              		@ sp needed
+ 196 004a 80BD     		pop	{r7, pc}
+ 197              		.cfi_endproc
+ 198              	.LFE35:
+ 200              		.section	.text.gpio_pinmode,"ax",%progbits
+ 201              		.align	1
+ 202              		.global	gpio_pinmode
+ 203              		.syntax unified
+ 204              		.thumb
+ 205              		.thumb_func
+ 207              	gpio_pinmode:
+ 208              	.LFB36:
+  57:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+  58:./basic/gpio.c **** void gpio_pinmode(gpio_t io,GPIOMode_TypeDef mode,GPIOSpeed_TypeDef speed)
+  59:./basic/gpio.c **** {
+ 209              		.loc 1 59 1
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 24
+ 212              		@ frame_needed = 1, uses_anonymous_args = 0
+ 213 0000 90B5     		push	{r4, r7, lr}
+ 214              	.LCFI17:
+ 215              		.cfi_def_cfa_offset 12
+ 216              		.cfi_offset 4, -12
+ 217              		.cfi_offset 7, -8
+ 218              		.cfi_offset 14, -4
+ 219 0002 87B0     		sub	sp, sp, #28
+ 220              	.LCFI18:
+ 221              		.cfi_def_cfa_offset 40
+ 222 0004 00AF     		add	r7, sp, #0
+ 223              	.LCFI19:
+ 224              		.cfi_def_cfa_register 7
+ 225 0006 07F10804 		add	r4, r7, #8
+ 226 000a 84E80300 		stm	r4, {r0, r1}
+ 227 000e 1146     		mov	r1, r2
+ 228 0010 1A46     		mov	r2, r3
+ 229 0012 0B46     		mov	r3, r1
+ 230 0014 FB71     		strb	r3, [r7, #7]
+ 231 0016 1346     		mov	r3, r2
+ 232 0018 BB71     		strb	r3, [r7, #6]
+  60:./basic/gpio.c ****     GPIO_InitTypeDef gpioinit;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 6
+
+
+  61:./basic/gpio.c ****     GPIO_StructInit((GPIO_InitTypeDef *)&gpioinit);
+ 233              		.loc 1 61 5
+ 234 001a 07F11403 		add	r3, r7, #20
+ 235 001e 1846     		mov	r0, r3
+ 236 0020 FFF7FEFF 		bl	GPIO_StructInit
+  62:./basic/gpio.c ****     gpioinit.GPIO_Mode=mode;
+ 237              		.loc 1 62 23
+ 238 0024 FB79     		ldrb	r3, [r7, #7]
+ 239 0026 FB75     		strb	r3, [r7, #23]
+  63:./basic/gpio.c ****     gpioinit.GPIO_Speed=speed;
+ 240              		.loc 1 63 24
+ 241 0028 BB79     		ldrb	r3, [r7, #6]
+ 242 002a BB75     		strb	r3, [r7, #22]
+  64:./basic/gpio.c ****     gpioinit.GPIO_Pin=(uint32_t)(1<<io.pin);
+ 243              		.loc 1 64 39
+ 244 002c BB89     		ldrh	r3, [r7, #12]
+ 245 002e 1A46     		mov	r2, r3
+ 246              		.loc 1 64 35
+ 247 0030 0123     		movs	r3, #1
+ 248 0032 9340     		lsls	r3, r3, r2
+ 249              		.loc 1 64 22
+ 250 0034 9BB2     		uxth	r3, r3
+ 251 0036 BB82     		strh	r3, [r7, #20]	@ movhi
+  65:./basic/gpio.c ****     GPIO_Init(io.port,(GPIO_InitTypeDef *)&gpioinit);
+ 252              		.loc 1 65 5
+ 253 0038 BB68     		ldr	r3, [r7, #8]
+ 254 003a 07F11402 		add	r2, r7, #20
+ 255 003e 1146     		mov	r1, r2
+ 256 0040 1846     		mov	r0, r3
+ 257 0042 FFF7FEFF 		bl	GPIO_Init
+  66:./basic/gpio.c **** }
+ 258              		.loc 1 66 1
+ 259 0046 00BF     		nop
+ 260 0048 1C37     		adds	r7, r7, #28
+ 261              	.LCFI20:
+ 262              		.cfi_def_cfa_offset 12
+ 263 004a BD46     		mov	sp, r7
+ 264              	.LCFI21:
+ 265              		.cfi_def_cfa_register 13
+ 266              		@ sp needed
+ 267 004c 90BD     		pop	{r4, r7, pc}
+ 268              		.cfi_endproc
+ 269              	.LFE36:
+ 271              		.section	.text.gpio_pin_mode,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	gpio_pin_mode
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 278              	gpio_pin_mode:
+ 279              	.LFB37:
+  67:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+  68:./basic/gpio.c **** void gpio_pin_mode(gpio_t pio,uint8_t mode)
+  69:./basic/gpio.c **** {
+ 280              		.loc 1 69 1
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 32
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 7
+
+
+ 283              		@ frame_needed = 1, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285 0000 80B4     		push	{r7}
+ 286              	.LCFI22:
+ 287              		.cfi_def_cfa_offset 4
+ 288              		.cfi_offset 7, -4
+ 289 0002 89B0     		sub	sp, sp, #36
+ 290              	.LCFI23:
+ 291              		.cfi_def_cfa_offset 40
+ 292 0004 00AF     		add	r7, sp, #0
+ 293              	.LCFI24:
+ 294              		.cfi_def_cfa_register 7
+ 295 0006 07F10803 		add	r3, r7, #8
+ 296 000a 83E80300 		stm	r3, {r0, r1}
+ 297 000e 1346     		mov	r3, r2
+ 298 0010 FB71     		strb	r3, [r7, #7]
+  70:./basic/gpio.c **** 	uint32_t temp=0,a=0;
+ 299              		.loc 1 70 11
+ 300 0012 0023     		movs	r3, #0
+ 301 0014 FB61     		str	r3, [r7, #28]
+ 302              		.loc 1 70 18
+ 303 0016 0023     		movs	r3, #0
+ 304 0018 BB61     		str	r3, [r7, #24]
+  71:./basic/gpio.c **** 	uint16_t shift=0;
+ 305              		.loc 1 71 11
+ 306 001a 0023     		movs	r3, #0
+ 307 001c FB82     		strh	r3, [r7, #22]	@ movhi
+  72:./basic/gpio.c **** 
+  73:./basic/gpio.c ****   shift=(pio.pin<8)?pio.pin:pio.pin-8;
+ 308              		.loc 1 73 13
+ 309 001e BB89     		ldrh	r3, [r7, #12]
+ 310              		.loc 1 73 8
+ 311 0020 072B     		cmp	r3, #7
+ 312 0022 01D8     		bhi	.L10
+ 313              		.loc 1 73 8 is_stmt 0 discriminator 1
+ 314 0024 BB89     		ldrh	r3, [r7, #12]
+ 315 0026 02E0     		b	.L11
+ 316              	.L10:
+ 317              		.loc 1 73 32 is_stmt 1 discriminator 2
+ 318 0028 BB89     		ldrh	r3, [r7, #12]
+ 319              		.loc 1 73 8 discriminator 2
+ 320 002a 083B     		subs	r3, r3, #8
+ 321 002c 9BB2     		uxth	r3, r3
+ 322              	.L11:
+ 323              		.loc 1 73 8 is_stmt 0 discriminator 4
+ 324 002e FB82     		strh	r3, [r7, #22]	@ movhi
+  74:./basic/gpio.c ****   shift<<=2;
+ 325              		.loc 1 74 8 is_stmt 1 discriminator 4
+ 326 0030 FB8A     		ldrh	r3, [r7, #22]	@ movhi
+ 327 0032 9B00     		lsls	r3, r3, #2
+ 328 0034 FB82     		strh	r3, [r7, #22]	@ movhi
+  75:./basic/gpio.c ****   temp= (uint32_t)(mode & 0x0f);     
+ 329              		.loc 1 75 25 discriminator 4
+ 330 0036 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 331              		.loc 1 75 7 discriminator 4
+ 332 0038 03F00F03 		and	r3, r3, #15
+ 333 003c FB61     		str	r3, [r7, #28]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 8
+
+
+  76:./basic/gpio.c **** 
+  77:./basic/gpio.c ****   if(pio.pin<8)
+ 334              		.loc 1 77 9 discriminator 4
+ 335 003e BB89     		ldrh	r3, [r7, #12]
+ 336              		.loc 1 77 5 discriminator 4
+ 337 0040 072B     		cmp	r3, #7
+ 338 0042 13D8     		bhi	.L12
+  78:./basic/gpio.c ****   {
+  79:./basic/gpio.c ****     a = pio.port->CRL & ~(0x0f<<shift);
+ 339              		.loc 1 79 12
+ 340 0044 BB68     		ldr	r3, [r7, #8]
+ 341              		.loc 1 79 17
+ 342 0046 1B68     		ldr	r3, [r3]
+ 343              		.loc 1 79 31
+ 344 0048 FA8A     		ldrh	r2, [r7, #22]
+ 345 004a 0F21     		movs	r1, #15
+ 346 004c 01FA02F2 		lsl	r2, r1, r2
+ 347              		.loc 1 79 25
+ 348 0050 D243     		mvns	r2, r2
+ 349              		.loc 1 79 7
+ 350 0052 1340     		ands	r3, r3, r2
+ 351 0054 BB61     		str	r3, [r7, #24]
+  80:./basic/gpio.c ****     a|= temp<<shift;
+ 352              		.loc 1 80 13
+ 353 0056 FB8A     		ldrh	r3, [r7, #22]
+ 354 0058 FA69     		ldr	r2, [r7, #28]
+ 355 005a 02FA03F3 		lsl	r3, r2, r3
+ 356              		.loc 1 80 6
+ 357 005e BA69     		ldr	r2, [r7, #24]
+ 358 0060 1343     		orrs	r3, r3, r2
+ 359 0062 BB61     		str	r3, [r7, #24]
+  81:./basic/gpio.c ****     pio.port->CRL=a;
+ 360              		.loc 1 81 8
+ 361 0064 BB68     		ldr	r3, [r7, #8]
+ 362              		.loc 1 81 18
+ 363 0066 BA69     		ldr	r2, [r7, #24]
+ 364 0068 1A60     		str	r2, [r3]
+  82:./basic/gpio.c ****   }
+  83:./basic/gpio.c ****   else
+  84:./basic/gpio.c ****   {
+  85:./basic/gpio.c ****     a =pio.port->CRH & ~(0x0f<<shift);
+  86:./basic/gpio.c ****     a|=temp<<shift;
+  87:./basic/gpio.c ****     pio.port->CRH=a;
+  88:./basic/gpio.c ****   }
+  89:./basic/gpio.c ****    
+  90:./basic/gpio.c **** }
+ 365              		.loc 1 90 1
+ 366 006a 12E0     		b	.L14
+ 367              	.L12:
+  85:./basic/gpio.c ****     a|=temp<<shift;
+ 368              		.loc 1 85 11
+ 369 006c BB68     		ldr	r3, [r7, #8]
+  85:./basic/gpio.c ****     a|=temp<<shift;
+ 370              		.loc 1 85 16
+ 371 006e 5B68     		ldr	r3, [r3, #4]
+  85:./basic/gpio.c ****     a|=temp<<shift;
+ 372              		.loc 1 85 30
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 9
+
+
+ 373 0070 FA8A     		ldrh	r2, [r7, #22]
+ 374 0072 0F21     		movs	r1, #15
+ 375 0074 01FA02F2 		lsl	r2, r1, r2
+  85:./basic/gpio.c ****     a|=temp<<shift;
+ 376              		.loc 1 85 24
+ 377 0078 D243     		mvns	r2, r2
+  85:./basic/gpio.c ****     a|=temp<<shift;
+ 378              		.loc 1 85 7
+ 379 007a 1340     		ands	r3, r3, r2
+ 380 007c BB61     		str	r3, [r7, #24]
+  86:./basic/gpio.c ****     pio.port->CRH=a;
+ 381              		.loc 1 86 12
+ 382 007e FB8A     		ldrh	r3, [r7, #22]
+ 383 0080 FA69     		ldr	r2, [r7, #28]
+ 384 0082 02FA03F3 		lsl	r3, r2, r3
+  86:./basic/gpio.c ****     pio.port->CRH=a;
+ 385              		.loc 1 86 6
+ 386 0086 BA69     		ldr	r2, [r7, #24]
+ 387 0088 1343     		orrs	r3, r3, r2
+ 388 008a BB61     		str	r3, [r7, #24]
+  87:./basic/gpio.c ****   }
+ 389              		.loc 1 87 8
+ 390 008c BB68     		ldr	r3, [r7, #8]
+  87:./basic/gpio.c ****   }
+ 391              		.loc 1 87 18
+ 392 008e BA69     		ldr	r2, [r7, #24]
+ 393 0090 5A60     		str	r2, [r3, #4]
+ 394              	.L14:
+ 395              		.loc 1 90 1
+ 396 0092 00BF     		nop
+ 397 0094 2437     		adds	r7, r7, #36
+ 398              	.LCFI25:
+ 399              		.cfi_def_cfa_offset 4
+ 400 0096 BD46     		mov	sp, r7
+ 401              	.LCFI26:
+ 402              		.cfi_def_cfa_register 13
+ 403              		@ sp needed
+ 404 0098 80BC     		pop	{r7}
+ 405              	.LCFI27:
+ 406              		.cfi_restore 7
+ 407              		.cfi_def_cfa_offset 0
+ 408 009a 7047     		bx	lr
+ 409              		.cfi_endproc
+ 410              	.LFE37:
+ 412              		.section	.text.gpio_set,"ax",%progbits
+ 413              		.align	1
+ 414              		.global	gpio_set
+ 415              		.syntax unified
+ 416              		.thumb
+ 417              		.thumb_func
+ 419              	gpio_set:
+ 420              	.LFB38:
+  91:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+  92:./basic/gpio.c **** //********************************************************************************************
+  93:./basic/gpio.c **** //
+  94:./basic/gpio.c **** //  output operation Method definitions
+  95:./basic/gpio.c **** //
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 10
+
+
+  96:./basic/gpio.c **** //********************************************************************************************
+  97:./basic/gpio.c **** void gpio_set(gpio_t pio)
+  98:./basic/gpio.c **** {
+ 421              		.loc 1 98 1
+ 422              		.cfi_startproc
+ 423              		@ args = 0, pretend = 0, frame = 8
+ 424              		@ frame_needed = 1, uses_anonymous_args = 0
+ 425              		@ link register save eliminated.
+ 426 0000 80B4     		push	{r7}
+ 427              	.LCFI28:
+ 428              		.cfi_def_cfa_offset 4
+ 429              		.cfi_offset 7, -4
+ 430 0002 83B0     		sub	sp, sp, #12
+ 431              	.LCFI29:
+ 432              		.cfi_def_cfa_offset 16
+ 433 0004 00AF     		add	r7, sp, #0
+ 434              	.LCFI30:
+ 435              		.cfi_def_cfa_register 7
+ 436 0006 3B46     		mov	r3, r7
+ 437 0008 83E80300 		stm	r3, {r0, r1}
+  99:./basic/gpio.c ****     pio.port->BSRR|=(uint16_t)(1<<pio.pin);
+ 438              		.loc 1 99 8
+ 439 000c 3B68     		ldr	r3, [r7]
+ 440              		.loc 1 99 19
+ 441 000e 1A69     		ldr	r2, [r3, #16]
+ 442              		.loc 1 99 38
+ 443 0010 BB88     		ldrh	r3, [r7, #4]
+ 444 0012 1946     		mov	r1, r3
+ 445              		.loc 1 99 33
+ 446 0014 0123     		movs	r3, #1
+ 447 0016 8B40     		lsls	r3, r3, r1
+ 448              		.loc 1 99 21
+ 449 0018 9BB2     		uxth	r3, r3
+ 450 001a 1946     		mov	r1, r3
+ 451              		.loc 1 99 8
+ 452 001c 3B68     		ldr	r3, [r7]
+ 453              		.loc 1 99 19
+ 454 001e 0A43     		orrs	r2, r2, r1
+ 455 0020 1A61     		str	r2, [r3, #16]
+ 100:./basic/gpio.c ****     
+ 101:./basic/gpio.c ****     //sbit(pio.port->BSRR,pio.pin);
+ 102:./basic/gpio.c **** }
+ 456              		.loc 1 102 1
+ 457 0022 00BF     		nop
+ 458 0024 0C37     		adds	r7, r7, #12
+ 459              	.LCFI31:
+ 460              		.cfi_def_cfa_offset 4
+ 461 0026 BD46     		mov	sp, r7
+ 462              	.LCFI32:
+ 463              		.cfi_def_cfa_register 13
+ 464              		@ sp needed
+ 465 0028 80BC     		pop	{r7}
+ 466              	.LCFI33:
+ 467              		.cfi_restore 7
+ 468              		.cfi_def_cfa_offset 0
+ 469 002a 7047     		bx	lr
+ 470              		.cfi_endproc
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 11
+
+
+ 471              	.LFE38:
+ 473              		.section	.text.gpio_clear,"ax",%progbits
+ 474              		.align	1
+ 475              		.global	gpio_clear
+ 476              		.syntax unified
+ 477              		.thumb
+ 478              		.thumb_func
+ 480              	gpio_clear:
+ 481              	.LFB39:
+ 103:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 104:./basic/gpio.c **** void gpio_clear(gpio_t pio)
+ 105:./basic/gpio.c **** {
+ 482              		.loc 1 105 1
+ 483              		.cfi_startproc
+ 484              		@ args = 0, pretend = 0, frame = 8
+ 485              		@ frame_needed = 1, uses_anonymous_args = 0
+ 486              		@ link register save eliminated.
+ 487 0000 80B4     		push	{r7}
+ 488              	.LCFI34:
+ 489              		.cfi_def_cfa_offset 4
+ 490              		.cfi_offset 7, -4
+ 491 0002 83B0     		sub	sp, sp, #12
+ 492              	.LCFI35:
+ 493              		.cfi_def_cfa_offset 16
+ 494 0004 00AF     		add	r7, sp, #0
+ 495              	.LCFI36:
+ 496              		.cfi_def_cfa_register 7
+ 497 0006 3B46     		mov	r3, r7
+ 498 0008 83E80300 		stm	r3, {r0, r1}
+ 106:./basic/gpio.c ****   pio.port->BRR|=(uint16_t)(1<<pio.pin);
+ 499              		.loc 1 106 6
+ 500 000c 3B68     		ldr	r3, [r7]
+ 501              		.loc 1 106 16
+ 502 000e 5A69     		ldr	r2, [r3, #20]
+ 503              		.loc 1 106 35
+ 504 0010 BB88     		ldrh	r3, [r7, #4]
+ 505 0012 1946     		mov	r1, r3
+ 506              		.loc 1 106 30
+ 507 0014 0123     		movs	r3, #1
+ 508 0016 8B40     		lsls	r3, r3, r1
+ 509              		.loc 1 106 18
+ 510 0018 9BB2     		uxth	r3, r3
+ 511 001a 1946     		mov	r1, r3
+ 512              		.loc 1 106 6
+ 513 001c 3B68     		ldr	r3, [r7]
+ 514              		.loc 1 106 16
+ 515 001e 0A43     		orrs	r2, r2, r1
+ 516 0020 5A61     		str	r2, [r3, #20]
+ 107:./basic/gpio.c **** }
+ 517              		.loc 1 107 1
+ 518 0022 00BF     		nop
+ 519 0024 0C37     		adds	r7, r7, #12
+ 520              	.LCFI37:
+ 521              		.cfi_def_cfa_offset 4
+ 522 0026 BD46     		mov	sp, r7
+ 523              	.LCFI38:
+ 524              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 12
+
+
+ 525              		@ sp needed
+ 526 0028 80BC     		pop	{r7}
+ 527              	.LCFI39:
+ 528              		.cfi_restore 7
+ 529              		.cfi_def_cfa_offset 0
+ 530 002a 7047     		bx	lr
+ 531              		.cfi_endproc
+ 532              	.LFE39:
+ 534              		.section	.text.gpio_toggle,"ax",%progbits
+ 535              		.align	1
+ 536              		.global	gpio_toggle
+ 537              		.syntax unified
+ 538              		.thumb
+ 539              		.thumb_func
+ 541              	gpio_toggle:
+ 542              	.LFB40:
+ 108:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 109:./basic/gpio.c **** void gpio_toggle(gpio_t pio)
+ 110:./basic/gpio.c **** {
+ 543              		.loc 1 110 1
+ 544              		.cfi_startproc
+ 545              		@ args = 0, pretend = 0, frame = 8
+ 546              		@ frame_needed = 1, uses_anonymous_args = 0
+ 547              		@ link register save eliminated.
+ 548 0000 80B4     		push	{r7}
+ 549              	.LCFI40:
+ 550              		.cfi_def_cfa_offset 4
+ 551              		.cfi_offset 7, -4
+ 552 0002 83B0     		sub	sp, sp, #12
+ 553              	.LCFI41:
+ 554              		.cfi_def_cfa_offset 16
+ 555 0004 00AF     		add	r7, sp, #0
+ 556              	.LCFI42:
+ 557              		.cfi_def_cfa_register 7
+ 558 0006 3B46     		mov	r3, r7
+ 559 0008 83E80300 		stm	r3, {r0, r1}
+ 111:./basic/gpio.c **** // uint8_t val=(pio.port->ODR)&((uint16_t)(1<<pio.pin));
+ 112:./basic/gpio.c ****  if(bit_is_set(pio.port->ODR,pio.pin))
+ 560              		.loc 1 112 5
+ 561 000c 3B68     		ldr	r3, [r7]
+ 562 000e DB68     		ldr	r3, [r3, #12]
+ 563 0010 BA88     		ldrh	r2, [r7, #4]
+ 564 0012 1146     		mov	r1, r2
+ 565 0014 0122     		movs	r2, #1
+ 566 0016 8A40     		lsls	r2, r2, r1
+ 567 0018 1340     		ands	r3, r3, r2
+ 568              		.loc 1 112 4
+ 569 001a 002B     		cmp	r3, #0
+ 570 001c 0AD0     		beq	.L18
+ 113:./basic/gpio.c ****   sbit(pio.port->BRR,pio.pin);
+ 571              		.loc 1 113 3
+ 572 001e 3B68     		ldr	r3, [r7]
+ 573 0020 5A69     		ldr	r2, [r3, #20]
+ 574 0022 BB88     		ldrh	r3, [r7, #4]
+ 575 0024 1946     		mov	r1, r3
+ 576 0026 0123     		movs	r3, #1
+ 577 0028 8B40     		lsls	r3, r3, r1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 13
+
+
+ 578 002a 1946     		mov	r1, r3
+ 579 002c 3B68     		ldr	r3, [r7]
+ 580 002e 0A43     		orrs	r2, r2, r1
+ 581 0030 5A61     		str	r2, [r3, #20]
+ 114:./basic/gpio.c ****  else 
+ 115:./basic/gpio.c ****   sbit(pio.port->BSRR,pio.pin);
+ 116:./basic/gpio.c **** }
+ 582              		.loc 1 116 1
+ 583 0032 09E0     		b	.L20
+ 584              	.L18:
+ 115:./basic/gpio.c **** }
+ 585              		.loc 1 115 3
+ 586 0034 3B68     		ldr	r3, [r7]
+ 587 0036 1A69     		ldr	r2, [r3, #16]
+ 588 0038 BB88     		ldrh	r3, [r7, #4]
+ 589 003a 1946     		mov	r1, r3
+ 590 003c 0123     		movs	r3, #1
+ 591 003e 8B40     		lsls	r3, r3, r1
+ 592 0040 1946     		mov	r1, r3
+ 593 0042 3B68     		ldr	r3, [r7]
+ 594 0044 0A43     		orrs	r2, r2, r1
+ 595 0046 1A61     		str	r2, [r3, #16]
+ 596              	.L20:
+ 597              		.loc 1 116 1
+ 598 0048 00BF     		nop
+ 599 004a 0C37     		adds	r7, r7, #12
+ 600              	.LCFI43:
+ 601              		.cfi_def_cfa_offset 4
+ 602 004c BD46     		mov	sp, r7
+ 603              	.LCFI44:
+ 604              		.cfi_def_cfa_register 13
+ 605              		@ sp needed
+ 606 004e 80BC     		pop	{r7}
+ 607              	.LCFI45:
+ 608              		.cfi_restore 7
+ 609              		.cfi_def_cfa_offset 0
+ 610 0050 7047     		bx	lr
+ 611              		.cfi_endproc
+ 612              	.LFE40:
+ 614              		.section	.text.gpio_in_pullup,"ax",%progbits
+ 615              		.align	1
+ 616              		.global	gpio_in_pullup
+ 617              		.syntax unified
+ 618              		.thumb
+ 619              		.thumb_func
+ 621              	gpio_in_pullup:
+ 622              	.LFB41:
+ 117:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 118:./basic/gpio.c **** //********************************************************************************************
+ 119:./basic/gpio.c **** //
+ 120:./basic/gpio.c **** //  input operation Method definitions
+ 121:./basic/gpio.c **** //
+ 122:./basic/gpio.c **** //********************************************************************************************
+ 123:./basic/gpio.c **** void gpio_in_pullup(gpio_t pio)
+ 124:./basic/gpio.c **** {
+ 623              		.loc 1 124 1
+ 624              		.cfi_startproc
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 14
+
+
+ 625              		@ args = 0, pretend = 0, frame = 8
+ 626              		@ frame_needed = 1, uses_anonymous_args = 0
+ 627 0000 80B5     		push	{r7, lr}
+ 628              	.LCFI46:
+ 629              		.cfi_def_cfa_offset 8
+ 630              		.cfi_offset 7, -8
+ 631              		.cfi_offset 14, -4
+ 632 0002 82B0     		sub	sp, sp, #8
+ 633              	.LCFI47:
+ 634              		.cfi_def_cfa_offset 16
+ 635 0004 00AF     		add	r7, sp, #0
+ 636              	.LCFI48:
+ 637              		.cfi_def_cfa_register 7
+ 638 0006 3B46     		mov	r3, r7
+ 639 0008 83E80300 		stm	r3, {r0, r1}
+ 125:./basic/gpio.c ****   gpio_pin_mode(pio,GPIO_MODE_IN_PUPD);
+ 640              		.loc 1 125 3
+ 641 000c 0822     		movs	r2, #8
+ 642 000e 3B46     		mov	r3, r7
+ 643 0010 93E80300 		ldm	r3, {r0, r1}
+ 644 0014 FFF7FEFF 		bl	gpio_pin_mode
+ 126:./basic/gpio.c ****   pio.port->BSRR|=((uint32_t)1<<pio.pin);
+ 645              		.loc 1 126 6
+ 646 0018 3B68     		ldr	r3, [r7]
+ 647              		.loc 1 126 17
+ 648 001a 1969     		ldr	r1, [r3, #16]
+ 649              		.loc 1 126 36
+ 650 001c BB88     		ldrh	r3, [r7, #4]
+ 651 001e 1A46     		mov	r2, r3
+ 652              		.loc 1 126 31
+ 653 0020 0123     		movs	r3, #1
+ 654 0022 03FA02F2 		lsl	r2, r3, r2
+ 655              		.loc 1 126 6
+ 656 0026 3B68     		ldr	r3, [r7]
+ 657              		.loc 1 126 17
+ 658 0028 0A43     		orrs	r2, r2, r1
+ 659 002a 1A61     		str	r2, [r3, #16]
+ 127:./basic/gpio.c **** }
+ 660              		.loc 1 127 1
+ 661 002c 00BF     		nop
+ 662 002e 0837     		adds	r7, r7, #8
+ 663              	.LCFI49:
+ 664              		.cfi_def_cfa_offset 8
+ 665 0030 BD46     		mov	sp, r7
+ 666              	.LCFI50:
+ 667              		.cfi_def_cfa_register 13
+ 668              		@ sp needed
+ 669 0032 80BD     		pop	{r7, pc}
+ 670              		.cfi_endproc
+ 671              	.LFE41:
+ 673              		.section	.text.gpio_in_pulldown,"ax",%progbits
+ 674              		.align	1
+ 675              		.global	gpio_in_pulldown
+ 676              		.syntax unified
+ 677              		.thumb
+ 678              		.thumb_func
+ 680              	gpio_in_pulldown:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 15
+
+
+ 681              	.LFB42:
+ 128:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 129:./basic/gpio.c **** void gpio_in_pulldown(gpio_t pio)
+ 130:./basic/gpio.c **** {
+ 682              		.loc 1 130 1
+ 683              		.cfi_startproc
+ 684              		@ args = 0, pretend = 0, frame = 8
+ 685              		@ frame_needed = 1, uses_anonymous_args = 0
+ 686 0000 80B5     		push	{r7, lr}
+ 687              	.LCFI51:
+ 688              		.cfi_def_cfa_offset 8
+ 689              		.cfi_offset 7, -8
+ 690              		.cfi_offset 14, -4
+ 691 0002 82B0     		sub	sp, sp, #8
+ 692              	.LCFI52:
+ 693              		.cfi_def_cfa_offset 16
+ 694 0004 00AF     		add	r7, sp, #0
+ 695              	.LCFI53:
+ 696              		.cfi_def_cfa_register 7
+ 697 0006 3B46     		mov	r3, r7
+ 698 0008 83E80300 		stm	r3, {r0, r1}
+ 131:./basic/gpio.c ****   gpio_pin_mode(pio,GPIO_MODE_IN_PUPD);
+ 699              		.loc 1 131 3
+ 700 000c 0822     		movs	r2, #8
+ 701 000e 3B46     		mov	r3, r7
+ 702 0010 93E80300 		ldm	r3, {r0, r1}
+ 703 0014 FFF7FEFF 		bl	gpio_pin_mode
+ 132:./basic/gpio.c ****   pio.port->BSRR &=~((uint32_t)1<<pio.pin);
+ 704              		.loc 1 132 6
+ 705 0018 3B68     		ldr	r3, [r7]
+ 706              		.loc 1 132 18
+ 707 001a 1969     		ldr	r1, [r3, #16]
+ 708              		.loc 1 132 38
+ 709 001c BB88     		ldrh	r3, [r7, #4]
+ 710 001e 1A46     		mov	r2, r3
+ 711              		.loc 1 132 33
+ 712 0020 0123     		movs	r3, #1
+ 713 0022 9340     		lsls	r3, r3, r2
+ 714              		.loc 1 132 20
+ 715 0024 DA43     		mvns	r2, r3
+ 716              		.loc 1 132 6
+ 717 0026 3B68     		ldr	r3, [r7]
+ 718              		.loc 1 132 18
+ 719 0028 0A40     		ands	r2, r2, r1
+ 720 002a 1A61     		str	r2, [r3, #16]
+ 133:./basic/gpio.c **** }
+ 721              		.loc 1 133 1
+ 722 002c 00BF     		nop
+ 723 002e 0837     		adds	r7, r7, #8
+ 724              	.LCFI54:
+ 725              		.cfi_def_cfa_offset 8
+ 726 0030 BD46     		mov	sp, r7
+ 727              	.LCFI55:
+ 728              		.cfi_def_cfa_register 13
+ 729              		@ sp needed
+ 730 0032 80BD     		pop	{r7, pc}
+ 731              		.cfi_endproc
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 16
+
+
+ 732              	.LFE42:
+ 734              		.section	.text.gpio_in_float,"ax",%progbits
+ 735              		.align	1
+ 736              		.global	gpio_in_float
+ 737              		.syntax unified
+ 738              		.thumb
+ 739              		.thumb_func
+ 741              	gpio_in_float:
+ 742              	.LFB43:
+ 134:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 135:./basic/gpio.c **** void gpio_in_float(gpio_t pio)
+ 136:./basic/gpio.c **** {
+ 743              		.loc 1 136 1
+ 744              		.cfi_startproc
+ 745              		@ args = 0, pretend = 0, frame = 8
+ 746              		@ frame_needed = 1, uses_anonymous_args = 0
+ 747 0000 80B5     		push	{r7, lr}
+ 748              	.LCFI56:
+ 749              		.cfi_def_cfa_offset 8
+ 750              		.cfi_offset 7, -8
+ 751              		.cfi_offset 14, -4
+ 752 0002 82B0     		sub	sp, sp, #8
+ 753              	.LCFI57:
+ 754              		.cfi_def_cfa_offset 16
+ 755 0004 00AF     		add	r7, sp, #0
+ 756              	.LCFI58:
+ 757              		.cfi_def_cfa_register 7
+ 758 0006 3B46     		mov	r3, r7
+ 759 0008 83E80300 		stm	r3, {r0, r1}
+ 137:./basic/gpio.c ****   gpio_pin_mode(pio,GPIO_MODE_IN_FLOATING);
+ 760              		.loc 1 137 3
+ 761 000c 0422     		movs	r2, #4
+ 762 000e 3B46     		mov	r3, r7
+ 763 0010 93E80300 		ldm	r3, {r0, r1}
+ 764 0014 FFF7FEFF 		bl	gpio_pin_mode
+ 138:./basic/gpio.c **** }
+ 765              		.loc 1 138 1
+ 766 0018 00BF     		nop
+ 767 001a 0837     		adds	r7, r7, #8
+ 768              	.LCFI59:
+ 769              		.cfi_def_cfa_offset 8
+ 770 001c BD46     		mov	sp, r7
+ 771              	.LCFI60:
+ 772              		.cfi_def_cfa_register 13
+ 773              		@ sp needed
+ 774 001e 80BD     		pop	{r7, pc}
+ 775              		.cfi_endproc
+ 776              	.LFE43:
+ 778              		.section	.text.gpio_get,"ax",%progbits
+ 779              		.align	1
+ 780              		.global	gpio_get
+ 781              		.syntax unified
+ 782              		.thumb
+ 783              		.thumb_func
+ 785              	gpio_get:
+ 786              	.LFB44:
+ 139:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 17
+
+
+ 140:./basic/gpio.c **** uint8_t gpio_get(gpio_t pio)
+ 141:./basic/gpio.c **** {
+ 787              		.loc 1 141 1
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 8
+ 790              		@ frame_needed = 1, uses_anonymous_args = 0
+ 791              		@ link register save eliminated.
+ 792 0000 80B4     		push	{r7}
+ 793              	.LCFI61:
+ 794              		.cfi_def_cfa_offset 4
+ 795              		.cfi_offset 7, -4
+ 796 0002 83B0     		sub	sp, sp, #12
+ 797              	.LCFI62:
+ 798              		.cfi_def_cfa_offset 16
+ 799 0004 00AF     		add	r7, sp, #0
+ 800              	.LCFI63:
+ 801              		.cfi_def_cfa_register 7
+ 802 0006 3B46     		mov	r3, r7
+ 803 0008 83E80300 		stm	r3, {r0, r1}
+ 142:./basic/gpio.c ****   //if((pio.port->IDR & (uint32_t)(1<<pio.pin)))
+ 143:./basic/gpio.c ****   if(bit_is_set(pio.port->IDR,pio.pin))
+ 804              		.loc 1 143 6
+ 805 000c 3B68     		ldr	r3, [r7]
+ 806 000e 9B68     		ldr	r3, [r3, #8]
+ 807 0010 BA88     		ldrh	r2, [r7, #4]
+ 808 0012 1146     		mov	r1, r2
+ 809 0014 0122     		movs	r2, #1
+ 810 0016 8A40     		lsls	r2, r2, r1
+ 811 0018 1340     		ands	r3, r3, r2
+ 812              		.loc 1 143 5
+ 813 001a 002B     		cmp	r3, #0
+ 814 001c 01D0     		beq	.L25
+ 144:./basic/gpio.c ****    return 1;
+ 815              		.loc 1 144 11
+ 816 001e 0123     		movs	r3, #1
+ 817 0020 00E0     		b	.L26
+ 818              	.L25:
+ 145:./basic/gpio.c ****   return 0; 
+ 819              		.loc 1 145 10
+ 820 0022 0023     		movs	r3, #0
+ 821              	.L26:
+ 146:./basic/gpio.c **** }
+ 822              		.loc 1 146 1
+ 823 0024 1846     		mov	r0, r3
+ 824 0026 0C37     		adds	r7, r7, #12
+ 825              	.LCFI64:
+ 826              		.cfi_def_cfa_offset 4
+ 827 0028 BD46     		mov	sp, r7
+ 828              	.LCFI65:
+ 829              		.cfi_def_cfa_register 13
+ 830              		@ sp needed
+ 831 002a 80BC     		pop	{r7}
+ 832              	.LCFI66:
+ 833              		.cfi_restore 7
+ 834              		.cfi_def_cfa_offset 0
+ 835 002c 7047     		bx	lr
+ 836              		.cfi_endproc
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 18
+
+
+ 837              	.LFE44:
+ 839              		.section	.text.gpio_get_out,"ax",%progbits
+ 840              		.align	1
+ 841              		.global	gpio_get_out
+ 842              		.syntax unified
+ 843              		.thumb
+ 844              		.thumb_func
+ 846              	gpio_get_out:
+ 847              	.LFB45:
+ 147:./basic/gpio.c **** //--------------------------------------------------------------------------------------------
+ 148:./basic/gpio.c **** uint8_t gpio_get_out(gpio_t pio)
+ 149:./basic/gpio.c **** {
+ 848              		.loc 1 149 1
+ 849              		.cfi_startproc
+ 850              		@ args = 0, pretend = 0, frame = 8
+ 851              		@ frame_needed = 1, uses_anonymous_args = 0
+ 852              		@ link register save eliminated.
+ 853 0000 80B4     		push	{r7}
+ 854              	.LCFI67:
+ 855              		.cfi_def_cfa_offset 4
+ 856              		.cfi_offset 7, -4
+ 857 0002 83B0     		sub	sp, sp, #12
+ 858              	.LCFI68:
+ 859              		.cfi_def_cfa_offset 16
+ 860 0004 00AF     		add	r7, sp, #0
+ 861              	.LCFI69:
+ 862              		.cfi_def_cfa_register 7
+ 863 0006 3B46     		mov	r3, r7
+ 864 0008 83E80300 		stm	r3, {r0, r1}
+ 150:./basic/gpio.c ****  return (uint8_t) (pio.port->ODR & (uint32_t)(1<<pio.pin));
+ 865              		.loc 1 150 23
+ 866 000c 3B68     		ldr	r3, [r7]
+ 867              		.loc 1 150 28
+ 868 000e DB68     		ldr	r3, [r3, #12]
+ 869              		.loc 1 150 9
+ 870 0010 DAB2     		uxtb	r2, r3
+ 871              		.loc 1 150 53
+ 872 0012 BB88     		ldrh	r3, [r7, #4]
+ 873 0014 1946     		mov	r1, r3
+ 874              		.loc 1 150 48
+ 875 0016 0123     		movs	r3, #1
+ 876 0018 8B40     		lsls	r3, r3, r1
+ 877              		.loc 1 150 9
+ 878 001a DBB2     		uxtb	r3, r3
+ 879 001c 1340     		ands	r3, r3, r2
+ 880 001e DBB2     		uxtb	r3, r3
+ 151:./basic/gpio.c **** }
+ 881              		.loc 1 151 1
+ 882 0020 1846     		mov	r0, r3
+ 883 0022 0C37     		adds	r7, r7, #12
+ 884              	.LCFI70:
+ 885              		.cfi_def_cfa_offset 4
+ 886 0024 BD46     		mov	sp, r7
+ 887              	.LCFI71:
+ 888              		.cfi_def_cfa_register 13
+ 889              		@ sp needed
+ 890 0026 80BC     		pop	{r7}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 19
+
+
+ 891              	.LCFI72:
+ 892              		.cfi_restore 7
+ 893              		.cfi_def_cfa_offset 0
+ 894 0028 7047     		bx	lr
+ 895              		.cfi_endproc
+ 896              	.LFE45:
+ 898              		.text
+ 899              	.Letext0:
+ 900              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 901              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 902              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 903              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_gpio.h"
+ 904              		.file 6 "./basic/gpio.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:18     .text.reg_sbits:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:24     .text.reg_sbits:00000000 reg_sbits
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:74     .text.reg_cbits:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:80     .text.reg_cbits:00000000 reg_cbits
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:132    .text.gpio_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:138    .text.gpio_init:00000000 gpio_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:201    .text.gpio_pinmode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:207    .text.gpio_pinmode:00000000 gpio_pinmode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:272    .text.gpio_pin_mode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:278    .text.gpio_pin_mode:00000000 gpio_pin_mode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:413    .text.gpio_set:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:419    .text.gpio_set:00000000 gpio_set
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:474    .text.gpio_clear:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:480    .text.gpio_clear:00000000 gpio_clear
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:535    .text.gpio_toggle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:541    .text.gpio_toggle:00000000 gpio_toggle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:615    .text.gpio_in_pullup:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:621    .text.gpio_in_pullup:00000000 gpio_in_pullup
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:674    .text.gpio_in_pulldown:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:680    .text.gpio_in_pulldown:00000000 gpio_in_pulldown
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:735    .text.gpio_in_float:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:741    .text.gpio_in_float:00000000 gpio_in_float
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:779    .text.gpio_get:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:785    .text.gpio_get:00000000 gpio_get
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:840    .text.gpio_get_out:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s:846    .text.gpio_get_out:00000000 gpio_get_out
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 21
+
+
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccqKNGhQ.s 			page 22
+
+
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+GPIO_StructInit
+GPIO_Init

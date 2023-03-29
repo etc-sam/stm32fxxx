@@ -1,0 +1,9 @@
+./i2c/i2c.c:59:6:i2c_init	8	static
+./i2c/i2c.c:123:6:i2c_uart_print	48	static
+./i2c/i2c.c:273:10:i2c_start	4	static
+./i2c/i2c.c:284:9:i2_stop	4	static
+./i2c/i2c.c:295:9:i2c_send_byte	16	static
+./i2c/i2c.c:306:9:i2c_send_sla_wr	16	static
+./i2c/i2c.c:317:9:i2c_send_sla_rd	16	static
+./i2c/i2c.c:328:9:i2c_write_data	16	static
+./i2c/i2c.c:333:9:i2c_read_data	16	static

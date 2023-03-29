@@ -16,14 +16,17 @@
 // including header  files
 //
 //********************************************************************************************
- #include "stm32f10x.h"
+#include "stm32f10x.h"
  #include "stm32f10x_conf.h"
  #include "stm32f10x_it.h"
  
  #include "basic.h"
+ #include "init-macro.h"
  #include "TIM.h"
  #include "uart.h"
- //#include "i2c.h"
+ 
+ #include "i2c.h"
+ #include "mpu6050.h"
 
  #include "lcd.h"
  #include "keypad.h"

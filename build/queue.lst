@@ -1,0 +1,1346 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"queue.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.queue_is_empty_printable,"ax",%progbits
+  18              		.align	1
+  19              		.global	queue_is_empty_printable
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	queue_is_empty_printable:
+  25              	.LFB33:
+  26              		.file 1 "./basic/queue.c"
+   1:./basic/queue.c **** /**
+   2:./basic/queue.c ****  * @brief queue.c
+   3:./basic/queue.c ****  *
+   4:./basic/queue.c ****  * @param student: Sameer Almaldein
+   5:./basic/queue.c ****  * @param ID: 679699
+   6:./basic/queue.c ****  * @param University TU-Chemnitz
+   7:./basic/queue.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./basic/queue.c ****  */ 
+   9:./basic/queue.c **** 
+  10:./basic/queue.c **** //********************************************************************************************
+  11:./basic/queue.c **** //
+  12:./basic/queue.c **** // include header files
+  13:./basic/queue.c **** //
+  14:./basic/queue.c **** //********************************************************************************************
+  15:./basic/queue.c **** #include "init.h"
+  16:./basic/queue.c **** 
+  17:./basic/queue.c **** //********************************************************************************************
+  18:./basic/queue.c **** //
+  19:./basic/queue.c **** // global variables' declarations 
+  20:./basic/queue.c **** //
+  21:./basic/queue.c **** //********************************************************************************************
+  22:./basic/queue.c **** //********************************************************************************************
+  23:./basic/queue.c **** //
+  24:./basic/queue.c **** // static variables' declarations 
+  25:./basic/queue.c **** //
+  26:./basic/queue.c **** //********************************************************************************************
+  27:./basic/queue.c **** 
+  28:./basic/queue.c **** //********************************************************************************************
+  29:./basic/queue.c **** //
+  30:./basic/queue.c **** //  static function ProtoType
+  31:./basic/queue.c **** //
+  32:./basic/queue.c **** //********************************************************************************************
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 2
+
+
+  33:./basic/queue.c **** 
+  34:./basic/queue.c **** //********************************************************************************************
+  35:./basic/queue.c **** //
+  36:./basic/queue.c **** //  static  functions' definitions
+  37:./basic/queue.c **** //
+  38:./basic/queue.c **** //*******************************************************************************************
+  39:./basic/queue.c **** 
+  40:./basic/queue.c **** //********************************************************************************************
+  41:./basic/queue.c **** //
+  42:./basic/queue.c **** //  printable methods of the queue
+  43:./basic/queue.c **** //
+  44:./basic/queue.c **** //********************************************************************************************
+  45:./basic/queue.c **** /**
+  46:./basic/queue.c ****  * @brief  checks if the queue is empty from printable data
+  47:./basic/queue.c ****  * 
+  48:./basic/queue.c ****  * @details checks if the queue is empty from printable data, 
+  49:./basic/queue.c ****  * 			it is used before reading from the queue a printable data
+  50:./basic/queue.c ****  *  notice : this method has no effect on the writing/reading data within the ring buffer
+  51:./basic/queue.c ****  * 			 it just helps to implement an asynchrouns retriavl method for received data 
+  52:./basic/queue.c ****  * 			 to allow printing it outside the receive interrupt
+  53:./basic/queue.c ****  *
+  54:./basic/queue.c ****  * @param q 	a pointer to the queue
+  55:./basic/queue.c ****  * @return uint8_t 
+  56:./basic/queue.c ****  * @retval 0: the queue is not empty, contains printable data
+  57:./basic/queue.c ****  * @retval 1: the queue is empty
+  58:./basic/queue.c ****  */
+  59:./basic/queue.c ****  uint8_t  queue_is_empty_printable(queue_t * q)
+  60:./basic/queue.c ****  {
+  27              		.loc 1 60 2
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  61:./basic/queue.c ****   if(q->pWR==q->pTR)
+  43              		.loc 1 61 7
+  44 0008 7B68     		ldr	r3, [r7, #4]
+  45 000a DA88     		ldrh	r2, [r3, #6]
+  46              		.loc 1 61 15
+  47 000c 7B68     		ldr	r3, [r7, #4]
+  48 000e 5B89     		ldrh	r3, [r3, #10]
+  49              		.loc 1 61 5
+  50 0010 9A42     		cmp	r2, r3
+  51 0012 01D1     		bne	.L2
+  62:./basic/queue.c **** 	 return 1;
+  52              		.loc 1 62 10
+  53 0014 0123     		movs	r3, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 3
+
+
+  54 0016 00E0     		b	.L3
+  55              	.L2:
+  63:./basic/queue.c **** 	return 0;
+  56              		.loc 1 63 9
+  57 0018 0023     		movs	r3, #0
+  58              	.L3:
+  64:./basic/queue.c ****  }
+  59              		.loc 1 64 2
+  60 001a 1846     		mov	r0, r3
+  61 001c 0C37     		adds	r7, r7, #12
+  62              	.LCFI3:
+  63              		.cfi_def_cfa_offset 4
+  64 001e BD46     		mov	sp, r7
+  65              	.LCFI4:
+  66              		.cfi_def_cfa_register 13
+  67              		@ sp needed
+  68 0020 80BC     		pop	{r7}
+  69              	.LCFI5:
+  70              		.cfi_restore 7
+  71              		.cfi_def_cfa_offset 0
+  72 0022 7047     		bx	lr
+  73              		.cfi_endproc
+  74              	.LFE33:
+  76              		.section	.text.queue_get_length_printable,"ax",%progbits
+  77              		.align	1
+  78              		.global	queue_get_length_printable
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	queue_get_length_printable:
+  84              	.LFB34:
+  65:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+  66:./basic/queue.c **** /**
+  67:./basic/queue.c ****  * @brief returns the length of printable data to read 
+  68:./basic/queue.c ****  * 
+  69:./basic/queue.c ****  * @details returns the actual printable data after 
+  70:./basic/queue.c ****  * 			considering the overlap condition, this method is used to read a block of data 
+  71:./basic/queue.c ****  * 			instead of reading  data block sequentially(i.e. bytes by byte per read operation)
+  72:./basic/queue.c ****  
+  73:./basic/queue.c ****  *  notice : this method has no effect on the writing/reading data within the ring buffer
+  74:./basic/queue.c ****  * 			 it just helps to implement an asynchrouns retriavl method for received data 
+  75:./basic/queue.c ****  * 			 to allow printing it outside the receive interrupt
+  76:./basic/queue.c ****  *   
+  77:./basic/queue.c ****  * @param q a pointer to the queue
+  78:./basic/queue.c ****  * @return uint16_t 
+  79:./basic/queue.c ****  * 
+  80:./basic/queue.c ****  */
+  81:./basic/queue.c **** uint16_t queue_get_length_printable(queue_t * q)
+  82:./basic/queue.c **** {
+  85              		.loc 1 82 1
+  86              		.cfi_startproc
+  87              		@ args = 0, pretend = 0, frame = 16
+  88              		@ frame_needed = 1, uses_anonymous_args = 0
+  89              		@ link register save eliminated.
+  90 0000 80B4     		push	{r7}
+  91              	.LCFI6:
+  92              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 4
+
+
+  93              		.cfi_offset 7, -4
+  94 0002 85B0     		sub	sp, sp, #20
+  95              	.LCFI7:
+  96              		.cfi_def_cfa_offset 24
+  97 0004 00AF     		add	r7, sp, #0
+  98              	.LCFI8:
+  99              		.cfi_def_cfa_register 7
+ 100 0006 7860     		str	r0, [r7, #4]
+  83:./basic/queue.c ****    uint16_t len=0;
+ 101              		.loc 1 83 13
+ 102 0008 0023     		movs	r3, #0
+ 103 000a FB81     		strh	r3, [r7, #14]	@ movhi
+  84:./basic/queue.c **** 	len=(q->pWR >= q->pTR )? (q->pWR - q->pTR): q->capacity - q->pTR + q->pWR;
+ 104              		.loc 1 84 8
+ 105 000c 7B68     		ldr	r3, [r7, #4]
+ 106 000e DA88     		ldrh	r2, [r3, #6]
+ 107              		.loc 1 84 18
+ 108 0010 7B68     		ldr	r3, [r7, #4]
+ 109 0012 5B89     		ldrh	r3, [r3, #10]
+ 110              		.loc 1 84 5
+ 111 0014 9A42     		cmp	r2, r3
+ 112 0016 06D3     		bcc	.L5
+ 113              		.loc 1 84 29 discriminator 1
+ 114 0018 7B68     		ldr	r3, [r7, #4]
+ 115 001a DA88     		ldrh	r2, [r3, #6]
+ 116              		.loc 1 84 38 discriminator 1
+ 117 001c 7B68     		ldr	r3, [r7, #4]
+ 118 001e 5B89     		ldrh	r3, [r3, #10]
+ 119              		.loc 1 84 5 discriminator 1
+ 120 0020 D31A     		subs	r3, r2, r3
+ 121 0022 9BB2     		uxth	r3, r3
+ 122 0024 09E0     		b	.L6
+ 123              	.L5:
+ 124              		.loc 1 84 47 discriminator 2
+ 125 0026 7B68     		ldr	r3, [r7, #4]
+ 126 0028 9A88     		ldrh	r2, [r3, #4]
+ 127              		.loc 1 84 61 discriminator 2
+ 128 002a 7B68     		ldr	r3, [r7, #4]
+ 129 002c 5B89     		ldrh	r3, [r3, #10]
+ 130              		.loc 1 84 58 discriminator 2
+ 131 002e D31A     		subs	r3, r2, r3
+ 132 0030 9AB2     		uxth	r2, r3
+ 133              		.loc 1 84 70 discriminator 2
+ 134 0032 7B68     		ldr	r3, [r7, #4]
+ 135 0034 DB88     		ldrh	r3, [r3, #6]
+ 136              		.loc 1 84 5 discriminator 2
+ 137 0036 1344     		add	r3, r3, r2
+ 138 0038 9BB2     		uxth	r3, r3
+ 139              	.L6:
+ 140              		.loc 1 84 5 is_stmt 0 discriminator 4
+ 141 003a FB81     		strh	r3, [r7, #14]	@ movhi
+  85:./basic/queue.c ****    return len;
+ 142              		.loc 1 85 11 is_stmt 1 discriminator 4
+ 143 003c FB89     		ldrh	r3, [r7, #14]
+  86:./basic/queue.c **** }
+ 144              		.loc 1 86 1 discriminator 4
+ 145 003e 1846     		mov	r0, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 5
+
+
+ 146 0040 1437     		adds	r7, r7, #20
+ 147              	.LCFI9:
+ 148              		.cfi_def_cfa_offset 4
+ 149 0042 BD46     		mov	sp, r7
+ 150              	.LCFI10:
+ 151              		.cfi_def_cfa_register 13
+ 152              		@ sp needed
+ 153 0044 80BC     		pop	{r7}
+ 154              	.LCFI11:
+ 155              		.cfi_restore 7
+ 156              		.cfi_def_cfa_offset 0
+ 157 0046 7047     		bx	lr
+ 158              		.cfi_endproc
+ 159              	.LFE34:
+ 161              		.section	.text.queue_getch_printable,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	queue_getch_printable
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	queue_getch_printable:
+ 169              	.LFB35:
+  87:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+  88:./basic/queue.c **** /**
+  89:./basic/queue.c ****  * @brief reads a byte value of the queue
+  90:./basic/queue.c ****  *
+  91:./basic/queue.c ****  * @details  reads byte data from the queue and after reading this byte
+  92:./basic/queue.c ****  *			 it proceeds the terminal pointer "index of the printing" does not free any space
+  93:./basic/queue.c ****  *			 in the queue buffer 
+  94:./basic/queue.c ****  *  notice : this method has no effect on the writing/reading data within the ring buffer
+  95:./basic/queue.c ****  * 			 it just helps to implement an asynchrouns retriavl method for received data 
+  96:./basic/queue.c ****  * 			 to allow printing it outside the receive interrupt
+  97:./basic/queue.c ****  *
+  98:./basic/queue.c ****  * @param q  			a pointer to a queue to add data to
+  99:./basic/queue.c ****  * @param val 		    the data to be read		
+ 100:./basic/queue.c ****  * @return uint8_t 
+ 101:./basic/queue.c ****  * @retval 0 failed 	to read data from the queue, it is empty
+ 102:./basic/queue.c ****  * @retval 1 succeeded  to read data from the queue 
+ 103:./basic/queue.c ****  */
+ 104:./basic/queue.c **** uint8_t  queue_getch_printable(queue_t * q,uint8_t * val)
+ 105:./basic/queue.c **** {
+ 170              		.loc 1 105 1
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 8
+ 173              		@ frame_needed = 1, uses_anonymous_args = 0
+ 174 0000 80B5     		push	{r7, lr}
+ 175              	.LCFI12:
+ 176              		.cfi_def_cfa_offset 8
+ 177              		.cfi_offset 7, -8
+ 178              		.cfi_offset 14, -4
+ 179 0002 82B0     		sub	sp, sp, #8
+ 180              	.LCFI13:
+ 181              		.cfi_def_cfa_offset 16
+ 182 0004 00AF     		add	r7, sp, #0
+ 183              	.LCFI14:
+ 184              		.cfi_def_cfa_register 7
+ 185 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 6
+
+
+ 186 0008 3960     		str	r1, [r7]
+ 106:./basic/queue.c ****   // no data available just exit 	
+ 107:./basic/queue.c ****   if(queue_is_empty_printable(q))
+ 187              		.loc 1 107 6
+ 188 000a 7868     		ldr	r0, [r7, #4]
+ 189 000c FFF7FEFF 		bl	queue_is_empty_printable
+ 190 0010 0346     		mov	r3, r0
+ 191              		.loc 1 107 5
+ 192 0012 002B     		cmp	r3, #0
+ 193 0014 01D0     		beq	.L9
+ 108:./basic/queue.c **** 	 	return 0;
+ 194              		.loc 1 108 11
+ 195 0016 0023     		movs	r3, #0
+ 196 0018 17E0     		b	.L10
+ 197              	.L9:
+ 109:./basic/queue.c ****   else 
+ 110:./basic/queue.c ****   {
+ 111:./basic/queue.c **** 	// read data from the current terminal pointer position "terminal"
+ 112:./basic/queue.c **** 	 *val=q->buf[q->pTR];
+ 198              		.loc 1 112 9
+ 199 001a 7B68     		ldr	r3, [r7, #4]
+ 200 001c 1B68     		ldr	r3, [r3]
+ 201              		.loc 1 112 16
+ 202 001e 7A68     		ldr	r2, [r7, #4]
+ 203 0020 5289     		ldrh	r2, [r2, #10]
+ 204              		.loc 1 112 14
+ 205 0022 1344     		add	r3, r3, r2
+ 206 0024 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 207              		.loc 1 112 7
+ 208 0026 3B68     		ldr	r3, [r7]
+ 209 0028 1A70     		strb	r2, [r3]
+ 113:./basic/queue.c **** 	// increase the terminal pointer but also considers overlapping condition 
+ 114:./basic/queue.c **** 	 q->pTR=((q->pTR+1)==q->capacity)?0:q->pTR+1;
+ 210              		.loc 1 114 13
+ 211 002a 7B68     		ldr	r3, [r7, #4]
+ 212 002c 5B89     		ldrh	r3, [r3, #10]
+ 213              		.loc 1 114 18
+ 214 002e 0133     		adds	r3, r3, #1
+ 215              		.loc 1 114 24
+ 216 0030 7A68     		ldr	r2, [r7, #4]
+ 217 0032 9288     		ldrh	r2, [r2, #4]
+ 218              		.loc 1 114 9
+ 219 0034 9342     		cmp	r3, r2
+ 220 0036 04D0     		beq	.L11
+ 221              		.loc 1 114 39 discriminator 1
+ 222 0038 7B68     		ldr	r3, [r7, #4]
+ 223 003a 5B89     		ldrh	r3, [r3, #10]
+ 224              		.loc 1 114 9 discriminator 1
+ 225 003c 0133     		adds	r3, r3, #1
+ 226 003e 9AB2     		uxth	r2, r3
+ 227 0040 00E0     		b	.L12
+ 228              	.L11:
+ 229              		.loc 1 114 9 is_stmt 0 discriminator 2
+ 230 0042 0022     		movs	r2, #0
+ 231              	.L12:
+ 232              		.loc 1 114 9 discriminator 4
+ 233 0044 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 7
+
+
+ 234 0046 5A81     		strh	r2, [r3, #10]	@ movhi
+ 115:./basic/queue.c ****   } 
+ 116:./basic/queue.c ****   return 1;
+ 235              		.loc 1 116 10 is_stmt 1 discriminator 4
+ 236 0048 0123     		movs	r3, #1
+ 237              	.L10:
+ 117:./basic/queue.c **** }
+ 238              		.loc 1 117 1
+ 239 004a 1846     		mov	r0, r3
+ 240 004c 0837     		adds	r7, r7, #8
+ 241              	.LCFI15:
+ 242              		.cfi_def_cfa_offset 8
+ 243 004e BD46     		mov	sp, r7
+ 244              	.LCFI16:
+ 245              		.cfi_def_cfa_register 13
+ 246              		@ sp needed
+ 247 0050 80BD     		pop	{r7, pc}
+ 248              		.cfi_endproc
+ 249              	.LFE35:
+ 251              		.section	.text.queue_init,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	queue_init
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 258              	queue_init:
+ 259              	.LFB36:
+ 118:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 119:./basic/queue.c **** 
+ 120:./basic/queue.c **** //********************************************************************************************
+ 121:./basic/queue.c **** //
+ 122:./basic/queue.c **** //  extern  functions' definitions
+ 123:./basic/queue.c **** //
+ 124:./basic/queue.c **** //********************************************************************************************
+ 125:./basic/queue.c **** /**
+ 126:./basic/queue.c ****  * @brief initialize the queue buffer
+ 127:./basic/queue.c ****  * 
+ 128:./basic/queue.c ****  * @param q 	a pointer to the queue
+ 129:./basic/queue.c ****  * @param buf 	a physical static array of bytes perfoms as the queue data container
+ 130:./basic/queue.c ****  * @param len 	the actual size of the array
+ 131:./basic/queue.c ****  */
+ 132:./basic/queue.c **** void queue_init(queue_t * q, uint8_t * buf,uint16_t len)
+ 133:./basic/queue.c **** {
+ 260              		.loc 1 133 1
+ 261              		.cfi_startproc
+ 262              		@ args = 0, pretend = 0, frame = 16
+ 263              		@ frame_needed = 1, uses_anonymous_args = 0
+ 264 0000 80B5     		push	{r7, lr}
+ 265              	.LCFI17:
+ 266              		.cfi_def_cfa_offset 8
+ 267              		.cfi_offset 7, -8
+ 268              		.cfi_offset 14, -4
+ 269 0002 84B0     		sub	sp, sp, #16
+ 270              	.LCFI18:
+ 271              		.cfi_def_cfa_offset 24
+ 272 0004 00AF     		add	r7, sp, #0
+ 273              	.LCFI19:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 8
+
+
+ 274              		.cfi_def_cfa_register 7
+ 275 0006 F860     		str	r0, [r7, #12]
+ 276 0008 B960     		str	r1, [r7, #8]
+ 277 000a 1346     		mov	r3, r2
+ 278 000c FB80     		strh	r3, [r7, #6]	@ movhi
+ 134:./basic/queue.c **** 	q->buf=buf;
+ 279              		.loc 1 134 8
+ 280 000e FB68     		ldr	r3, [r7, #12]
+ 281 0010 BA68     		ldr	r2, [r7, #8]
+ 282 0012 1A60     		str	r2, [r3]
+ 135:./basic/queue.c **** 	q->capacity=len;
+ 283              		.loc 1 135 13
+ 284 0014 FB68     		ldr	r3, [r7, #12]
+ 285 0016 FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 286 0018 9A80     		strh	r2, [r3, #4]	@ movhi
+ 136:./basic/queue.c **** 	queue_reset(q);
+ 287              		.loc 1 136 2
+ 288 001a F868     		ldr	r0, [r7, #12]
+ 289 001c FFF7FEFF 		bl	queue_reset
+ 137:./basic/queue.c **** }
+ 290              		.loc 1 137 1
+ 291 0020 00BF     		nop
+ 292 0022 1037     		adds	r7, r7, #16
+ 293              	.LCFI20:
+ 294              		.cfi_def_cfa_offset 8
+ 295 0024 BD46     		mov	sp, r7
+ 296              	.LCFI21:
+ 297              		.cfi_def_cfa_register 13
+ 298              		@ sp needed
+ 299 0026 80BD     		pop	{r7, pc}
+ 300              		.cfi_endproc
+ 301              	.LFE36:
+ 303              		.section	.text.queue_reset,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	queue_reset
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 310              	queue_reset:
+ 311              	.LFB37:
+ 138:./basic/queue.c **** //-------------------------------------------------------------------------------------------
+ 139:./basic/queue.c **** /**
+ 140:./basic/queue.c ****  * @brief    resets the queue  and its intrnal pointers
+ 141:./basic/queue.c ****  * @details  set zero value to all internal array elements and 
+ 142:./basic/queue.c ****  * 			  resets the read/write/ terminal pointers	
+ 143:./basic/queue.c ****  *
+ 144:./basic/queue.c ****  * @param q a pointer to the queue
+ 145:./basic/queue.c ****  */
+ 146:./basic/queue.c **** void queue_reset(queue_t * q)
+ 147:./basic/queue.c **** {
+ 312              		.loc 1 147 1
+ 313              		.cfi_startproc
+ 314              		@ args = 0, pretend = 0, frame = 8
+ 315              		@ frame_needed = 1, uses_anonymous_args = 0
+ 316 0000 80B5     		push	{r7, lr}
+ 317              	.LCFI22:
+ 318              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 9
+
+
+ 319              		.cfi_offset 7, -8
+ 320              		.cfi_offset 14, -4
+ 321 0002 82B0     		sub	sp, sp, #8
+ 322              	.LCFI23:
+ 323              		.cfi_def_cfa_offset 16
+ 324 0004 00AF     		add	r7, sp, #0
+ 325              	.LCFI24:
+ 326              		.cfi_def_cfa_register 7
+ 327 0006 7860     		str	r0, [r7, #4]
+ 148:./basic/queue.c **** 	
+ 149:./basic/queue.c ****   q->pWR=0; // resets the write pointer "tail"
+ 328              		.loc 1 149 9
+ 329 0008 7B68     		ldr	r3, [r7, #4]
+ 330 000a 0022     		movs	r2, #0
+ 331 000c DA80     		strh	r2, [r3, #6]	@ movhi
+ 150:./basic/queue.c ****   q->pRD=0; // resets the read  pointer "head"
+ 332              		.loc 1 150 9
+ 333 000e 7B68     		ldr	r3, [r7, #4]
+ 334 0010 0022     		movs	r2, #0
+ 335 0012 1A81     		strh	r2, [r3, #8]	@ movhi
+ 151:./basic/queue.c ****   q->pTR=0; // resets the print pointer "terminal"
+ 336              		.loc 1 151 9
+ 337 0014 7B68     		ldr	r3, [r7, #4]
+ 338 0016 0022     		movs	r2, #0
+ 339 0018 5A81     		strh	r2, [r3, #10]	@ movhi
+ 152:./basic/queue.c ****   
+ 153:./basic/queue.c ****   // clear the value of memory
+ 154:./basic/queue.c ****   memset(q->buf,0,q->capacity);
+ 340              		.loc 1 154 11
+ 341 001a 7B68     		ldr	r3, [r7, #4]
+ 342 001c 1868     		ldr	r0, [r3]
+ 343              		.loc 1 154 20
+ 344 001e 7B68     		ldr	r3, [r7, #4]
+ 345 0020 9B88     		ldrh	r3, [r3, #4]
+ 346              		.loc 1 154 3
+ 347 0022 1A46     		mov	r2, r3
+ 348 0024 0021     		movs	r1, #0
+ 349 0026 FFF7FEFF 		bl	memset
+ 155:./basic/queue.c **** }
+ 350              		.loc 1 155 1
+ 351 002a 00BF     		nop
+ 352 002c 0837     		adds	r7, r7, #8
+ 353              	.LCFI25:
+ 354              		.cfi_def_cfa_offset 8
+ 355 002e BD46     		mov	sp, r7
+ 356              	.LCFI26:
+ 357              		.cfi_def_cfa_register 13
+ 358              		@ sp needed
+ 359 0030 80BD     		pop	{r7, pc}
+ 360              		.cfi_endproc
+ 361              	.LFE37:
+ 363              		.section	.text.queue_is_full,"ax",%progbits
+ 364              		.align	1
+ 365              		.global	queue_is_full
+ 366              		.syntax unified
+ 367              		.thumb
+ 368              		.thumb_func
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 10
+
+
+ 370              	queue_is_full:
+ 371              	.LFB38:
+ 156:./basic/queue.c **** //-------------------------------------------------------------------------------------------
+ 157:./basic/queue.c **** /** 
+ 158:./basic/queue.c ****  * @brief checks if the queue is full
+ 159:./basic/queue.c ****  * @details checks if the queue is full		
+ 160:./basic/queue.c ****  * 			by means no more space is available for new data
+ 161:./basic/queue.c ****  * 			this method is very important in case
+ 162:./basic/queue.c ****  * @param q 	a pointer to the queue
+ 163:./basic/queue.c ****  * @return uint8_t 
+ 164:./basic/queue.c ****  * @retval 0: the queue is not full
+ 165:./basic/queue.c ****  * @retval 1: the queue is full
+ 166:./basic/queue.c ****  */
+ 167:./basic/queue.c **** uint8_t  queue_is_full(queue_t * q)
+ 168:./basic/queue.c **** {
+ 372              		.loc 1 168 1
+ 373              		.cfi_startproc
+ 374              		@ args = 0, pretend = 0, frame = 8
+ 375              		@ frame_needed = 1, uses_anonymous_args = 0
+ 376              		@ link register save eliminated.
+ 377 0000 80B4     		push	{r7}
+ 378              	.LCFI27:
+ 379              		.cfi_def_cfa_offset 4
+ 380              		.cfi_offset 7, -4
+ 381 0002 83B0     		sub	sp, sp, #12
+ 382              	.LCFI28:
+ 383              		.cfi_def_cfa_offset 16
+ 384 0004 00AF     		add	r7, sp, #0
+ 385              	.LCFI29:
+ 386              		.cfi_def_cfa_register 7
+ 387 0006 7860     		str	r0, [r7, #4]
+ 169:./basic/queue.c ****   if( ((q->pWR+1)%q->capacity)==q->pRD)
+ 388              		.loc 1 169 10
+ 389 0008 7B68     		ldr	r3, [r7, #4]
+ 390 000a DB88     		ldrh	r3, [r3, #6]
+ 391              		.loc 1 169 15
+ 392 000c 0133     		adds	r3, r3, #1
+ 393              		.loc 1 169 20
+ 394 000e 7A68     		ldr	r2, [r7, #4]
+ 395 0010 9288     		ldrh	r2, [r2, #4]
+ 396              		.loc 1 169 18
+ 397 0012 93FBF2F1 		sdiv	r1, r3, r2
+ 398 0016 01FB02F2 		mul	r2, r1, r2
+ 399 001a 9B1A     		subs	r3, r3, r2
+ 400              		.loc 1 169 34
+ 401 001c 7A68     		ldr	r2, [r7, #4]
+ 402 001e 1289     		ldrh	r2, [r2, #8]
+ 403              		.loc 1 169 5
+ 404 0020 9342     		cmp	r3, r2
+ 405 0022 01D1     		bne	.L16
+ 170:./basic/queue.c **** 	 return 1;
+ 406              		.loc 1 170 10
+ 407 0024 0123     		movs	r3, #1
+ 408 0026 00E0     		b	.L17
+ 409              	.L16:
+ 171:./basic/queue.c **** 	return 0; 	
+ 410              		.loc 1 171 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 11
+
+
+ 411 0028 0023     		movs	r3, #0
+ 412              	.L17:
+ 172:./basic/queue.c **** }
+ 413              		.loc 1 172 1
+ 414 002a 1846     		mov	r0, r3
+ 415 002c 0C37     		adds	r7, r7, #12
+ 416              	.LCFI30:
+ 417              		.cfi_def_cfa_offset 4
+ 418 002e BD46     		mov	sp, r7
+ 419              	.LCFI31:
+ 420              		.cfi_def_cfa_register 13
+ 421              		@ sp needed
+ 422 0030 80BC     		pop	{r7}
+ 423              	.LCFI32:
+ 424              		.cfi_restore 7
+ 425              		.cfi_def_cfa_offset 0
+ 426 0032 7047     		bx	lr
+ 427              		.cfi_endproc
+ 428              	.LFE38:
+ 430              		.section	.text.queue_is_empty,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	queue_is_empty
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	queue_is_empty:
+ 438              	.LFB39:
+ 173:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 174:./basic/queue.c **** /**
+ 175:./basic/queue.c ****  * @brief  checks if the queue is empty
+ 176:./basic/queue.c ****  * 
+ 177:./basic/queue.c ****  * @details checks if the queue is empty, it is used before reading from the queue 
+ 178:./basic/queue.c ****  *           
+ 179:./basic/queue.c ****  * @param q 	a pointer to the queue
+ 180:./basic/queue.c ****  * @return uint8_t 
+ 181:./basic/queue.c ****  * @retval 0: the queue is not empty
+ 182:./basic/queue.c ****  * @retval 1: the queue is empty
+ 183:./basic/queue.c ****  */
+ 184:./basic/queue.c ****  uint8_t  queue_is_empty(queue_t * q)
+ 185:./basic/queue.c ****  {
+ 439              		.loc 1 185 2
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 8
+ 442              		@ frame_needed = 1, uses_anonymous_args = 0
+ 443              		@ link register save eliminated.
+ 444 0000 80B4     		push	{r7}
+ 445              	.LCFI33:
+ 446              		.cfi_def_cfa_offset 4
+ 447              		.cfi_offset 7, -4
+ 448 0002 83B0     		sub	sp, sp, #12
+ 449              	.LCFI34:
+ 450              		.cfi_def_cfa_offset 16
+ 451 0004 00AF     		add	r7, sp, #0
+ 452              	.LCFI35:
+ 453              		.cfi_def_cfa_register 7
+ 454 0006 7860     		str	r0, [r7, #4]
+ 186:./basic/queue.c ****   if(q->pWR==q->pRD)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 12
+
+
+ 455              		.loc 1 186 7
+ 456 0008 7B68     		ldr	r3, [r7, #4]
+ 457 000a DA88     		ldrh	r2, [r3, #6]
+ 458              		.loc 1 186 15
+ 459 000c 7B68     		ldr	r3, [r7, #4]
+ 460 000e 1B89     		ldrh	r3, [r3, #8]
+ 461              		.loc 1 186 5
+ 462 0010 9A42     		cmp	r2, r3
+ 463 0012 01D1     		bne	.L19
+ 187:./basic/queue.c **** 	 return 1;
+ 464              		.loc 1 187 10
+ 465 0014 0123     		movs	r3, #1
+ 466 0016 00E0     		b	.L20
+ 467              	.L19:
+ 188:./basic/queue.c **** 	return 0;
+ 468              		.loc 1 188 9
+ 469 0018 0023     		movs	r3, #0
+ 470              	.L20:
+ 189:./basic/queue.c ****  }
+ 471              		.loc 1 189 2
+ 472 001a 1846     		mov	r0, r3
+ 473 001c 0C37     		adds	r7, r7, #12
+ 474              	.LCFI36:
+ 475              		.cfi_def_cfa_offset 4
+ 476 001e BD46     		mov	sp, r7
+ 477              	.LCFI37:
+ 478              		.cfi_def_cfa_register 13
+ 479              		@ sp needed
+ 480 0020 80BC     		pop	{r7}
+ 481              	.LCFI38:
+ 482              		.cfi_restore 7
+ 483              		.cfi_def_cfa_offset 0
+ 484 0022 7047     		bx	lr
+ 485              		.cfi_endproc
+ 486              	.LFE39:
+ 488              		.section	.text.queue_get_length,"ax",%progbits
+ 489              		.align	1
+ 490              		.global	queue_get_length
+ 491              		.syntax unified
+ 492              		.thumb
+ 493              		.thumb_func
+ 495              	queue_get_length:
+ 496              	.LFB40:
+ 190:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 191:./basic/queue.c **** /**
+ 192:./basic/queue.c ****  * @brief returns the length of data to read 
+ 193:./basic/queue.c ****  * 
+ 194:./basic/queue.c ****  * @details returns the actual readable data after 
+ 195:./basic/queue.c ****  * 			considering the overlap condition, this method to read a block of data 
+ 196:./basic/queue.c ****  * 			instead of reading  data block sequentially(i.e. bytes by byte per read operation)
+ 197:./basic/queue.c ****  * 
+ 198:./basic/queue.c ****  * @param q a pointer to the queue
+ 199:./basic/queue.c ****  * @return uint16_t 
+ 200:./basic/queue.c ****  * 
+ 201:./basic/queue.c ****  */
+ 202:./basic/queue.c **** uint16_t queue_get_length(queue_t * q)
+ 203:./basic/queue.c **** {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 13
+
+
+ 497              		.loc 1 203 1
+ 498              		.cfi_startproc
+ 499              		@ args = 0, pretend = 0, frame = 16
+ 500              		@ frame_needed = 1, uses_anonymous_args = 0
+ 501              		@ link register save eliminated.
+ 502 0000 80B4     		push	{r7}
+ 503              	.LCFI39:
+ 504              		.cfi_def_cfa_offset 4
+ 505              		.cfi_offset 7, -4
+ 506 0002 85B0     		sub	sp, sp, #20
+ 507              	.LCFI40:
+ 508              		.cfi_def_cfa_offset 24
+ 509 0004 00AF     		add	r7, sp, #0
+ 510              	.LCFI41:
+ 511              		.cfi_def_cfa_register 7
+ 512 0006 7860     		str	r0, [r7, #4]
+ 204:./basic/queue.c ****    uint16_t len=0;
+ 513              		.loc 1 204 13
+ 514 0008 0023     		movs	r3, #0
+ 515 000a FB81     		strh	r3, [r7, #14]	@ movhi
+ 205:./basic/queue.c **** 	len=(q->pWR >= q->pRD )? (q->pWR - q->pRD): q->capacity-q->pRD+q->pWR;
+ 516              		.loc 1 205 8
+ 517 000c 7B68     		ldr	r3, [r7, #4]
+ 518 000e DA88     		ldrh	r2, [r3, #6]
+ 519              		.loc 1 205 18
+ 520 0010 7B68     		ldr	r3, [r7, #4]
+ 521 0012 1B89     		ldrh	r3, [r3, #8]
+ 522              		.loc 1 205 5
+ 523 0014 9A42     		cmp	r2, r3
+ 524 0016 06D3     		bcc	.L22
+ 525              		.loc 1 205 29 discriminator 1
+ 526 0018 7B68     		ldr	r3, [r7, #4]
+ 527 001a DA88     		ldrh	r2, [r3, #6]
+ 528              		.loc 1 205 38 discriminator 1
+ 529 001c 7B68     		ldr	r3, [r7, #4]
+ 530 001e 1B89     		ldrh	r3, [r3, #8]
+ 531              		.loc 1 205 5 discriminator 1
+ 532 0020 D31A     		subs	r3, r2, r3
+ 533 0022 9BB2     		uxth	r3, r3
+ 534 0024 09E0     		b	.L23
+ 535              	.L22:
+ 536              		.loc 1 205 47 discriminator 2
+ 537 0026 7B68     		ldr	r3, [r7, #4]
+ 538 0028 9A88     		ldrh	r2, [r3, #4]
+ 539              		.loc 1 205 59 discriminator 2
+ 540 002a 7B68     		ldr	r3, [r7, #4]
+ 541 002c 1B89     		ldrh	r3, [r3, #8]
+ 542              		.loc 1 205 57 discriminator 2
+ 543 002e D31A     		subs	r3, r2, r3
+ 544 0030 9AB2     		uxth	r2, r3
+ 545              		.loc 1 205 66 discriminator 2
+ 546 0032 7B68     		ldr	r3, [r7, #4]
+ 547 0034 DB88     		ldrh	r3, [r3, #6]
+ 548              		.loc 1 205 5 discriminator 2
+ 549 0036 1344     		add	r3, r3, r2
+ 550 0038 9BB2     		uxth	r3, r3
+ 551              	.L23:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 14
+
+
+ 552              		.loc 1 205 5 is_stmt 0 discriminator 4
+ 553 003a FB81     		strh	r3, [r7, #14]	@ movhi
+ 206:./basic/queue.c ****    return len;
+ 554              		.loc 1 206 11 is_stmt 1 discriminator 4
+ 555 003c FB89     		ldrh	r3, [r7, #14]
+ 207:./basic/queue.c **** }
+ 556              		.loc 1 207 1 discriminator 4
+ 557 003e 1846     		mov	r0, r3
+ 558 0040 1437     		adds	r7, r7, #20
+ 559              	.LCFI42:
+ 560              		.cfi_def_cfa_offset 4
+ 561 0042 BD46     		mov	sp, r7
+ 562              	.LCFI43:
+ 563              		.cfi_def_cfa_register 13
+ 564              		@ sp needed
+ 565 0044 80BC     		pop	{r7}
+ 566              	.LCFI44:
+ 567              		.cfi_restore 7
+ 568              		.cfi_def_cfa_offset 0
+ 569 0046 7047     		bx	lr
+ 570              		.cfi_endproc
+ 571              	.LFE40:
+ 573              		.section	.text.queue_get_capacity,"ax",%progbits
+ 574              		.align	1
+ 575              		.global	queue_get_capacity
+ 576              		.syntax unified
+ 577              		.thumb
+ 578              		.thumb_func
+ 580              	queue_get_capacity:
+ 581              	.LFB41:
+ 208:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 209:./basic/queue.c **** /**
+ 210:./basic/queue.c ****  * @brief returns the capacity of the queue
+ 211:./basic/queue.c ****  * 
+ 212:./basic/queue.c ****  * @param q a pointer to the queue 
+ 213:./basic/queue.c ****  * @return uint16_t 
+ 214:./basic/queue.c ****  */
+ 215:./basic/queue.c **** uint16_t queue_get_capacity(queue_t * q)
+ 216:./basic/queue.c **** {
+ 582              		.loc 1 216 1
+ 583              		.cfi_startproc
+ 584              		@ args = 0, pretend = 0, frame = 8
+ 585              		@ frame_needed = 1, uses_anonymous_args = 0
+ 586              		@ link register save eliminated.
+ 587 0000 80B4     		push	{r7}
+ 588              	.LCFI45:
+ 589              		.cfi_def_cfa_offset 4
+ 590              		.cfi_offset 7, -4
+ 591 0002 83B0     		sub	sp, sp, #12
+ 592              	.LCFI46:
+ 593              		.cfi_def_cfa_offset 16
+ 594 0004 00AF     		add	r7, sp, #0
+ 595              	.LCFI47:
+ 596              		.cfi_def_cfa_register 7
+ 597 0006 7860     		str	r0, [r7, #4]
+ 217:./basic/queue.c ****     return q->capacity;
+ 598              		.loc 1 217 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 15
+
+
+ 599 0008 7B68     		ldr	r3, [r7, #4]
+ 600 000a 9B88     		ldrh	r3, [r3, #4]
+ 218:./basic/queue.c **** }  
+ 601              		.loc 1 218 1
+ 602 000c 1846     		mov	r0, r3
+ 603 000e 0C37     		adds	r7, r7, #12
+ 604              	.LCFI48:
+ 605              		.cfi_def_cfa_offset 4
+ 606 0010 BD46     		mov	sp, r7
+ 607              	.LCFI49:
+ 608              		.cfi_def_cfa_register 13
+ 609              		@ sp needed
+ 610 0012 80BC     		pop	{r7}
+ 611              	.LCFI50:
+ 612              		.cfi_restore 7
+ 613              		.cfi_def_cfa_offset 0
+ 614 0014 7047     		bx	lr
+ 615              		.cfi_endproc
+ 616              	.LFE41:
+ 618              		.section	.text.queue_write,"ax",%progbits
+ 619              		.align	1
+ 620              		.global	queue_write
+ 621              		.syntax unified
+ 622              		.thumb
+ 623              		.thumb_func
+ 625              	queue_write:
+ 626              	.LFB42:
+ 219:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 220:./basic/queue.c **** /**
+ 221:./basic/queue.c ****  * @brief  add a byte value to the queue 
+ 222:./basic/queue.c ****  * 
+ 223:./basic/queue.c ****  * @details it tries to add a byte value to the queue 
+ 224:./basic/queue.c ****  * 			first it checks if the queue is full then it returns 0
+ 225:./basic/queue.c ****  * 			otherwise it is succeeded
+ 226:./basic/queue.c ****  * @param q 		a pointer to the queue to add data to
+ 227:./basic/queue.c ****  * @param val 		the data to be added
+ 228:./basic/queue.c ****  * @return uint16_t 
+ 229:./basic/queue.c ****  * @retval 0 failed 	to add/ append data to the queue
+ 230:./basic/queue.c ****  * @retval 1 succeeded  to add/ append data to the queue
+ 231:./basic/queue.c ****  */
+ 232:./basic/queue.c **** uint8_t  queue_write(queue_t * q,uint8_t val)
+ 233:./basic/queue.c **** {
+ 627              		.loc 1 233 1
+ 628              		.cfi_startproc
+ 629              		@ args = 0, pretend = 0, frame = 8
+ 630              		@ frame_needed = 1, uses_anonymous_args = 0
+ 631 0000 80B5     		push	{r7, lr}
+ 632              	.LCFI51:
+ 633              		.cfi_def_cfa_offset 8
+ 634              		.cfi_offset 7, -8
+ 635              		.cfi_offset 14, -4
+ 636 0002 82B0     		sub	sp, sp, #8
+ 637              	.LCFI52:
+ 638              		.cfi_def_cfa_offset 16
+ 639 0004 00AF     		add	r7, sp, #0
+ 640              	.LCFI53:
+ 641              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 16
+
+
+ 642 0006 7860     		str	r0, [r7, #4]
+ 643 0008 0B46     		mov	r3, r1
+ 644 000a FB70     		strb	r3, [r7, #3]
+ 234:./basic/queue.c **** 	if(queue_is_full(q))
+ 645              		.loc 1 234 5
+ 646 000c 7868     		ldr	r0, [r7, #4]
+ 647 000e FFF7FEFF 		bl	queue_is_full
+ 648 0012 0346     		mov	r3, r0
+ 649              		.loc 1 234 4
+ 650 0014 002B     		cmp	r3, #0
+ 651 0016 01D0     		beq	.L28
+ 235:./basic/queue.c **** 	 	return 0;
+ 652              		.loc 1 235 11
+ 653 0018 0023     		movs	r3, #0
+ 654 001a 16E0     		b	.L29
+ 655              	.L28:
+ 236:./basic/queue.c **** 	else 
+ 237:./basic/queue.c **** 	{
+ 238:./basic/queue.c **** 		// add data to the current write pointer position "tail "
+ 239:./basic/queue.c **** 		q->buf[q->pWR]=val;
+ 656              		.loc 1 239 4
+ 657 001c 7B68     		ldr	r3, [r7, #4]
+ 658 001e 1B68     		ldr	r3, [r3]
+ 659              		.loc 1 239 11
+ 660 0020 7A68     		ldr	r2, [r7, #4]
+ 661 0022 D288     		ldrh	r2, [r2, #6]
+ 662              		.loc 1 239 9
+ 663 0024 1344     		add	r3, r3, r2
+ 664              		.loc 1 239 17
+ 665 0026 FA78     		ldrb	r2, [r7, #3]
+ 666 0028 1A70     		strb	r2, [r3]
+ 240:./basic/queue.c **** 		// increase the tail but consider overlap condition 
+ 241:./basic/queue.c **** 		q->pWR=((q->pWR+1)==q->capacity)?0:q->pWR+1;
+ 667              		.loc 1 241 13
+ 668 002a 7B68     		ldr	r3, [r7, #4]
+ 669 002c DB88     		ldrh	r3, [r3, #6]
+ 670              		.loc 1 241 18
+ 671 002e 0133     		adds	r3, r3, #1
+ 672              		.loc 1 241 24
+ 673 0030 7A68     		ldr	r2, [r7, #4]
+ 674 0032 9288     		ldrh	r2, [r2, #4]
+ 675              		.loc 1 241 9
+ 676 0034 9342     		cmp	r3, r2
+ 677 0036 04D0     		beq	.L30
+ 678              		.loc 1 241 39 discriminator 1
+ 679 0038 7B68     		ldr	r3, [r7, #4]
+ 680 003a DB88     		ldrh	r3, [r3, #6]
+ 681              		.loc 1 241 9 discriminator 1
+ 682 003c 0133     		adds	r3, r3, #1
+ 683 003e 9AB2     		uxth	r2, r3
+ 684 0040 00E0     		b	.L31
+ 685              	.L30:
+ 686              		.loc 1 241 9 is_stmt 0 discriminator 2
+ 687 0042 0022     		movs	r2, #0
+ 688              	.L31:
+ 689              		.loc 1 241 9 discriminator 4
+ 690 0044 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 17
+
+
+ 691 0046 DA80     		strh	r2, [r3, #6]	@ movhi
+ 242:./basic/queue.c **** 	} 
+ 243:./basic/queue.c **** 	return 1;
+ 692              		.loc 1 243 9 is_stmt 1 discriminator 4
+ 693 0048 0123     		movs	r3, #1
+ 694              	.L29:
+ 244:./basic/queue.c **** }
+ 695              		.loc 1 244 1
+ 696 004a 1846     		mov	r0, r3
+ 697 004c 0837     		adds	r7, r7, #8
+ 698              	.LCFI54:
+ 699              		.cfi_def_cfa_offset 8
+ 700 004e BD46     		mov	sp, r7
+ 701              	.LCFI55:
+ 702              		.cfi_def_cfa_register 13
+ 703              		@ sp needed
+ 704 0050 80BD     		pop	{r7, pc}
+ 705              		.cfi_endproc
+ 706              	.LFE42:
+ 708              		.section	.text.queue_read,"ax",%progbits
+ 709              		.align	1
+ 710              		.global	queue_read
+ 711              		.syntax unified
+ 712              		.thumb
+ 713              		.thumb_func
+ 715              	queue_read:
+ 716              	.LFB43:
+ 245:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 246:./basic/queue.c **** /**
+ 247:./basic/queue.c ****  * @brief reads a byte value of the queue
+ 248:./basic/queue.c ****  
+ 249:./basic/queue.c ****  * @details  reads byte data from the queue and after reading this byte
+ 250:./basic/queue.c **** 			 it proceeds the read pointer "the head" this empty a one space
+ 251:./basic/queue.c **** 			 in the queue buffer 
+ 252:./basic/queue.c ****  * @param q  			a pointer to a queue to add data to
+ 253:./basic/queue.c ****  * @param data 		    the data to be read		
+ 254:./basic/queue.c ****  * @return uint8_t 
+ 255:./basic/queue.c ****  * @retval 0 failed 	to read data from the queue, it is empty
+ 256:./basic/queue.c ****  * @retval 1 succeeded  to read data from the queue 
+ 257:./basic/queue.c ****  */
+ 258:./basic/queue.c **** uint8_t queue_read(queue_t * q,uint8_t * val)
+ 259:./basic/queue.c **** {
+ 717              		.loc 1 259 1
+ 718              		.cfi_startproc
+ 719              		@ args = 0, pretend = 0, frame = 8
+ 720              		@ frame_needed = 1, uses_anonymous_args = 0
+ 721 0000 80B5     		push	{r7, lr}
+ 722              	.LCFI56:
+ 723              		.cfi_def_cfa_offset 8
+ 724              		.cfi_offset 7, -8
+ 725              		.cfi_offset 14, -4
+ 726 0002 82B0     		sub	sp, sp, #8
+ 727              	.LCFI57:
+ 728              		.cfi_def_cfa_offset 16
+ 729 0004 00AF     		add	r7, sp, #0
+ 730              	.LCFI58:
+ 731              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 18
+
+
+ 732 0006 7860     		str	r0, [r7, #4]
+ 733 0008 3960     		str	r1, [r7]
+ 260:./basic/queue.c ****   // no data available just exit 	
+ 261:./basic/queue.c ****   if(queue_is_empty(q))
+ 734              		.loc 1 261 6
+ 735 000a 7868     		ldr	r0, [r7, #4]
+ 736 000c FFF7FEFF 		bl	queue_is_empty
+ 737 0010 0346     		mov	r3, r0
+ 738              		.loc 1 261 5
+ 739 0012 002B     		cmp	r3, #0
+ 740 0014 01D0     		beq	.L33
+ 262:./basic/queue.c **** 	return 0;
+ 741              		.loc 1 262 9
+ 742 0016 0023     		movs	r3, #0
+ 743 0018 17E0     		b	.L34
+ 744              	.L33:
+ 263:./basic/queue.c ****    // read data from the current read pointer position "head"
+ 264:./basic/queue.c **** 	*val=q->buf[q->pRD];
+ 745              		.loc 1 264 8
+ 746 001a 7B68     		ldr	r3, [r7, #4]
+ 747 001c 1B68     		ldr	r3, [r3]
+ 748              		.loc 1 264 15
+ 749 001e 7A68     		ldr	r2, [r7, #4]
+ 750 0020 1289     		ldrh	r2, [r2, #8]
+ 751              		.loc 1 264 13
+ 752 0022 1344     		add	r3, r3, r2
+ 753 0024 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 754              		.loc 1 264 6
+ 755 0026 3B68     		ldr	r3, [r7]
+ 756 0028 1A70     		strb	r2, [r3]
+ 265:./basic/queue.c ****   // increase the head but consider overlap condition 
+ 266:./basic/queue.c **** 	 q->pRD=((q->pRD+1)==q->capacity)?0:q->pRD+1;
+ 757              		.loc 1 266 13
+ 758 002a 7B68     		ldr	r3, [r7, #4]
+ 759 002c 1B89     		ldrh	r3, [r3, #8]
+ 760              		.loc 1 266 18
+ 761 002e 0133     		adds	r3, r3, #1
+ 762              		.loc 1 266 24
+ 763 0030 7A68     		ldr	r2, [r7, #4]
+ 764 0032 9288     		ldrh	r2, [r2, #4]
+ 765              		.loc 1 266 9
+ 766 0034 9342     		cmp	r3, r2
+ 767 0036 04D0     		beq	.L35
+ 768              		.loc 1 266 39 discriminator 1
+ 769 0038 7B68     		ldr	r3, [r7, #4]
+ 770 003a 1B89     		ldrh	r3, [r3, #8]
+ 771              		.loc 1 266 9 discriminator 1
+ 772 003c 0133     		adds	r3, r3, #1
+ 773 003e 9AB2     		uxth	r2, r3
+ 774 0040 00E0     		b	.L36
+ 775              	.L35:
+ 776              		.loc 1 266 9 is_stmt 0 discriminator 2
+ 777 0042 0022     		movs	r2, #0
+ 778              	.L36:
+ 779              		.loc 1 266 9 discriminator 4
+ 780 0044 7B68     		ldr	r3, [r7, #4]
+ 781 0046 1A81     		strh	r2, [r3, #8]	@ movhi
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 19
+
+
+ 267:./basic/queue.c ****   return 1;
+ 782              		.loc 1 267 10 is_stmt 1 discriminator 4
+ 783 0048 0123     		movs	r3, #1
+ 784              	.L34:
+ 268:./basic/queue.c **** }
+ 785              		.loc 1 268 1
+ 786 004a 1846     		mov	r0, r3
+ 787 004c 0837     		adds	r7, r7, #8
+ 788              	.LCFI59:
+ 789              		.cfi_def_cfa_offset 8
+ 790 004e BD46     		mov	sp, r7
+ 791              	.LCFI60:
+ 792              		.cfi_def_cfa_register 13
+ 793              		@ sp needed
+ 794 0050 80BD     		pop	{r7, pc}
+ 795              		.cfi_endproc
+ 796              	.LFE43:
+ 798              		.section	.text.queue_Array,"ax",%progbits
+ 799              		.align	1
+ 800              		.global	queue_Array
+ 801              		.syntax unified
+ 802              		.thumb
+ 803              		.thumb_func
+ 805              	queue_Array:
+ 806              	.LFB44:
+ 269:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 270:./basic/queue.c **** /**
+ 271:./basic/queue.c ****  * @brief  returns an array for the internal queue buffer 
+ 272:./basic/queue.c ****  * 
+ 273:./basic/queue.c ****  * @param q 
+ 274:./basic/queue.c ****  * @return uint8_t* 
+ 275:./basic/queue.c ****  */
+ 276:./basic/queue.c **** uint8_t * queue_Array(queue_t * q)
+ 277:./basic/queue.c **** {
+ 807              		.loc 1 277 1
+ 808              		.cfi_startproc
+ 809              		@ args = 0, pretend = 0, frame = 8
+ 810              		@ frame_needed = 1, uses_anonymous_args = 0
+ 811              		@ link register save eliminated.
+ 812 0000 80B4     		push	{r7}
+ 813              	.LCFI61:
+ 814              		.cfi_def_cfa_offset 4
+ 815              		.cfi_offset 7, -4
+ 816 0002 83B0     		sub	sp, sp, #12
+ 817              	.LCFI62:
+ 818              		.cfi_def_cfa_offset 16
+ 819 0004 00AF     		add	r7, sp, #0
+ 820              	.LCFI63:
+ 821              		.cfi_def_cfa_register 7
+ 822 0006 7860     		str	r0, [r7, #4]
+ 278:./basic/queue.c ****   return q->buf;
+ 823              		.loc 1 278 11
+ 824 0008 7B68     		ldr	r3, [r7, #4]
+ 825 000a 1B68     		ldr	r3, [r3]
+ 279:./basic/queue.c **** }	
+ 826              		.loc 1 279 1
+ 827 000c 1846     		mov	r0, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 20
+
+
+ 828 000e 0C37     		adds	r7, r7, #12
+ 829              	.LCFI64:
+ 830              		.cfi_def_cfa_offset 4
+ 831 0010 BD46     		mov	sp, r7
+ 832              	.LCFI65:
+ 833              		.cfi_def_cfa_register 13
+ 834              		@ sp needed
+ 835 0012 80BC     		pop	{r7}
+ 836              	.LCFI66:
+ 837              		.cfi_restore 7
+ 838              		.cfi_def_cfa_offset 0
+ 839 0014 7047     		bx	lr
+ 840              		.cfi_endproc
+ 841              	.LFE44:
+ 843              		.section	.text.queue_toCharArray,"ax",%progbits
+ 844              		.align	1
+ 845              		.global	queue_toCharArray
+ 846              		.syntax unified
+ 847              		.thumb
+ 848              		.thumb_func
+ 850              	queue_toCharArray:
+ 851              	.LFB45:
+ 280:./basic/queue.c **** //--------------------------------------------------------------------------------------------
+ 281:./basic/queue.c **** /**
+ 282:./basic/queue.c ****  * @brief 
+ 283:./basic/queue.c ****  * 
+ 284:./basic/queue.c ****  * @param q 
+ 285:./basic/queue.c ****  * @return char* 
+ 286:./basic/queue.c ****  */
+ 287:./basic/queue.c **** char*  queue_toCharArray(queue_t * q)
+ 288:./basic/queue.c **** {
+ 852              		.loc 1 288 1
+ 853              		.cfi_startproc
+ 854              		@ args = 0, pretend = 0, frame = 8
+ 855              		@ frame_needed = 1, uses_anonymous_args = 0
+ 856              		@ link register save eliminated.
+ 857 0000 80B4     		push	{r7}
+ 858              	.LCFI67:
+ 859              		.cfi_def_cfa_offset 4
+ 860              		.cfi_offset 7, -4
+ 861 0002 83B0     		sub	sp, sp, #12
+ 862              	.LCFI68:
+ 863              		.cfi_def_cfa_offset 16
+ 864 0004 00AF     		add	r7, sp, #0
+ 865              	.LCFI69:
+ 866              		.cfi_def_cfa_register 7
+ 867 0006 7860     		str	r0, [r7, #4]
+ 289:./basic/queue.c ****   return (char*)q->buf;
+ 868              		.loc 1 289 10
+ 869 0008 7B68     		ldr	r3, [r7, #4]
+ 870 000a 1B68     		ldr	r3, [r3]
+ 290:./basic/queue.c **** }
+ 871              		.loc 1 290 1
+ 872 000c 1846     		mov	r0, r3
+ 873 000e 0C37     		adds	r7, r7, #12
+ 874              	.LCFI70:
+ 875              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 21
+
+
+ 876 0010 BD46     		mov	sp, r7
+ 877              	.LCFI71:
+ 878              		.cfi_def_cfa_register 13
+ 879              		@ sp needed
+ 880 0012 80BC     		pop	{r7}
+ 881              	.LCFI72:
+ 882              		.cfi_restore 7
+ 883              		.cfi_def_cfa_offset 0
+ 884 0014 7047     		bx	lr
+ 885              		.cfi_endproc
+ 886              	.LFE45:
+ 888              		.text
+ 889              	.Letext0:
+ 890              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 891              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 892              		.file 4 "./basic/queue.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:18     .text.queue_is_empty_printable:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:24     .text.queue_is_empty_printable:00000000 queue_is_empty_printable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:77     .text.queue_get_length_printable:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:83     .text.queue_get_length_printable:00000000 queue_get_length_printable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:162    .text.queue_getch_printable:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:168    .text.queue_getch_printable:00000000 queue_getch_printable
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:252    .text.queue_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:258    .text.queue_init:00000000 queue_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:310    .text.queue_reset:00000000 queue_reset
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:304    .text.queue_reset:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:364    .text.queue_is_full:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:370    .text.queue_is_full:00000000 queue_is_full
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:431    .text.queue_is_empty:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:437    .text.queue_is_empty:00000000 queue_is_empty
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:489    .text.queue_get_length:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:495    .text.queue_get_length:00000000 queue_get_length
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:574    .text.queue_get_capacity:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:580    .text.queue_get_capacity:00000000 queue_get_capacity
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:619    .text.queue_write:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:625    .text.queue_write:00000000 queue_write
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:709    .text.queue_read:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:715    .text.queue_read:00000000 queue_read
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:799    .text.queue_Array:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:805    .text.queue_Array:00000000 queue_Array
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:844    .text.queue_toCharArray:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s:850    .text.queue_toCharArray:00000000 queue_toCharArray
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 23
+
+
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc565Bwe.s 			page 24
+
+
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+memset

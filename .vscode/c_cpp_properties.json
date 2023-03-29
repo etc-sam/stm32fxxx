@@ -2,59 +2,101 @@
     "configurations": [
         {
             "name": "Stm32f103_IMU6050App",
+ 
             "includePath": [
-
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
-                "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                //linux
+                /*
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                */
+                // windows
+                                
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                
 
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/.driver/CMSIS/Core",
                 "${workspaceFolder}/.driver/CMSIS/Device/STM32F10x",
                 "${workspaceFolder}/.driver/STM32F10x_StdPeriph_Driver/inc",                
-                "${workspaceFolder}/.start_up/inc",
+                "${workspaceFolder}/.startup/inc",
 
                 "${workspaceFolder}/basic",
                 "${workspaceFolder}/init",
                 "${workspaceFolder}/lcd",
                 "${workspaceFolder}/keypad",
-                "${workspaceFolder}/system"
+                "${workspaceFolder}/i2c",
+                "${workspaceFolder}/mpu6050",
+                "${workspaceFolder}/uart",
+                "${workspaceFolder}/system",
                 
             ],
             "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
                 "STM32F10X_MD",
                 "USE_STDPERIPH_DRIVER"
             ],
             "intelliSenseMode": "gcc-arm",
-            "compilerPath": "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc",
+            "compilerPath": 
+                    //linux
+                    //"/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc",    
+                     //win   
+                    "C:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc.exe",//"${env:ARMGCC_DIR}/arm-none-eabi-gcc.exe", // 
+            "compilerArgs": [
+                "-mcpu=cortex-m3",
+                "-mthumb"
+            ],
             "cStandard": "c11",
             "cppStandard": "c++20",
             "browse": {
                 "path": [
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
-                    "/arm-opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                // linux   
+                /*             
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "/opt/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                */
+                // windows
+                
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys",
+                    
+               "${workspaceFolder}/**",
+               "${workspaceFolder}/.driver/CMSIS/Core",
+               "${workspaceFolder}/.driver/CMSIS/Device/STM32F10x",
+               "${workspaceFolder}/.driver/STM32F10x_StdPeriph_Driver/inc",                
+               "${workspaceFolder}/.startup/inc",
     
-                    "${workspaceFolder}/**",
-                    "${workspaceFolder}/.driver/CMSIS/Core",
-                    "${workspaceFolder}/.driver/CMSIS/Device/STM32F10x",
-                    "${workspaceFolder}/.driver/STM32F10x_StdPeriph_Driver/inc",                
-                    "${workspaceFolder}/.start_up/inc",
-    
-                    "${workspaceFolder}/basic",
-                    "${workspaceFolder}/init",
-                    "${workspaceFolder}/lcd",
-                    "${workspaceFolder}/keypad",
-                    "${workspaceFolder}/system"
-                ],
+               "${workspaceFolder}/basic",
+               "${workspaceFolder}/init",
+               "${workspaceFolder}/lcd",
+               "${workspaceFolder}/keypad",
+               "${workspaceFolder}/i2c",
+               "${workspaceFolder}/mpu6050",
+               "${workspaceFolder}/uart",
+                "${workspaceFolder}/system"
+            ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": "${workspaceFolder}/.vscode/browse.vc.db"
             }

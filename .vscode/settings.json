@@ -1,8 +1,9 @@
 {
-    "cortex-debug.gdbPath":"/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
-    "cortex-debug-armToolchainPath":"/opt/gcc-arm-none-eabi-10.3-2021.10/bin/",
-    "cortex-debug.stutilPath": "/opt/stlink-1.7.0/build/Release/bin/st-util",
+    "cortex-debug.gdbPath":"c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+    "cortex-debug-armToolchainPath":"c:/arm-tool/gcc-arm-none-eabi-10.3-2021.10/bin/",
+    "cortex-debug.stutilPath": "C:/arm-tool/OpenOCD-20230202-0.12.0/bin",//"/opt/stlink-1.7.0/build/Release/bin/st-util",
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.dimInactiveRegions": false
     
 }

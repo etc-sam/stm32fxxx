@@ -25,7 +25,7 @@ pilot_t pilots;
 rly_t relays;
 
 gpio_t blink_led={GPIOC,13};
-gpio_t pilot_en={GPIOB,10};
+gpio_t pilot_en={GPIOC,15};
 gpio_t pilot_db[8]={
 {GPIOA,7},   // pilot_db0=PA7
 {GPIOA,6},   // pilot_db0=PA6
@@ -37,12 +37,12 @@ gpio_t pilot_db[8]={
 {GPIOA,0},   // pilot_db0=PA0
 };
 gpio_t rly[6]={
-{GPIOB, 9},     // rly0
-{GPIOB, 8},     // rly1
-{GPIOB, 7},     // rly2
-{GPIOB, 6},     // rly3
-{GPIOB, 5},     // rly4
-{GPIOA, 8},     // rly5
+{GPIOB, 12},     // rly0
+{GPIOB, 13},     // rly1
+{GPIOB, 14},     // rly2
+{GPIOB, 15},     // rly3
+{GPIOA, 8},     // rly4
+{GPIOA, 11},     // rly5
 };
 //********************************************************************************************
 //

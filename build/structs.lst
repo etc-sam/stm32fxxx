@@ -1,0 +1,2659 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"structs.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.clc_sum_16bit,"ax",%progbits
+  18              		.align	1
+  19              		.global	clc_sum_16bit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	clc_sum_16bit:
+  25              	.LFB33:
+  26              		.file 1 "./basic/structs.c"
+   1:./basic/structs.c **** /**
+   2:./basic/structs.c ****  * @brief structs.c
+   3:./basic/structs.c ****  *
+   4:./basic/structs.c ****  * @param student: Sameer Almaldein
+   5:./basic/structs.c ****  * @param ID: 679699
+   6:./basic/structs.c ****  * @param University TU-Chemnitz
+   7:./basic/structs.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./basic/structs.c ****  */ 
+   9:./basic/structs.c ****  
+  10:./basic/structs.c ****  //********************************************************************************************
+  11:./basic/structs.c **** //
+  12:./basic/structs.c **** //   header files
+  13:./basic/structs.c **** //
+  14:./basic/structs.c **** //********************************************************************************************
+  15:./basic/structs.c **** #include "init.h"
+  16:./basic/structs.c **** 
+  17:./basic/structs.c **** //********************************************************************************************
+  18:./basic/structs.c **** //
+  19:./basic/structs.c **** //   global variables
+  20:./basic/structs.c **** //
+  21:./basic/structs.c **** //********************************************************************************************
+  22:./basic/structs.c **** 
+  23:./basic/structs.c **** //********************************************************************************************
+  24:./basic/structs.c **** //
+  25:./basic/structs.c **** //  average Methods' definitions
+  26:./basic/structs.c **** //
+  27:./basic/structs.c **** //********************************************************************************************
+  28:./basic/structs.c **** /**
+  29:./basic/structs.c ****  * @brief calculates the sum of array of 16bit 
+  30:./basic/structs.c ****  * @details this method the sum of an array of words 
+  31:./basic/structs.c ****  *           which it is used in handling aquired data from adc
+  32:./basic/structs.c ****  * @param ptmp pointer to the array of words
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 2
+
+
+  33:./basic/structs.c ****  * @param len  length of the array
+  34:./basic/structs.c ****  * @return uint16_t 
+  35:./basic/structs.c ****  */
+  36:./basic/structs.c **** uint16_t clc_sum_16bit(uint16_t * ptmp,uint8_t len)
+  37:./basic/structs.c **** {
+  27              		.loc 1 37 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 85B0     		sub	sp, sp, #20
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  43 0008 0B46     		mov	r3, r1
+  44 000a FB70     		strb	r3, [r7, #3]
+  38:./basic/structs.c **** 	uint16_t sum=0;
+  45              		.loc 1 38 11
+  46 000c 0023     		movs	r3, #0
+  47 000e FB81     		strh	r3, [r7, #14]	@ movhi
+  39:./basic/structs.c **** 	uint8_t i=0;
+  48              		.loc 1 39 10
+  49 0010 0023     		movs	r3, #0
+  50 0012 7B73     		strb	r3, [r7, #13]
+  40:./basic/structs.c **** 	for(i=0;i<len;i++)
+  51              		.loc 1 40 7
+  52 0014 0023     		movs	r3, #0
+  53 0016 7B73     		strb	r3, [r7, #13]
+  54              		.loc 1 40 2
+  55 0018 0AE0     		b	.L2
+  56              	.L3:
+  41:./basic/structs.c **** 	sum+=ptmp[i];
+  57              		.loc 1 41 11 discriminator 3
+  58 001a 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+  59 001c 5B00     		lsls	r3, r3, #1
+  60 001e 7A68     		ldr	r2, [r7, #4]
+  61 0020 1344     		add	r3, r3, r2
+  62 0022 1A88     		ldrh	r2, [r3]
+  63              		.loc 1 41 5 discriminator 3
+  64 0024 FB89     		ldrh	r3, [r7, #14]	@ movhi
+  65 0026 1344     		add	r3, r3, r2
+  66 0028 FB81     		strh	r3, [r7, #14]	@ movhi
+  40:./basic/structs.c **** 	for(i=0;i<len;i++)
+  67              		.loc 1 40 17 discriminator 3
+  68 002a 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+  69 002c 0133     		adds	r3, r3, #1
+  70 002e 7B73     		strb	r3, [r7, #13]
+  71              	.L2:
+  40:./basic/structs.c **** 	for(i=0;i<len;i++)
+  72              		.loc 1 40 2 discriminator 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 3
+
+
+  73 0030 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+  74 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  75 0034 9A42     		cmp	r2, r3
+  76 0036 F0D3     		bcc	.L3
+  42:./basic/structs.c **** 	return sum;
+  77              		.loc 1 42 9
+  78 0038 FB89     		ldrh	r3, [r7, #14]
+  43:./basic/structs.c **** }
+  79              		.loc 1 43 1
+  80 003a 1846     		mov	r0, r3
+  81 003c 1437     		adds	r7, r7, #20
+  82              	.LCFI3:
+  83              		.cfi_def_cfa_offset 4
+  84 003e BD46     		mov	sp, r7
+  85              	.LCFI4:
+  86              		.cfi_def_cfa_register 13
+  87              		@ sp needed
+  88 0040 80BC     		pop	{r7}
+  89              	.LCFI5:
+  90              		.cfi_restore 7
+  91              		.cfi_def_cfa_offset 0
+  92 0042 7047     		bx	lr
+  93              		.cfi_endproc
+  94              	.LFE33:
+  96              		.section	.text.clc_avg_16bit,"ax",%progbits
+  97              		.align	1
+  98              		.global	clc_avg_16bit
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 103              	clc_avg_16bit:
+ 104              	.LFB34:
+  44:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+  45:./basic/structs.c **** /**
+  46:./basic/structs.c ****  * @brief   calculates the average  of an array of words
+  47:./basic/structs.c ****  * @details this method returns the average of an array of words 
+  48:./basic/structs.c ****  *           which is very useful in get the average result for 
+  49:./basic/structs.c ****  * 			 a set of aquired data from adc
+  50:./basic/structs.c ****  * @param ptmp pointer to the array of words
+  51:./basic/structs.c ****  * @param len  length of the array
+  52:./basic/structs.c ****  * @return uint16_t 
+  53:./basic/structs.c ****  */
+  54:./basic/structs.c **** uint16_t clc_avg_16bit(uint16_t * ptmp,uint8_t len)
+  55:./basic/structs.c **** {
+ 105              		.loc 1 55 1
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 16
+ 108              		@ frame_needed = 1, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 110 0000 80B4     		push	{r7}
+ 111              	.LCFI6:
+ 112              		.cfi_def_cfa_offset 4
+ 113              		.cfi_offset 7, -4
+ 114 0002 85B0     		sub	sp, sp, #20
+ 115              	.LCFI7:
+ 116              		.cfi_def_cfa_offset 24
+ 117 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 4
+
+
+ 118              	.LCFI8:
+ 119              		.cfi_def_cfa_register 7
+ 120 0006 7860     		str	r0, [r7, #4]
+ 121 0008 0B46     		mov	r3, r1
+ 122 000a FB70     		strb	r3, [r7, #3]
+  56:./basic/structs.c **** 	uint32_t sum=0;
+ 123              		.loc 1 56 11
+ 124 000c 0023     		movs	r3, #0
+ 125 000e FB60     		str	r3, [r7, #12]
+  57:./basic/structs.c **** 	uint8_t i=0;
+ 126              		.loc 1 57 10
+ 127 0010 0023     		movs	r3, #0
+ 128 0012 FB72     		strb	r3, [r7, #11]
+  58:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 129              		.loc 1 58 7
+ 130 0014 0023     		movs	r3, #0
+ 131 0016 FB72     		strb	r3, [r7, #11]
+ 132              		.loc 1 58 2
+ 133 0018 0BE0     		b	.L6
+ 134              	.L7:
+  59:./basic/structs.c **** 	sum+=ptmp[i];	
+ 135              		.loc 1 59 11 discriminator 3
+ 136 001a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 137 001c 5B00     		lsls	r3, r3, #1
+ 138 001e 7A68     		ldr	r2, [r7, #4]
+ 139 0020 1344     		add	r3, r3, r2
+ 140 0022 1B88     		ldrh	r3, [r3]
+ 141 0024 1A46     		mov	r2, r3
+ 142              		.loc 1 59 5 discriminator 3
+ 143 0026 FB68     		ldr	r3, [r7, #12]
+ 144 0028 1344     		add	r3, r3, r2
+ 145 002a FB60     		str	r3, [r7, #12]
+  58:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 146              		.loc 1 58 17 discriminator 3
+ 147 002c FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 148 002e 0133     		adds	r3, r3, #1
+ 149 0030 FB72     		strb	r3, [r7, #11]
+ 150              	.L6:
+  58:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 151              		.loc 1 58 2 discriminator 1
+ 152 0032 FA7A     		ldrb	r2, [r7, #11]	@ zero_extendqisi2
+ 153 0034 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 154 0036 9A42     		cmp	r2, r3
+ 155 0038 EFD3     		bcc	.L7
+  60:./basic/structs.c **** 	return sum/len;
+ 156              		.loc 1 60 12
+ 157 003a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 158 003c FA68     		ldr	r2, [r7, #12]
+ 159 003e B2FBF3F3 		udiv	r3, r2, r3
+ 160 0042 9BB2     		uxth	r3, r3
+  61:./basic/structs.c **** }
+ 161              		.loc 1 61 1
+ 162 0044 1846     		mov	r0, r3
+ 163 0046 1437     		adds	r7, r7, #20
+ 164              	.LCFI9:
+ 165              		.cfi_def_cfa_offset 4
+ 166 0048 BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 5
+
+
+ 167              	.LCFI10:
+ 168              		.cfi_def_cfa_register 13
+ 169              		@ sp needed
+ 170 004a 80BC     		pop	{r7}
+ 171              	.LCFI11:
+ 172              		.cfi_restore 7
+ 173              		.cfi_def_cfa_offset 0
+ 174 004c 7047     		bx	lr
+ 175              		.cfi_endproc
+ 176              	.LFE34:
+ 178              		.section	.text.clc_avg_32bit,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	clc_avg_32bit
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	clc_avg_32bit:
+ 186              	.LFB35:
+  62:./basic/structs.c **** //---------------------------------------------------------------------------------------------
+  63:./basic/structs.c **** /**
+  64:./basic/structs.c ****  * @brief   calculates the average  of an array of double words
+  65:./basic/structs.c ****  * @details this method returns the average of an array of words 
+  66:./basic/structs.c ****  * @param ptmp pointer to the array of words
+  67:./basic/structs.c ****  * @param len  length of the array
+  68:./basic/structs.c ****  * @return uint32_t 
+  69:./basic/structs.c ****  */
+  70:./basic/structs.c **** uint32_t clc_avg_32bit(uint32_t * ptmp,uint8_t len)
+  71:./basic/structs.c **** {
+ 187              		.loc 1 71 1
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 16
+ 190              		@ frame_needed = 1, uses_anonymous_args = 0
+ 191              		@ link register save eliminated.
+ 192 0000 80B4     		push	{r7}
+ 193              	.LCFI12:
+ 194              		.cfi_def_cfa_offset 4
+ 195              		.cfi_offset 7, -4
+ 196 0002 85B0     		sub	sp, sp, #20
+ 197              	.LCFI13:
+ 198              		.cfi_def_cfa_offset 24
+ 199 0004 00AF     		add	r7, sp, #0
+ 200              	.LCFI14:
+ 201              		.cfi_def_cfa_register 7
+ 202 0006 7860     		str	r0, [r7, #4]
+ 203 0008 0B46     		mov	r3, r1
+ 204 000a FB70     		strb	r3, [r7, #3]
+  72:./basic/structs.c **** 	uint32_t sum=0;
+ 205              		.loc 1 72 11
+ 206 000c 0023     		movs	r3, #0
+ 207 000e FB60     		str	r3, [r7, #12]
+  73:./basic/structs.c **** 	uint8_t i=0;
+ 208              		.loc 1 73 10
+ 209 0010 0023     		movs	r3, #0
+ 210 0012 FB72     		strb	r3, [r7, #11]
+  74:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 211              		.loc 1 74 7
+ 212 0014 0023     		movs	r3, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 6
+
+
+ 213 0016 FB72     		strb	r3, [r7, #11]
+ 214              		.loc 1 74 2
+ 215 0018 0AE0     		b	.L10
+ 216              	.L11:
+  75:./basic/structs.c **** 	sum+=ptmp[i];	
+ 217              		.loc 1 75 11 discriminator 3
+ 218 001a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 219 001c 9B00     		lsls	r3, r3, #2
+ 220 001e 7A68     		ldr	r2, [r7, #4]
+ 221 0020 1344     		add	r3, r3, r2
+ 222 0022 1B68     		ldr	r3, [r3]
+ 223              		.loc 1 75 5 discriminator 3
+ 224 0024 FA68     		ldr	r2, [r7, #12]
+ 225 0026 1344     		add	r3, r3, r2
+ 226 0028 FB60     		str	r3, [r7, #12]
+  74:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 227              		.loc 1 74 17 discriminator 3
+ 228 002a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 229 002c 0133     		adds	r3, r3, #1
+ 230 002e FB72     		strb	r3, [r7, #11]
+ 231              	.L10:
+  74:./basic/structs.c **** 	for(i=0;i<len;i++)
+ 232              		.loc 1 74 2 discriminator 1
+ 233 0030 FA7A     		ldrb	r2, [r7, #11]	@ zero_extendqisi2
+ 234 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 235 0034 9A42     		cmp	r2, r3
+ 236 0036 F0D3     		bcc	.L11
+  76:./basic/structs.c **** 	return sum/len;
+ 237              		.loc 1 76 12
+ 238 0038 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 239 003a FA68     		ldr	r2, [r7, #12]
+ 240 003c B2FBF3F3 		udiv	r3, r2, r3
+  77:./basic/structs.c **** }
+ 241              		.loc 1 77 1
+ 242 0040 1846     		mov	r0, r3
+ 243 0042 1437     		adds	r7, r7, #20
+ 244              	.LCFI15:
+ 245              		.cfi_def_cfa_offset 4
+ 246 0044 BD46     		mov	sp, r7
+ 247              	.LCFI16:
+ 248              		.cfi_def_cfa_register 13
+ 249              		@ sp needed
+ 250 0046 80BC     		pop	{r7}
+ 251              	.LCFI17:
+ 252              		.cfi_restore 7
+ 253              		.cfi_def_cfa_offset 0
+ 254 0048 7047     		bx	lr
+ 255              		.cfi_endproc
+ 256              	.LFE35:
+ 258              		.section	.text.avg_real,"ax",%progbits
+ 259              		.align	1
+ 260              		.global	avg_real
+ 261              		.syntax unified
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	avg_real:
+ 266              	.LFB36:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 7
+
+
+  78:./basic/structs.c **** //-------------------------------------------------------------------------------------------------
+  79:./basic/structs.c **** //********************************************************************************************
+  80:./basic/structs.c **** //
+  81:./basic/structs.c **** //  real Methods' definitions
+  82:./basic/structs.c **** //  this special methods allow to deal directly with real_t instead of using float
+  83:./basic/structs.c **** //  suitable solution for low-performance old avr microcontrollers
+  84:./basic/structs.c **** //
+  85:./basic/structs.c **** //********************************************************************************************
+  86:./basic/structs.c **** /**
+  87:./basic/structs.c ****  * @brief    calculates the average of two real numbers
+  88:./basic/structs.c ****  * @details  this method allow to get the average of two real_t numbers instead of using float type
+  89:./basic/structs.c ****  * 			 more convenient solution for low-performance old avr microcontrollers
+  90:./basic/structs.c ****  * @param a  first real number
+  91:./basic/structs.c ****  * @param b  second real number 
+  92:./basic/structs.c ****  * @return real_t 
+  93:./basic/structs.c ****  */
+  94:./basic/structs.c **** real_t avg_real(real_t a,real_t b)
+  95:./basic/structs.c **** {	
+ 267              		.loc 1 95 1
+ 268              		.cfi_startproc
+ 269              		@ args = 12, pretend = 8, frame = 32
+ 270              		@ frame_needed = 1, uses_anonymous_args = 0
+ 271              		@ link register save eliminated.
+ 272 0000 82B0     		sub	sp, sp, #8
+ 273              	.LCFI18:
+ 274              		.cfi_def_cfa_offset 8
+ 275 0002 80B4     		push	{r7}
+ 276              	.LCFI19:
+ 277              		.cfi_def_cfa_offset 12
+ 278              		.cfi_offset 7, -12
+ 279 0004 89B0     		sub	sp, sp, #36
+ 280              	.LCFI20:
+ 281              		.cfi_def_cfa_offset 48
+ 282 0006 00AF     		add	r7, sp, #0
+ 283              	.LCFI21:
+ 284              		.cfi_def_cfa_register 7
+ 285 0008 F860     		str	r0, [r7, #12]
+ 286 000a 381D     		adds	r0, r7, #4
+ 287 000c 80E80600 		stm	r0, {r1, r2}
+ 288 0010 FB62     		str	r3, [r7, #44]
+  96:./basic/structs.c **** 	real_t c;
+  97:./basic/structs.c **** 	int16_t d1=0,d2=0,d3=0;
+ 289              		.loc 1 97 10
+ 290 0012 0023     		movs	r3, #0
+ 291 0014 BB83     		strh	r3, [r7, #28]	@ movhi
+ 292              		.loc 1 97 15
+ 293 0016 0023     		movs	r3, #0
+ 294 0018 7B83     		strh	r3, [r7, #26]	@ movhi
+ 295              		.loc 1 97 20
+ 296 001a 0023     		movs	r3, #0
+ 297 001c FB83     		strh	r3, [r7, #30]	@ movhi
+  98:./basic/structs.c **** 	c.val=0;
+ 298              		.loc 1 98 7
+ 299 001e 0023     		movs	r3, #0
+ 300 0020 3B61     		str	r3, [r7, #16]
+  99:./basic/structs.c **** 	d1=a.integer*10+a.decimal;
+ 301              		.loc 1 99 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 8
+
+
+ 302 0022 FB88     		ldrh	r3, [r7, #6]
+ 303              		.loc 1 99 17
+ 304 0024 1A46     		mov	r2, r3	@ movhi
+ 305 0026 9200     		lsls	r2, r2, #2
+ 306 0028 1344     		add	r3, r3, r2
+ 307 002a 5B00     		lsls	r3, r3, #1
+ 308 002c 9AB2     		uxth	r2, r3
+ 309              		.loc 1 99 19
+ 310 002e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 311 0030 9BB2     		uxth	r3, r3
+ 312              		.loc 1 99 17
+ 313 0032 1344     		add	r3, r3, r2
+ 314 0034 9BB2     		uxth	r3, r3
+ 315              		.loc 1 99 4
+ 316 0036 BB83     		strh	r3, [r7, #28]	@ movhi
+ 100:./basic/structs.c **** 	d2=b.integer*10+b.decimal;
+ 317              		.loc 1 100 6
+ 318 0038 FB8D     		ldrh	r3, [r7, #46]
+ 319              		.loc 1 100 17
+ 320 003a 1A46     		mov	r2, r3	@ movhi
+ 321 003c 9200     		lsls	r2, r2, #2
+ 322 003e 1344     		add	r3, r3, r2
+ 323 0040 5B00     		lsls	r3, r3, #1
+ 324 0042 9AB2     		uxth	r2, r3
+ 325              		.loc 1 100 19
+ 326 0044 97F82C30 		ldrb	r3, [r7, #44]	@ zero_extendqisi2
+ 327 0048 9BB2     		uxth	r3, r3
+ 328              		.loc 1 100 17
+ 329 004a 1344     		add	r3, r3, r2
+ 330 004c 9BB2     		uxth	r3, r3
+ 331              		.loc 1 100 4
+ 332 004e 7B83     		strh	r3, [r7, #26]	@ movhi
+ 101:./basic/structs.c **** 	d1=(a.sig==1)?-d1:d1;
+ 333              		.loc 1 101 7
+ 334 0050 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 335              		.loc 1 101 4
+ 336 0052 012B     		cmp	r3, #1
+ 337 0054 04D1     		bne	.L14
+ 338              		.loc 1 101 4 is_stmt 0 discriminator 1
+ 339 0056 BB8B     		ldrh	r3, [r7, #28]
+ 340 0058 5B42     		rsbs	r3, r3, #0
+ 341 005a 9BB2     		uxth	r3, r3
+ 342 005c 1BB2     		sxth	r3, r3
+ 343 005e 01E0     		b	.L15
+ 344              	.L14:
+ 345              		.loc 1 101 4 discriminator 2
+ 346 0060 B7F91C30 		ldrsh	r3, [r7, #28]
+ 347              	.L15:
+ 348              		.loc 1 101 4 discriminator 4
+ 349 0064 BB83     		strh	r3, [r7, #28]	@ movhi
+ 102:./basic/structs.c **** 	d2=(b.sig==1)?-d2:d2;
+ 350              		.loc 1 102 7 is_stmt 1 discriminator 4
+ 351 0066 97F83030 		ldrb	r3, [r7, #48]	@ zero_extendqisi2
+ 352              		.loc 1 102 4 discriminator 4
+ 353 006a 012B     		cmp	r3, #1
+ 354 006c 04D1     		bne	.L16
+ 355              		.loc 1 102 4 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 9
+
+
+ 356 006e 7B8B     		ldrh	r3, [r7, #26]
+ 357 0070 5B42     		rsbs	r3, r3, #0
+ 358 0072 9BB2     		uxth	r3, r3
+ 359 0074 1BB2     		sxth	r3, r3
+ 360 0076 01E0     		b	.L17
+ 361              	.L16:
+ 362              		.loc 1 102 4 discriminator 2
+ 363 0078 B7F91A30 		ldrsh	r3, [r7, #26]
+ 364              	.L17:
+ 365              		.loc 1 102 4 discriminator 4
+ 366 007c 7B83     		strh	r3, [r7, #26]	@ movhi
+ 103:./basic/structs.c **** 	d3=d1+d2;
+ 367              		.loc 1 103 7 is_stmt 1 discriminator 4
+ 368 007e BA8B     		ldrh	r2, [r7, #28]
+ 369 0080 7B8B     		ldrh	r3, [r7, #26]
+ 370 0082 1344     		add	r3, r3, r2
+ 371 0084 9BB2     		uxth	r3, r3
+ 372              		.loc 1 103 4 discriminator 4
+ 373 0086 FB83     		strh	r3, [r7, #30]	@ movhi
+ 104:./basic/structs.c **** 	c.sig=0;
+ 374              		.loc 1 104 7 discriminator 4
+ 375 0088 0023     		movs	r3, #0
+ 376 008a 3B75     		strb	r3, [r7, #20]
+ 105:./basic/structs.c **** 	if(d3<0)
+ 377              		.loc 1 105 4 discriminator 4
+ 378 008c B7F91E30 		ldrsh	r3, [r7, #30]
+ 379 0090 002B     		cmp	r3, #0
+ 380 0092 05DA     		bge	.L18
+ 106:./basic/structs.c **** 	{
+ 107:./basic/structs.c **** 	 c.sig=1;
+ 381              		.loc 1 107 8
+ 382 0094 0123     		movs	r3, #1
+ 383 0096 3B75     		strb	r3, [r7, #20]
+ 108:./basic/structs.c **** 	 d3*=-1;
+ 384              		.loc 1 108 5
+ 385 0098 FB8B     		ldrh	r3, [r7, #30]
+ 386 009a 5B42     		rsbs	r3, r3, #0
+ 387 009c 9BB2     		uxth	r3, r3
+ 388 009e FB83     		strh	r3, [r7, #30]	@ movhi
+ 389              	.L18:
+ 109:./basic/structs.c **** 	}
+ 110:./basic/structs.c **** 	c.integer=d3/20;
+ 390              		.loc 1 110 11
+ 391 00a0 B7F91E30 		ldrsh	r3, [r7, #30]
+ 392 00a4 124A     		ldr	r2, .L20
+ 393 00a6 82FB0312 		smull	r1, r2, r2, r3
+ 394 00aa D210     		asrs	r2, r2, #3
+ 395 00ac DB17     		asrs	r3, r3, #31
+ 396 00ae D31A     		subs	r3, r2, r3
+ 397 00b0 1BB2     		sxth	r3, r3
+ 398 00b2 9BB2     		uxth	r3, r3
+ 399 00b4 7B82     		strh	r3, [r7, #18]	@ movhi
+ 111:./basic/structs.c **** 	c.decimal=(d3-c.integer*20)/2;
+ 400              		.loc 1 111 15
+ 401 00b6 B7F91E20 		ldrsh	r2, [r7, #30]
+ 402              		.loc 1 111 17
+ 403 00ba 7B8A     		ldrh	r3, [r7, #18]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 10
+
+
+ 404 00bc 1946     		mov	r1, r3
+ 405              		.loc 1 111 25
+ 406 00be 6FF01303 		mvn	r3, #19
+ 407 00c2 01FB03F3 		mul	r3, r1, r3
+ 408              		.loc 1 111 15
+ 409 00c6 1344     		add	r3, r3, r2
+ 410              		.loc 1 111 29
+ 411 00c8 DA0F     		lsrs	r2, r3, #31
+ 412 00ca 1344     		add	r3, r3, r2
+ 413 00cc 5B10     		asrs	r3, r3, #1
+ 414              		.loc 1 111 11
+ 415 00ce DBB2     		uxtb	r3, r3
+ 416 00d0 3B74     		strb	r3, [r7, #16]
+ 112:./basic/structs.c ****    return c;
+ 417              		.loc 1 112 11
+ 418 00d2 FB68     		ldr	r3, [r7, #12]
+ 419 00d4 1A46     		mov	r2, r3
+ 420 00d6 07F11003 		add	r3, r7, #16
+ 421 00da 93E80300 		ldm	r3, {r0, r1}
+ 422 00de 82E80300 		stm	r2, {r0, r1}
+ 113:./basic/structs.c **** }
+ 423              		.loc 1 113 1
+ 424 00e2 F868     		ldr	r0, [r7, #12]
+ 425 00e4 2437     		adds	r7, r7, #36
+ 426              	.LCFI22:
+ 427              		.cfi_def_cfa_offset 12
+ 428 00e6 BD46     		mov	sp, r7
+ 429              	.LCFI23:
+ 430              		.cfi_def_cfa_register 13
+ 431              		@ sp needed
+ 432 00e8 80BC     		pop	{r7}
+ 433              	.LCFI24:
+ 434              		.cfi_restore 7
+ 435              		.cfi_def_cfa_offset 8
+ 436 00ea 02B0     		add	sp, sp, #8
+ 437              	.LCFI25:
+ 438              		.cfi_def_cfa_offset 0
+ 439 00ec 7047     		bx	lr
+ 440              	.L21:
+ 441 00ee 00BF     		.align	2
+ 442              	.L20:
+ 443 00f0 67666666 		.word	1717986919
+ 444              		.cfi_endproc
+ 445              	.LFE36:
+ 447              		.section	.text.cmp_real,"ax",%progbits
+ 448              		.align	1
+ 449              		.global	cmp_real
+ 450              		.syntax unified
+ 451              		.thumb
+ 452              		.thumb_func
+ 454              	cmp_real:
+ 455              	.LFB37:
+ 114:./basic/structs.c **** //-------------------------------------------------------------------------------------------------
+ 115:./basic/structs.c **** /**
+ 116:./basic/structs.c ****  * @brief  compares between two real numbers
+ 117:./basic/structs.c ****  * @details this method allow to compare two real_t numbers instead of using float type
+ 118:./basic/structs.c ****  * 			 more convenient solution for low-performance old avr microcontrollers  			 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 11
+
+
+ 119:./basic/structs.c ****  * @param  a  first real number
+ 120:./basic/structs.c ****  * @param  b  second real number
+ 121:./basic/structs.c ****  * @retval 0  a == b 
+ 122:./basic/structs.c ****  * @retval 1  a >  b 
+ 123:./basic/structs.c ****  * @retval 2  a < b 
+ 124:./basic/structs.c ****  * @return real_t 
+ 125:./basic/structs.c ****  */
+ 126:./basic/structs.c **** uint8_t cmp_real(real_t a,real_t b)
+ 127:./basic/structs.c **** {
+ 456              		.loc 1 127 1
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 24
+ 459              		@ frame_needed = 1, uses_anonymous_args = 0
+ 460              		@ link register save eliminated.
+ 461 0000 90B4     		push	{r4, r7}
+ 462              	.LCFI26:
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 4, -8
+ 465              		.cfi_offset 7, -4
+ 466 0002 86B0     		sub	sp, sp, #24
+ 467              	.LCFI27:
+ 468              		.cfi_def_cfa_offset 32
+ 469 0004 00AF     		add	r7, sp, #0
+ 470              	.LCFI28:
+ 471              		.cfi_def_cfa_register 7
+ 472 0006 07F10804 		add	r4, r7, #8
+ 473 000a 84E80300 		stm	r4, {r0, r1}
+ 474 000e 3946     		mov	r1, r7
+ 475 0010 81E80C00 		stm	r1, {r2, r3}
+ 128:./basic/structs.c **** int16_t d1=0,d2=0;
+ 476              		.loc 1 128 9
+ 477 0014 0023     		movs	r3, #0
+ 478 0016 FB82     		strh	r3, [r7, #22]	@ movhi
+ 479              		.loc 1 128 14
+ 480 0018 0023     		movs	r3, #0
+ 481 001a BB82     		strh	r3, [r7, #20]	@ movhi
+ 129:./basic/structs.c **** d1=a.integer*10+a.decimal;
+ 482              		.loc 1 129 5
+ 483 001c 7B89     		ldrh	r3, [r7, #10]
+ 484              		.loc 1 129 16
+ 485 001e 1A46     		mov	r2, r3	@ movhi
+ 486 0020 9200     		lsls	r2, r2, #2
+ 487 0022 1344     		add	r3, r3, r2
+ 488 0024 5B00     		lsls	r3, r3, #1
+ 489 0026 9AB2     		uxth	r2, r3
+ 490              		.loc 1 129 18
+ 491 0028 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 492 002a 9BB2     		uxth	r3, r3
+ 493              		.loc 1 129 16
+ 494 002c 1344     		add	r3, r3, r2
+ 495 002e 9BB2     		uxth	r3, r3
+ 496              		.loc 1 129 3
+ 497 0030 FB82     		strh	r3, [r7, #22]	@ movhi
+ 130:./basic/structs.c **** d2=b.integer*10+b.decimal;
+ 498              		.loc 1 130 5
+ 499 0032 7B88     		ldrh	r3, [r7, #2]
+ 500              		.loc 1 130 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 12
+
+
+ 501 0034 1A46     		mov	r2, r3	@ movhi
+ 502 0036 9200     		lsls	r2, r2, #2
+ 503 0038 1344     		add	r3, r3, r2
+ 504 003a 5B00     		lsls	r3, r3, #1
+ 505 003c 9AB2     		uxth	r2, r3
+ 506              		.loc 1 130 18
+ 507 003e 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+ 508 0040 9BB2     		uxth	r3, r3
+ 509              		.loc 1 130 16
+ 510 0042 1344     		add	r3, r3, r2
+ 511 0044 9BB2     		uxth	r3, r3
+ 512              		.loc 1 130 3
+ 513 0046 BB82     		strh	r3, [r7, #20]	@ movhi
+ 131:./basic/structs.c **** d1=(a.sig==1)?-d1:d1;
+ 514              		.loc 1 131 6
+ 515 0048 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 516              		.loc 1 131 3
+ 517 004a 012B     		cmp	r3, #1
+ 518 004c 04D1     		bne	.L23
+ 519              		.loc 1 131 3 is_stmt 0 discriminator 1
+ 520 004e FB8A     		ldrh	r3, [r7, #22]
+ 521 0050 5B42     		rsbs	r3, r3, #0
+ 522 0052 9BB2     		uxth	r3, r3
+ 523 0054 1BB2     		sxth	r3, r3
+ 524 0056 01E0     		b	.L24
+ 525              	.L23:
+ 526              		.loc 1 131 3 discriminator 2
+ 527 0058 B7F91630 		ldrsh	r3, [r7, #22]
+ 528              	.L24:
+ 529              		.loc 1 131 3 discriminator 4
+ 530 005c FB82     		strh	r3, [r7, #22]	@ movhi
+ 132:./basic/structs.c **** d2=(b.sig==1)?-d2:d2;
+ 531              		.loc 1 132 6 is_stmt 1 discriminator 4
+ 532 005e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 533              		.loc 1 132 3 discriminator 4
+ 534 0060 012B     		cmp	r3, #1
+ 535 0062 04D1     		bne	.L25
+ 536              		.loc 1 132 3 is_stmt 0 discriminator 1
+ 537 0064 BB8A     		ldrh	r3, [r7, #20]
+ 538 0066 5B42     		rsbs	r3, r3, #0
+ 539 0068 9BB2     		uxth	r3, r3
+ 540 006a 1BB2     		sxth	r3, r3
+ 541 006c 01E0     		b	.L26
+ 542              	.L25:
+ 543              		.loc 1 132 3 discriminator 2
+ 544 006e B7F91430 		ldrsh	r3, [r7, #20]
+ 545              	.L26:
+ 546              		.loc 1 132 3 discriminator 4
+ 547 0072 BB82     		strh	r3, [r7, #20]	@ movhi
+ 133:./basic/structs.c ****  if(d1>d2)
+ 548              		.loc 1 133 4 is_stmt 1 discriminator 4
+ 549 0074 B7F91620 		ldrsh	r2, [r7, #22]
+ 550 0078 B7F91430 		ldrsh	r3, [r7, #20]
+ 551 007c 9A42     		cmp	r2, r3
+ 552 007e 01DD     		ble	.L27
+ 134:./basic/structs.c ****   return 1;
+ 553              		.loc 1 134 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 13
+
+
+ 554 0080 0123     		movs	r3, #1
+ 555 0082 08E0     		b	.L28
+ 556              	.L27:
+ 135:./basic/structs.c ****  if(d1<d2)
+ 557              		.loc 1 135 4
+ 558 0084 B7F91620 		ldrsh	r2, [r7, #22]
+ 559 0088 B7F91430 		ldrsh	r3, [r7, #20]
+ 560 008c 9A42     		cmp	r2, r3
+ 561 008e 01DA     		bge	.L29
+ 136:./basic/structs.c ****   return 2;
+ 562              		.loc 1 136 10
+ 563 0090 0223     		movs	r3, #2
+ 564 0092 00E0     		b	.L28
+ 565              	.L29:
+ 137:./basic/structs.c ****  
+ 138:./basic/structs.c ****  return 0;
+ 566              		.loc 1 138 9
+ 567 0094 0023     		movs	r3, #0
+ 568              	.L28:
+ 139:./basic/structs.c ****  
+ 140:./basic/structs.c **** }
+ 569              		.loc 1 140 1
+ 570 0096 1846     		mov	r0, r3
+ 571 0098 1837     		adds	r7, r7, #24
+ 572              	.LCFI29:
+ 573              		.cfi_def_cfa_offset 8
+ 574 009a BD46     		mov	sp, r7
+ 575              	.LCFI30:
+ 576              		.cfi_def_cfa_register 13
+ 577              		@ sp needed
+ 578 009c 90BC     		pop	{r4, r7}
+ 579              	.LCFI31:
+ 580              		.cfi_restore 7
+ 581              		.cfi_restore 4
+ 582              		.cfi_def_cfa_offset 0
+ 583 009e 7047     		bx	lr
+ 584              		.cfi_endproc
+ 585              	.LFE37:
+ 587              		.section	.text.add_real,"ax",%progbits
+ 588              		.align	1
+ 589              		.global	add_real
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 594              	add_real:
+ 595              	.LFB38:
+ 141:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 142:./basic/structs.c **** /**
+ 143:./basic/structs.c ****  * @brief    calculates the addition of two real numbers
+ 144:./basic/structs.c ****  * @details  this method allow to add two real_t numbers instead of using float type
+ 145:./basic/structs.c ****  * 			 more convenient solution for low-performance old avr microcontrollers
+ 146:./basic/structs.c ****  * @param a  first real number
+ 147:./basic/structs.c ****  * @param b  second real number 
+ 148:./basic/structs.c ****  * @return real_t 
+ 149:./basic/structs.c ****  */
+ 150:./basic/structs.c **** real_t add_real(real_t a ,real_t b)
+ 151:./basic/structs.c **** {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 14
+
+
+ 596              		.loc 1 151 1
+ 597              		.cfi_startproc
+ 598              		@ args = 12, pretend = 8, frame = 32
+ 599              		@ frame_needed = 1, uses_anonymous_args = 0
+ 600              		@ link register save eliminated.
+ 601 0000 82B0     		sub	sp, sp, #8
+ 602              	.LCFI32:
+ 603              		.cfi_def_cfa_offset 8
+ 604 0002 80B4     		push	{r7}
+ 605              	.LCFI33:
+ 606              		.cfi_def_cfa_offset 12
+ 607              		.cfi_offset 7, -12
+ 608 0004 89B0     		sub	sp, sp, #36
+ 609              	.LCFI34:
+ 610              		.cfi_def_cfa_offset 48
+ 611 0006 00AF     		add	r7, sp, #0
+ 612              	.LCFI35:
+ 613              		.cfi_def_cfa_register 7
+ 614 0008 F860     		str	r0, [r7, #12]
+ 615 000a 381D     		adds	r0, r7, #4
+ 616 000c 80E80600 		stm	r0, {r1, r2}
+ 617 0010 FB62     		str	r3, [r7, #44]
+ 152:./basic/structs.c **** 	real_t c;
+ 153:./basic/structs.c **** 	c.val=0;
+ 618              		.loc 1 153 7
+ 619 0012 0023     		movs	r3, #0
+ 620 0014 3B61     		str	r3, [r7, #16]
+ 154:./basic/structs.c **** 	int16_t d1=0,d2=0,d3=0;
+ 621              		.loc 1 154 10
+ 622 0016 0023     		movs	r3, #0
+ 623 0018 BB83     		strh	r3, [r7, #28]	@ movhi
+ 624              		.loc 1 154 15
+ 625 001a 0023     		movs	r3, #0
+ 626 001c 7B83     		strh	r3, [r7, #26]	@ movhi
+ 627              		.loc 1 154 20
+ 628 001e 0023     		movs	r3, #0
+ 629 0020 FB83     		strh	r3, [r7, #30]	@ movhi
+ 155:./basic/structs.c **** 	d1=a.integer*10+a.decimal;
+ 630              		.loc 1 155 6
+ 631 0022 FB88     		ldrh	r3, [r7, #6]
+ 632              		.loc 1 155 17
+ 633 0024 1A46     		mov	r2, r3	@ movhi
+ 634 0026 9200     		lsls	r2, r2, #2
+ 635 0028 1344     		add	r3, r3, r2
+ 636 002a 5B00     		lsls	r3, r3, #1
+ 637 002c 9AB2     		uxth	r2, r3
+ 638              		.loc 1 155 19
+ 639 002e 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 640 0030 9BB2     		uxth	r3, r3
+ 641              		.loc 1 155 17
+ 642 0032 1344     		add	r3, r3, r2
+ 643 0034 9BB2     		uxth	r3, r3
+ 644              		.loc 1 155 4
+ 645 0036 BB83     		strh	r3, [r7, #28]	@ movhi
+ 156:./basic/structs.c **** 	d2=b.integer*10+b.decimal;
+ 646              		.loc 1 156 6
+ 647 0038 FB8D     		ldrh	r3, [r7, #46]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 15
+
+
+ 648              		.loc 1 156 17
+ 649 003a 1A46     		mov	r2, r3	@ movhi
+ 650 003c 9200     		lsls	r2, r2, #2
+ 651 003e 1344     		add	r3, r3, r2
+ 652 0040 5B00     		lsls	r3, r3, #1
+ 653 0042 9AB2     		uxth	r2, r3
+ 654              		.loc 1 156 19
+ 655 0044 97F82C30 		ldrb	r3, [r7, #44]	@ zero_extendqisi2
+ 656 0048 9BB2     		uxth	r3, r3
+ 657              		.loc 1 156 17
+ 658 004a 1344     		add	r3, r3, r2
+ 659 004c 9BB2     		uxth	r3, r3
+ 660              		.loc 1 156 4
+ 661 004e 7B83     		strh	r3, [r7, #26]	@ movhi
+ 157:./basic/structs.c **** 	d1=(a.sig==1)?-d1:d1;
+ 662              		.loc 1 157 7
+ 663 0050 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 664              		.loc 1 157 4
+ 665 0052 012B     		cmp	r3, #1
+ 666 0054 04D1     		bne	.L31
+ 667              		.loc 1 157 4 is_stmt 0 discriminator 1
+ 668 0056 BB8B     		ldrh	r3, [r7, #28]
+ 669 0058 5B42     		rsbs	r3, r3, #0
+ 670 005a 9BB2     		uxth	r3, r3
+ 671 005c 1BB2     		sxth	r3, r3
+ 672 005e 01E0     		b	.L32
+ 673              	.L31:
+ 674              		.loc 1 157 4 discriminator 2
+ 675 0060 B7F91C30 		ldrsh	r3, [r7, #28]
+ 676              	.L32:
+ 677              		.loc 1 157 4 discriminator 4
+ 678 0064 BB83     		strh	r3, [r7, #28]	@ movhi
+ 158:./basic/structs.c **** 	d2=(b.sig==1)?-d2:d2;
+ 679              		.loc 1 158 7 is_stmt 1 discriminator 4
+ 680 0066 97F83030 		ldrb	r3, [r7, #48]	@ zero_extendqisi2
+ 681              		.loc 1 158 4 discriminator 4
+ 682 006a 012B     		cmp	r3, #1
+ 683 006c 04D1     		bne	.L33
+ 684              		.loc 1 158 4 is_stmt 0 discriminator 1
+ 685 006e 7B8B     		ldrh	r3, [r7, #26]
+ 686 0070 5B42     		rsbs	r3, r3, #0
+ 687 0072 9BB2     		uxth	r3, r3
+ 688 0074 1BB2     		sxth	r3, r3
+ 689 0076 01E0     		b	.L34
+ 690              	.L33:
+ 691              		.loc 1 158 4 discriminator 2
+ 692 0078 B7F91A30 		ldrsh	r3, [r7, #26]
+ 693              	.L34:
+ 694              		.loc 1 158 4 discriminator 4
+ 695 007c 7B83     		strh	r3, [r7, #26]	@ movhi
+ 159:./basic/structs.c **** 	d3=d1+d2;
+ 696              		.loc 1 159 7 is_stmt 1 discriminator 4
+ 697 007e BA8B     		ldrh	r2, [r7, #28]
+ 698 0080 7B8B     		ldrh	r3, [r7, #26]
+ 699 0082 1344     		add	r3, r3, r2
+ 700 0084 9BB2     		uxth	r3, r3
+ 701              		.loc 1 159 4 discriminator 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 16
+
+
+ 702 0086 FB83     		strh	r3, [r7, #30]	@ movhi
+ 160:./basic/structs.c **** 	c.sig=0;
+ 703              		.loc 1 160 7 discriminator 4
+ 704 0088 0023     		movs	r3, #0
+ 705 008a 3B75     		strb	r3, [r7, #20]
+ 161:./basic/structs.c **** 	if(d3<0)
+ 706              		.loc 1 161 4 discriminator 4
+ 707 008c B7F91E30 		ldrsh	r3, [r7, #30]
+ 708 0090 002B     		cmp	r3, #0
+ 709 0092 05DA     		bge	.L35
+ 162:./basic/structs.c **** 	{
+ 163:./basic/structs.c **** 	 c.sig=1;
+ 710              		.loc 1 163 8
+ 711 0094 0123     		movs	r3, #1
+ 712 0096 3B75     		strb	r3, [r7, #20]
+ 164:./basic/structs.c **** 	 d3*=-1;
+ 713              		.loc 1 164 5
+ 714 0098 FB8B     		ldrh	r3, [r7, #30]
+ 715 009a 5B42     		rsbs	r3, r3, #0
+ 716 009c 9BB2     		uxth	r3, r3
+ 717 009e FB83     		strh	r3, [r7, #30]	@ movhi
+ 718              	.L35:
+ 165:./basic/structs.c **** 	}
+ 166:./basic/structs.c **** 	c.integer=d3/10;
+ 719              		.loc 1 166 11
+ 720 00a0 B7F91E30 		ldrsh	r3, [r7, #30]
+ 721 00a4 134A     		ldr	r2, .L37
+ 722 00a6 82FB0312 		smull	r1, r2, r2, r3
+ 723 00aa 9210     		asrs	r2, r2, #2
+ 724 00ac DB17     		asrs	r3, r3, #31
+ 725 00ae D31A     		subs	r3, r2, r3
+ 726 00b0 1BB2     		sxth	r3, r3
+ 727 00b2 9BB2     		uxth	r3, r3
+ 728 00b4 7B82     		strh	r3, [r7, #18]	@ movhi
+ 167:./basic/structs.c **** 	c.decimal=d3%10;
+ 729              		.loc 1 167 11
+ 730 00b6 B7F91E20 		ldrsh	r2, [r7, #30]
+ 731 00ba 0E4B     		ldr	r3, .L37
+ 732 00bc 83FB0213 		smull	r1, r3, r3, r2
+ 733 00c0 9910     		asrs	r1, r3, #2
+ 734 00c2 D317     		asrs	r3, r2, #31
+ 735 00c4 C91A     		subs	r1, r1, r3
+ 736 00c6 0B46     		mov	r3, r1
+ 737 00c8 9B00     		lsls	r3, r3, #2
+ 738 00ca 0B44     		add	r3, r3, r1
+ 739 00cc 5B00     		lsls	r3, r3, #1
+ 740 00ce D31A     		subs	r3, r2, r3
+ 741 00d0 1BB2     		sxth	r3, r3
+ 742 00d2 DBB2     		uxtb	r3, r3
+ 743 00d4 3B74     		strb	r3, [r7, #16]
+ 168:./basic/structs.c **** 	return c;
+ 744              		.loc 1 168 9
+ 745 00d6 FB68     		ldr	r3, [r7, #12]
+ 746 00d8 1A46     		mov	r2, r3
+ 747 00da 07F11003 		add	r3, r7, #16
+ 748 00de 93E80300 		ldm	r3, {r0, r1}
+ 749 00e2 82E80300 		stm	r2, {r0, r1}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 17
+
+
+ 169:./basic/structs.c **** }
+ 750              		.loc 1 169 1
+ 751 00e6 F868     		ldr	r0, [r7, #12]
+ 752 00e8 2437     		adds	r7, r7, #36
+ 753              	.LCFI36:
+ 754              		.cfi_def_cfa_offset 12
+ 755 00ea BD46     		mov	sp, r7
+ 756              	.LCFI37:
+ 757              		.cfi_def_cfa_register 13
+ 758              		@ sp needed
+ 759 00ec 80BC     		pop	{r7}
+ 760              	.LCFI38:
+ 761              		.cfi_restore 7
+ 762              		.cfi_def_cfa_offset 8
+ 763 00ee 02B0     		add	sp, sp, #8
+ 764              	.LCFI39:
+ 765              		.cfi_def_cfa_offset 0
+ 766 00f0 7047     		bx	lr
+ 767              	.L38:
+ 768 00f2 00BF     		.align	2
+ 769              	.L37:
+ 770 00f4 67666666 		.word	1717986919
+ 771              		.cfi_endproc
+ 772              	.LFE38:
+ 774              		.section	.text.sub_real,"ax",%progbits
+ 775              		.align	1
+ 776              		.global	sub_real
+ 777              		.syntax unified
+ 778              		.thumb
+ 779              		.thumb_func
+ 781              	sub_real:
+ 782              	.LFB39:
+ 170:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 171:./basic/structs.c **** /**
+ 172:./basic/structs.c ****  * @brief    calculates the subtraction of two real numbers
+ 173:./basic/structs.c ****  * @details  this method allows to substract two real_t numbers instead of using float type
+ 174:./basic/structs.c ****  * 			 more convenient solution for low-performance old avr microcontrollers
+ 175:./basic/structs.c ****  * @param a  first real number
+ 176:./basic/structs.c ****  * @param b  second real number 
+ 177:./basic/structs.c ****  * @return real_t 
+ 178:./basic/structs.c ****  */
+ 179:./basic/structs.c **** real_t sub_real(real_t a ,real_t b)
+ 180:./basic/structs.c **** {
+ 783              		.loc 1 180 1
+ 784              		.cfi_startproc
+ 785              		@ args = 12, pretend = 8, frame = 16
+ 786              		@ frame_needed = 1, uses_anonymous_args = 0
+ 787 0000 82B0     		sub	sp, sp, #8
+ 788              	.LCFI40:
+ 789              		.cfi_def_cfa_offset 8
+ 790 0002 80B5     		push	{r7, lr}
+ 791              	.LCFI41:
+ 792              		.cfi_def_cfa_offset 16
+ 793              		.cfi_offset 7, -16
+ 794              		.cfi_offset 14, -12
+ 795 0004 86B0     		sub	sp, sp, #24
+ 796              	.LCFI42:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 18
+
+
+ 797              		.cfi_def_cfa_offset 40
+ 798 0006 02AF     		add	r7, sp, #8
+ 799              	.LCFI43:
+ 800              		.cfi_def_cfa 7, 32
+ 801 0008 F860     		str	r0, [r7, #12]
+ 802 000a 381D     		adds	r0, r7, #4
+ 803 000c 80E80600 		stm	r0, {r1, r2}
+ 804 0010 FB61     		str	r3, [r7, #28]
+ 181:./basic/structs.c **** 	//b.integer=0-b.integer;
+ 182:./basic/structs.c **** 	b.sig=1;
+ 805              		.loc 1 182 7
+ 806 0012 0123     		movs	r3, #1
+ 807 0014 87F82030 		strb	r3, [r7, #32]
+ 183:./basic/structs.c **** 	return add_real(a,b);
+ 808              		.loc 1 183 9
+ 809 0018 F868     		ldr	r0, [r7, #12]
+ 810 001a 3B6A     		ldr	r3, [r7, #32]
+ 811 001c 0093     		str	r3, [sp]
+ 812 001e FB69     		ldr	r3, [r7, #28]
+ 813 0020 3A1D     		adds	r2, r7, #4
+ 814 0022 06CA     		ldm	r2, {r1, r2}
+ 815 0024 FFF7FEFF 		bl	add_real
+ 184:./basic/structs.c **** }
+ 816              		.loc 1 184 1
+ 817 0028 F868     		ldr	r0, [r7, #12]
+ 818 002a 1037     		adds	r7, r7, #16
+ 819              	.LCFI44:
+ 820              		.cfi_def_cfa_offset 16
+ 821 002c BD46     		mov	sp, r7
+ 822              	.LCFI45:
+ 823              		.cfi_def_cfa_register 13
+ 824              		@ sp needed
+ 825 002e BDE88040 		pop	{r7, lr}
+ 826              	.LCFI46:
+ 827              		.cfi_restore 14
+ 828              		.cfi_restore 7
+ 829              		.cfi_def_cfa_offset 8
+ 830 0032 02B0     		add	sp, sp, #8
+ 831              	.LCFI47:
+ 832              		.cfi_def_cfa_offset 0
+ 833 0034 7047     		bx	lr
+ 834              		.cfi_endproc
+ 835              	.LFE39:
+ 837              		.section	.text.inc_real,"ax",%progbits
+ 838              		.align	1
+ 839              		.global	inc_real
+ 840              		.syntax unified
+ 841              		.thumb
+ 842              		.thumb_func
+ 844              	inc_real:
+ 845              	.LFB40:
+ 185:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 186:./basic/structs.c **** /**
+ 187:./basic/structs.c ****  * @brief      increments a real number
+ 188:./basic/structs.c ****  * @details    this method allows to increment an real_t number instead of using float type
+ 189:./basic/structs.c ****  * 			   more convenient solution for low-performance old avr microcontrollers
+ 190:./basic/structs.c ****  * @param ptr  a pointer to  real number (pass by reference)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 19
+
+
+ 191:./basic/structs.c ****  * @return real_t 
+ 192:./basic/structs.c ****  */
+ 193:./basic/structs.c **** void inc_real(real_t * ptr)
+ 194:./basic/structs.c **** {
+ 846              		.loc 1 194 1
+ 847              		.cfi_startproc
+ 848              		@ args = 0, pretend = 0, frame = 24
+ 849              		@ frame_needed = 1, uses_anonymous_args = 0
+ 850 0000 90B5     		push	{r4, r7, lr}
+ 851              	.LCFI48:
+ 852              		.cfi_def_cfa_offset 12
+ 853              		.cfi_offset 4, -12
+ 854              		.cfi_offset 7, -8
+ 855              		.cfi_offset 14, -4
+ 856 0002 89B0     		sub	sp, sp, #36
+ 857              	.LCFI49:
+ 858              		.cfi_def_cfa_offset 48
+ 859 0004 02AF     		add	r7, sp, #8
+ 860              	.LCFI50:
+ 861              		.cfi_def_cfa 7, 40
+ 862 0006 F860     		str	r0, [r7, #12]
+ 195:./basic/structs.c **** 	real_t a;
+ 196:./basic/structs.c **** 	a.val=0;	
+ 863              		.loc 1 196 7
+ 864 0008 0023     		movs	r3, #0
+ 865 000a 3B61     		str	r3, [r7, #16]
+ 197:./basic/structs.c **** 	a.decimal=1;
+ 866              		.loc 1 197 11
+ 867 000c 0123     		movs	r3, #1
+ 868 000e 3B74     		strb	r3, [r7, #16]
+ 198:./basic/structs.c **** 	*ptr=add_real((real_t)*ptr,a);
+ 869              		.loc 1 198 7
+ 870 0010 FC68     		ldr	r4, [r7, #12]
+ 871 0012 3846     		mov	r0, r7
+ 872 0014 FA68     		ldr	r2, [r7, #12]
+ 873 0016 7B69     		ldr	r3, [r7, #20]
+ 874 0018 0093     		str	r3, [sp]
+ 875 001a 3B69     		ldr	r3, [r7, #16]
+ 876 001c 06CA     		ldm	r2, {r1, r2}
+ 877 001e FFF7FEFF 		bl	add_real
+ 878 0022 2246     		mov	r2, r4
+ 879 0024 3B46     		mov	r3, r7
+ 880 0026 93E80300 		ldm	r3, {r0, r1}
+ 881 002a 82E80300 		stm	r2, {r0, r1}
+ 199:./basic/structs.c **** 
+ 200:./basic/structs.c **** }
+ 882              		.loc 1 200 1
+ 883 002e 00BF     		nop
+ 884 0030 1C37     		adds	r7, r7, #28
+ 885              	.LCFI51:
+ 886              		.cfi_def_cfa_offset 12
+ 887 0032 BD46     		mov	sp, r7
+ 888              	.LCFI52:
+ 889              		.cfi_def_cfa_register 13
+ 890              		@ sp needed
+ 891 0034 90BD     		pop	{r4, r7, pc}
+ 892              		.cfi_endproc
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 20
+
+
+ 893              	.LFE40:
+ 895              		.section	.text.dec_real,"ax",%progbits
+ 896              		.align	1
+ 897              		.global	dec_real
+ 898              		.syntax unified
+ 899              		.thumb
+ 900              		.thumb_func
+ 902              	dec_real:
+ 903              	.LFB41:
+ 201:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 202:./basic/structs.c **** /**
+ 203:./basic/structs.c ****  * @brief    decrements a real number
+ 204:./basic/structs.c ****  * @details  this method allows to decrement an real_t number instead of using float type
+ 205:./basic/structs.c ****  * 			 more convenient solution for low-performance old avr microcontrollers
+ 206:./basic/structs.c ****  * @param ptr  a pointer to  real number (pass by reference)
+ 207:./basic/structs.c ****  
+ 208:./basic/structs.c ****  * @return real_t 
+ 209:./basic/structs.c ****  */
+ 210:./basic/structs.c **** void dec_real(real_t * ptr)
+ 211:./basic/structs.c **** {
+ 904              		.loc 1 211 1
+ 905              		.cfi_startproc
+ 906              		@ args = 0, pretend = 0, frame = 24
+ 907              		@ frame_needed = 1, uses_anonymous_args = 0
+ 908 0000 90B5     		push	{r4, r7, lr}
+ 909              	.LCFI53:
+ 910              		.cfi_def_cfa_offset 12
+ 911              		.cfi_offset 4, -12
+ 912              		.cfi_offset 7, -8
+ 913              		.cfi_offset 14, -4
+ 914 0002 89B0     		sub	sp, sp, #36
+ 915              	.LCFI54:
+ 916              		.cfi_def_cfa_offset 48
+ 917 0004 02AF     		add	r7, sp, #8
+ 918              	.LCFI55:
+ 919              		.cfi_def_cfa 7, 40
+ 920 0006 F860     		str	r0, [r7, #12]
+ 212:./basic/structs.c **** real_t a;
+ 213:./basic/structs.c **** a.val=0;
+ 921              		.loc 1 213 6
+ 922 0008 0023     		movs	r3, #0
+ 923 000a 3B61     		str	r3, [r7, #16]
+ 214:./basic/structs.c **** a.decimal=1;
+ 924              		.loc 1 214 10
+ 925 000c 0123     		movs	r3, #1
+ 926 000e 3B74     		strb	r3, [r7, #16]
+ 215:./basic/structs.c **** *ptr=sub_real((real_t)*ptr,a);
+ 927              		.loc 1 215 6
+ 928 0010 FC68     		ldr	r4, [r7, #12]
+ 929 0012 3846     		mov	r0, r7
+ 930 0014 FA68     		ldr	r2, [r7, #12]
+ 931 0016 7B69     		ldr	r3, [r7, #20]
+ 932 0018 0093     		str	r3, [sp]
+ 933 001a 3B69     		ldr	r3, [r7, #16]
+ 934 001c 06CA     		ldm	r2, {r1, r2}
+ 935 001e FFF7FEFF 		bl	sub_real
+ 936 0022 2246     		mov	r2, r4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 21
+
+
+ 937 0024 3B46     		mov	r3, r7
+ 938 0026 93E80300 		ldm	r3, {r0, r1}
+ 939 002a 82E80300 		stm	r2, {r0, r1}
+ 216:./basic/structs.c **** }
+ 940              		.loc 1 216 1
+ 941 002e 00BF     		nop
+ 942 0030 1C37     		adds	r7, r7, #28
+ 943              	.LCFI56:
+ 944              		.cfi_def_cfa_offset 12
+ 945 0032 BD46     		mov	sp, r7
+ 946              	.LCFI57:
+ 947              		.cfi_def_cfa_register 13
+ 948              		@ sp needed
+ 949 0034 90BD     		pop	{r4, r7, pc}
+ 950              		.cfi_endproc
+ 951              	.LFE41:
+ 953              		.section	.text.reverse_byte,"ax",%progbits
+ 954              		.align	1
+ 955              		.global	reverse_byte
+ 956              		.syntax unified
+ 957              		.thumb
+ 958              		.thumb_func
+ 960              	reverse_byte:
+ 961              	.LFB42:
+ 217:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 218:./basic/structs.c **** //********************************************************************************************
+ 219:./basic/structs.c **** //
+ 220:./basic/structs.c **** //  conversion Methods' definitions
+ 221:./basic/structs.c **** //
+ 222:./basic/structs.c **** //********************************************************************************************
+ 223:./basic/structs.c **** /**
+ 224:./basic/structs.c ****  * @brief 	  reverses a data of byte-size length
+ 225:./basic/structs.c ****  * @details   reverses a data of byte size length from big  endigan to little endigan or vice versa
+ 226:./basic/structs.c ****  * @param val the byte data to be reversed
+ 227:./basic/structs.c ****  * @return uint8_t 
+ 228:./basic/structs.c ****  */
+ 229:./basic/structs.c **** uint8_t reverse_byte(uint8_t val)
+ 230:./basic/structs.c **** {
+ 962              		.loc 1 230 1
+ 963              		.cfi_startproc
+ 964              		@ args = 0, pretend = 0, frame = 16
+ 965              		@ frame_needed = 1, uses_anonymous_args = 0
+ 966              		@ link register save eliminated.
+ 967 0000 80B4     		push	{r7}
+ 968              	.LCFI58:
+ 969              		.cfi_def_cfa_offset 4
+ 970              		.cfi_offset 7, -4
+ 971 0002 85B0     		sub	sp, sp, #20
+ 972              	.LCFI59:
+ 973              		.cfi_def_cfa_offset 24
+ 974 0004 00AF     		add	r7, sp, #0
+ 975              	.LCFI60:
+ 976              		.cfi_def_cfa_register 7
+ 977 0006 0346     		mov	r3, r0
+ 978 0008 FB71     		strb	r3, [r7, #7]
+ 231:./basic/structs.c **** 	BYTE_BITS byt;
+ 232:./basic/structs.c **** 	Big_BYTE_BITS rv_byt;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 22
+
+
+ 233:./basic/structs.c **** 	byt.byte=val;
+ 979              		.loc 1 233 10
+ 980 000a FB79     		ldrb	r3, [r7, #7]
+ 981 000c 3B73     		strb	r3, [r7, #12]
+ 234:./basic/structs.c **** 	rv_byt.bit0=byt.bit0;
+ 982              		.loc 1 234 17
+ 983 000e 3B7B     		ldrb	r3, [r7, #12]
+ 984 0010 C3F30003 		ubfx	r3, r3, #0, #1
+ 985 0014 DAB2     		uxtb	r2, r3
+ 986              		.loc 1 234 13
+ 987 0016 3B7A     		ldrb	r3, [r7, #8]
+ 988 0018 62F3C713 		bfi	r3, r2, #7, #1
+ 989 001c 3B72     		strb	r3, [r7, #8]
+ 235:./basic/structs.c **** 	rv_byt.bit1=byt.bit1;
+ 990              		.loc 1 235 17
+ 991 001e 3B7B     		ldrb	r3, [r7, #12]
+ 992 0020 C3F34003 		ubfx	r3, r3, #1, #1
+ 993 0024 DAB2     		uxtb	r2, r3
+ 994              		.loc 1 235 13
+ 995 0026 3B7A     		ldrb	r3, [r7, #8]
+ 996 0028 62F38613 		bfi	r3, r2, #6, #1
+ 997 002c 3B72     		strb	r3, [r7, #8]
+ 236:./basic/structs.c **** 	rv_byt.bit2=byt.bit2;
+ 998              		.loc 1 236 17
+ 999 002e 3B7B     		ldrb	r3, [r7, #12]
+ 1000 0030 C3F38003 		ubfx	r3, r3, #2, #1
+ 1001 0034 DAB2     		uxtb	r2, r3
+ 1002              		.loc 1 236 13
+ 1003 0036 3B7A     		ldrb	r3, [r7, #8]
+ 1004 0038 62F34513 		bfi	r3, r2, #5, #1
+ 1005 003c 3B72     		strb	r3, [r7, #8]
+ 237:./basic/structs.c **** 	rv_byt.bit3=byt.bit3;
+ 1006              		.loc 1 237 17
+ 1007 003e 3B7B     		ldrb	r3, [r7, #12]
+ 1008 0040 C3F3C003 		ubfx	r3, r3, #3, #1
+ 1009 0044 DAB2     		uxtb	r2, r3
+ 1010              		.loc 1 237 13
+ 1011 0046 3B7A     		ldrb	r3, [r7, #8]
+ 1012 0048 62F30413 		bfi	r3, r2, #4, #1
+ 1013 004c 3B72     		strb	r3, [r7, #8]
+ 238:./basic/structs.c **** 	rv_byt.bit4=byt.bit4;
+ 1014              		.loc 1 238 17
+ 1015 004e 3B7B     		ldrb	r3, [r7, #12]
+ 1016 0050 C3F30013 		ubfx	r3, r3, #4, #1
+ 1017 0054 DAB2     		uxtb	r2, r3
+ 1018              		.loc 1 238 13
+ 1019 0056 3B7A     		ldrb	r3, [r7, #8]
+ 1020 0058 62F3C303 		bfi	r3, r2, #3, #1
+ 1021 005c 3B72     		strb	r3, [r7, #8]
+ 239:./basic/structs.c **** 	rv_byt.bit5=byt.bit5;
+ 1022              		.loc 1 239 17
+ 1023 005e 3B7B     		ldrb	r3, [r7, #12]
+ 1024 0060 C3F34013 		ubfx	r3, r3, #5, #1
+ 1025 0064 DAB2     		uxtb	r2, r3
+ 1026              		.loc 1 239 13
+ 1027 0066 3B7A     		ldrb	r3, [r7, #8]
+ 1028 0068 62F38203 		bfi	r3, r2, #2, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 23
+
+
+ 1029 006c 3B72     		strb	r3, [r7, #8]
+ 240:./basic/structs.c **** 	rv_byt.bit6=byt.bit6;
+ 1030              		.loc 1 240 17
+ 1031 006e 3B7B     		ldrb	r3, [r7, #12]
+ 1032 0070 C3F38013 		ubfx	r3, r3, #6, #1
+ 1033 0074 DAB2     		uxtb	r2, r3
+ 1034              		.loc 1 240 13
+ 1035 0076 3B7A     		ldrb	r3, [r7, #8]
+ 1036 0078 62F34103 		bfi	r3, r2, #1, #1
+ 1037 007c 3B72     		strb	r3, [r7, #8]
+ 241:./basic/structs.c **** 	rv_byt.bit7=byt.bit7;
+ 1038              		.loc 1 241 17
+ 1039 007e 3B7B     		ldrb	r3, [r7, #12]
+ 1040 0080 C3F3C013 		ubfx	r3, r3, #7, #1
+ 1041 0084 DAB2     		uxtb	r2, r3
+ 1042              		.loc 1 241 13
+ 1043 0086 3B7A     		ldrb	r3, [r7, #8]
+ 1044 0088 62F30003 		bfi	r3, r2, #0, #1
+ 1045 008c 3B72     		strb	r3, [r7, #8]
+ 242:./basic/structs.c **** 	return rv_byt.byte;
+ 1046              		.loc 1 242 15
+ 1047 008e 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 243:./basic/structs.c **** }
+ 1048              		.loc 1 243 1
+ 1049 0090 1846     		mov	r0, r3
+ 1050 0092 1437     		adds	r7, r7, #20
+ 1051              	.LCFI61:
+ 1052              		.cfi_def_cfa_offset 4
+ 1053 0094 BD46     		mov	sp, r7
+ 1054              	.LCFI62:
+ 1055              		.cfi_def_cfa_register 13
+ 1056              		@ sp needed
+ 1057 0096 80BC     		pop	{r7}
+ 1058              	.LCFI63:
+ 1059              		.cfi_restore 7
+ 1060              		.cfi_def_cfa_offset 0
+ 1061 0098 7047     		bx	lr
+ 1062              		.cfi_endproc
+ 1063              	.LFE42:
+ 1065              		.section	.text.reverse_word,"ax",%progbits
+ 1066              		.align	1
+ 1067              		.global	reverse_word
+ 1068              		.syntax unified
+ 1069              		.thumb
+ 1070              		.thumb_func
+ 1072              	reverse_word:
+ 1073              	.LFB43:
+ 244:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 245:./basic/structs.c **** /**
+ 246:./basic/structs.c ****  * @brief 	  reverses a data of word-size length
+ 247:./basic/structs.c ****  * @details   reverses a data of word size length from big  endigan to little endigan or vice versa
+ 248:./basic/structs.c ****  * @param val the byte data to be reversed
+ 249:./basic/structs.c ****  * @return uint8_t 
+ 250:./basic/structs.c ****  */
+ 251:./basic/structs.c **** uint16_t reverse_word(uint16_t val)
+ 252:./basic/structs.c **** {
+ 1074              		.loc 1 252 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 24
+
+
+ 1075              		.cfi_startproc
+ 1076              		@ args = 0, pretend = 0, frame = 16
+ 1077              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1078              		@ link register save eliminated.
+ 1079 0000 80B4     		push	{r7}
+ 1080              	.LCFI64:
+ 1081              		.cfi_def_cfa_offset 4
+ 1082              		.cfi_offset 7, -4
+ 1083 0002 85B0     		sub	sp, sp, #20
+ 1084              	.LCFI65:
+ 1085              		.cfi_def_cfa_offset 24
+ 1086 0004 00AF     		add	r7, sp, #0
+ 1087              	.LCFI66:
+ 1088              		.cfi_def_cfa_register 7
+ 1089 0006 0346     		mov	r3, r0
+ 1090 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 253:./basic/structs.c **** 	WORD_BYTES byt;
+ 254:./basic/structs.c **** 	Big_WORD_BYTES rv_byt;
+ 255:./basic/structs.c **** 	byt.word=val;
+ 1091              		.loc 1 255 10
+ 1092 000a FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 1093 000c BB81     		strh	r3, [r7, #12]	@ movhi
+ 256:./basic/structs.c **** 	rv_byt.bits.bit0=byt.bits.bit0;
+ 1094              		.loc 1 256 27
+ 1095 000e 3B7B     		ldrb	r3, [r7, #12]
+ 1096 0010 C3F30003 		ubfx	r3, r3, #0, #1
+ 1097 0014 DAB2     		uxtb	r2, r3
+ 1098              		.loc 1 256 18
+ 1099 0016 7B7A     		ldrb	r3, [r7, #9]
+ 1100 0018 62F3C713 		bfi	r3, r2, #7, #1
+ 1101 001c 7B72     		strb	r3, [r7, #9]
+ 257:./basic/structs.c **** 	rv_byt.bits.bit1=byt.bits.bit1;
+ 1102              		.loc 1 257 27
+ 1103 001e 3B7B     		ldrb	r3, [r7, #12]
+ 1104 0020 C3F34003 		ubfx	r3, r3, #1, #1
+ 1105 0024 DAB2     		uxtb	r2, r3
+ 1106              		.loc 1 257 18
+ 1107 0026 7B7A     		ldrb	r3, [r7, #9]
+ 1108 0028 62F38613 		bfi	r3, r2, #6, #1
+ 1109 002c 7B72     		strb	r3, [r7, #9]
+ 258:./basic/structs.c **** 	rv_byt.bits.bit2=byt.bits.bit2;
+ 1110              		.loc 1 258 27
+ 1111 002e 3B7B     		ldrb	r3, [r7, #12]
+ 1112 0030 C3F38003 		ubfx	r3, r3, #2, #1
+ 1113 0034 DAB2     		uxtb	r2, r3
+ 1114              		.loc 1 258 18
+ 1115 0036 7B7A     		ldrb	r3, [r7, #9]
+ 1116 0038 62F34513 		bfi	r3, r2, #5, #1
+ 1117 003c 7B72     		strb	r3, [r7, #9]
+ 259:./basic/structs.c **** 	rv_byt.bits.bit3=byt.bits.bit3;
+ 1118              		.loc 1 259 27
+ 1119 003e 3B7B     		ldrb	r3, [r7, #12]
+ 1120 0040 C3F3C003 		ubfx	r3, r3, #3, #1
+ 1121 0044 DAB2     		uxtb	r2, r3
+ 1122              		.loc 1 259 18
+ 1123 0046 7B7A     		ldrb	r3, [r7, #9]
+ 1124 0048 62F30413 		bfi	r3, r2, #4, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 25
+
+
+ 1125 004c 7B72     		strb	r3, [r7, #9]
+ 260:./basic/structs.c **** 	rv_byt.bits.bit4=byt.bits.bit4;
+ 1126              		.loc 1 260 27
+ 1127 004e 3B7B     		ldrb	r3, [r7, #12]
+ 1128 0050 C3F30013 		ubfx	r3, r3, #4, #1
+ 1129 0054 DAB2     		uxtb	r2, r3
+ 1130              		.loc 1 260 18
+ 1131 0056 7B7A     		ldrb	r3, [r7, #9]
+ 1132 0058 62F3C303 		bfi	r3, r2, #3, #1
+ 1133 005c 7B72     		strb	r3, [r7, #9]
+ 261:./basic/structs.c **** 	rv_byt.bits.bit5=byt.bits.bit5;
+ 1134              		.loc 1 261 27
+ 1135 005e 3B7B     		ldrb	r3, [r7, #12]
+ 1136 0060 C3F34013 		ubfx	r3, r3, #5, #1
+ 1137 0064 DAB2     		uxtb	r2, r3
+ 1138              		.loc 1 261 18
+ 1139 0066 7B7A     		ldrb	r3, [r7, #9]
+ 1140 0068 62F38203 		bfi	r3, r2, #2, #1
+ 1141 006c 7B72     		strb	r3, [r7, #9]
+ 262:./basic/structs.c **** 	rv_byt.bits.bit6=byt.bits.bit6;
+ 1142              		.loc 1 262 27
+ 1143 006e 3B7B     		ldrb	r3, [r7, #12]
+ 1144 0070 C3F38013 		ubfx	r3, r3, #6, #1
+ 1145 0074 DAB2     		uxtb	r2, r3
+ 1146              		.loc 1 262 18
+ 1147 0076 7B7A     		ldrb	r3, [r7, #9]
+ 1148 0078 62F34103 		bfi	r3, r2, #1, #1
+ 1149 007c 7B72     		strb	r3, [r7, #9]
+ 263:./basic/structs.c **** 	rv_byt.bits.bit7=byt.bits.bit7;
+ 1150              		.loc 1 263 27
+ 1151 007e 3B7B     		ldrb	r3, [r7, #12]
+ 1152 0080 C3F3C013 		ubfx	r3, r3, #7, #1
+ 1153 0084 DAB2     		uxtb	r2, r3
+ 1154              		.loc 1 263 18
+ 1155 0086 7B7A     		ldrb	r3, [r7, #9]
+ 1156 0088 62F30003 		bfi	r3, r2, #0, #1
+ 1157 008c 7B72     		strb	r3, [r7, #9]
+ 264:./basic/structs.c **** 	rv_byt.bits.bit8=byt.bits.bit8;
+ 1158              		.loc 1 264 27
+ 1159 008e 7B7B     		ldrb	r3, [r7, #13]
+ 1160 0090 C3F30003 		ubfx	r3, r3, #0, #1
+ 1161 0094 DAB2     		uxtb	r2, r3
+ 1162              		.loc 1 264 18
+ 1163 0096 3B7A     		ldrb	r3, [r7, #8]
+ 1164 0098 62F3C713 		bfi	r3, r2, #7, #1
+ 1165 009c 3B72     		strb	r3, [r7, #8]
+ 265:./basic/structs.c **** 	rv_byt.bits.bit9=byt.bits.bit9;
+ 1166              		.loc 1 265 27
+ 1167 009e 7B7B     		ldrb	r3, [r7, #13]
+ 1168 00a0 C3F34003 		ubfx	r3, r3, #1, #1
+ 1169 00a4 DAB2     		uxtb	r2, r3
+ 1170              		.loc 1 265 18
+ 1171 00a6 3B7A     		ldrb	r3, [r7, #8]
+ 1172 00a8 62F38613 		bfi	r3, r2, #6, #1
+ 1173 00ac 3B72     		strb	r3, [r7, #8]
+ 266:./basic/structs.c **** 	rv_byt.bits.bit10=byt.bits.bit10;
+ 1174              		.loc 1 266 28
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 26
+
+
+ 1175 00ae 7B7B     		ldrb	r3, [r7, #13]
+ 1176 00b0 C3F38003 		ubfx	r3, r3, #2, #1
+ 1177 00b4 DAB2     		uxtb	r2, r3
+ 1178              		.loc 1 266 19
+ 1179 00b6 3B7A     		ldrb	r3, [r7, #8]
+ 1180 00b8 62F34513 		bfi	r3, r2, #5, #1
+ 1181 00bc 3B72     		strb	r3, [r7, #8]
+ 267:./basic/structs.c **** 	rv_byt.bits.bit11=byt.bits.bit11;
+ 1182              		.loc 1 267 28
+ 1183 00be 7B7B     		ldrb	r3, [r7, #13]
+ 1184 00c0 C3F3C003 		ubfx	r3, r3, #3, #1
+ 1185 00c4 DAB2     		uxtb	r2, r3
+ 1186              		.loc 1 267 19
+ 1187 00c6 3B7A     		ldrb	r3, [r7, #8]
+ 1188 00c8 62F30413 		bfi	r3, r2, #4, #1
+ 1189 00cc 3B72     		strb	r3, [r7, #8]
+ 268:./basic/structs.c **** 	rv_byt.bits.bit12=byt.bits.bit12;
+ 1190              		.loc 1 268 28
+ 1191 00ce 7B7B     		ldrb	r3, [r7, #13]
+ 1192 00d0 C3F30013 		ubfx	r3, r3, #4, #1
+ 1193 00d4 DAB2     		uxtb	r2, r3
+ 1194              		.loc 1 268 19
+ 1195 00d6 3B7A     		ldrb	r3, [r7, #8]
+ 1196 00d8 62F3C303 		bfi	r3, r2, #3, #1
+ 1197 00dc 3B72     		strb	r3, [r7, #8]
+ 269:./basic/structs.c **** 	rv_byt.bits.bit13=byt.bits.bit13;
+ 1198              		.loc 1 269 28
+ 1199 00de 7B7B     		ldrb	r3, [r7, #13]
+ 1200 00e0 C3F34013 		ubfx	r3, r3, #5, #1
+ 1201 00e4 DAB2     		uxtb	r2, r3
+ 1202              		.loc 1 269 19
+ 1203 00e6 3B7A     		ldrb	r3, [r7, #8]
+ 1204 00e8 62F38203 		bfi	r3, r2, #2, #1
+ 1205 00ec 3B72     		strb	r3, [r7, #8]
+ 270:./basic/structs.c **** 	rv_byt.bits.bit14=byt.bits.bit14;
+ 1206              		.loc 1 270 28
+ 1207 00ee 7B7B     		ldrb	r3, [r7, #13]
+ 1208 00f0 C3F38013 		ubfx	r3, r3, #6, #1
+ 1209 00f4 DAB2     		uxtb	r2, r3
+ 1210              		.loc 1 270 19
+ 1211 00f6 3B7A     		ldrb	r3, [r7, #8]
+ 1212 00f8 62F34103 		bfi	r3, r2, #1, #1
+ 1213 00fc 3B72     		strb	r3, [r7, #8]
+ 271:./basic/structs.c **** 	rv_byt.bits.bit15=byt.bits.bit15;
+ 1214              		.loc 1 271 28
+ 1215 00fe 7B7B     		ldrb	r3, [r7, #13]
+ 1216 0100 C3F3C013 		ubfx	r3, r3, #7, #1
+ 1217 0104 DAB2     		uxtb	r2, r3
+ 1218              		.loc 1 271 19
+ 1219 0106 3B7A     		ldrb	r3, [r7, #8]
+ 1220 0108 62F30003 		bfi	r3, r2, #0, #1
+ 1221 010c 3B72     		strb	r3, [r7, #8]
+ 272:./basic/structs.c **** 
+ 273:./basic/structs.c **** 	return rv_byt.word;
+ 1222              		.loc 1 273 15
+ 1223 010e 3B89     		ldrh	r3, [r7, #8]
+ 274:./basic/structs.c **** }
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 27
+
+
+ 1224              		.loc 1 274 1
+ 1225 0110 1846     		mov	r0, r3
+ 1226 0112 1437     		adds	r7, r7, #20
+ 1227              	.LCFI67:
+ 1228              		.cfi_def_cfa_offset 4
+ 1229 0114 BD46     		mov	sp, r7
+ 1230              	.LCFI68:
+ 1231              		.cfi_def_cfa_register 13
+ 1232              		@ sp needed
+ 1233 0116 80BC     		pop	{r7}
+ 1234              	.LCFI69:
+ 1235              		.cfi_restore 7
+ 1236              		.cfi_def_cfa_offset 0
+ 1237 0118 7047     		bx	lr
+ 1238              		.cfi_endproc
+ 1239              	.LFE43:
+ 1241              		.section	.text.reverse_dword,"ax",%progbits
+ 1242              		.align	1
+ 1243              		.global	reverse_dword
+ 1244              		.syntax unified
+ 1245              		.thumb
+ 1246              		.thumb_func
+ 1248              	reverse_dword:
+ 1249              	.LFB44:
+ 275:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 276:./basic/structs.c **** /**
+ 277:./basic/structs.c ****  * @brief 	  reverses a data of double word-size length
+ 278:./basic/structs.c ****  * @details   reverses a data of double word-size length from big  endigan to little endigan or vic
+ 279:./basic/structs.c ****  * @param val the byte data to be reversed
+ 280:./basic/structs.c ****  * @return uint8_t 
+ 281:./basic/structs.c ****  */
+ 282:./basic/structs.c **** uint32_t reverse_dword(uint32_t val)
+ 283:./basic/structs.c **** {
+ 1250              		.loc 1 283 1
+ 1251              		.cfi_startproc
+ 1252              		@ args = 0, pretend = 0, frame = 16
+ 1253              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1254              		@ link register save eliminated.
+ 1255 0000 80B4     		push	{r7}
+ 1256              	.LCFI70:
+ 1257              		.cfi_def_cfa_offset 4
+ 1258              		.cfi_offset 7, -4
+ 1259 0002 85B0     		sub	sp, sp, #20
+ 1260              	.LCFI71:
+ 1261              		.cfi_def_cfa_offset 24
+ 1262 0004 00AF     		add	r7, sp, #0
+ 1263              	.LCFI72:
+ 1264              		.cfi_def_cfa_register 7
+ 1265 0006 7860     		str	r0, [r7, #4]
+ 284:./basic/structs.c **** 	DWORD_BYTES byt;
+ 285:./basic/structs.c **** 	Big_DWORD_BYTES rv_byt;
+ 286:./basic/structs.c **** 	byt.dword=val;
+ 1266              		.loc 1 286 11
+ 1267 0008 7B68     		ldr	r3, [r7, #4]
+ 1268 000a FB60     		str	r3, [r7, #12]
+ 287:./basic/structs.c **** 	rv_byt.bits.bit0=byt.bits.bit0;
+ 1269              		.loc 1 287 27
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 28
+
+
+ 1270 000c 3B7B     		ldrb	r3, [r7, #12]
+ 1271 000e C3F30003 		ubfx	r3, r3, #0, #1
+ 1272 0012 DAB2     		uxtb	r2, r3
+ 1273              		.loc 1 287 18
+ 1274 0014 FB7A     		ldrb	r3, [r7, #11]
+ 1275 0016 62F3C713 		bfi	r3, r2, #7, #1
+ 1276 001a FB72     		strb	r3, [r7, #11]
+ 288:./basic/structs.c **** 	rv_byt.bits.bit1=byt.bits.bit1;
+ 1277              		.loc 1 288 27
+ 1278 001c 3B7B     		ldrb	r3, [r7, #12]
+ 1279 001e C3F34003 		ubfx	r3, r3, #1, #1
+ 1280 0022 DAB2     		uxtb	r2, r3
+ 1281              		.loc 1 288 18
+ 1282 0024 FB7A     		ldrb	r3, [r7, #11]
+ 1283 0026 62F38613 		bfi	r3, r2, #6, #1
+ 1284 002a FB72     		strb	r3, [r7, #11]
+ 289:./basic/structs.c **** 	rv_byt.bits.bit2=byt.bits.bit2;
+ 1285              		.loc 1 289 27
+ 1286 002c 3B7B     		ldrb	r3, [r7, #12]
+ 1287 002e C3F38003 		ubfx	r3, r3, #2, #1
+ 1288 0032 DAB2     		uxtb	r2, r3
+ 1289              		.loc 1 289 18
+ 1290 0034 FB7A     		ldrb	r3, [r7, #11]
+ 1291 0036 62F34513 		bfi	r3, r2, #5, #1
+ 1292 003a FB72     		strb	r3, [r7, #11]
+ 290:./basic/structs.c **** 	rv_byt.bits.bit3=byt.bits.bit3;
+ 1293              		.loc 1 290 27
+ 1294 003c 3B7B     		ldrb	r3, [r7, #12]
+ 1295 003e C3F3C003 		ubfx	r3, r3, #3, #1
+ 1296 0042 DAB2     		uxtb	r2, r3
+ 1297              		.loc 1 290 18
+ 1298 0044 FB7A     		ldrb	r3, [r7, #11]
+ 1299 0046 62F30413 		bfi	r3, r2, #4, #1
+ 1300 004a FB72     		strb	r3, [r7, #11]
+ 291:./basic/structs.c **** 	rv_byt.bits.bit4=byt.bits.bit4;
+ 1301              		.loc 1 291 27
+ 1302 004c 3B7B     		ldrb	r3, [r7, #12]
+ 1303 004e C3F30013 		ubfx	r3, r3, #4, #1
+ 1304 0052 DAB2     		uxtb	r2, r3
+ 1305              		.loc 1 291 18
+ 1306 0054 FB7A     		ldrb	r3, [r7, #11]
+ 1307 0056 62F3C303 		bfi	r3, r2, #3, #1
+ 1308 005a FB72     		strb	r3, [r7, #11]
+ 292:./basic/structs.c **** 	rv_byt.bits.bit5=byt.bits.bit5;
+ 1309              		.loc 1 292 27
+ 1310 005c 3B7B     		ldrb	r3, [r7, #12]
+ 1311 005e C3F34013 		ubfx	r3, r3, #5, #1
+ 1312 0062 DAB2     		uxtb	r2, r3
+ 1313              		.loc 1 292 18
+ 1314 0064 FB7A     		ldrb	r3, [r7, #11]
+ 1315 0066 62F38203 		bfi	r3, r2, #2, #1
+ 1316 006a FB72     		strb	r3, [r7, #11]
+ 293:./basic/structs.c **** 	rv_byt.bits.bit6=byt.bits.bit6;
+ 1317              		.loc 1 293 27
+ 1318 006c 3B7B     		ldrb	r3, [r7, #12]
+ 1319 006e C3F38013 		ubfx	r3, r3, #6, #1
+ 1320 0072 DAB2     		uxtb	r2, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 29
+
+
+ 1321              		.loc 1 293 18
+ 1322 0074 FB7A     		ldrb	r3, [r7, #11]
+ 1323 0076 62F34103 		bfi	r3, r2, #1, #1
+ 1324 007a FB72     		strb	r3, [r7, #11]
+ 294:./basic/structs.c **** 	rv_byt.bits.bit7=byt.bits.bit7;
+ 1325              		.loc 1 294 27
+ 1326 007c 3B7B     		ldrb	r3, [r7, #12]
+ 1327 007e C3F3C013 		ubfx	r3, r3, #7, #1
+ 1328 0082 DAB2     		uxtb	r2, r3
+ 1329              		.loc 1 294 18
+ 1330 0084 FB7A     		ldrb	r3, [r7, #11]
+ 1331 0086 62F30003 		bfi	r3, r2, #0, #1
+ 1332 008a FB72     		strb	r3, [r7, #11]
+ 295:./basic/structs.c **** 	rv_byt.bits.bit8=byt.bits.bit8;
+ 1333              		.loc 1 295 27
+ 1334 008c 7B7B     		ldrb	r3, [r7, #13]
+ 1335 008e C3F30003 		ubfx	r3, r3, #0, #1
+ 1336 0092 DAB2     		uxtb	r2, r3
+ 1337              		.loc 1 295 18
+ 1338 0094 BB7A     		ldrb	r3, [r7, #10]
+ 1339 0096 62F3C713 		bfi	r3, r2, #7, #1
+ 1340 009a BB72     		strb	r3, [r7, #10]
+ 296:./basic/structs.c **** 	rv_byt.bits.bit9=byt.bits.bit9;
+ 1341              		.loc 1 296 27
+ 1342 009c 7B7B     		ldrb	r3, [r7, #13]
+ 1343 009e C3F34003 		ubfx	r3, r3, #1, #1
+ 1344 00a2 DAB2     		uxtb	r2, r3
+ 1345              		.loc 1 296 18
+ 1346 00a4 BB7A     		ldrb	r3, [r7, #10]
+ 1347 00a6 62F38613 		bfi	r3, r2, #6, #1
+ 1348 00aa BB72     		strb	r3, [r7, #10]
+ 297:./basic/structs.c **** 	rv_byt.bits.bit10=byt.bits.bit10;
+ 1349              		.loc 1 297 28
+ 1350 00ac 7B7B     		ldrb	r3, [r7, #13]
+ 1351 00ae C3F38003 		ubfx	r3, r3, #2, #1
+ 1352 00b2 DAB2     		uxtb	r2, r3
+ 1353              		.loc 1 297 19
+ 1354 00b4 BB7A     		ldrb	r3, [r7, #10]
+ 1355 00b6 62F34513 		bfi	r3, r2, #5, #1
+ 1356 00ba BB72     		strb	r3, [r7, #10]
+ 298:./basic/structs.c **** 	rv_byt.bits.bit11=byt.bits.bit11;
+ 1357              		.loc 1 298 28
+ 1358 00bc 7B7B     		ldrb	r3, [r7, #13]
+ 1359 00be C3F3C003 		ubfx	r3, r3, #3, #1
+ 1360 00c2 DAB2     		uxtb	r2, r3
+ 1361              		.loc 1 298 19
+ 1362 00c4 BB7A     		ldrb	r3, [r7, #10]
+ 1363 00c6 62F30413 		bfi	r3, r2, #4, #1
+ 1364 00ca BB72     		strb	r3, [r7, #10]
+ 299:./basic/structs.c **** 	rv_byt.bits.bit12=byt.bits.bit12;
+ 1365              		.loc 1 299 28
+ 1366 00cc 7B7B     		ldrb	r3, [r7, #13]
+ 1367 00ce C3F30013 		ubfx	r3, r3, #4, #1
+ 1368 00d2 DAB2     		uxtb	r2, r3
+ 1369              		.loc 1 299 19
+ 1370 00d4 BB7A     		ldrb	r3, [r7, #10]
+ 1371 00d6 62F3C303 		bfi	r3, r2, #3, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 30
+
+
+ 1372 00da BB72     		strb	r3, [r7, #10]
+ 300:./basic/structs.c **** 	rv_byt.bits.bit13=byt.bits.bit13;
+ 1373              		.loc 1 300 28
+ 1374 00dc 7B7B     		ldrb	r3, [r7, #13]
+ 1375 00de C3F34013 		ubfx	r3, r3, #5, #1
+ 1376 00e2 DAB2     		uxtb	r2, r3
+ 1377              		.loc 1 300 19
+ 1378 00e4 BB7A     		ldrb	r3, [r7, #10]
+ 1379 00e6 62F38203 		bfi	r3, r2, #2, #1
+ 1380 00ea BB72     		strb	r3, [r7, #10]
+ 301:./basic/structs.c **** 	rv_byt.bits.bit14=byt.bits.bit14;
+ 1381              		.loc 1 301 28
+ 1382 00ec 7B7B     		ldrb	r3, [r7, #13]
+ 1383 00ee C3F38013 		ubfx	r3, r3, #6, #1
+ 1384 00f2 DAB2     		uxtb	r2, r3
+ 1385              		.loc 1 301 19
+ 1386 00f4 BB7A     		ldrb	r3, [r7, #10]
+ 1387 00f6 62F34103 		bfi	r3, r2, #1, #1
+ 1388 00fa BB72     		strb	r3, [r7, #10]
+ 302:./basic/structs.c **** 	rv_byt.bits.bit15=byt.bits.bit15;	
+ 1389              		.loc 1 302 28
+ 1390 00fc 7B7B     		ldrb	r3, [r7, #13]
+ 1391 00fe C3F3C013 		ubfx	r3, r3, #7, #1
+ 1392 0102 DAB2     		uxtb	r2, r3
+ 1393              		.loc 1 302 19
+ 1394 0104 BB7A     		ldrb	r3, [r7, #10]
+ 1395 0106 62F30003 		bfi	r3, r2, #0, #1
+ 1396 010a BB72     		strb	r3, [r7, #10]
+ 303:./basic/structs.c **** 	rv_byt.bits.bit16=byt.bits.bit16;
+ 1397              		.loc 1 303 28
+ 1398 010c BB7B     		ldrb	r3, [r7, #14]
+ 1399 010e C3F30003 		ubfx	r3, r3, #0, #1
+ 1400 0112 DAB2     		uxtb	r2, r3
+ 1401              		.loc 1 303 19
+ 1402 0114 7B7A     		ldrb	r3, [r7, #9]
+ 1403 0116 62F3C713 		bfi	r3, r2, #7, #1
+ 1404 011a 7B72     		strb	r3, [r7, #9]
+ 304:./basic/structs.c **** 	rv_byt.bits.bit17=byt.bits.bit17;
+ 1405              		.loc 1 304 28
+ 1406 011c BB7B     		ldrb	r3, [r7, #14]
+ 1407 011e C3F34003 		ubfx	r3, r3, #1, #1
+ 1408 0122 DAB2     		uxtb	r2, r3
+ 1409              		.loc 1 304 19
+ 1410 0124 7B7A     		ldrb	r3, [r7, #9]
+ 1411 0126 62F38613 		bfi	r3, r2, #6, #1
+ 1412 012a 7B72     		strb	r3, [r7, #9]
+ 305:./basic/structs.c **** 	rv_byt.bits.bit18=byt.bits.bit18;
+ 1413              		.loc 1 305 28
+ 1414 012c BB7B     		ldrb	r3, [r7, #14]
+ 1415 012e C3F38003 		ubfx	r3, r3, #2, #1
+ 1416 0132 DAB2     		uxtb	r2, r3
+ 1417              		.loc 1 305 19
+ 1418 0134 7B7A     		ldrb	r3, [r7, #9]
+ 1419 0136 62F34513 		bfi	r3, r2, #5, #1
+ 1420 013a 7B72     		strb	r3, [r7, #9]
+ 306:./basic/structs.c **** 	rv_byt.bits.bit19=byt.bits.bit19;
+ 1421              		.loc 1 306 28
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 31
+
+
+ 1422 013c BB7B     		ldrb	r3, [r7, #14]
+ 1423 013e C3F3C003 		ubfx	r3, r3, #3, #1
+ 1424 0142 DAB2     		uxtb	r2, r3
+ 1425              		.loc 1 306 19
+ 1426 0144 7B7A     		ldrb	r3, [r7, #9]
+ 1427 0146 62F30413 		bfi	r3, r2, #4, #1
+ 1428 014a 7B72     		strb	r3, [r7, #9]
+ 307:./basic/structs.c **** 	rv_byt.bits.bit20=byt.bits.bit20;
+ 1429              		.loc 1 307 28
+ 1430 014c BB7B     		ldrb	r3, [r7, #14]
+ 1431 014e C3F30013 		ubfx	r3, r3, #4, #1
+ 1432 0152 DAB2     		uxtb	r2, r3
+ 1433              		.loc 1 307 19
+ 1434 0154 7B7A     		ldrb	r3, [r7, #9]
+ 1435 0156 62F3C303 		bfi	r3, r2, #3, #1
+ 1436 015a 7B72     		strb	r3, [r7, #9]
+ 308:./basic/structs.c **** 	rv_byt.bits.bit21=byt.bits.bit21;
+ 1437              		.loc 1 308 28
+ 1438 015c BB7B     		ldrb	r3, [r7, #14]
+ 1439 015e C3F34013 		ubfx	r3, r3, #5, #1
+ 1440 0162 DAB2     		uxtb	r2, r3
+ 1441              		.loc 1 308 19
+ 1442 0164 7B7A     		ldrb	r3, [r7, #9]
+ 1443 0166 62F38203 		bfi	r3, r2, #2, #1
+ 1444 016a 7B72     		strb	r3, [r7, #9]
+ 309:./basic/structs.c **** 	rv_byt.bits.bit22=byt.bits.bit22;
+ 1445              		.loc 1 309 28
+ 1446 016c BB7B     		ldrb	r3, [r7, #14]
+ 1447 016e C3F38013 		ubfx	r3, r3, #6, #1
+ 1448 0172 DAB2     		uxtb	r2, r3
+ 1449              		.loc 1 309 19
+ 1450 0174 7B7A     		ldrb	r3, [r7, #9]
+ 1451 0176 62F34103 		bfi	r3, r2, #1, #1
+ 1452 017a 7B72     		strb	r3, [r7, #9]
+ 310:./basic/structs.c **** 	rv_byt.bits.bit23=byt.bits.bit23;
+ 1453              		.loc 1 310 28
+ 1454 017c BB7B     		ldrb	r3, [r7, #14]
+ 1455 017e C3F3C013 		ubfx	r3, r3, #7, #1
+ 1456 0182 DAB2     		uxtb	r2, r3
+ 1457              		.loc 1 310 19
+ 1458 0184 7B7A     		ldrb	r3, [r7, #9]
+ 1459 0186 62F30003 		bfi	r3, r2, #0, #1
+ 1460 018a 7B72     		strb	r3, [r7, #9]
+ 311:./basic/structs.c **** 	rv_byt.bits.bit24=byt.bits.bit24;
+ 1461              		.loc 1 311 28
+ 1462 018c FB7B     		ldrb	r3, [r7, #15]
+ 1463 018e C3F30003 		ubfx	r3, r3, #0, #1
+ 1464 0192 DAB2     		uxtb	r2, r3
+ 1465              		.loc 1 311 19
+ 1466 0194 3B7A     		ldrb	r3, [r7, #8]
+ 1467 0196 62F3C713 		bfi	r3, r2, #7, #1
+ 1468 019a 3B72     		strb	r3, [r7, #8]
+ 312:./basic/structs.c **** 	rv_byt.bits.bit25=byt.bits.bit25;
+ 1469              		.loc 1 312 28
+ 1470 019c FB7B     		ldrb	r3, [r7, #15]
+ 1471 019e C3F34003 		ubfx	r3, r3, #1, #1
+ 1472 01a2 DAB2     		uxtb	r2, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 32
+
+
+ 1473              		.loc 1 312 19
+ 1474 01a4 3B7A     		ldrb	r3, [r7, #8]
+ 1475 01a6 62F38613 		bfi	r3, r2, #6, #1
+ 1476 01aa 3B72     		strb	r3, [r7, #8]
+ 313:./basic/structs.c **** 	rv_byt.bits.bit26=byt.bits.bit26;
+ 1477              		.loc 1 313 28
+ 1478 01ac FB7B     		ldrb	r3, [r7, #15]
+ 1479 01ae C3F38003 		ubfx	r3, r3, #2, #1
+ 1480 01b2 DAB2     		uxtb	r2, r3
+ 1481              		.loc 1 313 19
+ 1482 01b4 3B7A     		ldrb	r3, [r7, #8]
+ 1483 01b6 62F34513 		bfi	r3, r2, #5, #1
+ 1484 01ba 3B72     		strb	r3, [r7, #8]
+ 314:./basic/structs.c **** 	rv_byt.bits.bit27=byt.bits.bit27;
+ 1485              		.loc 1 314 28
+ 1486 01bc FB7B     		ldrb	r3, [r7, #15]
+ 1487 01be C3F3C003 		ubfx	r3, r3, #3, #1
+ 1488 01c2 DAB2     		uxtb	r2, r3
+ 1489              		.loc 1 314 19
+ 1490 01c4 3B7A     		ldrb	r3, [r7, #8]
+ 1491 01c6 62F30413 		bfi	r3, r2, #4, #1
+ 1492 01ca 3B72     		strb	r3, [r7, #8]
+ 315:./basic/structs.c **** 	rv_byt.bits.bit28=byt.bits.bit28;
+ 1493              		.loc 1 315 28
+ 1494 01cc FB7B     		ldrb	r3, [r7, #15]
+ 1495 01ce C3F30013 		ubfx	r3, r3, #4, #1
+ 1496 01d2 DAB2     		uxtb	r2, r3
+ 1497              		.loc 1 315 19
+ 1498 01d4 3B7A     		ldrb	r3, [r7, #8]
+ 1499 01d6 62F3C303 		bfi	r3, r2, #3, #1
+ 1500 01da 3B72     		strb	r3, [r7, #8]
+ 316:./basic/structs.c **** 	rv_byt.bits.bit29=byt.bits.bit29;
+ 1501              		.loc 1 316 28
+ 1502 01dc FB7B     		ldrb	r3, [r7, #15]
+ 1503 01de C3F34013 		ubfx	r3, r3, #5, #1
+ 1504 01e2 DAB2     		uxtb	r2, r3
+ 1505              		.loc 1 316 19
+ 1506 01e4 3B7A     		ldrb	r3, [r7, #8]
+ 1507 01e6 62F38203 		bfi	r3, r2, #2, #1
+ 1508 01ea 3B72     		strb	r3, [r7, #8]
+ 317:./basic/structs.c **** 	rv_byt.bits.bit30=byt.bits.bit30;
+ 1509              		.loc 1 317 28
+ 1510 01ec FB7B     		ldrb	r3, [r7, #15]
+ 1511 01ee C3F38013 		ubfx	r3, r3, #6, #1
+ 1512 01f2 DAB2     		uxtb	r2, r3
+ 1513              		.loc 1 317 19
+ 1514 01f4 3B7A     		ldrb	r3, [r7, #8]
+ 1515 01f6 62F34103 		bfi	r3, r2, #1, #1
+ 1516 01fa 3B72     		strb	r3, [r7, #8]
+ 318:./basic/structs.c **** 	rv_byt.bits.bit31=byt.bits.bit31;
+ 1517              		.loc 1 318 28
+ 1518 01fc FB7B     		ldrb	r3, [r7, #15]
+ 1519 01fe C3F3C013 		ubfx	r3, r3, #7, #1
+ 1520 0202 DAB2     		uxtb	r2, r3
+ 1521              		.loc 1 318 19
+ 1522 0204 3B7A     		ldrb	r3, [r7, #8]
+ 1523 0206 62F30003 		bfi	r3, r2, #0, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 33
+
+
+ 1524 020a 3B72     		strb	r3, [r7, #8]
+ 319:./basic/structs.c **** 	
+ 320:./basic/structs.c **** 	return rv_byt.dword;
+ 1525              		.loc 1 320 15
+ 1526 020c BB68     		ldr	r3, [r7, #8]
+ 321:./basic/structs.c **** }
+ 1527              		.loc 1 321 1
+ 1528 020e 1846     		mov	r0, r3
+ 1529 0210 1437     		adds	r7, r7, #20
+ 1530              	.LCFI73:
+ 1531              		.cfi_def_cfa_offset 4
+ 1532 0212 BD46     		mov	sp, r7
+ 1533              	.LCFI74:
+ 1534              		.cfi_def_cfa_register 13
+ 1535              		@ sp needed
+ 1536 0214 80BC     		pop	{r7}
+ 1537              	.LCFI75:
+ 1538              		.cfi_restore 7
+ 1539              		.cfi_def_cfa_offset 0
+ 1540 0216 7047     		bx	lr
+ 1541              		.cfi_endproc
+ 1542              	.LFE44:
+ 1544              		.section	.text.bcd_to_bin,"ax",%progbits
+ 1545              		.align	1
+ 1546              		.global	bcd_to_bin
+ 1547              		.syntax unified
+ 1548              		.thumb
+ 1549              		.thumb_func
+ 1551              	bcd_to_bin:
+ 1552              	.LFB45:
+ 322:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 323:./basic/structs.c **** /**
+ 324:./basic/structs.c ****  * @brief 	  converts a bcd number to a binary number
+ 325:./basic/structs.c ****  * @details   converts a bcd number to a binary number very powerful method
+ 326:./basic/structs.c ****  * 			  for displaying data on BCD
+ 327:./basic/structs.c ****  * @param bcd the byte data to be reversed
+ 328:./basic/structs.c ****  * @return uint16_t 
+ 329:./basic/structs.c ****  */
+ 330:./basic/structs.c **** uint16_t bcd_to_bin(uint8_t bcd)
+ 331:./basic/structs.c **** {
+ 1553              		.loc 1 331 1
+ 1554              		.cfi_startproc
+ 1555              		@ args = 0, pretend = 0, frame = 16
+ 1556              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1557              		@ link register save eliminated.
+ 1558 0000 80B4     		push	{r7}
+ 1559              	.LCFI76:
+ 1560              		.cfi_def_cfa_offset 4
+ 1561              		.cfi_offset 7, -4
+ 1562 0002 85B0     		sub	sp, sp, #20
+ 1563              	.LCFI77:
+ 1564              		.cfi_def_cfa_offset 24
+ 1565 0004 00AF     		add	r7, sp, #0
+ 1566              	.LCFI78:
+ 1567              		.cfi_def_cfa_register 7
+ 1568 0006 0346     		mov	r3, r0
+ 1569 0008 FB71     		strb	r3, [r7, #7]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 34
+
+
+ 332:./basic/structs.c **** 	bcd_t bcd_val;
+ 333:./basic/structs.c **** 	uint16_t bin_val=0;
+ 1570              		.loc 1 333 11
+ 1571 000a 0023     		movs	r3, #0
+ 1572 000c FB81     		strh	r3, [r7, #14]	@ movhi
+ 334:./basic/structs.c **** 	bcd_val.byte=bcd;
+ 1573              		.loc 1 334 14
+ 1574 000e FB79     		ldrb	r3, [r7, #7]
+ 1575 0010 3B73     		strb	r3, [r7, #12]
+ 335:./basic/structs.c **** 	
+ 336:./basic/structs.c **** 	bin_val=bcd_val.high_nibble*10;
+ 1576              		.loc 1 336 17
+ 1577 0012 3B7B     		ldrb	r3, [r7, #12]
+ 1578 0014 C3F30313 		ubfx	r3, r3, #4, #4
+ 1579 0018 DBB2     		uxtb	r3, r3
+ 1580              		.loc 1 336 9
+ 1581 001a 9BB2     		uxth	r3, r3
+ 1582 001c 1A46     		mov	r2, r3	@ movhi
+ 1583 001e 9200     		lsls	r2, r2, #2
+ 1584 0020 1344     		add	r3, r3, r2
+ 1585 0022 5B00     		lsls	r3, r3, #1
+ 1586 0024 FB81     		strh	r3, [r7, #14]	@ movhi
+ 337:./basic/structs.c **** 	bin_val+=bcd_val.low_nibble;
+ 1587              		.loc 1 337 18
+ 1588 0026 3B7B     		ldrb	r3, [r7, #12]
+ 1589 0028 C3F30303 		ubfx	r3, r3, #0, #4
+ 1590 002c DBB2     		uxtb	r3, r3
+ 1591 002e 9AB2     		uxth	r2, r3
+ 1592              		.loc 1 337 9
+ 1593 0030 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 1594 0032 1344     		add	r3, r3, r2
+ 1595 0034 FB81     		strh	r3, [r7, #14]	@ movhi
+ 338:./basic/structs.c **** 	return bin_val;	
+ 1596              		.loc 1 338 9
+ 1597 0036 FB89     		ldrh	r3, [r7, #14]
+ 339:./basic/structs.c **** }
+ 1598              		.loc 1 339 1
+ 1599 0038 1846     		mov	r0, r3
+ 1600 003a 1437     		adds	r7, r7, #20
+ 1601              	.LCFI79:
+ 1602              		.cfi_def_cfa_offset 4
+ 1603 003c BD46     		mov	sp, r7
+ 1604              	.LCFI80:
+ 1605              		.cfi_def_cfa_register 13
+ 1606              		@ sp needed
+ 1607 003e 80BC     		pop	{r7}
+ 1608              	.LCFI81:
+ 1609              		.cfi_restore 7
+ 1610              		.cfi_def_cfa_offset 0
+ 1611 0040 7047     		bx	lr
+ 1612              		.cfi_endproc
+ 1613              	.LFE45:
+ 1615              		.section	.text.bin_to_bcd,"ax",%progbits
+ 1616              		.align	1
+ 1617              		.global	bin_to_bcd
+ 1618              		.syntax unified
+ 1619              		.thumb
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 35
+
+
+ 1620              		.thumb_func
+ 1622              	bin_to_bcd:
+ 1623              	.LFB46:
+ 340:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 341:./basic/structs.c **** /**
+ 342:./basic/structs.c ****  * @brief 	  converts a binary number to a bcd number
+ 343:./basic/structs.c ****  * @details   converts a binary number to a bcd number very powerful method
+ 344:./basic/structs.c ****  * 			  for displaying data on BCD
+ 345:./basic/structs.c ****  * @param bcd the byte data to be reversed
+ 346:./basic/structs.c ****  * @return uint16_t 
+ 347:./basic/structs.c ****  */
+ 348:./basic/structs.c **** uint8_t bin_to_bcd(uint16_t bin_val)
+ 349:./basic/structs.c **** {
+ 1624              		.loc 1 349 1
+ 1625              		.cfi_startproc
+ 1626              		@ args = 0, pretend = 0, frame = 16
+ 1627              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1628              		@ link register save eliminated.
+ 1629 0000 80B4     		push	{r7}
+ 1630              	.LCFI82:
+ 1631              		.cfi_def_cfa_offset 4
+ 1632              		.cfi_offset 7, -4
+ 1633 0002 85B0     		sub	sp, sp, #20
+ 1634              	.LCFI83:
+ 1635              		.cfi_def_cfa_offset 24
+ 1636 0004 00AF     		add	r7, sp, #0
+ 1637              	.LCFI84:
+ 1638              		.cfi_def_cfa_register 7
+ 1639 0006 0346     		mov	r3, r0
+ 1640 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 350:./basic/structs.c **** 	bcd_t bcd_val;
+ 351:./basic/structs.c **** 	bcd_val.high_nibble=bin_val/10;
+ 1641              		.loc 1 351 29
+ 1642 000a FB88     		ldrh	r3, [r7, #6]
+ 1643 000c 114A     		ldr	r2, .L53
+ 1644 000e A2FB0323 		umull	r2, r3, r2, r3
+ 1645 0012 DB08     		lsrs	r3, r3, #3
+ 1646 0014 9BB2     		uxth	r3, r3
+ 1647 0016 03F00F03 		and	r3, r3, #15
+ 1648 001a DAB2     		uxtb	r2, r3
+ 1649              		.loc 1 351 21
+ 1650 001c 3B7B     		ldrb	r3, [r7, #12]
+ 1651 001e 62F30713 		bfi	r3, r2, #4, #4
+ 1652 0022 3B73     		strb	r3, [r7, #12]
+ 352:./basic/structs.c **** 	bcd_val.low_nibble=bin_val%10;
+ 1653              		.loc 1 352 28
+ 1654 0024 FA88     		ldrh	r2, [r7, #6]
+ 1655 0026 0B4B     		ldr	r3, .L53
+ 1656 0028 A3FB0213 		umull	r1, r3, r3, r2
+ 1657 002c D908     		lsrs	r1, r3, #3
+ 1658 002e 0B46     		mov	r3, r1
+ 1659 0030 9B00     		lsls	r3, r3, #2
+ 1660 0032 0B44     		add	r3, r3, r1
+ 1661 0034 5B00     		lsls	r3, r3, #1
+ 1662 0036 D31A     		subs	r3, r2, r3
+ 1663 0038 9BB2     		uxth	r3, r3
+ 1664 003a 03F00F03 		and	r3, r3, #15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 36
+
+
+ 1665 003e DAB2     		uxtb	r2, r3
+ 1666              		.loc 1 352 20
+ 1667 0040 3B7B     		ldrb	r3, [r7, #12]
+ 1668 0042 62F30303 		bfi	r3, r2, #0, #4
+ 1669 0046 3B73     		strb	r3, [r7, #12]
+ 353:./basic/structs.c **** 	return bcd_val.byte;
+ 1670              		.loc 1 353 16
+ 1671 0048 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 354:./basic/structs.c **** 	
+ 355:./basic/structs.c **** }
+ 1672              		.loc 1 355 1
+ 1673 004a 1846     		mov	r0, r3
+ 1674 004c 1437     		adds	r7, r7, #20
+ 1675              	.LCFI85:
+ 1676              		.cfi_def_cfa_offset 4
+ 1677 004e BD46     		mov	sp, r7
+ 1678              	.LCFI86:
+ 1679              		.cfi_def_cfa_register 13
+ 1680              		@ sp needed
+ 1681 0050 80BC     		pop	{r7}
+ 1682              	.LCFI87:
+ 1683              		.cfi_restore 7
+ 1684              		.cfi_def_cfa_offset 0
+ 1685 0052 7047     		bx	lr
+ 1686              	.L54:
+ 1687              		.align	2
+ 1688              	.L53:
+ 1689 0054 CDCCCCCC 		.word	-858993459
+ 1690              		.cfi_endproc
+ 1691              	.LFE46:
+ 1693              		.global	__aeabi_fcmplt
+ 1694              		.global	__aeabi_ddiv
+ 1695              		.global	__aeabi_f2d
+ 1696              		.global	__aeabi_dadd
+ 1697              		.global	__aeabi_d2f
+ 1698              		.global	__aeabi_f2uiz
+ 1699              		.global	__aeabi_ui2d
+ 1700              		.global	__aeabi_dsub
+ 1701              		.global	__aeabi_fmul
+ 1702              		.section	.text.float_to_real,"ax",%progbits
+ 1703              		.align	1
+ 1704              		.global	float_to_real
+ 1705              		.syntax unified
+ 1706              		.thumb
+ 1707              		.thumb_func
+ 1709              	float_to_real:
+ 1710              	.LFB47:
+ 356:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 357:./basic/structs.c **** /**
+ 358:./basic/structs.c ****  * @brief  converts a float number to real_t number
+ 359:./basic/structs.c ****  * @details this methods help to converts a float number to real_t number
+ 360:./basic/structs.c ****  * 		    which is very uesfull for display on LCD Display or to send/receive on a bus network
+ 361:./basic/structs.c ****  * @param number  a float number
+ 362:./basic/structs.c ****  * @param digits  number of decimal digits (resolution)
+ 363:./basic/structs.c ****  * @return real_t 
+ 364:./basic/structs.c ****  */
+ 365:./basic/structs.c **** real_t float_to_real(float number,uint8_t digits)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 37
+
+
+ 366:./basic/structs.c **** {
+ 1711              		.loc 1 366 1
+ 1712              		.cfi_startproc
+ 1713              		@ args = 0, pretend = 0, frame = 48
+ 1714              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1715 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1716              	.LCFI88:
+ 1717              		.cfi_def_cfa_offset 16
+ 1718              		.cfi_offset 4, -16
+ 1719              		.cfi_offset 5, -12
+ 1720              		.cfi_offset 7, -8
+ 1721              		.cfi_offset 14, -4
+ 1722 0002 8CB0     		sub	sp, sp, #48
+ 1723              	.LCFI89:
+ 1724              		.cfi_def_cfa_offset 64
+ 1725 0004 00AF     		add	r7, sp, #0
+ 1726              	.LCFI90:
+ 1727              		.cfi_def_cfa_register 7
+ 1728 0006 F860     		str	r0, [r7, #12]
+ 1729 0008 B960     		str	r1, [r7, #8]	@ float
+ 1730 000a 1346     		mov	r3, r2
+ 1731 000c FB71     		strb	r3, [r7, #7]
+ 367:./basic/structs.c **** 	real_t r;
+ 368:./basic/structs.c ****     r.val=0;	
+ 1732              		.loc 1 368 10
+ 1733 000e 0023     		movs	r3, #0
+ 1734 0010 7B61     		str	r3, [r7, #20]
+ 369:./basic/structs.c **** 	if(number<0)
+ 1735              		.loc 1 369 4
+ 1736 0012 4FF00001 		mov	r1, #0
+ 1737 0016 B868     		ldr	r0, [r7, #8]	@ float
+ 1738 0018 FFF7FEFF 		bl	__aeabi_fcmplt
+ 1739 001c 0346     		mov	r3, r0
+ 1740 001e 002B     		cmp	r3, #0
+ 1741 0020 05D0     		beq	.L56
+ 370:./basic/structs.c **** 	 {
+ 371:./basic/structs.c **** 		 r.sig=1;
+ 1742              		.loc 1 371 9
+ 1743 0022 0123     		movs	r3, #1
+ 1744 0024 3B76     		strb	r3, [r7, #24]
+ 372:./basic/structs.c **** 		 number=-number;
+ 1745              		.loc 1 372 10
+ 1746 0026 BB68     		ldr	r3, [r7, #8]
+ 1747 0028 83F00043 		eor	r3, r3, #-2147483648
+ 1748 002c BB60     		str	r3, [r7, #8]	@ float
+ 1749              	.L56:
+ 373:./basic/structs.c **** 	 }
+ 374:./basic/structs.c **** 
+ 375:./basic/structs.c **** 	// Round correctly so that print(1.999, 2) prints as "2.00"
+ 376:./basic/structs.c **** 	double rounding = 0.5;
+ 1750              		.loc 1 376 9
+ 1751 002e 4FF00002 		mov	r2, #0
+ 1752 0032 334B     		ldr	r3, .L64
+ 1753 0034 C7E90A23 		strd	r2, [r7, #40]
+ 1754              	.LBB2:
+ 377:./basic/structs.c **** 	for (uint8_t i=0; i<digits; ++i)
+ 1755              		.loc 1 377 15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 38
+
+
+ 1756 0038 0023     		movs	r3, #0
+ 1757 003a 87F82730 		strb	r3, [r7, #39]
+ 1758              		.loc 1 377 2
+ 1759 003e 0FE0     		b	.L58
+ 1760              	.L59:
+ 378:./basic/structs.c **** 	rounding /= 10.0;
+ 1761              		.loc 1 378 11 discriminator 3
+ 1762 0040 4FF00002 		mov	r2, #0
+ 1763 0044 2F4B     		ldr	r3, .L64+4
+ 1764 0046 D7E90A01 		ldrd	r0, [r7, #40]
+ 1765 004a FFF7FEFF 		bl	__aeabi_ddiv
+ 1766 004e 0246     		mov	r2, r0
+ 1767 0050 0B46     		mov	r3, r1
+ 1768 0052 C7E90A23 		strd	r2, [r7, #40]
+ 377:./basic/structs.c **** 	for (uint8_t i=0; i<digits; ++i)
+ 1769              		.loc 1 377 30 discriminator 3
+ 1770 0056 97F82730 		ldrb	r3, [r7, #39]
+ 1771 005a 0133     		adds	r3, r3, #1
+ 1772 005c 87F82730 		strb	r3, [r7, #39]
+ 1773              	.L58:
+ 377:./basic/structs.c **** 	for (uint8_t i=0; i<digits; ++i)
+ 1774              		.loc 1 377 2 discriminator 1
+ 1775 0060 97F82720 		ldrb	r2, [r7, #39]	@ zero_extendqisi2
+ 1776 0064 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1777 0066 9A42     		cmp	r2, r3
+ 1778 0068 EAD3     		bcc	.L59
+ 1779              	.LBE2:
+ 379:./basic/structs.c **** 
+ 380:./basic/structs.c **** 	number += rounding;//number += 0.05f;
+ 1780              		.loc 1 380 9
+ 1781 006a B868     		ldr	r0, [r7, #8]	@ float
+ 1782 006c FFF7FEFF 		bl	__aeabi_f2d
+ 1783 0070 D7E90A23 		ldrd	r2, [r7, #40]
+ 1784 0074 FFF7FEFF 		bl	__aeabi_dadd
+ 1785 0078 0246     		mov	r2, r0
+ 1786 007a 0B46     		mov	r3, r1
+ 1787 007c 1046     		mov	r0, r2
+ 1788 007e 1946     		mov	r1, r3
+ 1789 0080 FFF7FEFF 		bl	__aeabi_d2f
+ 1790 0084 0346     		mov	r3, r0
+ 1791 0086 BB60     		str	r3, [r7, #8]	@ float
+ 381:./basic/structs.c **** 
+ 382:./basic/structs.c **** 	// Extract the integer part of the number and print it
+ 383:./basic/structs.c **** 	unsigned long int_part = (unsigned long)number;
+ 1792              		.loc 1 383 16
+ 1793 0088 B868     		ldr	r0, [r7, #8]	@ float
+ 1794 008a FFF7FEFF 		bl	__aeabi_f2uiz
+ 1795 008e 0346     		mov	r3, r0
+ 1796 0090 FB61     		str	r3, [r7, #28]
+ 384:./basic/structs.c ****     float reminder = number - (double)int_part;
+ 1797              		.loc 1 384 29
+ 1798 0092 B868     		ldr	r0, [r7, #8]	@ float
+ 1799 0094 FFF7FEFF 		bl	__aeabi_f2d
+ 1800 0098 0446     		mov	r4, r0
+ 1801 009a 0D46     		mov	r5, r1
+ 1802              		.loc 1 384 31
+ 1803 009c F869     		ldr	r0, [r7, #28]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 39
+
+
+ 1804 009e FFF7FEFF 		bl	__aeabi_ui2d
+ 1805 00a2 0246     		mov	r2, r0
+ 1806 00a4 0B46     		mov	r3, r1
+ 1807              		.loc 1 384 29
+ 1808 00a6 2046     		mov	r0, r4
+ 1809 00a8 2946     		mov	r1, r5
+ 1810 00aa FFF7FEFF 		bl	__aeabi_dsub
+ 1811 00ae 0246     		mov	r2, r0
+ 1812 00b0 0B46     		mov	r3, r1
+ 1813              		.loc 1 384 11
+ 1814 00b2 1046     		mov	r0, r2
+ 1815 00b4 1946     		mov	r1, r3
+ 1816 00b6 FFF7FEFF 		bl	__aeabi_d2f
+ 1817 00ba 0346     		mov	r3, r0
+ 1818 00bc 3B62     		str	r3, [r7, #32]	@ float
+ 385:./basic/structs.c **** 	
+ 386:./basic/structs.c **** 	// Extract digits from the remainder one at a time
+ 387:./basic/structs.c **** 	while (digits-- > 0)
+ 1819              		.loc 1 387 8
+ 1820 00be 05E0     		b	.L60
+ 1821              	.L61:
+ 388:./basic/structs.c **** 	   reminder *=10.0f;
+ 1822              		.loc 1 388 14
+ 1823 00c0 1149     		ldr	r1, .L64+8
+ 1824 00c2 386A     		ldr	r0, [r7, #32]	@ float
+ 1825 00c4 FFF7FEFF 		bl	__aeabi_fmul
+ 1826 00c8 0346     		mov	r3, r0
+ 1827 00ca 3B62     		str	r3, [r7, #32]	@ float
+ 1828              	.L60:
+ 387:./basic/structs.c **** 	   reminder *=10.0f;
+ 1829              		.loc 1 387 15
+ 1830 00cc FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1831 00ce 5A1E     		subs	r2, r3, #1
+ 1832 00d0 FA71     		strb	r2, [r7, #7]
+ 387:./basic/structs.c **** 	   reminder *=10.0f;
+ 1833              		.loc 1 387 8
+ 1834 00d2 002B     		cmp	r3, #0
+ 1835 00d4 F4D1     		bne	.L61
+ 389:./basic/structs.c **** 		
+ 390:./basic/structs.c **** 	r.integer=int_part;		
+ 1836              		.loc 1 390 11
+ 1837 00d6 FB69     		ldr	r3, [r7, #28]
+ 1838 00d8 9BB2     		uxth	r3, r3
+ 1839 00da FB82     		strh	r3, [r7, #22]	@ movhi
+ 391:./basic/structs.c **** 	r.decimal=(uint8_t) reminder;	 
+ 1840              		.loc 1 391 12
+ 1841 00dc 386A     		ldr	r0, [r7, #32]	@ float
+ 1842 00de FFF7FEFF 		bl	__aeabi_f2uiz
+ 1843 00e2 0346     		mov	r3, r0
+ 1844 00e4 DBB2     		uxtb	r3, r3
+ 1845              		.loc 1 391 11
+ 1846 00e6 3B75     		strb	r3, [r7, #20]
+ 392:./basic/structs.c **** 		
+ 393:./basic/structs.c **** 	return r;	
+ 1847              		.loc 1 393 9
+ 1848 00e8 FB68     		ldr	r3, [r7, #12]
+ 1849 00ea 1A46     		mov	r2, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 40
+
+
+ 1850 00ec 07F11403 		add	r3, r7, #20
+ 1851 00f0 93E80300 		ldm	r3, {r0, r1}
+ 1852 00f4 82E80300 		stm	r2, {r0, r1}
+ 394:./basic/structs.c **** }
+ 1853              		.loc 1 394 1
+ 1854 00f8 F868     		ldr	r0, [r7, #12]
+ 1855 00fa 3037     		adds	r7, r7, #48
+ 1856              	.LCFI91:
+ 1857              		.cfi_def_cfa_offset 16
+ 1858 00fc BD46     		mov	sp, r7
+ 1859              	.LCFI92:
+ 1860              		.cfi_def_cfa_register 13
+ 1861              		@ sp needed
+ 1862 00fe B0BD     		pop	{r4, r5, r7, pc}
+ 1863              	.L65:
+ 1864              		.align	2
+ 1865              	.L64:
+ 1866 0100 0000E03F 		.word	1071644672
+ 1867 0104 00002440 		.word	1076101120
+ 1868 0108 00002041 		.word	1092616192
+ 1869              		.cfi_endproc
+ 1870              	.LFE47:
+ 1872              		.global	__aeabi_ui2f
+ 1873              		.global	__aeabi_fdiv
+ 1874              		.global	__aeabi_fadd
+ 1875              		.section	.text.real_to_float,"ax",%progbits
+ 1876              		.align	1
+ 1877              		.global	real_to_float
+ 1878              		.syntax unified
+ 1879              		.thumb
+ 1880              		.thumb_func
+ 1882              	real_to_float:
+ 1883              	.LFB48:
+ 395:./basic/structs.c **** //--------------------------------------------------------------------------------------------
+ 396:./basic/structs.c **** /**
+ 397:./basic/structs.c ****  * @brief  converts an real_t number to a float number 
+ 398:./basic/structs.c ****  * @details this methods help to converts a received reat_l numbers to float number
+ 399:./basic/structs.c ****  * 		    which is very uesfull for display on LCD Display or to send/receive on a bus network
+ 400:./basic/structs.c ****  * @param number  a float number
+ 401:./basic/structs.c ****  * @param digits  number of decimal digits (resolution)
+ 402:./basic/structs.c ****  * @return real_t 
+ 403:./basic/structs.c ****  */
+ 404:./basic/structs.c **** float real_to_float(real_t r,uint8_t digits)
+ 405:./basic/structs.c **** {
+ 1884              		.loc 1 405 1
+ 1885              		.cfi_startproc
+ 1886              		@ args = 0, pretend = 0, frame = 32
+ 1887              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1888 0000 80B5     		push	{r7, lr}
+ 1889              	.LCFI93:
+ 1890              		.cfi_def_cfa_offset 8
+ 1891              		.cfi_offset 7, -8
+ 1892              		.cfi_offset 14, -4
+ 1893 0002 88B0     		sub	sp, sp, #32
+ 1894              	.LCFI94:
+ 1895              		.cfi_def_cfa_offset 40
+ 1896 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 41
+
+
+ 1897              	.LCFI95:
+ 1898              		.cfi_def_cfa_register 7
+ 1899 0006 07F10803 		add	r3, r7, #8
+ 1900 000a 83E80300 		stm	r3, {r0, r1}
+ 1901 000e 1346     		mov	r3, r2
+ 1902 0010 FB71     		strb	r3, [r7, #7]
+ 406:./basic/structs.c **** 	float number=0,reminder=0;
+ 1903              		.loc 1 406 8
+ 1904 0012 4FF00003 		mov	r3, #0
+ 1905 0016 FB61     		str	r3, [r7, #28]	@ float
+ 1906              		.loc 1 406 17
+ 1907 0018 4FF00003 		mov	r3, #0
+ 1908 001c BB61     		str	r3, [r7, #24]	@ float
+ 407:./basic/structs.c **** 	number=r.integer;
+ 1909              		.loc 1 407 10
+ 1910 001e 7B89     		ldrh	r3, [r7, #10]
+ 1911              		.loc 1 407 8
+ 1912 0020 1846     		mov	r0, r3
+ 1913 0022 FFF7FEFF 		bl	__aeabi_ui2f
+ 1914 0026 0346     		mov	r3, r0
+ 1915 0028 FB61     		str	r3, [r7, #28]	@ float
+ 408:./basic/structs.c **** 	reminder = (float)r.decimal;
+ 1916              		.loc 1 408 21
+ 1917 002a 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ 1918              		.loc 1 408 11
+ 1919 002c 1846     		mov	r0, r3
+ 1920 002e FFF7FEFF 		bl	__aeabi_ui2f
+ 1921 0032 0346     		mov	r3, r0
+ 1922 0034 BB61     		str	r3, [r7, #24]	@ float
+ 1923              	.LBB3:
+ 409:./basic/structs.c **** 
+ 410:./basic/structs.c **** 	for (uint8_t i=0; i<digits; ++i)
+ 1924              		.loc 1 410 15
+ 1925 0036 0023     		movs	r3, #0
+ 1926 0038 FB75     		strb	r3, [r7, #23]
+ 1927              		.loc 1 410 2
+ 1928 003a 08E0     		b	.L67
+ 1929              	.L68:
+ 411:./basic/structs.c **** 		reminder /= 10.0;
+ 1930              		.loc 1 411 12 discriminator 3
+ 1931 003c 0F49     		ldr	r1, .L71
+ 1932 003e B869     		ldr	r0, [r7, #24]	@ float
+ 1933 0040 FFF7FEFF 		bl	__aeabi_fdiv
+ 1934 0044 0346     		mov	r3, r0
+ 1935 0046 BB61     		str	r3, [r7, #24]	@ float
+ 410:./basic/structs.c **** 		reminder /= 10.0;
+ 1936              		.loc 1 410 30 discriminator 3
+ 1937 0048 FB7D     		ldrb	r3, [r7, #23]
+ 1938 004a 0133     		adds	r3, r3, #1
+ 1939 004c FB75     		strb	r3, [r7, #23]
+ 1940              	.L67:
+ 410:./basic/structs.c **** 		reminder /= 10.0;
+ 1941              		.loc 1 410 2 discriminator 1
+ 1942 004e FA7D     		ldrb	r2, [r7, #23]	@ zero_extendqisi2
+ 1943 0050 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1944 0052 9A42     		cmp	r2, r3
+ 1945 0054 F2D3     		bcc	.L68
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 42
+
+
+ 1946              	.LBE3:
+ 412:./basic/structs.c ****  
+ 413:./basic/structs.c ****     number+=reminder;
+ 1947              		.loc 1 413 11
+ 1948 0056 B969     		ldr	r1, [r7, #24]	@ float
+ 1949 0058 F869     		ldr	r0, [r7, #28]	@ float
+ 1950 005a FFF7FEFF 		bl	__aeabi_fadd
+ 1951 005e 0346     		mov	r3, r0
+ 1952 0060 FB61     		str	r3, [r7, #28]	@ float
+ 414:./basic/structs.c **** 	
+ 415:./basic/structs.c **** 	if(r.sig==1)
+ 1953              		.loc 1 415 6
+ 1954 0062 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1955              		.loc 1 415 4
+ 1956 0064 012B     		cmp	r3, #1
+ 1957 0066 03D1     		bne	.L69
+ 416:./basic/structs.c **** 	number=-number;
+ 1958              		.loc 1 416 8
+ 1959 0068 FB69     		ldr	r3, [r7, #28]
+ 1960 006a 83F00043 		eor	r3, r3, #-2147483648
+ 1961 006e FB61     		str	r3, [r7, #28]	@ float
+ 1962              	.L69:
+ 417:./basic/structs.c **** 	return number;
+ 1963              		.loc 1 417 9
+ 1964 0070 FB69     		ldr	r3, [r7, #28]	@ float
+ 418:./basic/structs.c **** }
+ 1965              		.loc 1 418 1
+ 1966 0072 1846     		mov	r0, r3
+ 1967 0074 2037     		adds	r7, r7, #32
+ 1968              	.LCFI96:
+ 1969              		.cfi_def_cfa_offset 8
+ 1970 0076 BD46     		mov	sp, r7
+ 1971              	.LCFI97:
+ 1972              		.cfi_def_cfa_register 13
+ 1973              		@ sp needed
+ 1974 0078 80BD     		pop	{r7, pc}
+ 1975              	.L72:
+ 1976 007a 00BF     		.align	2
+ 1977              	.L71:
+ 1978 007c 00002041 		.word	1092616192
+ 1979              		.cfi_endproc
+ 1980              	.LFE48:
+ 1982              		.text
+ 1983              	.Letext0:
+ 1984              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 1985              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1986              		.file 4 "./basic/structs.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 structs.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:18     .text.clc_sum_16bit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:24     .text.clc_sum_16bit:00000000 clc_sum_16bit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:97     .text.clc_avg_16bit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:103    .text.clc_avg_16bit:00000000 clc_avg_16bit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:179    .text.clc_avg_32bit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:185    .text.clc_avg_32bit:00000000 clc_avg_32bit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:259    .text.avg_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:265    .text.avg_real:00000000 avg_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:443    .text.avg_real:000000f0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:448    .text.cmp_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:454    .text.cmp_real:00000000 cmp_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:588    .text.add_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:594    .text.add_real:00000000 add_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:770    .text.add_real:000000f4 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:775    .text.sub_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:781    .text.sub_real:00000000 sub_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:838    .text.inc_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:844    .text.inc_real:00000000 inc_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:896    .text.dec_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:902    .text.dec_real:00000000 dec_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:954    .text.reverse_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:960    .text.reverse_byte:00000000 reverse_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1066   .text.reverse_word:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1072   .text.reverse_word:00000000 reverse_word
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1242   .text.reverse_dword:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1248   .text.reverse_dword:00000000 reverse_dword
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1545   .text.bcd_to_bin:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1551   .text.bcd_to_bin:00000000 bcd_to_bin
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1616   .text.bin_to_bcd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1622   .text.bin_to_bcd:00000000 bin_to_bcd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1689   .text.bin_to_bcd:00000054 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1703   .text.float_to_real:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1709   .text.float_to_real:00000000 float_to_real
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1866   .text.float_to_real:00000100 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1876   .text.real_to_float:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1882   .text.real_to_float:00000000 real_to_float
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s:1978   .text.real_to_float:0000007c $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 44
+
+
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdV2OkL.s 			page 45
+
+
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+__aeabi_fcmplt
+__aeabi_ddiv
+__aeabi_f2d
+__aeabi_dadd
+__aeabi_d2f
+__aeabi_f2uiz
+__aeabi_ui2d
+__aeabi_dsub
+__aeabi_fmul
+__aeabi_ui2f
+__aeabi_fdiv
+__aeabi_fadd

@@ -1,5 +1,5 @@
 ./TIM/TIM.c:46:6:TIM2_init	24	static
-./TIM/TIM.c:78:6:TIM3_init	24	static
-./TIM/TIM.c:108:6:TIM4_init	4	static
-./TIM/TIM.c:119:6:TIM2_IRQHandler	8	static
-./TIM/TIM.c:128:6:TIM3_IRQHandler	16	static
+./TIM/TIM.c:80:6:TIM3_init	24	static
+./TIM/TIM.c:110:6:TIM4_init	4	static
+./TIM/TIM.c:121:6:TIM2_IRQHandler	8	static
+./TIM/TIM.c:130:6:TIM3_IRQHandler	16	static

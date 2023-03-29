@@ -1,0 +1,33 @@
+digraph "i2c_t"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="i2c_t",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="a gloabl variale define the I2C receive Ring Queue"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",style="dashed",label=" ptr" ];
+  Node2 [label="I2C_TypeDef_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#structI2C__TypeDef__t",tooltip="Inter Integrated Circuit Interface."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" CR1" ];
+  Node3 [label="I2C_CR1_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__CR1__t",tooltip="data structure Bit definition for I2C_CR1 register"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" CR2" ];
+  Node4 [label="I2C_CR2_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__CR2__t",tooltip="data structure Bit definition for I2C_CR2 register"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" OAR1" ];
+  Node5 [label="I2C_OAR1_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__OAR1__t",tooltip="data structure Bit definition for I2C_OAR1 register"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" OAR2" ];
+  Node6 [label="I2C_OAR2_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__OAR2__t",tooltip="data structure Bit definition for I2C_OAR2 register"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" DR" ];
+  Node7 [label="I2C_DR_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__DR__t",tooltip="data structure Bit definition for I2C_DR register"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" SR1" ];
+  Node8 [label="I2C_SR1_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__SR1__t",tooltip="data structure Bit definition for I2C_SR1 register"];
+  Node9 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" SR2" ];
+  Node9 [label="I2C_SR2_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__SR2__t",tooltip="data structure Bit definition for I2C_SR2 register"];
+  Node10 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" CCR" ];
+  Node10 [label="I2C_CCR_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__CCR__t",tooltip="data structure Bit definition for I2C_CCR register"];
+  Node11 -> Node2 [dir="back",color="darkorchid3",style="dashed",label=" TRISE" ];
+  Node11 [label="I2C_TRISE_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$group__i2c__rw.html#unionI2C__TRISE__t",tooltip="data structure Bit definition for I2C_TRISE register"];
+  Node12 -> Node1 [dir="back",color="darkorchid3",style="dashed",label=" scl\nsda" ];
+  Node12 [label="gpio_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structgpio__t.html",tooltip=" "];
+  Node13 -> Node1 [dir="back",color="darkorchid3",style="dashed",label=" AFIO_MAPR_I2C\nRCC_APBxENR_AFIO\nRCC_APBxENR_I2C\nRCC_APBxENR_IOP\nRCC_APBxRSTR_I2C" ];
+  Node13 [label="reg_t",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structreg__t.html",tooltip=" "];
+}

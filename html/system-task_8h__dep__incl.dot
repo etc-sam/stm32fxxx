@@ -1,0 +1,46 @@
+digraph "system/system-task.h"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [label="system/system-task.h",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="steelblue1",style="solid"];
+  Node2 [label="init/init.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$init_8h.html",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="steelblue1",style="solid"];
+  Node3 [label="TIM/TIM.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$TIM_8c.html",tooltip=" "];
+  Node2 -> Node4 [dir="back",color="steelblue1",style="solid"];
+  Node4 [label="basic/array.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$array_8c.html",tooltip=" "];
+  Node2 -> Node5 [dir="back",color="steelblue1",style="solid"];
+  Node5 [label="basic/crc.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$crc_8c.html",tooltip=" "];
+  Node2 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node6 [label="basic/gpio.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$gpio_8c.html",tooltip=" "];
+  Node2 -> Node7 [dir="back",color="steelblue1",style="solid"];
+  Node7 [label="basic/queue.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$queue_8c.html",tooltip=" "];
+  Node2 -> Node8 [dir="back",color="steelblue1",style="solid"];
+  Node8 [label="basic/structs.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structs_8c.html",tooltip=" "];
+  Node2 -> Node9 [dir="back",color="steelblue1",style="solid"];
+  Node9 [label="i2c/i2c-com.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$i2c-com_8c.html",tooltip=" "];
+  Node2 -> Node10 [dir="back",color="steelblue1",style="solid"];
+  Node10 [label="i2c/i2c-std.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$i2c-std_8c.html",tooltip=" "];
+  Node2 -> Node11 [dir="back",color="steelblue1",style="solid"];
+  Node11 [label="i2c/i2c.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$i2c_8c.html",tooltip=" "];
+  Node2 -> Node12 [dir="back",color="steelblue1",style="solid"];
+  Node12 [label="init/init.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$init_8c.html",tooltip=" "];
+  Node2 -> Node13 [dir="back",color="steelblue1",style="solid"];
+  Node13 [label="keypad/keypad.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$keypad_8c.html",tooltip=" "];
+  Node2 -> Node14 [dir="back",color="steelblue1",style="solid"];
+  Node14 [label="lcd/lcd.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$lcd_8c.html",tooltip=" "];
+  Node2 -> Node15 [dir="back",color="steelblue1",style="solid"];
+  Node15 [label="main.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8c.html",tooltip=" "];
+  Node2 -> Node16 [dir="back",color="steelblue1",style="solid"];
+  Node16 [label="mpu6050/mpu6050.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mpu6050_8c.html",tooltip=" "];
+  Node2 -> Node17 [dir="back",color="steelblue1",style="solid"];
+  Node17 [label="system/system-task.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$system-task_8c.html",tooltip=" "];
+  Node2 -> Node18 [dir="back",color="steelblue1",style="solid"];
+  Node18 [label="system/system.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$system_8c.html",tooltip=" "];
+  Node2 -> Node19 [dir="back",color="steelblue1",style="solid"];
+  Node19 [label="uart/uart.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$uart_8c.html",tooltip=" "];
+  Node2 -> Node20 [dir="back",color="steelblue1",style="solid"];
+  Node20 [label="uart/uart_com.c",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$uart__com_8c.html",tooltip=" "];
+}

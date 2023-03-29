@@ -145,6 +145,9 @@ extern  uint8_t  rx_buffer[UART_BUFFER_SIZE];
 extern volatile uint8_t  rx_buffer_length;
 extern volatile uint8_t  buffer_overflow;
 
+extern gpio_t uart_tx;
+extern gpio_t uart_rx;
+
 //********************************************************************************************
 //
 //  Commomd Method protoypes for USARTx Module peripherals
@@ -157,6 +160,8 @@ extern void USART3_init(void);
 // not intterrupt 
 extern uint8_t uart_put_char(USART_TypeDef * usartx,uint8_t data);
 extern uint8_t uart_get_char(USART_TypeDef * usartx);
+
+
 
 //********************************************************************************************
 //
@@ -171,8 +176,7 @@ extern uint8_t uart_get_char(USART_TypeDef * usartx);
 //********************************************************************************************
 //! initialiaze the usart module
 extern void uart_init(void);
-
-
+extern void uart_reset(void);
 
 //! performs areceive operation of one byte on uart
 extern uint8_t uart_receive(USART_TypeDef * usartx);
@@ -199,6 +203,12 @@ extern void uart_println(USART_TypeDef * usartx ,char * str);
 //! a generic print  message on the uart
 extern void uart_print(USART_TypeDef * usartx ,char * str);
 
+
+//extern void uart_print_uint8_t(USART_TypeDef * usartx ,uint8_t byte);
+//extern void uart_print_uint16_t(USART_TypeDef * usartx ,uint16_t word);
+//extern void uart_print_uint32_t(USART_TypeDef * usartx ,uint32_t dword);
+extern void uart_print_integer(USART_TypeDef * usartx ,uint32_t dword,uint8_t base);
+extern void uart_print_float(USART_TypeDef * usartx ,float val,uint8_t digits);
 //! a generic print  message as hexadecimal format on the uart
 extern void uart_print_Array(USART_TypeDef * usartx ,uint8_t * data,uint8_t len);
 //! a generic println  message as hexadecimal format on the uart

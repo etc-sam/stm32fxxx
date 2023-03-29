@@ -26,6 +26,9 @@ volatile uint16_t rx_index=0;
 uint8_t  rx_buffer[UART_BUFFER_SIZE]={0};
 volatile uint8_t  rx_buffer_length=0;
 volatile uint8_t  buffer_overflow=0;
+
+gpio_t uart_tx={GPIOA,9};//USART1_TX=PA9
+gpio_t uart_rx={GPIOA,10};//USART1_RX=PA10
 //********************************************************************************************
 //
 // static variables' declarations 
@@ -64,7 +67,7 @@ extern void uart_reg_write_buffer(USART_TypeDef * usartx,uint8_t * buff,uint16_t
 //! initialize the receive mask interrupt
 //static void uart_set_rx_Int_mask(uint8_t enable);
 //! uart reset 
-static void uart_reset();
+
 
 //static uint8_t startswith_header(uint8_t * buffer,uint8_t Buffer_length,uint8_t * delimiter);
 static uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t Buffer_length,uint8_t * delimiter);
@@ -445,6 +448,40 @@ void uart_println(USART_TypeDef * usartx ,char * str)
  	uart_send_buffer(usartx ,(uint8_t*)str,strlen(str));
 	uart_send_byte(usartx,'\r');
 	uart_send_byte(usartx,'\n');
+}
+//------------------------------------------------------------------------------------------------------------
+/**
+ * @brief 
+ * 
+ * @param usartx 
+ * @param dword 
+ */
+void uart_print_integer(USART_TypeDef * usartx ,uint32_t dword,uint8_t base)
+{
+  	char buf[16]="";
+	switch(base)
+	{
+	  case 16:	uart_print(usartx,"0x"); break;
+	  case 2:   uart_print(usartx,"0b"); break;
+	  default:  uart_print(usartx," ");  break;
+	}
+	
+    itoa(dword,buf,base);
+    uart_print(usartx,buf);	   
+}
+//------------------------------------------------------------------------------------------------------------
+void uart_print_float(USART_TypeDef * usartx ,float val,uint8_t digits)
+{
+char buf[16]="";
+	real_t r;
+	r=float_to_real(val,digits);
+	if(r.sig==1)
+	uart_print(usartx,"-");
+    itoa(r.integer,buf,10);
+    uart_print(usartx,buf);
+		uart_print(usartx,".");	  
+    itoa(r.decimal,buf,10);
+    uart_print(usartx,buf);
 }
 //------------------------------------------------------------------------------------------------------------
 /**

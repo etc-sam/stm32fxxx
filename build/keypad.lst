@@ -1,0 +1,1401 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"keypad.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	key_val
+  18              		.section	.bss.key_val,"aw",%nobits
+  19              		.align	2
+  22              	key_val:
+  23 0000 00       		.space	1
+  24              		.global	keypad_unpressed_mask
+  25              		.section	.bss.keypad_unpressed_mask,"aw",%nobits
+  28              	keypad_unpressed_mask:
+  29 0000 00       		.space	1
+  30              		.global	keypad_en
+  31              		.section	.data.keypad_en,"aw"
+  32              		.align	2
+  35              	keypad_en:
+  36 0000 00100140 		.word	1073811456
+  37 0004 0E00     		.short	14
+  38 0006 0000     		.space	2
+  39              		.global	keypad_port
+  40              		.section	.data.keypad_port,"aw"
+  41              		.align	2
+  44              	keypad_port:
+  45 0000 00080140 		.word	1073809408
+  46 0004 0700     		.short	7
+  47 0006 0000     		.space	2
+  48 0008 00080140 		.word	1073809408
+  49 000c 0600     		.short	6
+  50 000e 0000     		.space	2
+  51 0010 00080140 		.word	1073809408
+  52 0014 0500     		.short	5
+  53 0016 0000     		.space	2
+  54 0018 00080140 		.word	1073809408
+  55 001c 0400     		.short	4
+  56 001e 0000     		.space	2
+  57 0020 00080140 		.word	1073809408
+  58 0024 0300     		.short	3
+  59 0026 0000     		.space	2
+  60 0028 00080140 		.word	1073809408
+  61 002c 0200     		.short	2
+  62 002e 0000     		.space	2
+  63 0030 00080140 		.word	1073809408
+  64 0034 0100     		.short	1
+  65 0036 0000     		.space	2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 2
+
+
+  66 0038 00080140 		.word	1073809408
+  67 003c 0000     		.short	0
+  68 003e 0000     		.space	2
+  69              		.section	.text.keypad_port_input_pullup,"ax",%progbits
+  70              		.align	1
+  71              		.global	keypad_port_input_pullup
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  76              	keypad_port_input_pullup:
+  77              	.LFB33:
+  78              		.file 1 "./keypad/keypad.c"
+   1:./keypad/keypad.c **** /**
+   2:./keypad/keypad.c ****  * @brief keypad.c
+   3:./keypad/keypad.c ****  *
+   4:./keypad/keypad.c ****  * @param student: Sameer Almaldein
+   5:./keypad/keypad.c ****  * @param ID: 679699
+   6:./keypad/keypad.c ****  * @param University TU-Chemnitz
+   7:./keypad/keypad.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./keypad/keypad.c ****  */ 
+   9:./keypad/keypad.c **** 
+  10:./keypad/keypad.c **** //********************************************************************************************
+  11:./keypad/keypad.c **** //
+  12:./keypad/keypad.c **** //  header  files
+  13:./keypad/keypad.c **** //
+  14:./keypad/keypad.c **** //********************************************************************************************
+  15:./keypad/keypad.c **** #include "init.h"
+  16:./keypad/keypad.c **** //********************************************************************************************
+  17:./keypad/keypad.c **** //
+  18:./keypad/keypad.c **** //  static Methods
+  19:./keypad/keypad.c **** //
+  20:./keypad/keypad.c **** //********************************************************************************************
+  21:./keypad/keypad.c **** static uint8_t keypad_port_get_input_data(void);
+  22:./keypad/keypad.c **** 
+  23:./keypad/keypad.c **** static uint8_t keypad_read(void);
+  24:./keypad/keypad.c **** static void keypad_handle(void);
+  25:./keypad/keypad.c **** //********************************************************************************************
+  26:./keypad/keypad.c **** //
+  27:./keypad/keypad.c **** //  extern variables
+  28:./keypad/keypad.c **** //
+  29:./keypad/keypad.c **** //********************************************************************************************
+  30:./keypad/keypad.c **** Keypad_btn_t key_val;
+  31:./keypad/keypad.c **** 
+  32:./keypad/keypad.c **** uint8_t keypad_unpressed_mask=0;
+  33:./keypad/keypad.c **** //uint8_t keypad_Enter_cnt=0,keypad_Timeout_cnt=0;
+  34:./keypad/keypad.c **** //uint8_t keypad_Reset_cnt=0,keypad_Start_cnt=0;
+  35:./keypad/keypad.c **** 
+  36:./keypad/keypad.c **** gpio_t keypad_en={GPIOC,14};
+  37:./keypad/keypad.c **** gpio_t keypad_port[8]={
+  38:./keypad/keypad.c **** {GPIOA,7},   // keypad_DQ0=PA7
+  39:./keypad/keypad.c **** {GPIOA,6},   // keypad_DQ1=PA6
+  40:./keypad/keypad.c **** {GPIOA,5},   // keypad_DQ2=PA5
+  41:./keypad/keypad.c **** {GPIOA,4},   // keypad_DQ3=PA4
+  42:./keypad/keypad.c **** {GPIOA,3},   // keypad_DQ4=PA3
+  43:./keypad/keypad.c **** {GPIOA,2},   // keypad_DQ5=PA2   
+  44:./keypad/keypad.c **** {GPIOA,1},   // keypad_DQ5=PA1   
+  45:./keypad/keypad.c **** {GPIOA,0},   // keypad_DQ5=PA0   
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 3
+
+
+  46:./keypad/keypad.c **** };
+  47:./keypad/keypad.c **** 
+  48:./keypad/keypad.c **** //********************************************************************************************
+  49:./keypad/keypad.c **** //
+  50:./keypad/keypad.c **** //  static Methods defnitions
+  51:./keypad/keypad.c **** //
+  52:./keypad/keypad.c **** //********************************************************************************************
+  53:./keypad/keypad.c **** void keypad_port_input_pullup(void)
+  54:./keypad/keypad.c **** {
+  79              		.loc 1 54 1
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 8
+  82              		@ frame_needed = 1, uses_anonymous_args = 0
+  83 0000 80B5     		push	{r7, lr}
+  84              	.LCFI0:
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 7, -8
+  87              		.cfi_offset 14, -4
+  88 0002 82B0     		sub	sp, sp, #8
+  89              	.LCFI1:
+  90              		.cfi_def_cfa_offset 16
+  91 0004 00AF     		add	r7, sp, #0
+  92              	.LCFI2:
+  93              		.cfi_def_cfa_register 7
+  94              	.LBB2:
+  55:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+  95              		.loc 1 55 15
+  96 0006 0023     		movs	r3, #0
+  97 0008 FB71     		strb	r3, [r7, #7]
+  98              		.loc 1 55 3
+  99 000a 0AE0     		b	.L2
+ 100              	.L3:
+  56:./keypad/keypad.c ****    gpio_in_pullup(keypad_port[i]);
+ 101              		.loc 1 56 4 discriminator 3
+ 102 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 103 000e 094A     		ldr	r2, .L4
+ 104 0010 DB00     		lsls	r3, r3, #3
+ 105 0012 1344     		add	r3, r3, r2
+ 106 0014 93E80300 		ldm	r3, {r0, r1}
+ 107 0018 FFF7FEFF 		bl	gpio_in_pullup
+  55:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+ 108              		.loc 1 55 24 discriminator 3
+ 109 001c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 110 001e 0133     		adds	r3, r3, #1
+ 111 0020 FB71     		strb	r3, [r7, #7]
+ 112              	.L2:
+  55:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+ 113              		.loc 1 55 3 discriminator 1
+ 114 0022 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 115 0024 072B     		cmp	r3, #7
+ 116 0026 F1D9     		bls	.L3
+ 117              	.LBE2:
+  57:./keypad/keypad.c **** 
+  58:./keypad/keypad.c **** }
+ 118              		.loc 1 58 1
+ 119 0028 00BF     		nop
+ 120 002a 00BF     		nop
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 4
+
+
+ 121 002c 0837     		adds	r7, r7, #8
+ 122              	.LCFI3:
+ 123              		.cfi_def_cfa_offset 8
+ 124 002e BD46     		mov	sp, r7
+ 125              	.LCFI4:
+ 126              		.cfi_def_cfa_register 13
+ 127              		@ sp needed
+ 128 0030 80BD     		pop	{r7, pc}
+ 129              	.L5:
+ 130 0032 00BF     		.align	2
+ 131              	.L4:
+ 132 0034 00000000 		.word	keypad_port
+ 133              		.cfi_endproc
+ 134              	.LFE33:
+ 136              		.section	.text.keypad_port_get_input_data,"ax",%progbits
+ 137              		.align	1
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	keypad_port_get_input_data:
+ 143              	.LFB34:
+  59:./keypad/keypad.c **** //---------------------------------------------------------
+  60:./keypad/keypad.c **** uint8_t keypad_port_get_input_data(void)
+  61:./keypad/keypad.c **** {
+ 144              		.loc 1 61 1
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 8
+ 147              		@ frame_needed = 1, uses_anonymous_args = 0
+ 148 0000 80B5     		push	{r7, lr}
+ 149              	.LCFI5:
+ 150              		.cfi_def_cfa_offset 8
+ 151              		.cfi_offset 7, -8
+ 152              		.cfi_offset 14, -4
+ 153 0002 82B0     		sub	sp, sp, #8
+ 154              	.LCFI6:
+ 155              		.cfi_def_cfa_offset 16
+ 156 0004 00AF     		add	r7, sp, #0
+ 157              	.LCFI7:
+ 158              		.cfi_def_cfa_register 7
+  62:./keypad/keypad.c ****   uint8_t val=0xff;
+ 159              		.loc 1 62 11
+ 160 0006 FF23     		movs	r3, #255
+ 161 0008 FB71     		strb	r3, [r7, #7]
+ 162              	.LBB3:
+  63:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+ 163              		.loc 1 63 15
+ 164 000a 0023     		movs	r3, #0
+ 165 000c BB71     		strb	r3, [r7, #6]
+ 166              		.loc 1 63 3
+ 167 000e 19E0     		b	.L7
+ 168              	.L9:
+  64:./keypad/keypad.c ****    if(!gpio_get(keypad_port[i]))
+ 169              		.loc 1 64 8
+ 170 0010 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 171 0012 104A     		ldr	r2, .L11
+ 172 0014 DB00     		lsls	r3, r3, #3
+ 173 0016 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 5
+
+
+ 174 0018 93E80300 		ldm	r3, {r0, r1}
+ 175 001c FFF7FEFF 		bl	gpio_get
+ 176 0020 0346     		mov	r3, r0
+ 177              		.loc 1 64 6
+ 178 0022 002B     		cmp	r3, #0
+ 179 0024 0BD1     		bne	.L8
+  65:./keypad/keypad.c ****      cbit(val,i);  
+ 180              		.loc 1 65 6
+ 181 0026 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 182 0028 0122     		movs	r2, #1
+ 183 002a 02FA03F3 		lsl	r3, r2, r3
+ 184 002e 5BB2     		sxtb	r3, r3
+ 185 0030 DB43     		mvns	r3, r3
+ 186 0032 5AB2     		sxtb	r2, r3
+ 187 0034 97F90730 		ldrsb	r3, [r7, #7]
+ 188 0038 1340     		ands	r3, r3, r2
+ 189 003a 5BB2     		sxtb	r3, r3
+ 190 003c FB71     		strb	r3, [r7, #7]
+ 191              	.L8:
+  63:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+ 192              		.loc 1 63 24 discriminator 2
+ 193 003e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 194 0040 0133     		adds	r3, r3, #1
+ 195 0042 BB71     		strb	r3, [r7, #6]
+ 196              	.L7:
+  63:./keypad/keypad.c ****   for(uint8_t i=0;i<8;i++)
+ 197              		.loc 1 63 3 discriminator 1
+ 198 0044 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 199 0046 072B     		cmp	r3, #7
+ 200 0048 E2D9     		bls	.L9
+ 201              	.LBE3:
+  66:./keypad/keypad.c ****   
+  67:./keypad/keypad.c ****   return val ;   
+ 202              		.loc 1 67 10
+ 203 004a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  68:./keypad/keypad.c **** }
+ 204              		.loc 1 68 1
+ 205 004c 1846     		mov	r0, r3
+ 206 004e 0837     		adds	r7, r7, #8
+ 207              	.LCFI8:
+ 208              		.cfi_def_cfa_offset 8
+ 209 0050 BD46     		mov	sp, r7
+ 210              	.LCFI9:
+ 211              		.cfi_def_cfa_register 13
+ 212              		@ sp needed
+ 213 0052 80BD     		pop	{r7, pc}
+ 214              	.L12:
+ 215              		.align	2
+ 216              	.L11:
+ 217 0054 00000000 		.word	keypad_port
+ 218              		.cfi_endproc
+ 219              	.LFE34:
+ 221              		.section	.text.keypad_read,"ax",%progbits
+ 222              		.align	1
+ 223              		.syntax unified
+ 224              		.thumb
+ 225              		.thumb_func
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 6
+
+
+ 227              	keypad_read:
+ 228              	.LFB35:
+  69:./keypad/keypad.c **** //---------------------------------------------------------
+  70:./keypad/keypad.c **** uint8_t keypad_read(void)
+  71:./keypad/keypad.c **** {
+ 229              		.loc 1 71 1
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 8
+ 232              		@ frame_needed = 1, uses_anonymous_args = 0
+ 233 0000 80B5     		push	{r7, lr}
+ 234              	.LCFI10:
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 7, -8
+ 237              		.cfi_offset 14, -4
+ 238 0002 82B0     		sub	sp, sp, #8
+ 239              	.LCFI11:
+ 240              		.cfi_def_cfa_offset 16
+ 241 0004 00AF     		add	r7, sp, #0
+ 242              	.LCFI12:
+ 243              		.cfi_def_cfa_register 7
+  72:./keypad/keypad.c ****   uint8_t val=0xff;
+ 244              		.loc 1 72 11
+ 245 0006 FF23     		movs	r3, #255
+ 246 0008 FB71     		strb	r3, [r7, #7]
+  73:./keypad/keypad.c **** // set keypad port as input with pull up resistor
+  74:./keypad/keypad.c ****    keypad_port_input_pullup();
+ 247              		.loc 1 74 4
+ 248 000a FFF7FEFF 		bl	keypad_port_input_pullup
+  75:./keypad/keypad.c ****  // set keypad enable pin as output with push-pull  
+  76:./keypad/keypad.c ****    gpio_pin_mode(keypad_en,GPIO_MODE_OUT_PP_2MHZ);
+ 249              		.loc 1 76 4
+ 250 000e 134B     		ldr	r3, .L15
+ 251 0010 0222     		movs	r2, #2
+ 252 0012 93E80300 		ldm	r3, {r0, r1}
+ 253 0016 FFF7FEFF 		bl	gpio_pin_mode
+  77:./keypad/keypad.c ****  // deactivate the keypad  
+  78:./keypad/keypad.c ****    gpio_set(keypad_en); 
+ 254              		.loc 1 78 4
+ 255 001a 104B     		ldr	r3, .L15
+ 256 001c 93E80300 		ldm	r3, {r0, r1}
+ 257 0020 FFF7FEFF 		bl	gpio_set
+  79:./keypad/keypad.c **** 
+  80:./keypad/keypad.c ****   	// activate the keypad
+  81:./keypad/keypad.c **** 	gpio_clear(keypad_en);
+ 258              		.loc 1 81 2
+ 259 0024 0D4B     		ldr	r3, .L15
+ 260 0026 93E80300 		ldm	r3, {r0, r1}
+ 261 002a FFF7FEFF 		bl	gpio_clear
+  82:./keypad/keypad.c **** 
+  83:./keypad/keypad.c ****   _delay_us(10);
+ 262              		.loc 1 83 3
+ 263 002e 0A20     		movs	r0, #10
+ 264 0030 FFF7FEFF 		bl	_delay_us
+  84:./keypad/keypad.c **** 	asm("nop");
+ 265              		.loc 1 84 2
+ 266              		.syntax unified
+ 267              	@ 84 "./keypad/keypad.c" 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 7
+
+
+ 268 0034 00BF     		nop
+ 269              	@ 0 "" 2
+  85:./keypad/keypad.c **** 	asm("nop");
+ 270              		.loc 1 85 2
+ 271              	@ 85 "./keypad/keypad.c" 1
+ 272 0036 00BF     		nop
+ 273              	@ 0 "" 2
+  86:./keypad/keypad.c **** 	asm("nop");
+ 274              		.loc 1 86 2
+ 275              	@ 86 "./keypad/keypad.c" 1
+ 276 0038 00BF     		nop
+ 277              	@ 0 "" 2
+  87:./keypad/keypad.c **** 	asm("nop");
+ 278              		.loc 1 87 2
+ 279              	@ 87 "./keypad/keypad.c" 1
+ 280 003a 00BF     		nop
+ 281              	@ 0 "" 2
+  88:./keypad/keypad.c **** 	asm("nop");
+ 282              		.loc 1 88 2
+ 283              	@ 88 "./keypad/keypad.c" 1
+ 284 003c 00BF     		nop
+ 285              	@ 0 "" 2
+  89:./keypad/keypad.c **** 	asm("nop");
+ 286              		.loc 1 89 2
+ 287              	@ 89 "./keypad/keypad.c" 1
+ 288 003e 00BF     		nop
+ 289              	@ 0 "" 2
+  90:./keypad/keypad.c **** 
+  91:./keypad/keypad.c **** 	// read data from input port
+  92:./keypad/keypad.c **** 	val=keypad_port_get_input_data();
+ 290              		.loc 1 92 6
+ 291              		.thumb
+ 292              		.syntax unified
+ 293 0040 FFF7FEFF 		bl	keypad_port_get_input_data
+ 294 0044 0346     		mov	r3, r0
+ 295 0046 FB71     		strb	r3, [r7, #7]
+  93:./keypad/keypad.c ****   //lcd_print_uint8_xy(12,0,val,16);
+  94:./keypad/keypad.c **** 	// deactivate the keypad
+  95:./keypad/keypad.c ****    gpio_set(keypad_en); 
+ 296              		.loc 1 95 4
+ 297 0048 044B     		ldr	r3, .L15
+ 298 004a 93E80300 		ldm	r3, {r0, r1}
+ 299 004e FFF7FEFF 		bl	gpio_set
+  96:./keypad/keypad.c **** 
+  97:./keypad/keypad.c **** return val; 
+ 300              		.loc 1 97 8
+ 301 0052 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  98:./keypad/keypad.c **** }
+ 302              		.loc 1 98 1
+ 303 0054 1846     		mov	r0, r3
+ 304 0056 0837     		adds	r7, r7, #8
+ 305              	.LCFI13:
+ 306              		.cfi_def_cfa_offset 8
+ 307 0058 BD46     		mov	sp, r7
+ 308              	.LCFI14:
+ 309              		.cfi_def_cfa_register 13
+ 310              		@ sp needed
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 8
+
+
+ 311 005a 80BD     		pop	{r7, pc}
+ 312              	.L16:
+ 313              		.align	2
+ 314              	.L15:
+ 315 005c 00000000 		.word	keypad_en
+ 316              		.cfi_endproc
+ 317              	.LFE35:
+ 319              		.section	.text.keypad_handle,"ax",%progbits
+ 320              		.align	1
+ 321              		.syntax unified
+ 322              		.thumb
+ 323              		.thumb_func
+ 325              	keypad_handle:
+ 326              	.LFB36:
+  99:./keypad/keypad.c **** //---------------------------------------------------------
+ 100:./keypad/keypad.c **** void keypad_handle(void)
+ 101:./keypad/keypad.c **** {
+ 327              		.loc 1 101 1
+ 328              		.cfi_startproc
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 1, uses_anonymous_args = 0
+ 331 0000 80B5     		push	{r7, lr}
+ 332              	.LCFI15:
+ 333              		.cfi_def_cfa_offset 8
+ 334              		.cfi_offset 7, -8
+ 335              		.cfi_offset 14, -4
+ 336 0002 00AF     		add	r7, sp, #0
+ 337              	.LCFI16:
+ 338              		.cfi_def_cfa_register 7
+ 102:./keypad/keypad.c **** //my_gnc.usb.printf("key_val:0x%02x",key_val.val);
+ 103:./keypad/keypad.c ****   //my_gnc.usb.println();
+ 104:./keypad/keypad.c ****   switch(key_val.val)
+ 339              		.loc 1 104 17
+ 340 0004 114B     		ldr	r3, .L25
+ 341 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 342              		.loc 1 104 3
+ 343 0008 F42B     		cmp	r3, #244
+ 344 000a 1AD0     		beq	.L18
+ 345 000c F42B     		cmp	r3, #244
+ 346 000e 1BDC     		bgt	.L24
+ 347 0010 EC2B     		cmp	r3, #236
+ 348 0012 13D0     		beq	.L20
+ 349 0014 EC2B     		cmp	r3, #236
+ 350 0016 17DC     		bgt	.L24
+ 351 0018 DC2B     		cmp	r3, #220
+ 352 001a 0CD0     		beq	.L21
+ 353 001c DC2B     		cmp	r3, #220
+ 354 001e 13DC     		bgt	.L24
+ 355 0020 7C2B     		cmp	r3, #124
+ 356 0022 02D0     		beq	.L22
+ 357 0024 BC2B     		cmp	r3, #188
+ 358 0026 03D0     		beq	.L23
+ 105:./keypad/keypad.c ****   {
+ 106:./keypad/keypad.c **** 	case 0x7c:keypad_up_key_handle();		  break;
+ 107:./keypad/keypad.c **** 	case 0xbc:keypad_down_key_handle();	  break;
+ 108:./keypad/keypad.c **** 	case 0xdc:keypad_set_key_handle();	  break;
+ 109:./keypad/keypad.c **** 	case 0xec:keypad_esc_key_handle();		break;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 9
+
+
+ 110:./keypad/keypad.c **** 	case 0xf4:keypad_shft_key_handle();	  break;
+ 111:./keypad/keypad.c ****   }
+ 112:./keypad/keypad.c **** }
+ 359              		.loc 1 112 1
+ 360 0028 0EE0     		b	.L24
+ 361              	.L22:
+ 106:./keypad/keypad.c **** 	case 0xbc:keypad_down_key_handle();	  break;
+ 362              		.loc 1 106 12
+ 363 002a FFF7FEFF 		bl	keypad_up_key_handle
+ 106:./keypad/keypad.c **** 	case 0xbc:keypad_down_key_handle();	  break;
+ 364              		.loc 1 106 2
+ 365 002e 0BE0     		b	.L19
+ 366              	.L23:
+ 107:./keypad/keypad.c **** 	case 0xdc:keypad_set_key_handle();	  break;
+ 367              		.loc 1 107 12
+ 368 0030 FFF7FEFF 		bl	keypad_down_key_handle
+ 107:./keypad/keypad.c **** 	case 0xdc:keypad_set_key_handle();	  break;
+ 369              		.loc 1 107 2
+ 370 0034 08E0     		b	.L19
+ 371              	.L21:
+ 108:./keypad/keypad.c **** 	case 0xec:keypad_esc_key_handle();		break;
+ 372              		.loc 1 108 12
+ 373 0036 FFF7FEFF 		bl	keypad_set_key_handle
+ 108:./keypad/keypad.c **** 	case 0xec:keypad_esc_key_handle();		break;
+ 374              		.loc 1 108 2
+ 375 003a 05E0     		b	.L19
+ 376              	.L20:
+ 109:./keypad/keypad.c **** 	case 0xf4:keypad_shft_key_handle();	  break;
+ 377              		.loc 1 109 12
+ 378 003c FFF7FEFF 		bl	keypad_esc_key_handle
+ 109:./keypad/keypad.c **** 	case 0xf4:keypad_shft_key_handle();	  break;
+ 379              		.loc 1 109 2
+ 380 0040 02E0     		b	.L19
+ 381              	.L18:
+ 110:./keypad/keypad.c ****   }
+ 382              		.loc 1 110 12
+ 383 0042 FFF7FEFF 		bl	keypad_shft_key_handle
+ 110:./keypad/keypad.c ****   }
+ 384              		.loc 1 110 2
+ 385 0046 00BF     		nop
+ 386              	.L19:
+ 387              	.L24:
+ 388              		.loc 1 112 1
+ 389 0048 00BF     		nop
+ 390 004a 80BD     		pop	{r7, pc}
+ 391              	.L26:
+ 392              		.align	2
+ 393              	.L25:
+ 394 004c 00000000 		.word	key_val
+ 395              		.cfi_endproc
+ 396              	.LFE36:
+ 398              		.section	.text.keypad_init,"ax",%progbits
+ 399              		.align	1
+ 400              		.global	keypad_init
+ 401              		.syntax unified
+ 402              		.thumb
+ 403              		.thumb_func
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 10
+
+
+ 405              	keypad_init:
+ 406              	.LFB37:
+ 113:./keypad/keypad.c **** //---------------------------------------------------------
+ 114:./keypad/keypad.c **** //********************************************************************************************
+ 115:./keypad/keypad.c **** //
+ 116:./keypad/keypad.c **** //  extern Methods
+ 117:./keypad/keypad.c **** //
+ 118:./keypad/keypad.c **** //********************************************************************************************
+ 119:./keypad/keypad.c **** void keypad_init(uint8_t unpressed_mask)
+ 120:./keypad/keypad.c **** {
+ 407              		.loc 1 120 1
+ 408              		.cfi_startproc
+ 409              		@ args = 0, pretend = 0, frame = 8
+ 410              		@ frame_needed = 1, uses_anonymous_args = 0
+ 411 0000 80B5     		push	{r7, lr}
+ 412              	.LCFI17:
+ 413              		.cfi_def_cfa_offset 8
+ 414              		.cfi_offset 7, -8
+ 415              		.cfi_offset 14, -4
+ 416 0002 82B0     		sub	sp, sp, #8
+ 417              	.LCFI18:
+ 418              		.cfi_def_cfa_offset 16
+ 419 0004 00AF     		add	r7, sp, #0
+ 420              	.LCFI19:
+ 421              		.cfi_def_cfa_register 7
+ 422 0006 0346     		mov	r3, r0
+ 423 0008 FB71     		strb	r3, [r7, #7]
+ 121:./keypad/keypad.c ****  // set the unpressed value   
+ 122:./keypad/keypad.c ****    keypad_unpressed_mask=unpressed_mask;
+ 424              		.loc 1 122 25
+ 425 000a 0A4A     		ldr	r2, .L28
+ 426 000c FB79     		ldrb	r3, [r7, #7]
+ 427 000e 1370     		strb	r3, [r2]
+ 123:./keypad/keypad.c **** // set keypad port as input with pull up resistor
+ 124:./keypad/keypad.c ****    keypad_port_input_pullup();
+ 428              		.loc 1 124 4
+ 429 0010 FFF7FEFF 		bl	keypad_port_input_pullup
+ 125:./keypad/keypad.c ****  // set keypad enable pin as output with push-pull  
+ 126:./keypad/keypad.c ****    gpio_pin_mode(keypad_en,GPIO_MODE_OUT_PP_2MHZ);
+ 430              		.loc 1 126 4
+ 431 0014 084B     		ldr	r3, .L28+4
+ 432 0016 0222     		movs	r2, #2
+ 433 0018 93E80300 		ldm	r3, {r0, r1}
+ 434 001c FFF7FEFF 		bl	gpio_pin_mode
+ 127:./keypad/keypad.c ****  // deactivate the keypad  
+ 128:./keypad/keypad.c ****    gpio_set(keypad_en); 
+ 435              		.loc 1 128 4
+ 436 0020 054B     		ldr	r3, .L28+4
+ 437 0022 93E80300 		ldm	r3, {r0, r1}
+ 438 0026 FFF7FEFF 		bl	gpio_set
+ 129:./keypad/keypad.c **** }
+ 439              		.loc 1 129 1
+ 440 002a 00BF     		nop
+ 441 002c 0837     		adds	r7, r7, #8
+ 442              	.LCFI20:
+ 443              		.cfi_def_cfa_offset 8
+ 444 002e BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 11
+
+
+ 445              	.LCFI21:
+ 446              		.cfi_def_cfa_register 13
+ 447              		@ sp needed
+ 448 0030 80BD     		pop	{r7, pc}
+ 449              	.L29:
+ 450 0032 00BF     		.align	2
+ 451              	.L28:
+ 452 0034 00000000 		.word	keypad_unpressed_mask
+ 453 0038 00000000 		.word	keypad_en
+ 454              		.cfi_endproc
+ 455              	.LFE37:
+ 457              		.section	.text.keypad_scan,"ax",%progbits
+ 458              		.align	1
+ 459              		.global	keypad_scan
+ 460              		.syntax unified
+ 461              		.thumb
+ 462              		.thumb_func
+ 464              	keypad_scan:
+ 465              	.LFB38:
+ 130:./keypad/keypad.c **** //---------------------------------------------------------
+ 131:./keypad/keypad.c **** uint8_t keypad_scan(void)
+ 132:./keypad/keypad.c **** {
+ 466              		.loc 1 132 1
+ 467              		.cfi_startproc
+ 468              		@ args = 0, pretend = 0, frame = 0
+ 469              		@ frame_needed = 1, uses_anonymous_args = 0
+ 470 0000 80B5     		push	{r7, lr}
+ 471              	.LCFI22:
+ 472              		.cfi_def_cfa_offset 8
+ 473              		.cfi_offset 7, -8
+ 474              		.cfi_offset 14, -4
+ 475 0002 00AF     		add	r7, sp, #0
+ 476              	.LCFI23:
+ 477              		.cfi_def_cfa_register 7
+ 133:./keypad/keypad.c ****   disable_buffer();
+ 478              		.loc 1 133 3
+ 479 0004 FFF7FEFF 		bl	disable_buffer
+ 134:./keypad/keypad.c ****   key_val.val= keypad_read() & keypad_unpressed_mask;
+ 480              		.loc 1 134 16
+ 481 0008 FFF7FEFF 		bl	keypad_read
+ 482 000c 0346     		mov	r3, r0
+ 483 000e 1A46     		mov	r2, r3
+ 484              		.loc 1 134 14
+ 485 0010 044B     		ldr	r3, .L32
+ 486 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 487 0014 1340     		ands	r3, r3, r2
+ 488 0016 DAB2     		uxtb	r2, r3
+ 489 0018 034B     		ldr	r3, .L32+4
+ 490 001a 1A70     		strb	r2, [r3]
+ 135:./keypad/keypad.c ****  return key_val.val;
+ 491              		.loc 1 135 16
+ 492 001c 024B     		ldr	r3, .L32+4
+ 493 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 136:./keypad/keypad.c **** }
+ 494              		.loc 1 136 1
+ 495 0020 1846     		mov	r0, r3
+ 496 0022 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 12
+
+
+ 497              	.L33:
+ 498              		.align	2
+ 499              	.L32:
+ 500 0024 00000000 		.word	keypad_unpressed_mask
+ 501 0028 00000000 		.word	key_val
+ 502              		.cfi_endproc
+ 503              	.LFE38:
+ 505              		.section	.text.keypad_process,"ax",%progbits
+ 506              		.align	1
+ 507              		.global	keypad_process
+ 508              		.syntax unified
+ 509              		.thumb
+ 510              		.thumb_func
+ 512              	keypad_process:
+ 513              	.LFB39:
+ 137:./keypad/keypad.c **** //---------------------------------------------------------
+ 138:./keypad/keypad.c **** void keypad_process(void)
+ 139:./keypad/keypad.c **** {
+ 514              		.loc 1 139 1
+ 515              		.cfi_startproc
+ 516              		@ args = 0, pretend = 0, frame = 0
+ 517              		@ frame_needed = 1, uses_anonymous_args = 0
+ 518 0000 80B5     		push	{r7, lr}
+ 519              	.LCFI24:
+ 520              		.cfi_def_cfa_offset 8
+ 521              		.cfi_offset 7, -8
+ 522              		.cfi_offset 14, -4
+ 523 0002 00AF     		add	r7, sp, #0
+ 524              	.LCFI25:
+ 525              		.cfi_def_cfa_register 7
+ 140:./keypad/keypad.c ****  if(key_val.val!=keypad_unpressed_mask)
+ 526              		.loc 1 140 12
+ 527 0004 074B     		ldr	r3, .L37
+ 528 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 529              		.loc 1 140 16
+ 530 0008 074B     		ldr	r3, .L37+4
+ 531 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 532              		.loc 1 140 4
+ 533 000c 9A42     		cmp	r2, r3
+ 534 000e 07D0     		beq	.L36
+ 141:./keypad/keypad.c ****  {
+ 142:./keypad/keypad.c **** 	 // the keypad is pressed therefore reset exit_timeout counter
+ 143:./keypad/keypad.c **** 		//App_t::menu.set_exit_cnt(0);
+ 144:./keypad/keypad.c ****     logout_timeout.sec=5;
+ 535              		.loc 1 144 23
+ 536 0010 064B     		ldr	r3, .L37+8
+ 537 0012 0522     		movs	r2, #5
+ 538 0014 1A70     		strb	r2, [r3]
+ 145:./keypad/keypad.c ****     logout_timeout.min=0;    
+ 539              		.loc 1 145 23
+ 540 0016 054B     		ldr	r3, .L37+8
+ 541 0018 0022     		movs	r2, #0
+ 542 001a 5A70     		strb	r2, [r3, #1]
+ 146:./keypad/keypad.c **** 		keypad_handle();
+ 543              		.loc 1 146 3
+ 544 001c FFF7FEFF 		bl	keypad_handle
+ 545              	.L36:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 13
+
+
+ 147:./keypad/keypad.c ****  }
+ 148:./keypad/keypad.c **** 
+ 149:./keypad/keypad.c **** }
+ 546              		.loc 1 149 1
+ 547 0020 00BF     		nop
+ 548 0022 80BD     		pop	{r7, pc}
+ 549              	.L38:
+ 550              		.align	2
+ 551              	.L37:
+ 552 0024 00000000 		.word	key_val
+ 553 0028 00000000 		.word	keypad_unpressed_mask
+ 554 002c 00000000 		.word	logout_timeout
+ 555              		.cfi_endproc
+ 556              	.LFE39:
+ 558              		.section	.text.keypad_is_pressed,"ax",%progbits
+ 559              		.align	1
+ 560              		.global	keypad_is_pressed
+ 561              		.syntax unified
+ 562              		.thumb
+ 563              		.thumb_func
+ 565              	keypad_is_pressed:
+ 566              	.LFB40:
+ 150:./keypad/keypad.c **** //---------------------------------------------------------
+ 151:./keypad/keypad.c **** uint8_t keypad_is_pressed(void)
+ 152:./keypad/keypad.c **** {
+ 567              		.loc 1 152 1
+ 568              		.cfi_startproc
+ 569              		@ args = 0, pretend = 0, frame = 0
+ 570              		@ frame_needed = 1, uses_anonymous_args = 0
+ 571              		@ link register save eliminated.
+ 572 0000 80B4     		push	{r7}
+ 573              	.LCFI26:
+ 574              		.cfi_def_cfa_offset 4
+ 575              		.cfi_offset 7, -4
+ 576 0002 00AF     		add	r7, sp, #0
+ 577              	.LCFI27:
+ 578              		.cfi_def_cfa_register 7
+ 153:./keypad/keypad.c ****   if(key_val.val==keypad_unpressed_mask)
+ 579              		.loc 1 153 13
+ 580 0004 064B     		ldr	r3, .L42
+ 581 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 582              		.loc 1 153 17
+ 583 0008 064B     		ldr	r3, .L42+4
+ 584 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 585              		.loc 1 153 5
+ 586 000c 9A42     		cmp	r2, r3
+ 587 000e 01D1     		bne	.L40
+ 154:./keypad/keypad.c **** 	  return 0;
+ 588              		.loc 1 154 11
+ 589 0010 0023     		movs	r3, #0
+ 590 0012 00E0     		b	.L41
+ 591              	.L40:
+ 155:./keypad/keypad.c ****   return 1;
+ 592              		.loc 1 155 10
+ 593 0014 0123     		movs	r3, #1
+ 594              	.L41:
+ 156:./keypad/keypad.c **** }
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 14
+
+
+ 595              		.loc 1 156 1
+ 596 0016 1846     		mov	r0, r3
+ 597 0018 BD46     		mov	sp, r7
+ 598              	.LCFI28:
+ 599              		.cfi_def_cfa_register 13
+ 600              		@ sp needed
+ 601 001a 80BC     		pop	{r7}
+ 602              	.LCFI29:
+ 603              		.cfi_restore 7
+ 604              		.cfi_def_cfa_offset 0
+ 605 001c 7047     		bx	lr
+ 606              	.L43:
+ 607 001e 00BF     		.align	2
+ 608              	.L42:
+ 609 0020 00000000 		.word	key_val
+ 610 0024 00000000 		.word	keypad_unpressed_mask
+ 611              		.cfi_endproc
+ 612              	.LFE40:
+ 614              		.section	.rodata
+ 615              		.align	2
+ 616              	.LC0:
+ 617 0000 7570206B 		.ascii	"up key pressed...\000"
+ 617      65792070 
+ 617      72657373 
+ 617      65642E2E 
+ 617      2E00
+ 618              		.section	.text.keypad_up_key_handle,"ax",%progbits
+ 619              		.align	1
+ 620              		.global	keypad_up_key_handle
+ 621              		.syntax unified
+ 622              		.thumb
+ 623              		.thumb_func
+ 625              	keypad_up_key_handle:
+ 626              	.LFB41:
+ 157:./keypad/keypad.c **** //---------------------------------------------------------
+ 158:./keypad/keypad.c **** void keypad_up_key_handle(void)
+ 159:./keypad/keypad.c **** {
+ 627              		.loc 1 159 1
+ 628              		.cfi_startproc
+ 629              		@ args = 0, pretend = 0, frame = 0
+ 630              		@ frame_needed = 1, uses_anonymous_args = 0
+ 631 0000 80B5     		push	{r7, lr}
+ 632              	.LCFI30:
+ 633              		.cfi_def_cfa_offset 8
+ 634              		.cfi_offset 7, -8
+ 635              		.cfi_offset 14, -4
+ 636 0002 00AF     		add	r7, sp, #0
+ 637              	.LCFI31:
+ 638              		.cfi_def_cfa_register 7
+ 160:./keypad/keypad.c ****   lcd_print_xy(0,1,"up key pressed...");
+ 639              		.loc 1 160 3
+ 640 0004 0D4A     		ldr	r2, .L45
+ 641 0006 0121     		movs	r1, #1
+ 642 0008 0020     		movs	r0, #0
+ 643 000a FFF7FEFF 		bl	lcd_print_xy
+ 161:./keypad/keypad.c ****   pilots.pilot_7=~pilots.pilot_7;
+ 644              		.loc 1 161 25
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 15
+
+
+ 645 000e 0C4B     		ldr	r3, .L45+4
+ 646 0010 1B78     		ldrb	r3, [r3]
+ 647 0012 C3F3C013 		ubfx	r3, r3, #7, #1
+ 648 0016 DBB2     		uxtb	r3, r3
+ 649              		.loc 1 161 18
+ 650 0018 DB43     		mvns	r3, r3
+ 651 001a DBB2     		uxtb	r3, r3
+ 652 001c 03F00103 		and	r3, r3, #1
+ 653 0020 D9B2     		uxtb	r1, r3
+ 654              		.loc 1 161 17
+ 655 0022 074A     		ldr	r2, .L45+4
+ 656 0024 1378     		ldrb	r3, [r2]
+ 657 0026 61F3C713 		bfi	r3, r1, #7, #1
+ 658 002a 1370     		strb	r3, [r2]
+ 162:./keypad/keypad.c ****   TIM_Cmd(TIM2,DISABLE);
+ 659              		.loc 1 162 3
+ 660 002c 0021     		movs	r1, #0
+ 661 002e 4FF08040 		mov	r0, #1073741824
+ 662 0032 FFF7FEFF 		bl	TIM_Cmd
+ 163:./keypad/keypad.c **** }
+ 663              		.loc 1 163 1
+ 664 0036 00BF     		nop
+ 665 0038 80BD     		pop	{r7, pc}
+ 666              	.L46:
+ 667 003a 00BF     		.align	2
+ 668              	.L45:
+ 669 003c 00000000 		.word	.LC0
+ 670 0040 00000000 		.word	pilots
+ 671              		.cfi_endproc
+ 672              	.LFE41:
+ 674              		.section	.rodata
+ 675 0012 0000     		.align	2
+ 676              	.LC1:
+ 677 0014 646F776E 		.ascii	"down key pressed...\000"
+ 677      206B6579 
+ 677      20707265 
+ 677      73736564 
+ 677      2E2E2E00 
+ 678              		.section	.text.keypad_down_key_handle,"ax",%progbits
+ 679              		.align	1
+ 680              		.global	keypad_down_key_handle
+ 681              		.syntax unified
+ 682              		.thumb
+ 683              		.thumb_func
+ 685              	keypad_down_key_handle:
+ 686              	.LFB42:
+ 164:./keypad/keypad.c **** //---------------------------------------------------------
+ 165:./keypad/keypad.c **** void keypad_down_key_handle(void)
+ 166:./keypad/keypad.c **** {
+ 687              		.loc 1 166 1
+ 688              		.cfi_startproc
+ 689              		@ args = 0, pretend = 0, frame = 0
+ 690              		@ frame_needed = 1, uses_anonymous_args = 0
+ 691 0000 80B5     		push	{r7, lr}
+ 692              	.LCFI32:
+ 693              		.cfi_def_cfa_offset 8
+ 694              		.cfi_offset 7, -8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 16
+
+
+ 695              		.cfi_offset 14, -4
+ 696 0002 00AF     		add	r7, sp, #0
+ 697              	.LCFI33:
+ 698              		.cfi_def_cfa_register 7
+ 167:./keypad/keypad.c ****    lcd_print_xy(0,1,"down key pressed...");
+ 699              		.loc 1 167 4
+ 700 0004 0D4A     		ldr	r2, .L48
+ 701 0006 0121     		movs	r1, #1
+ 702 0008 0020     		movs	r0, #0
+ 703 000a FFF7FEFF 		bl	lcd_print_xy
+ 168:./keypad/keypad.c ****    pilots.pilot_6=~pilots.pilot_6;
+ 704              		.loc 1 168 26
+ 705 000e 0C4B     		ldr	r3, .L48+4
+ 706 0010 1B78     		ldrb	r3, [r3]
+ 707 0012 C3F38013 		ubfx	r3, r3, #6, #1
+ 708 0016 DBB2     		uxtb	r3, r3
+ 709              		.loc 1 168 19
+ 710 0018 DB43     		mvns	r3, r3
+ 711 001a DBB2     		uxtb	r3, r3
+ 712 001c 03F00103 		and	r3, r3, #1
+ 713 0020 D9B2     		uxtb	r1, r3
+ 714              		.loc 1 168 18
+ 715 0022 074A     		ldr	r2, .L48+4
+ 716 0024 1378     		ldrb	r3, [r2]
+ 717 0026 61F38613 		bfi	r3, r1, #6, #1
+ 718 002a 1370     		strb	r3, [r2]
+ 169:./keypad/keypad.c ****   TIM_Cmd(TIM2,ENABLE);
+ 719              		.loc 1 169 3
+ 720 002c 0121     		movs	r1, #1
+ 721 002e 4FF08040 		mov	r0, #1073741824
+ 722 0032 FFF7FEFF 		bl	TIM_Cmd
+ 170:./keypad/keypad.c **** }
+ 723              		.loc 1 170 1
+ 724 0036 00BF     		nop
+ 725 0038 80BD     		pop	{r7, pc}
+ 726              	.L49:
+ 727 003a 00BF     		.align	2
+ 728              	.L48:
+ 729 003c 14000000 		.word	.LC1
+ 730 0040 00000000 		.word	pilots
+ 731              		.cfi_endproc
+ 732              	.LFE42:
+ 734              		.section	.rodata
+ 735              		.align	2
+ 736              	.LC2:
+ 737 0028 73657420 		.ascii	"set key pressed...\000"
+ 737      6B657920 
+ 737      70726573 
+ 737      7365642E 
+ 737      2E2E00
+ 738              		.section	.text.keypad_set_key_handle,"ax",%progbits
+ 739              		.align	1
+ 740              		.global	keypad_set_key_handle
+ 741              		.syntax unified
+ 742              		.thumb
+ 743              		.thumb_func
+ 745              	keypad_set_key_handle:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 17
+
+
+ 746              	.LFB43:
+ 171:./keypad/keypad.c **** //---------------------------------------------------------
+ 172:./keypad/keypad.c **** void keypad_set_key_handle(void)
+ 173:./keypad/keypad.c **** {
+ 747              		.loc 1 173 1
+ 748              		.cfi_startproc
+ 749              		@ args = 0, pretend = 0, frame = 0
+ 750              		@ frame_needed = 1, uses_anonymous_args = 0
+ 751 0000 80B5     		push	{r7, lr}
+ 752              	.LCFI34:
+ 753              		.cfi_def_cfa_offset 8
+ 754              		.cfi_offset 7, -8
+ 755              		.cfi_offset 14, -4
+ 756 0002 00AF     		add	r7, sp, #0
+ 757              	.LCFI35:
+ 758              		.cfi_def_cfa_register 7
+ 174:./keypad/keypad.c **** 	lcd_print_xy(0,1,"set key pressed...");
+ 759              		.loc 1 174 2
+ 760 0004 0C4A     		ldr	r2, .L51
+ 761 0006 0121     		movs	r1, #1
+ 762 0008 0020     		movs	r0, #0
+ 763 000a FFF7FEFF 		bl	lcd_print_xy
+ 175:./keypad/keypad.c **** 	pilots.pilot_5=~pilots.pilot_5;
+ 764              		.loc 1 175 24
+ 765 000e 0B4B     		ldr	r3, .L51+4
+ 766 0010 1B78     		ldrb	r3, [r3]
+ 767 0012 C3F34013 		ubfx	r3, r3, #5, #1
+ 768 0016 DBB2     		uxtb	r3, r3
+ 769              		.loc 1 175 17
+ 770 0018 DB43     		mvns	r3, r3
+ 771 001a DBB2     		uxtb	r3, r3
+ 772 001c 03F00103 		and	r3, r3, #1
+ 773 0020 D9B2     		uxtb	r1, r3
+ 774              		.loc 1 175 16
+ 775 0022 064A     		ldr	r2, .L51+4
+ 776 0024 1378     		ldrb	r3, [r2]
+ 777 0026 61F34513 		bfi	r3, r1, #5, #1
+ 778 002a 1370     		strb	r3, [r2]
+ 176:./keypad/keypad.c ****   TIM_Cmd(TIM3,DISABLE);
+ 779              		.loc 1 176 3
+ 780 002c 0021     		movs	r1, #0
+ 781 002e 0448     		ldr	r0, .L51+8
+ 782 0030 FFF7FEFF 		bl	TIM_Cmd
+ 177:./keypad/keypad.c **** }
+ 783              		.loc 1 177 1
+ 784 0034 00BF     		nop
+ 785 0036 80BD     		pop	{r7, pc}
+ 786              	.L52:
+ 787              		.align	2
+ 788              	.L51:
+ 789 0038 28000000 		.word	.LC2
+ 790 003c 00000000 		.word	pilots
+ 791 0040 00040040 		.word	1073742848
+ 792              		.cfi_endproc
+ 793              	.LFE43:
+ 795              		.section	.rodata
+ 796 003b 00       		.align	2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 18
+
+
+ 797              	.LC3:
+ 798 003c 65736320 		.ascii	"esc key pressed...\000"
+ 798      6B657920 
+ 798      70726573 
+ 798      7365642E 
+ 798      2E2E00
+ 799              		.section	.text.keypad_esc_key_handle,"ax",%progbits
+ 800              		.align	1
+ 801              		.global	keypad_esc_key_handle
+ 802              		.syntax unified
+ 803              		.thumb
+ 804              		.thumb_func
+ 806              	keypad_esc_key_handle:
+ 807              	.LFB44:
+ 178:./keypad/keypad.c **** //---------------------------------------------------------
+ 179:./keypad/keypad.c **** void keypad_esc_key_handle(void)
+ 180:./keypad/keypad.c **** {
+ 808              		.loc 1 180 1
+ 809              		.cfi_startproc
+ 810              		@ args = 0, pretend = 0, frame = 0
+ 811              		@ frame_needed = 1, uses_anonymous_args = 0
+ 812 0000 80B5     		push	{r7, lr}
+ 813              	.LCFI36:
+ 814              		.cfi_def_cfa_offset 8
+ 815              		.cfi_offset 7, -8
+ 816              		.cfi_offset 14, -4
+ 817 0002 00AF     		add	r7, sp, #0
+ 818              	.LCFI37:
+ 819              		.cfi_def_cfa_register 7
+ 181:./keypad/keypad.c ****   lcd_print_xy(0,1,"esc key pressed...");
+ 820              		.loc 1 181 3
+ 821 0004 0C4A     		ldr	r2, .L54
+ 822 0006 0121     		movs	r1, #1
+ 823 0008 0020     		movs	r0, #0
+ 824 000a FFF7FEFF 		bl	lcd_print_xy
+ 182:./keypad/keypad.c ****   pilots.pilot_4=~pilots.pilot_4;
+ 825              		.loc 1 182 25
+ 826 000e 0B4B     		ldr	r3, .L54+4
+ 827 0010 1B78     		ldrb	r3, [r3]
+ 828 0012 C3F30013 		ubfx	r3, r3, #4, #1
+ 829 0016 DBB2     		uxtb	r3, r3
+ 830              		.loc 1 182 18
+ 831 0018 DB43     		mvns	r3, r3
+ 832 001a DBB2     		uxtb	r3, r3
+ 833 001c 03F00103 		and	r3, r3, #1
+ 834 0020 D9B2     		uxtb	r1, r3
+ 835              		.loc 1 182 17
+ 836 0022 064A     		ldr	r2, .L54+4
+ 837 0024 1378     		ldrb	r3, [r2]
+ 838 0026 61F30413 		bfi	r3, r1, #4, #1
+ 839 002a 1370     		strb	r3, [r2]
+ 183:./keypad/keypad.c ****   TIM_Cmd(TIM3,ENABLE);
+ 840              		.loc 1 183 3
+ 841 002c 0121     		movs	r1, #1
+ 842 002e 0448     		ldr	r0, .L54+8
+ 843 0030 FFF7FEFF 		bl	TIM_Cmd
+ 184:./keypad/keypad.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 19
+
+
+ 185:./keypad/keypad.c **** }
+ 844              		.loc 1 185 1
+ 845 0034 00BF     		nop
+ 846 0036 80BD     		pop	{r7, pc}
+ 847              	.L55:
+ 848              		.align	2
+ 849              	.L54:
+ 850 0038 3C000000 		.word	.LC3
+ 851 003c 00000000 		.word	pilots
+ 852 0040 00040040 		.word	1073742848
+ 853              		.cfi_endproc
+ 854              	.LFE44:
+ 856              		.section	.rodata
+ 857 004f 00       		.align	2
+ 858              	.LC4:
+ 859 0050 73686674 		.ascii	"shft key pressed...\000"
+ 859      206B6579 
+ 859      20707265 
+ 859      73736564 
+ 859      2E2E2E00 
+ 860              		.section	.text.keypad_shft_key_handle,"ax",%progbits
+ 861              		.align	1
+ 862              		.global	keypad_shft_key_handle
+ 863              		.syntax unified
+ 864              		.thumb
+ 865              		.thumb_func
+ 867              	keypad_shft_key_handle:
+ 868              	.LFB45:
+ 186:./keypad/keypad.c **** //---------------------------------------------------------
+ 187:./keypad/keypad.c **** void keypad_shft_key_handle(void)
+ 188:./keypad/keypad.c **** {
+ 869              		.loc 1 188 1
+ 870              		.cfi_startproc
+ 871              		@ args = 0, pretend = 0, frame = 0
+ 872              		@ frame_needed = 1, uses_anonymous_args = 0
+ 873 0000 80B5     		push	{r7, lr}
+ 874              	.LCFI38:
+ 875              		.cfi_def_cfa_offset 8
+ 876              		.cfi_offset 7, -8
+ 877              		.cfi_offset 14, -4
+ 878 0002 00AF     		add	r7, sp, #0
+ 879              	.LCFI39:
+ 880              		.cfi_def_cfa_register 7
+ 189:./keypad/keypad.c **** 	lcd_print_xy(0,1,"shft key pressed...");
+ 881              		.loc 1 189 2
+ 882 0004 0A4A     		ldr	r2, .L57
+ 883 0006 0121     		movs	r1, #1
+ 884 0008 0020     		movs	r0, #0
+ 885 000a FFF7FEFF 		bl	lcd_print_xy
+ 190:./keypad/keypad.c **** 	pilots.pilot_3=~pilots.pilot_3;
+ 886              		.loc 1 190 24
+ 887 000e 094B     		ldr	r3, .L57+4
+ 888 0010 1B78     		ldrb	r3, [r3]
+ 889 0012 C3F3C003 		ubfx	r3, r3, #3, #1
+ 890 0016 DBB2     		uxtb	r3, r3
+ 891              		.loc 1 190 17
+ 892 0018 DB43     		mvns	r3, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 20
+
+
+ 893 001a DBB2     		uxtb	r3, r3
+ 894 001c 03F00103 		and	r3, r3, #1
+ 895 0020 D9B2     		uxtb	r1, r3
+ 896              		.loc 1 190 16
+ 897 0022 044A     		ldr	r2, .L57+4
+ 898 0024 1378     		ldrb	r3, [r2]
+ 899 0026 61F3C303 		bfi	r3, r1, #3, #1
+ 900 002a 1370     		strb	r3, [r2]
+ 191:./keypad/keypad.c **** }
+ 901              		.loc 1 191 1
+ 902 002c 00BF     		nop
+ 903 002e 80BD     		pop	{r7, pc}
+ 904              	.L58:
+ 905              		.align	2
+ 906              	.L57:
+ 907 0030 50000000 		.word	.LC4
+ 908 0034 00000000 		.word	pilots
+ 909              		.cfi_endproc
+ 910              	.LFE45:
+ 912              		.section	.rodata
+ 913              		.align	2
+ 914              	.LC5:
+ 915 0064 696E666F 		.ascii	"info key pressed...\000"
+ 915      206B6579 
+ 915      20707265 
+ 915      73736564 
+ 915      2E2E2E00 
+ 916              		.section	.text.keypad_info_key_handle,"ax",%progbits
+ 917              		.align	1
+ 918              		.global	keypad_info_key_handle
+ 919              		.syntax unified
+ 920              		.thumb
+ 921              		.thumb_func
+ 923              	keypad_info_key_handle:
+ 924              	.LFB46:
+ 192:./keypad/keypad.c **** //---------------------------------------------------------
+ 193:./keypad/keypad.c **** void keypad_info_key_handle(void)
+ 194:./keypad/keypad.c **** {
+ 925              		.loc 1 194 1
+ 926              		.cfi_startproc
+ 927              		@ args = 0, pretend = 0, frame = 0
+ 928              		@ frame_needed = 1, uses_anonymous_args = 0
+ 929 0000 80B5     		push	{r7, lr}
+ 930              	.LCFI40:
+ 931              		.cfi_def_cfa_offset 8
+ 932              		.cfi_offset 7, -8
+ 933              		.cfi_offset 14, -4
+ 934 0002 00AF     		add	r7, sp, #0
+ 935              	.LCFI41:
+ 936              		.cfi_def_cfa_register 7
+ 195:./keypad/keypad.c ****    lcd_print_xy(0,1,"info key pressed...");
+ 937              		.loc 1 195 4
+ 938 0004 0A4A     		ldr	r2, .L60
+ 939 0006 0121     		movs	r1, #1
+ 940 0008 0020     		movs	r0, #0
+ 941 000a FFF7FEFF 		bl	lcd_print_xy
+ 196:./keypad/keypad.c ****    pilots.pilot_2=~pilots.pilot_2;
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 21
+
+
+ 942              		.loc 1 196 26
+ 943 000e 094B     		ldr	r3, .L60+4
+ 944 0010 1B78     		ldrb	r3, [r3]
+ 945 0012 C3F38003 		ubfx	r3, r3, #2, #1
+ 946 0016 DBB2     		uxtb	r3, r3
+ 947              		.loc 1 196 19
+ 948 0018 DB43     		mvns	r3, r3
+ 949 001a DBB2     		uxtb	r3, r3
+ 950 001c 03F00103 		and	r3, r3, #1
+ 951 0020 D9B2     		uxtb	r1, r3
+ 952              		.loc 1 196 18
+ 953 0022 044A     		ldr	r2, .L60+4
+ 954 0024 1378     		ldrb	r3, [r2]
+ 955 0026 61F38203 		bfi	r3, r1, #2, #1
+ 956 002a 1370     		strb	r3, [r2]
+ 197:./keypad/keypad.c **** }
+ 957              		.loc 1 197 1
+ 958 002c 00BF     		nop
+ 959 002e 80BD     		pop	{r7, pc}
+ 960              	.L61:
+ 961              		.align	2
+ 962              	.L60:
+ 963 0030 64000000 		.word	.LC5
+ 964 0034 00000000 		.word	pilots
+ 965              		.cfi_endproc
+ 966              	.LFE46:
+ 968              		.text
+ 969              	.Letext0:
+ 970              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 971              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 972              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 973              		.file 5 "./basic/time.h"
+ 974              		.file 6 "./basic/gpio.h"
+ 975              		.file 7 "./keypad/keypad.h"
+ 976              		.file 8 "./system/system.h"
+ 977              		.file 9 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 keypad.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:22     .bss.key_val:00000000 key_val
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:19     .bss.key_val:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:28     .bss.keypad_unpressed_mask:00000000 keypad_unpressed_mask
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:29     .bss.keypad_unpressed_mask:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:35     .data.keypad_en:00000000 keypad_en
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:32     .data.keypad_en:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:44     .data.keypad_port:00000000 keypad_port
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:41     .data.keypad_port:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:70     .text.keypad_port_input_pullup:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:76     .text.keypad_port_input_pullup:00000000 keypad_port_input_pullup
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:132    .text.keypad_port_input_pullup:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:137    .text.keypad_port_get_input_data:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:142    .text.keypad_port_get_input_data:00000000 keypad_port_get_input_data
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:217    .text.keypad_port_get_input_data:00000054 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:222    .text.keypad_read:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:227    .text.keypad_read:00000000 keypad_read
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:315    .text.keypad_read:0000005c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:320    .text.keypad_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:325    .text.keypad_handle:00000000 keypad_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:625    .text.keypad_up_key_handle:00000000 keypad_up_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:685    .text.keypad_down_key_handle:00000000 keypad_down_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:745    .text.keypad_set_key_handle:00000000 keypad_set_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:806    .text.keypad_esc_key_handle:00000000 keypad_esc_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:867    .text.keypad_shft_key_handle:00000000 keypad_shft_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:394    .text.keypad_handle:0000004c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:399    .text.keypad_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:405    .text.keypad_init:00000000 keypad_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:452    .text.keypad_init:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:458    .text.keypad_scan:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:464    .text.keypad_scan:00000000 keypad_scan
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:500    .text.keypad_scan:00000024 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:506    .text.keypad_process:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:512    .text.keypad_process:00000000 keypad_process
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:552    .text.keypad_process:00000024 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:559    .text.keypad_is_pressed:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:565    .text.keypad_is_pressed:00000000 keypad_is_pressed
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:609    .text.keypad_is_pressed:00000020 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:615    .rodata:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:619    .text.keypad_up_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:669    .text.keypad_up_key_handle:0000003c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:679    .text.keypad_down_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:729    .text.keypad_down_key_handle:0000003c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:739    .text.keypad_set_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:789    .text.keypad_set_key_handle:00000038 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:800    .text.keypad_esc_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:850    .text.keypad_esc_key_handle:00000038 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:861    .text.keypad_shft_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:907    .text.keypad_shft_key_handle:00000030 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:917    .text.keypad_info_key_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:923    .text.keypad_info_key_handle:00000000 keypad_info_key_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s:963    .text.keypad_info_key_handle:00000030 $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 23
+
+
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cchQ0FcD.s 			page 24
+
+
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+
+UNDEFINED SYMBOLS
+gpio_in_pullup
+gpio_get
+gpio_pin_mode
+gpio_set
+gpio_clear
+_delay_us
+disable_buffer
+logout_timeout
+lcd_print_xy
+TIM_Cmd
+pilots
