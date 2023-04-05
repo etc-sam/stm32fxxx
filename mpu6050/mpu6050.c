@@ -545,26 +545,10 @@ uint8_t mpu6050_set_lpf(MPU6050_t* mpu,MPU6050_LPF_bandwidth_t bandwidth)
 {
   uint8_t error=0,temp=0;
 	error=i2c_read_7bit_base_byte_std(MPU6050_I2C, mpu->Address, MPU6050_CONFIG, &temp);
-	uart_print(USART1,"\t rd_CONFIG:");
-    uart_print_integer(USART1,error,10);
-	uart_print(USART1,"\t ");
-    uart_print_integer(USART1,temp,10);
-	uart_print(USART1,"\n");
-	i2c_uart_print(USART1);
-  //if(error) return error;
+   if(error) return error;
 	temp =  (temp & 0xf8)|(uint8_t)bandwidth;
-	uart_print(USART1,"\t to write");
-    uart_print_integer(USART1,temp,10);
-	uart_print(USART1,"\n");
-
 	error=i2c_write_7bit_base_byte_std(MPU6050_I2C, mpu->Address,MPU6050_CONFIG, temp);
-	uart_print(USART1,"\t wr_CONFIG:");
-    uart_print_integer(USART1,error,10);
-	uart_print(USART1,"\t ");
-    uart_print_integer(USART1,temp,10);
-    uart_print(USART1,"\n");
-  	i2c_uart_print(USART1);
-	//if(error) return error;
+	 if(error) return error;
   	/* Return OK */
 	return TM_MPU6050_Result_Ok; //  or return I2C_NO_ERROR;
 }
