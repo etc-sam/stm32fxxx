@@ -24,10 +24,10 @@
 //#define BOOT_WAIT_TIMEOUT		3		// seconds
 //#define USB_WAIT_TIMEOUT		8000
 
-#define KEYPAD_WAIT_TIMEOUT		30000		//
-#define MPU_WAIT_TIMEOUT		500000		//
-#define KEYPAD_DEBOUNCE_TIMEOUT	3500	//
-#define RTC_WAIT_TIMEOUT		100000
+#define KEYPAD_WAIT_TIMEOUT		      30000		//
+#define MPU_WAIT_TIMEOUT		        50000		//
+#define KEYPAD_DEBOUNCE_TIMEOUT	    3500	  //
+#define RTC_WAIT_TIMEOUT		        100000
 
 //********************************************************************************************
 //
@@ -69,7 +69,11 @@ enum _MODE_t{_BOOT_UP,_OFF,_ON,_TRIGGER};
  
  extern uint8_t mpu_state;
  extern uint32_t mpu_ticks;
+ extern uint32_t mpu_cycle;
+ 
  extern uint8_t mpu_init_sucess;
+
+ 
  
  extern uint8_t pilot_state;
  extern uint32_t pilot_ticks;
@@ -82,17 +86,25 @@ enum _MODE_t{_BOOT_UP,_OFF,_ON,_TRIGGER};
 // system Task
 //
 //********************************************************************************************
+//! a generic task to handle rtc task 
 extern void rtc_task(void);
+
+//! a generic task to handle uart task 
 extern void uart_task(void);
-
+//! a generic task to handle mpu6050 task 
 extern void mpu6050_task(void);
+//! a generic task to handle adc task 
 extern void adc_task(void);
-
-
+//! a generic task to handle keypad task 
 extern void keypad_task(void);
+//! a generic task to handle lcd task 
 extern void lcd_task(void);
-extern void pilot_task(void);
-extern void input_task(void);
+
+//! a generic task to handle scan inputs (digital inputs IO) task 
+extern void X_input_task(void);
+
+//! a generic task to handle scan inputs (digital outputs IO) task 
+extern void Y_output_task(void);
 
 
 

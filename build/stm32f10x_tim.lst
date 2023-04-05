@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
   30:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief TIM driver modules
   31:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @{
   32:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 2
 
 
   33:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
   87:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
   88:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /** @defgroup TIM_Private_Macros
   89:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @{
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 3
 
 
   90:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
   44 0008 7B68     		ldr	r3, [r7, #4]
   45 000a 784A     		ldr	r2, .L20
   46 000c 9342     		cmp	r3, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 4
 
 
   47 000e 0AD1     		bne	.L2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  172:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {      
  173:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_TIM10, ENABLE);
  174:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     RCC_APB2PeriphResetCmd(RCC_APB2Periph_TIM10, DISABLE);  
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 5
 
 
  175:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }  
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
   67              		.loc 1 134 5
   68 0036 0021     		movs	r1, #0
   69 0038 0120     		movs	r0, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 6
 
 
   70 003a FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  115              		.loc 1 149 5
  116 0084 0021     		movs	r1, #0
  117 0086 0820     		movs	r0, #8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 7
 
 
  118 0088 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  163              		.loc 1 164 5
  164 00d4 0021     		movs	r1, #0
  165 00d6 4FF40050 		mov	r0, #8192
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 8
 
 
  166 00da FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  211              		.loc 1 179 5
  212 012e 0021     		movs	r1, #0
  213 0130 4FF40010 		mov	r0, #2097152
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 9
 
 
  214 0134 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  259              		.loc 1 194 5
  260 0180 0021     		movs	r1, #0
  261 0182 4FF48070 		mov	r0, #256
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 10
 
 
  262 0186 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  307              		.loc 1 211 7
  308 01da 0021     		movs	r1, #0
  309 01dc 4FF48020 		mov	r0, #262144
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 11
 
 
  310 01e0 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  354              		.cfi_startproc
  355              		@ args = 0, pretend = 0, frame = 16
  356              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 12
 
 
  357              		@ link register save eliminated.
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  237:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****      (TIMx == TIM4) || (TIMx == TIM5)) 
  401              		.loc 1 237 21
  402 003c 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 13
 
 
  403 003e 284A     		ldr	r2, .L28+16
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  443 007a FA89     		ldrh	r2, [r7, #14]	@ movhi
  444 007c 1A80     		strh	r2, [r3]	@ movhi
  252:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 14
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 14
 
 
  253:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Set the Autoreload value */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  489 00be 1A86     		strh	r2, [r3, #48]	@ movhi
  490              	.L27:
  263:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 15
 
 
  264:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  277:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
  278:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** void TIM_OC1Init(TIM_TypeDef* TIMx, TIM_OCInitTypeDef* TIM_OCInitStruct)
  279:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 16
 
 
  534              		.loc 1 279 1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  575 0030 BB81     		strh	r3, [r7, #12]	@ movhi
  293:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
  294:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Get the TIMx CCMR1 register value */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 17
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 17
 
 
  295:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmrx = TIMx->CCMR1;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  312:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   if((TIMx == TIM1) || (TIMx == TIM8)|| (TIMx == TIM15)||
  613              		.loc 1 312 5
  614 006e 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 18
 
 
  615 0070 244A     		ldr	r2, .L33
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  328:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     tmpccer |= TIM_OCInitStruct->TIM_OutputNState;
  654              		.loc 1 328 32
  655 00b0 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 19
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 19
 
 
  656 00b2 9A88     		ldrh	r2, [r3, #4]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  692              		.loc 1 346 32
  693 00ea 3B68     		ldr	r3, [r7]
  694 00ec DA88     		ldrh	r2, [r3, #6]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 20
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 20
 
 
  695              		.loc 1 346 14
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  362:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
  736              		.loc 1 362 1
  737              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 21
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 21
 
 
  738              		@ args = 0, pretend = 0, frame = 16
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  377:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
  378:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Get the TIMx CCMR1 register value */
  379:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmrx = TIMx->CCMR1;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 22
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 22
 
 
  778              		.loc 1 379 12
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  817              		.loc 1 394 14
  818 0070 1B01     		lsls	r3, r3, #4
  819 0072 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 23
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 23
 
 
  820              		.loc 1 394 11
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  857 00ac 1B01     		lsls	r3, r3, #4
  858 00ae 9AB2     		uxth	r2, r3
  859              		.loc 1 411 13
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 24
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 24
 
 
  860 00b0 FB89     		ldrh	r3, [r7, #14]	@ movhi
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  899 00ec 1A83     		strh	r2, [r3, #24]	@ movhi
  427:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
  428:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Set the Capture Compare Register value */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 25
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 25
 
 
  429:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCR2 = TIM_OCInitStruct->TIM_Pulse;
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  444:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
  941              		.loc 1 444 1
  942              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 26
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 26
 
 
  943              		@ args = 0, pretend = 0, frame = 16
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  459:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
  460:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Get the TIMx CCMR2 register value */
  461:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmrx = TIMx->CCMR2;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 27
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 27
 
 
  983              		.loc 1 461 12
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1023 0070 FB89     		ldrh	r3, [r7, #14]	@ movhi
  1024 0072 1343     		orrs	r3, r3, r2
  1025 0074 FB81     		strh	r3, [r7, #14]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 28
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 28
 
 
  476:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1063 00ae 1343     		orrs	r3, r3, r2
  1064 00b0 FB81     		strh	r3, [r7, #14]	@ movhi
  493:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Reset the Output Compare and Output Compare N IDLE State */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 29
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 29
 
 
  494:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     tmpcr2 &= (uint16_t)(~((uint16_t)TIM_CR2_OIS3));
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1104 00ec DA88     		ldrh	r2, [r3, #6]
  1105              		.loc 1 508 14
  1106 00ee 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 30
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 30
 
 
  1107 00f0 9A87     		strh	r2, [r3, #60]	@ movhi
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1148 0000 80B4     		push	{r7}
  1149              	.LCFI29:
  1150              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 31
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 31
 
 
  1151              		.cfi_offset 7, -4
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1188 0036 BB81     		strh	r3, [r7, #12]	@ movhi
  541:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     
  542:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the Output Compare mode and Capture/Compare selection Bits */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 32
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 32
 
 
  543:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmrx &= (uint16_t)(~((uint16_t)TIM_CCMR2_OC4M));
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1230 0078 7B81     		strh	r3, [r7, #10]	@ movhi
  556:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     
  557:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   if((TIMx == TIM1) || (TIMx == TIM8))
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 33
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 33
 
 
  1231              		.loc 1 557 5
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1270 00b2 A3F84020 		strh	r2, [r3, #64]	@ movhi
  573:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
  574:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Write to TIMx CCER */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 34
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 34
 
 
  575:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCER = tmpccer;
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1314              		.cfi_offset 14, -4
  1315 0002 82B0     		sub	sp, sp, #8
  1316              	.LCFI36:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 35
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 35
 
 
  1317              		.cfi_def_cfa_offset 16
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  615:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     assert_param(IS_TIM_LIST6_PERIPH(TIMx));
  616:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* TI2 Configuration */
  617:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     TI2_Config(TIMx, TIM_ICInitStruct->TIM_ICPolarity,
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 36
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 36
 
 
  618:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****                TIM_ICInitStruct->TIM_ICSelection,
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1368              		.loc 1 643 1
  1369 0058 22E0     		b	.L55
  1370              	.L53:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 37
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 37
 
 
  623:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1419              		@ sp needed
  1420 00a6 80BD     		pop	{r7, pc}
  1421              		.cfi_endproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 38
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 38
 
 
  1422              	.LFE35:
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1461 0018 02D1     		bne	.L57
  661:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
  662:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     icoppositepolarity = TIM_ICPolarity_Falling;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 39
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 39
 
 
  1462              		.loc 1 662 24
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1498 0048 1B89     		ldrh	r3, [r3, #8]
  1499 004a 7868     		ldr	r0, [r7, #4]
  1500 004c FFF7FEFF 		bl	TI1_Config
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 40
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 40
 
 
  681:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****                TIM_ICInitStruct->TIM_ICFilter);
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1532              		.loc 1 695 5
  1533 008a 3B68     		ldr	r3, [r7]
  1534 008c DB88     		ldrh	r3, [r3, #6]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 41
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 41
 
 
  1535 008e 1946     		mov	r1, r3
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1578              		@ link register save eliminated.
  1579 0000 80B4     		push	{r7}
  1580              	.LCFI45:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 42
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 42
 
 
  1581              		.cfi_def_cfa_offset 4
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1619 002e 3B68     		ldr	r3, [r7]
  1620 0030 5B89     		ldrh	r3, [r3, #10]
  723:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****              TIM_BDTRInitStruct->TIM_LOCKLevel | TIM_BDTRInitStruct->TIM_DeadTime |
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 43
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 43
 
 
  1621              		.loc 1 723 14
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1665              		.cfi_def_cfa_offset 4
  1666              		.cfi_offset 7, -4
  1667 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 44
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 44
 
 
  1668              	.LCFI52:
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1716              		.thumb_func
  1718              	TIM_OCStructInit:
  1719              	.LFB39:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 45
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 45
 
 
  744:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1758 0028 0022     		movs	r2, #0
  1759 002a 5A81     		strh	r2, [r3, #10]	@ movhi
  760:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIM_OCInitStruct->TIM_OCIdleState = TIM_OCIdleState_Reset;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 46
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 46
 
 
  1760              		.loc 1 760 37
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1805              		.cfi_def_cfa_offset 16
  1806 0004 00AF     		add	r7, sp, #0
  1807              	.LCFI65:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 47
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 47
 
 
  1808              		.cfi_def_cfa_register 7
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  780:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /**
  781:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief  Fills each TIM_BDTRInitStruct member with its default value.
  782:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIM_BDTRInitStruct: pointer to a TIM_BDTRInitTypeDef structure which
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 48
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 48
 
 
  783:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *         will be initialized.
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1897 002c 7B68     		ldr	r3, [r7, #4]
  1898 002e 0022     		movs	r2, #0
  1899 0030 9A81     		strh	r2, [r3, #12]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 49
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 49
 
 
  796:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  808:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_ALL_PERIPH(TIMx));
  809:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
  810:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 50
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 50
 
 
  811:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   if (NewState != DISABLE)
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  1987              		.global	TIM_CtrlPWMOutputs
  1988              		.syntax unified
  1989              		.thumb
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 51
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 51
 
 
  1990              		.thumb_func
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  842:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Disable the TIM Main Output */
  843:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     TIMx->BDTR &= (uint16_t)(~((uint16_t)TIM_BDTR_MOE));
  844:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }  
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 52
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 52
 
 
  845:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  862:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   - TIM9, TIM12 and TIM15 can have only TIM_IT_Update, TIM_IT_CC1,
  863:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *      TIM_IT_CC2 or TIM_IT_Trigger. 
  864:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   - TIM10, TIM11, TIM13, TIM14, TIM16 and TIM17 can have TIM_IT_Update or TIM_IT_CC1.   
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 53
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 53
 
 
  865:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   - TIM_IT_Break is used only with TIM1, TIM8 and TIM15. 
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  886:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     TIMx->DIER &= (uint16_t)~TIM_IT;
  887:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }
  888:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 54
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 54
 
 
  2096              		.loc 1 888 1
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  899:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_EventSource_CC4: Timer Capture Compare 4 Event source
  900:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_EventSource_COM: Timer COM event source  
  901:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_EventSource_Trigger: Timer Trigger Event source
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 55
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 55
 
 
  902:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_EventSource_Break: Timer Break event source
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2179              		.align	1
  2180              		.global	TIM_DMAConfig
  2181              		.syntax unified
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 56
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 56
 
 
  2182              		.thumb
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2210 0014 1343     		orrs	r3, r3, r2
  2211 0016 9AB2     		uxth	r2, r3
  2212 0018 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 57
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 57
 
 
  2213 001a A3F84820 		strh	r2, [r3, #72]	@ movhi
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2248              		.cfi_offset 7, -4
  2249 0002 83B0     		sub	sp, sp, #12
  2250              	.LCFI106:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 58
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 58
 
 
  2251              		.cfi_def_cfa_offset 16
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2286 0036 9AB2     		uxth	r2, r3
  2287 0038 7B68     		ldr	r3, [r7, #4]
  2288 003a 9A81     		strh	r2, [r3, #12]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 59
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 59
 
 
  2289              	.L86:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2332              		.loc 1 993 14
  2333 0008 7B68     		ldr	r3, [r7, #4]
  2334 000a 1B89     		ldrh	r3, [r3, #8]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 60
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 60
 
 
  2335 000c 9BB2     		uxth	r3, r3
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2376              	.LCFI118:
  2377              		.cfi_def_cfa_offset 16
  2378 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 61
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 61
 
 
  2379              	.LCFI119:
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1025:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_TIxExternalCLK1Source_TI2: Filtered Timer Input 2
 1026:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIM_ICPolarity: specifies the TIx Polarity.
 1027:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be one of the following values:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 62
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 62
 
 
 1028:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ICPolarity_Rising
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2455              	.L90:
 1046:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }
 1047:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   else
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 63
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 63
 
 
 1048:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1062:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ExtTRGPSC_OFF: ETRP Prescaler OFF.
 1063:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ExtTRGPSC_DIV2: ETRP frequency divided by 2.
 1064:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ExtTRGPSC_DIV4: ETRP frequency divided by 4.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 64
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 64
 
 
 1065:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ExtTRGPSC_DIV8: ETRP frequency divided by 8.
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1085:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   
 1086:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Get the TIMx SMCR register value */
 1087:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpsmcr = TIMx->SMCR;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 65
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 65
 
 
  2532              		.loc 1 1087 11
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1098:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
 1099:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /**
 1100:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief  Configures the External clock Mode2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 66
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 66
 
 
 1101:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIMx: where x can be  1, 2, 3, 4, 5 or 8 to select the TIM peripheral.
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2607 0020 F868     		ldr	r0, [r7, #12]
  2608 0022 FFF7FEFF 		bl	TIM_ETRConfig
 1126:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Enable the External clock mode2 */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 67
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 67
 
 
 1127:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->SMCR |= TIM_SMCR_ECE;
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2642              		@ frame_needed = 1, uses_anonymous_args = 0
  2643              		@ link register save eliminated.
  2644 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 68
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 68
 
 
  2645              	.LCFI137:
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2688 003c FB8A     		ldrh	r3, [r7, #22]	@ movhi
  2689 003e 1343     		orrs	r3, r3, r2
  2690 0040 FB82     		strh	r3, [r7, #22]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 69
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 69
 
 
 1161:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Write to TIMx SMCR */
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2731              	.LCFI144:
  2732              		.cfi_def_cfa_offset 16
  2733 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 70
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 70
 
 
  2734              	.LCFI145:
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1192:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_CounterMode_Down: TIM Down Counting Mode
 1193:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_CounterMode_CenterAligned1: TIM Center Aligned Mode1
 1194:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_CounterMode_CenterAligned2: TIM Center Aligned Mode2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 71
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 71
 
 
 1195:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_CounterMode_CenterAligned3: TIM Center Aligned Mode3
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1211:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
  2813              		.loc 1 1211 1
  2814 002c 00BF     		nop
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 72
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 72
 
 
  2815 002e 1437     		adds	r7, r7, #20
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2853              		.cfi_def_cfa_register 7
  2854 0006 7860     		str	r0, [r7, #4]
  2855 0008 0B46     		mov	r3, r1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 73
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 73
 
 
  2856 000a 7B80     		strh	r3, [r7, #2]	@ movhi
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2898              		.thumb
  2899              		.thumb_func
  2901              	TIM_EncoderInterfaceConfig:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 74
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 74
 
 
  2902              	.LFB57:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2931              		.loc 1 1267 12
  2932 001e 0023     		movs	r3, #0
  2933 0020 BB82     		strh	r3, [r7, #20]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 75
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 75
 
 
 1268:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   uint16_t tmpccer = 0;
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  2964 0054 BB8A     		ldrh	r3, [r7, #20]	@ movhi
  2965 0056 43F48073 		orr	r3, r3, #256
  2966 005a 43F00103 		orr	r3, r3, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 76
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 76
 
 
  2967 005e BB82     		strh	r3, [r7, #20]	@ movhi
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3009 0094 7047     		bx	lr
  3010              		.cfi_endproc
  3011              	.LFE57:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 77
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 77
 
 
  3013              		.section	.text.TIM_ForcedOC1Config,"ax",%progbits
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3049 0018 23F07003 		bic	r3, r3, #112
  3050 001c FB81     		strh	r3, [r7, #14]	@ movhi
 1323:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Configure The Forced output Mode */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 78
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 78
 
 
 1324:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr1 |= TIM_ForcedAction;
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3091 0000 80B4     		push	{r7}
  3092              	.LCFI173:
  3093              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 79
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 79
 
 
  3094              		.cfi_offset 7, -4
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3136 0036 80BC     		pop	{r7}
  3137              	.LCFI178:
  3138              		.cfi_restore 7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 80
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 80
 
 
  3139              		.cfi_def_cfa_offset 0
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1369:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the OC1M Bits */
 1370:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr2 &= (uint16_t)~((uint16_t)TIM_CCMR2_OC3M);
  3178              		.loc 1 1370 12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 81
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 81
 
 
  3179 0016 FB89     		ldrh	r3, [r7, #14]	@ movhi
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3218              		.cfi_startproc
  3219              		@ args = 0, pretend = 0, frame = 16
  3220              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 82
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 82
 
 
  3221              		@ link register save eliminated.
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3263 0034 BD46     		mov	sp, r7
  3264              	.LCFI189:
  3265              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 83
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 83
 
 
  3266              		@ sp needed
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1416:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     TIMx->CR1 |= TIM_CR1_ARPE;
  3306              		.loc 1 1416 15
  3307 0012 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 84
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 84
 
 
  3308 0014 1B88     		ldrh	r3, [r3]	@ movhi
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1428:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  NewState: new state of the Commutation event.
 1429:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be: ENABLE or DISABLE.
 1430:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @retval None
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 85
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 85
 
 
 1431:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3388 0028 9BB2     		uxth	r3, r3
  3389 002a 23F00403 		bic	r3, r3, #4
  3390 002e 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 86
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 86
 
 
  3391 0030 7B68     		ldr	r3, [r7, #4]
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3436 0008 0B46     		mov	r3, r1
  3437 000a FB70     		strb	r3, [r7, #3]
 1459:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 87
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 87
 
 
 1460:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST4_PERIPH(TIMx));
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3479              		.section	.text.TIM_CCPreloadControl,"ax",%progbits
  3480              		.align	1
  3481              		.global	TIM_CCPreloadControl
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 88
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 88
 
 
  3482              		.syntax unified
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1492:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   else
 1493:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
 1494:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Reset the CCPC Bit */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 89
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 89
 
 
 1495:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     TIMx->CR2 &= (uint16_t)~((uint16_t)TIM_CR2_CCPC);
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3558              		@ args = 0, pretend = 0, frame = 16
  3559              		@ frame_needed = 1, uses_anonymous_args = 0
  3560              		@ link register save eliminated.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 90
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 90
 
 
  3561 0000 80B4     		push	{r7}
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3603 0032 80BC     		pop	{r7}
  3604              	.LCFI220:
  3605              		.cfi_restore 7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 91
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 91
 
 
  3606              		.cfi_def_cfa_offset 0
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3644 0014 FB81     		strh	r3, [r7, #14]	@ movhi
 1540:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the OC2PE Bit */
 1541:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr1 &= (uint16_t)~((uint16_t)TIM_CCMR1_OC2PE);
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 92
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 92
 
 
  3645              		.loc 1 1541 12
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1556:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
 1557:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** void TIM_OC3PreloadConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCPreload)
 1558:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 93
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 93
 
 
  3687              		.loc 1 1558 1
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3729              		.cfi_def_cfa_offset 4
  3730 0030 BD46     		mov	sp, r7
  3731              	.LCFI231:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 94
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 94
 
 
  3732              		.cfi_def_cfa_register 13
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1587:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr2 = TIMx->CCMR2;
  3772              		.loc 1 1587 12
  3773 0010 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 95
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 95
 
 
  3774 0012 9B8B     		ldrh	r3, [r3, #28]	@ movhi
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1600:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be one of the following values:
 1601:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_OCFast_Enable: TIM output compare fast enable
 1602:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_OCFast_Disable: TIM output compare fast disable
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 96
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 96
 
 
 1603:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @retval None
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1619:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
  3856              		.loc 1 1619 1
  3857 002c 00BF     		nop
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 97
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 97
 
 
  3858 002e 1437     		adds	r7, r7, #20
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3900              		.loc 1 1633 12
  3901 000c 0023     		movs	r3, #0
  3902 000e FB81     		strh	r3, [r7, #14]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 98
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 98
 
 
 1634:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3947              	TIM_OC3FastConfig:
  3948              	.LFB72:
 1646:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 99
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 99
 
 
 1647:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /**
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  3982 0024 FB81     		strh	r3, [r7, #14]	@ movhi
 1668:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Write to TIMx CCMR2 */
 1669:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCMR2 = tmpccmr2;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 100
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 100
 
 
  3983              		.loc 1 1669 15
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4026              	.LCFI259:
  4027              		.cfi_def_cfa_register 7
  4028 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 101
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 101
 
 
  4029 0008 0B46     		mov	r3, r1
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4071              		.section	.text.TIM_ClearOC1Ref,"ax",%progbits
  4072              		.align	1
  4073              		.global	TIM_ClearOC1Ref
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 102
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 102
 
 
  4074              		.syntax unified
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4108 001c FB81     		strh	r3, [r7, #14]	@ movhi
 1717:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Enable or Disable the Output Compare Clear Bit */
 1718:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr1 |= TIM_OCClear;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 103
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 103
 
 
  4109              		.loc 1 1718 12
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4150              	.LCFI269:
  4151              		.cfi_def_cfa_offset 4
  4152              		.cfi_offset 7, -4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 104
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 104
 
 
  4153 0002 85B0     		sub	sp, sp, #20
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4195              	.LCFI274:
  4196              		.cfi_restore 7
  4197              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 105
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 105
 
 
  4198 0038 7047     		bx	lr
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1764:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr2 &= (uint16_t)~((uint16_t)TIM_CCMR2_OC3CE);
  4236              		.loc 1 1764 12
  4237 0016 FB89     		ldrh	r3, [r7, #14]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 106
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 106
 
 
  4238 0018 23F08003 		bic	r3, r3, #128
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4277              		@ args = 0, pretend = 0, frame = 16
  4278              		@ frame_needed = 1, uses_anonymous_args = 0
  4279              		@ link register save eliminated.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 107
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 107
 
 
  4280 0000 80B4     		push	{r7}
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4322              	.LCFI285:
  4323              		.cfi_def_cfa_register 13
  4324              		@ sp needed
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 108
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 108
 
 
  4325 0036 80BC     		pop	{r7}
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4364 0010 7B68     		ldr	r3, [r7, #4]
  4365 0012 1B8C     		ldrh	r3, [r3, #32]	@ movhi
  4366 0014 FB81     		strh	r3, [r7, #14]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 109
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 109
 
 
 1811:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Set or Reset the CC1P Bit */
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1828:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
  4406              		.loc 1 1828 1
  4407              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 110
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 110
 
 
  4408              		@ args = 0, pretend = 0, frame = 16
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4450              	.LCFI297:
  4451              		.cfi_def_cfa_register 13
  4452              		@ sp needed
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 111
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 111
 
 
  4453 0032 80BC     		pop	{r7}
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4492 0010 7B68     		ldr	r3, [r7, #4]
  4493 0012 1B8C     		ldrh	r3, [r3, #32]	@ movhi
  4494 0014 FB81     		strh	r3, [r7, #14]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 112
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 112
 
 
 1858:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Set or Reset the CC2P Bit */
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1872:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @retval None
 1873:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
 1874:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** void TIM_OC2NPolarityConfig(TIM_TypeDef* TIMx, uint16_t TIM_OCNPolarity)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 113
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 113
 
 
 1875:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4578              		.loc 1 1887 1
  4579 0030 00BF     		nop
  4580 0032 1437     		adds	r7, r7, #20
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 114
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 114
 
 
  4581              	.LCFI308:
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4624 000e FB81     		strh	r3, [r7, #14]	@ movhi
 1901:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
 1902:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST3_PERIPH(TIMx));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 115
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 115
 
 
 1903:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_OC_POLARITY(TIM_OCPolarity));
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1913:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief  Configures the TIMx Channel 3N polarity.
 1914:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIMx: where x can be 1 or 8 to select the TIM peripheral.
 1915:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIM_OCNPolarity: specifies the OC3N Polarity
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 116
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 116
 
 
 1916:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be one of the following values:
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 1933:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Write to TIMx CCER register */
 1934:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCER = tmpccer;
  4708              		.loc 1 1934 14
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 117
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 117
 
 
  4709 002a 7B68     		ldr	r3, [r7, #4]
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4752              		.cfi_def_cfa_register 7
  4753 0006 7860     		str	r0, [r7, #4]
  4754 0008 0B46     		mov	r3, r1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 118
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 118
 
 
  4755 000a 7B80     		strh	r3, [r7, #2]	@ movhi
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4799              		.syntax unified
  4800              		.thumb
  4801              		.thumb_func
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 119
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 119
 
 
  4803              	TIM_CCxCmd:
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4833 001c FB81     		strh	r3, [r7, #14]	@ movhi
 1983:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
 1984:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the CCxE Bit */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 120
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 120
 
 
 1985:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCER &= (uint16_t)~ tmp;
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  4884              		.thumb_func
  4886              	TIM_CCxNCmd:
  4887              	.LFB86:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 121
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 121
 
 
 1990:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2015:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCER &= (uint16_t) ~tmp;
  4917              		.loc 1 2015 14
  4918 001e 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 122
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 122
 
 
  4919 0020 1B8C     		ldrh	r3, [r3, #32]	@ movhi
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2020:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
 2021:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /**
 2022:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief  Selects the TIM Output Compare Mode.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 123
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 123
 
 
 2023:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @note   This function disables the selected channel before changing the Output
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2051:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_CHANNEL(TIM_Channel));
 2052:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_OCM(TIM_OCMode));
 2053:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 124
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 124
 
 
 2054:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmp = (uint32_t) TIMx;
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5040 0056 1344     		add	r3, r3, r2
  5041 0058 FB60     		str	r3, [r7, #12]
 2065:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 125
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 125
 
 
 2066:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Reset the OCxM bits in the CCMRx register */
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5081 009a 9BB2     		uxth	r3, r3
  5082 009c 1946     		mov	r1, r3
  5083              		.loc 1 2080 28
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 126
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 126
 
 
  5084 009e FB68     		ldr	r3, [r7, #12]
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5128              	.LCFI349:
  5129              		.cfi_def_cfa_register 7
  5130 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 127
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 127
 
 
  5131 0008 0B46     		mov	r3, r1
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5170 003c 7047     		bx	lr
  5171              		.cfi_endproc
  5172              	.LFE88:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 128
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 128
 
 
  5174              		.section	.text.TIM_UpdateRequestConfig,"ax",%progbits
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5208 0016 9BB2     		uxth	r3, r3
  5209 0018 43F00403 		orr	r3, r3, #4
  5210 001c 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 129
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 129
 
 
  5211 001e 7B68     		ldr	r3, [r7, #4]
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2143:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** void TIM_SelectHallSensor(TIM_TypeDef* TIMx, FunctionalState NewState)
 2144:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
  5251              		.loc 1 2144 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 130
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 130
 
 
  5252              		.cfi_startproc
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5291 0032 9A80     		strh	r2, [r3, #4]	@ movhi
  5292              	.L155:
  5293              		.loc 1 2158 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 131
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 131
 
 
  5294 0034 00BF     		nop
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2172:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_ALL_PERIPH(TIMx));
 2173:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_OPM_MODE(TIM_OPMode));
 2174:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the OPM Bit */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 132
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 132
 
 
 2175:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CR1 &= (uint16_t)~((uint16_t)TIM_CR1_OPM);
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2188:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_TRGOSource_Enable: The Counter Enable CEN is used as the trigger output (TRGO).
 2189:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_TRGOSource_Update: The update event is selected as the trigger output (TRGO).
 2190:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 133
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 133
 
 
 2191:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *  - For all TIMx except TIM6 and TIM7
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2210:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
  5415              		.loc 1 2210 1
  5416 002c 00BF     		nop
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 134
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 134
 
 
  5417 002e 0C37     		adds	r7, r7, #12
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5458 000a 7B80     		strh	r3, [r7, #2]	@ movhi
 2226:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
 2227:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST6_PERIPH(TIMx));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 135
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 135
 
 
 2228:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_SLAVE_MODE(TIM_SlaveMode));
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2241:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *                                      and its slaves (through TRGO).
 2242:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_MasterSlaveMode_Disable: No action
 2243:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @retval None
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 136
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 136
 
 
 2244:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   */
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5544              		.cfi_def_cfa_register 13
  5545              		@ sp needed
  5546 0032 80BC     		pop	{r7}
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 137
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 137
 
 
  5547              	.LCFI388:
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5589              		.cfi_def_cfa_offset 4
  5590 0016 BD46     		mov	sp, r7
  5591              	.LCFI393:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 138
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 138
 
 
  5592              		.cfi_def_cfa_register 13
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5634 0012 00BF     		nop
  5635 0014 0C37     		adds	r7, r7, #12
  5636              	.LCFI398:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 139
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 139
 
 
  5637              		.cfi_def_cfa_offset 4
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5680 0010 9A86     		strh	r2, [r3, #52]	@ movhi
 2297:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
  5681              		.loc 1 2297 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 140
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 140
 
 
  5682 0012 00BF     		nop
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5725              		.loc 1 2310 14
  5726 000c 7B68     		ldr	r3, [r7, #4]
  5727 000e 7A88     		ldrh	r2, [r7, #2]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 141
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 141
 
 
  5728 0010 1A87     		strh	r2, [r3, #56]	@ movhi
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2322:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST3_PERIPH(TIMx));
 2323:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Set the Capture Compare3 Register value */
 2324:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   TIMx->CCR3 = Compare3;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 142
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 142
 
 
  5773              		.loc 1 2324 14
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5819 0008 0B46     		mov	r3, r1
  5820 000a 7B80     		strh	r3, [r7, #2]	@ movhi
 2335:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 143
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 143
 
 
 2336:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST3_PERIPH(TIMx));
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5859              		.cfi_offset 7, -4
  5860 0002 83B0     		sub	sp, sp, #12
  5861              	.LCFI426:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 144
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 144
 
 
  5862              		.cfi_def_cfa_offset 16
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5910              	TIM_SetIC2Prescaler:
  5911              	.LFB102:
 2362:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 145
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 145
 
 
 2363:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** /**
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5946              		.loc 1 2382 15
  5947 0028 1343     		orrs	r3, r3, r2
  5948 002a 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 146
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 146
 
 
  5949 002c 7B68     		ldr	r3, [r7, #4]
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  5990              	.LCFI439:
  5991              		.cfi_def_cfa_register 7
  5992 0006 7860     		str	r0, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 147
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 147
 
 
  5993 0008 0B46     		mov	r3, r1
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2409:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIMx: where x can be 1, 2, 3, 4, 5 or 8 to select the TIM peripheral.
 2410:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIM_ICPSC: specifies the Input Capture4 prescaler new value.
 2411:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be one of the following values:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 148
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 148
 
 
 2412:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_ICPSC_DIV1: no prescaler
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2427:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** }
  6077              		.loc 1 2427 1
  6078 0030 00BF     		nop
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 149
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 149
 
 
  6079 0032 0C37     		adds	r7, r7, #12
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2442:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Check the parameters */
 2443:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_LIST8_PERIPH(TIMx));
 2444:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   assert_param(IS_TIM_CKD_DIV(TIM_CKD));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 150
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 150
 
 
 2445:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   /* Reset the CKD Bits */
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6164              		.loc 1 2457 1
  6165              		.cfi_startproc
  6166              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 151
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 151
 
 
  6167              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6210              		.loc 1 2470 1
  6211              		.cfi_startproc
  6212              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 152
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 152
 
 
  6213              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6256              		.loc 1 2483 1
  6257              		.cfi_startproc
  6258              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 153
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 153
 
 
  6259              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6302              		.loc 1 2496 1
  6303              		.cfi_startproc
  6304              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 154
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 154
 
 
  6305              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6348              		.loc 1 2509 1
  6349              		.cfi_startproc
  6350              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 155
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 155
 
 
  6351              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6394              		.loc 1 2522 1
  6395              		.cfi_startproc
  6396              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 156
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 156
 
 
  6397              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2536:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_CC2: TIM Capture Compare 2 Flag
 2537:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_CC3: TIM Capture Compare 3 Flag
 2538:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_CC4: TIM Capture Compare 4 Flag
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 157
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 157
 
 
 2539:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_COM: TIM Commutation Flag
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6470 001c 002B     		cmp	r3, #0
  6471 001e 02D0     		beq	.L184
 2563:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 158
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 158
 
 
 2564:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     bitstatus = SET;
@@ -9478,7 +9478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2583:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_COM: TIM Commutation Flag
 2584:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_Trigger: TIM Trigger Flag
 2585:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_Break: TIM Break Flag
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 159
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 159
 
 
 2586:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *     @arg TIM_FLAG_CC1OF: TIM Capture Compare 1 overcapture Flag
@@ -9538,7 +9538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6541              		.cfi_def_cfa_register 13
  6542              		@ sp needed
  6543 001c 80BC     		pop	{r7}
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 160
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 160
 
 
  6544              	.LCFI502:
@@ -9598,7 +9598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6575 0006 7860     		str	r0, [r7, #4]
  6576 0008 0B46     		mov	r3, r1
  6577 000a 7B80     		strh	r3, [r7, #2]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 161
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 161
 
 
 2633:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   ITStatus bitstatus = RESET;  
@@ -9658,7 +9658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6616              		.loc 1 2648 15
  6617 0042 0023     		movs	r3, #0
  6618 0044 FB73     		strb	r3, [r7, #15]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 162
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 162
 
 
  6619              	.L190:
@@ -9718,7 +9718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2676:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c **** {
  6648              		.loc 1 2676 1
  6649              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 163
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 163
 
 
  6650              		@ args = 0, pretend = 0, frame = 8
@@ -9778,7 +9778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2685:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @brief  Configure the TI1 as Input.
 2686:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIMx: where x can be 1 to 17 except 6 and 7 to select the TIM peripheral.
 2687:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   * @param  TIM_ICPolarity : The Input Polarity.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 164
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 164
 
 
 2688:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   *   This parameter can be one of the following values:
@@ -9838,7 +9838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6734 002c 9AB2     		uxth	r2, r3
  6735 002e FB68     		ldr	r3, [r7, #12]
  6736 0030 1A84     		strh	r2, [r3, #32]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 165
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 165
 
 
 2706:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   tmpccmr1 = TIMx->CCMR1;
@@ -9898,7 +9898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6784 007e 03D0     		beq	.L194
 2713:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****      (TIMx == TIM4) ||(TIMx == TIM5))
  6785              		.loc 1 2713 21
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 166
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 166
 
 
  6786 0080 FB68     		ldr	r3, [r7, #12]
@@ -9958,7 +9958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6824              		.loc 1 2729 1
  6825 00c2 00BF     		nop
  6826 00c4 1C37     		adds	r7, r7, #28
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 167
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 167
 
 
  6827              	.LCFI518:
@@ -10018,7 +10018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6863              	.LCFI521:
  6864              		.cfi_def_cfa_offset 4
  6865              		.cfi_offset 7, -4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 168
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 168
 
 
  6866 0002 87B0     		sub	sp, sp, #28
@@ -10078,7 +10078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  6912 0048 BB8A     		ldrh	r3, [r7, #20]	@ movhi
  6913 004a 23F44073 		bic	r3, r3, #768
  6914 004e 1B05     		lsls	r3, r3, #20
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 169
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 169
 
 
  6915 0050 1B0D     		lsrs	r3, r3, #20
@@ -10138,7 +10138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2764:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Select the Polarity and set the CC2E Bit */
 2765:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     tmpccer &= (uint16_t)~((uint16_t)(TIM_CCER_CC2P));
  6963              		.loc 1 2765 13
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 170
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 170
 
 
  6964 009c FB8A     		ldrh	r3, [r7, #22]	@ movhi
@@ -10198,7 +10198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7005 00dc 80BC     		pop	{r7}
  7006              	.LCFI526:
  7007              		.cfi_restore 7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 171
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 171
 
 
  7008              		.cfi_def_cfa_offset 0
@@ -10258,7 +10258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7044 0006 F860     		str	r0, [r7, #12]
  7045 0008 0846     		mov	r0, r1
  7046 000a 1146     		mov	r1, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 172
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 172
 
 
  7047 000c 1A46     		mov	r2, r3
@@ -10318,7 +10318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7092 0056 3B89     		ldrh	r3, [r7, #8]	@ movhi
  7093 0058 1343     		orrs	r3, r3, r2
  7094 005a 9AB2     		uxth	r2, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 173
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 173
 
 
  7095              		.loc 1 2807 12
@@ -10378,7 +10378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2815:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   }
 2816:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   else
 2817:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 174
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 174
 
 
 2818:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     /* Select the Polarity and set the CC3E Bit */
@@ -10438,7 +10438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7188              		.align	1
  7189              		.syntax unified
  7190              		.thumb
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 175
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 175
 
 
  7191              		.thumb_func
@@ -10498,7 +10498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7225 0020 FB82     		strh	r3, [r7, #22]	@ movhi
  7226              		.loc 1 2847 39
  7227 0022 0023     		movs	r3, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 176
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 176
 
 
  7228 0024 7B82     		strh	r3, [r7, #18]	@ movhi
@@ -10558,7 +10558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
 2859:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****   if((TIMx == TIM1) || (TIMx == TIM8) || (TIMx == TIM2) || (TIMx == TIM3) ||
  7271              		.loc 1 2859 5
  7272 006c FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 177
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 177
 
 
  7273 006e 1D4A     		ldr	r2, .L215
@@ -10618,7 +10618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7317 00ba 5B04     		lsls	r3, r3, #17
  7318 00bc 5B0C     		lsrs	r3, r3, #17
  7319 00be FB82     		strh	r3, [r7, #22]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 178
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 178
 
 
 2870:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c ****     tmpccer |= (uint16_t)(TIM_ICPolarity | (uint16_t)TIM_CCER_CC4E);
@@ -10673,212 +10673,212 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 1
  7364              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  7365              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
  7366              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_tim.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 179
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 179
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_tim.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:18     .text.TIM_DeInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:24     .text.TIM_DeInit:00000000 TIM_DeInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:325    .text.TIM_DeInit:000001ec $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:345    .text.TIM_TimeBaseInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:351    .text.TIM_TimeBaseInit:00000000 TIM_TimeBaseInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:512    .text.TIM_TimeBaseInit:000000d0 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:526    .text.TIM_OC1Init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:532    .text.TIM_OC1Init:00000000 TIM_OC1Init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:719    .text.TIM_OC1Init:00000104 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:728    .text.TIM_OC2Init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:734    .text.TIM_OC2Init:00000000 TIM_OC2Init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:927    .text.TIM_OC2Init:00000108 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:933    .text.TIM_OC3Init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:939    .text.TIM_OC3Init:00000000 TIM_OC3Init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1129   .text.TIM_OC3Init:00000104 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1135   .text.TIM_OC4Init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1141   .text.TIM_OC4Init:00000000 TIM_OC4Init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1292   .text.TIM_OC4Init:000000c8 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1298   .text.TIM_ICInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1304   .text.TIM_ICInit:00000000 TIM_ICInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6696   .text.TI1_Config:00000000 TI1_Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5849   .text.TIM_SetIC1Prescaler:00000000 TIM_SetIC1Prescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6855   .text.TI2_Config:00000000 TI2_Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5910   .text.TIM_SetIC2Prescaler:00000000 TIM_SetIC2Prescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7027   .text.TI3_Config:00000000 TI3_Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5975   .text.TIM_SetIC3Prescaler:00000000 TIM_SetIC3Prescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7193   .text.TI4_Config:00000000 TI4_Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6036   .text.TIM_SetIC4Prescaler:00000000 TIM_SetIC4Prescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1425   .text.TIM_PWMIConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1431   .text.TIM_PWMIConfig:00000000 TIM_PWMIConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1566   .text.TIM_BDTRConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1572   .text.TIM_BDTRConfig:00000000 TIM_BDTRConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1650   .text.TIM_TimeBaseStructInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1656   .text.TIM_TimeBaseStructInit:00000000 TIM_TimeBaseStructInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1712   .text.TIM_OCStructInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1718   .text.TIM_OCStructInit:00000000 TIM_OCStructInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1786   .text.TIM_ICStructInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1792   .text.TIM_ICStructInit:00000000 TIM_ICStructInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1848   .text.TIM_BDTRStructInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1854   .text.TIM_BDTRStructInit:00000000 TIM_BDTRStructInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1918   .text.TIM_Cmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1924   .text.TIM_Cmd:00000000 TIM_Cmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1986   .text.TIM_CtrlPWMOutputs:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:1992   .text.TIM_CtrlPWMOutputs:00000000 TIM_CtrlPWMOutputs
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2055   .text.TIM_ITConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2061   .text.TIM_ITConfig:00000000 TIM_ITConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2131   .text.TIM_GenerateEvent:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2137   .text.TIM_GenerateEvent:00000000 TIM_GenerateEvent
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2179   .text.TIM_DMAConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2185   .text.TIM_DMAConfig:00000000 TIM_DMAConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2232   .text.TIM_DMACmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2238   .text.TIM_DMACmd:00000000 TIM_DMACmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2308   .text.TIM_InternalClockConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2314   .text.TIM_InternalClockConfig:00000000 TIM_InternalClockConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2358   .text.TIM_ITRxExternalClockConfig:00000000 $t
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 180
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:18     .text.TIM_DeInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:24     .text.TIM_DeInit:00000000 TIM_DeInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:325    .text.TIM_DeInit:000001ec $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:345    .text.TIM_TimeBaseInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:351    .text.TIM_TimeBaseInit:00000000 TIM_TimeBaseInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:512    .text.TIM_TimeBaseInit:000000d0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:526    .text.TIM_OC1Init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:532    .text.TIM_OC1Init:00000000 TIM_OC1Init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:719    .text.TIM_OC1Init:00000104 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:728    .text.TIM_OC2Init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:734    .text.TIM_OC2Init:00000000 TIM_OC2Init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:927    .text.TIM_OC2Init:00000108 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:933    .text.TIM_OC3Init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:939    .text.TIM_OC3Init:00000000 TIM_OC3Init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1129   .text.TIM_OC3Init:00000104 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1135   .text.TIM_OC4Init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1141   .text.TIM_OC4Init:00000000 TIM_OC4Init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1292   .text.TIM_OC4Init:000000c8 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1298   .text.TIM_ICInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1304   .text.TIM_ICInit:00000000 TIM_ICInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6696   .text.TI1_Config:00000000 TI1_Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5849   .text.TIM_SetIC1Prescaler:00000000 TIM_SetIC1Prescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6855   .text.TI2_Config:00000000 TI2_Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5910   .text.TIM_SetIC2Prescaler:00000000 TIM_SetIC2Prescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7027   .text.TI3_Config:00000000 TI3_Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5975   .text.TIM_SetIC3Prescaler:00000000 TIM_SetIC3Prescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7193   .text.TI4_Config:00000000 TI4_Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6036   .text.TIM_SetIC4Prescaler:00000000 TIM_SetIC4Prescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1425   .text.TIM_PWMIConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1431   .text.TIM_PWMIConfig:00000000 TIM_PWMIConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1566   .text.TIM_BDTRConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1572   .text.TIM_BDTRConfig:00000000 TIM_BDTRConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1650   .text.TIM_TimeBaseStructInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1656   .text.TIM_TimeBaseStructInit:00000000 TIM_TimeBaseStructInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1712   .text.TIM_OCStructInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1718   .text.TIM_OCStructInit:00000000 TIM_OCStructInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1786   .text.TIM_ICStructInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1792   .text.TIM_ICStructInit:00000000 TIM_ICStructInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1848   .text.TIM_BDTRStructInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1854   .text.TIM_BDTRStructInit:00000000 TIM_BDTRStructInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1918   .text.TIM_Cmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1924   .text.TIM_Cmd:00000000 TIM_Cmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1986   .text.TIM_CtrlPWMOutputs:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:1992   .text.TIM_CtrlPWMOutputs:00000000 TIM_CtrlPWMOutputs
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2055   .text.TIM_ITConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2061   .text.TIM_ITConfig:00000000 TIM_ITConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2131   .text.TIM_GenerateEvent:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2137   .text.TIM_GenerateEvent:00000000 TIM_GenerateEvent
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2179   .text.TIM_DMAConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2185   .text.TIM_DMAConfig:00000000 TIM_DMAConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2232   .text.TIM_DMACmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2238   .text.TIM_DMACmd:00000000 TIM_DMACmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2308   .text.TIM_InternalClockConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2314   .text.TIM_InternalClockConfig:00000000 TIM_InternalClockConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2358   .text.TIM_ITRxExternalClockConfig:00000000 $t
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 180
 
 
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2364   .text.TIM_ITRxExternalClockConfig:00000000 TIM_ITRxExternalClockConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2837   .text.TIM_SelectInputTrigger:00000000 TIM_SelectInputTrigger
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2411   .text.TIM_TIxExternalClockConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2417   .text.TIM_TIxExternalClockConfig:00000000 TIM_TIxExternalClockConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2490   .text.TIM_ETRClockMode1Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2496   .text.TIM_ETRClockMode1Config:00000000 TIM_ETRClockMode1Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2637   .text.TIM_ETRConfig:00000000 TIM_ETRConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2570   .text.TIM_ETRClockMode2Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2576   .text.TIM_ETRClockMode2Config:00000000 TIM_ETRClockMode2Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2631   .text.TIM_ETRConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2713   .text.TIM_PrescalerConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2719   .text.TIM_PrescalerConfig:00000000 TIM_PrescalerConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2767   .text.TIM_CounterModeConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2773   .text.TIM_CounterModeConfig:00000000 TIM_CounterModeConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2831   .text.TIM_SelectInputTrigger:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2895   .text.TIM_EncoderInterfaceConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:2901   .text.TIM_EncoderInterfaceConfig:00000000 TIM_EncoderInterfaceConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3014   .text.TIM_ForcedOC1Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3020   .text.TIM_ForcedOC1Config:00000000 TIM_ForcedOC1Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3078   .text.TIM_ForcedOC2Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3084   .text.TIM_ForcedOC2Config:00000000 TIM_ForcedOC2Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3145   .text.TIM_ForcedOC3Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3151   .text.TIM_ForcedOC3Config:00000000 TIM_ForcedOC3Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3209   .text.TIM_ForcedOC4Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3215   .text.TIM_ForcedOC4Config:00000000 TIM_ForcedOC4Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3276   .text.TIM_ARRPreloadConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3282   .text.TIM_ARRPreloadConfig:00000000 TIM_ARRPreloadConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3344   .text.TIM_SelectCOM:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3350   .text.TIM_SelectCOM:00000000 TIM_SelectCOM
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3412   .text.TIM_SelectCCDMA:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3418   .text.TIM_SelectCCDMA:00000000 TIM_SelectCCDMA
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3480   .text.TIM_CCPreloadControl:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3486   .text.TIM_CCPreloadControl:00000000 TIM_CCPreloadControl
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3548   .text.TIM_OC1PreloadConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3554   .text.TIM_OC1PreloadConfig:00000000 TIM_OC1PreloadConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3612   .text.TIM_OC2PreloadConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3618   .text.TIM_OC2PreloadConfig:00000000 TIM_OC2PreloadConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3679   .text.TIM_OC3PreloadConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3685   .text.TIM_OC3PreloadConfig:00000000 TIM_OC3PreloadConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3743   .text.TIM_OC4PreloadConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3749   .text.TIM_OC4PreloadConfig:00000000 TIM_OC4PreloadConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3810   .text.TIM_OC1FastConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3816   .text.TIM_OC1FastConfig:00000000 TIM_OC1FastConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3874   .text.TIM_OC2FastConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3880   .text.TIM_OC2FastConfig:00000000 TIM_OC2FastConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3941   .text.TIM_OC3FastConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:3947   .text.TIM_OC3FastConfig:00000000 TIM_OC3FastConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4005   .text.TIM_OC4FastConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4011   .text.TIM_OC4FastConfig:00000000 TIM_OC4FastConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4072   .text.TIM_ClearOC1Ref:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4078   .text.TIM_ClearOC1Ref:00000000 TIM_ClearOC1Ref
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4136   .text.TIM_ClearOC2Ref:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4142   .text.TIM_ClearOC2Ref:00000000 TIM_ClearOC2Ref
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4203   .text.TIM_ClearOC3Ref:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4209   .text.TIM_ClearOC3Ref:00000000 TIM_ClearOC3Ref
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4267   .text.TIM_ClearOC4Ref:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4273   .text.TIM_ClearOC4Ref:00000000 TIM_ClearOC4Ref
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 181
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2364   .text.TIM_ITRxExternalClockConfig:00000000 TIM_ITRxExternalClockConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2837   .text.TIM_SelectInputTrigger:00000000 TIM_SelectInputTrigger
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2411   .text.TIM_TIxExternalClockConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2417   .text.TIM_TIxExternalClockConfig:00000000 TIM_TIxExternalClockConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2490   .text.TIM_ETRClockMode1Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2496   .text.TIM_ETRClockMode1Config:00000000 TIM_ETRClockMode1Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2637   .text.TIM_ETRConfig:00000000 TIM_ETRConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2570   .text.TIM_ETRClockMode2Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2576   .text.TIM_ETRClockMode2Config:00000000 TIM_ETRClockMode2Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2631   .text.TIM_ETRConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2713   .text.TIM_PrescalerConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2719   .text.TIM_PrescalerConfig:00000000 TIM_PrescalerConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2767   .text.TIM_CounterModeConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2773   .text.TIM_CounterModeConfig:00000000 TIM_CounterModeConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2831   .text.TIM_SelectInputTrigger:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2895   .text.TIM_EncoderInterfaceConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:2901   .text.TIM_EncoderInterfaceConfig:00000000 TIM_EncoderInterfaceConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3014   .text.TIM_ForcedOC1Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3020   .text.TIM_ForcedOC1Config:00000000 TIM_ForcedOC1Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3078   .text.TIM_ForcedOC2Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3084   .text.TIM_ForcedOC2Config:00000000 TIM_ForcedOC2Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3145   .text.TIM_ForcedOC3Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3151   .text.TIM_ForcedOC3Config:00000000 TIM_ForcedOC3Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3209   .text.TIM_ForcedOC4Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3215   .text.TIM_ForcedOC4Config:00000000 TIM_ForcedOC4Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3276   .text.TIM_ARRPreloadConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3282   .text.TIM_ARRPreloadConfig:00000000 TIM_ARRPreloadConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3344   .text.TIM_SelectCOM:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3350   .text.TIM_SelectCOM:00000000 TIM_SelectCOM
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3412   .text.TIM_SelectCCDMA:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3418   .text.TIM_SelectCCDMA:00000000 TIM_SelectCCDMA
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3480   .text.TIM_CCPreloadControl:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3486   .text.TIM_CCPreloadControl:00000000 TIM_CCPreloadControl
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3548   .text.TIM_OC1PreloadConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3554   .text.TIM_OC1PreloadConfig:00000000 TIM_OC1PreloadConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3612   .text.TIM_OC2PreloadConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3618   .text.TIM_OC2PreloadConfig:00000000 TIM_OC2PreloadConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3679   .text.TIM_OC3PreloadConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3685   .text.TIM_OC3PreloadConfig:00000000 TIM_OC3PreloadConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3743   .text.TIM_OC4PreloadConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3749   .text.TIM_OC4PreloadConfig:00000000 TIM_OC4PreloadConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3810   .text.TIM_OC1FastConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3816   .text.TIM_OC1FastConfig:00000000 TIM_OC1FastConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3874   .text.TIM_OC2FastConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3880   .text.TIM_OC2FastConfig:00000000 TIM_OC2FastConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3941   .text.TIM_OC3FastConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:3947   .text.TIM_OC3FastConfig:00000000 TIM_OC3FastConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4005   .text.TIM_OC4FastConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4011   .text.TIM_OC4FastConfig:00000000 TIM_OC4FastConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4072   .text.TIM_ClearOC1Ref:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4078   .text.TIM_ClearOC1Ref:00000000 TIM_ClearOC1Ref
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4136   .text.TIM_ClearOC2Ref:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4142   .text.TIM_ClearOC2Ref:00000000 TIM_ClearOC2Ref
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4203   .text.TIM_ClearOC3Ref:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4209   .text.TIM_ClearOC3Ref:00000000 TIM_ClearOC3Ref
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4267   .text.TIM_ClearOC4Ref:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4273   .text.TIM_ClearOC4Ref:00000000 TIM_ClearOC4Ref
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 181
 
 
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4334   .text.TIM_OC1PolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4340   .text.TIM_OC1PolarityConfig:00000000 TIM_OC1PolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4398   .text.TIM_OC1NPolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4404   .text.TIM_OC1NPolarityConfig:00000000 TIM_OC1NPolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4462   .text.TIM_OC2PolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4468   .text.TIM_OC2PolarityConfig:00000000 TIM_OC2PolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4529   .text.TIM_OC2NPolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4535   .text.TIM_OC2NPolarityConfig:00000000 TIM_OC2NPolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4596   .text.TIM_OC3PolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4602   .text.TIM_OC3PolarityConfig:00000000 TIM_OC3PolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4663   .text.TIM_OC3NPolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4669   .text.TIM_OC3NPolarityConfig:00000000 TIM_OC3NPolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4730   .text.TIM_OC4PolarityConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4736   .text.TIM_OC4PolarityConfig:00000000 TIM_OC4PolarityConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4797   .text.TIM_CCxCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4803   .text.TIM_CCxCmd:00000000 TIM_CCxCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4880   .text.TIM_CCxNCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4886   .text.TIM_CCxNCmd:00000000 TIM_CCxNCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4963   .text.TIM_SelectOCxM:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:4969   .text.TIM_SelectOCxM:00000000 TIM_SelectOCxM
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5107   .text.TIM_UpdateDisableConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5113   .text.TIM_UpdateDisableConfig:00000000 TIM_UpdateDisableConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5175   .text.TIM_UpdateRequestConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5181   .text.TIM_UpdateRequestConfig:00000000 TIM_UpdateRequestConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5243   .text.TIM_SelectHallSensor:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5249   .text.TIM_SelectHallSensor:00000000 TIM_SelectHallSensor
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5311   .text.TIM_SelectOnePulseMode:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5317   .text.TIM_SelectOnePulseMode:00000000 TIM_SelectOnePulseMode
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5372   .text.TIM_SelectOutputTrigger:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5378   .text.TIM_SelectOutputTrigger:00000000 TIM_SelectOutputTrigger
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5433   .text.TIM_SelectSlaveMode:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5439   .text.TIM_SelectSlaveMode:00000000 TIM_SelectSlaveMode
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5494   .text.TIM_SelectMasterSlaveMode:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5500   .text.TIM_SelectMasterSlaveMode:00000000 TIM_SelectMasterSlaveMode
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5555   .text.TIM_SetCounter:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5561   .text.TIM_SetCounter:00000000 TIM_SetCounter
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5603   .text.TIM_SetAutoreload:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5609   .text.TIM_SetAutoreload:00000000 TIM_SetAutoreload
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5651   .text.TIM_SetCompare1:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5657   .text.TIM_SetCompare1:00000000 TIM_SetCompare1
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5699   .text.TIM_SetCompare2:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5705   .text.TIM_SetCompare2:00000000 TIM_SetCompare2
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5747   .text.TIM_SetCompare3:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5753   .text.TIM_SetCompare3:00000000 TIM_SetCompare3
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5795   .text.TIM_SetCompare4:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5801   .text.TIM_SetCompare4:00000000 TIM_SetCompare4
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5843   .text.TIM_SetIC1Prescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5904   .text.TIM_SetIC2Prescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:5969   .text.TIM_SetIC3Prescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6030   .text.TIM_SetIC4Prescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6095   .text.TIM_SetClockDivision:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6101   .text.TIM_SetClockDivision:00000000 TIM_SetClockDivision
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6156   .text.TIM_GetCapture1:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6162   .text.TIM_GetCapture1:00000000 TIM_GetCapture1
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6202   .text.TIM_GetCapture2:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6208   .text.TIM_GetCapture2:00000000 TIM_GetCapture2
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6248   .text.TIM_GetCapture3:00000000 $t
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 182
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4334   .text.TIM_OC1PolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4340   .text.TIM_OC1PolarityConfig:00000000 TIM_OC1PolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4398   .text.TIM_OC1NPolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4404   .text.TIM_OC1NPolarityConfig:00000000 TIM_OC1NPolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4462   .text.TIM_OC2PolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4468   .text.TIM_OC2PolarityConfig:00000000 TIM_OC2PolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4529   .text.TIM_OC2NPolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4535   .text.TIM_OC2NPolarityConfig:00000000 TIM_OC2NPolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4596   .text.TIM_OC3PolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4602   .text.TIM_OC3PolarityConfig:00000000 TIM_OC3PolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4663   .text.TIM_OC3NPolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4669   .text.TIM_OC3NPolarityConfig:00000000 TIM_OC3NPolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4730   .text.TIM_OC4PolarityConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4736   .text.TIM_OC4PolarityConfig:00000000 TIM_OC4PolarityConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4797   .text.TIM_CCxCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4803   .text.TIM_CCxCmd:00000000 TIM_CCxCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4880   .text.TIM_CCxNCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4886   .text.TIM_CCxNCmd:00000000 TIM_CCxNCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4963   .text.TIM_SelectOCxM:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:4969   .text.TIM_SelectOCxM:00000000 TIM_SelectOCxM
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5107   .text.TIM_UpdateDisableConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5113   .text.TIM_UpdateDisableConfig:00000000 TIM_UpdateDisableConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5175   .text.TIM_UpdateRequestConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5181   .text.TIM_UpdateRequestConfig:00000000 TIM_UpdateRequestConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5243   .text.TIM_SelectHallSensor:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5249   .text.TIM_SelectHallSensor:00000000 TIM_SelectHallSensor
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5311   .text.TIM_SelectOnePulseMode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5317   .text.TIM_SelectOnePulseMode:00000000 TIM_SelectOnePulseMode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5372   .text.TIM_SelectOutputTrigger:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5378   .text.TIM_SelectOutputTrigger:00000000 TIM_SelectOutputTrigger
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5433   .text.TIM_SelectSlaveMode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5439   .text.TIM_SelectSlaveMode:00000000 TIM_SelectSlaveMode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5494   .text.TIM_SelectMasterSlaveMode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5500   .text.TIM_SelectMasterSlaveMode:00000000 TIM_SelectMasterSlaveMode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5555   .text.TIM_SetCounter:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5561   .text.TIM_SetCounter:00000000 TIM_SetCounter
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5603   .text.TIM_SetAutoreload:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5609   .text.TIM_SetAutoreload:00000000 TIM_SetAutoreload
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5651   .text.TIM_SetCompare1:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5657   .text.TIM_SetCompare1:00000000 TIM_SetCompare1
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5699   .text.TIM_SetCompare2:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5705   .text.TIM_SetCompare2:00000000 TIM_SetCompare2
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5747   .text.TIM_SetCompare3:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5753   .text.TIM_SetCompare3:00000000 TIM_SetCompare3
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5795   .text.TIM_SetCompare4:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5801   .text.TIM_SetCompare4:00000000 TIM_SetCompare4
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5843   .text.TIM_SetIC1Prescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5904   .text.TIM_SetIC2Prescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:5969   .text.TIM_SetIC3Prescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6030   .text.TIM_SetIC4Prescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6095   .text.TIM_SetClockDivision:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6101   .text.TIM_SetClockDivision:00000000 TIM_SetClockDivision
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6156   .text.TIM_GetCapture1:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6162   .text.TIM_GetCapture1:00000000 TIM_GetCapture1
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6202   .text.TIM_GetCapture2:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6208   .text.TIM_GetCapture2:00000000 TIM_GetCapture2
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6248   .text.TIM_GetCapture3:00000000 $t
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 182
 
 
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6254   .text.TIM_GetCapture3:00000000 TIM_GetCapture3
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6294   .text.TIM_GetCapture4:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6300   .text.TIM_GetCapture4:00000000 TIM_GetCapture4
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6340   .text.TIM_GetCounter:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6346   .text.TIM_GetCounter:00000000 TIM_GetCounter
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6386   .text.TIM_GetPrescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6392   .text.TIM_GetPrescaler:00000000 TIM_GetPrescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6432   .text.TIM_GetFlagStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6438   .text.TIM_GetFlagStatus:00000000 TIM_GetFlagStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6501   .text.TIM_ClearFlag:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6507   .text.TIM_ClearFlag:00000000 TIM_ClearFlag
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6552   .text.TIM_GetITStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6558   .text.TIM_GetITStatus:00000000 TIM_GetITStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6640   .text.TIM_ClearITPendingBit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6646   .text.TIM_ClearITPendingBit:00000000 TIM_ClearITPendingBit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6691   .text.TI1_Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6841   .text.TI1_Config:000000cc $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:6850   .text.TI2_Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7013   .text.TI2_Config:000000e0 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7022   .text.TI3_Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7179   .text.TI3_Config:000000d8 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7188   .text.TI4_Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7353   .text.TI4_Config:000000e4 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6254   .text.TIM_GetCapture3:00000000 TIM_GetCapture3
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6294   .text.TIM_GetCapture4:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6300   .text.TIM_GetCapture4:00000000 TIM_GetCapture4
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6340   .text.TIM_GetCounter:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6346   .text.TIM_GetCounter:00000000 TIM_GetCounter
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6386   .text.TIM_GetPrescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6392   .text.TIM_GetPrescaler:00000000 TIM_GetPrescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6432   .text.TIM_GetFlagStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6438   .text.TIM_GetFlagStatus:00000000 TIM_GetFlagStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6501   .text.TIM_ClearFlag:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6507   .text.TIM_ClearFlag:00000000 TIM_ClearFlag
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6552   .text.TIM_GetITStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6558   .text.TIM_GetITStatus:00000000 TIM_GetITStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6640   .text.TIM_ClearITPendingBit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6646   .text.TIM_ClearITPendingBit:00000000 TIM_ClearITPendingBit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6691   .text.TI1_Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6841   .text.TI1_Config:000000cc $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:6850   .text.TI2_Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7013   .text.TI2_Config:000000e0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7022   .text.TI3_Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7179   .text.TI3_Config:000000d8 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7188   .text.TI4_Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s:7353   .text.TI4_Config:000000e4 $d
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -10913,7 +10913,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s:7353   .text.TI4_Config:0000
                            .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
                            .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
                            .group:00000000 wm4.stm32f10x_tim.h.168.c4dbfd25302e4ca15af1384424953626
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc4OS04s.s 			page 183
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc7QBIpX.s 			page 183
 
 
 

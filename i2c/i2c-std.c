@@ -79,10 +79,9 @@ uint8_t i2c_ready_std(I2C_TypeDef* I2CX)
    I2Cx_Timeout=I2C_MAX_BUSY_TIME;    
     //_delay_ms(25);
   //wait check that the I2c module is not busy
-  
-    while(bits_is_set(I2CX->SR2,I2C_SR2_BUSY))//I2C_GetFlagStatus(I2CX,I2C_FLAG_BUSY))
+    while(bits_is_set(I2CX->SR2,I2C_SR2_BUSY))  //I2C_GetFlagStatus(I2CX,I2C_FLAG_BUSY))
       if(I2Cx_Timeout==0)  
-        return I2C_BUSY_ERROR;         // set the error then exit:: I2C_BUSY_ERROR
+        return I2C_BUSY;                 // set the error then exit:: I2C_BUSY_ERROR
 
    return I2C_OK;   
 }    
@@ -131,13 +130,13 @@ uint8_t i2c_wait_start_event_std(I2C_TypeDef* I2CX)
    I2Cx_Timeout=I2C_MAX_WAIT_TIME;
     //wait the event I2C_EVENT_MASTER_MODE_SELECT where BUSY, MSL and SB flag are set  (At EV5)
     //EV5: at the  SB=1, cleared by reading SR1 register followed by writing the DR register.
-    //!I2C_CheckEvent(I2CX,I2C_EVENT_MASTER_MODE_SELECT))
-   while(bits_is_clear(I2CX->SR1,I2C_SR1_SB)|| 
-         bits_is_clear(I2CX->SR2,(uint16_t)(I2C_SR2_BUSY | I2C_SR2_MSL)) ) 
+    //   while(!I2C_CheckEvent(I2CX,I2C_EVENT_MASTER_MODE_SELECT))
+    //   while(_I2C_GET_FLAG(I2CX,I2C_SR1_SB)==RESET   ||
+    //         _I2C_GET_FLAG(I2CX,I2C_SR2_BUSY)==RESET ||
+    //         _I2C_GET_FLAG(I2CX,I2C_SR2_MSL)==RESET  )
+    //   while(bits_is_clear(I2CX->SR1,I2C_SR1_SB)||  bits_is_clear(I2CX->SR2,(uint16_t)(I2C_SR2_BUSY | I2C_SR2_MSL)) ) 
+   while(bits_is_clear(I2CX->SR1,I2C_SR1_SB)) 
     {     
-        //   while(_I2C_GET_FLAG(I2CX,I2C_SR1_SB)==RESET   ||
-        //         _I2C_GET_FLAG(I2CX,I2C_SR2_BUSY)==RESET ||
-        //         _I2C_GET_FLAG(I2CX,I2C_SR2_MSL)==RESET  )
       if(I2Cx_Timeout==0)  
       {
         if (READ_BIT(I2CX->CR1, I2C_CR1_START) == I2C_CR1_START)
@@ -445,8 +444,7 @@ uint8_t i2c_wait_write_byte_txe_std(I2C_TypeDef* I2CX)
 {
     //! wait the complete of current byte transmition (MASTER-write)
     I2Cx_Timeout=I2C_MAX_WAIT_TIME; 
-    //volatile uint32_t Timeout=0xffff;
-    //Wait until BTF is set
+    //Wait until TXE is set
     // each time just repeat Ev8_1 & Ev8 : shift register empty, data register empty, and need to write to DR register
     while(bits_is_clear(I2CX->SR1,I2C_SR1_TXE)) //!I2C_GetFlagStatus(I2CX,I2C_FLAG_TXE))
     {
@@ -506,7 +504,7 @@ uint8_t i2c_wait_read_byte_rxne_std(I2C_TypeDef* I2CX)
       {
           /* Clear STOP Flag */
            _I2C_CLEAR_STOPFLAG(I2CX);      
-         return I2C_ERROR;
+         return I2C_STOP_ERROR; //I2C_ERROR;
       }
       if(I2Cx_Timeout==0)  
            return I2C_RX_RXNE_ERROR;// set the error then exit ::I2C_RX_RXNE_ERROR
@@ -566,12 +564,13 @@ uint8_t i2c_start_std(I2C_TypeDef* I2CX)
    // activate PE
     //CLEAR_BIT(I2CX->CR1,I2C_CR1_PE);
     SET_BIT(I2CX->CR1,I2C_CR1_PE);
-   // clear all error flags
-    CLEAR_BIT(I2CX->SR1,I2C_SR1_BERR|I2C_SR1_ARLO|I2C_SR1_AF|I2C_SR1_OVR);
+   // clear all hardware Flags error flags
+    I2CX->SR1&=0x00ff;
+    //CLEAR_BIT(I2CX->SR1,I2C_SR1_BERR|I2C_SR1_ARLO|I2C_SR1_AF|I2C_SR1_OVR|I2C_SR1_PECERR|I2C_SR1_TIMEOUT);
    // Disable Pos
    CLEAR_BIT(I2CX->CR1, I2C_CR1_POS);
    // Enable acknowledgment
-   SET_BIT(I2CX->CR1,I2C_CR1_ACK);
+   SET_BIT(I2CX->CR1,I2C_CR1_ACK);  // not used in tx mode
    // send the start condition 
    SET_BIT(I2CX->CR1,I2C_CR1_START); //I2C_GenerateSTART(I2CX,ENABLE);
   //wait the event I2C_EVENT_MASTER_MODE_SELECT where BUSY, MSL and SB flag are set  
@@ -601,26 +600,33 @@ uint8_t i2c_stop_std(I2C_TypeDef* I2CX)
  */
 uint8_t i2c_send_7bit_slave_address_wr_std(I2C_TypeDef* I2CX,uint8_t slave_address)
 {
-      //(void)I2CX->SR1;
     uint8_t error=0;
     
     /* Send slave address */
+     //I2C_Send7bitAddress(I2CX,slave_address,I2C_Direction_Transmitter);
      //I2CX->DR = slave_address & 0xfe;
-     I2CX->DR = I2C_7BIT_ADD_WRITE(slave_address); //I2C_Send7bitAddress(I2CX,slave_address,I2C_Direction_Transmitter);
+     I2CX->DR = I2C_7BIT_ADD_WRITE(slave_address); 
    
     // wait until the slave acknowledge  BUSY, MSL, ADDR, TXE and TRA flags are all set 
     error=i2c_wait_7bit_slave_address_wr_std(I2CX);
-    
+    if(error!=I2C_OK) return error;
+
+    /* Clear ADDR flag */
+     _I2C_CLEAR_ADDRFLAG(I2CX);
+
+     /* Wait until TXE flag is set */
+      error=i2c_wait_write_byte_txe_std(I2CX);
+/*
     if(error==I2C_OK)
     {
-      /* Clear ADDR flag */
+      // Clear ADDR flag 
        _I2C_CLEAR_ADDRFLAG(I2CX);
 
-        /* Wait until TXE flag is set */
+        // Wait until TXE flag is set 
       error=i2c_wait_write_byte_txe_std(I2CX);
  
     }
-
+*/
     return error;    
 }
 //-----------------------------------------------------------------------------------------------------------------------
@@ -713,9 +719,6 @@ uint8_t i2c_read_lastbyte_std(I2C_TypeDef* I2CX,uint8_t *data)
     return error;
 
    *data = I2CX->DR;
-   //uart_print(USART1,"I2C_DR:");
-   //uart_print_integer(USART1,*data,16);
-   //uart_print(USART1,"\r\n");
 
   return I2C_OK;
 }
@@ -1086,37 +1089,34 @@ uint8_t i2c_write_7bit_base_byte_std(I2C_TypeDef* I2CX, uint8_t  slave_address,u
         return error;
     
   //uart_print(USART1,"TX_SB ...\r\n");
-  // send the start condition 
-    if((error=i2c_start_std(I2CX))) 
-        return error;
+  // send the start condition
+    error=i2c_start_std(I2CX); 
+    if(error!=I2C_OK) 
+      return error;
 
    //uart_print(USART1,"TX_SLAVE_ADDR ...\r\n");
     //EV5: send the slave address with write operation master transmit 
-    if((error=i2c_send_7bit_slave_address_wr_std(I2CX,slave_address)))
-        return error;
-//      (void) I2CX ->SR1;
-//      (void) I2CX ->SR2; // Clear ADDR flag
+    error=i2c_send_7bit_slave_address_wr_std(I2CX,slave_address);
+    if(error!=I2C_OK) 
+      return error;
 
    //uart_print(USART1,"TX_BASE_ADDR ...\r\n");
     //Ev6: send the byte :: the base address in the slave Memory/register map to start writing to 
-    i2c_write_byte_std(I2CX,base_address);
-    //if((error=i2c_write_byte_std(I2CX,base_address)))
-    //    return error;
-
-      //cbits(I2CX->SR1,I2C_SR1_AF);
+    error=i2c_write_byte_std(I2CX,base_address);
+    if(error!=I2C_OK) 
+      return error;
 
    //uart_print(USART1,"TX_REG_DATA ...\r\n");
     //Ev6: send the byte
-    i2c_write_byte_std(I2CX,data);
-    //if((error=i2c_write_byte_std(I2CX,data))) 
-    //    return error;
-     // cbits(I2CX->SR1,I2C_SR1_AF);
+    error=i2c_write_byte_std(I2CX,data);
+    if(error!=I2C_OK) 
+      return error;
 
    //uart_print(USART1,"TX_STOP ...\r\n");
     // generate the stop condition 
-    i2c_stop_std(I2CX);
-    if((error=i2c_stop_std(I2CX)))
-        return error;
+    error=i2c_stop_std(I2CX);
+    if(error!=I2C_OK) 
+      return error;
 
     return I2C_OK;
 }
@@ -1130,27 +1130,32 @@ uint8_t i2c_write_7bit_base_nbyte_std(I2C_TypeDef* I2CX, uint8_t  slave_address,
     if((error=i2c_ready_std(I2CX))) 
         return error;
   // send the start condition 
-    if((error=i2c_start_std(I2CX)))
-        return error;
+    error=i2c_start_std(I2CX);
+    if(error!=I2C_OK) 
+      return error;
 
     //EV5: send the slave address with write operation master transmit 
-    if((error=i2c_send_7bit_slave_address_wr_std(I2CX,slave_address)))
-        return error;
+    error=i2c_send_7bit_slave_address_wr_std(I2CX,slave_address);
+    if(error!=I2C_OK) 
+      return error;
 
     //Ev6: send the byte :: the base address in the slave Memory/register map to start writing to 
-    if((error=i2c_write_byte_std(I2CX,base_address))) 
-        return error;
+    error=i2c_write_byte_std(I2CX,base_address);
+    if(error!=I2C_OK) 
+      return error;
 
     //Ev6: send the byte
-    if((error=i2c_write_nbyte_std(I2CX,buf,n))) 
-        return error;
+    error=i2c_write_nbyte_std(I2CX,buf,n);
+    if(error!=I2C_OK) 
+      return error;
 
     // generate the stop condition 
-    if((error=i2c_stop_std(I2CX))) 
-        return error;
+    error=i2c_stop_std(I2CX);
+    if(error!=I2C_OK) 
+      return error;
 
     // all operation has succeeded no error to return 
-    return 0;
+    return I2C_OK;
 
 }
 //-----------------------------------------------------------------------------------------------------------------------
@@ -1296,39 +1301,29 @@ uint8_t i2c_read_7bit_base_nbyte_std(I2C_TypeDef* I2CX, uint8_t  slave_address,u
     if((error=i2c_ready_std(I2CX))) 
         return error;
     
-   /* Enable I2C peripheral */
-     //SET_BIT(I2CX->CR1, I2C_CR1_PE);               // done
-   /* Disable Pos */
-     //CLEAR_BIT(I2CX->CR1, I2C_CR1_POS);            // done
-   /* Enable Acknowledge */
-     //SET_BIT(I2CX->CR1, I2C_CR1_ACK);    // done
-    /* Generate Start */
-     //SET_BIT(I2CX->CR1, I2C_CR1_START);  // done
-
-
   // send the start condition 
     //uart_print(USART1,"RX_SB ...\r\n");
     error=i2c_start_std(I2CX);
-    if(error) 
-        return error;
+    if(error!=I2C_OK) 
+      return error;
 
     //EV5: send the slave address with write operation master transmit 
     //uart_print(USART1,"RX_SLAVE_ADDR_WR ...\r\n");
     error=i2c_send_7bit_slave_address_wr_std(I2CX,slave_address);
-    if(error)
-        return error;
+    if(error!=I2C_OK) 
+      return error;
 
     //Ev6: send the base byte
     //uart_print(USART1,"RX_REG_DATA ...\r\n");
     error=i2c_write_byte_std(I2CX,base_address);
-    if(error)
-        return error;
+    if(error!=I2C_OK) 
+      return error;
         
   // send the repeat start condition 
     //uart_print(USART1,"repeat start....\r\n");
     error=i2c_start_std(I2CX);
-    if(error) 
-        return error;
+    if(error!=I2C_OK) 
+      return error;
  // Enable Acknowledgment , clear POS flag
      //I2C_AcknowledgeConfig(I2CX , ENABLE);
      //I2C_NACKPositionConfig(I2CX , I2C_NACKPosition_Current);
@@ -1336,13 +1331,13 @@ uint8_t i2c_read_7bit_base_nbyte_std(I2C_TypeDef* I2CX, uint8_t  slave_address,u
 //EV5: send the slave address with a read operation master transmit 
     //uart_print(USART1,"RX_ SLAVE_ADDR_RD... \r\n");
     error=i2c_send_7bit_slave_address_rd_std(I2CX,slave_address);
-    if(error)
+    if(error!=I2C_OK) 
       return error;
 //EV7:     
     //uart_print(USART1,"DATA RD .... \r\n");
     error=i2c_read_nbyte_std(I2CX,buf,n);
-   if(error)
-    return error;
+    if(error!=I2C_OK) 
+      return error;
 
 // generate the stop condition : note stop generation is done implicitly by the  
     //uart_print(USART1,"Stop Condition: \r\n");

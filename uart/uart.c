@@ -22,9 +22,11 @@
 volatile uint8_t uart_state=UART_WAIT;
 volatile uint32_t uart_ticks=0;
 
-volatile uint16_t rx_index=0;
+
 uint8_t  rx_buffer[UART_BUFFER_SIZE]={0};
 volatile uint8_t  rx_buffer_length=0;
+volatile uint16_t rx_index=0;
+
 volatile uint8_t  buffer_overflow=0;
 
 gpio_t uart_tx={GPIOA,9};//USART1_TX=PA9
@@ -36,7 +38,6 @@ gpio_t uart_rx={GPIOA,10};//USART1_RX=PA10
 //********************************************************************************************
 static uint8_t uart_delimiter[UART_DELIMITER_SIZE]={0x55,0xaa,0x55,0xaa};
 
-// Atmega328p gertboard CPU_F 12MHz
 //static uart_options_t uart_options={
 //	F_CPU,		// frequency of CPU
 //	9600, 		// baud rate
@@ -48,32 +49,27 @@ static uint8_t uart_delimiter[UART_DELIMITER_SIZE]={0x55,0xaa,0x55,0xaa};
 //	0	    	// UBRD
 //};
 
-
-
 //********************************************************************************************
 //
 //  static function ProtoType
 //
 //********************************************************************************************
-//! read a byte to the uart data register
-extern uint8_t uart_reg_read_byte(USART_TypeDef * usartx);
-//! write a byte to the uart data register
-extern void uart_reg_write_byte(USART_TypeDef * usartx,uint8_t val);
-//! write an array of data to the uart transmit buffer
-extern void uart_reg_write_buffer(USART_TypeDef * usartx,uint8_t * buff,uint16_t length);
 
 //! configures the uart module
 //static void uart_configure();
 //! initialize the receive mask interrupt
-//static void uart_set_rx_Int_mask(uint8_t enable);
+static void uart_set_rx_Int_mask(USART_TypeDef * usartx,uint8_t enable);
+
 //! uart reset 
+//static void uart_reset_buffer(void);
+//! read a byte to the uart data register
 
-
-//static uint8_t startswith_header(uint8_t * buffer,uint8_t Buffer_length,uint8_t * delimiter);
-static uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t Buffer_length,uint8_t * delimiter);
+static uint8_t startswith_header(uint8_t * buffer,uint8_t length,uint8_t * header);
+static uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t length,uint8_t * delimiter);
 
 //********************************************************************************************
 //
+//  static methods
 //
 //********************************************************************************************
 /**
@@ -162,80 +158,28 @@ static uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t Buffer_lengt
  * @param enable sets/resets the receive complete interrupt mask bit
  * @return   void
  */
-//void uart_set_rx_Int_mask(uint8_t enable)
-//{
-/*UCSR0A=0x00;
-	//UCSRxB=(1<<RXEN)|(1<<RXCIE);
-if(enable)
+void uart_set_rx_Int_mask(USART_TypeDef * usartx,uint8_t enable)
+{ 
+ if(enable)
  {	
-	uart_control_reg.rx_enable=1;	 		 //sbit(UCSR0B,RXEN0);
-	uart_control_reg.receive_complete_ie=1;	 //sbit(UCSR0B,RXCIE0);
+	 SET_BIT(usartx->CR1,USART_CR1_RE) ;
+	 SET_BIT(usartx->CR1,USART_CR1_RXNEIE);
  }
  else
  {
-	uart_control_reg.rx_enable=0;			 //sbit(UCSR0B,RXEN0);
-	uart_control_reg.receive_complete_ie=0;	 //cbit(UCSR0B,RXCIE0);	 
+	CLEAR_BIT(usartx->CR1,USART_CR1_RE);
+	CLEAR_BIT(usartx->CR1,USART_CR1_RXNEIE);
  }
- */
-//}
-//-----------------------------------------------------------------------------------------------------
-/**
- * @brief read a byte to the uart data register
- * @details reseved for future use
- * @return uint8_t
- * 
- */
-uint8_t uart_reg_read_byte(USART_TypeDef * usartx)
-{
-   while(USART_GetFlagStatus(usartx,USART_FLAG_RXNE)==RESET);
-     return usartx->DR & (uint16_t) 0x00ff;  
-    
-}
-//------------------------------------------------------------------------------
-/**
- * @brief  writes a byte to the uart data register
- * 
- * @details writes a byte to the uart data register
- * 			which be later sent on the uart TX output pin 
- * 
- * @param val the passed value to be sent on the uart TX line
- */
-void uart_reg_write_byte(USART_TypeDef * usartx ,uint8_t val)
-{
- /*
-  uint32_t i=0;	
-   while(!uart_status_reg.data_register_empty);
-	uart_data_reg.val=val;
-*/
-while(USART_GetFlagStatus(usartx,USART_FLAG_TXE)==RESET);
-  usartx->DR=(val & (uint16_t) 0x00ff);
 
- }
-//------------------------------------------------------------------------------------------------------------
-/**
- * @brief write an array of data to the uart transmit buffer
- * 
- * @details  writes this array of bytes to the uart data rgister 
- * 			 in sequnce to be transmisted on the TX output pin
- * 
- * @param buff a pointer to the data array
- * @param size  the length of this data array buffer
- * @returns void
- */
-void uart_reg_write_buffer(USART_TypeDef * usartx ,uint8_t * buff,uint16_t size)
-{
-	uint16_t i=0;
-	for(i=0;i<size;i++)
-	 uart_reg_write_byte((USART_TypeDef *) usartx ,buff[i]);
 }
-//------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 /**
  * @brief resets the received buffer 
  * @details resets the received buffer by 
  * 			setting each member a zero value
  * @return void  
  */
-void uart_reset(void)
+void uart_reset_buffer(void)
 {
 	rx_buffer_length=0;
 	for(uint8_t i=0;i<UART_BUFFER_SIZE;i++)
@@ -252,12 +196,12 @@ void uart_reset(void)
  */
 uint8_t uart_rx_buffer_add(uint8_t val)
 {
-if(rx_buffer_length<=UART_BUFFER_SIZE)  
- {
-  rx_buffer_length++;
-  rx_buffer[rx_buffer_length-1]=val;
-  return 1;
- }
+	if(rx_buffer_length<=UART_BUFFER_SIZE)  
+ 	{
+  	rx_buffer_length++;
+  	rx_buffer[rx_buffer_length-1]=val;
+   return 1;
+ 	}
  return 0; 
 }
 //------------------------------------------------------------------------------------------------------------
@@ -273,9 +217,9 @@ if(rx_buffer_length<=UART_BUFFER_SIZE)
  * @param header 			a pointer to predefined header for the command message
  * @return uint8_t 
  */
-uint8_t startswith_header(uint8_t * buffer,uint8_t Buffer_length,uint8_t * header)
+uint8_t startswith_header(uint8_t * buffer,uint8_t length,uint8_t * header)
 {
-	if(Buffer_length<UART_HEADER_SIZE)
+	if(length<UART_HEADER_SIZE)
 	 return 0;
 	for(uint8_t i=1;i<=UART_HEADER_SIZE;i++)
 	 if(buffer[i]!=header[i])
@@ -296,46 +240,110 @@ uint8_t startswith_header(uint8_t * buffer,uint8_t Buffer_length,uint8_t * heade
  * @retval 0: neither delimiter  has received yet nor a correct delimiter received 
  * @retval 1: a correct delimiter has received 
  */
-uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t Buffer_length,uint8_t * delimiter)
+uint8_t endswith_delimiter(volatile uint8_t * buffer,uint8_t length,uint8_t * delimiter)
 {
-	if(Buffer_length<UART_DELIMITER_SIZE)
+	if(length<UART_DELIMITER_SIZE)
 	 return 0;
 	for(uint8_t i=1;i<=UART_DELIMITER_SIZE;i++)
-	 if(buffer[Buffer_length-i]!=delimiter[UART_DELIMITER_SIZE-i])
+	 if(buffer[length-i]!=delimiter[UART_DELIMITER_SIZE-i])
 	  return 0;	  
  return 1;	
 }
 //------------------------------------------------------------------------------------------------------------
+//********************************************************************************************
+//
+//  uart general Prototype function
+//
+//********************************************************************************************
+/**
+ * @brief 	initializes the uart module
+ * @details initializes the uart module and configure the buad rate 
+ * 			and the message format such as start bit, parity , stop bit
+ * 			and the charactersize , it also resets the receive buffer size 
+ * 			of the uart 
+ * @return void
+ */
+void uart_init(USART_TypeDef * usartx)
+{
+if(usartx==USART1)  
+  	USART1_init();
+else if(usartx==USART2)
+  	USART2_init();
 
-//*********************************************************************************************************
-//
-//  global functions' definitions
-//
-//**********************************************************************************************************
+//to change uart configuration such buad rate,data frame length ,stop bits,  parity
+// based on the static options provided at the top of this file 
+ // uart_configure();
+
+ // Reset USART buffer
+    uart_reset_buffer();
+
+ }
+//-------------------------------------------------------------------------------------------
+/**
+ * @brief  performs areceive operation of one byte on uart
+ * 
+ * @details receives one byte on uart at the trigger of the receive complete interrupt 
+ * 			and appends this received byte to the receive buffer
+ * 			this method is called in the uart receive complete interrupt service routine
+ 
+ * @returns the received byte on the uart rx module
+ * @return uint8_t 
+ */
+uint8_t uart_receive(USART_TypeDef * usartx)
+{
+
+	/* 
+     *  PE  (Parity error) , FE (Framing error), NE (Noise error),  
+     *  ORE (OverRun error) and IDLE (Idle line detected) flags are cleared by software 
+     *     sequence: 
+     *       1. a read operation to USART_SR register 
+     *       2. followed by a read operation to USART_DR register 
+     *     RXNE flag can be also cleared by a read to the USART_DR register 
+    */
+ 	volatile uint8_t data=0;
+  	volatile uint16_t status=0;
+
+  	status=usartx->SR;
+   	// read the received data from the usart receive buffer
+   	data=usartx->DR & 0x00ff;    // only 8_bit
+
+    //uart_send_byte(USART1,data);
+    //if(data==';')
+    //    relays.val=0;
+    //if(USART_GetFlagStatus(USART1,USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_NE | USART_FLAG_ORE)==RESET)
+
+    //push it to the receive queue
+	if(bits_is_clear(status,(uint16_t)(USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_NE | USART_FLAG_ORE)))
+    {
+	  	// here try to append the data to the received buffer
+		if(!uart_rx_buffer_add(data))
+		{
+		  // it is failed to add a new data as buffer is full
+			uart_reset_buffer();
+			buffer_overflow=1;	      
+		}
+	}
+
+  return data;	
+}
+//-----------------------------------------------------------------------------
 /**
  * @brief puts the uart in the receive mode
  * @details initializes the uart to operate in the receive mode
  * 			and resets the receive buffer
  * @return void 
  */
-void uart_receive_start(void)
+void uart_receive_start(USART_TypeDef * usartx)
 {
  // define the data direction of tx,rx pins
- /*  uart_CNTA_DIR.tx=1;   // set as output pin        //sbit(DDRD,PD1) DDRD |=(1<<PD1)
-   uart_CNTA_DIR.rx=0;   // set as an input pin      //sbit(DDRD,PD0) DDRD &=~(1<<PD1)
-   uart_CNTA_PORT.tx=1;  // set to High State        //sbit(PORT,PD1) PORTD|=(1<<PD1)
-   uart_CNTA_PORT.rx=1;  // Enable Weak up resistor  //sbit(PORT,PD0) PORTD|=(1<<PD1)
-
-   //UCSR0A=0x00;
-   uart_status_reg.val=0;
-
-  //UCSR0B=(1<<RXEN0)|(1<<RXCIE0);
-   uart_control_reg.val=0;
-   uart_control_reg.rx_enable=1;
-   uart_control_reg.receive_complete_ie=1;
-   */
-   //reset the uart buffer
-    uart_reset();	  
+  	 gpio_pin_mode(uart_tx,GPIO_MODE_AF_PP_50MHZ);
+	 gpio_pin_mode(uart_rx,GPIO_MODE_IN_FLOATING);
+  /* clear all flag errors*/
+  usartx->SR=0;
+  /* Enable receive mode and and receive RXNE Interrupt Enable */
+  SET_BIT(usartx->CR1,USART_CR1_RE|USART_CR1_RXNEIE);	
+  //reset the uart buffer
+    uart_reset_buffer();	  
 }
 //-------------------------------------------------------------------------------------------------
 /**
@@ -343,14 +351,15 @@ void uart_receive_start(void)
  * @details stop the current receive operation and resets the 
  * 			the receive module of the uart
  */
-void uart_receive_stop(void)
+void uart_receive_stop(USART_TypeDef * usartx)
 {
 // Stop listening. 
-  //uart_status_reg.val=0;  //UCSR0A=0x00;
-  //uart_control_reg.val=0; //UCSR0B=0x00;
-
+/* clear all flag errors*/
+		usartx->SR=0;
+	/* disable receive mode and and receive RXNE Interrupt Enable */
+	 CLEAR_BIT(usartx->CR1,USART_CR1_RE|USART_CR1_RXNEIE);
    //reset the uart buffer
-   uart_reset();	 
+   uart_reset_buffer();	 
 }
 //-------------------------------------------------------------------------------------------------
 /**
@@ -360,16 +369,86 @@ void uart_receive_stop(void)
  * 			receive complete interrupt mask bit has been activated
  * @return uint8_t 
  */
-uint8_t uart_islistening()
+uint8_t uart_islistening(USART_TypeDef * usartx)
 { 	
- //if(bit_is_set(UCSR0B,RXEN0) && bit_is_set(UCSR0B,RXCIE0))	
-// if (uart_control_reg.rx_enable && uart_control_reg.receive_complete_ie)
-//	 return 1;
+ /* checks if the uart in the receive mode and listens */
+ if(bits_is_set(usartx->CR1,USART_CR1_RE) && bits_is_set(usartx->CR1,USART_CR1_RXNEIE))
+  return 1;
  return 0;
 }
 //-------------------------------------------------------------------------------------------------
 /**
- * @brief sends one byte on the  uart
+ * @brief checks if data is available 
+ * @details it checks if a complete command message has received
+ * 			note that each command message should ends witha space and ; == " ;"
+ * @return uint8_t 
+ */
+uint8_t uart_data_is_available()
+{
+ char * delim=" ;\r\n";
+ if(rx_buffer_length!=0)
+ {	 
+	//const uint8_t * tmp=0;
+   const uint8_t * tmp=(uint8_t *) memmem((uint8_t *)rx_buffer,rx_buffer_length,
+   										  (uint8_t *)delim,sizeof(delim));
+   if(tmp!=NULL)
+     return 1;
+ }
+  
+ return 0;
+}
+//-----------------------------------------------------------------------------
+//********************************************************************************************
+//
+//  uart send methods Prototype function
+//
+//********************************************************************************************
+/**
+ * @brief read a byte from the uart data register
+ * @details reseved for future use
+ * @return uint8_t
+ * 
+ */
+uint8_t uart_read_byte(USART_TypeDef * usartx)
+{
+    while(bits_is_clear(usartx->SR,USART_SR_RXNE));   
+     return usartx->DR & (uint16_t) 0x00ff;     
+}
+//------------------------------------------------------------------------------
+/**
+ * @brief  writes a byte to the uart data register without disabling the receive mode
+ * @details writes a byte to the uart data register
+ * 			which be later sent on the uart TX output pin 
+ 
+ * @param val the passed value to be sent on the uart TX line
+ */
+void uart_write_byte(USART_TypeDef * usartx ,uint8_t val)
+{
+
+	while(bits_is_clear(usartx->SR,USART_SR_TXE));		//while(USART_GetFlagStatus(usartx,USART_FLAG_TXE)==RESET);
+ 	 usartx->DR=(val & (uint16_t) 0x00ff);
+
+ }
+//------------------------------------------------------------------------------------------------------------
+/**
+ * @brief write an array of data to the uart transmit bufferwithout disabling the receive mode
+ * 
+ * @details  writes this array of bytes to the uart data rgister 
+ * 			 in sequnce to be transmisted on the TX output pin
+ * 
+ * @param buff a pointer to the data array
+ * @param size  the length of this data array buffer
+ * @returns void
+ */
+void uart_write_buffer(USART_TypeDef * usartx ,uint8_t * buff,uint16_t size)
+{
+	uint16_t i=0;
+	for(i=0;i<size;i++)
+	 uart_write_byte((USART_TypeDef *) usartx ,buff[i]);
+}
+//------------------------------------------------------------------------------------------------------------
+/**
+ * @brief sends one byte on the  uart with disabling the receive mode
  * 
  * @details it first change the uart mode to work in the transmist mode 
  * 			then sends the byte by first configure the TX IO pin , then write to the 
@@ -380,8 +459,23 @@ uint8_t uart_islistening()
  */
 uint8_t uart_send_byte(USART_TypeDef * usartx, uint8_t byte)
 {
+	// define the data direction of tx,rx pins
+  	 gpio_pin_mode(uart_tx,GPIO_MODE_AF_PP_50MHZ);
+	 gpio_pin_mode(uart_rx,GPIO_MODE_IN_FLOATING);
+
+  	/* disable uart rx receive interrupt*/
+	 uart_set_rx_Int_mask(usartx,DISABLE);
+
+  	/* clear all flag errors*/
+  	usartx->SR=0;
+	SET_BIT(usartx->CR1,USART_CR1_TE);
+
 	// send payload
-	uart_reg_write_byte(usartx,byte);		
+		uart_write_byte(usartx,byte);		
+
+  	/* disable uart rx receive interrupt*/
+	 uart_set_rx_Int_mask(usartx,ENABLE);
+
 	return 1;
 }
 //-----------------------------------------------------------------------------------------------------------
@@ -396,10 +490,23 @@ uint8_t uart_send_byte(USART_TypeDef * usartx, uint8_t byte)
  */
 void uart_send_buffer(USART_TypeDef * usartx ,uint8_t * buf,uint16_t buf_size)
 {
-	
+	// define the data direction of tx,rx pins
+  	 gpio_pin_mode(uart_tx,GPIO_MODE_AF_PP_50MHZ);
+	 gpio_pin_mode(uart_rx,GPIO_MODE_IN_FLOATING);
+
+  	/* disable uart rx receive interrupt*/
+	 uart_set_rx_Int_mask(usartx,DISABLE);
+
+  	/* clear all flag errors*/
+  	usartx->SR=0;
+	SET_BIT(usartx->CR1,USART_CR1_TE);
+
 	// send payload
-	uart_reg_write_buffer(usartx,buf,buf_size);
-	
+	uart_write_buffer(usartx,buf,buf_size);
+
+  	/* disable uart rx receive interrupt*/
+	 uart_set_rx_Int_mask(usartx,ENABLE);
+
 }
 //-----------------------------------------------------------------------------------------------------------
 /**
@@ -417,12 +524,18 @@ void uart_send_message(USART_TypeDef * usartx ,uint8_t * buff,uint16_t length)
 // Send header - a start of the message : 
  
  // send payload
- uart_send_buffer(usartx,buff,length);
+ 	uart_send_buffer(usartx,buff,length);
  
  // Send delimiter- a end of the message :
    
 }
 //------------------------------------------------------------------------------------------------------------
+
+//********************************************************************************************
+//
+//  uart print Prototype function
+//
+//********************************************************************************************
 /**
  * @brief a generic print  message on the uart
  * 
@@ -459,13 +572,13 @@ void uart_println(USART_TypeDef * usartx ,char * str)
 void uart_print_integer(USART_TypeDef * usartx ,uint32_t dword,uint8_t base)
 {
   	char buf[16]="";
-	switch(base)
+	/*switch(base)
 	{
 	  case 16:	uart_print(usartx,"0x"); break;
 	  case 2:   uart_print(usartx,"0b"); break;
 	  default:  uart_print(usartx," ");  break;
 	}
-	
+	*/
     itoa(dword,buf,base);
     uart_print(usartx,buf);	   
 }
@@ -479,7 +592,7 @@ char buf[16]="";
 	uart_print(usartx,"-");
     itoa(r.integer,buf,10);
     uart_print(usartx,buf);
-		uart_print(usartx,".");	  
+	uart_print(usartx,".");	  
     itoa(r.decimal,buf,10);
     uart_print(usartx,buf);
 }
@@ -528,49 +641,13 @@ void uart_println_Array(USART_TypeDef * usartx ,uint8_t * data,uint8_t len)
   }
 }
 //------------------------------------------------------------------------------------------------------------
-/**
- * @brief 	initializes the uart module
- * @details initializes the uart module and configure the buad rate 
- * 			and the message format such as start bit, parity , stop bit
- * 			and the charactersize , it also resets the receive buffer size 
- * 			of the uart 
- * @return void
- */
-void uart_init()
-{
-  
-  USART1_init();
-// pins initialization
-//	uart_CNTA_DIR.tx=1;   // set as output pin
-//	uart_CNTA_DIR.rx=0;   // set as an input pin
-//	uart_CNTA_PORT.tx=1;  // set to High State
-//	uart_CNTA_PORT.rx=1;  // Enable Weak up resistor
-  
-//to change uart configuration such buad rate,data frame length ,stop bits,  parity
-// based on the static options provided at the top of this file 
- //    uart_configure();
-
- // Reset USART buffer
-    uart_reset();
-
- }
-//-------------------------------------------------------------------------------------------
-
-/**
- * @brief  performs areceive operation of one byte on uart
- * 
- * @details receives one byte on uart at the trigger of the receive complete interrupt 
- * 			and appends this received byte to the receive buffer
- * 			this method is called in the uart receive complete interrupt service routine
- 
- * @returns the received byte on the uart rx module
- * @return uint8_t 
- */
-uint8_t uart_receive(USART_TypeDef * usartx)
-{
 
 
-  //uint8_t data=0;
+
+
+/*
+
+ //uint8_t data=0;
   //uart_status_t status;
  // read data byte received from the rx buffer as soon as possible
    //data= uart_data_reg.val;
@@ -585,75 +662,14 @@ uint8_t uart_receive(USART_TypeDef * usartx)
     // clear the Interrupt 
      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
 
-      volatile uint8_t data=0;
-      volatile uint16_t status=0;
-      status=usartx->SR;
-      // read the received data from the usart receive buffer
-      data=usartx->DR & 0x00ff;    // onlu 8_bit
+
     
      // reset the receive interrupt flag by software optional, reading data  reset IT_RXNE by hardware
      //RXNE flag can be also cleared by a read to the USART_DR register (USART_ReceiveData()).
      //USART_GetFlagStatus(USART1,USART_IT_TXE);
      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
         
-     // push it to the receive queue
-    uart_put_char(USART1,data);
-    if(data==';')
-        relays.val=0;
+ 
 
-    if(USART_GetFlagStatus(USART1,USART_FLAG_PE | USART_FLAG_FE | 
-                           USART_FLAG_NE | USART_FLAG_ORE)==RESET)
-    {
-      /** 
-       * @arg USART_FLAG_ORE:  OverRun Error flag
-       * @arg USART_FLAG_NE:   Noise Error flag
-       * @arg USART_FLAG_FE:   Framing Error flag
-       * @arg USART_FLAG_PE:   Parity Error flag
-       * 
-       *  PE  (Parity error) , FE (Framing error), NE (Noise error),  
-       *  ORE (OverRun error) and IDLE (Idle line detected) flags are cleared by software 
-       *     sequence: 
-       *       1. a read operation to USART_SR register (USART_GetFlagStatus()) 
-       *       2. followed by a read operation to USART_DR register (USART_ReceiveData()).
-       * 
-       *     RXNE flag can be also cleared by a read to the USART_DR register (USART_ReceiveData()).
-       */
-       //
 
-	  // here try to append the data to the received buffer
-		if(!uart_rx_buffer_add(data))
-		{
-		  // it is failed to add a new data as buffer is full
-			uart_reset();
-			buffer_overflow=1;	      
-		}
-	}
-     
-  return data;	
-
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief checks if data is available 
- * @details it checks if a complete command message has received
- * 			note that each command message should ends witha space and ; == " ;"
- * @return uint8_t 
- */
-uint8_t uart_data_is_available(void)
-{
- char * delim=" ;";
- if(rx_buffer_length!=0)
- {	 
-    const uint8_t * tmp=0;//(uint8_t *) memmem((uint8_t *)rx_buffer,rx_buffer_length,(uint8_t *)delim,sizeof(delim));
-   if(tmp!=NULL)
-     return 1;
- }
-  
- return 0;
-}
-//-----------------------------------------------------------------------------
-//********************************************************************************************
-//
-// uart task definition
-//
-//********************************************************************************************
+*/

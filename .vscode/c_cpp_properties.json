@@ -38,7 +38,7 @@
                 "${workspaceFolder}/i2c",
                 "${workspaceFolder}/mpu6050",
                 "${workspaceFolder}/uart",
-                "${workspaceFolder}/system",
+                "${workspaceFolder}/system"
                 
             ],
             "defines": [

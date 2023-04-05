@@ -10,12 +10,15 @@
 #ifndef _BASIC_H_
 #define _BASIC_H_
 
+
+
 //********************************************************************************************
 //
 // including header  files
 //
 //********************************************************************************************
 #include "stm32f10x_conf.h"
+#include "mem.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -31,7 +34,6 @@
 #include <syslimits.h>
 #include <math.h>
 #include <string.h>
-//#include <cstring>
 
 //********************************************************************************************
 //
@@ -59,6 +61,7 @@
 // include header files
 //
 //********************************************************************************************
+#include "phy.h"
 #include "structs.h"
 #include "time.h"
 #include "gpio.h"

@@ -1,0 +1,296 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"mem.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.memmem,"ax",%progbits
+  18              		.align	1
+  19              		.global	memmem
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	memmem:
+  25              	.LFB4:
+  26              		.file 1 "./basic/mem.c"
+   1:./basic/mem.c **** /**
+   2:./basic/mem.c ****  * @brief mem.c
+   3:./basic/mem.c **** *  this source implements mem algorithems 
+   4:./basic/mem.c ****  * that support memory allocation and process manipulation
+   5:./basic/mem.c ****  * @param student: Sameer Almaldein
+   6:./basic/mem.c ****  * @param ID: 679699
+   7:./basic/mem.c ****  * @param University TU-Chemnitz
+   8:./basic/mem.c ****  * @param Master : ASE(Automotive Software Engineering )
+   9:./basic/mem.c ****  */ 
+  10:./basic/mem.c **** //********************************************************************************************
+  11:./basic/mem.c **** //
+  12:./basic/mem.c **** // including header  files
+  13:./basic/mem.c **** //
+  14:./basic/mem.c **** //********************************************************************************************
+  15:./basic/mem.c ****  #include "mem.h"
+  16:./basic/mem.c **** //********************************************************************************************
+  17:./basic/mem.c **** //
+  18:./basic/mem.c **** // Global variables 
+  19:./basic/mem.c **** //
+  20:./basic/mem.c **** //********************************************************************************************
+  21:./basic/mem.c **** 
+  22:./basic/mem.c **** //********************************************************************************************
+  23:./basic/mem.c **** //
+  24:./basic/mem.c **** // Method definitions
+  25:./basic/mem.c **** //
+  26:./basic/mem.c **** //********************************************************************************************
+  27:./basic/mem.c **** /**
+  28:./basic/mem.c ****  * @brief  find the substring s in the long string l and return a pointer for it or NULL
+  29:./basic/mem.c ****  * 
+  30:./basic/mem.c ****  * @details memmem() function finds the start of the first occurrence of
+  31:./basic/mem.c ****             the substring s of length s_len in the memory area l of length l_len.
+  32:./basic/mem.c ****             it returns a pointer to the beginning of the substring, or NULL if the substring is not
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 2
+
+
+  33:./basic/mem.c ****  * 
+  34:./basic/mem.c ****  * @param l         : the main long string
+  35:./basic/mem.c ****  * @param l_len     : the length of the main string
+  36:./basic/mem.c ****  * @param s         : the substring looking for
+  37:./basic/mem.c ****  * @param s_len     : the length of the substring
+  38:./basic/mem.c ****  * @return void*    a pointer to the beginning of the substring in the main string or NULL
+  39:./basic/mem.c ****  */
+  40:./basic/mem.c **** 
+  41:./basic/mem.c **** 
+  42:./basic/mem.c **** void * memmem(const void *l, size_t l_len, const void *s, size_t s_len)
+  43:./basic/mem.c **** {
+  27              		.loc 1 43 1
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 32
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 88B0     		sub	sp, sp, #32
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 40
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 F860     		str	r0, [r7, #12]
+  43 0008 B960     		str	r1, [r7, #8]
+  44 000a 7A60     		str	r2, [r7, #4]
+  45 000c 3B60     		str	r3, [r7]
+  44:./basic/mem.c **** 	char *cur, *last;//register
+  45:./basic/mem.c **** 	const char *cl = (const char *)l;
+  46              		.loc 1 45 14
+  47 000e FB68     		ldr	r3, [r7, #12]
+  48 0010 BB61     		str	r3, [r7, #24]
+  46:./basic/mem.c **** 	const char *cs = (const char *)s;
+  49              		.loc 1 46 14
+  50 0012 7B68     		ldr	r3, [r7, #4]
+  51 0014 7B61     		str	r3, [r7, #20]
+  47:./basic/mem.c **** 
+  48:./basic/mem.c **** 	/* we need something to compare */
+  49:./basic/mem.c **** 	if (l_len == 0 || s_len == 0)
+  52              		.loc 1 49 5
+  53 0016 BB68     		ldr	r3, [r7, #8]
+  54 0018 002B     		cmp	r3, #0
+  55 001a 02D0     		beq	.L2
+  56              		.loc 1 49 17 discriminator 1
+  57 001c 3B68     		ldr	r3, [r7]
+  58 001e 002B     		cmp	r3, #0
+  59 0020 01D1     		bne	.L3
+  60              	.L2:
+  50:./basic/mem.c **** 		return NULL;
+  61              		.loc 1 50 10
+  62 0022 0023     		movs	r3, #0
+  63 0024 32E0     		b	.L4
+  64              	.L3:
+  51:./basic/mem.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 3
+
+
+  52:./basic/mem.c **** 	/* "s" must be smaller or equal to "l" */
+  53:./basic/mem.c **** 	if (l_len < s_len)
+  65              		.loc 1 53 5
+  66 0026 BA68     		ldr	r2, [r7, #8]
+  67 0028 3B68     		ldr	r3, [r7]
+  68 002a 9A42     		cmp	r2, r3
+  69 002c 01D2     		bcs	.L5
+  54:./basic/mem.c **** 		return NULL;
+  70              		.loc 1 54 10
+  71 002e 0023     		movs	r3, #0
+  72 0030 2CE0     		b	.L4
+  73              	.L5:
+  55:./basic/mem.c **** 
+  56:./basic/mem.c **** 	/* special case where s_len == 1 */
+  57:./basic/mem.c **** 	if (s_len == 1)
+  74              		.loc 1 57 5
+  75 0032 3B68     		ldr	r3, [r7]
+  76 0034 012B     		cmp	r3, #1
+  77 0036 08D1     		bne	.L6
+  58:./basic/mem.c **** 		return memchr(l, (int)*cs, l_len);
+  78              		.loc 1 58 25
+  79 0038 7B69     		ldr	r3, [r7, #20]
+  80 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  81              		.loc 1 58 10
+  82 003c BA68     		ldr	r2, [r7, #8]
+  83 003e 1946     		mov	r1, r3
+  84 0040 F868     		ldr	r0, [r7, #12]
+  85 0042 FFF7FEFF 		bl	memchr
+  86 0046 0346     		mov	r3, r0
+  87 0048 20E0     		b	.L4
+  88              	.L6:
+  59:./basic/mem.c **** 
+  60:./basic/mem.c **** 	/* the last position where its possible to find "s" in "l" */
+  61:./basic/mem.c **** 	last = (char *)cl + l_len - s_len;
+  89              		.loc 1 61 28
+  90 004a BA68     		ldr	r2, [r7, #8]
+  91 004c 3B68     		ldr	r3, [r7]
+  92 004e D31A     		subs	r3, r2, r3
+  93              		.loc 1 61 7
+  94 0050 BA69     		ldr	r2, [r7, #24]
+  95 0052 1344     		add	r3, r3, r2
+  96 0054 3B61     		str	r3, [r7, #16]
+  62:./basic/mem.c **** 
+  63:./basic/mem.c **** 	for (cur = (char *)cl; cur <= last; cur++)
+  97              		.loc 1 63 11
+  98 0056 BB69     		ldr	r3, [r7, #24]
+  99 0058 FB61     		str	r3, [r7, #28]
+ 100              		.loc 1 63 2
+ 101 005a 12E0     		b	.L7
+ 102              	.L9:
+  64:./basic/mem.c **** 		if (cur[0] == cs[0] && memcmp(cur, cs, s_len) == 0)
+ 103              		.loc 1 64 10
+ 104 005c FB69     		ldr	r3, [r7, #28]
+ 105 005e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 106              		.loc 1 64 14
+ 107 0060 7B69     		ldr	r3, [r7, #20]
+ 108 0062 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 4
+
+
+ 109              		.loc 1 64 6
+ 110 0064 9A42     		cmp	r2, r3
+ 111 0066 09D1     		bne	.L8
+ 112              		.loc 1 64 26 discriminator 1
+ 113 0068 3A68     		ldr	r2, [r7]
+ 114 006a 7969     		ldr	r1, [r7, #20]
+ 115 006c F869     		ldr	r0, [r7, #28]
+ 116 006e FFF7FEFF 		bl	memcmp
+ 117 0072 0346     		mov	r3, r0
+ 118              		.loc 1 64 23 discriminator 1
+ 119 0074 002B     		cmp	r3, #0
+ 120 0076 01D1     		bne	.L8
+  65:./basic/mem.c **** 			return cur;
+ 121              		.loc 1 65 11
+ 122 0078 FB69     		ldr	r3, [r7, #28]
+ 123 007a 07E0     		b	.L4
+ 124              	.L8:
+  63:./basic/mem.c **** 		if (cur[0] == cs[0] && memcmp(cur, cs, s_len) == 0)
+ 125              		.loc 1 63 41 discriminator 2
+ 126 007c FB69     		ldr	r3, [r7, #28]
+ 127 007e 0133     		adds	r3, r3, #1
+ 128 0080 FB61     		str	r3, [r7, #28]
+ 129              	.L7:
+  63:./basic/mem.c **** 		if (cur[0] == cs[0] && memcmp(cur, cs, s_len) == 0)
+ 130              		.loc 1 63 2 discriminator 1
+ 131 0082 FA69     		ldr	r2, [r7, #28]
+ 132 0084 3B69     		ldr	r3, [r7, #16]
+ 133 0086 9A42     		cmp	r2, r3
+ 134 0088 E8D9     		bls	.L9
+  66:./basic/mem.c **** 
+  67:./basic/mem.c **** 	return NULL;
+ 135              		.loc 1 67 9
+ 136 008a 0023     		movs	r3, #0
+ 137              	.L4:
+  68:./basic/mem.c **** }
+ 138              		.loc 1 68 1
+ 139 008c 1846     		mov	r0, r3
+ 140 008e 2037     		adds	r7, r7, #32
+ 141              	.LCFI3:
+ 142              		.cfi_def_cfa_offset 8
+ 143 0090 BD46     		mov	sp, r7
+ 144              	.LCFI4:
+ 145              		.cfi_def_cfa_register 13
+ 146              		@ sp needed
+ 147 0092 80BD     		pop	{r7, pc}
+ 148              		.cfi_endproc
+ 149              	.LFE4:
+ 151              		.text
+ 152              	.Letext0:
+ 153              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mem.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s:18     .text.memmem:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s:24     .text.memmem:00000000 memmem
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.newlib.h.34.314a350541e36f4baea3ec77033a1a03
+                           .group:00000000 wm4.features.h.22.fad1cec3bc7ff06488171438dbdcfd02
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+
+UNDEFINED SYMBOLS
+memchr
+memcmp
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccYlrfrZ.s 			page 6
+
+

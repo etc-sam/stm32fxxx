@@ -1,8 +1,6 @@
 ./uart/uart_com.c:54:6:USART1_init	32	static
 ./uart/uart_com.c:120:6:USART2_init	32	static
 ./uart/uart_com.c:187:6:USART3_init	32	static
-./uart/uart_com.c:260:6:USART1_IRQHandler	16	static
-./uart/uart_com.c:296:6:USART2_IRQHandler	4	static
-./uart/uart_com.c:338:6:USART3_IRQHandler	4	static
-./uart/uart_com.c:375:9:uart_put_char	16	static
-./uart/uart_com.c:383:9:uart_get_char	16	static
+./uart/uart_com.c:259:6:USART1_IRQHandler	8	static
+./uart/uart_com.c:301:6:USART2_IRQHandler	4	static
+./uart/uart_com.c:342:6:USART3_IRQHandler	4	static

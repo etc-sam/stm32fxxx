@@ -139,7 +139,7 @@ int mem_find_asArray(void * buf, size_t len, int val,array_t* ptr_list)//_asArra
 	  if(fromindex!=-1)
 	  {
 		if(i>0) ptr_list[i-1].len=fromindex-previndex; 
-	     ptr_list[i].ptr=(uint8_t *)(buf+fromindex);//ptr_list[i]=(uint8_t*)(buf+fromindex); //*((uint8_t *)(ptr_list+i))= fromindex;
+	     ptr_list[i].ptr=(uint8_t *)(buf+fromindex);
 		 previndex=fromindex;
 		 fromindex++;
 		 i++;
@@ -147,11 +147,18 @@ int mem_find_asArray(void * buf, size_t len, int val,array_t* ptr_list)//_asArra
    }
    if(i>0)
    {
+	 ptr_list[i-1].len=0;
      start=(uint8_t*)ptr_list[i-1].ptr-(uint8_t*)buf;
      end=mem_indexOf(buf,len,' ',start);
-     end=mem_indexOf(buf,len,' ',end+1);
-     len=end-start;	
-	 ptr_list[i-1].len=len;
+	 if(end !=-1)
+	 {
+       end=mem_indexOf(buf,len,' ',end+1);
+	   if(end!=-1)
+       {	
+		len=end-start;	
+	 	 ptr_list[i-1].len=len;
+	   }
+	 }
    }
    return i;     	
 }
@@ -184,8 +191,11 @@ int cmd_split(void * buf, size_t len, int val,cmd_t* cmd)
 	start+= cmd->parameters[cmd->param_len-1].len+1;
  }
  end=mem_indexOf(buf,len,' ',start);
- cmd->msg.len=end-start; //len-start;
- cmd->msg.ptr=(uint8_t*)(buf+start);  
+ if(end!=-1)
+ {
+   cmd->msg.len=end-start;
+   cmd->msg.ptr=(uint8_t*)(buf+start);  
+ }
 
  return cmd->param_len;
 }
@@ -204,20 +214,28 @@ int param_split(array_t parameter,  param_t * ptr_param)
 
  int par_start=0,par_end=0,data_end=0;
  uint8_t par_len=0,data_len=0;
- 
+ ptr_param->param=0;
+ ptr_param->param_len=0;
+ ptr_param->data=0;
+ ptr_param->data_len=0;
+
  par_start=mem_indexOf(parameter.ptr,parameter.len,'-',0); 
  par_end=  mem_indexOf(parameter.ptr,parameter.len,' ',0);
+
  if(par_start !=-1 && par_end!=-1)
  {
 	par_len=par_end-par_start;
-	data_len=parameter.len-par_end-1;
+	
 	ptr_param->param=(uint8_t*)(parameter.ptr+par_start);
 	ptr_param->param_len=par_len;
-
+  if(parameter.len>par_end)
+   {
+	data_len=parameter.len-par_end-1;
 	ptr_param->data=(uint8_t*)(parameter.ptr+par_end+1);
 	ptr_param->data_len=data_len;
+   }
  }
- return data_len;
+ return par_len ;//data_len;
 }
 //---------------------------------------------------------------------------------------------
 

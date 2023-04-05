@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "C:/Users/Sameer.almaldein/nxp_workspace"
+		},
+		{
+			"path": "C:/Users/Sameer.almaldein/IEC61131-3 ST"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"smookcreative.structuredtext"
+		]
+	},
+	"settings": {
+		"plcc.TestingMode": true,
+		"files.associations": {
+			"stm32f10x_conf.h": "c",
+			"stm32f10x.h": "c",
+			"stm32f10x_it.h": "c",
+			"basic.h": "c",
+			"lcd.h": "c",
+			"keypad.h": "c",
+			"i2c-com.h": "c",
+			"i2c.h": "c",
+			"init.h": "c",
+			"uart.h": "c"
+		}
+	}
+}

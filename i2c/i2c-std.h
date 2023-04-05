@@ -46,35 +46,31 @@ typedef enum
   I2C_TIMEOUT  = 0x03U
 } HAL_StatusTypeDef;
 */
-#define I2C_ERROR_BERR              0x00000001U    /*!< BERR error            */
-#define I2C_ERROR_ARLO              0x00000002U    /*!< ARLO error            */
-#define I2C_ERROR_AF                0x00000004U    /*!< AF error              */
-#define HAL_I2C_ERROR_OVR               0x00000008U    /*!< OVR error             */
-#define HAL_I2C_ERROR_DMA               0x00000010U    /*!< DMA transfer error    */
-#define HAL_I2C_ERROR_TIMEOUT           0x00000020U    /*!< Timeout Error         */
-#define HAL_I2C_ERROR_SIZE              0x00000040U    /*!< Size Management error */
-#define HAL_I2C_ERROR_DMA_PARAM         0x00000080U    /*!< DMA Parameter Error   */
-#define HAL_I2C_WRONG_START             0x00000200U    /*!< Wrong start Error     */
+//#define I2C_ERROR_BERR              0x00000001U    /*!< BERR error            */
+//#define I2C_ERROR_ARLO              0x00000002U    /*!< ARLO error            */
+//#define I2C_ERROR_AF                0x00000004U    /*!< AF error              */
+//#define HAL_I2C_ERROR_OVR               0x00000008U    /*!< OVR error             */
+//#define HAL_I2C_ERROR_DMA               0x00000010U    /*!< DMA transfer error    */
+//#define HAL_I2C_ERROR_TIMEOUT           0x00000020U    /*!< Timeout Error         */
+//#define HAL_I2C_ERROR_SIZE              0x00000040U    /*!< Size Management error */
+//#define HAL_I2C_ERROR_DMA_PARAM         0x00000080U    /*!< DMA Parameter Error   */
+//#define HAL_I2C_WRONG_START             0x00000200U    /*!< Wrong start Error     */
 
 typedef enum _I2C_ERROR_TYPE{
-I2C_OK                =0x00U,
-I2C_TIMEOUT           = 0x0A,
-//I2C_ERROR           =0x01U,
-//I2C_BUSY             =0x02U,
+I2C_OK      =0x00U,
+I2C_BUSY          ,
+I2C_TIMEOUT       , // HAL_I2C_ERROR_TIMEOUT
+//I2C_ERROR         ,
 
-I2C_BUSY_ERROR         =0x01,
-I2C_START_ERROR        =0x02,
-I2C_STOP_ERROR         =0x03, 
-I2C_NACK_ERROR         =0x04,
+I2C_START_ERROR   ,
+I2C_STOP_ERROR    , 
+I2C_NACK_ERROR    , // HAL_I2C_ERROR_AF
 
-I2C_TX_BTF_ERROR        =0x05,
-I2C_TX_TXE_ERROR        =0x06,
+I2C_TX_BTF_ERROR  ,
+I2C_TX_TXE_ERROR  ,
 
-I2C_RX_RXNE_ERROR       =0x07,
-I2C_RX_BTF_ERROR        =0x08,
-
-I2C_ERROR               =0x09U,
-
+I2C_RX_RXNE_ERROR ,
+I2C_RX_BTF_ERROR  ,
 
 }I2C_ERROR_TYPE;
 

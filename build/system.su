@@ -2,6 +2,6 @@
 ./.driver/CMSIS/Core/core_cm3.h:1694:26:SysTick_Config	16	static
 ./system/system.c:33:6:system_init	8	static
 ./system/system.c:133:6:system_run	8	static
-./system/system.c:157:6:system_ticks	4	static
-./system/system.c:177:6:system_tasks_init	4	static
-./system/system.c:197:6:system_rtc	8	static
+./system/system.c:160:6:system_ticks	4	static
+./system/system.c:180:6:system_tasks_init	4	static
+./system/system.c:200:6:system_rtc	8	static

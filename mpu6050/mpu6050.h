@@ -19,8 +19,6 @@ extern "C" {
 //
 //********************************************************************************************
 
-
-
 //********************************************************************************************
 //
 //    constants
@@ -46,8 +44,8 @@ extern "C" {
 #define MPU6050_I2CADDR2        0xd2//0x69 ///< MPU6050 default i2c address w/ AD0 high
 #define MPU6050_DEVICE_ID       0x68 ///< The correct MPU6050_WHO_AM_I value hard coded value
 
-#define MPU6050_MOT_THR                 0x1F ///< Motion detection threshold bits [7:0]
-#define MPU6050_MOT_DUR                 0x20 ///< Duration counter threshold for motion int. 1 kHz rate, LSB = 1 ms
+#define MPU6050_MOT_THR         0x1F ///< Motion detection threshold bits [7:0]
+#define MPU6050_MOT_DUR         0x20 ///< Duration counter threshold for motion int. 1 kHz rate, LSB = 1 ms
 
 /**
  * @brief  Data rates predefined constants for Sample rate divider
@@ -358,18 +356,18 @@ typedef enum _MPU6050_Cycle_Rate_t{
  *         This feature allows you to use 2 different sensors with this library at the same time
  */
 typedef enum _MPU6050_Device_t {
-	TM_MPU6050_Device_0 = 0x00, /*!< AD0 pin is set to low */
-	TM_MPU6050_Device_1 = 0x02  /*!< AD0 pin is set to high */
+	MPU6050_Device_0 = 0x00, /*!< AD0 pin is set to low */
+	MPU6050_Device_1 = 0x02  /*!< AD0 pin is set to high */
 } MPU6050_Device_t;
 
 /**
  * @brief  MPU6050 result enumeration	
  */
 typedef enum _MPU6050_Result_t {
-	TM_MPU6050_Result_Ok                 =0x00, /*!< Everything OK */
-	TM_MPU6050_Result_Error              =0x61, /*!< Unknown error */
-	TM_MPU6050_Result_DeviceNotConnected =0x62, /*!< There is no device with valid slave address */
-	TM_MPU6050_Result_DeviceInvalid      =0x63  /*!< Connected device with address is not MPU6050 */
+	MPU6050_OK                 =0x00, /*!< Everything OK */
+	MPU6050_Error              =0x61, /*!< Unknown error */
+	MPU6050_DeviceNotConnected =0x62, /*!< There is no device with valid slave address */
+	MPU6050_DeviceInvalid      =0x63  /*!< Connected device with address is not MPU6050 */
 } MPU6050_Result_t;
 
 /**
@@ -387,7 +385,7 @@ struct
 		uint8_t reserved1:1;       /*!< Reserved bit */
 		uint8_t MotionDetection:1; /*!< Motion detected interrupt */
 		uint8_t reserved0:1;       /*!< Reserved bit */
-	} F;
+	} Flags;
 	
 } MPU6050_Interrupt_t;
 
@@ -433,22 +431,52 @@ typedef union _mpu6050_raw_t
 /**
  * @brief  Main MPU6050 structure
  */
-typedef struct _MPU6050_t {
-	/* Private */
-	uint8_t Address;         /*!< I2C address of device. Only for private use */
-	float Gyro_Mult;         /*!< Gyroscope corrector from raw data to "degrees/s". Only for private use */
-	float Acce_Mult;         /*!< Accelerometer corrector from raw data to "g". Only for private use */
-	/* Public */
-	int16_t Accelerometer_X; /*!< Accelerometer value X axis */
-	int16_t Accelerometer_Y; /*!< Accelerometer value Y axis */
-	int16_t Accelerometer_Z; /*!< Accelerometer value Z axis */
-	int16_t Gyroscope_X;     /*!< Gyroscope value X axis */
-	int16_t Gyroscope_Y;     /*!< Gyroscope value Y axis */
-	int16_t Gyroscope_Z;     /*!< Gyroscope value Z axis */
-	float Temperature;       /*!< Temperature in degrees */
+typedef struct _MPU6050_t 
+{
+	uint8_t Address;         //! I2C address of device. Only for private use 
+	/* raw  data */
   mpu6050_raw_t data;
+	/* integer data */
+	int16_t Accelerometer_X; //! Accelerometer value X axis 
+	int16_t Accelerometer_Y; //! Accelerometer value Y axis 
+	int16_t Accelerometer_Z; //! Accelerometer value Z axis 
+	int16_t Gyroscope_X;     //! Gyroscope value X axis 
+	int16_t Gyroscope_Y;     //! Gyroscope value Y axis 
+	int16_t Gyroscope_Z;     //! Gyroscope value Z axis 
+  
+	/* decimal data */
+	float Acce_Mult;   //! Accelerometer corrector from raw data to "g"
+  float Gyro_Mult;   //! Gyroscope corrector from raw data to "degrees/s"
+  float Accel_X;     //! Decimal Accelerometer value X axis
+  float Accel_Y;     //! Decimal Accelerometer value Y axis
+  float Accel_Z;     //! Decimal Accelerometer value Z axis
+  float Gyro_X;      //! Decimal Gyroscope value X axis
+  float Gyro_Y;      //! Decimal Gyroscope value Y axis
+  float Gyro_Z;      //! Decimal Gyroscope value Z axis
+
+  float Accel_gr_X;     //! Decimal Accelerometer value X axis multiplied by SENSORS_GRAVITY_STANDARD
+  float Accel_gr_Y;     //! Decimal Accelerometer value Y axis multiplied by SENSORS_GRAVITY_STANDARD
+  float Accel_gr_Z;     //! Decimal Accelerometer value Z axis multiplied by SENSORS_GRAVITY_STANDARD
+  float Gyro_rd_X;      //! Decimal Gyroscope value X axis multiplied by SENSORS_DPS_TO_RADS
+  float Gyro_rd_Y;      //! Decimal Gyroscope value Y axis multiplied by SENSORS_DPS_TO_RADS
+  float Gyro_rd_Z;      //! Decimal Gyroscope value Z axis multiplied by SENSORS_DPS_TO_RADS
+
+	float Temperature;    //! Decimal Temperature in degrees
+
 } MPU6050_t;
 
+	
+typedef struct _mpu_config_t
+{
+ uint8_t  init_sucess;     //mpu initialization status: 1:initialized or 0:not initilialized 
+ uint8_t  accel_range;     //mpu accelerometer range {0:+-2G , 1:+-4G, 2:+-8G, 3:+-16G}
+ uint8_t  gyro_range;      //mpu gyroscope  range {0:+-250 d/s , 1:+-500 d/s, 2:+-1000 d/s, 3:+-2000 d/s}
+ uint8_t  accel_thr;       //mpu accelerometer thershold 0..100
+ uint8_t  gyro_thr;        //mpu gyroscope thershold 0..100
+ uint8_t  acq_mode;        // acq mode {0:all ,1:accel,2:gyro,3:temp,4:accel+gyro,5:acceel+temp, 6:gyro+temp}
+ uint8_t  acq_run;         // acq run mode {0:stop, 1:run}
+  uint8_t sample_cnt;     // sample to read before stop
+}mpu_config_t;
 
 /**
  * @}
@@ -517,16 +545,32 @@ typedef union _mpu6050_big_temp_t
 //  Global  variables' declarations 
 //
 //********************************************************************************************
+typedef enum _MPU6050_ACQ_MODE 
+{
+
+ MPU_ACQ_ALL=0,      //!< read all sensors data
+ MPU_ACQ_ACC,        //!< read  Accelerometer data only
+ MPU_ACQ_GYR,        //!< read  GyroScope data only  
+ MPU_ACQ_TEM,        //!< read  Temperature data only 
+ MPU_ACQ_ACC_GYR,    //!< read  Accelerometer  & Gyroscope data
+ MPU_ACQ_ACC_TEM,    //!< read  Accelerometer & Temperature data
+ MPU_ACQ_GYR_TEM,    //!< read  Gyroscope & Temperature data
+    
+}MPU6050_ACQ_MODE;
+
 typedef enum _MPU6050_STATE 
 {
 
  MPU_WAIT,    //!< wait until data is available on the uart receive buffer
  MPU_INIT,
- MPU_ERROR ,    //!< wait until data is available on the uart receive buffer
- MPU_READ_ALL //!< read all sensors data 
+ MPU_ERROR,  //!< wait until data is available on the uart receive buffer
+ MPU_READ,    //!< read sensors data based on the type of defined reading
+ MPU_PROC,    //!< process the sensor data to evaluate the motion (vibration)
+    
 }MPU6050_STATE;
 
 extern MPU6050_t myMPU6050;
+extern mpu_config_t mpu_settings;
 //********************************************************************************************
 //
 // Method protoypes
@@ -547,11 +591,6 @@ extern MPU6050_t myMPU6050;
 
 extern uint8_t mpu6050_init(MPU6050_t* mpu, MPU6050_Accel_Range_t Accel_Range,MPU6050_Gyro_Range_t Gyro_Range);
 extern uint8_t mpu6050_reset(MPU6050_t* mpu);
-extern uint8_t mpu6050_read_Accelerometer(MPU6050_t* mpu);
-extern uint8_t mpu6050_read_Gyroscope(MPU6050_t* mpu);
-extern uint8_t mpu6050_read_Temperature(MPU6050_t* mpu);
-extern uint8_t mpu6050_read_All(MPU6050_t* mpu);
-
 
 
 // set accessor methods :I2C Read/Write operation 
@@ -604,8 +643,15 @@ extern void mpu6050_clear_Accelometer(MPU6050_t* mpu);
 extern void mpu6050_clear_Gyroscope(MPU6050_t* mpu);
 extern void mpu6050_clear_Temperature(MPU6050_t* mpu);
 
+extern uint8_t mpu6050_read_Accelerometer(MPU6050_t* mpu);
+extern uint8_t mpu6050_read_Gyroscope(MPU6050_t* mpu);
+extern uint8_t mpu6050_read_Temperature(MPU6050_t* mpu);
+extern uint8_t mpu6050_read_All(MPU6050_t* mpu);
+extern uint8_t mpu6050_read(MPU6050_t* mpu,uint8_t acq_mode);
+
 // uart print methods
-extern void mpu6050_uart_print(USART_TypeDef *uart,MPU6050_t* mpu);
+extern void mpu6050_uart_print(USART_TypeDef *uart,MPU6050_t* mpu,uint8_t acq_mode);
+extern void mpu6050_uart_print_All(USART_TypeDef *uart,MPU6050_t* mpu);
 extern void mpu6050_uart_print_Accelometer(USART_TypeDef *uart,MPU6050_t* mpu);
 extern void mpu6050_uart_print_Gyroscope(USART_TypeDef *uart,MPU6050_t* mpu);
 extern void mpu6050_uart_print_Temperature(USART_TypeDef *uart,MPU6050_t* mpu);
@@ -617,6 +663,11 @@ extern void mpu6050_uart_print_raw_Data(USART_TypeDef *uart,MPU6050_t* mpu);
 extern void mpu6050_uart_print_raw_Array(USART_TypeDef *uart,MPU6050_t* mpu);
 
 // lcd print methods
+
+
+// rrror handle methods
+extern void mpu6050_error_handle(MPU6050_t* mpu);
+
 
 /* C++ detection */
 #ifdef __cplusplus

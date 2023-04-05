@@ -1,8 +1,8 @@
-./system/system-task.c:49:6:adc_task	4	static
-./system/system-task.c:63:6:uart_task	24	static
-./system/system-task.c:89:6:mpu6050_task	32	static
-./system/system-task.c:168:6:keypad_task	8	static
-./system/system-task.c:202:6:lcd_task	8	static
-./system/system-task.c:220:6:input_task	4	static
-./system/system-task.c:225:6:pilot_task	4	static
-./system/system-task.c:230:6:rtc_task	8	static
+./system/system-task.c:53:6:adc_task	4	static
+./system/system-task.c:67:6:uart_task	24	static
+./system/system-task.c:93:6:mpu6050_task	8	static
+./system/system-task.c:159:6:keypad_task	8	static
+./system/system-task.c:193:6:lcd_task	8	static
+./system/system-task.c:211:6:X_input_task	4	static
+./system/system-task.c:216:6:X_output_task	4	static
+./system/system-task.c:221:6:rtc_task	8	static

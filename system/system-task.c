@@ -31,15 +31,19 @@ uint32_t keypad_debounce_cnt=0;
 uint8_t lcd_state=0;
 uint32_t lcd_ticks=0;
 
-uint8_t mpu_state=0;
-uint32_t mpu_ticks=0;
-uint8_t mpu_init_sucess=0;
-
 uint8_t pilot_state=0;
 uint32_t pilot_ticks=0;
   
 uint8_t rtc_state=0;
 uint32_t rtc_ticks=0;
+
+uint8_t mpu_state=0;
+uint32_t mpu_ticks=0;
+uint32_t mpu_cycle=MPU_WAIT_TIMEOUT;
+ 
+//uint8_t mpu_init_sucess=0;
+
+
  
 //********************************************************************************************
 //
@@ -78,8 +82,8 @@ void uart_task(void)
 			 uart_print(USART1,"rx_buf:");			 
 			 uart_println(USART1,(char*) rx_buffer);
 
-			 uart_handle_frame();
-			 uart_reset();
+			 uart_handle_frame(USART1);
+			 uart_reset_buffer();
 			uart_ticks=0;
 			uart_state=UART_WAIT;
 		break;
@@ -89,80 +93,67 @@ void uart_task(void)
 void mpu6050_task(void)
 {
 	static uint8_t rst=0;
-	char buf[16]="";
-	uint8_t error=0,temp=0;
-
+		
 	switch(mpu_state)
 	{
 		case MPU_WAIT:
-			if(mpu_ticks>=MPU_WAIT_TIMEOUT)
-			 { 
-				if(mpu_init_sucess) 
-					mpu_state=MPU_READ_ALL;
-				else
-					mpu_state=MPU_INIT;	
-			 }
-		 break;
+			if(mpu_ticks>=mpu_cycle)
+			{ 
+			 if(mpu_settings.init_sucess)//mpu_init_sucess) 
+				 mpu_state=MPU_READ;
+			 else						
+				mpu_state=MPU_INIT;	
+			}
+		 	break;
 		case MPU_INIT:
-					rst=I2C_OK;
-					i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
-					rst=mpu6050_init((MPU6050_t *)&myMPU6050,MPU6050_Accel_Range_2G,MPU6050_Gyro_Range_500s);
-					i2c_uart_print(USART1);
-
-					mpu_init_sucess=0;
-					mpu_state=MPU_ERROR;
-		
-					if(rst==I2C_OK)
-					 {
-						mpu_init_sucess=1;
-						mpu_state=MPU_READ_ALL;
-					 }
-		 		break;
-
-		case MPU_READ_ALL:
-					rst=I2C_OK;
-					rst=mpu6050_read_All((MPU6050_t *)&myMPU6050);
-					mpu_state=MPU_ERROR;
-					if(rst==I2C_OK)
-					{
-						uart_print (USART1,"...............\r\n");
-						uart_print (USART1,"MPU6050 integer Data ...\r\n");
-				 	    mpu6050_uart_print(USART1,(MPU6050_t *)&myMPU6050);
-
-						uart_print (USART1,"MPU6050 Hex Data ...\r\n");
-				 	    mpu6050_uart_print_raw_Data(USART1,(MPU6050_t *)&myMPU6050);
-
-						uart_print (USART1,"MPU6050 Raw Data ...\r\n");
-				 	    mpu6050_uart_print_raw_Array(USART1,(MPU6050_t *)&myMPU6050);
-						uart_print (USART1,"...............\r\n");
-						uart_print(USART1,"Read MPU6050_WHO_AM_I  :");	
-						error=i2c_read_7bit_base_byte_std(MPU6050_I2C, myMPU6050.Address, MPU6050_WHO_AM_I , &temp);
-    					uart_print(USART1,"\nResponse MPU6050_WHO_AM_I  er:");
-    					uart_print_integer(USART1,error,16);
-    					uart_print(USART1,"\t rd:");
-    					uart_print_integer(USART1,temp,16);
-    					uart_print(USART1,"\r\n");
-						mpu_ticks=0;
-						mpu_state=MPU_WAIT;
-						//uart_print(USART1,"\t MPU_READ\r\n");
-					}
-				break;
-
-				case MPU_ERROR:
-				uart_print(USART1,"\t MPU_ERROR_rst:");
-    			uart_print_integer(USART1,rst,10);
-    			uart_print(USART1,"\n");
-			    i2c_uart_print(USART1);
-				
-				//I2C_GenerateSTOP(I2C1,ENABLE);	
-				//I2C1->CR1&=~I2C_CR1_PE;
-				//I2C1->CR1|=I2C_CR1_PE;
-
-				mpu_init_sucess=0;
+			i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
+			rst=mpu6050_init((MPU6050_t *)&myMPU6050,mpu_settings.accel_range, mpu_settings.gyro_range);//MPU6050_Accel_Range_2G,MPU6050_Gyro_Range_500s);
+			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
+			mpu_state=MPU_ERROR;
+			if(rst==I2C_OK)
+			{
+			 mpu_settings.init_sucess=1;//mpu_init_sucess=1;
+			 mpu_state=MPU_READ;
+			}
+		 	break;
+		case MPU_READ:
+						rst=mpu6050_read((MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
+						mpu_state=MPU_ERROR;
+						if(rst==I2C_OK)
+						{
+							mpu6050_uart_print(USART1,(MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
+			  			mpu_state=MPU_PROC;
+						}
+			break;
+		case MPU_PROC :
 				mpu_ticks=0;
-				mpu_state=MPU_WAIT;
-				break;
+			  mpu_state=MPU_WAIT;
+			  break;
+
+		case MPU_ERROR:
+			uart_print(USART1,"\t MPU-ER::");
+    	uart_print_integer(USART1,rst,10);
+    	uart_print(USART1,"\n");
+			i2c_uart_print(USART1);			
+			mpu6050_error_handle((MPU6050_t *)&myMPU6050);
+			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
+			mpu_ticks=0;
+			mpu_state=MPU_WAIT;
+		break;
 	}
+
+
+				  /*
+				uart_println (USART1,"...............");
+			  uart_println (USART1,"MPU6050 integer Data ...");
+			  mpu6050_uart_print_All(USART1,(MPU6050_t *)&myMPU6050);			  
+			  uart_println (USART1,"MPU6050 Hex Data ...");
+			  mpu6050_uart_print_raw_Data(USART1,(MPU6050_t *)&myMPU6050);
+			  uart_println (USART1,"MPU6050 Raw Data ...");
+			  mpu6050_uart_print_raw_Array(USART1,(MPU6050_t *)&myMPU6050);
+			  uart_println (USART1,"...............");						
+				*/
+
 }
 //----------------------------------------------------------
 void keypad_task()
@@ -217,12 +208,12 @@ void lcd_task(void)
   }
 }
 //----------------------------------------------------------
-void input_task(void)
+void X_input_task(void)
 {
 
 }
 //----------------------------------------------------------
-void pilot_task(void)
+void X_output_task(void)
 {
 
 }

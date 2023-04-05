@@ -112,7 +112,7 @@ void system_init(void)
 //
 //********************************************************************************************
     //USART1_init();
-    uart_init();
+    uart_init(USART1);
 //********************************************************************************************
 //
 //  Configure I2c module
@@ -136,20 +136,23 @@ void system_run(void)
  // Task1 to read  external analog voltage
   //adc_task();	
 
-  // Task2 to scan keypad
+// Task2 to scan keypad
   keypad_task();	
 
 // Task3 to read input buffer
   //inbuf_task();
 
-// Task3 to read MPU
-  mpu6050_task();	
+// Task3 to read MPU : I2C Bus 
+if(mpu_settings.acq_run)//mpu_acq_run)
+    mpu6050_task();	
 
- // Task4 to read usb buffer
-  //uart_task();	
+ // Task4 to read uart buffer
+   uart_task();	
+
+ // Task5 to update lcd buffer
   lcd_task();
 
-// Task5 to real time clock to refresh the whole system
+// Task6 to real time clock to refresh the whole system
    rtc_task();    
 
 }
@@ -182,7 +185,7 @@ void system_tasks_init(void)
  
   mpu_state=0;
   mpu_ticks=0;
-  mpu_init_sucess=0;
+ 
   
   lcd_state=0;
   lcd_ticks=0;

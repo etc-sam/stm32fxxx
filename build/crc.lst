@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
   31:./basic/crc.c **** //
   32:./basic/crc.c **** //  function definitions
   33:./basic/crc.c **** //
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 2
 
 
   34:./basic/crc.c **** //********************************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
   61              		.loc 1 52 18
   62 0020 5340     		eors	r3, r3, r2
   63 0022 03F00103 		and	r3, r3, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 3
 
 
   64              		.loc 1 52 8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  109              	.LCFI4:
  110              		.cfi_def_cfa_register 13
  111              		@ sp needed
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 4
 
 
  112 005e 80BC     		pop	{r7}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  153              		.loc 1 74 11
  154 0010 0023     		movs	r3, #0
  155 0012 FB74     		strb	r3, [r7, #19]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 5
 
 
  156              	.LBB2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  201              	.LFE34:
  203              		.section	.text.crc32a_calc_byte,"ax",%progbits
  204              		.align	1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 6
 
 
  205              		.syntax unified
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  101:./basic/crc.c ****     if (((*crc>>31)&1) != (val&1))
  241              		.loc 1 101 11
  242 001a 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 7
 
 
  243 001c 1B68     		ldr	r3, [r3]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  289              		.loc 1 107 1
  290 005e 00BF     		nop
  291 0060 00BF     		nop
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 8
 
 
  292 0062 1437     		adds	r7, r7, #20
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  335 0006 7860     		str	r0, [r7, #4]
  336 0008 3960     		str	r1, [r7]
  121:./basic/crc.c ****   uint32_t crc=0xffffffff;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 9
 
 
  337              		.loc 1 121 12
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  381              		.loc 1 129 9
  382 004c FB68     		ldr	r3, [r7, #12]
  383 004e DB43     		mvns	r3, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 10
 
 
  130:./basic/crc.c **** }
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  427 0010 002B     		cmp	r3, #0
  428 0012 02D0     		beq	.L24
  429 0014 012B     		cmp	r3, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 11
 
 
  430 0016 06D0     		beq	.L25
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  477              		@ args = 0, pretend = 0, frame = 8
  478              		@ frame_needed = 1, uses_anonymous_args = 0
  479 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 12
 
 
  480              	.LCFI27:
@@ -697,25 +697,25 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 1
  512              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
  513              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  514              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 crc.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:18     .text.crc32b_calc_byte:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:23     .text.crc32b_calc_byte:00000000 crc32b_calc_byte
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:120    .text.crc32b_calc_byte:00000064 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:125    .text.crc32b_calc:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:131    .text.crc32b_calc:00000000 crc32b_calc
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:204    .text.crc32a_calc_byte:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:209    .text.crc32a_calc_byte:00000000 crc32a_calc_byte
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:307    .text.crc32a_calc_byte:0000006c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:312    .text.crc32a_calc:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:318    .text.crc32a_calc:00000000 crc32a_calc
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:398    .text.crc32_calc_as:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:404    .text.crc32_calc_as:00000000 crc32_calc_as
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:467    .text.crc32_calc:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:473    .text.crc32_calc:00000000 crc32_calc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:18     .text.crc32b_calc_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:23     .text.crc32b_calc_byte:00000000 crc32b_calc_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:120    .text.crc32b_calc_byte:00000064 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:125    .text.crc32b_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:131    .text.crc32b_calc:00000000 crc32b_calc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:204    .text.crc32a_calc_byte:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:209    .text.crc32a_calc_byte:00000000 crc32a_calc_byte
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:307    .text.crc32a_calc_byte:0000006c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:312    .text.crc32a_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:318    .text.crc32a_calc:00000000 crc32a_calc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:398    .text.crc32_calc_as:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:404    .text.crc32_calc_as:00000000 crc32_calc_as
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:467    .text.crc32_calc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s:473    .text.crc32_calc:00000000 crc32_calc
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -757,7 +757,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:473    .text.crc32_calc:0000
                            .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
                            .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
                            .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s 			page 14
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc99rgTC.s 			page 14
 
 
                            .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
@@ -786,26 +786,27 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccIxXPEc.s:473    .text.crc32_calc:0000
                            .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
                            .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
                            .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
                            .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
                            .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
                            .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
-                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
                            .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
                            .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
                            .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
-                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
                            .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
-                           .group:00000000 wm4.basic.h.41.94a451f5fb0fa08d75d6da09336bd2f4
+                           .group:00000000 wm4.basic.h.43.2d669d0e281f2a7583ad0da99046413d
+                           .group:00000000 wm4.phy.h.43.a806668fd6b193a83e00fcf9e3814821
                            .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
                            .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
                            .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
-                           .group:00000000 wm4.uart.h.10.7fda6319aa568019dcdbb67d33f81700
                            .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
-                           .group:00000000 wm4.i2cstd.h.10.97f20a95300a6b7d08ecafad2c6b5572
+                           .group:00000000 wm4.i2cstd.h.10.d432c3988f9748933a79fb991e070438
                            .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
-                           .group:00000000 wm4.mpu6050.h.10.2241e5539305f80e00470fd45fbe7041
+                           .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
+                           .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
                            .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
-                           .group:00000000 wm4.systemtask.h.12.0c4e135a1a57011ea295f9384c4769e6
+                           .group:00000000 wm4.systemtask.h.12.296b6a27be8b79a110bf5281d2fc993a
 
 UNDEFINED SYMBOLS
 reverse_dword

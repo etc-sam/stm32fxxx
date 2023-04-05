@@ -42,14 +42,14 @@
 //  USART initialization methods
 //
 //********************************************************************************************
-    /**
+  /**
     * @brief in stm32f1038ct6 USART2 is shared with ADC define in the following pins
     * @param PA9 ---   TX1   /SCL1/T4C2
     * @param PA10 ---  RX1   /SDA1/T4C1
     * @param PA11 ---  CTS1  /USB-/CANRX
     * @param PA12 ---  RTS1  /USB+/CANTX
     * 
-    */ 
+  */ 
 
 void USART1_init(void)
 {
@@ -241,7 +241,6 @@ void USART3_init(void)
 
 }
 //--------------------------------------------------------------------------------------------
-
 //********************************************************************************************
 //
 // Interrupt Handler Method definitions
@@ -261,11 +260,17 @@ void USART1_IRQHandler(void)
 {
     // clear the Interrupt 
      //USART_ClearITPendingBit(USART1,USART_IT_RXNE);
-     volatile uint8_t data=0;
-     volatile uint16_t t=0;
+     //volatile uint8_t data=0;
+     //volatile uint16_t t=0;
     
-    if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
-      uart_receive(USART1);
+    //if(USART_GetITStatus(USART1,USART_IT_RXNE)!=RESET)
+    if(bits_is_set(USART1->SR,USART_SR_RXNE))
+    {
+        uart_receive(USART1);
+    }
+    // clear the Interrupt 
+    CLEAR_BIT(USART1->SR,USART_SR_RXNE);
+
 
     //  TX : check if data is sent
     /*if(USART_GetITStatus(USART1,USART_IT_TXE)!=RESET)
@@ -334,7 +339,6 @@ void USART2_IRQHandler(void)
  * @param  void
  * @returns void 
  */
-
 void USART3_IRQHandler(void)
 {
     // clear the Interrupt 
@@ -367,23 +371,3 @@ void USART3_IRQHandler(void)
 }
 //--------------------------------------------------------------------------------------------
 
-//********************************************************************************************
-//
-// uart Method definitions
-//
-//********************************************************************************************
-uint8_t uart_put_char(USART_TypeDef * usartx,uint8_t data)
-{
-  while(USART_GetFlagStatus(usartx,USART_FLAG_TXE)==RESET);
-  usartx->DR=(data & (uint16_t) 0x00ff);
-  return 0;
-}
-//--------------------------------------------------------------------------------------------
-
-uint8_t uart_get_char(USART_TypeDef * usartx)
-{
-
-  while(USART_GetFlagStatus(usartx,USART_FLAG_RXNE)==RESET);
-  return usartx->DR & (uint16_t) 0x00ff;  
-}
-//--------------------------------------------------------------------------------------------

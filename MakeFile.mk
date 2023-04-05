@@ -31,6 +31,7 @@ STARTUP_DIR =./.startup
 
 # libraries Directory paths
 LIB_DIR =
+GCC_PATH_INC=$(GCC_DIR)/gcc-arm-none-eabi-10.3-2021.10
 
 # asm Directory paths
 ASM_DIR =
@@ -41,7 +42,15 @@ EXT_SRC_DIR =./.driver/STM32F10x_StdPeriph_Driver/src
 # header Directory paths
 EXT_INC_DIR=./.driver/CMSIS/Core\
 ./.driver/CMSIS/Device/STM32F10x \
-./.driver/STM32F10x_StdPeriph_Driver/inc
+./.driver/STM32F10x_StdPeriph_Driver/inc\
+
+#$(GCC_PATH_INC)/arm-none-eabi/include \
+$(GCC_PATH_INC)/arm-none-eabi/include/c++/10.3.1 \
+$(GCC_PATH_INC)/lib/gcc/arm-none-eabi/10.3.1/include \
+$(GCC_PATH_INC)/lib/gcc/arm-none-eabi/10.3.1/include-fixed \
+$(GCC_PATH_INC)/arm-none-eabi/include/machine \
+$(GCC_PATH_INC)/arm-none-eabi/include/newlib-nano \
+$(GCC_PATH_INC)/arm-none-eabi/include/sys \
 
 #EXT_INC_DIR=/opt/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/CMSIS/CM3/CoreSupport \
 $(GCC_OS_DIR)/STM32F10x_StdPeriph_Lib_V3.6.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x \
