@@ -25,9 +25,9 @@
 //#define USB_WAIT_TIMEOUT		8000
 
 #define KEYPAD_WAIT_TIMEOUT		      30000		//
-#define MPU_WAIT_TIMEOUT		        50000		//
-#define KEYPAD_DEBOUNCE_TIMEOUT	    3500	  //
-#define RTC_WAIT_TIMEOUT		        100000
+#define MPU_WAIT_TIMEOUT		        10000		//
+#define KEYPAD_DEBOUNCE_TIMEOUT	      3500	  //
+#define RTC_WAIT_TIMEOUT		      100000
 
 //********************************************************************************************
 //
@@ -66,20 +66,15 @@ enum _MODE_t{_BOOT_UP,_OFF,_ON,_TRIGGER};
  
  extern uint8_t lcd_state;
  extern uint32_t lcd_ticks;
- 
- extern uint8_t mpu_state;
- extern uint32_t mpu_ticks;
- extern uint32_t mpu_cycle;
- 
- extern uint8_t mpu_init_sucess;
 
- 
- 
  extern uint8_t pilot_state;
  extern uint32_t pilot_ticks;
-  
+ 
  extern uint8_t rtc_state;
  extern uint32_t rtc_ticks;
+
+ extern uint8_t mpu_state;
+ extern uint32_t mpu_ticks;
  
 //********************************************************************************************
 //

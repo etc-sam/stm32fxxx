@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
   30:./basic/array.c **** //  static function ProtoType
   31:./basic/array.c **** //
   32:./basic/array.c **** //********************************************************************************************
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 2
 
 
   33:./basic/array.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
   52 0016 4FF0FF33 		mov	r3, #-1
   53 001a 11E0     		b	.L3
   54              	.L2:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 3
 
 
   62:./basic/array.c **** 	  
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
   73:./basic/array.c ****  * 														
   74:./basic/array.c ****  * @details get the last occurance of a key value in a buffer starting from
   75:./basic/array.c ****  *			from a specific index 																		
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 4
 
 
   76:./basic/array.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  138              		.loc 1 91 5
  139 002e 7B69     		ldr	r3, [r7, #20]
  140 0030 002B     		cmp	r3, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 5
 
 
  141 0032 02D1     		bne	.L8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  181              		.cfi_offset 14, -4
  182 0002 86B0     		sub	sp, sp, #24
  183              	.LCFI11:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 6
 
 
  184              		.cfi_def_cfa_offset 32
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  228              	.L10:
  110:./basic/array.c ****    {
  229              		.loc 1 110 9
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 7
 
 
  230 0046 7B69     		ldr	r3, [r7, #20]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  270              	.LCFI17:
  271              		.cfi_def_cfa_register 7
  272 0006 F860     		str	r0, [r7, #12]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 8
 
 
  273 0008 B960     		str	r1, [r7, #8]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  319 0052 3868     		ldr	r0, [r7]
  320 0054 0344     		add	r3, r3, r0
  321              		.loc 1 141 38 discriminator 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 9
 
 
  322 0056 8A1A     		subs	r2, r1, r2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  366              		.loc 1 150 20
  367 0098 0022     		movs	r2, #0
  368 009a 1A71     		strb	r2, [r3, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 10
 
 
  151:./basic/array.c ****      start=(uint8_t*)ptr_list[i-1].ptr-(uint8_t*)buf;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  414 00e6 3A68     		ldr	r2, [r7]
  415 00e8 1344     		add	r3, r3, r2
  416              		.loc 1 159 22
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 11
 
 
  417 00ea BA68     		ldr	r2, [r7, #8]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  450              	.LCFI20:
  451              		.cfi_def_cfa_offset 8
  452              		.cfi_offset 7, -8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 12
 
 
  453              		.cfi_offset 14, -4
@@ -693,133 +693,94 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  480 0026 DAB2     		uxtb	r2, r3
  481 0028 3B68     		ldr	r3, [r7]
  482 002a 5A70     		strb	r2, [r3, #1]
- 185:./basic/array.c ****  cmd->msg.ptr=0;
- 483              		.loc 1 185 14
- 484 002c 3B68     		ldr	r3, [r7]
- 485 002e 0022     		movs	r2, #0
- 486 0030 5A63     		str	r2, [r3, #52]
- 186:./basic/array.c ****  cmd->msg.len=0;
- 487              		.loc 1 186 14
- 488 0032 3B68     		ldr	r3, [r7]
- 489 0034 0022     		movs	r2, #0
- 490 0036 83F83820 		strb	r2, [r3, #56]
+ 185:./basic/array.c ****  //cmd->msg.ptr=0;
+ 186:./basic/array.c ****  //cmd->msg.len=0;
  187:./basic/array.c **** 
  188:./basic/array.c ****  if(cmd->param_len>0)
- 491              		.loc 1 188 8
- 492 003a 3B68     		ldr	r3, [r7]
- 493 003c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 494              		.loc 1 188 4
- 495 003e 002B     		cmp	r3, #0
- 496 0040 15D0     		beq	.L20
+ 483              		.loc 1 188 8
+ 484 002c 3B68     		ldr	r3, [r7]
+ 485 002e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 486              		.loc 1 188 4
+ 487 0030 002B     		cmp	r3, #0
+ 488 0032 15D0     		beq	.L20
  189:./basic/array.c ****  {	 
  190:./basic/array.c ****     start= cmd->parameters[cmd->param_len-1].ptr- (uint8_t*)buf;
- 497              		.loc 1 190 31
- 498 0042 3B68     		ldr	r3, [r7]
- 499 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 500              		.loc 1 190 42
- 501 0046 013B     		subs	r3, r3, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 13
+ 489              		.loc 1 190 31
+ 490 0034 3B68     		ldr	r3, [r7]
+ 491 0036 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 492              		.loc 1 190 42
+ 493 0038 013B     		subs	r3, r3, #1
+ 494              		.loc 1 190 45
+ 495 003a 3A68     		ldr	r2, [r7]
+ 496 003c DB00     		lsls	r3, r3, #3
+ 497 003e 1344     		add	r3, r3, r2
+ 498 0040 5A68     		ldr	r2, [r3, #4]
+ 499              		.loc 1 190 49
+ 500 0042 FB68     		ldr	r3, [r7, #12]
+ 501 0044 D31A     		subs	r3, r2, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 13
 
 
- 502              		.loc 1 190 45
- 503 0048 3A68     		ldr	r2, [r7]
- 504 004a DB00     		lsls	r3, r3, #3
- 505 004c 1344     		add	r3, r3, r2
- 506 004e 5A68     		ldr	r2, [r3, #4]
- 507              		.loc 1 190 49
- 508 0050 FB68     		ldr	r3, [r7, #12]
- 509 0052 D31A     		subs	r3, r2, r3
- 510              		.loc 1 190 10
- 511 0054 7B61     		str	r3, [r7, #20]
+ 502              		.loc 1 190 10
+ 503 0046 7B61     		str	r3, [r7, #20]
  191:./basic/array.c **** 	start+= cmd->parameters[cmd->param_len-1].len+1;
- 512              		.loc 1 191 29
- 513 0056 3B68     		ldr	r3, [r7]
- 514 0058 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 515              		.loc 1 191 40
- 516 005a 013B     		subs	r3, r3, #1
- 517              		.loc 1 191 43
- 518 005c 3A68     		ldr	r2, [r7]
- 519 005e DB00     		lsls	r3, r3, #3
- 520 0060 1344     		add	r3, r3, r2
- 521 0062 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
- 522              		.loc 1 191 7
- 523 0064 1A46     		mov	r2, r3
- 524 0066 7B69     		ldr	r3, [r7, #20]
- 525 0068 1344     		add	r3, r3, r2
- 526 006a 0133     		adds	r3, r3, #1
- 527 006c 7B61     		str	r3, [r7, #20]
- 528              	.L20:
+ 504              		.loc 1 191 29
+ 505 0048 3B68     		ldr	r3, [r7]
+ 506 004a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 507              		.loc 1 191 40
+ 508 004c 013B     		subs	r3, r3, #1
+ 509              		.loc 1 191 43
+ 510 004e 3A68     		ldr	r2, [r7]
+ 511 0050 DB00     		lsls	r3, r3, #3
+ 512 0052 1344     		add	r3, r3, r2
+ 513 0054 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+ 514              		.loc 1 191 7
+ 515 0056 1A46     		mov	r2, r3
+ 516 0058 7B69     		ldr	r3, [r7, #20]
+ 517 005a 1344     		add	r3, r3, r2
+ 518 005c 0133     		adds	r3, r3, #1
+ 519 005e 7B61     		str	r3, [r7, #20]
+ 520              	.L20:
  192:./basic/array.c ****  }
- 193:./basic/array.c ****  end=mem_indexOf(buf,len,' ',start);
- 529              		.loc 1 193 6
- 530 006e 7B69     		ldr	r3, [r7, #20]
- 531 0070 2022     		movs	r2, #32
- 532 0072 B968     		ldr	r1, [r7, #8]
- 533 0074 F868     		ldr	r0, [r7, #12]
- 534 0076 FFF7FEFF 		bl	mem_indexOf
- 535 007a 0346     		mov	r3, r0
- 536              		.loc 1 193 5
- 537 007c 3B61     		str	r3, [r7, #16]
+ 193:./basic/array.c ****  /*end=mem_indexOf(buf,len,' ',start);
  194:./basic/array.c ****  if(end!=-1)
- 538              		.loc 1 194 4
- 539 007e 3B69     		ldr	r3, [r7, #16]
- 540 0080 B3F1FF3F 		cmp	r3, #-1
- 541 0084 0DD0     		beq	.L21
  195:./basic/array.c ****  {
  196:./basic/array.c ****    cmd->msg.len=end-start;
- 542              		.loc 1 196 20
- 543 0086 3B69     		ldr	r3, [r7, #16]
- 544 0088 DAB2     		uxtb	r2, r3
- 545 008a 7B69     		ldr	r3, [r7, #20]
- 546 008c DBB2     		uxtb	r3, r3
- 547 008e D31A     		subs	r3, r2, r3
- 548 0090 DAB2     		uxtb	r2, r3
- 549              		.loc 1 196 16
- 550 0092 3B68     		ldr	r3, [r7]
- 551 0094 83F83820 		strb	r2, [r3, #56]
  197:./basic/array.c ****    cmd->msg.ptr=(uint8_t*)(buf+start);  
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 14
-
-
- 552              		.loc 1 197 31
- 553 0098 FA68     		ldr	r2, [r7, #12]
- 554 009a 7B69     		ldr	r3, [r7, #20]
- 555 009c 1A44     		add	r2, r2, r3
- 556              		.loc 1 197 16
- 557 009e 3B68     		ldr	r3, [r7]
- 558 00a0 5A63     		str	r2, [r3, #52]
- 559              	.L21:
  198:./basic/array.c ****  }
- 199:./basic/array.c **** 
+ 199:./basic/array.c **** */
  200:./basic/array.c ****  return cmd->param_len;
- 560              		.loc 1 200 12
- 561 00a2 3B68     		ldr	r3, [r7]
- 562 00a4 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 521              		.loc 1 200 12
+ 522 0060 3B68     		ldr	r3, [r7]
+ 523 0062 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  201:./basic/array.c **** }
- 563              		.loc 1 201 1
- 564 00a6 1846     		mov	r0, r3
- 565 00a8 1837     		adds	r7, r7, #24
- 566              	.LCFI23:
- 567              		.cfi_def_cfa_offset 8
- 568 00aa BD46     		mov	sp, r7
- 569              	.LCFI24:
- 570              		.cfi_def_cfa_register 13
- 571              		@ sp needed
- 572 00ac 80BD     		pop	{r7, pc}
- 573              		.cfi_endproc
- 574              	.LFE37:
- 576              		.section	.text.param_split,"ax",%progbits
- 577              		.align	1
- 578              		.global	param_split
- 579              		.syntax unified
- 580              		.thumb
- 581              		.thumb_func
- 583              	param_split:
- 584              	.LFB38:
+ 524              		.loc 1 201 1
+ 525 0064 1846     		mov	r0, r3
+ 526 0066 1837     		adds	r7, r7, #24
+ 527              	.LCFI23:
+ 528              		.cfi_def_cfa_offset 8
+ 529 0068 BD46     		mov	sp, r7
+ 530              	.LCFI24:
+ 531              		.cfi_def_cfa_register 13
+ 532              		@ sp needed
+ 533 006a 80BD     		pop	{r7, pc}
+ 534              		.cfi_endproc
+ 535              	.LFE37:
+ 537              		.section	.text.param_split,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	param_split
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 544              	param_split:
+ 545              	.LFB38:
  202:./basic/array.c **** //---------------------------------------------------------------------------------------------
  203:./basic/array.c **** /**
  204:./basic/array.c ****  * @brief splits the parameter string to parameter-value pairs
  205:./basic/array.c ****  * 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 14
+
+
  206:./basic/array.c ****  * @details splits the parameter string to parameter-value pairs
  207:./basic/array.c ****  * 
  208:./basic/array.c ****  * @param parameter  it is the parameter-value string array
@@ -828,207 +789,207 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 1
  211:./basic/array.c ****  */
  212:./basic/array.c **** int param_split(array_t parameter,  param_t * ptr_param)
  213:./basic/array.c **** {
- 585              		.loc 1 213 1
- 586              		.cfi_startproc
- 587              		@ args = 0, pretend = 0, frame = 40
- 588              		@ frame_needed = 1, uses_anonymous_args = 0
- 589 0000 80B5     		push	{r7, lr}
- 590              	.LCFI25:
- 591              		.cfi_def_cfa_offset 8
- 592              		.cfi_offset 7, -8
- 593              		.cfi_offset 14, -4
- 594 0002 8AB0     		sub	sp, sp, #40
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 15
-
-
- 595              	.LCFI26:
- 596              		.cfi_def_cfa_offset 48
- 597 0004 00AF     		add	r7, sp, #0
- 598              	.LCFI27:
- 599              		.cfi_def_cfa_register 7
- 600 0006 07F10803 		add	r3, r7, #8
- 601 000a 83E80300 		stm	r3, {r0, r1}
- 602 000e 7A60     		str	r2, [r7, #4]
+ 546              		.loc 1 213 1
+ 547              		.cfi_startproc
+ 548              		@ args = 0, pretend = 0, frame = 40
+ 549              		@ frame_needed = 1, uses_anonymous_args = 0
+ 550 0000 80B5     		push	{r7, lr}
+ 551              	.LCFI25:
+ 552              		.cfi_def_cfa_offset 8
+ 553              		.cfi_offset 7, -8
+ 554              		.cfi_offset 14, -4
+ 555 0002 8AB0     		sub	sp, sp, #40
+ 556              	.LCFI26:
+ 557              		.cfi_def_cfa_offset 48
+ 558 0004 00AF     		add	r7, sp, #0
+ 559              	.LCFI27:
+ 560              		.cfi_def_cfa_register 7
+ 561 0006 07F10803 		add	r3, r7, #8
+ 562 000a 83E80300 		stm	r3, {r0, r1}
+ 563 000e 7A60     		str	r2, [r7, #4]
  214:./basic/array.c **** 
  215:./basic/array.c ****  int par_start=0,par_end=0,data_end=0;
- 603              		.loc 1 215 6
- 604 0010 0023     		movs	r3, #0
- 605 0012 3B62     		str	r3, [r7, #32]
- 606              		.loc 1 215 18
- 607 0014 0023     		movs	r3, #0
- 608 0016 FB61     		str	r3, [r7, #28]
- 609              		.loc 1 215 28
- 610 0018 0023     		movs	r3, #0
- 611 001a BB61     		str	r3, [r7, #24]
+ 564              		.loc 1 215 6
+ 565 0010 0023     		movs	r3, #0
+ 566 0012 3B62     		str	r3, [r7, #32]
+ 567              		.loc 1 215 18
+ 568 0014 0023     		movs	r3, #0
+ 569 0016 FB61     		str	r3, [r7, #28]
+ 570              		.loc 1 215 28
+ 571 0018 0023     		movs	r3, #0
+ 572 001a BB61     		str	r3, [r7, #24]
  216:./basic/array.c ****  uint8_t par_len=0,data_len=0;
- 612              		.loc 1 216 10
- 613 001c 0023     		movs	r3, #0
- 614 001e 87F82730 		strb	r3, [r7, #39]
- 615              		.loc 1 216 20
- 616 0022 0023     		movs	r3, #0
- 617 0024 FB75     		strb	r3, [r7, #23]
+ 573              		.loc 1 216 10
+ 574 001c 0023     		movs	r3, #0
+ 575 001e 87F82730 		strb	r3, [r7, #39]
+ 576              		.loc 1 216 20
+ 577 0022 0023     		movs	r3, #0
+ 578 0024 FB75     		strb	r3, [r7, #23]
  217:./basic/array.c ****  ptr_param->param=0;
- 618              		.loc 1 217 18
- 619 0026 7B68     		ldr	r3, [r7, #4]
- 620 0028 0022     		movs	r2, #0
- 621 002a 1A60     		str	r2, [r3]
+ 579              		.loc 1 217 18
+ 580 0026 7B68     		ldr	r3, [r7, #4]
+ 581 0028 0022     		movs	r2, #0
+ 582 002a 1A60     		str	r2, [r3]
  218:./basic/array.c ****  ptr_param->param_len=0;
- 622              		.loc 1 218 22
- 623 002c 7B68     		ldr	r3, [r7, #4]
- 624 002e 0022     		movs	r2, #0
- 625 0030 1A71     		strb	r2, [r3, #4]
+ 583              		.loc 1 218 22
+ 584 002c 7B68     		ldr	r3, [r7, #4]
+ 585 002e 0022     		movs	r2, #0
+ 586 0030 1A71     		strb	r2, [r3, #4]
  219:./basic/array.c ****  ptr_param->data=0;
- 626              		.loc 1 219 17
- 627 0032 7B68     		ldr	r3, [r7, #4]
- 628 0034 0022     		movs	r2, #0
- 629 0036 9A60     		str	r2, [r3, #8]
+ 587              		.loc 1 219 17
+ 588 0032 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 15
+
+
+ 589 0034 0022     		movs	r2, #0
+ 590 0036 9A60     		str	r2, [r3, #8]
  220:./basic/array.c ****  ptr_param->data_len=0;
- 630              		.loc 1 220 21
- 631 0038 7B68     		ldr	r3, [r7, #4]
- 632 003a 0022     		movs	r2, #0
- 633 003c 1A73     		strb	r2, [r3, #12]
+ 591              		.loc 1 220 21
+ 592 0038 7B68     		ldr	r3, [r7, #4]
+ 593 003a 0022     		movs	r2, #0
+ 594 003c 1A73     		strb	r2, [r3, #12]
  221:./basic/array.c **** 
  222:./basic/array.c ****  par_start=mem_indexOf(parameter.ptr,parameter.len,'-',0); 
- 634              		.loc 1 222 33
- 635 003e B868     		ldr	r0, [r7, #8]
- 636              		.loc 1 222 47
- 637 0040 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 638              		.loc 1 222 12
- 639 0042 1946     		mov	r1, r3
- 640 0044 0023     		movs	r3, #0
- 641 0046 2D22     		movs	r2, #45
- 642 0048 FFF7FEFF 		bl	mem_indexOf
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 16
-
-
- 643 004c 3862     		str	r0, [r7, #32]
+ 595              		.loc 1 222 33
+ 596 003e B868     		ldr	r0, [r7, #8]
+ 597              		.loc 1 222 47
+ 598 0040 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 599              		.loc 1 222 12
+ 600 0042 1946     		mov	r1, r3
+ 601 0044 0023     		movs	r3, #0
+ 602 0046 2D22     		movs	r2, #45
+ 603 0048 FFF7FEFF 		bl	mem_indexOf
+ 604 004c 3862     		str	r0, [r7, #32]
  223:./basic/array.c ****  par_end=  mem_indexOf(parameter.ptr,parameter.len,' ',0);
- 644              		.loc 1 223 33
- 645 004e B868     		ldr	r0, [r7, #8]
- 646              		.loc 1 223 47
- 647 0050 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 648              		.loc 1 223 12
- 649 0052 1946     		mov	r1, r3
- 650 0054 0023     		movs	r3, #0
- 651 0056 2022     		movs	r2, #32
- 652 0058 FFF7FEFF 		bl	mem_indexOf
- 653 005c F861     		str	r0, [r7, #28]
+ 605              		.loc 1 223 33
+ 606 004e B868     		ldr	r0, [r7, #8]
+ 607              		.loc 1 223 47
+ 608 0050 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 609              		.loc 1 223 12
+ 610 0052 1946     		mov	r1, r3
+ 611 0054 0023     		movs	r3, #0
+ 612 0056 2022     		movs	r2, #32
+ 613 0058 FFF7FEFF 		bl	mem_indexOf
+ 614 005c F861     		str	r0, [r7, #28]
  224:./basic/array.c **** 
  225:./basic/array.c ****  if(par_start !=-1 && par_end!=-1)
- 654              		.loc 1 225 4
- 655 005e 3B6A     		ldr	r3, [r7, #32]
- 656 0060 B3F1FF3F 		cmp	r3, #-1
- 657 0064 28D0     		beq	.L24
- 658              		.loc 1 225 20 discriminator 1
- 659 0066 FB69     		ldr	r3, [r7, #28]
- 660 0068 B3F1FF3F 		cmp	r3, #-1
- 661 006c 24D0     		beq	.L24
+ 615              		.loc 1 225 4
+ 616 005e 3B6A     		ldr	r3, [r7, #32]
+ 617 0060 B3F1FF3F 		cmp	r3, #-1
+ 618 0064 28D0     		beq	.L23
+ 619              		.loc 1 225 20 discriminator 1
+ 620 0066 FB69     		ldr	r3, [r7, #28]
+ 621 0068 B3F1FF3F 		cmp	r3, #-1
+ 622 006c 24D0     		beq	.L23
  226:./basic/array.c ****  {
  227:./basic/array.c **** 	par_len=par_end-par_start;
- 662              		.loc 1 227 17
- 663 006e FB69     		ldr	r3, [r7, #28]
- 664 0070 DAB2     		uxtb	r2, r3
- 665 0072 3B6A     		ldr	r3, [r7, #32]
- 666 0074 DBB2     		uxtb	r3, r3
- 667              		.loc 1 227 9
- 668 0076 D31A     		subs	r3, r2, r3
- 669 0078 87F82730 		strb	r3, [r7, #39]
+ 623              		.loc 1 227 17
+ 624 006e FB69     		ldr	r3, [r7, #28]
+ 625 0070 DAB2     		uxtb	r2, r3
+ 626 0072 3B6A     		ldr	r3, [r7, #32]
+ 627 0074 DBB2     		uxtb	r3, r3
+ 628              		.loc 1 227 9
+ 629 0076 D31A     		subs	r3, r2, r3
+ 630 0078 87F82730 		strb	r3, [r7, #39]
  228:./basic/array.c **** 	
  229:./basic/array.c **** 	ptr_param->param=(uint8_t*)(parameter.ptr+par_start);
- 670              		.loc 1 229 39
- 671 007c BA68     		ldr	r2, [r7, #8]
- 672              		.loc 1 229 19
- 673 007e 3B6A     		ldr	r3, [r7, #32]
- 674 0080 1A44     		add	r2, r2, r3
- 675              		.loc 1 229 18
- 676 0082 7B68     		ldr	r3, [r7, #4]
- 677 0084 1A60     		str	r2, [r3]
+ 631              		.loc 1 229 39
+ 632 007c BA68     		ldr	r2, [r7, #8]
+ 633              		.loc 1 229 19
+ 634 007e 3B6A     		ldr	r3, [r7, #32]
+ 635 0080 1A44     		add	r2, r2, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 16
+
+
+ 636              		.loc 1 229 18
+ 637 0082 7B68     		ldr	r3, [r7, #4]
+ 638 0084 1A60     		str	r2, [r3]
  230:./basic/array.c **** 	ptr_param->param_len=par_len;
- 678              		.loc 1 230 22
- 679 0086 7B68     		ldr	r3, [r7, #4]
- 680 0088 97F82720 		ldrb	r2, [r7, #39]
- 681 008c 1A71     		strb	r2, [r3, #4]
+ 639              		.loc 1 230 22
+ 640 0086 7B68     		ldr	r3, [r7, #4]
+ 641 0088 97F82720 		ldrb	r2, [r7, #39]
+ 642 008c 1A71     		strb	r2, [r3, #4]
  231:./basic/array.c ****   if(parameter.len>par_end)
- 682              		.loc 1 231 15
- 683 008e 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 684 0090 1A46     		mov	r2, r3
- 685              		.loc 1 231 5
- 686 0092 FB69     		ldr	r3, [r7, #28]
- 687 0094 9342     		cmp	r3, r2
- 688 0096 0FDA     		bge	.L24
+ 643              		.loc 1 231 15
+ 644 008e 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 645 0090 1A46     		mov	r2, r3
+ 646              		.loc 1 231 5
+ 647 0092 FB69     		ldr	r3, [r7, #28]
+ 648 0094 9342     		cmp	r3, r2
+ 649 0096 0FDA     		bge	.L23
  232:./basic/array.c ****    {
  233:./basic/array.c **** 	data_len=parameter.len-par_end-1;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 17
-
-
- 689              		.loc 1 233 20
- 690 0098 3A7B     		ldrb	r2, [r7, #12]	@ zero_extendqisi2
- 691              		.loc 1 233 24
- 692 009a FB69     		ldr	r3, [r7, #28]
- 693 009c DBB2     		uxtb	r3, r3
- 694 009e D31A     		subs	r3, r2, r3
- 695 00a0 DBB2     		uxtb	r3, r3
- 696              		.loc 1 233 10
- 697 00a2 013B     		subs	r3, r3, #1
- 698 00a4 FB75     		strb	r3, [r7, #23]
+ 650              		.loc 1 233 20
+ 651 0098 3A7B     		ldrb	r2, [r7, #12]	@ zero_extendqisi2
+ 652              		.loc 1 233 24
+ 653 009a FB69     		ldr	r3, [r7, #28]
+ 654 009c DBB2     		uxtb	r3, r3
+ 655 009e D31A     		subs	r3, r2, r3
+ 656 00a0 DBB2     		uxtb	r3, r3
+ 657              		.loc 1 233 10
+ 658 00a2 013B     		subs	r3, r3, #1
+ 659 00a4 FB75     		strb	r3, [r7, #23]
  234:./basic/array.c **** 	ptr_param->data=(uint8_t*)(parameter.ptr+par_end+1);
- 699              		.loc 1 234 38
- 700 00a6 BA68     		ldr	r2, [r7, #8]
- 701              		.loc 1 234 50
- 702 00a8 FB69     		ldr	r3, [r7, #28]
- 703 00aa 0133     		adds	r3, r3, #1
- 704              		.loc 1 234 18
- 705 00ac 1A44     		add	r2, r2, r3
- 706              		.loc 1 234 17
- 707 00ae 7B68     		ldr	r3, [r7, #4]
- 708 00b0 9A60     		str	r2, [r3, #8]
+ 660              		.loc 1 234 38
+ 661 00a6 BA68     		ldr	r2, [r7, #8]
+ 662              		.loc 1 234 50
+ 663 00a8 FB69     		ldr	r3, [r7, #28]
+ 664 00aa 0133     		adds	r3, r3, #1
+ 665              		.loc 1 234 18
+ 666 00ac 1A44     		add	r2, r2, r3
+ 667              		.loc 1 234 17
+ 668 00ae 7B68     		ldr	r3, [r7, #4]
+ 669 00b0 9A60     		str	r2, [r3, #8]
  235:./basic/array.c **** 	ptr_param->data_len=data_len;
- 709              		.loc 1 235 21
- 710 00b2 7B68     		ldr	r3, [r7, #4]
- 711 00b4 FA7D     		ldrb	r2, [r7, #23]
- 712 00b6 1A73     		strb	r2, [r3, #12]
- 713              	.L24:
+ 670              		.loc 1 235 21
+ 671 00b2 7B68     		ldr	r3, [r7, #4]
+ 672 00b4 FA7D     		ldrb	r2, [r7, #23]
+ 673 00b6 1A73     		strb	r2, [r3, #12]
+ 674              	.L23:
  236:./basic/array.c ****    }
  237:./basic/array.c ****  }
  238:./basic/array.c ****  return par_len ;//data_len;
- 714              		.loc 1 238 9
- 715 00b8 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
+ 675              		.loc 1 238 9
+ 676 00b8 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
  239:./basic/array.c **** }
- 716              		.loc 1 239 1
- 717 00bc 1846     		mov	r0, r3
- 718 00be 2837     		adds	r7, r7, #40
- 719              	.LCFI28:
- 720              		.cfi_def_cfa_offset 8
- 721 00c0 BD46     		mov	sp, r7
- 722              	.LCFI29:
- 723              		.cfi_def_cfa_register 13
- 724              		@ sp needed
- 725 00c2 80BD     		pop	{r7, pc}
- 726              		.cfi_endproc
- 727              	.LFE38:
- 729              		.text
- 730              	.Letext0:
- 731              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
- 732              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 733              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
- 734              		.file 5 "./basic/array.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 18
+ 677              		.loc 1 239 1
+ 678 00bc 1846     		mov	r0, r3
+ 679 00be 2837     		adds	r7, r7, #40
+ 680              	.LCFI28:
+ 681              		.cfi_def_cfa_offset 8
+ 682 00c0 BD46     		mov	sp, r7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 17
+
+
+ 683              	.LCFI29:
+ 684              		.cfi_def_cfa_register 13
+ 685              		@ sp needed
+ 686 00c2 80BD     		pop	{r7, pc}
+ 687              		.cfi_endproc
+ 688              	.LFE38:
+ 690              		.text
+ 691              	.Letext0:
+ 692              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 693              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 694              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include\\s
+ 695              		.file 5 "./basic/array.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 array.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:18     .text.mem_indexOf:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:24     .text.mem_indexOf:00000000 mem_indexOf
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:92     .text.mem_lastindexOf:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:98     .text.mem_lastindexOf:00000000 mem_lastindexOf
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:165    .text.mem_find_aslist:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:171    .text.mem_find_aslist:00000000 mem_find_aslist
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:249    .text.mem_find_asArray:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:255    .text.mem_find_asArray:00000000 mem_find_asArray
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:437    .text.cmd_split:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:443    .text.cmd_split:00000000 cmd_split
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:577    .text.param_split:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:583    .text.param_split:00000000 param_split
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:18     .text.mem_indexOf:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:24     .text.mem_indexOf:00000000 mem_indexOf
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:92     .text.mem_lastindexOf:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:98     .text.mem_lastindexOf:00000000 mem_lastindexOf
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:165    .text.mem_find_aslist:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:171    .text.mem_find_aslist:00000000 mem_find_aslist
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:249    .text.mem_find_asArray:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:255    .text.mem_find_asArray:00000000 mem_find_asArray
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:437    .text.cmd_split:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:443    .text.cmd_split:00000000 cmd_split
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:538    .text.param_split:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s:544    .text.param_split:00000000 param_split
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -1072,7 +1033,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:583    .text.param_split:000
                            .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
                            .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
                            .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s 			page 19
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSrqUIN.s 			page 19
 
 
                            .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
@@ -1119,7 +1080,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc6Kg5J0.s:583    .text.param_split:000
                            .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
                            .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
                            .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
-                           .group:00000000 wm4.systemtask.h.12.296b6a27be8b79a110bf5281d2fc993a
+                           .group:00000000 wm4.systemtask.h.12.4111f050c12db00791331b8757fbd5d2
 
 UNDEFINED SYMBOLS
 memchr

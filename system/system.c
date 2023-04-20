@@ -18,7 +18,9 @@
 // Global variables 
 //
 //********************************************************************************************
-uint32_t systemticks=0;
+uint64_t systemticks=0;
+uint64_t pre_ticks=0;
+
 uint8_t  is_tick=0;
 minute_t logout_timeout;
 

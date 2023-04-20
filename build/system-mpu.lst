@@ -1,0 +1,1802 @@
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"system-mpu.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	mpu_cycle
+  18              		.section	.data.mpu_cycle,"aw"
+  19              		.align	2
+  22              	mpu_cycle:
+  23 0000 10270000 		.word	10000
+  24              		.global	mpu_sample_cnt
+  25              		.section	.bss.mpu_sample_cnt,"aw",%nobits
+  26              		.align	1
+  29              	mpu_sample_cnt:
+  30 0000 0000     		.space	2
+  31              		.global	mpu_time
+  32              		.section	.bss.mpu_time,"aw",%nobits
+  33              		.align	2
+  36              	mpu_time:
+  37 0000 00000000 		.space	4
+  38              		.global	mpu_error
+  39              		.section	.bss.mpu_error,"aw",%nobits
+  42              	mpu_error:
+  43 0000 00       		.space	1
+  44              		.global	mpu_is_first_sample
+  45              		.section	.bss.mpu_is_first_sample,"aw",%nobits
+  48              	mpu_is_first_sample:
+  49 0000 00       		.space	1
+  50              		.global	mpu_init_sucess
+  51              		.section	.bss.mpu_init_sucess,"aw",%nobits
+  54              	mpu_init_sucess:
+  55 0000 00       		.space	1
+  56              		.global	cur_sample
+  57              		.section	.bss.cur_sample,"aw",%nobits
+  58              		.align	2
+  61              	cur_sample:
+  62 0000 00000000 		.space	40
+  62      00000000 
+  62      00000000 
+  62      00000000 
+  62      00000000 
+  63              		.global	pre_sample
+  64              		.section	.bss.pre_sample,"aw",%nobits
+  65              		.align	2
+  68              	pre_sample:
+  69 0000 00000000 		.space	40
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 2
+
+
+  69      00000000 
+  69      00000000 
+  69      00000000 
+  69      00000000 
+  70              		.section	.text.save_sample,"ax",%progbits
+  71              		.align	1
+  72              		.global	save_sample
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	save_sample:
+  78              	.LFB33:
+  79              		.file 1 "./system/system-mpu.c"
+   1:./system/system-mpu.c **** /**
+   2:./system/system-mpu.c ****  * @brief system-task.c
+   3:./system/system-mpu.c ****  *
+   4:./system/system-mpu.c ****  * @param student: Sameer Almaldein
+   5:./system/system-mpu.c ****  * @param ID: 679699
+   6:./system/system-mpu.c ****  * @param University TU-Chemnitz
+   7:./system/system-mpu.c ****  * @param Master : ASE(Automotive Software Engineering )
+   8:./system/system-mpu.c ****  */ 
+   9:./system/system-mpu.c **** 
+  10:./system/system-mpu.c **** //********************************************************************************************
+  11:./system/system-mpu.c **** //
+  12:./system/system-mpu.c **** //  header  files
+  13:./system/system-mpu.c **** //
+  14:./system/system-mpu.c **** //********************************************************************************************
+  15:./system/system-mpu.c **** #include "init.h"
+  16:./system/system-mpu.c **** //********************************************************************************************
+  17:./system/system-mpu.c **** //
+  18:./system/system-mpu.c **** //  static Methods
+  19:./system/system-mpu.c **** //
+  20:./system/system-mpu.c **** //********************************************************************************************
+  21:./system/system-mpu.c **** 
+  22:./system/system-mpu.c **** //********************************************************************************************
+  23:./system/system-mpu.c **** //
+  24:./system/system-mpu.c **** //  global variables
+  25:./system/system-mpu.c **** //
+  26:./system/system-mpu.c **** //********************************************************************************************
+  27:./system/system-mpu.c **** uint32_t mpu_cycle=MPU_WAIT_TIMEOUT;
+  28:./system/system-mpu.c **** uint16_t mpu_sample_cnt=0;
+  29:./system/system-mpu.c **** uint32_t mpu_time=0;
+  30:./system/system-mpu.c **** uint8_t mpu_error=0;
+  31:./system/system-mpu.c **** uint8_t mpu_is_first_sample=0; 
+  32:./system/system-mpu.c **** uint8_t mpu_init_sucess=0;
+  33:./system/system-mpu.c ****  
+  34:./system/system-mpu.c **** mpu_sample_t cur_sample={0};
+  35:./system/system-mpu.c **** mpu_sample_t pre_sample={0};
+  36:./system/system-mpu.c **** 
+  37:./system/system-mpu.c **** //********************************************************************************************
+  38:./system/system-mpu.c **** //
+  39:./system/system-mpu.c **** //  static Methods prototype
+  40:./system/system-mpu.c **** //
+  41:./system/system-mpu.c **** //********************************************************************************************
+  42:./system/system-mpu.c **** 
+  43:./system/system-mpu.c **** //********************************************************************************************
+  44:./system/system-mpu.c **** //
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 3
+
+
+  45:./system/system-mpu.c **** //  Methods definition
+  46:./system/system-mpu.c **** //
+  47:./system/system-mpu.c **** //********************************************************************************************
+  48:./system/system-mpu.c **** void save_sample(mpu_sample_t * sample, MPU6050_t * mpu)
+  49:./system/system-mpu.c **** {
+  80              		.loc 1 49 1
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 8
+  83              		@ frame_needed = 1, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85 0000 80B4     		push	{r7}
+  86              	.LCFI0:
+  87              		.cfi_def_cfa_offset 4
+  88              		.cfi_offset 7, -4
+  89 0002 83B0     		sub	sp, sp, #12
+  90              	.LCFI1:
+  91              		.cfi_def_cfa_offset 16
+  92 0004 00AF     		add	r7, sp, #0
+  93              	.LCFI2:
+  94              		.cfi_def_cfa_register 7
+  95 0006 7860     		str	r0, [r7, #4]
+  96 0008 3960     		str	r1, [r7]
+  50:./system/system-mpu.c ****    sample->time_stamp=mpu_time;
+  97              		.loc 1 50 22
+  98 000a 1F4B     		ldr	r3, .L2
+  99 000c 1A68     		ldr	r2, [r3]
+ 100 000e 7B68     		ldr	r3, [r7, #4]
+ 101 0010 1A60     		str	r2, [r3]
+  51:./system/system-mpu.c **** 
+  52:./system/system-mpu.c ****   // integer values 
+  53:./system/system-mpu.c ****    sample->Accelerometer_nX=mpu->Accelerometer_nX;
+ 102              		.loc 1 53 32
+ 103 0012 3B68     		ldr	r3, [r7]
+ 104 0014 B3F91020 		ldrsh	r2, [r3, #16]
+ 105              		.loc 1 53 28
+ 106 0018 7B68     		ldr	r3, [r7, #4]
+ 107 001a 9A80     		strh	r2, [r3, #4]	@ movhi
+  54:./system/system-mpu.c ****    sample->Accelerometer_nY=mpu->Accelerometer_nY;
+ 108              		.loc 1 54 32
+ 109 001c 3B68     		ldr	r3, [r7]
+ 110 001e B3F91220 		ldrsh	r2, [r3, #18]
+ 111              		.loc 1 54 28
+ 112 0022 7B68     		ldr	r3, [r7, #4]
+ 113 0024 DA80     		strh	r2, [r3, #6]	@ movhi
+  55:./system/system-mpu.c ****    sample->Accelerometer_nZ=mpu->Accelerometer_nZ;
+ 114              		.loc 1 55 32
+ 115 0026 3B68     		ldr	r3, [r7]
+ 116 0028 B3F91420 		ldrsh	r2, [r3, #20]
+ 117              		.loc 1 55 28
+ 118 002c 7B68     		ldr	r3, [r7, #4]
+ 119 002e 1A81     		strh	r2, [r3, #8]	@ movhi
+  56:./system/system-mpu.c ****    sample->Gyroscope_nX=mpu->Gyroscope_nX;
+ 120              		.loc 1 56 28
+ 121 0030 3B68     		ldr	r3, [r7]
+ 122 0032 B3F91620 		ldrsh	r2, [r3, #22]
+ 123              		.loc 1 56 24
+ 124 0036 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 4
+
+
+ 125 0038 5A81     		strh	r2, [r3, #10]	@ movhi
+  57:./system/system-mpu.c ****    sample->Gyroscope_nY=mpu->Gyroscope_nY;
+ 126              		.loc 1 57 28
+ 127 003a 3B68     		ldr	r3, [r7]
+ 128 003c B3F91820 		ldrsh	r2, [r3, #24]
+ 129              		.loc 1 57 24
+ 130 0040 7B68     		ldr	r3, [r7, #4]
+ 131 0042 9A81     		strh	r2, [r3, #12]	@ movhi
+  58:./system/system-mpu.c ****    sample->Gyroscope_nZ=mpu->Gyroscope_nZ;
+ 132              		.loc 1 58 28
+ 133 0044 3B68     		ldr	r3, [r7]
+ 134 0046 B3F91A20 		ldrsh	r2, [r3, #26]
+ 135              		.loc 1 58 24
+ 136 004a 7B68     		ldr	r3, [r7, #4]
+ 137 004c DA81     		strh	r2, [r3, #14]	@ movhi
+  59:./system/system-mpu.c **** 
+  60:./system/system-mpu.c ****   // decimal values 
+  61:./system/system-mpu.c ****    sample->Accelerometer_fX=mpu->Accel_gr_X;
+ 138              		.loc 1 61 32
+ 139 004e 3B68     		ldr	r3, [r7]
+ 140 0050 DA6B     		ldr	r2, [r3, #60]	@ float
+ 141              		.loc 1 61 28
+ 142 0052 7B68     		ldr	r3, [r7, #4]
+ 143 0054 1A61     		str	r2, [r3, #16]	@ float
+  62:./system/system-mpu.c ****    sample->Accelerometer_fY=mpu->Accel_gr_Y;
+ 144              		.loc 1 62 32
+ 145 0056 3B68     		ldr	r3, [r7]
+ 146 0058 1A6C     		ldr	r2, [r3, #64]	@ float
+ 147              		.loc 1 62 28
+ 148 005a 7B68     		ldr	r3, [r7, #4]
+ 149 005c 5A61     		str	r2, [r3, #20]	@ float
+  63:./system/system-mpu.c ****    sample->Accelerometer_fZ=mpu->Accel_gr_Z;
+ 150              		.loc 1 63 32
+ 151 005e 3B68     		ldr	r3, [r7]
+ 152 0060 5A6C     		ldr	r2, [r3, #68]	@ float
+ 153              		.loc 1 63 28
+ 154 0062 7B68     		ldr	r3, [r7, #4]
+ 155 0064 9A61     		str	r2, [r3, #24]	@ float
+  64:./system/system-mpu.c ****    sample->Gyroscope_fX=mpu->Gyro_X;
+ 156              		.loc 1 64 28
+ 157 0066 3B68     		ldr	r3, [r7]
+ 158 0068 1A6B     		ldr	r2, [r3, #48]	@ float
+ 159              		.loc 1 64 24
+ 160 006a 7B68     		ldr	r3, [r7, #4]
+ 161 006c DA61     		str	r2, [r3, #28]	@ float
+  65:./system/system-mpu.c ****    sample->Gyroscope_fY=mpu->Gyro_Y;
+ 162              		.loc 1 65 28
+ 163 006e 3B68     		ldr	r3, [r7]
+ 164 0070 5A6B     		ldr	r2, [r3, #52]	@ float
+ 165              		.loc 1 65 24
+ 166 0072 7B68     		ldr	r3, [r7, #4]
+ 167 0074 1A62     		str	r2, [r3, #32]	@ float
+  66:./system/system-mpu.c ****    sample->Gyroscope_fZ=mpu->Gyro_Z;
+ 168              		.loc 1 66 28
+ 169 0076 3B68     		ldr	r3, [r7]
+ 170 0078 9A6B     		ldr	r2, [r3, #56]	@ float
+ 171              		.loc 1 66 24
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 5
+
+
+ 172 007a 7B68     		ldr	r3, [r7, #4]
+ 173 007c 5A62     		str	r2, [r3, #36]	@ float
+  67:./system/system-mpu.c **** }
+ 174              		.loc 1 67 1
+ 175 007e 00BF     		nop
+ 176 0080 0C37     		adds	r7, r7, #12
+ 177              	.LCFI3:
+ 178              		.cfi_def_cfa_offset 4
+ 179 0082 BD46     		mov	sp, r7
+ 180              	.LCFI4:
+ 181              		.cfi_def_cfa_register 13
+ 182              		@ sp needed
+ 183 0084 80BC     		pop	{r7}
+ 184              	.LCFI5:
+ 185              		.cfi_restore 7
+ 186              		.cfi_def_cfa_offset 0
+ 187 0086 7047     		bx	lr
+ 188              	.L3:
+ 189              		.align	2
+ 190              	.L2:
+ 191 0088 00000000 		.word	mpu_time
+ 192              		.cfi_endproc
+ 193              	.LFE33:
+ 195              		.section	.text.copy_sample,"ax",%progbits
+ 196              		.align	1
+ 197              		.global	copy_sample
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 202              	copy_sample:
+ 203              	.LFB34:
+  68:./system/system-mpu.c **** //-------------------------------------------------------------------------------------------
+  69:./system/system-mpu.c **** void copy_sample(mpu_sample_t * src,mpu_sample_t * dest)
+  70:./system/system-mpu.c **** {
+ 204              		.loc 1 70 1
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 8
+ 207              		@ frame_needed = 1, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 209 0000 80B4     		push	{r7}
+ 210              	.LCFI6:
+ 211              		.cfi_def_cfa_offset 4
+ 212              		.cfi_offset 7, -4
+ 213 0002 83B0     		sub	sp, sp, #12
+ 214              	.LCFI7:
+ 215              		.cfi_def_cfa_offset 16
+ 216 0004 00AF     		add	r7, sp, #0
+ 217              	.LCFI8:
+ 218              		.cfi_def_cfa_register 7
+ 219 0006 7860     		str	r0, [r7, #4]
+ 220 0008 3960     		str	r1, [r7]
+  71:./system/system-mpu.c ****    dest->time_stamp=src->time_stamp;
+ 221              		.loc 1 71 24
+ 222 000a 7B68     		ldr	r3, [r7, #4]
+ 223 000c 1A68     		ldr	r2, [r3]
+ 224              		.loc 1 71 20
+ 225 000e 3B68     		ldr	r3, [r7]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 6
+
+
+ 226 0010 1A60     		str	r2, [r3]
+  72:./system/system-mpu.c **** 
+  73:./system/system-mpu.c ****   // integer values 
+  74:./system/system-mpu.c ****    dest->Accelerometer_nX=src->Accelerometer_nX;
+ 227              		.loc 1 74 30
+ 228 0012 7B68     		ldr	r3, [r7, #4]
+ 229 0014 B3F90420 		ldrsh	r2, [r3, #4]
+ 230              		.loc 1 74 26
+ 231 0018 3B68     		ldr	r3, [r7]
+ 232 001a 9A80     		strh	r2, [r3, #4]	@ movhi
+  75:./system/system-mpu.c ****    dest->Accelerometer_nY=src->Accelerometer_nY;
+ 233              		.loc 1 75 30
+ 234 001c 7B68     		ldr	r3, [r7, #4]
+ 235 001e B3F90620 		ldrsh	r2, [r3, #6]
+ 236              		.loc 1 75 26
+ 237 0022 3B68     		ldr	r3, [r7]
+ 238 0024 DA80     		strh	r2, [r3, #6]	@ movhi
+  76:./system/system-mpu.c ****    dest->Accelerometer_nZ=src->Accelerometer_nZ;
+ 239              		.loc 1 76 30
+ 240 0026 7B68     		ldr	r3, [r7, #4]
+ 241 0028 B3F90820 		ldrsh	r2, [r3, #8]
+ 242              		.loc 1 76 26
+ 243 002c 3B68     		ldr	r3, [r7]
+ 244 002e 1A81     		strh	r2, [r3, #8]	@ movhi
+  77:./system/system-mpu.c ****    dest->Gyroscope_nX=src->Gyroscope_nX;
+ 245              		.loc 1 77 26
+ 246 0030 7B68     		ldr	r3, [r7, #4]
+ 247 0032 B3F90A20 		ldrsh	r2, [r3, #10]
+ 248              		.loc 1 77 22
+ 249 0036 3B68     		ldr	r3, [r7]
+ 250 0038 5A81     		strh	r2, [r3, #10]	@ movhi
+  78:./system/system-mpu.c ****    dest->Gyroscope_nY=src->Gyroscope_nY;
+ 251              		.loc 1 78 26
+ 252 003a 7B68     		ldr	r3, [r7, #4]
+ 253 003c B3F90C20 		ldrsh	r2, [r3, #12]
+ 254              		.loc 1 78 22
+ 255 0040 3B68     		ldr	r3, [r7]
+ 256 0042 9A81     		strh	r2, [r3, #12]	@ movhi
+  79:./system/system-mpu.c ****    dest->Gyroscope_nZ=src->Gyroscope_nZ;
+ 257              		.loc 1 79 26
+ 258 0044 7B68     		ldr	r3, [r7, #4]
+ 259 0046 B3F90E20 		ldrsh	r2, [r3, #14]
+ 260              		.loc 1 79 22
+ 261 004a 3B68     		ldr	r3, [r7]
+ 262 004c DA81     		strh	r2, [r3, #14]	@ movhi
+  80:./system/system-mpu.c **** 
+  81:./system/system-mpu.c ****   // decimal values 
+  82:./system/system-mpu.c ****    dest->Accelerometer_fX=src->Accelerometer_fX;
+ 263              		.loc 1 82 30
+ 264 004e 7B68     		ldr	r3, [r7, #4]
+ 265 0050 1A69     		ldr	r2, [r3, #16]	@ float
+ 266              		.loc 1 82 26
+ 267 0052 3B68     		ldr	r3, [r7]
+ 268 0054 1A61     		str	r2, [r3, #16]	@ float
+  83:./system/system-mpu.c ****    dest->Accelerometer_fY=src->Accelerometer_fY;
+ 269              		.loc 1 83 30
+ 270 0056 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 7
+
+
+ 271 0058 5A69     		ldr	r2, [r3, #20]	@ float
+ 272              		.loc 1 83 26
+ 273 005a 3B68     		ldr	r3, [r7]
+ 274 005c 5A61     		str	r2, [r3, #20]	@ float
+  84:./system/system-mpu.c ****    dest->Accelerometer_fZ=src->Accelerometer_fZ;
+ 275              		.loc 1 84 30
+ 276 005e 7B68     		ldr	r3, [r7, #4]
+ 277 0060 9A69     		ldr	r2, [r3, #24]	@ float
+ 278              		.loc 1 84 26
+ 279 0062 3B68     		ldr	r3, [r7]
+ 280 0064 9A61     		str	r2, [r3, #24]	@ float
+  85:./system/system-mpu.c ****    dest->Gyroscope_fX=src->Gyroscope_fX;
+ 281              		.loc 1 85 26
+ 282 0066 7B68     		ldr	r3, [r7, #4]
+ 283 0068 DA69     		ldr	r2, [r3, #28]	@ float
+ 284              		.loc 1 85 22
+ 285 006a 3B68     		ldr	r3, [r7]
+ 286 006c DA61     		str	r2, [r3, #28]	@ float
+  86:./system/system-mpu.c ****    dest->Gyroscope_fY=src->Gyroscope_fY;
+ 287              		.loc 1 86 26
+ 288 006e 7B68     		ldr	r3, [r7, #4]
+ 289 0070 1A6A     		ldr	r2, [r3, #32]	@ float
+ 290              		.loc 1 86 22
+ 291 0072 3B68     		ldr	r3, [r7]
+ 292 0074 1A62     		str	r2, [r3, #32]	@ float
+  87:./system/system-mpu.c ****    dest->Gyroscope_fZ=src->Gyroscope_fZ;
+ 293              		.loc 1 87 26
+ 294 0076 7B68     		ldr	r3, [r7, #4]
+ 295 0078 5A6A     		ldr	r2, [r3, #36]	@ float
+ 296              		.loc 1 87 22
+ 297 007a 3B68     		ldr	r3, [r7]
+ 298 007c 5A62     		str	r2, [r3, #36]	@ float
+  88:./system/system-mpu.c **** }
+ 299              		.loc 1 88 1
+ 300 007e 00BF     		nop
+ 301 0080 0C37     		adds	r7, r7, #12
+ 302              	.LCFI9:
+ 303              		.cfi_def_cfa_offset 4
+ 304 0082 BD46     		mov	sp, r7
+ 305              	.LCFI10:
+ 306              		.cfi_def_cfa_register 13
+ 307              		@ sp needed
+ 308 0084 80BC     		pop	{r7}
+ 309              	.LCFI11:
+ 310              		.cfi_restore 7
+ 311              		.cfi_def_cfa_offset 0
+ 312 0086 7047     		bx	lr
+ 313              		.cfi_endproc
+ 314              	.LFE34:
+ 316              		.global	__aeabi_i2f
+ 317              		.global	__aeabi_fadd
+ 318              		.global	__aeabi_fcmpgt
+ 319              		.section	.text.compare_sample,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	compare_sample
+ 322              		.syntax unified
+ 323              		.thumb
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 8
+
+
+ 324              		.thumb_func
+ 326              	compare_sample:
+ 327              	.LFB35:
+  89:./system/system-mpu.c **** //-------------------------------------------------------------------------------------------
+  90:./system/system-mpu.c **** uint8_t compare_sample(mpu_sample_t * current,mpu_sample_t * previous)
+  91:./system/system-mpu.c **** {
+ 328              		.loc 1 91 1
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 16
+ 331              		@ frame_needed = 1, uses_anonymous_args = 0
+ 332 0000 B0B5     		push	{r4, r5, r7, lr}
+ 333              	.LCFI12:
+ 334              		.cfi_def_cfa_offset 16
+ 335              		.cfi_offset 4, -16
+ 336              		.cfi_offset 5, -12
+ 337              		.cfi_offset 7, -8
+ 338              		.cfi_offset 14, -4
+ 339 0002 84B0     		sub	sp, sp, #16
+ 340              	.LCFI13:
+ 341              		.cfi_def_cfa_offset 32
+ 342 0004 00AF     		add	r7, sp, #0
+ 343              	.LCFI14:
+ 344              		.cfi_def_cfa_register 7
+ 345 0006 7860     		str	r0, [r7, #4]
+ 346 0008 3960     		str	r1, [r7]
+  92:./system/system-mpu.c ****   mpu_flag_t flg;
+  93:./system/system-mpu.c ****   flg.val=0;
+ 347              		.loc 1 93 10
+ 348 000a 0023     		movs	r3, #0
+ 349 000c 3B73     		strb	r3, [r7, #12]
+  94:./system/system-mpu.c ****   if(mpu_settings.acq_sense!= MPU_ACQ_SENSE_GYR && mpu_settings.acq_sense!=MPU_ACQ_SENSE_GYR_TEM)
+ 350              		.loc 1 94 18
+ 351 000e 584B     		ldr	r3, .L25
+ 352 0010 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 353              		.loc 1 94 5
+ 354 0012 022B     		cmp	r3, #2
+ 355 0014 51D0     		beq	.L6
+ 356              		.loc 1 94 64 discriminator 1
+ 357 0016 564B     		ldr	r3, .L25
+ 358 0018 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 359              		.loc 1 94 49 discriminator 1
+ 360 001a 062B     		cmp	r3, #6
+ 361 001c 4DD0     		beq	.L6
+  95:./system/system-mpu.c ****   { 
+  96:./system/system-mpu.c ****     // check acceleration
+  97:./system/system-mpu.c ****     if(current->Accelerometer_fX> (previous->Accelerometer_fX +mpu_settings.accel_thr ))
+ 362              		.loc 1 97 15
+ 363 001e 7B68     		ldr	r3, [r7, #4]
+ 364 0020 1C69     		ldr	r4, [r3, #16]	@ float
+ 365              		.loc 1 97 44
+ 366 0022 3B68     		ldr	r3, [r7]
+ 367 0024 1D69     		ldr	r5, [r3, #16]	@ float
+ 368              		.loc 1 97 76
+ 369 0026 524B     		ldr	r3, .L25
+ 370 0028 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 371              		.loc 1 97 63
+ 372 002a 1846     		mov	r0, r3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 9
+
+
+ 373 002c FFF7FEFF 		bl	__aeabi_i2f
+ 374 0030 0346     		mov	r3, r0
+ 375 0032 1946     		mov	r1, r3
+ 376 0034 2846     		mov	r0, r5
+ 377 0036 FFF7FEFF 		bl	__aeabi_fadd
+ 378 003a 0346     		mov	r3, r0
+ 379              		.loc 1 97 7
+ 380 003c 1946     		mov	r1, r3
+ 381 003e 2046     		mov	r0, r4
+ 382 0040 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 383 0044 0346     		mov	r3, r0
+ 384 0046 002B     		cmp	r3, #0
+ 385 0048 03D0     		beq	.L7
+  98:./system/system-mpu.c ****       flg.mot_accel_x=1;
+ 386              		.loc 1 98 22
+ 387 004a 3B7B     		ldrb	r3, [r7, #12]
+ 388 004c 43F00103 		orr	r3, r3, #1
+ 389 0050 3B73     		strb	r3, [r7, #12]
+ 390              	.L7:
+  99:./system/system-mpu.c ****     if(current->Accelerometer_fY> (previous->Accelerometer_fY +mpu_settings.accel_thr ))
+ 391              		.loc 1 99 15
+ 392 0052 7B68     		ldr	r3, [r7, #4]
+ 393 0054 5C69     		ldr	r4, [r3, #20]	@ float
+ 394              		.loc 1 99 44
+ 395 0056 3B68     		ldr	r3, [r7]
+ 396 0058 5D69     		ldr	r5, [r3, #20]	@ float
+ 397              		.loc 1 99 76
+ 398 005a 454B     		ldr	r3, .L25
+ 399 005c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 400              		.loc 1 99 63
+ 401 005e 1846     		mov	r0, r3
+ 402 0060 FFF7FEFF 		bl	__aeabi_i2f
+ 403 0064 0346     		mov	r3, r0
+ 404 0066 1946     		mov	r1, r3
+ 405 0068 2846     		mov	r0, r5
+ 406 006a FFF7FEFF 		bl	__aeabi_fadd
+ 407 006e 0346     		mov	r3, r0
+ 408              		.loc 1 99 7
+ 409 0070 1946     		mov	r1, r3
+ 410 0072 2046     		mov	r0, r4
+ 411 0074 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 412 0078 0346     		mov	r3, r0
+ 413 007a 002B     		cmp	r3, #0
+ 414 007c 03D0     		beq	.L9
+ 100:./system/system-mpu.c ****       flg.mot_accel_y=1;
+ 415              		.loc 1 100 22
+ 416 007e 3B7B     		ldrb	r3, [r7, #12]
+ 417 0080 43F00203 		orr	r3, r3, #2
+ 418 0084 3B73     		strb	r3, [r7, #12]
+ 419              	.L9:
+ 101:./system/system-mpu.c ****     if(current->Accelerometer_fZ> (previous->Accelerometer_fZ +mpu_settings.accel_thr ))
+ 420              		.loc 1 101 15
+ 421 0086 7B68     		ldr	r3, [r7, #4]
+ 422 0088 9C69     		ldr	r4, [r3, #24]	@ float
+ 423              		.loc 1 101 44
+ 424 008a 3B68     		ldr	r3, [r7]
+ 425 008c 9D69     		ldr	r5, [r3, #24]	@ float
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 10
+
+
+ 426              		.loc 1 101 76
+ 427 008e 384B     		ldr	r3, .L25
+ 428 0090 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 429              		.loc 1 101 63
+ 430 0092 1846     		mov	r0, r3
+ 431 0094 FFF7FEFF 		bl	__aeabi_i2f
+ 432 0098 0346     		mov	r3, r0
+ 433 009a 1946     		mov	r1, r3
+ 434 009c 2846     		mov	r0, r5
+ 435 009e FFF7FEFF 		bl	__aeabi_fadd
+ 436 00a2 0346     		mov	r3, r0
+ 437              		.loc 1 101 7
+ 438 00a4 1946     		mov	r1, r3
+ 439 00a6 2046     		mov	r0, r4
+ 440 00a8 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 441 00ac 0346     		mov	r3, r0
+ 442 00ae 002B     		cmp	r3, #0
+ 443 00b0 03D0     		beq	.L6
+ 102:./system/system-mpu.c ****       flg.mot_accel_z=1;
+ 444              		.loc 1 102 22
+ 445 00b2 3B7B     		ldrb	r3, [r7, #12]
+ 446 00b4 43F00403 		orr	r3, r3, #4
+ 447 00b8 3B73     		strb	r3, [r7, #12]
+ 448              	.L6:
+ 103:./system/system-mpu.c ****   }
+ 104:./system/system-mpu.c **** 
+ 105:./system/system-mpu.c ****   // check Gyroscope
+ 106:./system/system-mpu.c ****   if(mpu_settings.acq_sense!= MPU_ACQ_SENSE_ACC && mpu_settings.acq_sense!=MPU_ACQ_SENSE_ACC_TEM)
+ 449              		.loc 1 106 18
+ 450 00ba 2D4B     		ldr	r3, .L25
+ 451 00bc 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 452              		.loc 1 106 5
+ 453 00be 012B     		cmp	r3, #1
+ 454 00c0 51D0     		beq	.L12
+ 455              		.loc 1 106 64 discriminator 1
+ 456 00c2 2B4B     		ldr	r3, .L25
+ 457 00c4 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 458              		.loc 1 106 49 discriminator 1
+ 459 00c6 052B     		cmp	r3, #5
+ 460 00c8 4DD0     		beq	.L12
+ 107:./system/system-mpu.c ****   {
+ 108:./system/system-mpu.c ****     if(current->Gyroscope_fX > (previous->Gyroscope_fX +mpu_settings.gyro_thr ))
+ 461              		.loc 1 108 15
+ 462 00ca 7B68     		ldr	r3, [r7, #4]
+ 463 00cc DC69     		ldr	r4, [r3, #28]	@ float
+ 464              		.loc 1 108 41
+ 465 00ce 3B68     		ldr	r3, [r7]
+ 466 00d0 DD69     		ldr	r5, [r3, #28]	@ float
+ 467              		.loc 1 108 69
+ 468 00d2 274B     		ldr	r3, .L25
+ 469 00d4 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 470              		.loc 1 108 56
+ 471 00d6 1846     		mov	r0, r3
+ 472 00d8 FFF7FEFF 		bl	__aeabi_i2f
+ 473 00dc 0346     		mov	r3, r0
+ 474 00de 1946     		mov	r1, r3
+ 475 00e0 2846     		mov	r0, r5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 11
+
+
+ 476 00e2 FFF7FEFF 		bl	__aeabi_fadd
+ 477 00e6 0346     		mov	r3, r0
+ 478              		.loc 1 108 7
+ 479 00e8 1946     		mov	r1, r3
+ 480 00ea 2046     		mov	r0, r4
+ 481 00ec FFF7FEFF 		bl	__aeabi_fcmpgt
+ 482 00f0 0346     		mov	r3, r0
+ 483 00f2 002B     		cmp	r3, #0
+ 484 00f4 03D0     		beq	.L13
+ 109:./system/system-mpu.c ****       flg.mot_gyro_x=1;
+ 485              		.loc 1 109 21
+ 486 00f6 3B7B     		ldrb	r3, [r7, #12]
+ 487 00f8 43F00803 		orr	r3, r3, #8
+ 488 00fc 3B73     		strb	r3, [r7, #12]
+ 489              	.L13:
+ 110:./system/system-mpu.c ****     if(current->Gyroscope_fY > (previous->Gyroscope_fY +mpu_settings.gyro_thr ))
+ 490              		.loc 1 110 15
+ 491 00fe 7B68     		ldr	r3, [r7, #4]
+ 492 0100 1C6A     		ldr	r4, [r3, #32]	@ float
+ 493              		.loc 1 110 41
+ 494 0102 3B68     		ldr	r3, [r7]
+ 495 0104 1D6A     		ldr	r5, [r3, #32]	@ float
+ 496              		.loc 1 110 69
+ 497 0106 1A4B     		ldr	r3, .L25
+ 498 0108 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 499              		.loc 1 110 56
+ 500 010a 1846     		mov	r0, r3
+ 501 010c FFF7FEFF 		bl	__aeabi_i2f
+ 502 0110 0346     		mov	r3, r0
+ 503 0112 1946     		mov	r1, r3
+ 504 0114 2846     		mov	r0, r5
+ 505 0116 FFF7FEFF 		bl	__aeabi_fadd
+ 506 011a 0346     		mov	r3, r0
+ 507              		.loc 1 110 7
+ 508 011c 1946     		mov	r1, r3
+ 509 011e 2046     		mov	r0, r4
+ 510 0120 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 511 0124 0346     		mov	r3, r0
+ 512 0126 002B     		cmp	r3, #0
+ 513 0128 03D0     		beq	.L15
+ 111:./system/system-mpu.c ****       flg.mot_accel_y=1;
+ 514              		.loc 1 111 22
+ 515 012a 3B7B     		ldrb	r3, [r7, #12]
+ 516 012c 43F00203 		orr	r3, r3, #2
+ 517 0130 3B73     		strb	r3, [r7, #12]
+ 518              	.L15:
+ 112:./system/system-mpu.c ****     if(current->Gyroscope_fZ >  (previous->Gyroscope_fZ +mpu_settings.gyro_thr ))
+ 519              		.loc 1 112 15
+ 520 0132 7B68     		ldr	r3, [r7, #4]
+ 521 0134 5C6A     		ldr	r4, [r3, #36]	@ float
+ 522              		.loc 1 112 42
+ 523 0136 3B68     		ldr	r3, [r7]
+ 524 0138 5D6A     		ldr	r5, [r3, #36]	@ float
+ 525              		.loc 1 112 70
+ 526 013a 0D4B     		ldr	r3, .L25
+ 527 013c DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 528              		.loc 1 112 57
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 12
+
+
+ 529 013e 1846     		mov	r0, r3
+ 530 0140 FFF7FEFF 		bl	__aeabi_i2f
+ 531 0144 0346     		mov	r3, r0
+ 532 0146 1946     		mov	r1, r3
+ 533 0148 2846     		mov	r0, r5
+ 534 014a FFF7FEFF 		bl	__aeabi_fadd
+ 535 014e 0346     		mov	r3, r0
+ 536              		.loc 1 112 7
+ 537 0150 1946     		mov	r1, r3
+ 538 0152 2046     		mov	r0, r4
+ 539 0154 FFF7FEFF 		bl	__aeabi_fcmpgt
+ 540 0158 0346     		mov	r3, r0
+ 541 015a 002B     		cmp	r3, #0
+ 542 015c 03D0     		beq	.L12
+ 113:./system/system-mpu.c ****       flg.mot_accel_z=1;
+ 543              		.loc 1 113 22
+ 544 015e 3B7B     		ldrb	r3, [r7, #12]
+ 545 0160 43F00403 		orr	r3, r3, #4
+ 546 0164 3B73     		strb	r3, [r7, #12]
+ 547              	.L12:
+ 114:./system/system-mpu.c ****   }
+ 115:./system/system-mpu.c ****   return flg.val;
+ 548              		.loc 1 115 13
+ 549 0166 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 116:./system/system-mpu.c **** }
+ 550              		.loc 1 116 1
+ 551 0168 1846     		mov	r0, r3
+ 552 016a 1037     		adds	r7, r7, #16
+ 553              	.LCFI15:
+ 554              		.cfi_def_cfa_offset 16
+ 555 016c BD46     		mov	sp, r7
+ 556              	.LCFI16:
+ 557              		.cfi_def_cfa_register 13
+ 558              		@ sp needed
+ 559 016e B0BD     		pop	{r4, r5, r7, pc}
+ 560              	.L26:
+ 561              		.align	2
+ 562              	.L25:
+ 563 0170 00000000 		.word	mpu_settings
+ 564              		.cfi_endproc
+ 565              	.LFE35:
+ 567              		.section	.text.mpu_wait_handle,"ax",%progbits
+ 568              		.align	1
+ 569              		.global	mpu_wait_handle
+ 570              		.syntax unified
+ 571              		.thumb
+ 572              		.thumb_func
+ 574              	mpu_wait_handle:
+ 575              	.LFB36:
+ 117:./system/system-mpu.c **** //-------------------------------------------------------------------------------------------
+ 118:./system/system-mpu.c **** 
+ 119:./system/system-mpu.c **** //********************************************************************************************
+ 120:./system/system-mpu.c **** //
+ 121:./system/system-mpu.c **** // MPU methods
+ 122:./system/system-mpu.c **** //
+ 123:./system/system-mpu.c **** //********************************************************************************************
+ 124:./system/system-mpu.c **** void mpu_wait_handle(void)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 13
+
+
+ 125:./system/system-mpu.c **** {
+ 576              		.loc 1 125 1
+ 577              		.cfi_startproc
+ 578              		@ args = 0, pretend = 0, frame = 0
+ 579              		@ frame_needed = 1, uses_anonymous_args = 0
+ 580              		@ link register save eliminated.
+ 581 0000 80B4     		push	{r7}
+ 582              	.LCFI17:
+ 583              		.cfi_def_cfa_offset 4
+ 584              		.cfi_offset 7, -4
+ 585 0002 00AF     		add	r7, sp, #0
+ 586              	.LCFI18:
+ 587              		.cfi_def_cfa_register 7
+ 126:./system/system-mpu.c ****    if(mpu_ticks>=mpu_cycle)
+ 588              		.loc 1 126 16
+ 589 0004 0A4B     		ldr	r3, .L31
+ 590 0006 1A68     		ldr	r2, [r3]
+ 591 0008 0A4B     		ldr	r3, .L31+4
+ 592 000a 1B68     		ldr	r3, [r3]
+ 593              		.loc 1 126 6
+ 594 000c 9A42     		cmp	r2, r3
+ 595 000e 0AD3     		bcc	.L30
+ 127:./system/system-mpu.c **** 		{ 
+ 128:./system/system-mpu.c **** 			 if(mpu_init_sucess) mpu_state=MPU_READ;
+ 596              		.loc 1 128 8
+ 597 0010 094B     		ldr	r3, .L31+8
+ 598 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 599              		.loc 1 128 7
+ 600 0014 002B     		cmp	r3, #0
+ 601 0016 03D0     		beq	.L29
+ 602              		.loc 1 128 34 discriminator 1
+ 603 0018 084B     		ldr	r3, .L31+12
+ 604 001a 0322     		movs	r2, #3
+ 605 001c 1A70     		strb	r2, [r3]
+ 129:./system/system-mpu.c **** 			 else					       mpu_state=MPU_INIT;	
+ 130:./system/system-mpu.c **** 		} 
+ 131:./system/system-mpu.c **** }
+ 606              		.loc 1 131 1 discriminator 1
+ 607 001e 02E0     		b	.L30
+ 608              	.L29:
+ 129:./system/system-mpu.c **** 			 else					       mpu_state=MPU_INIT;	
+ 609              		.loc 1 129 30
+ 610 0020 064B     		ldr	r3, .L31+12
+ 611 0022 0122     		movs	r2, #1
+ 612 0024 1A70     		strb	r2, [r3]
+ 613              	.L30:
+ 614              		.loc 1 131 1
+ 615 0026 00BF     		nop
+ 616 0028 BD46     		mov	sp, r7
+ 617              	.LCFI19:
+ 618              		.cfi_def_cfa_register 13
+ 619              		@ sp needed
+ 620 002a 80BC     		pop	{r7}
+ 621              	.LCFI20:
+ 622              		.cfi_restore 7
+ 623              		.cfi_def_cfa_offset 0
+ 624 002c 7047     		bx	lr
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 14
+
+
+ 625              	.L32:
+ 626 002e 00BF     		.align	2
+ 627              	.L31:
+ 628 0030 00000000 		.word	mpu_ticks
+ 629 0034 00000000 		.word	mpu_cycle
+ 630 0038 00000000 		.word	mpu_init_sucess
+ 631 003c 00000000 		.word	mpu_state
+ 632              		.cfi_endproc
+ 633              	.LFE36:
+ 635              		.section	.text.mpu_init_handle,"ax",%progbits
+ 636              		.align	1
+ 637              		.global	mpu_init_handle
+ 638              		.syntax unified
+ 639              		.thumb
+ 640              		.thumb_func
+ 642              	mpu_init_handle:
+ 643              	.LFB37:
+ 132:./system/system-mpu.c **** //----------------------------------------------------------------------------------------------
+ 133:./system/system-mpu.c **** void mpu_init_handle(USART_TypeDef *uart,MPU6050_t* mpu)
+ 134:./system/system-mpu.c **** {
+ 644              		.loc 1 134 1
+ 645              		.cfi_startproc
+ 646              		@ args = 0, pretend = 0, frame = 8
+ 647              		@ frame_needed = 1, uses_anonymous_args = 0
+ 648 0000 80B5     		push	{r7, lr}
+ 649              	.LCFI21:
+ 650              		.cfi_def_cfa_offset 8
+ 651              		.cfi_offset 7, -8
+ 652              		.cfi_offset 14, -4
+ 653 0002 82B0     		sub	sp, sp, #8
+ 654              	.LCFI22:
+ 655              		.cfi_def_cfa_offset 16
+ 656 0004 00AF     		add	r7, sp, #0
+ 657              	.LCFI23:
+ 658              		.cfi_def_cfa_register 7
+ 659 0006 7860     		str	r0, [r7, #4]
+ 660 0008 3960     		str	r1, [r7]
+ 135:./system/system-mpu.c **** 	i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
+ 661              		.loc 1 135 2
+ 662 000a 2022     		movs	r2, #32
+ 663 000c 1649     		ldr	r1, .L36
+ 664 000e 1748     		ldr	r0, .L36+4
+ 665 0010 FFF7FEFF 		bl	i2c_init_std
+ 136:./system/system-mpu.c **** 	mpu_error=mpu6050_init((MPU6050_t *)&myMPU6050,mpu_settings.accel_range, mpu_settings.gyro_range);
+ 666              		.loc 1 136 61
+ 667 0014 164B     		ldr	r3, .L36+8
+ 668 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 669              		.loc 1 136 87
+ 670 0018 154A     		ldr	r2, .L36+8
+ 671 001a 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+ 672              		.loc 1 136 12
+ 673 001c 1946     		mov	r1, r3
+ 674 001e 1548     		ldr	r0, .L36+12
+ 675 0020 FFF7FEFF 		bl	mpu6050_init
+ 676 0024 0346     		mov	r3, r0
+ 677 0026 1A46     		mov	r2, r3
+ 678              		.loc 1 136 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 15
+
+
+ 679 0028 134B     		ldr	r3, .L36+16
+ 680 002a 1A70     		strb	r2, [r3]
+ 137:./system/system-mpu.c **** 	mpu_init_sucess=0;
+ 681              		.loc 1 137 17
+ 682 002c 134B     		ldr	r3, .L36+20
+ 683 002e 0022     		movs	r2, #0
+ 684 0030 1A70     		strb	r2, [r3]
+ 138:./system/system-mpu.c **** 	mpu_state=MPU_ERROR;
+ 685              		.loc 1 138 11
+ 686 0032 134B     		ldr	r3, .L36+24
+ 687 0034 0222     		movs	r2, #2
+ 688 0036 1A70     		strb	r2, [r3]
+ 139:./system/system-mpu.c **** 	if(mpu_error==I2C_OK)
+ 689              		.loc 1 139 14
+ 690 0038 0F4B     		ldr	r3, .L36+16
+ 691 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 692              		.loc 1 139 4
+ 693 003c 002B     		cmp	r3, #0
+ 694 003e 0ED1     		bne	.L35
+ 140:./system/system-mpu.c **** 	{
+ 141:./system/system-mpu.c **** 	  mpu_init_sucess=1;
+ 695              		.loc 1 141 19
+ 696 0040 0E4B     		ldr	r3, .L36+20
+ 697 0042 0122     		movs	r2, #1
+ 698 0044 1A70     		strb	r2, [r3]
+ 142:./system/system-mpu.c **** 	  mpu_state=MPU_READ;
+ 699              		.loc 1 142 13
+ 700 0046 0E4B     		ldr	r3, .L36+24
+ 701 0048 0322     		movs	r2, #3
+ 702 004a 1A70     		strb	r2, [r3]
+ 143:./system/system-mpu.c **** 	  pre_ticks=systemticks;
+ 703              		.loc 1 143 13
+ 704 004c 0D4B     		ldr	r3, .L36+28
+ 705 004e D3E90023 		ldrd	r2, [r3]
+ 706 0052 0D49     		ldr	r1, .L36+32
+ 707 0054 C1E90023 		strd	r2, [r1]
+ 144:./system/system-mpu.c **** 	  mpu_time=0;
+ 708              		.loc 1 144 12
+ 709 0058 0C4B     		ldr	r3, .L36+36
+ 710 005a 0022     		movs	r2, #0
+ 711 005c 1A60     		str	r2, [r3]
+ 712              	.L35:
+ 145:./system/system-mpu.c ****     }
+ 146:./system/system-mpu.c **** }
+ 713              		.loc 1 146 1
+ 714 005e 00BF     		nop
+ 715 0060 0837     		adds	r7, r7, #8
+ 716              	.LCFI24:
+ 717              		.cfi_def_cfa_offset 8
+ 718 0062 BD46     		mov	sp, r7
+ 719              	.LCFI25:
+ 720              		.cfi_def_cfa_register 13
+ 721              		@ sp needed
+ 722 0064 80BD     		pop	{r7, pc}
+ 723              	.L37:
+ 724 0066 00BF     		.align	2
+ 725              	.L36:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 16
+
+
+ 726 0068 801A0600 		.word	400000
+ 727 006c 00540040 		.word	1073763328
+ 728 0070 00000000 		.word	mpu_settings
+ 729 0074 00000000 		.word	myMPU6050
+ 730 0078 00000000 		.word	mpu_error
+ 731 007c 00000000 		.word	mpu_init_sucess
+ 732 0080 00000000 		.word	mpu_state
+ 733 0084 00000000 		.word	systemticks
+ 734 0088 00000000 		.word	pre_ticks
+ 735 008c 00000000 		.word	mpu_time
+ 736              		.cfi_endproc
+ 737              	.LFE37:
+ 739              		.section	.text.mpu_acq_handle,"ax",%progbits
+ 740              		.align	1
+ 741              		.global	mpu_acq_handle
+ 742              		.syntax unified
+ 743              		.thumb
+ 744              		.thumb_func
+ 746              	mpu_acq_handle:
+ 747              	.LFB38:
+ 147:./system/system-mpu.c **** //----------------------------------------------------------------------------------------------
+ 148:./system/system-mpu.c **** void mpu_acq_handle(USART_TypeDef *uart,MPU6050_t* mpu)
+ 149:./system/system-mpu.c **** {
+ 748              		.loc 1 149 1
+ 749              		.cfi_startproc
+ 750              		@ args = 0, pretend = 0, frame = 8
+ 751              		@ frame_needed = 1, uses_anonymous_args = 0
+ 752 0000 80B5     		push	{r7, lr}
+ 753              	.LCFI26:
+ 754              		.cfi_def_cfa_offset 8
+ 755              		.cfi_offset 7, -8
+ 756              		.cfi_offset 14, -4
+ 757 0002 82B0     		sub	sp, sp, #8
+ 758              	.LCFI27:
+ 759              		.cfi_def_cfa_offset 16
+ 760 0004 00AF     		add	r7, sp, #0
+ 761              	.LCFI28:
+ 762              		.cfi_def_cfa_register 7
+ 763 0006 7860     		str	r0, [r7, #4]
+ 764 0008 3960     		str	r1, [r7]
+ 150:./system/system-mpu.c ****   if(mpu_sample_cnt< mpu_settings.max_sample_cnt)
+ 765              		.loc 1 150 34
+ 766 000a 0C4B     		ldr	r3, .L41
+ 767 000c 1A89     		ldrh	r2, [r3, #8]
+ 768              		.loc 1 150 20
+ 769 000e 0C4B     		ldr	r3, .L41+4
+ 770 0010 1B88     		ldrh	r3, [r3]
+ 771              		.loc 1 150 5
+ 772 0012 9A42     		cmp	r2, r3
+ 773 0014 0DD9     		bls	.L40
+ 151:./system/system-mpu.c **** 	{
+ 152:./system/system-mpu.c **** 		mpu_read_handle(uart,mpu);	  	 
+ 774              		.loc 1 152 3
+ 775 0016 3968     		ldr	r1, [r7]
+ 776 0018 7868     		ldr	r0, [r7, #4]
+ 777 001a FFF7FEFF 		bl	mpu_read_handle
+ 153:./system/system-mpu.c **** 		if(mpu_error==I2C_OK)
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 17
+
+
+ 778              		.loc 1 153 15
+ 779 001e 094B     		ldr	r3, .L41+8
+ 780 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 781              		.loc 1 153 5
+ 782 0022 002B     		cmp	r3, #0
+ 783 0024 05D1     		bne	.L40
+ 154:./system/system-mpu.c **** 		{
+ 155:./system/system-mpu.c **** 		  mpu_ticks=0;
+ 784              		.loc 1 155 14
+ 785 0026 084B     		ldr	r3, .L41+12
+ 786 0028 0022     		movs	r2, #0
+ 787 002a 1A60     		str	r2, [r3]
+ 156:./system/system-mpu.c **** 		  mpu_state=MPU_WAIT;
+ 788              		.loc 1 156 14
+ 789 002c 074B     		ldr	r3, .L41+16
+ 790 002e 0022     		movs	r2, #0
+ 791 0030 1A70     		strb	r2, [r3]
+ 792              	.L40:
+ 157:./system/system-mpu.c **** 		}
+ 158:./system/system-mpu.c **** 	}	
+ 159:./system/system-mpu.c **** }
+ 793              		.loc 1 159 1
+ 794 0032 00BF     		nop
+ 795 0034 0837     		adds	r7, r7, #8
+ 796              	.LCFI29:
+ 797              		.cfi_def_cfa_offset 8
+ 798 0036 BD46     		mov	sp, r7
+ 799              	.LCFI30:
+ 800              		.cfi_def_cfa_register 13
+ 801              		@ sp needed
+ 802 0038 80BD     		pop	{r7, pc}
+ 803              	.L42:
+ 804 003a 00BF     		.align	2
+ 805              	.L41:
+ 806 003c 00000000 		.word	mpu_settings
+ 807 0040 00000000 		.word	mpu_sample_cnt
+ 808 0044 00000000 		.word	mpu_error
+ 809 0048 00000000 		.word	mpu_ticks
+ 810 004c 00000000 		.word	mpu_state
+ 811              		.cfi_endproc
+ 812              	.LFE38:
+ 814              		.global	__aeabi_uldivmod
+ 815              		.section	.rodata
+ 816              		.align	2
+ 817              	.LC0:
+ 818 0000 097C00   		.ascii	"\011|\000"
+ 819              		.section	.text.mpu_read_handle,"ax",%progbits
+ 820              		.align	1
+ 821              		.global	mpu_read_handle
+ 822              		.syntax unified
+ 823              		.thumb
+ 824              		.thumb_func
+ 826              	mpu_read_handle:
+ 827              	.LFB39:
+ 160:./system/system-mpu.c **** //----------------------------------------------------------------------------------------------
+ 161:./system/system-mpu.c **** void mpu_read_handle(USART_TypeDef *uart,MPU6050_t* mpu)
+ 162:./system/system-mpu.c **** {
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 18
+
+
+ 828              		.loc 1 162 1
+ 829              		.cfi_startproc
+ 830              		@ args = 0, pretend = 0, frame = 8
+ 831              		@ frame_needed = 1, uses_anonymous_args = 0
+ 832 0000 B0B5     		push	{r4, r5, r7, lr}
+ 833              	.LCFI31:
+ 834              		.cfi_def_cfa_offset 16
+ 835              		.cfi_offset 4, -16
+ 836              		.cfi_offset 5, -12
+ 837              		.cfi_offset 7, -8
+ 838              		.cfi_offset 14, -4
+ 839 0002 82B0     		sub	sp, sp, #8
+ 840              	.LCFI32:
+ 841              		.cfi_def_cfa_offset 24
+ 842 0004 00AF     		add	r7, sp, #0
+ 843              	.LCFI33:
+ 844              		.cfi_def_cfa_register 7
+ 845 0006 7860     		str	r0, [r7, #4]
+ 846 0008 3960     		str	r1, [r7]
+ 163:./system/system-mpu.c **** 	if(mpu_sample_cnt==0)
+ 847              		.loc 1 163 19
+ 848 000a 334B     		ldr	r3, .L47
+ 849 000c 1B88     		ldrh	r3, [r3]
+ 850              		.loc 1 163 4
+ 851 000e 002B     		cmp	r3, #0
+ 852 0010 0BD1     		bne	.L44
+ 164:./system/system-mpu.c **** 	{
+ 165:./system/system-mpu.c **** 		pre_ticks=systemticks;
+ 853              		.loc 1 165 12
+ 854 0012 324B     		ldr	r3, .L47+4
+ 855 0014 D3E90023 		ldrd	r2, [r3]
+ 856 0018 3149     		ldr	r1, .L47+8
+ 857 001a C1E90023 		strd	r2, [r1]
+ 166:./system/system-mpu.c **** 		mpu_time=0;
+ 858              		.loc 1 166 11
+ 859 001e 314B     		ldr	r3, .L47+12
+ 860 0020 0022     		movs	r2, #0
+ 861 0022 1A60     		str	r2, [r3]
+ 167:./system/system-mpu.c **** 		mpu_is_first_sample=1; 
+ 862              		.loc 1 167 22
+ 863 0024 304B     		ldr	r3, .L47+16
+ 864 0026 0122     		movs	r2, #1
+ 865 0028 1A70     		strb	r2, [r3]
+ 866              	.L44:
+ 168:./system/system-mpu.c **** 
+ 169:./system/system-mpu.c **** 	}
+ 170:./system/system-mpu.c **** 	mpu_time += (systemticks-pre_ticks)/100;
+ 867              		.loc 1 170 26
+ 868 002a 2C4B     		ldr	r3, .L47+4
+ 869 002c D3E90001 		ldrd	r0, [r3]
+ 870 0030 2B4B     		ldr	r3, .L47+8
+ 871 0032 D3E90023 		ldrd	r2, [r3]
+ 872 0036 841A     		subs	r4, r0, r2
+ 873 0038 61EB0305 		sbc	r5, r1, r3
+ 874              		.loc 1 170 37
+ 875 003c 4FF06402 		mov	r2, #100
+ 876 0040 4FF00003 		mov	r3, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 19
+
+
+ 877 0044 2046     		mov	r0, r4
+ 878 0046 2946     		mov	r1, r5
+ 879 0048 FFF7FEFF 		bl	__aeabi_uldivmod
+ 880 004c 0246     		mov	r2, r0
+ 881 004e 0B46     		mov	r3, r1
+ 882              		.loc 1 170 11
+ 883 0050 244B     		ldr	r3, .L47+12
+ 884 0052 1B68     		ldr	r3, [r3]
+ 885 0054 1344     		add	r3, r3, r2
+ 886 0056 234A     		ldr	r2, .L47+12
+ 887 0058 1360     		str	r3, [r2]
+ 171:./system/system-mpu.c **** 	pre_ticks=systemticks;
+ 888              		.loc 1 171 11
+ 889 005a 204B     		ldr	r3, .L47+4
+ 890 005c D3E90023 		ldrd	r2, [r3]
+ 891 0060 1F49     		ldr	r1, .L47+8
+ 892 0062 C1E90023 		strd	r2, [r1]
+ 172:./system/system-mpu.c **** 	mpu_error=mpu6050_read((MPU6050_t *)&myMPU6050,mpu_settings.acq_sense);
+ 893              		.loc 1 172 12
+ 894 0066 214B     		ldr	r3, .L47+20
+ 895 0068 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 896 006a 1946     		mov	r1, r3
+ 897 006c 2048     		ldr	r0, .L47+24
+ 898 006e FFF7FEFF 		bl	mpu6050_read
+ 899 0072 0346     		mov	r3, r0
+ 900 0074 1A46     		mov	r2, r3
+ 901              		.loc 1 172 11
+ 902 0076 1F4B     		ldr	r3, .L47+28
+ 903 0078 1A70     		strb	r2, [r3]
+ 173:./system/system-mpu.c **** 	mpu_state=MPU_ERROR;
+ 904              		.loc 1 173 11
+ 905 007a 1F4B     		ldr	r3, .L47+32
+ 906 007c 0222     		movs	r2, #2
+ 907 007e 1A70     		strb	r2, [r3]
+ 174:./system/system-mpu.c **** 	if(mpu_error==I2C_OK)
+ 908              		.loc 1 174 14
+ 909 0080 1C4B     		ldr	r3, .L47+28
+ 910 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 911              		.loc 1 174 4
+ 912 0084 002B     		cmp	r3, #0
+ 913 0086 22D1     		bne	.L46
+ 175:./system/system-mpu.c **** 	{
+ 176:./system/system-mpu.c **** 	 mpu_sample_cnt++;
+ 914              		.loc 1 176 17
+ 915 0088 134B     		ldr	r3, .L47
+ 916 008a 1B88     		ldrh	r3, [r3]
+ 917 008c 0133     		adds	r3, r3, #1
+ 918 008e 9AB2     		uxth	r2, r3
+ 919 0090 114B     		ldr	r3, .L47
+ 920 0092 1A80     		strh	r2, [r3]	@ movhi
+ 177:./system/system-mpu.c **** 	 uart_print_integer(uart,mpu_sample_cnt,10);
+ 921              		.loc 1 177 3
+ 922 0094 104B     		ldr	r3, .L47
+ 923 0096 1B88     		ldrh	r3, [r3]
+ 924 0098 0A22     		movs	r2, #10
+ 925 009a 1946     		mov	r1, r3
+ 926 009c 7868     		ldr	r0, [r7, #4]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 20
+
+
+ 927 009e FFF7FEFF 		bl	uart_print_integer
+ 178:./system/system-mpu.c **** 	 uart_print (uart,"\t|");
+ 928              		.loc 1 178 3
+ 929 00a2 1649     		ldr	r1, .L47+36
+ 930 00a4 7868     		ldr	r0, [r7, #4]
+ 931 00a6 FFF7FEFF 		bl	uart_print
+ 179:./system/system-mpu.c **** 	 uart_print_integer(uart,mpu_time,10);
+ 932              		.loc 1 179 3
+ 933 00aa 0E4B     		ldr	r3, .L47+12
+ 934 00ac 1B68     		ldr	r3, [r3]
+ 935 00ae 0A22     		movs	r2, #10
+ 936 00b0 1946     		mov	r1, r3
+ 937 00b2 7868     		ldr	r0, [r7, #4]
+ 938 00b4 FFF7FEFF 		bl	uart_print_integer
+ 180:./system/system-mpu.c **** 	 mpu6050_uart_print(uart,(MPU6050_t *)&myMPU6050,mpu_settings.acq_sense,mpu_settings.acq_mode);
+ 939              		.loc 1 180 3
+ 940 00b8 0C4B     		ldr	r3, .L47+20
+ 941 00ba 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
+ 942 00bc 0B4B     		ldr	r3, .L47+20
+ 943 00be 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 944 00c0 0B49     		ldr	r1, .L47+24
+ 945 00c2 7868     		ldr	r0, [r7, #4]
+ 946 00c4 FFF7FEFF 		bl	mpu6050_uart_print
+ 181:./system/system-mpu.c **** 	 mpu_state=MPU_PROC;
+ 947              		.loc 1 181 12
+ 948 00c8 0B4B     		ldr	r3, .L47+32
+ 949 00ca 0422     		movs	r2, #4
+ 950 00cc 1A70     		strb	r2, [r3]
+ 951              	.L46:
+ 182:./system/system-mpu.c **** 	}
+ 183:./system/system-mpu.c **** }
+ 952              		.loc 1 183 1
+ 953 00ce 00BF     		nop
+ 954 00d0 0837     		adds	r7, r7, #8
+ 955              	.LCFI34:
+ 956              		.cfi_def_cfa_offset 16
+ 957 00d2 BD46     		mov	sp, r7
+ 958              	.LCFI35:
+ 959              		.cfi_def_cfa_register 13
+ 960              		@ sp needed
+ 961 00d4 B0BD     		pop	{r4, r5, r7, pc}
+ 962              	.L48:
+ 963 00d6 00BF     		.align	2
+ 964              	.L47:
+ 965 00d8 00000000 		.word	mpu_sample_cnt
+ 966 00dc 00000000 		.word	systemticks
+ 967 00e0 00000000 		.word	pre_ticks
+ 968 00e4 00000000 		.word	mpu_time
+ 969 00e8 00000000 		.word	mpu_is_first_sample
+ 970 00ec 00000000 		.word	mpu_settings
+ 971 00f0 00000000 		.word	myMPU6050
+ 972 00f4 00000000 		.word	mpu_error
+ 973 00f8 00000000 		.word	mpu_state
+ 974 00fc 00000000 		.word	.LC0
+ 975              		.cfi_endproc
+ 976              	.LFE39:
+ 978              		.section	.rodata
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 21
+
+
+ 979 0003 00       		.align	2
+ 980              	.LC1:
+ 981 0004 76696272 		.ascii	"vibration detected betweent the time stamp:\000"
+ 981      6174696F 
+ 981      6E206465 
+ 981      74656374 
+ 981      65642062 
+ 982              		.align	2
+ 983              	.LC2:
+ 984 0030 2020616E 		.ascii	"  and sample no:\000"
+ 984      64207361 
+ 984      6D706C65 
+ 984      206E6F3A 
+ 984      00
+ 985 0041 000000   		.align	2
+ 986              	.LC3:
+ 987 0044 0D0A00   		.ascii	"\015\012\000"
+ 988 0047 00       		.align	2
+ 989              	.LC4:
+ 990 0048 76696272 		.ascii	"vibration detected at ACCEL_X \012\000"
+ 990      6174696F 
+ 990      6E206465 
+ 990      74656374 
+ 990      65642061 
+ 991              		.align	2
+ 992              	.LC5:
+ 993 0068 76696272 		.ascii	"vibration detected at ACCEL_Y \012\000"
+ 993      6174696F 
+ 993      6E206465 
+ 993      74656374 
+ 993      65642061 
+ 994              		.align	2
+ 995              	.LC6:
+ 996 0088 76696272 		.ascii	"vibration detected at ACCEL_Z \012\000"
+ 996      6174696F 
+ 996      6E206465 
+ 996      74656374 
+ 996      65642061 
+ 997              		.align	2
+ 998              	.LC7:
+ 999 00a8 76696272 		.ascii	"vibration detected at GYRO_X \012\000"
+ 999      6174696F 
+ 999      6E206465 
+ 999      74656374 
+ 999      65642061 
+ 1000 00c7 00       		.align	2
+ 1001              	.LC8:
+ 1002 00c8 76696272 		.ascii	"vibration detected at GYRO_Y \012\000"
+ 1002      6174696F 
+ 1002      6E206465 
+ 1002      74656374 
+ 1002      65642061 
+ 1003 00e7 00       		.align	2
+ 1004              	.LC9:
+ 1005 00e8 76696272 		.ascii	"vibration detected at GYRO_Z \012\000"
+ 1005      6174696F 
+ 1005      6E206465 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 22
+
+
+ 1005      74656374 
+ 1005      65642061 
+ 1006              		.section	.text.mpu_proc_handle,"ax",%progbits
+ 1007              		.align	1
+ 1008              		.global	mpu_proc_handle
+ 1009              		.syntax unified
+ 1010              		.thumb
+ 1011              		.thumb_func
+ 1013              	mpu_proc_handle:
+ 1014              	.LFB40:
+ 184:./system/system-mpu.c **** //----------------------------------------------------------------------------------------------
+ 185:./system/system-mpu.c **** void mpu_proc_handle(USART_TypeDef *uart,MPU6050_t* mpu)
+ 186:./system/system-mpu.c **** {
+ 1015              		.loc 1 186 1
+ 1016              		.cfi_startproc
+ 1017              		@ args = 0, pretend = 0, frame = 16
+ 1018              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1019 0000 80B5     		push	{r7, lr}
+ 1020              	.LCFI36:
+ 1021              		.cfi_def_cfa_offset 8
+ 1022              		.cfi_offset 7, -8
+ 1023              		.cfi_offset 14, -4
+ 1024 0002 84B0     		sub	sp, sp, #16
+ 1025              	.LCFI37:
+ 1026              		.cfi_def_cfa_offset 24
+ 1027 0004 00AF     		add	r7, sp, #0
+ 1028              	.LCFI38:
+ 1029              		.cfi_def_cfa_register 7
+ 1030 0006 7860     		str	r0, [r7, #4]
+ 1031 0008 3960     		str	r1, [r7]
+ 187:./system/system-mpu.c ****    mpu_flag_t result;
+ 188:./system/system-mpu.c ****    result.val=0; 
+ 1032              		.loc 1 188 14
+ 1033 000a 0023     		movs	r3, #0
+ 1034 000c 3B73     		strb	r3, [r7, #12]
+ 189:./system/system-mpu.c ****     save_sample((mpu_sample_t*)&cur_sample,mpu);
+ 1035              		.loc 1 189 5
+ 1036 000e 3968     		ldr	r1, [r7]
+ 1037 0010 3F48     		ldr	r0, .L59
+ 1038 0012 FFF7FEFF 		bl	save_sample
+ 190:./system/system-mpu.c ****   if(mpu_is_first_sample)
+ 1039              		.loc 1 190 6
+ 1040 0016 3F4B     		ldr	r3, .L59+4
+ 1041 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1042              		.loc 1 190 5
+ 1043 001a 002B     		cmp	r3, #0
+ 1044 001c 07D0     		beq	.L50
+ 191:./system/system-mpu.c ****   {
+ 192:./system/system-mpu.c ****     save_sample((mpu_sample_t*)&pre_sample,mpu);
+ 1045              		.loc 1 192 5
+ 1046 001e 3968     		ldr	r1, [r7]
+ 1047 0020 3D48     		ldr	r0, .L59+8
+ 1048 0022 FFF7FEFF 		bl	save_sample
+ 193:./system/system-mpu.c ****     mpu_is_first_sample=0;
+ 1049              		.loc 1 193 24
+ 1050 0026 3B4B     		ldr	r3, .L59+4
+ 1051 0028 0022     		movs	r2, #0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 23
+
+
+ 1052 002a 1A70     		strb	r2, [r3]
+ 1053 002c 66E0     		b	.L51
+ 1054              	.L50:
+ 194:./system/system-mpu.c ****   }
+ 195:./system/system-mpu.c ****   else
+ 196:./system/system-mpu.c ****   {
+ 197:./system/system-mpu.c ****      result.val=compare_sample((mpu_sample_t*)&cur_sample,(mpu_sample_t*)&pre_sample);
+ 1055              		.loc 1 197 17
+ 1056 002e 3A49     		ldr	r1, .L59+8
+ 1057 0030 3748     		ldr	r0, .L59
+ 1058 0032 FFF7FEFF 		bl	compare_sample
+ 1059 0036 0346     		mov	r3, r0
+ 1060              		.loc 1 197 16
+ 1061 0038 3B73     		strb	r3, [r7, #12]
+ 198:./system/system-mpu.c ****     if(result.val!=0)
+ 1062              		.loc 1 198 14
+ 1063 003a 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1064              		.loc 1 198 7
+ 1065 003c 002B     		cmp	r3, #0
+ 1066 003e 59D0     		beq	.L52
+ 199:./system/system-mpu.c ****     {
+ 200:./system/system-mpu.c ****         uart_print (uart,"vibration detected betweent the time stamp:");
+ 1067              		.loc 1 200 9
+ 1068 0040 3649     		ldr	r1, .L59+12
+ 1069 0042 7868     		ldr	r0, [r7, #4]
+ 1070 0044 FFF7FEFF 		bl	uart_print
+ 201:./system/system-mpu.c ****         uart_print_integer(uart,mpu_time,10);
+ 1071              		.loc 1 201 9
+ 1072 0048 354B     		ldr	r3, .L59+16
+ 1073 004a 1B68     		ldr	r3, [r3]
+ 1074 004c 0A22     		movs	r2, #10
+ 1075 004e 1946     		mov	r1, r3
+ 1076 0050 7868     		ldr	r0, [r7, #4]
+ 1077 0052 FFF7FEFF 		bl	uart_print_integer
+ 202:./system/system-mpu.c ****         uart_print (uart,"  and sample no:");
+ 1078              		.loc 1 202 9
+ 1079 0056 3349     		ldr	r1, .L59+20
+ 1080 0058 7868     		ldr	r0, [r7, #4]
+ 1081 005a FFF7FEFF 		bl	uart_print
+ 203:./system/system-mpu.c ****         uart_print_integer(uart,mpu_sample_cnt,10);
+ 1082              		.loc 1 203 9
+ 1083 005e 324B     		ldr	r3, .L59+24
+ 1084 0060 1B88     		ldrh	r3, [r3]
+ 1085 0062 0A22     		movs	r2, #10
+ 1086 0064 1946     		mov	r1, r3
+ 1087 0066 7868     		ldr	r0, [r7, #4]
+ 1088 0068 FFF7FEFF 		bl	uart_print_integer
+ 204:./system/system-mpu.c ****          uart_print(uart,"\r\n");
+ 1089              		.loc 1 204 10
+ 1090 006c 2F49     		ldr	r1, .L59+28
+ 1091 006e 7868     		ldr	r0, [r7, #4]
+ 1092 0070 FFF7FEFF 		bl	uart_print
+ 205:./system/system-mpu.c **** 
+ 206:./system/system-mpu.c ****         if(result.mot_accel_x)
+ 1093              		.loc 1 206 12
+ 1094 0074 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1095 0076 03F00103 		and	r3, r3, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 24
+
+
+ 1096 007a DBB2     		uxtb	r3, r3
+ 1097              		.loc 1 206 11
+ 1098 007c 002B     		cmp	r3, #0
+ 1099 007e 03D0     		beq	.L53
+ 207:./system/system-mpu.c ****           uart_print (uart,"vibration detected at ACCEL_X \n");
+ 1100              		.loc 1 207 11
+ 1101 0080 2B49     		ldr	r1, .L59+32
+ 1102 0082 7868     		ldr	r0, [r7, #4]
+ 1103 0084 FFF7FEFF 		bl	uart_print
+ 1104              	.L53:
+ 208:./system/system-mpu.c ****         if(result.mot_accel_y)
+ 1105              		.loc 1 208 12
+ 1106 0088 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1107 008a 03F00203 		and	r3, r3, #2
+ 1108 008e DBB2     		uxtb	r3, r3
+ 1109              		.loc 1 208 11
+ 1110 0090 002B     		cmp	r3, #0
+ 1111 0092 03D0     		beq	.L54
+ 209:./system/system-mpu.c ****           uart_print (uart,"vibration detected at ACCEL_Y \n");
+ 1112              		.loc 1 209 11
+ 1113 0094 2749     		ldr	r1, .L59+36
+ 1114 0096 7868     		ldr	r0, [r7, #4]
+ 1115 0098 FFF7FEFF 		bl	uart_print
+ 1116              	.L54:
+ 210:./system/system-mpu.c ****         if(result.mot_accel_z)
+ 1117              		.loc 1 210 12
+ 1118 009c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1119 009e 03F00403 		and	r3, r3, #4
+ 1120 00a2 DBB2     		uxtb	r3, r3
+ 1121              		.loc 1 210 11
+ 1122 00a4 002B     		cmp	r3, #0
+ 1123 00a6 03D0     		beq	.L55
+ 211:./system/system-mpu.c ****           uart_print (uart,"vibration detected at ACCEL_Z \n");
+ 1124              		.loc 1 211 11
+ 1125 00a8 2349     		ldr	r1, .L59+40
+ 1126 00aa 7868     		ldr	r0, [r7, #4]
+ 1127 00ac FFF7FEFF 		bl	uart_print
+ 1128              	.L55:
+ 212:./system/system-mpu.c **** 
+ 213:./system/system-mpu.c ****         if(result.mot_gyro_x)
+ 1129              		.loc 1 213 12
+ 1130 00b0 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1131 00b2 03F00803 		and	r3, r3, #8
+ 1132 00b6 DBB2     		uxtb	r3, r3
+ 1133              		.loc 1 213 11
+ 1134 00b8 002B     		cmp	r3, #0
+ 1135 00ba 03D0     		beq	.L56
+ 214:./system/system-mpu.c ****           uart_print (uart,"vibration detected at GYRO_X \n");
+ 1136              		.loc 1 214 11
+ 1137 00bc 1F49     		ldr	r1, .L59+44
+ 1138 00be 7868     		ldr	r0, [r7, #4]
+ 1139 00c0 FFF7FEFF 		bl	uart_print
+ 1140              	.L56:
+ 215:./system/system-mpu.c ****         if(result.mot_gyro_y)
+ 1141              		.loc 1 215 12
+ 1142 00c4 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1143 00c6 03F01003 		and	r3, r3, #16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 25
+
+
+ 1144 00ca DBB2     		uxtb	r3, r3
+ 1145              		.loc 1 215 11
+ 1146 00cc 002B     		cmp	r3, #0
+ 1147 00ce 03D0     		beq	.L57
+ 216:./system/system-mpu.c ****           uart_print (uart,"vibration detected at GYRO_Y \n");
+ 1148              		.loc 1 216 11
+ 1149 00d0 1B49     		ldr	r1, .L59+48
+ 1150 00d2 7868     		ldr	r0, [r7, #4]
+ 1151 00d4 FFF7FEFF 		bl	uart_print
+ 1152              	.L57:
+ 217:./system/system-mpu.c ****         if(result.mot_gyro_z)
+ 1153              		.loc 1 217 12
+ 1154 00d8 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 1155 00da 03F02003 		and	r3, r3, #32
+ 1156 00de DBB2     		uxtb	r3, r3
+ 1157              		.loc 1 217 11
+ 1158 00e0 002B     		cmp	r3, #0
+ 1159 00e2 03D0     		beq	.L58
+ 218:./system/system-mpu.c ****           uart_print (uart,"vibration detected at GYRO_Z \n");
+ 1160              		.loc 1 218 11
+ 1161 00e4 1749     		ldr	r1, .L59+52
+ 1162 00e6 7868     		ldr	r0, [r7, #4]
+ 1163 00e8 FFF7FEFF 		bl	uart_print
+ 1164              	.L58:
+ 219:./system/system-mpu.c **** 
+ 220:./system/system-mpu.c ****          uart_print(uart,"\r\n");
+ 1165              		.loc 1 220 10
+ 1166 00ec 0F49     		ldr	r1, .L59+28
+ 1167 00ee 7868     		ldr	r0, [r7, #4]
+ 1168 00f0 FFF7FEFF 		bl	uart_print
+ 1169              	.L52:
+ 221:./system/system-mpu.c ****     }
+ 222:./system/system-mpu.c ****     copy_sample((mpu_sample_t*)&cur_sample,(mpu_sample_t*)&pre_sample);
+ 1170              		.loc 1 222 5
+ 1171 00f4 0849     		ldr	r1, .L59+8
+ 1172 00f6 0648     		ldr	r0, .L59
+ 1173 00f8 FFF7FEFF 		bl	copy_sample
+ 1174              	.L51:
+ 223:./system/system-mpu.c ****   }
+ 224:./system/system-mpu.c **** 	mpu_ticks=0;
+ 1175              		.loc 1 224 11
+ 1176 00fc 124B     		ldr	r3, .L59+56
+ 1177 00fe 0022     		movs	r2, #0
+ 1178 0100 1A60     		str	r2, [r3]
+ 225:./system/system-mpu.c **** 	mpu_state=MPU_WAIT;
+ 1179              		.loc 1 225 11
+ 1180 0102 124B     		ldr	r3, .L59+60
+ 1181 0104 0022     		movs	r2, #0
+ 1182 0106 1A70     		strb	r2, [r3]
+ 226:./system/system-mpu.c **** }
+ 1183              		.loc 1 226 1
+ 1184 0108 00BF     		nop
+ 1185 010a 1037     		adds	r7, r7, #16
+ 1186              	.LCFI39:
+ 1187              		.cfi_def_cfa_offset 8
+ 1188 010c BD46     		mov	sp, r7
+ 1189              	.LCFI40:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 26
+
+
+ 1190              		.cfi_def_cfa_register 13
+ 1191              		@ sp needed
+ 1192 010e 80BD     		pop	{r7, pc}
+ 1193              	.L60:
+ 1194              		.align	2
+ 1195              	.L59:
+ 1196 0110 00000000 		.word	cur_sample
+ 1197 0114 00000000 		.word	mpu_is_first_sample
+ 1198 0118 00000000 		.word	pre_sample
+ 1199 011c 04000000 		.word	.LC1
+ 1200 0120 00000000 		.word	mpu_time
+ 1201 0124 30000000 		.word	.LC2
+ 1202 0128 00000000 		.word	mpu_sample_cnt
+ 1203 012c 44000000 		.word	.LC3
+ 1204 0130 48000000 		.word	.LC4
+ 1205 0134 68000000 		.word	.LC5
+ 1206 0138 88000000 		.word	.LC6
+ 1207 013c A8000000 		.word	.LC7
+ 1208 0140 C8000000 		.word	.LC8
+ 1209 0144 E8000000 		.word	.LC9
+ 1210 0148 00000000 		.word	mpu_ticks
+ 1211 014c 00000000 		.word	mpu_state
+ 1212              		.cfi_endproc
+ 1213              	.LFE40:
+ 1215              		.section	.rodata
+ 1216 0107 00       		.align	2
+ 1217              	.LC10:
+ 1218 0108 09204D50 		.ascii	"\011 MPU-ER::\000"
+ 1218      552D4552 
+ 1218      3A3A00
+ 1219 0113 00       		.align	2
+ 1220              	.LC11:
+ 1221 0114 0A00     		.ascii	"\012\000"
+ 1222              		.section	.text.mpu_error_handle,"ax",%progbits
+ 1223              		.align	1
+ 1224              		.global	mpu_error_handle
+ 1225              		.syntax unified
+ 1226              		.thumb
+ 1227              		.thumb_func
+ 1229              	mpu_error_handle:
+ 1230              	.LFB41:
+ 227:./system/system-mpu.c **** //----------------------------------------------------------------------------------------------
+ 228:./system/system-mpu.c **** /***/
+ 229:./system/system-mpu.c **** void mpu_error_handle(USART_TypeDef *uart,MPU6050_t* mpu)
+ 230:./system/system-mpu.c **** {
+ 1231              		.loc 1 230 1
+ 1232              		.cfi_startproc
+ 1233              		@ args = 0, pretend = 0, frame = 8
+ 1234              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1235 0000 80B5     		push	{r7, lr}
+ 1236              	.LCFI41:
+ 1237              		.cfi_def_cfa_offset 8
+ 1238              		.cfi_offset 7, -8
+ 1239              		.cfi_offset 14, -4
+ 1240 0002 82B0     		sub	sp, sp, #8
+ 1241              	.LCFI42:
+ 1242              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 27
+
+
+ 1243 0004 00AF     		add	r7, sp, #0
+ 1244              	.LCFI43:
+ 1245              		.cfi_def_cfa_register 7
+ 1246 0006 7860     		str	r0, [r7, #4]
+ 1247 0008 3960     		str	r1, [r7]
+ 231:./system/system-mpu.c **** 	uart_print(uart,"\t MPU-ER::");
+ 1248              		.loc 1 231 2
+ 1249 000a 0F49     		ldr	r1, .L62
+ 1250 000c 7868     		ldr	r0, [r7, #4]
+ 1251 000e FFF7FEFF 		bl	uart_print
+ 232:./system/system-mpu.c ****   uart_print_integer(uart,mpu_error,10);
+ 1252              		.loc 1 232 3
+ 1253 0012 0E4B     		ldr	r3, .L62+4
+ 1254 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1255 0016 0A22     		movs	r2, #10
+ 1256 0018 1946     		mov	r1, r3
+ 1257 001a 7868     		ldr	r0, [r7, #4]
+ 1258 001c FFF7FEFF 		bl	uart_print_integer
+ 233:./system/system-mpu.c ****   uart_print(uart,"\n");
+ 1259              		.loc 1 233 3
+ 1260 0020 0B49     		ldr	r1, .L62+8
+ 1261 0022 7868     		ldr	r0, [r7, #4]
+ 1262 0024 FFF7FEFF 		bl	uart_print
+ 234:./system/system-mpu.c **** 	i2c_uart_print(uart);			
+ 1263              		.loc 1 234 2
+ 1264 0028 7868     		ldr	r0, [r7, #4]
+ 1265 002a FFF7FEFF 		bl	i2c_uart_print
+ 235:./system/system-mpu.c **** 	//mpu6050_error_handle((MPU6050_t *)&myMPU6050);
+ 236:./system/system-mpu.c **** 	mpu_init_sucess=0;
+ 1266              		.loc 1 236 17
+ 1267 002e 094B     		ldr	r3, .L62+12
+ 1268 0030 0022     		movs	r2, #0
+ 1269 0032 1A70     		strb	r2, [r3]
+ 237:./system/system-mpu.c **** 	mpu_ticks=0;
+ 1270              		.loc 1 237 11
+ 1271 0034 084B     		ldr	r3, .L62+16
+ 1272 0036 0022     		movs	r2, #0
+ 1273 0038 1A60     		str	r2, [r3]
+ 238:./system/system-mpu.c **** 	mpu_state=MPU_WAIT;
+ 1274              		.loc 1 238 11
+ 1275 003a 084B     		ldr	r3, .L62+20
+ 1276 003c 0022     		movs	r2, #0
+ 1277 003e 1A70     		strb	r2, [r3]
+ 239:./system/system-mpu.c **** }
+ 1278              		.loc 1 239 1
+ 1279 0040 00BF     		nop
+ 1280 0042 0837     		adds	r7, r7, #8
+ 1281              	.LCFI44:
+ 1282              		.cfi_def_cfa_offset 8
+ 1283 0044 BD46     		mov	sp, r7
+ 1284              	.LCFI45:
+ 1285              		.cfi_def_cfa_register 13
+ 1286              		@ sp needed
+ 1287 0046 80BD     		pop	{r7, pc}
+ 1288              	.L63:
+ 1289              		.align	2
+ 1290              	.L62:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 28
+
+
+ 1291 0048 08010000 		.word	.LC10
+ 1292 004c 00000000 		.word	mpu_error
+ 1293 0050 14010000 		.word	.LC11
+ 1294 0054 00000000 		.word	mpu_init_sucess
+ 1295 0058 00000000 		.word	mpu_ticks
+ 1296 005c 00000000 		.word	mpu_state
+ 1297              		.cfi_endproc
+ 1298              	.LFE41:
+ 1300              		.text
+ 1301              	.Letext0:
+ 1302              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 1303              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1304              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 1305              		.file 5 "./mpu6050/mpu6050.h"
+ 1306              		.file 6 "./i2c/i2c-std.h"
+ 1307              		.file 7 "./system/system-mpu.h"
+ 1308              		.file 8 "./system/system-task.h"
+ 1309              		.file 9 "./system/system.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system-mpu.c
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:22     .data.mpu_cycle:00000000 mpu_cycle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:19     .data.mpu_cycle:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:29     .bss.mpu_sample_cnt:00000000 mpu_sample_cnt
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:26     .bss.mpu_sample_cnt:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:36     .bss.mpu_time:00000000 mpu_time
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:33     .bss.mpu_time:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:42     .bss.mpu_error:00000000 mpu_error
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:43     .bss.mpu_error:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:48     .bss.mpu_is_first_sample:00000000 mpu_is_first_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:49     .bss.mpu_is_first_sample:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:54     .bss.mpu_init_sucess:00000000 mpu_init_sucess
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:55     .bss.mpu_init_sucess:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:61     .bss.cur_sample:00000000 cur_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:58     .bss.cur_sample:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:68     .bss.pre_sample:00000000 pre_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:65     .bss.pre_sample:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:71     .text.save_sample:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:77     .text.save_sample:00000000 save_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:191    .text.save_sample:00000088 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:196    .text.copy_sample:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:202    .text.copy_sample:00000000 copy_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:320    .text.compare_sample:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:326    .text.compare_sample:00000000 compare_sample
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:563    .text.compare_sample:00000170 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:568    .text.mpu_wait_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:574    .text.mpu_wait_handle:00000000 mpu_wait_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:628    .text.mpu_wait_handle:00000030 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:636    .text.mpu_init_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:642    .text.mpu_init_handle:00000000 mpu_init_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:726    .text.mpu_init_handle:00000068 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:740    .text.mpu_acq_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:746    .text.mpu_acq_handle:00000000 mpu_acq_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:826    .text.mpu_read_handle:00000000 mpu_read_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:806    .text.mpu_acq_handle:0000003c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:816    .rodata:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:820    .text.mpu_read_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:965    .text.mpu_read_handle:000000d8 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1007   .text.mpu_proc_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1013   .text.mpu_proc_handle:00000000 mpu_proc_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1196   .text.mpu_proc_handle:00000110 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1223   .text.mpu_error_handle:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1229   .text.mpu_error_handle:00000000 mpu_error_handle
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s:1291   .text.mpu_error_handle:00000048 $d
+                           .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
+                           .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
+                           .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
+                           .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
+                           .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
+                           .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
+                           .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 30
+
+
+                           .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
+                           .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a
+                           .group:00000000 wm4.stm32f10x_cec.h.24.a1ee61cba6b8120b5bab40528e933770
+                           .group:00000000 wm4.stm32f10x_dac.h.24.39482d0fe30ddea181f0c79f49fb629e
+                           .group:00000000 wm4.stm32f10x_dbgmcu.h.24.f73145056e79bc5a93dd6677b2b33d54
+                           .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
+                           .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
+                           .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+                           .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
+                           .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
+                           .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
+                           .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
+                           .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
+                           .group:00000000 wm4.stm32f10x_rcc.h.24.43948985157a0da383ddce718b66f782
+                           .group:00000000 wm4.stm32f10x_rtc.h.24.496e77df0282a7f4dc79c6de18da3ecc
+                           .group:00000000 wm4.stm32f10x_sdio.h.24.646055cc54873a75158b5d1015b409e6
+                           .group:00000000 wm4.stm32f10x_spi.h.24.e7b2623920274a1745e534a7a7156e76
+                           .group:00000000 wm4.stm32f10x_tim.h.24.24ac72f04686046a18ee9117ff7bba1f
+                           .group:00000000 wm4.stm32f10x_usart.h.24.cf5f8d8e971fad2927ee799886f23b78
+                           .group:00000000 wm4.stm32f10x_wwdg.h.24.7f7037b09db3a78d5a9de97b2cba748a
+                           .group:00000000 wm4.misc.h.24.c54738789d48fd25c957e9d7c7349497
+                           .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
+                           .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
+                           .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
+                           .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.stdlib.h.13.4ed386f5c1a80d71e72172885d946ef2
+                           .group:00000000 wm4.stddef.h.181.13772e73e5434e8cc4fafaaddad2b5da
+                           .group:00000000 wm4.stddef.h.39.cf3ebec0bc8c9e3d2f276a64e0fe5e7a
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.155.3588ebfdd1e8c7ede80509bb9c3b8009
+                           .group:00000000 wm4._types.h.127.34941de1b2539d59d5cac00e0dd27a45
+                           .group:00000000 wm4.reent.h.17.e292bf8b0bec6c96e131a54347145a30
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.77.32fd7d280fc2a40b0797abce5beaf6e3
+                           .group:00000000 wm4.assert.h.11.db24e541f16414db224bf986d21017e2
+                           .group:00000000 wm4.reent.h.504.40d20ade344680fbcb6a0178bf7ae09e
+                           .group:00000000 wm4.cdefs.h.49.39045112216f6a021dbdffe3bf5accce
+                           .group:00000000 wm4.alloca.h.8.dfc0c703c47ec3e69746825b17d9e66d
+                           .group:00000000 wm4.stdlib.h.56.f4862cfbf4363a1db01842d5bdf72c18
+                           .group:00000000 wm4.stdio.h.27.3fc80220048df77954e38daec3bb9670
+                           .group:00000000 wm4.stddef.h.155.ba788add86a0e365f264484f110c3c29
+                           .group:00000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:00000000 wm4.types.h.40.8b6acba56cefbb11746718204edc8f5e
+                           .group:00000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
+                           .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
+                           .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
+                           .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
+                           .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+                           .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
+                           .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
+                           .group:00000000 wm4.stdalign.h.27.0aad28df4d66a8553430227d1bac48aa
+                           .group:00000000 wm4.ctype.h.34.80f174baaec468e2eb1c07380b0b3287
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccaMI95k.s 			page 31
+
+
+                           .group:00000000 wm4.inttypes.h.14.b28deb26920e51e0da310220ef0f9003
+                           .group:00000000 wm4.inttypes.h.28.c3e61b48c6ae3a7cb62609add2dd53d1
+                           .group:00000000 wm4.math.h.13.4f4c30988c5d76b6bf30dd7e2791b7c6
+                           .group:00000000 wm4.syslimits.h.34.de5cbd310098bc5895998b6bde577ed2
+                           .group:00000000 wm4.limits.h.9.70fb0ada6f71b16202a66baaa6d8ea70
+                           .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
+                           .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
+                           .group:00000000 wm4.basic.h.43.2d669d0e281f2a7583ad0da99046413d
+                           .group:00000000 wm4.phy.h.43.a806668fd6b193a83e00fcf9e3814821
+                           .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
+                           .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
+                           .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
+                           .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
+                           .group:00000000 wm4.i2cstd.h.10.d432c3988f9748933a79fb991e070438
+                           .group:00000000 wm4.i2c.h.24.666d2983f106290f51d8fe2e4e0034bc
+                           .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
+                           .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
+                           .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
+                           .group:00000000 wm4.systemtask.h.12.4111f050c12db00791331b8757fbd5d2
+
+UNDEFINED SYMBOLS
+__aeabi_i2f
+__aeabi_fadd
+__aeabi_fcmpgt
+mpu_settings
+mpu_ticks
+mpu_state
+i2c_init_std
+mpu6050_init
+myMPU6050
+systemticks
+pre_ticks
+__aeabi_uldivmod
+mpu6050_read
+uart_print_integer
+uart_print
+mpu6050_uart_print
+i2c_uart_print

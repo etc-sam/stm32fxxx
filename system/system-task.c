@@ -39,12 +39,12 @@ uint32_t rtc_ticks=0;
 
 uint8_t mpu_state=0;
 uint32_t mpu_ticks=0;
-uint32_t mpu_cycle=MPU_WAIT_TIMEOUT;
- 
-//uint8_t mpu_init_sucess=0;
 
-
- 
+//********************************************************************************************
+//
+//  static Methods prototype
+//
+//********************************************************************************************
 //********************************************************************************************
 //
 //  extern Methods definition
@@ -92,68 +92,22 @@ void uart_task(void)
 //--------------------------------------------------------------------------------------------------------------------------
 void mpu6050_task(void)
 {
-	static uint8_t rst=0;
-		
+
 	switch(mpu_state)
 	{
-		case MPU_WAIT:
-			if(mpu_ticks>=mpu_cycle)
-			{ 
-			 if(mpu_settings.init_sucess)//mpu_init_sucess) 
-				 mpu_state=MPU_READ;
-			 else						
-				mpu_state=MPU_INIT;	
-			}
-		 	break;
-		case MPU_INIT:
-			i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
-			rst=mpu6050_init((MPU6050_t *)&myMPU6050,mpu_settings.accel_range, mpu_settings.gyro_range);//MPU6050_Accel_Range_2G,MPU6050_Gyro_Range_500s);
-			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
-			mpu_state=MPU_ERROR;
-			if(rst==I2C_OK)
-			{
-			 mpu_settings.init_sucess=1;//mpu_init_sucess=1;
-			 mpu_state=MPU_READ;
-			}
-		 	break;
+		case MPU_WAIT:	mpu_wait_handle();	break;
+		case MPU_INIT:	mpu_init_handle(USART1,(MPU6050_t *)&myMPU6050); break;
 		case MPU_READ:
-						rst=mpu6050_read((MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
-						mpu_state=MPU_ERROR;
-						if(rst==I2C_OK)
-						{
-							mpu6050_uart_print(USART1,(MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
-			  			mpu_state=MPU_PROC;
-						}
+		  			switch(mpu_settings.acq_mode){
+			 			case MPU_ACQ_MODE_SAMPLE: mpu_acq_handle(USART1,(MPU6050_t *)&myMPU6050); break; 			//! collecting data samples 
+						case MPU_ACQ_MODE_NORM: 	mpu_read_handle(USART1,(MPU6050_t *)&myMPU6050);  break; 		//! normal collect to detect vibraion using normal threshold
+					//case MPU_ACQ_MODE_AI: 		mpu6050_AI_read_task(USART1,(MPU6050_t *)&myMPU6050); break;// to be accomplish later
+					}
 			break;
-		case MPU_PROC :
-				mpu_ticks=0;
-			  mpu_state=MPU_WAIT;
-			  break;
-
-		case MPU_ERROR:
-			uart_print(USART1,"\t MPU-ER::");
-    	uart_print_integer(USART1,rst,10);
-    	uart_print(USART1,"\n");
-			i2c_uart_print(USART1);			
-			mpu6050_error_handle((MPU6050_t *)&myMPU6050);
-			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
-			mpu_ticks=0;
-			mpu_state=MPU_WAIT;
-		break;
+		case MPU_PROC :mpu_proc_handle(USART1,(MPU6050_t *)&myMPU6050);   break;
+		case MPU_ERROR: mpu_error_handle(USART1,(MPU6050_t *)&myMPU6050); break;
+                     			
 	}
-
-
-				  /*
-				uart_println (USART1,"...............");
-			  uart_println (USART1,"MPU6050 integer Data ...");
-			  mpu6050_uart_print_All(USART1,(MPU6050_t *)&myMPU6050);			  
-			  uart_println (USART1,"MPU6050 Hex Data ...");
-			  mpu6050_uart_print_raw_Data(USART1,(MPU6050_t *)&myMPU6050);
-			  uart_println (USART1,"MPU6050 Raw Data ...");
-			  mpu6050_uart_print_raw_Array(USART1,(MPU6050_t *)&myMPU6050);
-			  uart_println (USART1,"...............");						
-				*/
-
 }
 //----------------------------------------------------------
 void keypad_task()
@@ -176,7 +130,6 @@ void keypad_task()
 		case KEYPAD_SCAN:
 				// read the keys pin status
 			    keypad_scan(); 
-
 			    //scan_val=keypad_scan(); 
                 //lcd_print_uint8_xy(12,0,scan_val,10);
 				keypad_state=KEYPAD_PROCESS;
@@ -194,17 +147,12 @@ void lcd_task(void)
 {
   if(lcd_update)
   {
-
     lcd_update=0;
     //lcd_clear();
-    lcd_print_xy(0,0,"stm32f10x ");
-    lcd_print_xy(0,1,"TIM2...  ");
+    lcd_print_xy(0,0,"UAV IMU stm32 ");
+    lcd_print_xy(0,1,"VIB ");
     lcd_print_uint8(relays.val,10);
-	  lcd_print("       ");
-	
-		//uart_print(USART1,"RLY:");
-		//uart_print_integer(USART1, relays.val,10);//t.word);
-		//uart_print(USART1,"\r\n");
+	  lcd_print("       ");	
   }
 }
 //----------------------------------------------------------
@@ -243,8 +191,6 @@ void rtc_task()
 
 }
 //--------------------------------------------------------------------------------------------------------------------------
-
-
 
 
 

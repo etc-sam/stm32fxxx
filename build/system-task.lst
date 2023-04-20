@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   71              		.align	2
   74              	rtc_ticks:
   75 0000 00000000 		.space	4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 2
 
 
   76              		.global	mpu_state
@@ -70,20 +70,15 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   84              		.align	2
   87              	mpu_ticks:
   88 0000 00000000 		.space	4
-  89              		.global	mpu_cycle
-  90              		.section	.data.mpu_cycle,"aw"
-  91              		.align	2
-  94              	mpu_cycle:
-  95 0000 50C30000 		.word	50000
-  96              		.section	.text.adc_task,"ax",%progbits
-  97              		.align	1
-  98              		.global	adc_task
-  99              		.syntax unified
- 100              		.thumb
- 101              		.thumb_func
- 103              	adc_task:
- 104              	.LFB33:
- 105              		.file 1 "./system/system-task.c"
+  89              		.section	.text.adc_task,"ax",%progbits
+  90              		.align	1
+  91              		.global	adc_task
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  96              	adc_task:
+  97              	.LFB33:
+  98              		.file 1 "./system/system-task.c"
    1:./system/system-task.c **** /**
    2:./system/system-task.c ****  * @brief system-task.c
    3:./system/system-task.c ****  *
@@ -118,22 +113,22 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   32:./system/system-task.c **** uint32_t lcd_ticks=0;
   33:./system/system-task.c **** 
   34:./system/system-task.c **** uint8_t pilot_state=0;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 3
-
-
   35:./system/system-task.c **** uint32_t pilot_ticks=0;
   36:./system/system-task.c ****   
   37:./system/system-task.c **** uint8_t rtc_state=0;
   38:./system/system-task.c **** uint32_t rtc_ticks=0;
   39:./system/system-task.c **** 
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 3
+
+
   40:./system/system-task.c **** uint8_t mpu_state=0;
   41:./system/system-task.c **** uint32_t mpu_ticks=0;
-  42:./system/system-task.c **** uint32_t mpu_cycle=MPU_WAIT_TIMEOUT;
-  43:./system/system-task.c ****  
-  44:./system/system-task.c **** //uint8_t mpu_init_sucess=0;
-  45:./system/system-task.c **** 
-  46:./system/system-task.c **** 
-  47:./system/system-task.c ****  
+  42:./system/system-task.c **** 
+  43:./system/system-task.c **** //********************************************************************************************
+  44:./system/system-task.c **** //
+  45:./system/system-task.c **** //  static Methods prototype
+  46:./system/system-task.c **** //
+  47:./system/system-task.c **** //********************************************************************************************
   48:./system/system-task.c **** //********************************************************************************************
   49:./system/system-task.c **** //
   50:./system/system-task.c **** //  extern Methods definition
@@ -141,55 +136,55 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   52:./system/system-task.c **** //********************************************************************************************
   53:./system/system-task.c **** void adc_task(void)
   54:./system/system-task.c **** {
- 106              		.loc 1 54 1
- 107              		.cfi_startproc
- 108              		@ args = 0, pretend = 0, frame = 0
- 109              		@ frame_needed = 1, uses_anonymous_args = 0
- 110              		@ link register save eliminated.
- 111 0000 80B4     		push	{r7}
- 112              	.LCFI0:
- 113              		.cfi_def_cfa_offset 4
- 114              		.cfi_offset 7, -4
- 115 0002 00AF     		add	r7, sp, #0
- 116              	.LCFI1:
- 117              		.cfi_def_cfa_register 7
+  99              		.loc 1 54 1
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 1, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 104 0000 80B4     		push	{r7}
+ 105              	.LCFI0:
+ 106              		.cfi_def_cfa_offset 4
+ 107              		.cfi_offset 7, -4
+ 108 0002 00AF     		add	r7, sp, #0
+ 109              	.LCFI1:
+ 110              		.cfi_def_cfa_register 7
   55:./system/system-task.c **** 
   56:./system/system-task.c **** }
- 118              		.loc 1 56 1
- 119 0004 00BF     		nop
- 120 0006 BD46     		mov	sp, r7
- 121              	.LCFI2:
- 122              		.cfi_def_cfa_register 13
- 123              		@ sp needed
- 124 0008 80BC     		pop	{r7}
- 125              	.LCFI3:
- 126              		.cfi_restore 7
- 127              		.cfi_def_cfa_offset 0
- 128 000a 7047     		bx	lr
- 129              		.cfi_endproc
- 130              	.LFE33:
- 132              		.section	.rodata
- 133              		.align	2
- 134              	.LC0:
- 135 0000 0A72785F 		.ascii	"\012rx_buf-len:\000"
- 135      6275662D 
- 135      6C656E3A 
- 135      00
- 136 000d 000000   		.align	2
- 137              	.LC1:
- 138 0010 72785F62 		.ascii	"rx_buf:\000"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 4
+ 111              		.loc 1 56 1
+ 112 0004 00BF     		nop
+ 113 0006 BD46     		mov	sp, r7
+ 114              	.LCFI2:
+ 115              		.cfi_def_cfa_register 13
+ 116              		@ sp needed
+ 117 0008 80BC     		pop	{r7}
+ 118              	.LCFI3:
+ 119              		.cfi_restore 7
+ 120              		.cfi_def_cfa_offset 0
+ 121 000a 7047     		bx	lr
+ 122              		.cfi_endproc
+ 123              	.LFE33:
+ 125              		.section	.rodata
+ 126              		.align	2
+ 127              	.LC0:
+ 128 0000 0A72785F 		.ascii	"\012rx_buf-len:\000"
+ 128      6275662D 
+ 128      6C656E3A 
+ 128      00
+ 129 000d 000000   		.align	2
+ 130              	.LC1:
+ 131 0010 72785F62 		.ascii	"rx_buf:\000"
+ 131      75663A00 
+ 132              		.section	.text.uart_task,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	uart_task
+ 135              		.syntax unified
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 4
 
 
- 138      75663A00 
- 139              		.section	.text.uart_task,"ax",%progbits
- 140              		.align	1
- 141              		.global	uart_task
- 142              		.syntax unified
- 143              		.thumb
- 144              		.thumb_func
- 146              	uart_task:
- 147              	.LFB34:
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	uart_task:
+ 140              	.LFB34:
   57:./system/system-task.c **** //----------------------------------------------------------
   58:./system/system-task.c **** /**
   59:./system/system-task.c ****  * @brief a generic task to handle uart task 
@@ -202,50 +197,50 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   66:./system/system-task.c ****  */
   67:./system/system-task.c **** void uart_task(void)
   68:./system/system-task.c **** {
- 148              		.loc 1 68 1
- 149              		.cfi_startproc
- 150              		@ args = 0, pretend = 0, frame = 16
- 151              		@ frame_needed = 1, uses_anonymous_args = 0
- 152 0000 80B5     		push	{r7, lr}
- 153              	.LCFI4:
- 154              		.cfi_def_cfa_offset 8
- 155              		.cfi_offset 7, -8
- 156              		.cfi_offset 14, -4
- 157 0002 84B0     		sub	sp, sp, #16
- 158              	.LCFI5:
- 159              		.cfi_def_cfa_offset 24
- 160 0004 00AF     		add	r7, sp, #0
- 161              	.LCFI6:
- 162              		.cfi_def_cfa_register 7
+ 141              		.loc 1 68 1
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 16
+ 144              		@ frame_needed = 1, uses_anonymous_args = 0
+ 145 0000 80B5     		push	{r7, lr}
+ 146              	.LCFI4:
+ 147              		.cfi_def_cfa_offset 8
+ 148              		.cfi_offset 7, -8
+ 149              		.cfi_offset 14, -4
+ 150 0002 84B0     		sub	sp, sp, #16
+ 151              	.LCFI5:
+ 152              		.cfi_def_cfa_offset 24
+ 153 0004 00AF     		add	r7, sp, #0
+ 154              	.LCFI6:
+ 155              		.cfi_def_cfa_register 7
   69:./system/system-task.c **** 	char buf[16]="";
- 163              		.loc 1 69 7
- 164 0006 0023     		movs	r3, #0
- 165 0008 3B60     		str	r3, [r7]
- 166 000a 3B1D     		adds	r3, r7, #4
- 167 000c 0022     		movs	r2, #0
- 168 000e 1A60     		str	r2, [r3]
- 169 0010 5A60     		str	r2, [r3, #4]
- 170 0012 9A60     		str	r2, [r3, #8]
+ 156              		.loc 1 69 7
+ 157 0006 0023     		movs	r3, #0
+ 158 0008 3B60     		str	r3, [r7]
+ 159 000a 3B1D     		adds	r3, r7, #4
+ 160 000c 0022     		movs	r2, #0
+ 161 000e 1A60     		str	r2, [r3]
+ 162 0010 5A60     		str	r2, [r3, #4]
+ 163 0012 9A60     		str	r2, [r3, #8]
   70:./system/system-task.c **** 	switch(uart_state)
- 171              		.loc 1 70 2
- 172 0014 1D4B     		ldr	r3, .L9
- 173 0016 1B78     		ldrb	r3, [r3]
- 174 0018 DBB2     		uxtb	r3, r3
- 175 001a 002B     		cmp	r3, #0
- 176 001c 02D0     		beq	.L3
- 177 001e 012B     		cmp	r3, #1
- 178 0020 09D0     		beq	.L4
+ 164              		.loc 1 70 2
+ 165 0014 1D4B     		ldr	r3, .L9
+ 166 0016 1B78     		ldrb	r3, [r3]
+ 167 0018 DBB2     		uxtb	r3, r3
+ 168 001a 002B     		cmp	r3, #0
+ 169 001c 02D0     		beq	.L3
+ 170 001e 012B     		cmp	r3, #1
+ 171 0020 09D0     		beq	.L4
   71:./system/system-task.c **** 	{
   72:./system/system-task.c **** 		case UART_WAIT:
   73:./system/system-task.c **** 			//my_gnc.usb_ticks++;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 5
-
-
   74:./system/system-task.c **** 			//if(uart_ticks> UART_WAIT_TIMEOUT)// || uart_data_is_available())
   75:./system/system-task.c **** 			if(uart_data_is_available())
   76:./system/system-task.c **** 				uart_state=UART_READ;
   77:./system/system-task.c **** 		 break;
   78:./system/system-task.c **** 		case UART_READ:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 5
+
+
   79:./system/system-task.c **** 			 uart_print(USART1,"\nrx_buf-len:");			 
   80:./system/system-task.c **** 			 utoa(rx_buffer_length,buf,10);
   81:./system/system-task.c **** 			 uart_println(USART1,buf);			 
@@ -259,975 +254,780 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 1
   89:./system/system-task.c **** 		break;
   90:./system/system-task.c **** 	}
   91:./system/system-task.c **** }
- 179              		.loc 1 91 1
- 180 0022 2FE0     		b	.L8
- 181              	.L3:
+ 172              		.loc 1 91 1
+ 173 0022 2FE0     		b	.L8
+ 174              	.L3:
   75:./system/system-task.c **** 				uart_state=UART_READ;
- 182              		.loc 1 75 7
- 183 0024 FFF7FEFF 		bl	uart_data_is_available
- 184 0028 0346     		mov	r3, r0
+ 175              		.loc 1 75 7
+ 176 0024 FFF7FEFF 		bl	uart_data_is_available
+ 177 0028 0346     		mov	r3, r0
   75:./system/system-task.c **** 				uart_state=UART_READ;
- 185              		.loc 1 75 6
- 186 002a 002B     		cmp	r3, #0
- 187 002c 29D0     		beq	.L7
+ 178              		.loc 1 75 6
+ 179 002a 002B     		cmp	r3, #0
+ 180 002c 29D0     		beq	.L7
   76:./system/system-task.c **** 		 break;
- 188              		.loc 1 76 15
- 189 002e 174B     		ldr	r3, .L9
- 190 0030 0122     		movs	r2, #1
- 191 0032 1A70     		strb	r2, [r3]
+ 181              		.loc 1 76 15
+ 182 002e 174B     		ldr	r3, .L9
+ 183 0030 0122     		movs	r2, #1
+ 184 0032 1A70     		strb	r2, [r3]
   77:./system/system-task.c **** 		case UART_READ:
- 192              		.loc 1 77 4
- 193 0034 25E0     		b	.L7
- 194              	.L4:
+ 185              		.loc 1 77 4
+ 186 0034 25E0     		b	.L7
+ 187              	.L4:
   79:./system/system-task.c **** 			 utoa(rx_buffer_length,buf,10);
- 195              		.loc 1 79 5
- 196 0036 1649     		ldr	r1, .L9+4
- 197 0038 1648     		ldr	r0, .L9+8
- 198 003a FFF7FEFF 		bl	uart_print
+ 188              		.loc 1 79 5
+ 189 0036 1649     		ldr	r1, .L9+4
+ 190 0038 1648     		ldr	r0, .L9+8
+ 191 003a FFF7FEFF 		bl	uart_print
   80:./system/system-task.c **** 			 uart_println(USART1,buf);			 
- 199              		.loc 1 80 5
- 200 003e 164B     		ldr	r3, .L9+12
- 201 0040 1B78     		ldrb	r3, [r3]
- 202 0042 DBB2     		uxtb	r3, r3
- 203 0044 1846     		mov	r0, r3
- 204 0046 3B46     		mov	r3, r7
- 205 0048 0A22     		movs	r2, #10
- 206 004a 1946     		mov	r1, r3
- 207 004c FFF7FEFF 		bl	utoa
+ 192              		.loc 1 80 5
+ 193 003e 164B     		ldr	r3, .L9+12
+ 194 0040 1B78     		ldrb	r3, [r3]
+ 195 0042 DBB2     		uxtb	r3, r3
+ 196 0044 1846     		mov	r0, r3
+ 197 0046 3B46     		mov	r3, r7
+ 198 0048 0A22     		movs	r2, #10
+ 199 004a 1946     		mov	r1, r3
+ 200 004c FFF7FEFF 		bl	utoa
   81:./system/system-task.c **** 			 uart_print(USART1,"rx_buf:");			 
- 208              		.loc 1 81 5
- 209 0050 3B46     		mov	r3, r7
- 210 0052 1946     		mov	r1, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 6
-
-
- 211 0054 0F48     		ldr	r0, .L9+8
- 212 0056 FFF7FEFF 		bl	uart_println
+ 201              		.loc 1 81 5
+ 202 0050 3B46     		mov	r3, r7
+ 203 0052 1946     		mov	r1, r3
+ 204 0054 0F48     		ldr	r0, .L9+8
+ 205 0056 FFF7FEFF 		bl	uart_println
   82:./system/system-task.c **** 			 uart_println(USART1,(char*) rx_buffer);
- 213              		.loc 1 82 5
- 214 005a 1049     		ldr	r1, .L9+16
- 215 005c 0D48     		ldr	r0, .L9+8
- 216 005e FFF7FEFF 		bl	uart_print
+ 206              		.loc 1 82 5
+ 207 005a 1049     		ldr	r1, .L9+16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 6
+
+
+ 208 005c 0D48     		ldr	r0, .L9+8
+ 209 005e FFF7FEFF 		bl	uart_print
   83:./system/system-task.c **** 
- 217              		.loc 1 83 5
- 218 0062 0F49     		ldr	r1, .L9+20
- 219 0064 0B48     		ldr	r0, .L9+8
- 220 0066 FFF7FEFF 		bl	uart_println
+ 210              		.loc 1 83 5
+ 211 0062 0F49     		ldr	r1, .L9+20
+ 212 0064 0B48     		ldr	r0, .L9+8
+ 213 0066 FFF7FEFF 		bl	uart_println
   85:./system/system-task.c **** 			 uart_reset_buffer();
- 221              		.loc 1 85 5
- 222 006a 0A48     		ldr	r0, .L9+8
- 223 006c FFF7FEFF 		bl	uart_handle_frame
+ 214              		.loc 1 85 5
+ 215 006a 0A48     		ldr	r0, .L9+8
+ 216 006c FFF7FEFF 		bl	uart_handle_frame
   86:./system/system-task.c **** 			uart_ticks=0;
- 224              		.loc 1 86 5
- 225 0070 FFF7FEFF 		bl	uart_reset_buffer
+ 217              		.loc 1 86 5
+ 218 0070 FFF7FEFF 		bl	uart_reset_buffer
   87:./system/system-task.c **** 			uart_state=UART_WAIT;
- 226              		.loc 1 87 14
- 227 0074 0B4B     		ldr	r3, .L9+24
- 228 0076 0022     		movs	r2, #0
- 229 0078 1A60     		str	r2, [r3]
+ 219              		.loc 1 87 14
+ 220 0074 0B4B     		ldr	r3, .L9+24
+ 221 0076 0022     		movs	r2, #0
+ 222 0078 1A60     		str	r2, [r3]
   88:./system/system-task.c **** 		break;
- 230              		.loc 1 88 14
- 231 007a 044B     		ldr	r3, .L9
- 232 007c 0022     		movs	r2, #0
- 233 007e 1A70     		strb	r2, [r3]
+ 223              		.loc 1 88 14
+ 224 007a 044B     		ldr	r3, .L9
+ 225 007c 0022     		movs	r2, #0
+ 226 007e 1A70     		strb	r2, [r3]
   89:./system/system-task.c **** 	}
- 234              		.loc 1 89 3
- 235 0080 00E0     		b	.L5
- 236              	.L7:
+ 227              		.loc 1 89 3
+ 228 0080 00E0     		b	.L5
+ 229              	.L7:
   77:./system/system-task.c **** 		case UART_READ:
- 237              		.loc 1 77 4
- 238 0082 00BF     		nop
- 239              	.L5:
- 240              	.L8:
- 241              		.loc 1 91 1
- 242 0084 00BF     		nop
- 243 0086 1037     		adds	r7, r7, #16
- 244              	.LCFI7:
- 245              		.cfi_def_cfa_offset 8
- 246 0088 BD46     		mov	sp, r7
- 247              	.LCFI8:
- 248              		.cfi_def_cfa_register 13
- 249              		@ sp needed
- 250 008a 80BD     		pop	{r7, pc}
- 251              	.L10:
- 252              		.align	2
- 253              	.L9:
- 254 008c 00000000 		.word	uart_state
- 255 0090 00000000 		.word	.LC0
- 256 0094 00380140 		.word	1073821696
- 257 0098 00000000 		.word	rx_buffer_length
- 258 009c 10000000 		.word	.LC1
- 259 00a0 00000000 		.word	rx_buffer
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 7
+ 230              		.loc 1 77 4
+ 231 0082 00BF     		nop
+ 232              	.L5:
+ 233              	.L8:
+ 234              		.loc 1 91 1
+ 235 0084 00BF     		nop
+ 236 0086 1037     		adds	r7, r7, #16
+ 237              	.LCFI7:
+ 238              		.cfi_def_cfa_offset 8
+ 239 0088 BD46     		mov	sp, r7
+ 240              	.LCFI8:
+ 241              		.cfi_def_cfa_register 13
+ 242              		@ sp needed
+ 243 008a 80BD     		pop	{r7, pc}
+ 244              	.L10:
+ 245              		.align	2
+ 246              	.L9:
+ 247 008c 00000000 		.word	uart_state
+ 248 0090 00000000 		.word	.LC0
+ 249 0094 00380140 		.word	1073821696
+ 250 0098 00000000 		.word	rx_buffer_length
+ 251 009c 10000000 		.word	.LC1
+ 252 00a0 00000000 		.word	rx_buffer
+ 253 00a4 00000000 		.word	uart_ticks
+ 254              		.cfi_endproc
+ 255              	.LFE34:
+ 257              		.section	.text.mpu6050_task,"ax",%progbits
+ 258              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 7
 
 
- 260 00a4 00000000 		.word	uart_ticks
- 261              		.cfi_endproc
- 262              	.LFE34:
- 264              		.section	.rodata
- 265              		.align	2
- 266              	.LC2:
- 267 0018 09204D50 		.ascii	"\011 MPU-ER::\000"
- 267      552D4552 
- 267      3A3A00
- 268 0023 00       		.align	2
- 269              	.LC3:
- 270 0024 0A00     		.ascii	"\012\000"
- 271              		.section	.text.mpu6050_task,"ax",%progbits
- 272              		.align	1
- 273              		.global	mpu6050_task
- 274              		.syntax unified
- 275              		.thumb
- 276              		.thumb_func
- 278              	mpu6050_task:
- 279              	.LFB35:
+ 259              		.global	mpu6050_task
+ 260              		.syntax unified
+ 261              		.thumb
+ 262              		.thumb_func
+ 264              	mpu6050_task:
+ 265              	.LFB35:
   92:./system/system-task.c **** //-------------------------------------------------------------------------------------------------
   93:./system/system-task.c **** void mpu6050_task(void)
   94:./system/system-task.c **** {
- 280              		.loc 1 94 1
- 281              		.cfi_startproc
- 282              		@ args = 0, pretend = 0, frame = 0
- 283              		@ frame_needed = 1, uses_anonymous_args = 0
- 284 0000 80B5     		push	{r7, lr}
- 285              	.LCFI9:
- 286              		.cfi_def_cfa_offset 8
- 287              		.cfi_offset 7, -8
- 288              		.cfi_offset 14, -4
- 289 0002 00AF     		add	r7, sp, #0
- 290              	.LCFI10:
- 291              		.cfi_def_cfa_register 7
-  95:./system/system-task.c **** 	static uint8_t rst=0;
-  96:./system/system-task.c **** 		
-  97:./system/system-task.c **** 	switch(mpu_state)
- 292              		.loc 1 97 2
- 293 0004 474B     		ldr	r3, .L27
- 294 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 295 0008 042B     		cmp	r3, #4
- 296 000a 00F28880 		bhi	.L23
- 297 000e 01A2     		adr	r2, .L14
- 298 0010 52F823F0 		ldr	pc, [r2, r3, lsl #2]
- 299              		.p2align 2
- 300              	.L14:
- 301 0014 29000000 		.word	.L18+1
- 302 0018 4D000000 		.word	.L17+1
- 303 001c D7000000 		.word	.L16+1
- 304 0020 91000000 		.word	.L15+1
- 305 0024 C9000000 		.word	.L13+1
- 306              		.p2align 1
- 307              	.L18:
-  98:./system/system-task.c **** 	{
-  99:./system/system-task.c **** 		case MPU_WAIT:
- 100:./system/system-task.c **** 			if(mpu_ticks>=mpu_cycle)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 8
+ 266              		.loc 1 94 1
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 1, uses_anonymous_args = 0
+ 270 0000 80B5     		push	{r7, lr}
+ 271              	.LCFI9:
+ 272              		.cfi_def_cfa_offset 8
+ 273              		.cfi_offset 7, -8
+ 274              		.cfi_offset 14, -4
+ 275 0002 00AF     		add	r7, sp, #0
+ 276              	.LCFI10:
+ 277              		.cfi_def_cfa_register 7
+  95:./system/system-task.c **** 
+  96:./system/system-task.c **** 	switch(mpu_state)
+ 278              		.loc 1 96 2
+ 279 0004 1B4B     		ldr	r3, .L23
+ 280 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 281 0008 042B     		cmp	r3, #4
+ 282 000a 31D8     		bhi	.L22
+ 283 000c 01A2     		adr	r2, .L14
+ 284 000e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 285 0012 00BF     		.p2align 2
+ 286              	.L14:
+ 287 0014 29000000 		.word	.L18+1
+ 288 0018 2F000000 		.word	.L17+1
+ 289 001c 67000000 		.word	.L16+1
+ 290 0020 39000000 		.word	.L15+1
+ 291 0024 5D000000 		.word	.L13+1
+ 292              		.p2align 1
+ 293              	.L18:
+  97:./system/system-task.c **** 	{
+  98:./system/system-task.c **** 		case MPU_WAIT:	mpu_wait_handle();	break;
+ 294              		.loc 1 98 18
+ 295 0028 FFF7FEFF 		bl	mpu_wait_handle
+ 296              		.loc 1 98 3
+ 297 002c 20E0     		b	.L12
+ 298              	.L17:
+  99:./system/system-task.c **** 		case MPU_INIT:	mpu_init_handle(USART1,(MPU6050_t *)&myMPU6050); break;
+ 299              		.loc 1 99 18
+ 300 002e 1249     		ldr	r1, .L23+4
+ 301 0030 1248     		ldr	r0, .L23+8
+ 302 0032 FFF7FEFF 		bl	mpu_init_handle
+ 303              		.loc 1 99 3
+ 304 0036 1BE0     		b	.L12
+ 305              	.L15:
+ 100:./system/system-task.c **** 		case MPU_READ:
+ 101:./system/system-task.c **** 		  			switch(mpu_settings.acq_mode){
+ 306              		.loc 1 101 27
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 8
 
 
- 308              		.loc 1 100 16
- 309 0028 3F4B     		ldr	r3, .L27+4
- 310 002a 1A68     		ldr	r2, [r3]
- 311 002c 3F4B     		ldr	r3, .L27+8
- 312 002e 1B68     		ldr	r3, [r3]
- 313              		.loc 1 100 6
- 314 0030 9A42     		cmp	r2, r3
- 315 0032 6FD3     		bcc	.L24
- 101:./system/system-task.c **** 			{ 
- 102:./system/system-task.c **** 			 if(mpu_settings.init_sucess)//mpu_init_sucess) 
- 316              		.loc 1 102 20
- 317 0034 3E4B     		ldr	r3, .L27+12
- 318 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 319              		.loc 1 102 7
- 320 0038 002B     		cmp	r3, #0
- 321 003a 03D0     		beq	.L20
- 103:./system/system-task.c **** 				 mpu_state=MPU_READ;
- 322              		.loc 1 103 15
- 323 003c 394B     		ldr	r3, .L27
- 324 003e 0322     		movs	r2, #3
- 325 0040 1A70     		strb	r2, [r3]
- 104:./system/system-task.c **** 			 else						
- 105:./system/system-task.c **** 				mpu_state=MPU_INIT;	
- 106:./system/system-task.c **** 			}
- 107:./system/system-task.c **** 		 	break;
- 326              		.loc 1 107 5
- 327 0042 67E0     		b	.L24
- 328              	.L20:
- 105:./system/system-task.c **** 			}
- 329              		.loc 1 105 14
- 330 0044 374B     		ldr	r3, .L27
- 331 0046 0122     		movs	r2, #1
- 332 0048 1A70     		strb	r2, [r3]
- 333              		.loc 1 107 5
- 334 004a 63E0     		b	.L24
- 335              	.L17:
- 108:./system/system-task.c **** 		case MPU_INIT:
- 109:./system/system-task.c **** 			i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
- 336              		.loc 1 109 4
- 337 004c 2022     		movs	r2, #32
- 338 004e 3949     		ldr	r1, .L27+16
- 339 0050 3948     		ldr	r0, .L27+20
- 340 0052 FFF7FEFF 		bl	i2c_init_std
- 110:./system/system-task.c **** 			rst=mpu6050_init((MPU6050_t *)&myMPU6050,mpu_settings.accel_range, mpu_settings.gyro_range);//MP
- 341              		.loc 1 110 57
- 342 0056 364B     		ldr	r3, .L27+12
- 343 0058 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 344              		.loc 1 110 83
- 345 005a 354A     		ldr	r2, .L27+12
- 346 005c 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
- 347              		.loc 1 110 8
- 348 005e 1946     		mov	r1, r3
- 349 0060 3648     		ldr	r0, .L27+24
- 350 0062 FFF7FEFF 		bl	mpu6050_init
- 351 0066 0346     		mov	r3, r0
- 352 0068 1A46     		mov	r2, r3
- 353              		.loc 1 110 7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 9
+ 307 0038 114B     		ldr	r3, .L23+12
+ 308 003a 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 309 003c 002B     		cmp	r3, #0
+ 310 003e 02D0     		beq	.L19
+ 311 0040 012B     		cmp	r3, #1
+ 312 0042 05D0     		beq	.L20
+ 102:./system/system-task.c **** 			 			case MPU_ACQ_MODE_SAMPLE: mpu_acq_handle(USART1,(MPU6050_t *)&myMPU6050); break; 			//! coll
+ 103:./system/system-task.c **** 						case MPU_ACQ_MODE_NORM: 	mpu_read_handle(USART1,(MPU6050_t *)&myMPU6050);  break; 		//! norma
+ 104:./system/system-task.c **** 					//case MPU_ACQ_MODE_AI: 		mpu6050_AI_read_task(USART1,(MPU6050_t *)&myMPU6050); break;// to be
+ 105:./system/system-task.c **** 					}
+ 106:./system/system-task.c **** 			break;
+ 313              		.loc 1 106 4
+ 314 0044 14E0     		b	.L12
+ 315              	.L19:
+ 102:./system/system-task.c **** 			 			case MPU_ACQ_MODE_SAMPLE: mpu_acq_handle(USART1,(MPU6050_t *)&myMPU6050); break; 			//! coll
+ 316              		.loc 1 102 34
+ 317 0046 0C49     		ldr	r1, .L23+4
+ 318 0048 0C48     		ldr	r0, .L23+8
+ 319 004a FFF7FEFF 		bl	mpu_acq_handle
+ 102:./system/system-task.c **** 			 			case MPU_ACQ_MODE_SAMPLE: mpu_acq_handle(USART1,(MPU6050_t *)&myMPU6050); break; 			//! coll
+ 320              		.loc 1 102 8
+ 321 004e 04E0     		b	.L21
+ 322              	.L20:
+ 103:./system/system-task.c **** 					//case MPU_ACQ_MODE_AI: 		mpu6050_AI_read_task(USART1,(MPU6050_t *)&myMPU6050); break;// to be
+ 323              		.loc 1 103 32
+ 324 0050 0949     		ldr	r1, .L23+4
+ 325 0052 0A48     		ldr	r0, .L23+8
+ 326 0054 FFF7FEFF 		bl	mpu_read_handle
+ 103:./system/system-task.c **** 					//case MPU_ACQ_MODE_AI: 		mpu6050_AI_read_task(USART1,(MPU6050_t *)&myMPU6050); break;// to be
+ 327              		.loc 1 103 7
+ 328 0058 00BF     		nop
+ 329              	.L21:
+ 330              		.loc 1 106 4
+ 331 005a 09E0     		b	.L12
+ 332              	.L13:
+ 107:./system/system-task.c **** 		case MPU_PROC :mpu_proc_handle(USART1,(MPU6050_t *)&myMPU6050);   break;
+ 333              		.loc 1 107 18
+ 334 005c 0649     		ldr	r1, .L23+4
+ 335 005e 0748     		ldr	r0, .L23+8
+ 336 0060 FFF7FEFF 		bl	mpu_proc_handle
+ 337              		.loc 1 107 3
+ 338 0064 04E0     		b	.L12
+ 339              	.L16:
+ 108:./system/system-task.c **** 		case MPU_ERROR: mpu_error_handle(USART1,(MPU6050_t *)&myMPU6050); break;
+ 340              		.loc 1 108 19
+ 341 0066 0449     		ldr	r1, .L23+4
+ 342 0068 0448     		ldr	r0, .L23+8
+ 343 006a FFF7FEFF 		bl	mpu_error_handle
+ 344              		.loc 1 108 3
+ 345 006e 00BF     		nop
+ 346              	.L12:
+ 347              	.L22:
+ 109:./system/system-task.c ****                      			
+ 110:./system/system-task.c **** 	}
+ 111:./system/system-task.c **** }
+ 348              		.loc 1 111 1
+ 349 0070 00BF     		nop
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 9
 
 
- 354 006a 354B     		ldr	r3, .L27+28
- 355 006c 1A70     		strb	r2, [r3]
- 111:./system/system-task.c **** 			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
- 356              		.loc 1 111 28
- 357 006e 304B     		ldr	r3, .L27+12
- 358 0070 0022     		movs	r2, #0
- 359 0072 1A70     		strb	r2, [r3]
- 112:./system/system-task.c **** 			mpu_state=MPU_ERROR;
- 360              		.loc 1 112 13
- 361 0074 2B4B     		ldr	r3, .L27
- 362 0076 0222     		movs	r2, #2
- 363 0078 1A70     		strb	r2, [r3]
- 113:./system/system-task.c **** 			if(rst==I2C_OK)
- 364              		.loc 1 113 10
- 365 007a 314B     		ldr	r3, .L27+28
- 366 007c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 367              		.loc 1 113 6
- 368 007e 002B     		cmp	r3, #0
- 369 0080 4AD1     		bne	.L25
- 114:./system/system-task.c **** 			{
- 115:./system/system-task.c **** 			 mpu_settings.init_sucess=1;//mpu_init_sucess=1;
- 370              		.loc 1 115 29
- 371 0082 2B4B     		ldr	r3, .L27+12
- 372 0084 0122     		movs	r2, #1
- 373 0086 1A70     		strb	r2, [r3]
- 116:./system/system-task.c **** 			 mpu_state=MPU_READ;
- 374              		.loc 1 116 14
- 375 0088 264B     		ldr	r3, .L27
- 376 008a 0322     		movs	r2, #3
- 377 008c 1A70     		strb	r2, [r3]
- 117:./system/system-task.c **** 			}
- 118:./system/system-task.c **** 		 	break;
- 378              		.loc 1 118 5
- 379 008e 43E0     		b	.L25
- 380              	.L15:
- 119:./system/system-task.c **** 		case MPU_READ:
- 120:./system/system-task.c **** 						rst=mpu6050_read((MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
- 381              		.loc 1 120 11
- 382 0090 274B     		ldr	r3, .L27+12
- 383 0092 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 384 0094 1946     		mov	r1, r3
- 385 0096 2948     		ldr	r0, .L27+24
- 386 0098 FFF7FEFF 		bl	mpu6050_read
- 387 009c 0346     		mov	r3, r0
- 388 009e 1A46     		mov	r2, r3
- 389              		.loc 1 120 10
- 390 00a0 274B     		ldr	r3, .L27+28
- 391 00a2 1A70     		strb	r2, [r3]
- 121:./system/system-task.c **** 						mpu_state=MPU_ERROR;
- 392              		.loc 1 121 16
- 393 00a4 1F4B     		ldr	r3, .L27
- 394 00a6 0222     		movs	r2, #2
- 395 00a8 1A70     		strb	r2, [r3]
- 122:./system/system-task.c **** 						if(rst==I2C_OK)
- 396              		.loc 1 122 13
- 397 00aa 254B     		ldr	r3, .L27+28
- 398 00ac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 10
+ 350 0072 80BD     		pop	{r7, pc}
+ 351              	.L24:
+ 352              		.align	2
+ 353              	.L23:
+ 354 0074 00000000 		.word	mpu_state
+ 355 0078 00000000 		.word	myMPU6050
+ 356 007c 00380140 		.word	1073821696
+ 357 0080 00000000 		.word	mpu_settings
+ 358              		.cfi_endproc
+ 359              	.LFE35:
+ 361              		.section	.text.keypad_task,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	keypad_task
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	keypad_task:
+ 369              	.LFB36:
+ 112:./system/system-task.c **** //----------------------------------------------------------
+ 113:./system/system-task.c **** void keypad_task()
+ 114:./system/system-task.c **** {
+ 370              		.loc 1 114 1
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 1, uses_anonymous_args = 0
+ 374 0000 80B5     		push	{r7, lr}
+ 375              	.LCFI11:
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 7, -8
+ 378              		.cfi_offset 14, -4
+ 379 0002 00AF     		add	r7, sp, #0
+ 380              	.LCFI12:
+ 381              		.cfi_def_cfa_register 7
+ 115:./system/system-task.c ****  //uint8_t scan_val=0;
+ 116:./system/system-task.c ****    switch(keypad_state)
+ 382              		.loc 1 116 4
+ 383 0004 1E4B     		ldr	r3, .L37
+ 384 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 385 0008 042B     		cmp	r3, #4
+ 386 000a 36D8     		bhi	.L34
+ 387 000c 01A2     		adr	r2, .L28
+ 388 000e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 389 0012 00BF     		.p2align 2
+ 390              	.L28:
+ 391 0014 29000000 		.word	.L31+1
+ 392 0018 7B000000 		.word	.L34+1
+ 393 001c 3D000000 		.word	.L30+1
+ 394 0020 57000000 		.word	.L29+1
+ 395 0024 63000000 		.word	.L27+1
+ 396              		.p2align 1
+ 397              	.L31:
+ 117:./system/system-task.c ****    {
+ 118:./system/system-task.c **** 
+ 119:./system/system-task.c **** 		case KEYPAD_WAIT:
+ 120:./system/system-task.c **** 				if(keypad_ticks>=KEYPAD_WAIT_TIMEOUT)
+ 398              		.loc 1 120 20
+ 399 0028 164B     		ldr	r3, .L37+4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 10
 
 
- 399              		.loc 1 122 9
- 400 00ae 002B     		cmp	r3, #0
- 401 00b0 34D1     		bne	.L26
- 123:./system/system-task.c **** 						{
- 124:./system/system-task.c **** 							mpu6050_uart_print(USART1,(MPU6050_t *)&myMPU6050,mpu_settings.acq_mode);
- 402              		.loc 1 124 8
- 403 00b2 1F4B     		ldr	r3, .L27+12
- 404 00b4 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
- 405 00b6 1A46     		mov	r2, r3
- 406 00b8 2049     		ldr	r1, .L27+24
- 407 00ba 2248     		ldr	r0, .L27+32
- 408 00bc FFF7FEFF 		bl	mpu6050_uart_print
- 125:./system/system-task.c **** 			  			mpu_state=MPU_PROC;
- 409              		.loc 1 125 18
- 410 00c0 184B     		ldr	r3, .L27
- 411 00c2 0422     		movs	r2, #4
- 412 00c4 1A70     		strb	r2, [r3]
- 126:./system/system-task.c **** 						}
- 127:./system/system-task.c **** 			break;
- 413              		.loc 1 127 4
- 414 00c6 29E0     		b	.L26
- 415              	.L13:
- 128:./system/system-task.c **** 		case MPU_PROC :
- 129:./system/system-task.c **** 				mpu_ticks=0;
- 416              		.loc 1 129 14
- 417 00c8 174B     		ldr	r3, .L27+4
- 418 00ca 0022     		movs	r2, #0
- 419 00cc 1A60     		str	r2, [r3]
- 130:./system/system-task.c **** 			  mpu_state=MPU_WAIT;
- 420              		.loc 1 130 15
- 421 00ce 154B     		ldr	r3, .L27
- 422 00d0 0022     		movs	r2, #0
- 423 00d2 1A70     		strb	r2, [r3]
- 131:./system/system-task.c **** 			  break;
- 424              		.loc 1 131 6
- 425 00d4 23E0     		b	.L12
- 426              	.L16:
- 132:./system/system-task.c **** 
- 133:./system/system-task.c **** 		case MPU_ERROR:
- 134:./system/system-task.c **** 			uart_print(USART1,"\t MPU-ER::");
- 427              		.loc 1 134 4
- 428 00d6 1C49     		ldr	r1, .L27+36
- 429 00d8 1A48     		ldr	r0, .L27+32
- 430 00da FFF7FEFF 		bl	uart_print
- 135:./system/system-task.c ****     	uart_print_integer(USART1,rst,10);
- 431              		.loc 1 135 6
- 432 00de 184B     		ldr	r3, .L27+28
- 433 00e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 434 00e2 0A22     		movs	r2, #10
- 435 00e4 1946     		mov	r1, r3
- 436 00e6 1748     		ldr	r0, .L27+32
- 437 00e8 FFF7FEFF 		bl	uart_print_integer
- 136:./system/system-task.c ****     	uart_print(USART1,"\n");
- 438              		.loc 1 136 6
- 439 00ec 1749     		ldr	r1, .L27+40
- 440 00ee 1548     		ldr	r0, .L27+32
- 441 00f0 FFF7FEFF 		bl	uart_print
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 11
+ 400 002a 1B68     		ldr	r3, [r3]
+ 401              		.loc 1 120 7
+ 402 002c 47F22F52 		movw	r2, #29999
+ 403 0030 9342     		cmp	r3, r2
+ 404 0032 1FD9     		bls	.L35
+ 121:./system/system-task.c **** 					keypad_state=KEYPAD_DEBOUNCE;
+ 405              		.loc 1 121 18
+ 406 0034 124B     		ldr	r3, .L37
+ 407 0036 0222     		movs	r2, #2
+ 408 0038 1A70     		strb	r2, [r3]
+ 122:./system/system-task.c **** 				break;
+ 409              		.loc 1 122 5
+ 410 003a 1BE0     		b	.L35
+ 411              	.L30:
+ 123:./system/system-task.c **** 		case KEYPAD_DEBOUNCE:
+ 124:./system/system-task.c **** 				if(keypad_debounce_cnt>=KEYPAD_DEBOUNCE_TIMEOUT)
+ 412              		.loc 1 124 27
+ 413 003c 124B     		ldr	r3, .L37+8
+ 414 003e 1B68     		ldr	r3, [r3]
+ 415              		.loc 1 124 7
+ 416 0040 40F6AB52 		movw	r2, #3499
+ 417 0044 9342     		cmp	r3, r2
+ 418 0046 17D9     		bls	.L36
+ 125:./system/system-task.c **** 				{
+ 126:./system/system-task.c **** 					keypad_debounce_cnt=0;
+ 419              		.loc 1 126 25
+ 420 0048 0F4B     		ldr	r3, .L37+8
+ 421 004a 0022     		movs	r2, #0
+ 422 004c 1A60     		str	r2, [r3]
+ 127:./system/system-task.c **** 					keypad_state=KEYPAD_SCAN;
+ 423              		.loc 1 127 18
+ 424 004e 0C4B     		ldr	r3, .L37
+ 425 0050 0322     		movs	r2, #3
+ 426 0052 1A70     		strb	r2, [r3]
+ 128:./system/system-task.c **** 				}
+ 129:./system/system-task.c **** 		        break;
+ 427              		.loc 1 129 11
+ 428 0054 10E0     		b	.L36
+ 429              	.L29:
+ 130:./system/system-task.c **** 		case KEYPAD_SCAN:
+ 131:./system/system-task.c **** 				// read the keys pin status
+ 132:./system/system-task.c **** 			    keypad_scan(); 
+ 430              		.loc 1 132 8
+ 431 0056 FFF7FEFF 		bl	keypad_scan
+ 133:./system/system-task.c **** 			    //scan_val=keypad_scan(); 
+ 134:./system/system-task.c ****                 //lcd_print_uint8_xy(12,0,scan_val,10);
+ 135:./system/system-task.c **** 				keypad_state=KEYPAD_PROCESS;
+ 432              		.loc 1 135 17
+ 433 005a 094B     		ldr	r3, .L37
+ 434 005c 0422     		movs	r2, #4
+ 435 005e 1A70     		strb	r2, [r3]
+ 136:./system/system-task.c **** 				break;
+ 436              		.loc 1 136 5
+ 437 0060 0BE0     		b	.L26
+ 438              	.L27:
+ 137:./system/system-task.c **** 
+ 138:./system/system-task.c **** 		case KEYPAD_PROCESS:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 11
 
 
- 137:./system/system-task.c **** 			i2c_uart_print(USART1);			
- 442              		.loc 1 137 4
- 443 00f4 1348     		ldr	r0, .L27+32
- 444 00f6 FFF7FEFF 		bl	i2c_uart_print
- 138:./system/system-task.c **** 			mpu6050_error_handle((MPU6050_t *)&myMPU6050);
- 445              		.loc 1 138 4
- 446 00fa 1048     		ldr	r0, .L27+24
- 447 00fc FFF7FEFF 		bl	mpu6050_error_handle
- 139:./system/system-task.c **** 			mpu_settings.init_sucess=0;//mpu_init_sucess=0;
- 448              		.loc 1 139 28
- 449 0100 0B4B     		ldr	r3, .L27+12
- 450 0102 0022     		movs	r2, #0
- 451 0104 1A70     		strb	r2, [r3]
- 140:./system/system-task.c **** 			mpu_ticks=0;
- 452              		.loc 1 140 13
- 453 0106 084B     		ldr	r3, .L27+4
- 454 0108 0022     		movs	r2, #0
- 455 010a 1A60     		str	r2, [r3]
- 141:./system/system-task.c **** 			mpu_state=MPU_WAIT;
- 456              		.loc 1 141 13
- 457 010c 054B     		ldr	r3, .L27
- 458 010e 0022     		movs	r2, #0
- 459 0110 1A70     		strb	r2, [r3]
- 142:./system/system-task.c **** 		break;
- 460              		.loc 1 142 3
- 461 0112 04E0     		b	.L12
- 462              	.L24:
- 107:./system/system-task.c **** 		case MPU_INIT:
- 463              		.loc 1 107 5
- 464 0114 00BF     		nop
- 465 0116 02E0     		b	.L23
- 466              	.L25:
- 118:./system/system-task.c **** 		case MPU_READ:
- 467              		.loc 1 118 5
- 468 0118 00BF     		nop
- 469 011a 00E0     		b	.L23
- 470              	.L26:
- 127:./system/system-task.c **** 		case MPU_PROC :
- 471              		.loc 1 127 4
- 472 011c 00BF     		nop
- 473              	.L12:
- 474              	.L23:
+ 139:./system/system-task.c **** 			    keypad_process();
+ 439              		.loc 1 139 8
+ 440 0062 FFF7FEFF 		bl	keypad_process
+ 140:./system/system-task.c **** 				keypad_ticks=0;
+ 441              		.loc 1 140 17
+ 442 0066 074B     		ldr	r3, .L37+4
+ 443 0068 0022     		movs	r2, #0
+ 444 006a 1A60     		str	r2, [r3]
+ 141:./system/system-task.c **** 				keypad_state=KEYPAD_WAIT;
+ 445              		.loc 1 141 17
+ 446 006c 044B     		ldr	r3, .L37
+ 447 006e 0022     		movs	r2, #0
+ 448 0070 1A70     		strb	r2, [r3]
+ 142:./system/system-task.c **** 				break;
+ 449              		.loc 1 142 5
+ 450 0072 02E0     		b	.L26
+ 451              	.L35:
+ 122:./system/system-task.c **** 		case KEYPAD_DEBOUNCE:
+ 452              		.loc 1 122 5
+ 453 0074 00BF     		nop
+ 454 0076 00E0     		b	.L34
+ 455              	.L36:
+ 129:./system/system-task.c **** 		case KEYPAD_SCAN:
+ 456              		.loc 1 129 11
+ 457 0078 00BF     		nop
+ 458              	.L26:
+ 459              	.L34:
  143:./system/system-task.c **** 	}
- 144:./system/system-task.c **** 
- 145:./system/system-task.c **** 
- 146:./system/system-task.c **** 				  /*
- 147:./system/system-task.c **** 				uart_println (USART1,"...............");
- 148:./system/system-task.c **** 			  uart_println (USART1,"MPU6050 integer Data ...");
- 149:./system/system-task.c **** 			  mpu6050_uart_print_All(USART1,(MPU6050_t *)&myMPU6050);			  
- 150:./system/system-task.c **** 			  uart_println (USART1,"MPU6050 Hex Data ...");
- 151:./system/system-task.c **** 			  mpu6050_uart_print_raw_Data(USART1,(MPU6050_t *)&myMPU6050);
- 152:./system/system-task.c **** 			  uart_println (USART1,"MPU6050 Raw Data ...");
- 153:./system/system-task.c **** 			  mpu6050_uart_print_raw_Array(USART1,(MPU6050_t *)&myMPU6050);
- 154:./system/system-task.c **** 			  uart_println (USART1,"...............");						
- 155:./system/system-task.c **** 				*/
- 156:./system/system-task.c **** 
+ 144:./system/system-task.c **** }
+ 460              		.loc 1 144 1
+ 461 007a 00BF     		nop
+ 462 007c 80BD     		pop	{r7, pc}
+ 463              	.L38:
+ 464 007e 00BF     		.align	2
+ 465              	.L37:
+ 466 0080 00000000 		.word	keypad_state
+ 467 0084 00000000 		.word	keypad_ticks
+ 468 0088 00000000 		.word	keypad_debounce_cnt
+ 469              		.cfi_endproc
+ 470              	.LFE36:
+ 472              		.section	.rodata
+ 473              		.align	2
+ 474              	.LC2:
+ 475 0018 55415620 		.ascii	"UAV IMU stm32 \000"
+ 475      494D5520 
+ 475      73746D33 
+ 475      322000
+ 476 0027 00       		.align	2
+ 477              	.LC3:
+ 478 0028 56494220 		.ascii	"VIB \000"
+ 478      00
+ 479 002d 000000   		.align	2
+ 480              	.LC4:
+ 481 0030 20202020 		.ascii	"       \000"
+ 481      20202000 
+ 482              		.section	.text.lcd_task,"ax",%progbits
+ 483              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 12
+
+
+ 484              		.global	lcd_task
+ 485              		.syntax unified
+ 486              		.thumb
+ 487              		.thumb_func
+ 489              	lcd_task:
+ 490              	.LFB37:
+ 145:./system/system-task.c **** //-------------------------------------------------------------------------------------------------
+ 146:./system/system-task.c **** void lcd_task(void)
+ 147:./system/system-task.c **** {
+ 491              		.loc 1 147 1
+ 492              		.cfi_startproc
+ 493              		@ args = 0, pretend = 0, frame = 0
+ 494              		@ frame_needed = 1, uses_anonymous_args = 0
+ 495 0000 80B5     		push	{r7, lr}
+ 496              	.LCFI13:
+ 497              		.cfi_def_cfa_offset 8
+ 498              		.cfi_offset 7, -8
+ 499              		.cfi_offset 14, -4
+ 500 0002 00AF     		add	r7, sp, #0
+ 501              	.LCFI14:
+ 502              		.cfi_def_cfa_register 7
+ 148:./system/system-task.c ****   if(lcd_update)
+ 503              		.loc 1 148 6
+ 504 0004 0D4B     		ldr	r3, .L42
+ 505 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 506              		.loc 1 148 5
+ 507 0008 002B     		cmp	r3, #0
+ 508 000a 15D0     		beq	.L41
+ 149:./system/system-task.c ****   {
+ 150:./system/system-task.c ****     lcd_update=0;
+ 509              		.loc 1 150 15
+ 510 000c 0B4B     		ldr	r3, .L42
+ 511 000e 0022     		movs	r2, #0
+ 512 0010 1A70     		strb	r2, [r3]
+ 151:./system/system-task.c ****     //lcd_clear();
+ 152:./system/system-task.c ****     lcd_print_xy(0,0,"UAV IMU stm32 ");
+ 513              		.loc 1 152 5
+ 514 0012 0B4A     		ldr	r2, .L42+4
+ 515 0014 0021     		movs	r1, #0
+ 516 0016 0020     		movs	r0, #0
+ 517 0018 FFF7FEFF 		bl	lcd_print_xy
+ 153:./system/system-task.c ****     lcd_print_xy(0,1,"VIB ");
+ 518              		.loc 1 153 5
+ 519 001c 094A     		ldr	r2, .L42+8
+ 520 001e 0121     		movs	r1, #1
+ 521 0020 0020     		movs	r0, #0
+ 522 0022 FFF7FEFF 		bl	lcd_print_xy
+ 154:./system/system-task.c ****     lcd_print_uint8(relays.val,10);
+ 523              		.loc 1 154 5
+ 524 0026 084B     		ldr	r3, .L42+12
+ 525 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 526 002a 0A21     		movs	r1, #10
+ 527 002c 1846     		mov	r0, r3
+ 528 002e FFF7FEFF 		bl	lcd_print_uint8
+ 155:./system/system-task.c **** 	  lcd_print("       ");	
+ 529              		.loc 1 155 4
+ 530 0032 0648     		ldr	r0, .L42+16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 13
+
+
+ 531 0034 FFF7FEFF 		bl	lcd_print
+ 532              	.L41:
+ 156:./system/system-task.c ****   }
  157:./system/system-task.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 12
-
-
- 475              		.loc 1 157 1
- 476 011e 00BF     		nop
- 477 0120 80BD     		pop	{r7, pc}
- 478              	.L28:
- 479 0122 00BF     		.align	2
- 480              	.L27:
- 481 0124 00000000 		.word	mpu_state
- 482 0128 00000000 		.word	mpu_ticks
- 483 012c 00000000 		.word	mpu_cycle
- 484 0130 00000000 		.word	mpu_settings
- 485 0134 801A0600 		.word	400000
- 486 0138 00540040 		.word	1073763328
- 487 013c 00000000 		.word	myMPU6050
- 488 0140 00000000 		.word	rst.0
- 489 0144 00380140 		.word	1073821696
- 490 0148 18000000 		.word	.LC2
- 491 014c 24000000 		.word	.LC3
- 492              		.cfi_endproc
- 493              	.LFE35:
- 495              		.section	.text.keypad_task,"ax",%progbits
- 496              		.align	1
- 497              		.global	keypad_task
- 498              		.syntax unified
- 499              		.thumb
- 500              		.thumb_func
- 502              	keypad_task:
- 503              	.LFB36:
+ 533              		.loc 1 157 1
+ 534 0038 00BF     		nop
+ 535 003a 80BD     		pop	{r7, pc}
+ 536              	.L43:
+ 537              		.align	2
+ 538              	.L42:
+ 539 003c 00000000 		.word	lcd_update
+ 540 0040 18000000 		.word	.LC2
+ 541 0044 28000000 		.word	.LC3
+ 542 0048 00000000 		.word	relays
+ 543 004c 30000000 		.word	.LC4
+ 544              		.cfi_endproc
+ 545              	.LFE37:
+ 547              		.section	.text.X_input_task,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	X_input_task
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	X_input_task:
+ 555              	.LFB38:
  158:./system/system-task.c **** //----------------------------------------------------------
- 159:./system/system-task.c **** void keypad_task()
+ 159:./system/system-task.c **** void X_input_task(void)
  160:./system/system-task.c **** {
- 504              		.loc 1 160 1
- 505              		.cfi_startproc
- 506              		@ args = 0, pretend = 0, frame = 0
- 507              		@ frame_needed = 1, uses_anonymous_args = 0
- 508 0000 80B5     		push	{r7, lr}
- 509              	.LCFI11:
- 510              		.cfi_def_cfa_offset 8
- 511              		.cfi_offset 7, -8
- 512              		.cfi_offset 14, -4
- 513 0002 00AF     		add	r7, sp, #0
- 514              	.LCFI12:
- 515              		.cfi_def_cfa_register 7
- 161:./system/system-task.c ****  //uint8_t scan_val=0;
- 162:./system/system-task.c ****    switch(keypad_state)
- 516              		.loc 1 162 4
- 517 0004 1E4B     		ldr	r3, .L41
- 518 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 519 0008 042B     		cmp	r3, #4
- 520 000a 36D8     		bhi	.L38
- 521 000c 01A2     		adr	r2, .L32
- 522 000e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
- 523 0012 00BF     		.p2align 2
- 524              	.L32:
- 525 0014 29000000 		.word	.L35+1
- 526 0018 7B000000 		.word	.L38+1
- 527 001c 3D000000 		.word	.L34+1
- 528 0020 57000000 		.word	.L33+1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 13
+ 556              		.loc 1 160 1
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 1, uses_anonymous_args = 0
+ 560              		@ link register save eliminated.
+ 561 0000 80B4     		push	{r7}
+ 562              	.LCFI15:
+ 563              		.cfi_def_cfa_offset 4
+ 564              		.cfi_offset 7, -4
+ 565 0002 00AF     		add	r7, sp, #0
+ 566              	.LCFI16:
+ 567              		.cfi_def_cfa_register 7
+ 161:./system/system-task.c **** 
+ 162:./system/system-task.c **** }
+ 568              		.loc 1 162 1
+ 569 0004 00BF     		nop
+ 570 0006 BD46     		mov	sp, r7
+ 571              	.LCFI17:
+ 572              		.cfi_def_cfa_register 13
+ 573              		@ sp needed
+ 574 0008 80BC     		pop	{r7}
+ 575              	.LCFI18:
+ 576              		.cfi_restore 7
+ 577              		.cfi_def_cfa_offset 0
+ 578 000a 7047     		bx	lr
+ 579              		.cfi_endproc
+ 580              	.LFE38:
+ 582              		.section	.text.X_output_task,"ax",%progbits
+ 583              		.align	1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 14
 
 
- 529 0024 63000000 		.word	.L31+1
- 530              		.p2align 1
- 531              	.L35:
- 163:./system/system-task.c ****    {
- 164:./system/system-task.c **** 
- 165:./system/system-task.c **** 		case KEYPAD_WAIT:
- 166:./system/system-task.c **** 				if(keypad_ticks>=KEYPAD_WAIT_TIMEOUT)
- 532              		.loc 1 166 20
- 533 0028 164B     		ldr	r3, .L41+4
- 534 002a 1B68     		ldr	r3, [r3]
- 535              		.loc 1 166 7
- 536 002c 47F22F52 		movw	r2, #29999
- 537 0030 9342     		cmp	r3, r2
- 538 0032 1FD9     		bls	.L39
- 167:./system/system-task.c **** 					keypad_state=KEYPAD_DEBOUNCE;
- 539              		.loc 1 167 18
- 540 0034 124B     		ldr	r3, .L41
- 541 0036 0222     		movs	r2, #2
- 542 0038 1A70     		strb	r2, [r3]
- 168:./system/system-task.c **** 				break;
- 543              		.loc 1 168 5
- 544 003a 1BE0     		b	.L39
- 545              	.L34:
- 169:./system/system-task.c **** 		case KEYPAD_DEBOUNCE:
- 170:./system/system-task.c **** 				if(keypad_debounce_cnt>=KEYPAD_DEBOUNCE_TIMEOUT)
- 546              		.loc 1 170 27
- 547 003c 124B     		ldr	r3, .L41+8
- 548 003e 1B68     		ldr	r3, [r3]
- 549              		.loc 1 170 7
- 550 0040 40F6AB52 		movw	r2, #3499
- 551 0044 9342     		cmp	r3, r2
- 552 0046 17D9     		bls	.L40
- 171:./system/system-task.c **** 				{
- 172:./system/system-task.c **** 					keypad_debounce_cnt=0;
- 553              		.loc 1 172 25
- 554 0048 0F4B     		ldr	r3, .L41+8
- 555 004a 0022     		movs	r2, #0
- 556 004c 1A60     		str	r2, [r3]
- 173:./system/system-task.c **** 					keypad_state=KEYPAD_SCAN;
- 557              		.loc 1 173 18
- 558 004e 0C4B     		ldr	r3, .L41
- 559 0050 0322     		movs	r2, #3
- 560 0052 1A70     		strb	r2, [r3]
- 174:./system/system-task.c **** 				}
- 175:./system/system-task.c **** 		        break;
- 561              		.loc 1 175 11
- 562 0054 10E0     		b	.L40
- 563              	.L33:
- 176:./system/system-task.c **** 		case KEYPAD_SCAN:
- 177:./system/system-task.c **** 				// read the keys pin status
- 178:./system/system-task.c **** 			    keypad_scan(); 
- 564              		.loc 1 178 8
- 565 0056 FFF7FEFF 		bl	keypad_scan
- 179:./system/system-task.c **** 
- 180:./system/system-task.c **** 			    //scan_val=keypad_scan(); 
- 181:./system/system-task.c ****                 //lcd_print_uint8_xy(12,0,scan_val,10);
- 182:./system/system-task.c **** 				keypad_state=KEYPAD_PROCESS;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 14
+ 584              		.global	X_output_task
+ 585              		.syntax unified
+ 586              		.thumb
+ 587              		.thumb_func
+ 589              	X_output_task:
+ 590              	.LFB39:
+ 163:./system/system-task.c **** //----------------------------------------------------------
+ 164:./system/system-task.c **** void X_output_task(void)
+ 165:./system/system-task.c **** {
+ 591              		.loc 1 165 1
+ 592              		.cfi_startproc
+ 593              		@ args = 0, pretend = 0, frame = 0
+ 594              		@ frame_needed = 1, uses_anonymous_args = 0
+ 595              		@ link register save eliminated.
+ 596 0000 80B4     		push	{r7}
+ 597              	.LCFI19:
+ 598              		.cfi_def_cfa_offset 4
+ 599              		.cfi_offset 7, -4
+ 600 0002 00AF     		add	r7, sp, #0
+ 601              	.LCFI20:
+ 602              		.cfi_def_cfa_register 7
+ 166:./system/system-task.c **** 
+ 167:./system/system-task.c **** }
+ 603              		.loc 1 167 1
+ 604 0004 00BF     		nop
+ 605 0006 BD46     		mov	sp, r7
+ 606              	.LCFI21:
+ 607              		.cfi_def_cfa_register 13
+ 608              		@ sp needed
+ 609 0008 80BC     		pop	{r7}
+ 610              	.LCFI22:
+ 611              		.cfi_restore 7
+ 612              		.cfi_def_cfa_offset 0
+ 613 000a 7047     		bx	lr
+ 614              		.cfi_endproc
+ 615              	.LFE39:
+ 617              		.section	.text.rtc_task,"ax",%progbits
+ 618              		.align	1
+ 619              		.global	rtc_task
+ 620              		.syntax unified
+ 621              		.thumb
+ 622              		.thumb_func
+ 624              	rtc_task:
+ 625              	.LFB40:
+ 168:./system/system-task.c **** //----------------------------------------------------------
+ 169:./system/system-task.c **** void rtc_task()
+ 170:./system/system-task.c **** {
+ 626              		.loc 1 170 1
+ 627              		.cfi_startproc
+ 628              		@ args = 0, pretend = 0, frame = 0
+ 629              		@ frame_needed = 1, uses_anonymous_args = 0
+ 630 0000 B0B5     		push	{r4, r5, r7, lr}
+ 631              	.LCFI23:
+ 632              		.cfi_def_cfa_offset 16
+ 633              		.cfi_offset 4, -16
+ 634              		.cfi_offset 5, -12
+ 635              		.cfi_offset 7, -8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 15
 
 
- 566              		.loc 1 182 17
- 567 005a 094B     		ldr	r3, .L41
- 568 005c 0422     		movs	r2, #4
- 569 005e 1A70     		strb	r2, [r3]
- 183:./system/system-task.c **** 				break;
- 570              		.loc 1 183 5
- 571 0060 0BE0     		b	.L30
- 572              	.L31:
- 184:./system/system-task.c **** 
- 185:./system/system-task.c **** 		case KEYPAD_PROCESS:
- 186:./system/system-task.c **** 			    keypad_process();
- 573              		.loc 1 186 8
- 574 0062 FFF7FEFF 		bl	keypad_process
- 187:./system/system-task.c **** 				keypad_ticks=0;
- 575              		.loc 1 187 17
- 576 0066 074B     		ldr	r3, .L41+4
- 577 0068 0022     		movs	r2, #0
- 578 006a 1A60     		str	r2, [r3]
- 188:./system/system-task.c **** 				keypad_state=KEYPAD_WAIT;
- 579              		.loc 1 188 17
- 580 006c 044B     		ldr	r3, .L41
- 581 006e 0022     		movs	r2, #0
- 582 0070 1A70     		strb	r2, [r3]
- 189:./system/system-task.c **** 				break;
- 583              		.loc 1 189 5
- 584 0072 02E0     		b	.L30
- 585              	.L39:
- 168:./system/system-task.c **** 		case KEYPAD_DEBOUNCE:
- 586              		.loc 1 168 5
- 587 0074 00BF     		nop
- 588 0076 00E0     		b	.L38
- 589              	.L40:
- 175:./system/system-task.c **** 		case KEYPAD_SCAN:
- 590              		.loc 1 175 11
- 591 0078 00BF     		nop
- 592              	.L30:
- 593              	.L38:
+ 636              		.cfi_offset 14, -4
+ 637 0002 00AF     		add	r7, sp, #0
+ 638              	.LCFI24:
+ 639              		.cfi_def_cfa_register 7
+ 171:./system/system-task.c **** 
+ 172:./system/system-task.c **** 	switch(rtc_state)
+ 640              		.loc 1 172 2
+ 641 0004 164B     		ldr	r3, .L53
+ 642 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 643 0008 002B     		cmp	r3, #0
+ 644 000a 02D0     		beq	.L47
+ 645 000c 012B     		cmp	r3, #1
+ 646 000e 0CD0     		beq	.L48
+ 173:./system/system-task.c **** 	{
+ 174:./system/system-task.c **** 		case RTC_WAIT:
+ 175:./system/system-task.c **** 
+ 176:./system/system-task.c **** 			if(rtc_ticks> RTC_WAIT_TIMEOUT)
+ 177:./system/system-task.c **** 			{
+ 178:./system/system-task.c **** 			 rtc_state=RTC_RUN;
+ 179:./system/system-task.c **** 			 rtc_ticks=0;
+ 180:./system/system-task.c **** 			}
+ 181:./system/system-task.c **** 		break;
+ 182:./system/system-task.c **** 		case RTC_RUN:
+ 183:./system/system-task.c **** 					system_rtc();
+ 184:./system/system-task.c ****           gpio_toggle(blink_led);
+ 185:./system/system-task.c **** 				systemticks++;
+ 186:./system/system-task.c **** 			rtc_ticks=0;
+ 187:./system/system-task.c **** 			rtc_state=RTC_WAIT;
+ 188:./system/system-task.c **** 		break;
+ 189:./system/system-task.c **** 
  190:./system/system-task.c **** 	}
- 191:./system/system-task.c **** }
- 594              		.loc 1 191 1
- 595 007a 00BF     		nop
- 596 007c 80BD     		pop	{r7, pc}
- 597              	.L42:
- 598 007e 00BF     		.align	2
- 599              	.L41:
- 600 0080 00000000 		.word	keypad_state
- 601 0084 00000000 		.word	keypad_ticks
- 602 0088 00000000 		.word	keypad_debounce_cnt
- 603              		.cfi_endproc
- 604              	.LFE36:
- 606              		.section	.rodata
- 607 0026 0000     		.align	2
- 608              	.LC4:
- 609 0028 73746D33 		.ascii	"stm32f10x \000"
- 609      32663130 
- 609      782000
- 610 0033 00       		.align	2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 15
+ 191:./system/system-task.c **** 
+ 192:./system/system-task.c **** }
+ 647              		.loc 1 192 1
+ 648 0010 23E0     		b	.L52
+ 649              	.L47:
+ 176:./system/system-task.c **** 			{
+ 650              		.loc 1 176 16
+ 651 0012 144B     		ldr	r3, .L53+4
+ 652 0014 1B68     		ldr	r3, [r3]
+ 176:./system/system-task.c **** 			{
+ 653              		.loc 1 176 6
+ 654 0016 144A     		ldr	r2, .L53+8
+ 655 0018 9342     		cmp	r3, r2
+ 656 001a 1DD9     		bls	.L51
+ 178:./system/system-task.c **** 			 rtc_ticks=0;
+ 657              		.loc 1 178 14
+ 658 001c 104B     		ldr	r3, .L53
+ 659 001e 0122     		movs	r2, #1
+ 660 0020 1A70     		strb	r2, [r3]
+ 179:./system/system-task.c **** 			}
+ 661              		.loc 1 179 14
+ 662 0022 104B     		ldr	r3, .L53+4
+ 663 0024 0022     		movs	r2, #0
+ 664 0026 1A60     		str	r2, [r3]
+ 181:./system/system-task.c **** 		case RTC_RUN:
+ 665              		.loc 1 181 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 16
 
 
- 611              	.LC5:
- 612 0034 54494D32 		.ascii	"TIM2...  \000"
- 612      2E2E2E20 
- 612      2000
- 613 003e 0000     		.align	2
- 614              	.LC6:
- 615 0040 20202020 		.ascii	"       \000"
- 615      20202000 
- 616              		.section	.text.lcd_task,"ax",%progbits
- 617              		.align	1
- 618              		.global	lcd_task
- 619              		.syntax unified
- 620              		.thumb
- 621              		.thumb_func
- 623              	lcd_task:
- 624              	.LFB37:
- 192:./system/system-task.c **** //-------------------------------------------------------------------------------------------------
- 193:./system/system-task.c **** void lcd_task(void)
- 194:./system/system-task.c **** {
- 625              		.loc 1 194 1
- 626              		.cfi_startproc
- 627              		@ args = 0, pretend = 0, frame = 0
- 628              		@ frame_needed = 1, uses_anonymous_args = 0
- 629 0000 80B5     		push	{r7, lr}
- 630              	.LCFI13:
- 631              		.cfi_def_cfa_offset 8
- 632              		.cfi_offset 7, -8
- 633              		.cfi_offset 14, -4
- 634 0002 00AF     		add	r7, sp, #0
- 635              	.LCFI14:
- 636              		.cfi_def_cfa_register 7
- 195:./system/system-task.c ****   if(lcd_update)
- 637              		.loc 1 195 6
- 638 0004 0D4B     		ldr	r3, .L46
- 639 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 640              		.loc 1 195 5
- 641 0008 002B     		cmp	r3, #0
- 642 000a 15D0     		beq	.L45
- 196:./system/system-task.c ****   {
- 197:./system/system-task.c **** 
- 198:./system/system-task.c ****     lcd_update=0;
- 643              		.loc 1 198 15
- 644 000c 0B4B     		ldr	r3, .L46
- 645 000e 0022     		movs	r2, #0
- 646 0010 1A70     		strb	r2, [r3]
- 199:./system/system-task.c ****     //lcd_clear();
- 200:./system/system-task.c ****     lcd_print_xy(0,0,"stm32f10x ");
- 647              		.loc 1 200 5
- 648 0012 0B4A     		ldr	r2, .L46+4
- 649 0014 0021     		movs	r1, #0
- 650 0016 0020     		movs	r0, #0
- 651 0018 FFF7FEFF 		bl	lcd_print_xy
- 201:./system/system-task.c ****     lcd_print_xy(0,1,"TIM2...  ");
- 652              		.loc 1 201 5
- 653 001c 094A     		ldr	r2, .L46+8
- 654 001e 0121     		movs	r1, #1
- 655 0020 0020     		movs	r0, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 16
+ 666 0028 16E0     		b	.L51
+ 667              	.L48:
+ 183:./system/system-task.c ****           gpio_toggle(blink_led);
+ 668              		.loc 1 183 6
+ 669 002a FFF7FEFF 		bl	system_rtc
+ 184:./system/system-task.c **** 				systemticks++;
+ 670              		.loc 1 184 11
+ 671 002e 0F4B     		ldr	r3, .L53+12
+ 672 0030 93E80300 		ldm	r3, {r0, r1}
+ 673 0034 FFF7FEFF 		bl	gpio_toggle
+ 185:./system/system-task.c **** 			rtc_ticks=0;
+ 674              		.loc 1 185 16
+ 675 0038 0D4B     		ldr	r3, .L53+16
+ 676 003a D3E90023 		ldrd	r2, [r3]
+ 677 003e 541C     		adds	r4, r2, #1
+ 678 0040 43F10005 		adc	r5, r3, #0
+ 679 0044 0A4B     		ldr	r3, .L53+16
+ 680 0046 C3E90045 		strd	r4, [r3]
+ 186:./system/system-task.c **** 			rtc_state=RTC_WAIT;
+ 681              		.loc 1 186 13
+ 682 004a 064B     		ldr	r3, .L53+4
+ 683 004c 0022     		movs	r2, #0
+ 684 004e 1A60     		str	r2, [r3]
+ 187:./system/system-task.c **** 		break;
+ 685              		.loc 1 187 13
+ 686 0050 034B     		ldr	r3, .L53
+ 687 0052 0022     		movs	r2, #0
+ 688 0054 1A70     		strb	r2, [r3]
+ 188:./system/system-task.c **** 
+ 689              		.loc 1 188 3
+ 690 0056 00E0     		b	.L49
+ 691              	.L51:
+ 181:./system/system-task.c **** 		case RTC_RUN:
+ 692              		.loc 1 181 3
+ 693 0058 00BF     		nop
+ 694              	.L49:
+ 695              	.L52:
+ 696              		.loc 1 192 1
+ 697 005a 00BF     		nop
+ 698 005c B0BD     		pop	{r4, r5, r7, pc}
+ 699              	.L54:
+ 700 005e 00BF     		.align	2
+ 701              	.L53:
+ 702 0060 00000000 		.word	rtc_state
+ 703 0064 00000000 		.word	rtc_ticks
+ 704 0068 A0860100 		.word	100000
+ 705 006c 00000000 		.word	blink_led
+ 706 0070 00000000 		.word	systemticks
+ 707              		.cfi_endproc
+ 708              	.LFE40:
+ 710              		.text
+ 711              	.Letext0:
+ 712              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 713              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 714              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 715              		.file 5 "./basic/gpio.h"
+ 716              		.file 6 "./mpu6050/mpu6050.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 17
 
 
- 656 0022 FFF7FEFF 		bl	lcd_print_xy
- 202:./system/system-task.c ****     lcd_print_uint8(relays.val,10);
- 657              		.loc 1 202 5
- 658 0026 084B     		ldr	r3, .L46+12
- 659 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 660 002a 0A21     		movs	r1, #10
- 661 002c 1846     		mov	r0, r3
- 662 002e FFF7FEFF 		bl	lcd_print_uint8
- 203:./system/system-task.c **** 	  lcd_print("       ");
- 663              		.loc 1 203 4
- 664 0032 0648     		ldr	r0, .L46+16
- 665 0034 FFF7FEFF 		bl	lcd_print
- 666              	.L45:
- 204:./system/system-task.c **** 	
- 205:./system/system-task.c **** 		//uart_print(USART1,"RLY:");
- 206:./system/system-task.c **** 		//uart_print_integer(USART1, relays.val,10);//t.word);
- 207:./system/system-task.c **** 		//uart_print(USART1,"\r\n");
- 208:./system/system-task.c ****   }
- 209:./system/system-task.c **** }
- 667              		.loc 1 209 1
- 668 0038 00BF     		nop
- 669 003a 80BD     		pop	{r7, pc}
- 670              	.L47:
- 671              		.align	2
- 672              	.L46:
- 673 003c 00000000 		.word	lcd_update
- 674 0040 28000000 		.word	.LC4
- 675 0044 34000000 		.word	.LC5
- 676 0048 00000000 		.word	relays
- 677 004c 40000000 		.word	.LC6
- 678              		.cfi_endproc
- 679              	.LFE37:
- 681              		.section	.text.X_input_task,"ax",%progbits
- 682              		.align	1
- 683              		.global	X_input_task
- 684              		.syntax unified
- 685              		.thumb
- 686              		.thumb_func
- 688              	X_input_task:
- 689              	.LFB38:
- 210:./system/system-task.c **** //----------------------------------------------------------
- 211:./system/system-task.c **** void X_input_task(void)
- 212:./system/system-task.c **** {
- 690              		.loc 1 212 1
- 691              		.cfi_startproc
- 692              		@ args = 0, pretend = 0, frame = 0
- 693              		@ frame_needed = 1, uses_anonymous_args = 0
- 694              		@ link register save eliminated.
- 695 0000 80B4     		push	{r7}
- 696              	.LCFI15:
- 697              		.cfi_def_cfa_offset 4
- 698              		.cfi_offset 7, -4
- 699 0002 00AF     		add	r7, sp, #0
- 700              	.LCFI16:
- 701              		.cfi_def_cfa_register 7
- 213:./system/system-task.c **** 
- 214:./system/system-task.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 17
-
-
- 702              		.loc 1 214 1
- 703 0004 00BF     		nop
- 704 0006 BD46     		mov	sp, r7
- 705              	.LCFI17:
- 706              		.cfi_def_cfa_register 13
- 707              		@ sp needed
- 708 0008 80BC     		pop	{r7}
- 709              	.LCFI18:
- 710              		.cfi_restore 7
- 711              		.cfi_def_cfa_offset 0
- 712 000a 7047     		bx	lr
- 713              		.cfi_endproc
- 714              	.LFE38:
- 716              		.section	.text.X_output_task,"ax",%progbits
- 717              		.align	1
- 718              		.global	X_output_task
- 719              		.syntax unified
- 720              		.thumb
- 721              		.thumb_func
- 723              	X_output_task:
- 724              	.LFB39:
- 215:./system/system-task.c **** //----------------------------------------------------------
- 216:./system/system-task.c **** void X_output_task(void)
- 217:./system/system-task.c **** {
- 725              		.loc 1 217 1
- 726              		.cfi_startproc
- 727              		@ args = 0, pretend = 0, frame = 0
- 728              		@ frame_needed = 1, uses_anonymous_args = 0
- 729              		@ link register save eliminated.
- 730 0000 80B4     		push	{r7}
- 731              	.LCFI19:
- 732              		.cfi_def_cfa_offset 4
- 733              		.cfi_offset 7, -4
- 734 0002 00AF     		add	r7, sp, #0
- 735              	.LCFI20:
- 736              		.cfi_def_cfa_register 7
- 218:./system/system-task.c **** 
- 219:./system/system-task.c **** }
- 737              		.loc 1 219 1
- 738 0004 00BF     		nop
- 739 0006 BD46     		mov	sp, r7
- 740              	.LCFI21:
- 741              		.cfi_def_cfa_register 13
- 742              		@ sp needed
- 743 0008 80BC     		pop	{r7}
- 744              	.LCFI22:
- 745              		.cfi_restore 7
- 746              		.cfi_def_cfa_offset 0
- 747 000a 7047     		bx	lr
- 748              		.cfi_endproc
- 749              	.LFE39:
- 751              		.section	.text.rtc_task,"ax",%progbits
- 752              		.align	1
- 753              		.global	rtc_task
- 754              		.syntax unified
- 755              		.thumb
- 756              		.thumb_func
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 18
-
-
- 758              	rtc_task:
- 759              	.LFB40:
- 220:./system/system-task.c **** //----------------------------------------------------------
- 221:./system/system-task.c **** void rtc_task()
- 222:./system/system-task.c **** {
- 760              		.loc 1 222 1
- 761              		.cfi_startproc
- 762              		@ args = 0, pretend = 0, frame = 0
- 763              		@ frame_needed = 1, uses_anonymous_args = 0
- 764 0000 80B5     		push	{r7, lr}
- 765              	.LCFI23:
- 766              		.cfi_def_cfa_offset 8
- 767              		.cfi_offset 7, -8
- 768              		.cfi_offset 14, -4
- 769 0002 00AF     		add	r7, sp, #0
- 770              	.LCFI24:
- 771              		.cfi_def_cfa_register 7
- 223:./system/system-task.c **** 
- 224:./system/system-task.c **** 	switch(rtc_state)
- 772              		.loc 1 224 2
- 773 0004 144B     		ldr	r3, .L57
- 774 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 775 0008 002B     		cmp	r3, #0
- 776 000a 02D0     		beq	.L51
- 777 000c 012B     		cmp	r3, #1
- 778 000e 0CD0     		beq	.L52
- 225:./system/system-task.c **** 	{
- 226:./system/system-task.c **** 		case RTC_WAIT:
- 227:./system/system-task.c **** 
- 228:./system/system-task.c **** 			if(rtc_ticks> RTC_WAIT_TIMEOUT)
- 229:./system/system-task.c **** 			{
- 230:./system/system-task.c **** 			 rtc_state=RTC_RUN;
- 231:./system/system-task.c **** 			 rtc_ticks=0;
- 232:./system/system-task.c **** 			}
- 233:./system/system-task.c **** 		break;
- 234:./system/system-task.c **** 		case RTC_RUN:
- 235:./system/system-task.c **** 					system_rtc();
- 236:./system/system-task.c ****           gpio_toggle(blink_led);
- 237:./system/system-task.c **** 				systemticks++;
- 238:./system/system-task.c **** 			rtc_ticks=0;
- 239:./system/system-task.c **** 			rtc_state=RTC_WAIT;
- 240:./system/system-task.c **** 		break;
- 241:./system/system-task.c **** 
- 242:./system/system-task.c **** 	}
- 243:./system/system-task.c **** 
- 244:./system/system-task.c **** }
- 779              		.loc 1 244 1
- 780 0010 1FE0     		b	.L56
- 781              	.L51:
- 228:./system/system-task.c **** 			{
- 782              		.loc 1 228 16
- 783 0012 124B     		ldr	r3, .L57+4
- 784 0014 1B68     		ldr	r3, [r3]
- 228:./system/system-task.c **** 			{
- 785              		.loc 1 228 6
- 786 0016 124A     		ldr	r2, .L57+8
- 787 0018 9342     		cmp	r3, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 19
-
-
- 788 001a 19D9     		bls	.L55
- 230:./system/system-task.c **** 			 rtc_ticks=0;
- 789              		.loc 1 230 14
- 790 001c 0E4B     		ldr	r3, .L57
- 791 001e 0122     		movs	r2, #1
- 792 0020 1A70     		strb	r2, [r3]
- 231:./system/system-task.c **** 			}
- 793              		.loc 1 231 14
- 794 0022 0E4B     		ldr	r3, .L57+4
- 795 0024 0022     		movs	r2, #0
- 796 0026 1A60     		str	r2, [r3]
- 233:./system/system-task.c **** 		case RTC_RUN:
- 797              		.loc 1 233 3
- 798 0028 12E0     		b	.L55
- 799              	.L52:
- 235:./system/system-task.c ****           gpio_toggle(blink_led);
- 800              		.loc 1 235 6
- 801 002a FFF7FEFF 		bl	system_rtc
- 236:./system/system-task.c **** 				systemticks++;
- 802              		.loc 1 236 11
- 803 002e 0D4B     		ldr	r3, .L57+12
- 804 0030 93E80300 		ldm	r3, {r0, r1}
- 805 0034 FFF7FEFF 		bl	gpio_toggle
- 237:./system/system-task.c **** 			rtc_ticks=0;
- 806              		.loc 1 237 16
- 807 0038 0B4B     		ldr	r3, .L57+16
- 808 003a 1B68     		ldr	r3, [r3]
- 809 003c 0133     		adds	r3, r3, #1
- 810 003e 0A4A     		ldr	r2, .L57+16
- 811 0040 1360     		str	r3, [r2]
- 238:./system/system-task.c **** 			rtc_state=RTC_WAIT;
- 812              		.loc 1 238 13
- 813 0042 064B     		ldr	r3, .L57+4
- 814 0044 0022     		movs	r2, #0
- 815 0046 1A60     		str	r2, [r3]
- 239:./system/system-task.c **** 		break;
- 816              		.loc 1 239 13
- 817 0048 034B     		ldr	r3, .L57
- 818 004a 0022     		movs	r2, #0
- 819 004c 1A70     		strb	r2, [r3]
- 240:./system/system-task.c **** 
- 820              		.loc 1 240 3
- 821 004e 00E0     		b	.L53
- 822              	.L55:
- 233:./system/system-task.c **** 		case RTC_RUN:
- 823              		.loc 1 233 3
- 824 0050 00BF     		nop
- 825              	.L53:
- 826              	.L56:
- 827              		.loc 1 244 1
- 828 0052 00BF     		nop
- 829 0054 80BD     		pop	{r7, pc}
- 830              	.L58:
- 831 0056 00BF     		.align	2
- 832              	.L57:
- 833 0058 00000000 		.word	rtc_state
- 834 005c 00000000 		.word	rtc_ticks
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 20
-
-
- 835 0060 A0860100 		.word	100000
- 836 0064 00000000 		.word	blink_led
- 837 0068 00000000 		.word	systemticks
- 838              		.cfi_endproc
- 839              	.LFE40:
- 841              		.section	.bss.rst.0,"aw",%nobits
- 844              	rst.0:
- 845 0000 00       		.space	1
- 846              		.text
- 847              	.Letext0:
- 848              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
- 849              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 850              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
- 851              		.file 5 "./basic/gpio.h"
- 852              		.file 6 "./mpu6050/mpu6050.h"
- 853              		.file 7 "./i2c/i2c-std.h"
- 854              		.file 8 "./uart/uart.h"
- 855              		.file 9 "./system/system-task.h"
- 856              		.file 10 "./system/system.h"
- 857              		.file 11 "./init/init.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 21
+ 717              		.file 7 "./uart/uart.h"
+ 718              		.file 8 "./system/system-task.h"
+ 719              		.file 9 "./system/system.h"
+ 720              		.file 10 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system-task.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:21     .bss.keypad_state:00000000 keypad_state
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:22     .bss.keypad_state:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:28     .bss.keypad_ticks:00000000 keypad_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:25     .bss.keypad_ticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:35     .bss.keypad_debounce_cnt:00000000 keypad_debounce_cnt
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:32     .bss.keypad_debounce_cnt:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:41     .bss.lcd_state:00000000 lcd_state
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:42     .bss.lcd_state:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:48     .bss.lcd_ticks:00000000 lcd_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:45     .bss.lcd_ticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:54     .bss.pilot_state:00000000 pilot_state
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:55     .bss.pilot_state:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:61     .bss.pilot_ticks:00000000 pilot_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:58     .bss.pilot_ticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:67     .bss.rtc_state:00000000 rtc_state
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:68     .bss.rtc_state:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:74     .bss.rtc_ticks:00000000 rtc_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:71     .bss.rtc_ticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:80     .bss.mpu_state:00000000 mpu_state
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:81     .bss.mpu_state:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:87     .bss.mpu_ticks:00000000 mpu_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:84     .bss.mpu_ticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:94     .data.mpu_cycle:00000000 mpu_cycle
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:91     .data.mpu_cycle:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:97     .text.adc_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:103    .text.adc_task:00000000 adc_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:133    .rodata:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:140    .text.uart_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:146    .text.uart_task:00000000 uart_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:254    .text.uart_task:0000008c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:272    .text.mpu6050_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:278    .text.mpu6050_task:00000000 mpu6050_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:301    .text.mpu6050_task:00000014 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:306    .text.mpu6050_task:00000028 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:481    .text.mpu6050_task:00000124 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:844    .bss.rst.0:00000000 rst.0
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:496    .text.keypad_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:502    .text.keypad_task:00000000 keypad_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:525    .text.keypad_task:00000014 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:530    .text.keypad_task:00000028 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:600    .text.keypad_task:00000080 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:617    .text.lcd_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:623    .text.lcd_task:00000000 lcd_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:673    .text.lcd_task:0000003c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:682    .text.X_input_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:688    .text.X_input_task:00000000 X_input_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:717    .text.X_output_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:723    .text.X_output_task:00000000 X_output_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:752    .text.rtc_task:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:758    .text.rtc_task:00000000 rtc_task
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:833    .text.rtc_task:00000058 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:845    .bss.rst.0:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:21     .bss.keypad_state:00000000 keypad_state
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:22     .bss.keypad_state:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:28     .bss.keypad_ticks:00000000 keypad_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:25     .bss.keypad_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:35     .bss.keypad_debounce_cnt:00000000 keypad_debounce_cnt
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:32     .bss.keypad_debounce_cnt:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:41     .bss.lcd_state:00000000 lcd_state
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:42     .bss.lcd_state:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:48     .bss.lcd_ticks:00000000 lcd_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:45     .bss.lcd_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:54     .bss.pilot_state:00000000 pilot_state
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:55     .bss.pilot_state:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:61     .bss.pilot_ticks:00000000 pilot_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:58     .bss.pilot_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:67     .bss.rtc_state:00000000 rtc_state
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:68     .bss.rtc_state:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:74     .bss.rtc_ticks:00000000 rtc_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:71     .bss.rtc_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:80     .bss.mpu_state:00000000 mpu_state
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:81     .bss.mpu_state:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:87     .bss.mpu_ticks:00000000 mpu_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:84     .bss.mpu_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:90     .text.adc_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:96     .text.adc_task:00000000 adc_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:126    .rodata:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:133    .text.uart_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:139    .text.uart_task:00000000 uart_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:247    .text.uart_task:0000008c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:258    .text.mpu6050_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:264    .text.mpu6050_task:00000000 mpu6050_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:287    .text.mpu6050_task:00000014 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:292    .text.mpu6050_task:00000028 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:354    .text.mpu6050_task:00000074 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:362    .text.keypad_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:368    .text.keypad_task:00000000 keypad_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:391    .text.keypad_task:00000014 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:396    .text.keypad_task:00000028 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:466    .text.keypad_task:00000080 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:483    .text.lcd_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:489    .text.lcd_task:00000000 lcd_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:539    .text.lcd_task:0000003c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:548    .text.X_input_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:554    .text.X_input_task:00000000 X_input_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:583    .text.X_output_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:589    .text.X_output_task:00000000 X_output_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:618    .text.rtc_task:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:624    .text.rtc_task:00000000 rtc_task
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s:702    .text.rtc_task:00000060 $d
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 22
-
-
                            .group:00000000 wm4._newlib_version.h.4.bfdf54b0af045d4a71376ae00f63a22c
                            .group:00000000 wm4.features.h.33.318b64d71e0957639cfb30f1db1f7ec8
                            .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
                            .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 19
+
+
                            .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
                            .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
                            .group:00000000 wm4.core_cm3.h.113.b286929a54d33b4c8909a7132437b244
@@ -1281,13 +1081,13 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:845    .bss.rst.0:00000000 $
                            .group:00000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
                            .group:00000000 wm4._timeval.h.32.bec3221fa7a9bb0bdde696c9c57e47d2
                            .group:00000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 23
-
-
                            .group:00000000 wm4.select.h.19.40cd3f2bfc456b193b790c2754690ebf
                            .group:00000000 wm4.types.h.51.5571ec98f267d17d3c670b7a3ba33afa
                            .group:00000000 wm4.sched.h.22.c60982713a5c428609783c78f9c78d95
                            .group:00000000 wm4._pthreadtypes.h.36.fcee9961c35163dde6267ef772ad1972
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccWGNqF5.s 			page 20
+
+
                            .group:00000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
                            .group:00000000 wm4.stdio.h.81.60a2ded7dae310b81f9d6907fe5e3dbf
                            .group:00000000 wm4.stdarg.h.31.3fa7b8f6daaa31edd1696c08c77f2a73
@@ -1311,7 +1111,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s:845    .bss.rst.0:00000000 $
                            .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
                            .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
                            .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
-                           .group:00000000 wm4.systemtask.h.12.296b6a27be8b79a110bf5281d2fc993a
+                           .group:00000000 wm4.systemtask.h.12.4111f050c12db00791331b8757fbd5d2
 
 UNDEFINED SYMBOLS
 uart_data_is_available
@@ -1324,15 +1124,14 @@ uart_state
 rx_buffer_length
 rx_buffer
 uart_ticks
-i2c_init_std
-mpu6050_init
-mpu6050_read
-mpu6050_uart_print
-uart_print_integer
-i2c_uart_print
-mpu6050_error_handle
-mpu_settings
+mpu_wait_handle
+mpu_init_handle
+mpu_acq_handle
+mpu_read_handle
+mpu_proc_handle
+mpu_error_handle
 myMPU6050
+mpu_settings
 keypad_scan
 keypad_process
 lcd_print_xy
@@ -1341,9 +1140,6 @@ lcd_print
 lcd_update
 relays
 system_rtc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cctbRrVi.s 			page 24
-
-
 gpio_toggle
 blink_led
 systemticks

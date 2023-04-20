@@ -34,32 +34,33 @@
 		/*decimal data */
 	  1.0f,        //! Gyroscope corrector from raw data to "degrees/s"
 	  1.0f,        //! Accelerometer corrector from raw data to "g"
-		0.0f,        //! Decimal Accelerometer value X axis 
+	  0.0f,        //! Decimal Accelerometer value X axis 
 	  0.0f,        //! Decimal Accelerometer value Y axis 
 	  0.0f,        //! Decimal Accelerometer value Z axis 
 	  0.0f,        //! Decimal Gyroscope value X axis 
 	  0.0f,        //! Decimal Gyroscope value Y axis 
 	  0.0f,        //! Decimal Gyroscope value Z axis 
     
-		0.0f,       //! Decimal Accelerometer value X axis multiplied by SENSORS_GRAVITY_STANDARD
+	  0.0f,       //! Decimal Accelerometer value X axis multiplied by SENSORS_GRAVITY_STANDARD
 	  0.0f,       //! Decimal Accelerometer value Y axis multiplied by SENSORS_GRAVITY_STANDARD
 	  0.0f,       //! Decimal Accelerometer value Z axis multiplied by SENSORS_GRAVITY_STANDARD 
 	  0.0f,       //! Decimal Gyroscope value X axis multiplied by SENSORS_DPS_TO_RADS */
 	  0.0f,       //! Decimal Gyroscope value Y axis multiplied by SENSORS_DPS_TO_RADS 
 	  0.0f,       //! Decimal Gyroscope value Z axis multiplied by SENSORS_DPS_TO_RADS 
 		
-		0.0f       //! Temperature in degrees 
+	  0.0f       //! Temperature in degrees 
  };
 
 mpu_config_t mpu_settings={
- 0, 												//mpu is not initialized,
+ //0, 												//mpu is not initialized,
  MPU6050_Accel_Range_2G,	  //mpu accelerometer range ==0:+-2G 
  MPU6050_Gyro_Range_500s,	  //mpu gyroscope  range == 1:+-500 d/s
  2,													//mpu accelerometer thershold 0..100  
  2,													//mpu gyroscope thershold 0..100
- MPU_ACQ_ALL,								// ACQ mode {0:all ,1:accel,2:gyro,3:temp,4:accel+gyro,5:acceel+temp, 6:gyro+temp}
- 0,
- 5,
+ MPU_ACQ_SENSE_ACC_GYR,			// ACQ sense {0:all ,1:accel,2:gyro,3:temp,4:accel+gyro,5:acceel+temp, 6:gyro+temp}
+ MPU_ACQ_MODE_SAMPLE,				// ACQ mode {0:samples ,1: normal read, 2:AI reading to be done later}
+ 0,													// ACQ run {0: off, 1: run}													
+ 100,
 };
  
 //********** **********************************************************************************
@@ -231,7 +232,6 @@ uint8_t mpu6050_read_Interrupts(MPU6050_t* mpu, MPU6050_Interrupt_t* InterruptsS
 
 	/* Return OK */
 	return MPU6050_OK; //  or return I2C_OK;
-
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -259,15 +259,13 @@ uint8_t mpu6050_setGyroRange(MPU6050_t* mpu, MPU6050_Gyro_Range_t Gyro_range)
 
 	switch (Gyro_range) 
     {
-		case MPU6050_Gyro_Range_250s: mpu->Gyro_Mult = (float)1 / MPU6050_GYRO_SENS_250;  break;
-		case MPU6050_Gyro_Range_500s: mpu->Gyro_Mult = (float)1 / MPU6050_GYRO_SENS_500;  break;
-		case MPU6050_Gyro_Range_1000s:mpu->Gyro_Mult = (float)1 / MPU6050_GYRO_SENS_1000; break;
-		case MPU6050_Gyro_Range_2000s:mpu->Gyro_Mult = (float)1 / MPU6050_GYRO_SENS_2000; break;
+		case MPU6050_Gyro_Range_250s: mpu->Gyro_scale = (float) MPU6050_GYRO_SENS_250;  break;
+		case MPU6050_Gyro_Range_500s: mpu->Gyro_scale = (float) MPU6050_GYRO_SENS_500;  break;
+		case MPU6050_Gyro_Range_1000s:mpu->Gyro_scale = (float) MPU6050_GYRO_SENS_1000; break;
+		case MPU6050_Gyro_Range_2000s:mpu->Gyro_scale = (float) MPU6050_GYRO_SENS_2000; break;
 		default:
 		break;
 	}
-	
-	
 	/* Return OK */
 	return MPU6050_OK; //  or return I2C_OK;
 }
@@ -292,10 +290,10 @@ uint8_t mpu6050_setAccelRange(MPU6050_t* mpu, MPU6050_Accel_Range_t Accel_Range)
 	/* Set sensitivities for multiplying gyro and accelerometer data */
 	switch (Accel_Range) 
 	{
-		case MPU6050_Accel_Range_2G:  mpu->Acce_Mult = (float)1 / MPU6050_ACCE_SENS_2;  break;
-		case MPU6050_Accel_Range_4G:  mpu->Acce_Mult = (float)1 / MPU6050_ACCE_SENS_4;  break;
-		case MPU6050_Accel_Range_8G:  mpu->Acce_Mult = (float)1 / MPU6050_ACCE_SENS_8;  break;
-		case MPU6050_Accel_Range_16G: mpu->Acce_Mult = (float)1 / MPU6050_ACCE_SENS_16; break; 
+		case MPU6050_Accel_Range_2G:  mpu->Acce_scale = (float) MPU6050_ACCE_SENS_2;  break;
+		case MPU6050_Accel_Range_4G:  mpu->Acce_scale = (float) MPU6050_ACCE_SENS_4;  break;
+		case MPU6050_Accel_Range_8G:  mpu->Acce_scale = (float) MPU6050_ACCE_SENS_8;  break;
+		case MPU6050_Accel_Range_16G: mpu->Acce_scale = (float) MPU6050_ACCE_SENS_16; break; 
 		default:
 		break;
 	}
@@ -642,20 +640,26 @@ void mpu6050_clear_All(MPU6050_t* mpu)
 	for(i=0;i<MPU6050_RAW_ALL_LEN;i++)
  		mpu->data.Array[i]=0;
 	
-	mpu->Accelerometer_X=0;
- 	mpu->Accelerometer_Y=0;
- 	mpu->Accelerometer_X=0;	
-	mpu->Gyroscope_X=0;
- 	mpu->Gyroscope_Y=0;
- 	mpu->Gyroscope_Z=0;
+	mpu->Accelerometer_nX=0;
+ 	mpu->Accelerometer_nY=0;
+ 	mpu->Accelerometer_nX=0;	
+	mpu->Gyroscope_nX=0;
+ 	mpu->Gyroscope_nY=0;
+ 	mpu->Gyroscope_nZ=0;
 	
 	mpu->Accel_X=0.0f;
-  mpu->Accel_Y=0.0f;
+    mpu->Accel_Y=0.0f;
 	mpu->Accel_Z=0.0f;
-	
 	mpu->Gyro_X=0.0f;
 	mpu->Gyro_Y=0.0f;
 	mpu->Gyro_Z=0.0f;
+
+	mpu->Accel_gr_X=0.0f;
+    mpu->Accel_gr_X=0.0f;
+	mpu->Accel_gr_Z=0.0f;
+	mpu->Gyro_rd_X=0.0f;
+	mpu->Gyro_rd_Y=0.0f;
+	mpu->Gyro_rd_Z=0.0f;
 
 	mpu->Temperature=0.0f;
 
@@ -667,12 +671,15 @@ void mpu6050_clear_Accelometer(MPU6050_t* mpu)
  	for(i=0;i<MPU6050_RAW_ACCEL_LEN;i++)
  		mpu->data.Array[i+MPU6050_RAW_ACCEL_Base]=0;
 
- 	mpu->Accelerometer_X=0;
- 	mpu->Accelerometer_Y=0;
- 	mpu->Accelerometer_X=0;
+ 	mpu->Accelerometer_nX=0;
+ 	mpu->Accelerometer_nY=0;
+ 	mpu->Accelerometer_nX=0;
 	mpu->Accel_X=0.0f;
-  mpu->Accel_Y=0.0f;
+ 	mpu->Accel_Y=0.0f;
 	mpu->Accel_Z=0.0f;
+	mpu->Accel_gr_X=0.0f;
+    mpu->Accel_gr_X=0.0f;
+	mpu->Accel_gr_Z=0.0f;
 }
 //-------------------------------------------------------------------------------------------
 void mpu6050_clear_Gyroscope(MPU6050_t* mpu)
@@ -681,13 +688,15 @@ void mpu6050_clear_Gyroscope(MPU6050_t* mpu)
  	for(i=0;i<MPU6050_RAW_GYRO_LEN;i++)
  		mpu->data.Array[i+MPU6050_RAW_GYRO_Base]=0;
 
- 	mpu->Gyroscope_X=0;
- 	mpu->Gyroscope_Y=0;
- 	mpu->Gyroscope_Z=0;
+ 	mpu->Gyroscope_nX=0;
+ 	mpu->Gyroscope_nY=0;
+ 	mpu->Gyroscope_nZ=0;
 	mpu->Gyro_X=0.0f;
 	mpu->Gyro_Y=0.0f;
 	mpu->Gyro_Z=0.0f;
-
+	mpu->Gyro_rd_X=0.0f;
+	mpu->Gyro_rd_Y=0.0f;
+	mpu->Gyro_rd_Z=0.0f;
 }
 //-------------------------------------------------------------------------------------------
 void mpu6050_clear_Temperature(MPU6050_t* mpu)
@@ -713,13 +722,13 @@ uint8_t mpu6050_read_Accelerometer(MPU6050_t* mpu)
   error=i2c_read_7bit_base_nbyte_std(MPU6050_I2C,mpu->Address, MPU6050_ACCEL_XOUT_H, data, 6);
   if(error) return error;
 	/* Format */
-	mpu->Accelerometer_X = (int16_t)(data[0] << 8 | data[1]);	
-	mpu->Accelerometer_Y = (int16_t)(data[2] << 8 | data[3]);
-	mpu->Accelerometer_Z = (int16_t)(data[4] << 8 | data[5]);
+	mpu->Accelerometer_nX = (int16_t)(data[0] << 8 | data[1]);	
+	mpu->Accelerometer_nY = (int16_t)(data[2] << 8 | data[3]);
+	mpu->Accelerometer_nZ = (int16_t)(data[4] << 8 | data[5]);
 	
-	mpu->Accel_X=(float)mpu->Accelerometer_X * mpu->Acce_Mult;
-	mpu->Accel_Y=(float)mpu->Accelerometer_Y * mpu->Acce_Mult;
-	mpu->Accel_Z=(float)mpu->Accelerometer_Z * mpu->Acce_Mult;
+	mpu->Accel_X=(float)mpu->Accelerometer_nX / mpu->Acce_scale;
+	mpu->Accel_Y=(float)mpu->Accelerometer_nY / mpu->Acce_scale;
+	mpu->Accel_Z=(float)mpu->Accelerometer_nZ / mpu->Acce_scale;
 
 	mpu->Accel_gr_X= mpu->Accel_X * SENSORS_GRAVITY_STANDARD;
 	mpu->Accel_gr_Y= mpu->Accel_Y * SENSORS_GRAVITY_STANDARD;
@@ -749,13 +758,13 @@ uint8_t mpu6050_read_Gyroscope(MPU6050_t* mpu)
   error=i2c_read_7bit_base_nbyte_std(MPU6050_I2C,mpu->Address, MPU6050_GYRO_XOUT_H, data, 6);
   if(error) return error;
 	/* Format */
-	mpu->Gyroscope_X = (int16_t)(data[0] << 8 | data[1]);	
-	mpu->Gyroscope_Y = (int16_t)(data[2] << 8 | data[3]);
-	mpu->Gyroscope_Z = (int16_t)(data[4] << 8 | data[5]);
+	mpu->Gyroscope_nX = (int16_t)(data[0] << 8 | data[1]);	
+	mpu->Gyroscope_nY = (int16_t)(data[2] << 8 | data[3]);
+	mpu->Gyroscope_nZ = (int16_t)(data[4] << 8 | data[5]);
 
-	mpu->Gyro_X=(float)mpu->Gyroscope_X * mpu->Gyro_Mult;
-	mpu->Gyro_Y=(float)mpu->Gyroscope_Y * mpu->Gyro_Mult;
-	mpu->Gyro_Z=(float)mpu->Gyroscope_Z * mpu->Gyro_Mult;
+	mpu->Gyro_X=(float)mpu->Gyroscope_nX / mpu->Gyro_scale;
+	mpu->Gyro_Y=(float)mpu->Gyroscope_nY / mpu->Gyro_scale;
+	mpu->Gyro_Z=(float)mpu->Gyroscope_nZ / mpu->Gyro_scale;
 
 	mpu->Gyro_rd_X= mpu->Gyro_X * SENSORS_DPS_TO_RADS;
 	mpu->Gyro_rd_Y= mpu->Gyro_Y * SENSORS_DPS_TO_RADS;
@@ -812,26 +821,26 @@ uint8_t mpu6050_read_All(MPU6050_t* mpu)
 	if(error) return error;
 
 	/* Format accelerometer data */
-	mpu->Accelerometer_X = (int16_t)(mpu->data.Array[0] << 8 | mpu->data.Array[1]);	
-	mpu->Accelerometer_Y = (int16_t)(mpu->data.Array[2] << 8 | mpu->data.Array[3]);
-	mpu->Accelerometer_Z = (int16_t)(mpu->data.Array[4] << 8 | mpu->data.Array[5]);
+	mpu->Accelerometer_nX = (int16_t)(mpu->data.Array[0] << 8 | mpu->data.Array[1]);	
+	mpu->Accelerometer_nY = (int16_t)(mpu->data.Array[2] << 8 | mpu->data.Array[3]);
+	mpu->Accelerometer_nZ = (int16_t)(mpu->data.Array[4] << 8 | mpu->data.Array[5]);
  
- 	mpu->Accel_X=(float)mpu->Accelerometer_X * mpu->Acce_Mult;
-	mpu->Accel_Y=(float)mpu->Accelerometer_Y * mpu->Acce_Mult;
-	mpu->Accel_Z=(float)mpu->Accelerometer_Z * mpu->Acce_Mult;
+ 	mpu->Accel_X=(float)mpu->Accelerometer_nX / mpu->Acce_scale;
+	mpu->Accel_Y=(float)mpu->Accelerometer_nY / mpu->Acce_scale;
+	mpu->Accel_Z=(float)mpu->Accelerometer_nZ / mpu->Acce_scale;
 
 	mpu->Accel_gr_X= mpu->Accel_X * SENSORS_GRAVITY_STANDARD;
 	mpu->Accel_gr_Y= mpu->Accel_Y * SENSORS_GRAVITY_STANDARD;
 	mpu->Accel_gr_Z= mpu->Accel_Z * SENSORS_GRAVITY_STANDARD;
 	
 	/* Format gyroscope data */
-	mpu->Gyroscope_X = (int16_t)(mpu->data.Array[8]  << 8 | mpu->data.Array[9]);
-	mpu->Gyroscope_Y = (int16_t)(mpu->data.Array[10] << 8 | mpu->data.Array[11]);
-	mpu->Gyroscope_Z = (int16_t)(mpu->data.Array[12] << 8 | mpu->data.Array[13]);
+	mpu->Gyroscope_nX = (int16_t)(mpu->data.Array[8]  << 8 | mpu->data.Array[9]);
+	mpu->Gyroscope_nY = (int16_t)(mpu->data.Array[10] << 8 | mpu->data.Array[11]);
+	mpu->Gyroscope_nZ = (int16_t)(mpu->data.Array[12] << 8 | mpu->data.Array[13]);
 
-	mpu->Gyro_X=(float)mpu->Gyroscope_X * mpu->Gyro_Mult;
-	mpu->Gyro_Y=(float)mpu->Gyroscope_Y * mpu->Gyro_Mult;
-	mpu->Gyro_Z=(float)mpu->Gyroscope_Z * mpu->Gyro_Mult;
+	mpu->Gyro_X=(float)mpu->Gyroscope_nX / mpu->Gyro_scale;
+	mpu->Gyro_Y=(float)mpu->Gyroscope_nY / mpu->Gyro_scale;
+	mpu->Gyro_Z=(float)mpu->Gyroscope_nZ / mpu->Gyro_scale;
 
 	mpu->Gyro_rd_X= mpu->Gyro_X * SENSORS_DPS_TO_RADS;
 	mpu->Gyro_rd_Y= mpu->Gyro_Y * SENSORS_DPS_TO_RADS;
@@ -846,20 +855,20 @@ uint8_t mpu6050_read_All(MPU6050_t* mpu)
 }
 //--------------------------------------------------------------------------------------------------------
 
-uint8_t mpu6050_read(MPU6050_t* mpu,uint8_t acq_mode)
+uint8_t mpu6050_read(MPU6050_t* mpu,uint8_t acq_sense)
 {
 	
-		switch(acq_mode)
+		switch(acq_sense)
 		{
 
-			case MPU_ACQ_ACC: 		return  mpu6050_read_Accelerometer(mpu);		
-			case MPU_ACQ_GYR: 		return 	mpu6050_read_Gyroscope(mpu); 
-			case MPU_ACQ_TEM: 		return 	mpu6050_read_Temperature(mpu); 
+			case MPU_ACQ_SENSE_ACC: return  mpu6050_read_Accelerometer(mpu);		
+			case MPU_ACQ_SENSE_GYR: return 	mpu6050_read_Gyroscope(mpu); 
+			case MPU_ACQ_SENSE_TEM: return 	mpu6050_read_Temperature(mpu); 
 
-			case MPU_ACQ_ALL: 		 						
-			case MPU_ACQ_ACC_GYR:  
-			case MPU_ACQ_ACC_TEM:
-			case MPU_ACQ_GYR_TEM:
+			case MPU_ACQ_SENSE_ALL: 		 						
+			case MPU_ACQ_SENSE_ACC_GYR:  
+			case MPU_ACQ_SENSE_ACC_TEM:
+			case MPU_ACQ_SENSE_GYR_TEM:
 			default:
 					return 	mpu6050_read_All(mpu);
 		}
@@ -869,31 +878,37 @@ uint8_t mpu6050_read(MPU6050_t* mpu,uint8_t acq_mode)
 //  uart Print and Display Methods
 //
 //********************************************************************************************
-void mpu6050_uart_print(USART_TypeDef *uart,MPU6050_t* mpu,uint8_t acq_mode)
+void mpu6050_uart_print(USART_TypeDef *uart,MPU6050_t* mpu,uint8_t acq_sense,uint8_t acq_mode)
 {
-		uart_println (uart,"...............");
-		switch(acq_mode)
+
+	//if(acq_mode==MPU_ACQ_MODE_SAMPLE)
+	  	mpu6050_uart_print_samples_inline(uart,mpu,acq_sense);	
+ /* else
+	{
+		switch(acq_sense)
 		{
 
-			case MPU_ACQ_ACC: 		mpu6050_uart_print_Accelometer(uart,mpu);	break;	
-			case MPU_ACQ_GYR: 		mpu6050_uart_print_Gyroscope(uart,mpu);		break;
-			case MPU_ACQ_TEM: 		mpu6050_uart_print_Temperature(uart,mpu);	break; 
-			case MPU_ACQ_ACC_GYR: 
-														mpu6050_uart_print_Accelometer(uart,mpu);
-													  mpu6050_uart_print_Gyroscope(uart,mpu);		break;
+			case MPU_ACQ_SENSE_ACC: 	mpu6050_uart_print_Accelometer(uart,mpu);	break;	
+			case MPU_ACQ_SENSE_GYR: 	mpu6050_uart_print_Gyroscope(uart,mpu);		break;
+			case MPU_ACQ_SENSE_TEM: 	mpu6050_uart_print_Temperature(uart,mpu);	break; 
+			case MPU_ACQ_SENSE_ACC_GYR: 
+										mpu6050_uart_print_Accelometer(uart,mpu);
+								  		mpu6050_uart_print_Gyroscope(uart,mpu);
+										break;
 
-			case MPU_ACQ_ACC_TEM:
-														mpu6050_uart_print_Accelometer(uart,mpu);
-														mpu6050_uart_print_Temperature(uart,mpu);	break; 
-			case MPU_ACQ_GYR_TEM:
-														mpu6050_uart_print_Gyroscope(uart,mpu);
-														mpu6050_uart_print_Temperature(uart,mpu);	break; 
-			 		 						
-			case MPU_ACQ_ALL:
+			case MPU_ACQ_SENSE_ACC_TEM:
+									mpu6050_uart_print_Accelometer(uart,mpu);
+									mpu6050_uart_print_Temperature(uart,mpu);	break; 
+			case MPU_ACQ_SENSE_GYR_TEM:
+									mpu6050_uart_print_Gyroscope(uart,mpu);
+									mpu6050_uart_print_Temperature(uart,mpu);	break; 			 		 						
+			case MPU_ACQ_SENSE_ALL:
 			default:
 					mpu6050_uart_print_All(uart,mpu);
 		}
-		uart_println (uart,"...............");
+	}
+	*/
+		//uart_println (uart,"...............");
 }
 //-------------------------------------------------------------------------------------------
 void mpu6050_uart_print_All(USART_TypeDef *uart,MPU6050_t* mpu)
@@ -906,47 +921,128 @@ void mpu6050_uart_print_All(USART_TypeDef *uart,MPU6050_t* mpu)
 	  mpu6050_uart_print_Temperature(uart,mpu);
 }
 //-------------------------------------------------------------------------------------------
+void mpu6050_uart_print_samples_inline(USART_TypeDef *uart,MPU6050_t* mpu, uint8_t  acq_sensor)
+{
+
+// print Accelerometers
+ if(acq_sensor!= MPU_ACQ_SENSE_GYR && acq_sensor!=MPU_ACQ_SENSE_GYR_TEM)
+ {
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Accelerometer_nX,10);
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Accelerometer_nY,10);
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Accelerometer_nZ,10);
+
+  	//uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Accel_X,4);
+    //uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Accel_Y,4);
+    //uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Accel_Z,4);
+
+    uart_print(uart,"\t|");
+    uart_print_float(uart,mpu->Accel_gr_X,4);
+    uart_print(uart,"\t|");
+    uart_print_float(uart,mpu->Accel_gr_Y,4);
+    uart_print(uart,"\t|");
+    uart_print_float(uart,mpu->Accel_gr_Z,4);
+}
+
+// print Gyroscope
+
+if(acq_sensor!= MPU_ACQ_SENSE_ACC && acq_sensor!=MPU_ACQ_SENSE_ACC_TEM)
+ {
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Gyroscope_nX,10);
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Gyroscope_nY,10);
+    uart_print(uart,"\t|");
+    uart_print_integer(uart,mpu->Gyroscope_nZ,10);
+
+  	uart_print(uart,"\t|");
+	  uart_print_float(uart,mpu->Gyro_X,4);
+    uart_print(uart,"\t|");
+    uart_print_float(uart,mpu->Gyro_Y,4);
+    uart_print(uart,"\t|");
+    uart_print_float(uart,mpu->Gyro_Z,4);
+
+	//uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Gyro_rd_X,4);
+    //uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Gyro_rd_Y,4);
+    //uart_print(uart,"\t");
+    //uart_print_float(uart,mpu->Gyro_rd_Z,4);
+ }
+  // print Temperature
+if(acq_sensor!= MPU_ACQ_SENSE_ACC && 
+   acq_sensor!= MPU_ACQ_SENSE_GYR && 
+	 acq_sensor!=MPU_ACQ_SENSE_ACC_GYR)
+ {
+   // Temp
+  	uart_print(uart,"\t|");
+	  uart_print_float(uart,mpu->Temperature,2);
+ }
+
+	uart_print(uart,"\r\n");
+
+}
+//-------------------------------------------------------------------------------------------
 void mpu6050_uart_print_Accelometer(USART_TypeDef *uart,MPU6050_t* mpu)
 {
-    uart_print(uart,"\n Accel ");
-    uart_print(uart,"\t X:");
-    uart_print_integer(uart,mpu->Accelerometer_X,10);
-    uart_print(uart,"\t Y:");
-    uart_print_integer(uart,mpu->Accelerometer_Y,10);
-    uart_print(uart,"\t Z:");
-    uart_print_integer(uart,mpu->Accelerometer_Z,10);
+    uart_print(uart,"\n Accel \t  \t X  \t Y  \t Z \n");
+    uart_print(uart,"\t   ");
+    uart_print_integer(uart,mpu->Accelerometer_nX,10);
+    uart_print(uart,"\t   ");
+    uart_print_integer(uart,mpu->Accelerometer_nY,10);
+    uart_print(uart,"\t   ");
+    uart_print_integer(uart,mpu->Accelerometer_nZ,10);
     uart_print(uart,"\n");
-    uart_print(uart,"\t X:");
-    uart_print_float(uart,mpu->Accel_X,2);
-    uart_print(uart,"\t Y:");
-    uart_print_float(uart,mpu->Accel_Y,2);
-    uart_print(uart,"\t Z:");
-    uart_print_float(uart,mpu->Accel_Z,2);
+    uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_X,4);
+    uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_Y,4);
+    uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_Z,4);
     uart_print(uart,"\n");
-}
+	  uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_gr_X,4);
+    uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_gr_Y,4);
+    uart_print(uart,"\t   ");
+    uart_print_float(uart,mpu->Accel_gr_Z,4);
+    uart_print(uart,"\n");
+	}
 //-------------------------------------------------------------------------------------------
 void mpu6050_uart_print_Gyroscope(USART_TypeDef *uart,MPU6050_t* mpu)
 {
     uart_print(uart,"\n Gyro ");
     uart_print(uart,"\t X:");
-    uart_print_integer(uart,mpu->Gyroscope_X,10);
+    uart_print_integer(uart,mpu->Gyroscope_nX,10);
     uart_print(uart,"\t Y:");
-    uart_print_integer(uart,mpu->Gyroscope_Y,10);
+    uart_print_integer(uart,mpu->Gyroscope_nY,10);
     uart_print(uart,"\t Z:");
-    uart_print_integer(uart,mpu->Gyroscope_Z,10);
+    uart_print_integer(uart,mpu->Gyroscope_nZ,10);
     uart_print(uart,"\n");
     uart_print(uart,"\t X:");
-    uart_print_float(uart,mpu->Gyro_X,2);
+    uart_print_float(uart,mpu->Gyro_X,4);
     uart_print(uart,"\t Y:");
-    uart_print_float(uart,mpu->Gyro_Y,2);
+    uart_print_float(uart,mpu->Gyro_Y,4);
     uart_print(uart,"\t Z:");
-    uart_print_float(uart,mpu->Gyro_Z,2);
+    uart_print_float(uart,mpu->Gyro_Z,4);
+    uart_print(uart,"\n");
+		uart_print(uart,"\t X:");
+    uart_print_float(uart,mpu->Gyro_rd_X,4);
+    uart_print(uart,"\t Y:");
+    uart_print_float(uart,mpu->Gyro_rd_Y,4);
+    uart_print(uart,"\t Z:");
+    uart_print_float(uart,mpu->Gyro_rd_Z,4);
     uart_print(uart,"\n");
 }
 //-------------------------------------------------------------------------------------------
 void mpu6050_uart_print_Temperature(USART_TypeDef *uart,MPU6050_t* mpu)
 {
-	uart_print(uart,"\t Temp:");
+	uart_print(uart,"\n Temp:\t\t");
 	uart_print_float(uart,mpu->Temperature,2);
   uart_print(uart,"\n");
 }
@@ -962,20 +1058,21 @@ void mpu6050_uart_print_raw_Accelometer(USART_TypeDef *uart,MPU6050_t* mpu)
 {
 	WORD_BYTES t;
 	t.word=0;
-
+	uart_print(uart,"\n Accel RAW ");
 	t.byte.high=mpu->data.accel_x_high;
 	t.byte.low=mpu->data.accel_x_low;
-	uart_print(uart,"\t ACCEL_XOUT:0x");
+
+	uart_print(uart,"\t XOUT:0x");
 	uart_print_integer(uart,t.word,16);
 
 	t.byte.high=mpu->data.accel_y_high;
 	t.byte.low=mpu->data.accel_y_low;
-	uart_print(uart,"\t ACCEL_YOUT:0x");
+	uart_print(uart,"\t YOUT:0x");
 	uart_print_integer(uart,t.word,16);
 
 	t.byte.high=mpu->data.accel_z_high;
 	t.byte.low=mpu->data.accel_z_low;
-	uart_print(uart,"\t ACCEL_ZOUT:0x");
+	uart_print(uart,"\t ZOUT:0x");
 	uart_print_integer(uart,t.word,16);
   uart_print(uart,"\r\n");
 }
@@ -984,21 +1081,20 @@ void mpu6050_uart_print_raw_Gyroscope(USART_TypeDef *uart,MPU6050_t* mpu)
 {
 	WORD_BYTES t;
 	t.word=0;
-	
+	uart_print(uart,"\n  GYRO  RAW ");
 	t.byte.high=mpu->data.gyro_x_high;
 	t.byte.low=mpu->data.gyro_x_low;
-	uart_print(uart,"\t GYRO_XOUT:0x");
+	uart_print(uart,"\t XOUT:0x");
 	uart_print_integer(uart,t.word,16);
-
-
+  
 	t.byte.high=mpu->data.gyro_y_high;
 	t.byte.low=mpu->data.gyro_y_low;
-	uart_print(uart,"\t GYRO_YOUT:0x");
+	uart_print(uart,"\t YOUT:0x");
 	uart_print_integer(uart,t.word,16);
 
 	t.byte.high=mpu->data.gyro_z_high;
 	t.byte.low=mpu->data.gyro_z_low;
-	uart_print(uart,"\t GYRO_ZOUT:0x");
+	uart_print(uart,"\t ZOUT:0x");
 	uart_print_integer(uart,t.word,16);
     uart_print(uart,"\r\n");
 }
@@ -1007,13 +1103,13 @@ void mpu6050_uart_print_raw_Temperature(USART_TypeDef *uart,MPU6050_t* mpu)
 {
 	WORD_BYTES t;
 	t.word=0;
-	
+	uart_print(uart,"\n  TEMP  RAW ");
 	t.byte.high=mpu->data.temp_high;
 	t.byte.low=mpu->data.temp_low;
 
-	uart_print(uart,"\t TEMP_OUT:");
+	uart_print(uart,"\t T_OUT:");
 	uart_print_integer(uart,t.word,16);
-    uart_print(uart,"\r\n");
+  uart_print(uart,"\r\n");
 }
 //-------------------------------------------------------------------------------------------
 void mpu6050_uart_print_raw_Array(USART_TypeDef *uart,MPU6050_t* mpu)
@@ -1021,12 +1117,11 @@ void mpu6050_uart_print_raw_Array(USART_TypeDef *uart,MPU6050_t* mpu)
 	uint8_t i=0, index=MPU6050_ACCEL_OUT;
 	for (i=0;i<MPU6050_RAW_ALL_LEN ;i++)
 	{
-	 	
 		uart_print(uart,"\t reg @ (");
 		uart_print_integer(uart,index,16);
 		uart_print(uart,"):0x");
 		uart_print_integer(uart,mpu->data.Array[i],16);
-    	uart_print(uart,"\n");
+    uart_print(uart,"\n");
 		index++;
 	}
 	uart_print(uart,"\r\n\n");

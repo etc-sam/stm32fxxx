@@ -30,6 +30,7 @@
  #include "uart-cmd.h"
  #include "lcd.h"
  #include "keypad.h"
+ #include "system-mpu.h"
  #include "system-task.h"
  #include "system.h"
 //********************************************************************************************

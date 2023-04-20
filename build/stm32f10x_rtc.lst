@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
   30:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   * @{
   31:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   */
   32:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 2
 
 
   33:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** /** @defgroup RTC_Private_TypesDefinitions
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
   87:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   * @retval None
   88:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   */
   89:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** void RTC_ITConfig(uint16_t RTC_IT, FunctionalState NewState)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 3
 
 
   90:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
   66 002c 9AB2     		uxth	r2, r3
  101:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   }
   67              		.loc 1 101 17
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 4
 
 
   68 002e FB88     		ldrh	r3, [r7, #6]	@ movhi
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  115              		.cfi_offset 7, -4
  116 0002 00AF     		add	r7, sp, #0
  117              	.LCFI7:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 5
 
 
  118              		.cfi_def_cfa_register 7
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  163 0002 00AF     		add	r7, sp, #0
  164              	.LCFI11:
  165              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 6
 
 
  123:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   /* Reset the CNF flag to exit from the Configuration Mode */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  211              	.LCFI15:
  212              		.cfi_def_cfa_offset 16
  213 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 7
 
 
  214              	.LCFI16:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  145:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   else
  146:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   { /* No counter roll over during reading of CNTL and CNTH registers, counter 
  147:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****        value is equal to first value of CNTL and CNTH */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 8
 
 
  148:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****     return (((uint32_t) high1 << 16 ) | low);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  302              		.cfi_offset 7, -8
  303              		.cfi_offset 14, -4
  304 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 9
 
 
  305              	.LCFI21:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  354              	.LFB34:
  166:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** 
  167:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** /**
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 10
 
 
  168:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   * @brief  Sets the RTC prescaler value.
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  393 0028 00BF     		nop
  394 002a 0837     		adds	r7, r7, #8
  395              	.LCFI28:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 11
 
 
  396              		.cfi_def_cfa_offset 8
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  441              		.loc 1 194 13
  442 0012 92B2     		uxth	r2, r2
  443 0014 1A84     		strh	r2, [r3, #32]	@ movhi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 12
 
 
  195:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   /* Set the ALARM LSB word */
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  488              	.LCFI36:
  489              		.cfi_def_cfa_offset 16
  490 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 13
 
 
  491              	.LCFI37:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  541              		.thumb
  542              		.thumb_func
  544              	RTC_WaitForLastTask:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 14
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 14
 
 
  545              	.LFB37:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  585 0020 00280040 		.word	1073752064
  586              		.cfi_endproc
  587              	.LFE37:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 15
 
 
  589              		.section	.text.RTC_WaitForSynchro,"ax",%progbits
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  629 0022 F8D0     		beq	.L36
  241:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   {
  242:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 16
 
 
  243:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c **** }
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  671              	.LCFI51:
  672              		.cfi_def_cfa_register 7
  673 0006 0346     		mov	r3, r0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 17
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 17
 
 
  674 0008 FB80     		strh	r3, [r7, #6]	@ movhi
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  713 0032 7047     		bx	lr
  714              	.L44:
  715              		.align	2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 18
 
 
  716              	.L43:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  753 0012 DB43     		mvns	r3, r3
  754 0014 9BB2     		uxth	r3, r3
  755              		.loc 1 291 12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 19
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 19
 
 
  756 0016 0449     		ldr	r1, .L46
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  799 0002 85B0     		sub	sp, sp, #20
  800              	.LCFI62:
  801              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 20
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 20
 
 
  802 0004 00AF     		add	r7, sp, #0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  844              	.L50:
  317:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   }
  318:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_rtc.c ****   return bitstatus;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 21
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 21
 
 
  845              		.loc 1 318 10
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  888              		.cfi_def_cfa_offset 16
  889 0004 00AF     		add	r7, sp, #0
  890              	.LCFI69:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 22
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 22
 
 
  891              		.cfi_def_cfa_register 7
@@ -1308,53 +1308,53 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 1
  930              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
  931              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  932              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 23
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_rtc.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:18     .text.RTC_ITConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:24     .text.RTC_ITConfig:00000000 RTC_ITConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:94     .text.RTC_ITConfig:00000048 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:99     .text.RTC_EnterConfigMode:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:105    .text.RTC_EnterConfigMode:00000000 RTC_EnterConfigMode
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:141    .text.RTC_EnterConfigMode:0000001c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:146    .text.RTC_ExitConfigMode:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:152    .text.RTC_ExitConfigMode:00000000 RTC_ExitConfigMode
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:188    .text.RTC_ExitConfigMode:0000001c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:193    .text.RTC_GetCounter:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:199    .text.RTC_GetCounter:00000000 RTC_GetCounter
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:282    .text.RTC_GetCounter:0000004c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:287    .text.RTC_SetCounter:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:293    .text.RTC_SetCounter:00000000 RTC_SetCounter
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:342    .text.RTC_SetCounter:0000002c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:347    .text.RTC_SetPrescaler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:353    .text.RTC_SetPrescaler:00000000 RTC_SetPrescaler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:405    .text.RTC_SetPrescaler:00000030 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:410    .text.RTC_SetAlarm:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:416    .text.RTC_SetAlarm:00000000 RTC_SetAlarm
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:465    .text.RTC_SetAlarm:0000002c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:470    .text.RTC_GetDivider:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:476    .text.RTC_GetDivider:00000000 RTC_GetDivider
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:533    .text.RTC_GetDivider:00000034 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:538    .text.RTC_WaitForLastTask:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:544    .text.RTC_WaitForLastTask:00000000 RTC_WaitForLastTask
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:585    .text.RTC_WaitForLastTask:00000020 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:590    .text.RTC_WaitForSynchro:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:596    .text.RTC_WaitForSynchro:00000000 RTC_WaitForSynchro
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:645    .text.RTC_WaitForSynchro:00000030 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:650    .text.RTC_GetFlagStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:656    .text.RTC_GetFlagStatus:00000000 RTC_GetFlagStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:717    .text.RTC_GetFlagStatus:00000034 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:722    .text.RTC_ClearFlag:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:728    .text.RTC_ClearFlag:00000000 RTC_ClearFlag
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:777    .text.RTC_ClearFlag:00000028 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:782    .text.RTC_GetITStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:788    .text.RTC_GetITStatus:00000000 RTC_GetITStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:864    .text.RTC_GetITStatus:0000004c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:869    .text.RTC_ClearITPendingBit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:875    .text.RTC_ClearITPendingBit:00000000 RTC_ClearITPendingBit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:924    .text.RTC_ClearITPendingBit:00000028 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:18     .text.RTC_ITConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:24     .text.RTC_ITConfig:00000000 RTC_ITConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:94     .text.RTC_ITConfig:00000048 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:99     .text.RTC_EnterConfigMode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:105    .text.RTC_EnterConfigMode:00000000 RTC_EnterConfigMode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:141    .text.RTC_EnterConfigMode:0000001c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:146    .text.RTC_ExitConfigMode:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:152    .text.RTC_ExitConfigMode:00000000 RTC_ExitConfigMode
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:188    .text.RTC_ExitConfigMode:0000001c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:193    .text.RTC_GetCounter:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:199    .text.RTC_GetCounter:00000000 RTC_GetCounter
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:282    .text.RTC_GetCounter:0000004c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:287    .text.RTC_SetCounter:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:293    .text.RTC_SetCounter:00000000 RTC_SetCounter
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:342    .text.RTC_SetCounter:0000002c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:347    .text.RTC_SetPrescaler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:353    .text.RTC_SetPrescaler:00000000 RTC_SetPrescaler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:405    .text.RTC_SetPrescaler:00000030 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:410    .text.RTC_SetAlarm:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:416    .text.RTC_SetAlarm:00000000 RTC_SetAlarm
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:465    .text.RTC_SetAlarm:0000002c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:470    .text.RTC_GetDivider:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:476    .text.RTC_GetDivider:00000000 RTC_GetDivider
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:533    .text.RTC_GetDivider:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:538    .text.RTC_WaitForLastTask:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:544    .text.RTC_WaitForLastTask:00000000 RTC_WaitForLastTask
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:585    .text.RTC_WaitForLastTask:00000020 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:590    .text.RTC_WaitForSynchro:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:596    .text.RTC_WaitForSynchro:00000000 RTC_WaitForSynchro
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:645    .text.RTC_WaitForSynchro:00000030 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:650    .text.RTC_GetFlagStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:656    .text.RTC_GetFlagStatus:00000000 RTC_GetFlagStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:717    .text.RTC_GetFlagStatus:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:722    .text.RTC_ClearFlag:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:728    .text.RTC_ClearFlag:00000000 RTC_ClearFlag
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:777    .text.RTC_ClearFlag:00000028 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:782    .text.RTC_GetITStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:788    .text.RTC_GetITStatus:00000000 RTC_GetITStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:864    .text.RTC_GetITStatus:0000004c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:869    .text.RTC_ClearITPendingBit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:875    .text.RTC_ClearITPendingBit:00000000 RTC_ClearITPendingBit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s:924    .text.RTC_ClearITPendingBit:00000028 $d
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -1368,7 +1368,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s:924    .text.RTC_ClearITPend
                            .group:00000000 wm4.stm32f10x.h.525.b40cb5ee4fd40825ea8ccc10ea6f4722
                            .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
                            .group:00000000 wm4.stm32f10x_bkp.h.24.9f1bb2b1135ba72667dd3fcde11cf4b7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccSpnFuq.s 			page 24
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccos85sB.s 			page 24
 
 
                            .group:00000000 wm4.stm32f10x_can.h.24.b871c380ea975c71825bf46cccde3c7a

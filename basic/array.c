@@ -182,21 +182,21 @@ int cmd_split(void * buf, size_t len, int val,cmd_t* cmd)
 {
  unsigned int start=0,end=0;
  cmd->param_len=mem_find_asArray(buf,len,val,cmd->parameters);
- cmd->msg.ptr=0;
- cmd->msg.len=0;
+ //cmd->msg.ptr=0;
+ //cmd->msg.len=0;
 
  if(cmd->param_len>0)
  {	 
     start= cmd->parameters[cmd->param_len-1].ptr- (uint8_t*)buf;
 	start+= cmd->parameters[cmd->param_len-1].len+1;
  }
- end=mem_indexOf(buf,len,' ',start);
+ /*end=mem_indexOf(buf,len,' ',start);
  if(end!=-1)
  {
    cmd->msg.len=end-start;
    cmd->msg.ptr=(uint8_t*)(buf+start);  
  }
-
+*/
  return cmd->param_len;
 }
 //---------------------------------------------------------------------------------------------

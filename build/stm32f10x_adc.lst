@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
   30:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @brief ADC driver modules
   31:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @{
   32:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 2
 
 
   33:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
   87:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /* ADC EXTTRIG mask */
   88:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** #define CR2_EXTTRIG_Set             ((uint32_t)0x00100000)
   89:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** #define CR2_EXTTRIG_Reset           ((uint32_t)0xFFEFFFFF)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 3
 
 
   90:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  144:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
  145:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /** @defgroup ADC_Private_Macros
  146:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @{
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 4
 
 
  147:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
   44 0008 7B68     		ldr	r3, [r7, #4]
   45 000a 174A     		ldr	r2, .L6
   46 000c 9342     		cmp	r3, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 5
 
 
   47 000e 0AD1     		bne	.L2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
   74              	.L4:
  199:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     {
   75              		.loc 1 199 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 6
 
 
   76 0044 7B68     		ldr	r3, [r7, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  119              		@ args = 0, pretend = 0, frame = 16
  120              		@ frame_needed = 1, uses_anonymous_args = 0
  121              		@ link register save eliminated.
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 7
 
 
  122 0000 80B4     		push	{r7}
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  156 002c 1B02     		lsls	r3, r3, #8
  157              		.loc 1 238 14
  158 002e 1343     		orrs	r3, r3, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 8
 
 
  159              		.loc 1 238 11
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  195              		.loc 1 254 13
  196 0062 7B68     		ldr	r3, [r7, #4]
  197 0064 FA68     		ldr	r2, [r7, #12]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 9
 
 
  198 0066 9A60     		str	r2, [r3, #8]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  239              	.LCFI10:
  240              		.cfi_restore 7
  241              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 10
 
 
  242 009c 7047     		bx	lr
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  283              		.loc 1 282 42
  284 0014 7B68     		ldr	r3, [r7, #4]
  285 0016 0022     		movs	r2, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 11
 
 
  286 0018 5A71     		strb	r2, [r3, #5]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  325              		.loc 1 299 1
  326              		.cfi_startproc
  327              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 12
 
 
  328              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  367              		.cfi_def_cfa_offset 4
  368 0030 BD46     		mov	sp, r7
  369              	.LCFI21:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 13
 
 
  370              		.cfi_def_cfa_register 13
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  329:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   {
  330:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Enable the selected ADC DMA request */
  331:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     ADCx->CR2 |= CR2_DMA_Set;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 14
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 14
 
 
  411              		.loc 1 331 15
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  345:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   *     @arg ADC_IT_EOC: End of conversion interrupt mask
  346:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   *     @arg ADC_IT_AWD: Analog watchdog interrupt mask
  347:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   *     @arg ADC_IT_JEOC: End of injected conversion interrupt mask
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 15
 
 
  348:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @param  NewState: new state of the specified ADC interrupts.
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  365:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   }
  366:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   else
  367:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 16
 
 
  368:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Disable the selected ADC interrupts */
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  379:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
  531              		.loc 1 379 1
  532              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 17
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 17
 
 
  533              		@ args = 0, pretend = 0, frame = 8
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  390:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
  391:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** FlagStatus ADC_GetResetCalibrationStatus(ADC_TypeDef* ADCx)
  392:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 18
 
 
  579              		.loc 1 392 1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  409:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** }
  617              		.loc 1 409 1
  618 0024 1846     		mov	r0, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 19
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 19
 
 
  619 0026 1437     		adds	r7, r7, #20
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  663 0010 7B68     		ldr	r3, [r7, #4]
  664 0012 9A60     		str	r2, [r3, #8]
  422:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 20
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 20
 
 
  665              		.loc 1 422 1
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  434:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Check the status of CAL bit */
  435:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   if ((ADCx->CR2 & CR2_CAL_Set) != (uint32_t)RESET)
  710              		.loc 1 435 12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 21
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 21
 
 
  711 000c 7B68     		ldr	r3, [r7, #4]
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  448:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
  449:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /**
  450:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @brief  Enables or disables the selected ADC software start conversion .
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 22
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 22
 
 
  451:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @param  ADCx: where x can be 1, 2 or 3 to select the ADC peripheral.
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  471:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   }
  786              		.loc 1 471 15
  787 0020 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 23
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 23
 
 
  788 0022 9B68     		ldr	r3, [r3, #8]
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  835              		.loc 1 482 14
  836 0008 0023     		movs	r3, #0
  837 000a FB73     		strb	r3, [r7, #15]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 24
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 24
 
 
  483:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Check the parameters */
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  877              		.syntax unified
  878              		.thumb
  879              		.thumb_func
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 25
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 25
 
 
  881              	ADC_DiscModeChannelCountConfig:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  519:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Set the discontinuous mode channel count */
  520:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   tmpreg2 = Number - 1;
  915              		.loc 1 520 20
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 26
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 26
 
 
  916 0022 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  536:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
  957              		.loc 1 536 1
  958              		.cfi_startproc
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 27
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 27
 
 
  959              		@ args = 0, pretend = 0, frame = 8
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  998              	.LCFI80:
  999              		.cfi_def_cfa_offset 4
  1000 0030 BD46     		mov	sp, r7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 28
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 28
 
 
  1001              	.LCFI81:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  587:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @retval None
  588:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
  589:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_Sam
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 29
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 29
 
 
  590:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1061 002e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
  1062 0030 A3F10A02 		sub	r2, r3, #10
  1063              		.loc 1 603 35
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 30
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 30
 
 
  1064 0034 1346     		mov	r3, r2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  617:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to clear */
  618:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     tmpreg2 = SMPR2_SMP_Set << (3 * ADC_Channel);
  1105              		.loc 1 618 35
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 31
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 31
 
 
  1106 0076 FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1146 00b4 7B68     		ldr	r3, [r7, #4]
  1147 00b6 5B6B     		ldr	r3, [r3, #52]
  1148 00b8 FB60     		str	r3, [r7, #12]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 32
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 32
 
 
  633:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to clear */
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  648:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     tmpreg1 = ADCx->SQR2;
  649:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to clear */
  650:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     tmpreg2 = SQR2_SQ_Set << (5 * (Rank - 7));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 33
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 33
 
 
  651:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Clear the old SQx bits for the selected rank */
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1210              		.loc 1 652 16
  1211 0116 BB68     		ldr	r3, [r7, #8]
  1212 0118 DB43     		mvns	r3, r3
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 34
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 34
 
 
  652:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to set */
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  668:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to set */
  1256              		.loc 1 668 16
  1257 015c BB68     		ldr	r3, [r7, #8]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 35
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 35
 
 
  1258 015e DB43     		mvns	r3, r3
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1306              		.thumb
  1307              		.thumb_func
  1309              	ADC_ExternalTrigConvCmd:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 36
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 36
 
 
  1310              	.LFB44:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1340 001e 05E0     		b	.L57
  1341              	.L55:
  698:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 37
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 37
 
 
  1342              		.loc 1 698 15
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1390 0006 7860     		str	r0, [r7, #4]
  709:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Check the parameters */
  710:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   assert_param(IS_ADC_ALL_PERIPH(ADCx));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 38
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 38
 
 
  711:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Return the selected ADC conversion value */
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1435 0004 024B     		ldr	r3, .L62
  1436 0006 1B68     		ldr	r3, [r3]
  723:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 39
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 39
 
 
  1437              		.loc 1 723 1
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  735:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Check the parameters */
  736:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   assert_param(IS_ADC_ALL_PERIPH(ADCx));
  737:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   assert_param(IS_FUNCTIONAL_STATE(NewState));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 40
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 40
 
 
  738:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   if (NewState != DISABLE)
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1526              	ADC_InjectedDiscModeCmd:
  1527              	.LFB48:
  749:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 41
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 41
 
 
  750:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /**
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1557 001e 05E0     		b	.L71
  1558              	.L69:
  772:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 42
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 42
 
 
  1559              		.loc 1 772 15
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  798:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** void ADC_ExternalTrigInjectedConvConfig(ADC_TypeDef* ADCx, uint32_t ADC_ExternalTrigInjecConv)
  799:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
  1592              		.loc 1 799 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 43
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 43
 
 
  1593              		.cfi_startproc
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1634 002e BD46     		mov	sp, r7
  1635              	.LCFI121:
  1636              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 44
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 44
 
 
  1637              		@ sp needed
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  829:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   {
  830:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Enable the selected ADC external event selection for injected group */
  831:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     ADCx->CR2 |= CR2_JEXTTRIG_Set;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 45
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 45
 
 
  1677              		.loc 1 831 15
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  845:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   *   This parameter can be: ENABLE or DISABLE.
  846:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @retval None
  847:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 46
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 46
 
 
  848:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** void ADC_SoftwareStartInjectedConvCmd(ADC_TypeDef* ADCx, FunctionalState NewState)
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1754 0028 7B68     		ldr	r3, [r7, #4]
  1755 002a 9A60     		str	r2, [r3, #8]
  1756              	.L80:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 47
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 47
 
 
  1757              		.loc 1 865 1
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  877:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Check the status of JSWSTART bit */
  878:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   if ((ADCx->CR2 & CR2_JSWSTART_Set) != (uint32_t)RESET)
  1802              		.loc 1 878 12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 48
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 48
 
 
  1803 000c 7B68     		ldr	r3, [r7, #4]
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  891:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
  892:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /**
  893:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @brief  Configures for the selected ADC injected channel its corresponding
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 49
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 49
 
 
  894:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   *         rank in the sequencer and its sample time.
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1864 000a 1146     		mov	r1, r2
  1865 000c 1A46     		mov	r2, r3
  1866 000e 0346     		mov	r3, r0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 50
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 50
 
 
  1867 0010 FB70     		strb	r3, [r7, #3]
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1906 004e 7B61     		str	r3, [r7, #20]
  946:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to set */
  947:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     tmpreg2 = (uint32_t)ADC_SampleTime << (3*(ADC_Channel - 10));
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 51
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 51
 
 
  1907              		.loc 1 947 15
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1948 0090 1340     		ands	r3, r3, r2
  1949 0092 7B61     		str	r3, [r7, #20]
  961:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     /* Calculate the mask to set */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 52
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 52
 
 
  962:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     tmpreg2 = (uint32_t)ADC_SampleTime << (3 * ADC_Channel);
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  1991 00d2 1346     		mov	r3, r2
  1992 00d4 9B00     		lsls	r3, r3, #2
  1993 00d6 1344     		add	r3, r3, r2
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 53
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 53
 
 
  1994              		.loc 1 974 11
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2039              	.LCFI145:
  2040              		.cfi_def_cfa_register 13
  2041              		@ sp needed
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 54
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 54
 
 
  2042 011c 80BC     		pop	{r7}
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  999:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   
 1000:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Get the old register value */
 1001:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   tmpreg1 = ADCx->JSQR;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 55
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 55
 
 
  2083              		.loc 1 1001 11
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2131              	ADC_SetInjectedOffset:
  2132              	.LFB55:
 1010:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 56
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 56
 
 
 1011:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** /**
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2163 001c 1344     		add	r3, r3, r2
  2164 001e FB60     		str	r3, [r7, #12]
 1035:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 57
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 57
 
 
 1036:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Set the selected injected channel data offset */
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2204              	.LCFI159:
  2205              		.cfi_def_cfa_offset 4
  2206              		.cfi_offset 7, -4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 58
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 58
 
 
  2207 0002 85B0     		sub	sp, sp, #20
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2249              		.cfi_endproc
  2250              	.LFE56:
  2252              		.section	.text.ADC_AnalogWatchdogCmd,"ax",%progbits
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 59
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 59
 
 
  2253              		.align	1
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2284 0012 FB60     		str	r3, [r7, #12]
 1089:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Clear AWDEN, AWDENJ and AWDSGL bits */
 1090:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   tmpreg &= CR1_AWDMode_Reset;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 60
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 60
 
 
  2285              		.loc 1 1090 10
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
 1107:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****                                         uint16_t LowThreshold)
 1108:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
  2325              		.loc 1 1108 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 61
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 61
 
 
  2326              		.cfi_startproc
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2372              		.global	ADC_AnalogWatchdogSingleChannelConfig
  2373              		.syntax unified
  2374              		.thumb
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 62
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 62
 
 
  2375              		.thumb_func
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
 1148:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   assert_param(IS_ADC_ALL_PERIPH(ADCx));
 1149:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   assert_param(IS_ADC_CHANNEL(ADC_Channel));
 1150:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   /* Get the old register value */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 63
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 63
 
 
 1151:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   tmpreg = ADCx->CR1;
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
 1164:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   * @retval None
 1165:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   */
 1166:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** void ADC_TempSensorVrefintCmd(FunctionalState NewState)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 64
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 64
 
 
 1167:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c **** {
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2482 002c 0C37     		adds	r7, r7, #12
  2483              	.LCFI186:
  2484              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 65
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 65
 
 
  2485 002e BD46     		mov	sp, r7
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2526 0008 0B46     		mov	r3, r1
  2527 000a FB70     		strb	r3, [r7, #3]
 1196:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   FlagStatus bitstatus = RESET;
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 66
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 66
 
 
  2528              		.loc 1 1196 14
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2565              		.cfi_endproc
  2566              	.LFE61:
  2568              		.section	.text.ADC_ClearFlag,"ax",%progbits
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 67
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 67
 
 
  2569              		.align	1
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2603 0014 00BF     		nop
  2604 0016 0C37     		adds	r7, r7, #12
  2605              	.LCFI198:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 68
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 68
 
 
  2606              		.cfi_def_cfa_offset 4
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2648 000e FB75     		strb	r3, [r7, #23]
 1249:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****   uint32_t itmask = 0, enablestatus = 0;
  2649              		.loc 1 1249 12
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 69
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 69
 
 
  2650 0010 0023     		movs	r3, #0
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
 1266:./.driver/STM32F10x_StdPeriph_Driver/src/stm32f10x_adc.c ****     bitstatus = RESET;
  2688              		.loc 1 1266 15
  2689 0044 0023     		movs	r3, #0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 70
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 70
 
 
  2690 0046 FB75     		strb	r3, [r7, #23]
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2729 0002 85B0     		sub	sp, sp, #20
  2730              	.LCFI208:
  2731              		.cfi_def_cfa_offset 24
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 71
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 71
 
 
  2732 0004 00AF     		add	r7, sp, #0
@@ -4254,90 +4254,90 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 1
  2774              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  2775              		.file 4 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
  2776              		.file 5 "./.driver/STM32F10x_StdPeriph_Driver/inc/stm32f10x_adc.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 72
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 72
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_adc.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:18     .text.ADC_DeInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:102    .text.ADC_DeInit:00000068 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:109    .text.ADC_Init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:115    .text.ADC_Init:00000000 ADC_Init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:246    .text.ADC_Init:000000a0 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:251    .text.ADC_StructInit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:257    .text.ADC_StructInit:00000000 ADC_StructInit
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:317    .text.ADC_Cmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:323    .text.ADC_Cmd:00000000 ADC_Cmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:381    .text.ADC_DMACmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:387    .text.ADC_DMACmd:00000000 ADC_DMACmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:445    .text.ADC_ITConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:451    .text.ADC_ITConfig:00000000 ADC_ITConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:523    .text.ADC_ResetCalibration:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:529    .text.ADC_ResetCalibration:00000000 ADC_ResetCalibration
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:571    .text.ADC_GetResetCalibrationStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:577    .text.ADC_GetResetCalibrationStatus:00000000 ADC_GetResetCalibrationStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:635    .text.ADC_StartCalibration:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:641    .text.ADC_StartCalibration:00000000 ADC_StartCalibration
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:683    .text.ADC_GetCalibrationStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:689    .text.ADC_GetCalibrationStatus:00000000 ADC_GetCalibrationStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:747    .text.ADC_SoftwareStartConvCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:753    .text.ADC_SoftwareStartConvCmd:00000000 ADC_SoftwareStartConvCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:811    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:817    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:875    .text.ADC_DiscModeChannelCountConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:881    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:949    .text.ADC_DiscModeCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:955    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1013   .text.ADC_RegularChannelConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1019   .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1303   .text.ADC_ExternalTrigConvCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1309   .text.ADC_ExternalTrigConvCmd:00000000 ADC_ExternalTrigConvCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1367   .text.ADC_GetConversionValue:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1373   .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1414   .text.ADC_GetDualModeConversionValue:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1420   .text.ADC_GetDualModeConversionValue:00000000 ADC_GetDualModeConversionValue
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1451   .text.ADC_GetDualModeConversionValue:00000010 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1456   .text.ADC_AutoInjectedConvCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1462   .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1520   .text.ADC_InjectedDiscModeCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1526   .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1584   .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1590   .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1647   .text.ADC_ExternalTrigInjectedConvCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1653   .text.ADC_ExternalTrigInjectedConvCmd:00000000 ADC_ExternalTrigInjectedConvCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1711   .text.ADC_SoftwareStartInjectedConvCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1717   .text.ADC_SoftwareStartInjectedConvCmd:00000000 ADC_SoftwareStartInjectedConvCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1775   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1781   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1839   .text.ADC_InjectedChannelConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:1845   .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2051   .text.ADC_InjectedSequencerLengthConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2057   .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 73
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:18     .text.ADC_DeInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:24     .text.ADC_DeInit:00000000 ADC_DeInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:102    .text.ADC_DeInit:00000068 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:109    .text.ADC_Init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:115    .text.ADC_Init:00000000 ADC_Init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:246    .text.ADC_Init:000000a0 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:251    .text.ADC_StructInit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:257    .text.ADC_StructInit:00000000 ADC_StructInit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:317    .text.ADC_Cmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:323    .text.ADC_Cmd:00000000 ADC_Cmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:381    .text.ADC_DMACmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:387    .text.ADC_DMACmd:00000000 ADC_DMACmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:445    .text.ADC_ITConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:451    .text.ADC_ITConfig:00000000 ADC_ITConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:523    .text.ADC_ResetCalibration:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:529    .text.ADC_ResetCalibration:00000000 ADC_ResetCalibration
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:571    .text.ADC_GetResetCalibrationStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:577    .text.ADC_GetResetCalibrationStatus:00000000 ADC_GetResetCalibrationStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:635    .text.ADC_StartCalibration:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:641    .text.ADC_StartCalibration:00000000 ADC_StartCalibration
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:683    .text.ADC_GetCalibrationStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:689    .text.ADC_GetCalibrationStatus:00000000 ADC_GetCalibrationStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:747    .text.ADC_SoftwareStartConvCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:753    .text.ADC_SoftwareStartConvCmd:00000000 ADC_SoftwareStartConvCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:811    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:817    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:875    .text.ADC_DiscModeChannelCountConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:881    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:949    .text.ADC_DiscModeCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:955    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1013   .text.ADC_RegularChannelConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1019   .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1303   .text.ADC_ExternalTrigConvCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1309   .text.ADC_ExternalTrigConvCmd:00000000 ADC_ExternalTrigConvCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1367   .text.ADC_GetConversionValue:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1373   .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1414   .text.ADC_GetDualModeConversionValue:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1420   .text.ADC_GetDualModeConversionValue:00000000 ADC_GetDualModeConversionValue
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1451   .text.ADC_GetDualModeConversionValue:00000010 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1456   .text.ADC_AutoInjectedConvCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1462   .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1520   .text.ADC_InjectedDiscModeCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1526   .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1584   .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1590   .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1647   .text.ADC_ExternalTrigInjectedConvCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1653   .text.ADC_ExternalTrigInjectedConvCmd:00000000 ADC_ExternalTrigInjectedConvCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1711   .text.ADC_SoftwareStartInjectedConvCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1717   .text.ADC_SoftwareStartInjectedConvCmd:00000000 ADC_SoftwareStartInjectedConvCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1775   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1781   .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1839   .text.ADC_InjectedChannelConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:1845   .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2051   .text.ADC_InjectedSequencerLengthConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2057   .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 73
 
 
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2125   .text.ADC_SetInjectedOffset:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2131   .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2190   .text.ADC_GetInjectedConversionValue:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2196   .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2253   .text.ADC_AnalogWatchdogCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2259   .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2317   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2323   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2371   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2377   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2435   .text.ADC_TempSensorVrefintCmd:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2441   .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2497   .text.ADC_TempSensorVrefintCmd:00000034 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2502   .text.ADC_GetFlagStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2508   .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2569   .text.ADC_ClearFlag:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2575   .text.ADC_ClearFlag:00000000 ADC_ClearFlag
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2620   .text.ADC_GetITStatus:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2626   .text.ADC_GetITStatus:00000000 ADC_GetITStatus
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2712   .text.ADC_ClearITPendingBit:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2718   .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2125   .text.ADC_SetInjectedOffset:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2131   .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2190   .text.ADC_GetInjectedConversionValue:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2196   .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2253   .text.ADC_AnalogWatchdogCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2259   .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2317   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2323   .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2371   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2377   .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2435   .text.ADC_TempSensorVrefintCmd:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2441   .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2497   .text.ADC_TempSensorVrefintCmd:00000034 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2502   .text.ADC_GetFlagStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2508   .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2569   .text.ADC_ClearFlag:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2575   .text.ADC_ClearFlag:00000000 ADC_ClearFlag
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2620   .text.ADC_GetITStatus:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2626   .text.ADC_GetITStatus:00000000 ADC_GetITStatus
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2712   .text.ADC_ClearITPendingBit:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s:2718   .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -4374,7 +4374,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s:2718   .text.ADC_ClearITPend
                            .group:00000000 wm4.stm32f10x_adc.h.82.085dab8bb2bdf6609e97ee2fc7a88347
 
 UNDEFINED SYMBOLS
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\cc0FNwde.s 			page 74
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccRoGnqH.s 			page 74
 
 
 RCC_APB2PeriphResetCmd

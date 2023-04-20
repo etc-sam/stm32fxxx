@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
   30:./.startup/src/stm32f10x_it.c **** /* Private typedef -----------------------------------------------------------*/
   31:./.startup/src/stm32f10x_it.c **** /* Private define ------------------------------------------------------------*/
   32:./.startup/src/stm32f10x_it.c **** /* Private macro -------------------------------------------------------------*/
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 2
 
 
   33:./.startup/src/stm32f10x_it.c **** /* Private variables ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
   61              	.LFB34:
   55:./.startup/src/stm32f10x_it.c **** 
   56:./.startup/src/stm32f10x_it.c **** /**
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 3
 
 
   57:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Hard Fault exception.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
   99              	.LCFI7:
  100              		.cfi_def_cfa_register 7
  101              	.L5:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 4
 
 
   76:./.startup/src/stm32f10x_it.c ****   /* Go to infinite loop when Memory Manage exception occurs */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
   93:./.startup/src/stm32f10x_it.c **** }
   94:./.startup/src/stm32f10x_it.c **** 
   95:./.startup/src/stm32f10x_it.c **** /**
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 5
 
 
   96:./.startup/src/stm32f10x_it.c ****   * @brief  This function handles Usage Fault exception.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
  180              	.LCFI13:
  181              		.cfi_def_cfa_register 7
  115:./.startup/src/stm32f10x_it.c **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 6
 
 
  182              		.loc 1 115 1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
  229              	.LFE39:
  231              		.section	.text.PendSV_Handler,"ax",%progbits
  232              		.align	1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 7
 
 
  233              		.global	PendSV_Handler
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
  140:./.startup/src/stm32f10x_it.c **** void SysTick_Handler(void)
  141:./.startup/src/stm32f10x_it.c **** {
  275              		.loc 1 141 1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 8
 
 
  276              		.cfi_startproc
@@ -432,102 +432,110 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 1
  284 0002 00AF     		add	r7, sp, #0
  285              	.LCFI25:
  286              		.cfi_def_cfa_register 7
- 142:./.startup/src/stm32f10x_it.c ****  	if(TimingDelay!=0)
- 287              		.loc 1 142 17
- 288 0004 0C4B     		ldr	r3, .L18
- 289 0006 1B68     		ldr	r3, [r3]
- 290              		.loc 1 142 5
- 291 0008 002B     		cmp	r3, #0
- 292 000a 04D0     		beq	.L14
- 143:./.startup/src/stm32f10x_it.c **** 		TimingDelay--;
- 293              		.loc 1 143 14
- 294 000c 0A4B     		ldr	r3, .L18
- 295 000e 1B68     		ldr	r3, [r3]
- 296 0010 013B     		subs	r3, r3, #1
- 297 0012 094A     		ldr	r2, .L18
- 298 0014 1360     		str	r3, [r2]
- 299              	.L14:
+ 142:./.startup/src/stm32f10x_it.c ****    // system base tick 
+ 143:./.startup/src/stm32f10x_it.c ****    systemticks++;
+ 287              		.loc 1 143 15
+ 288 0004 114B     		ldr	r3, .L18
+ 289 0006 D3E90023 		ldrd	r2, [r3]
+ 290 000a 501C     		adds	r0, r2, #1
+ 291 000c 43F10001 		adc	r1, r3, #0
+ 292 0010 0E4B     		ldr	r3, .L18
+ 293 0012 C3E90001 		strd	r0, [r3]
  144:./.startup/src/stm32f10x_it.c **** 
- 145:./.startup/src/stm32f10x_it.c **** if(I2Cx_Timeout!=0)
- 300              		.loc 1 145 16
- 301 0016 094B     		ldr	r3, .L18+4
- 302 0018 1B68     		ldr	r3, [r3]
- 303              		.loc 1 145 3
- 304 001a 002B     		cmp	r3, #0
- 305 001c 04D0     		beq	.L15
- 146:./.startup/src/stm32f10x_it.c ****    I2Cx_Timeout--;
- 306              		.loc 1 146 16
- 307 001e 074B     		ldr	r3, .L18+4
- 308 0020 1B68     		ldr	r3, [r3]
- 309 0022 013B     		subs	r3, r3, #1
- 310 0024 054A     		ldr	r2, .L18+4
- 311 0026 1360     		str	r3, [r2]
- 312              	.L15:
- 147:./.startup/src/stm32f10x_it.c ****   //if(BlinkTimingDelay!=0)  
- 148:./.startup/src/stm32f10x_it.c ****   //  BlinkTimingDelay--;
- 149:./.startup/src/stm32f10x_it.c ****   //else
- 150:./.startup/src/stm32f10x_it.c ****   //  blink_update=1;  
- 151:./.startup/src/stm32f10x_it.c ****     
- 152:./.startup/src/stm32f10x_it.c ****     //my_gnc.is_tick=true;    
- 153:./.startup/src/stm32f10x_it.c ****     //my_gnc.tick();
+ 145:./.startup/src/stm32f10x_it.c ****   // Time out for normal delay
+ 146:./.startup/src/stm32f10x_it.c ****  	if(TimingDelay!=0)
+ 294              		.loc 1 146 17
+ 295 0016 0E4B     		ldr	r3, .L18+4
+ 296 0018 1B68     		ldr	r3, [r3]
+ 297              		.loc 1 146 5
+ 298 001a 002B     		cmp	r3, #0
+ 299 001c 04D0     		beq	.L14
+ 147:./.startup/src/stm32f10x_it.c **** 		TimingDelay--;
+ 300              		.loc 1 147 14
+ 301 001e 0C4B     		ldr	r3, .L18+4
+ 302 0020 1B68     		ldr	r3, [r3]
+ 303 0022 013B     		subs	r3, r3, #1
+ 304 0024 0A4A     		ldr	r2, .L18+4
+ 305 0026 1360     		str	r3, [r2]
+ 306              	.L14:
+ 148:./.startup/src/stm32f10x_it.c **** 
+ 149:./.startup/src/stm32f10x_it.c ****   // a Time out for the I2C drive 
+ 150:./.startup/src/stm32f10x_it.c ****   if(I2Cx_Timeout!=0)
+ 307              		.loc 1 150 18
+ 308 0028 0A4B     		ldr	r3, .L18+8
+ 309 002a 1B68     		ldr	r3, [r3]
+ 310              		.loc 1 150 5
+ 311 002c 002B     		cmp	r3, #0
+ 312 002e 04D0     		beq	.L15
+ 151:./.startup/src/stm32f10x_it.c ****       I2Cx_Timeout--;
+ 313              		.loc 1 151 19
+ 314 0030 084B     		ldr	r3, .L18+8
+ 315 0032 1B68     		ldr	r3, [r3]
+ 316 0034 013B     		subs	r3, r3, #1
+ 317 0036 074A     		ldr	r2, .L18+8
+ 318 0038 1360     		str	r3, [r2]
+ 319              	.L15:
+ 152:./.startup/src/stm32f10x_it.c **** 
+ 153:./.startup/src/stm32f10x_it.c ****   // system task ticks      
  154:./.startup/src/stm32f10x_it.c ****     if(is_tick)
- 313              		.loc 1 154 8
- 314 0028 054B     		ldr	r3, .L18+8
- 315 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 316              		.loc 1 154 7
- 317 002c 002B     		cmp	r3, #0
- 318 002e 01D0     		beq	.L17
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 9
+
+
+ 320              		.loc 1 154 8
+ 321 003a 074B     		ldr	r3, .L18+12
+ 322 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 323              		.loc 1 154 7
+ 324 003e 002B     		cmp	r3, #0
+ 325 0040 01D0     		beq	.L17
  155:./.startup/src/stm32f10x_it.c ****       system_ticks();
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 9
-
-
- 319              		.loc 1 155 7
- 320 0030 FFF7FEFF 		bl	system_ticks
- 321              	.L17:
+ 326              		.loc 1 155 7
+ 327 0042 FFF7FEFF 		bl	system_ticks
+ 328              	.L17:
  156:./.startup/src/stm32f10x_it.c **** 
  157:./.startup/src/stm32f10x_it.c **** }
- 322              		.loc 1 157 1
- 323 0034 00BF     		nop
- 324 0036 80BD     		pop	{r7, pc}
- 325              	.L19:
- 326              		.align	2
- 327              	.L18:
- 328 0038 00000000 		.word	TimingDelay
- 329 003c 00000000 		.word	I2Cx_Timeout
- 330 0040 00000000 		.word	is_tick
- 331              		.cfi_endproc
- 332              	.LFE41:
- 334              		.text
- 335              	.Letext0:
- 336              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
- 337              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 338              		.file 4 "./i2c/i2c-std.h"
- 339              		.file 5 "./system/system.h"
- 340              		.file 6 "./init/init.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 10
+ 329              		.loc 1 157 1
+ 330 0046 00BF     		nop
+ 331 0048 80BD     		pop	{r7, pc}
+ 332              	.L19:
+ 333 004a 00BF     		.align	2
+ 334              	.L18:
+ 335 004c 00000000 		.word	systemticks
+ 336 0050 00000000 		.word	TimingDelay
+ 337 0054 00000000 		.word	I2Cx_Timeout
+ 338 0058 00000000 		.word	is_tick
+ 339              		.cfi_endproc
+ 340              	.LFE41:
+ 342              		.text
+ 343              	.Letext0:
+ 344              		.file 2 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 345              		.file 3 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 346              		.file 4 "./i2c/i2c-std.h"
+ 347              		.file 5 "./system/system.h"
+ 348              		.file 6 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f10x_it.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:18     .text.NMI_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:24     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:54     .text.HardFault_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:60     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:81     .text.MemManage_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:87     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:108    .text.BusFault_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:114    .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:135    .text.UsageFault_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:141    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:162    .text.SVC_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:168    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:197    .text.DebugMon_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:203    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:232    .text.PendSV_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:238    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:267    .text.SysTick_Handler:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:273    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:328    .text.SysTick_Handler:00000038 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:18     .text.NMI_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:24     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:54     .text.HardFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:60     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:81     .text.MemManage_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:87     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:108    .text.BusFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:114    .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:135    .text.UsageFault_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:141    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:162    .text.SVC_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:168    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:197    .text.DebugMon_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:203    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:232    .text.PendSV_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:238    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:267    .text.SysTick_Handler:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:273    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s:335    .text.SysTick_Handler:0000004c $d
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -564,7 +572,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:328    .text.SysTick_Handler
                            .group:00000000 wm4.stm32f10x.h.8349.9a0c7ea810a74ad6d06203f1a551aebb
                            .group:00000000 wm4.ieeefp.h.77.25247dc27dbe3b23bfe98c2dc18f6ac5
                            .group:00000000 wm4.newlib.h.8.4679f89e52c9f69cd44f3a27cd28c759
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 11
 
 
                            .group:00000000 wm4.config.h.224.79362c3cdb280fe0b8d95bd0bc4d5c54
@@ -618,13 +626,14 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s:328    .text.SysTick_Handler
                            .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
                            .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
                            .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
-                           .group:00000000 wm4.systemtask.h.12.296b6a27be8b79a110bf5281d2fc993a
+                           .group:00000000 wm4.systemtask.h.12.4111f050c12db00791331b8757fbd5d2
 
 UNDEFINED SYMBOLS
 system_ticks
+systemticks
 TimingDelay
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccdLSNfS.s 			page 12
+
+
 I2Cx_Timeout
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccHuAb8X.s 			page 12
-
-
 is_tick

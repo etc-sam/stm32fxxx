@@ -274,7 +274,7 @@ void uart_handle_cmd(USART_TypeDef * usartx,uint8_t * cmd,size_t cmd_len, uint8_
   }
   else if(strcasecmp((const char *)cmd,"init")==0)
   {
-	  uart_init_cmd_handle(usartx);
+	  uart_init_cmd_handle(usartx,data,data_len);
   }
   else if(strcasecmp((const char *)cmd,"info")==0)
   {
@@ -325,6 +325,22 @@ void uart_handle_cmd(USART_TypeDef * usartx,uint8_t * cmd,size_t cmd_len, uint8_
   {
 	  uart_cyc_cmd_handle(usartx,data,data_len);
   } 
+  else if(strcasecmp((const char *)cmd,"thr")==0)
+  {
+	  uart_thr_cmd_handle(usartx,data,data_len);
+  } 
+  else if(strcasecmp((const char *)cmd,"acq-sen")==0)
+  {
+	  uart_acq_sense_cmd_handle(usartx,data,data_len);
+  } 
+  else if(strcasecmp((const char *)cmd,"acq-mod")==0)
+  {
+	  uart_acq_mode_cmd_handle(usartx,data,data_len);
+  } 
+  else if(strcasecmp((const char *)cmd,"acq-smp")==0)
+  {
+	  uart_acq_smple_cmd_handle(usartx,data,data_len);
+  }    
   else
   {
     uart_println(usartx,"incorrect command/parameter ....!");
@@ -345,6 +361,8 @@ void  uart_run_cmd_handle(USART_TypeDef * usartx)
 {
 //! run command: force system to run/stop  data acquestion of MPU6050 sensors
  uart_println(usartx,"run acquestion for MPU6050 cmd .....");  
+  mpu_time=0;
+  mpu_is_first_sample=1;
   mpu_settings.acq_run=1;//mpu_acq_run=1;
 }
 //-----------------------------------------------------------------------------
@@ -358,7 +376,10 @@ void  uart_run_cmd_handle(USART_TypeDef * usartx)
 void  uart_hlt_cmd_handle(USART_TypeDef * usartx)
 {
   uart_println(usartx,"halt acquestion for MPU6050 cmd .....");  
-  mpu_settings.acq_run=0;//mpu_acq_run=0;
+  mpu_settings.acq_run=0;
+  mpu_sample_cnt=0;
+  mpu_time=0;
+  mpu_is_first_sample=1;
 }
 //------------------------------------------------------------------------------------------------------------
 /**
@@ -366,20 +387,57 @@ void  uart_hlt_cmd_handle(USART_TypeDef * usartx)
  * @details 
  * @return  
  */
-void  uart_init_cmd_handle(USART_TypeDef * usartx)
+void  uart_init_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
 {
- uint8_t error=0;
-//! init command: initialize MPU6050 Module
+  int len=0;
+  uint8_t list_len=0,i=0;
+  uint8_t error=0;
+  cmd_t command;
+  param_t p={0};
+  command.cmd=0;
+  char buf[16]="";
+
+  list_len= cmd_split(data,data_len,'-',(cmd_t*)&command);
+  if(list_len>0)
+  {
+   for(i=0;i<command.param_len;i++)
+	 {
+	   len=param_split(command.parameters[i],(param_t*)&p);
+	   if(len>0)
+     {
+       error= uart_init_cmd_param_exe(usartx,p);
+     }
+	 }
+
+   if(error)
+	  {
+			uart_println(usartx,"Incorrect parameter init with default values ...");
+			uart_print_integer(usartx,error,16);
+      mpu_settings.accel_range=MPU6050_Accel_Range_2G;
+      mpu_settings.gyro_range=MPU6050_Gyro_Range_500s;
+    }
+ }
+  //! init command: initialize MPU6050 Module
   uart_println(usartx,"initialization MPU6050 cmd .....");  
   i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
-  error=mpu6050_init((MPU6050_t *)&myMPU6050,MPU6050_Accel_Range_2G,MPU6050_Gyro_Range_500s);
+
+	uart_print(usartx,"Accel_RNG::");
+	uart_print_integer(usartx,mpu_settings.accel_range,10);
+	uart_print(usartx,"\t GYR_RNG::");
+	uart_print_integer(usartx,mpu_settings.gyro_range,10);
+	uart_print(usartx,"\r\n");
+
+  error=mpu6050_init((MPU6050_t *)&myMPU6050,mpu_settings.accel_range,mpu_settings.gyro_range);
   if(error != I2C_OK)
   {
-	uart_print(usartx,"Failed to initialize the MPU6050 ER::");
-	uart_print_integer(usartx,error,10);
-	return ;
+	  uart_print(usartx,"Failed to initialize the MPU6050 ER::");
+	  uart_print_integer(usartx,error,10);
   }
-  uart_println(usartx,"initialization MPU6050 Done .....");  
+  else
+    uart_println(usartx,"initialization MPU6050 Done .....");  
+  
+  mpu_sample_cnt=0;
+  mpu_init_sucess=1;
 
 }
 //-----------------------------------------------------------------------------
@@ -395,14 +453,17 @@ void  uart_rst_cmd_handle(USART_TypeDef * usartx)
   uart_println(usartx,"Reset MPU6050 cmd .....");  
   error=mpu6050_reset((MPU6050_t*)&myMPU6050);
   if(error==I2C_OK)
-  uart_print(usartx,"MPU6050 successfully Reset ");
+    uart_print(usartx,"MPU6050 successfully Reset ");
   else
   {
-	uart_print(usartx,"Error:0x");
-	uart_print_integer(usartx,error,16);
+	  uart_print(usartx,"Error:0x");
+	  uart_print_integer(usartx,error,16);
     uart_print(usartx,"\t failed to reset MPU6050 ");
   }
-   
+ 
+  mpu_init_sucess=0;
+  mpu_sample_cnt=0;
+  mpu_settings.acq_run=0;
 }
 //-----------------------------------------------------------------------------
 /**
@@ -412,7 +473,34 @@ void  uart_rst_cmd_handle(USART_TypeDef * usartx)
  */
 void  uart_info_cmd_handle(USART_TypeDef * usartx)
 {
-//! init command: initialize MPU6050 Module
+//! info command: returns MPU6050 current settings
+  uart_println(usartx,"MPU6050 settings .....");  
+
+  uart_print(usartx,"Acq_sen::");
+	uart_print_integer(usartx,mpu_settings.acq_sense,10);
+	uart_print(usartx,"\t acq_mode::");
+	uart_print_integer(usartx,mpu_settings.acq_mode,10);
+	uart_print(usartx,"\t acq_run::");
+	uart_print_integer(usartx,mpu_settings.acq_run,10);
+	uart_print(usartx,"\r\n");
+
+  uart_print(usartx,"sample_max::");
+	uart_print_integer(usartx,mpu_settings.max_sample_cnt,10);
+	uart_print(usartx,"\t init_state::");
+	uart_print_integer(usartx,mpu_init_sucess,10);
+	uart_print(usartx,"\r\n");
+
+  uart_print(usartx,"Accel_RNG::");
+	uart_print_integer(usartx,mpu_settings.accel_range,10);
+	uart_print(usartx,"\t GYR_RNG::");
+	uart_print_integer(usartx,mpu_settings.gyro_range,10);
+	uart_print(usartx,"\r\n");
+
+  uart_print(usartx,"Accel_THR::");
+	uart_print_integer(usartx,mpu_settings.accel_thr,10);
+	uart_print(usartx,"\t GYR_THR::");
+	uart_print_integer(usartx,mpu_settings.gyro_thr,10);
+	uart_print(usartx,"\r\n");
 
 }
 //-----------------------------------------------------------------------------
@@ -628,9 +716,11 @@ uint8_t hpf=0;
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief
- * @details 
- * @return  
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
  */
 void  uart_clk_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
 {
@@ -638,9 +728,11 @@ void  uart_clk_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief
- * @details 
- * @return  
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
  */
 void  uart_tst_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
 {
@@ -648,36 +740,169 @@ void  uart_tst_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief
- * @details 
- * @return  
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
  */
 void  uart_cyc_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
 {
-  uint32_t val=0;  
-  char  buf[16]="";
+  uint32_t val=0;   
   val=atol((const char *)data);  
-
-  if(val >=10 && val<1000)
+  if(val >0 && val<=5000)
   {
-   mpu_cycle =10000U* val;  
-   uart_println(usartx,"cycle is changed .....");
+   mpu_cycle =100U* val;  
+   uart_println(usartx,"cycle has changed .....");
   }
   else
   {
    mpu_cycle=MPU_WAIT_TIMEOUT;
-   uart_println(usartx,"cycle speed is fast than the allowed upper limit  .....\r\n");  
+   uart_println(usartx,"Please select a value 1..5000:\
+                        1: 1ms, 10ms:, 100:msec,1000:1 second....\r\n"); 
   }
 
    uart_print(usartx,"current cycle speed:");
-   utoa(mpu_cycle,buf,10);
-   uart_println(usartx,buf);
+   uart_print_integer(usartx,mpu_cycle,10);
 }
 //-----------------------------------------------------------------------------
+/**
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
+ */
+void  uart_thr_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
+{
+  int len=0;
+  uint8_t list_len=0,i=0;
+  uint8_t error=0;
+  cmd_t command;
+  param_t p={0};
+  command.cmd=0;
+  char buf[16]="";
 
+  list_len= cmd_split(data,data_len,'-',(cmd_t*)&command);
+  if(list_len>0)
+  {
+   for(i=0;i<command.param_len;i++)
+	 {
+	   len=param_split(command.parameters[i],(param_t*)&p);
+	   if(len>0)
+      {
+       error=uart_thr_cmd_param_exe(usartx,p);
+      }
+	 }
+ }
 
+  if(!error)
+   uart_println(usartx,"thershold is changed .....");
+  else
+   uart_println(usartx,"thersold is not fit in the range limit  .....\r\n");  
 
+   uart_print(usartx,"accelerometer thr:");
+   uart_print_integer(usartx,mpu_settings.accel_thr,10);
 
+   uart_print(usartx," \n gyroscope thr:");
+   uart_print_integer(usartx,mpu_settings.gyro_thr,10);
+   uart_print(usartx,"\r\n");
+
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
+ */
+void  uart_acq_sense_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
+{
+  uint8_t val=0;  
+  val=atol((const char *)data);  
+  if(val >=MPU_ACQ_SENSE_ALL && val< MPU_ACQ_SENSE_MAX_LEN)
+  {
+   mpu_settings.acq_sense =val;  
+   mpu_settings.acq_run=0;
+   mpu_sample_cnt=0;
+   mpu_time=0;
+   mpu_is_first_sample=1;
+   
+   uart_println(usartx,"ACQ-SENSE has changed .....");
+  }
+  else
+  {
+   uart_println(usartx,"Please select a value :\
+                        0: ALL, 1:Accel, 2:Gyro,3:Temp\n\
+                        4:Accel+Gyro, 5:Accel+ Temp, 6:Gyro+Temp.....\r\n");  
+  }
+
+   uart_print(usartx,"current ACQ-SENSE:");
+   uart_print_integer(usartx,mpu_settings.acq_sense,10);
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
+ */
+void  uart_acq_mode_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
+{
+  uint8_t val=0;  
+  val=atol((const char *)data);  
+  if(val >=0 && val< MPU_ACQ_MODE_MAX_LEN)
+  {
+   mpu_settings.acq_mode =val;  
+   mpu_settings.acq_run=0;
+   mpu_sample_cnt=0;
+   mpu_time=0;
+   mpu_is_first_sample=1;
+   uart_println(usartx,"ACQ-MODE has changed .....");
+  }
+  else
+  {
+   uart_println(usartx,"Please select a value :\
+                  0: collecting samples,\
+                  1: vibration detection.....\r\n");  
+  }
+
+   uart_print(usartx,"current ACQ-MODE:");
+   uart_print_integer(usartx,mpu_settings.acq_mode,10);
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief 
+ * 
+ * @param usartx 
+ * @param data 
+ * @param data_len 
+ */
+void  uart_acq_smple_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len)
+{
+  uint8_t val=0;  
+  val=atol((const char *)data);  
+  if(val >0 && val<= 1000)
+  {
+   mpu_settings.max_sample_cnt =val;
+   mpu_settings.acq_run=0;
+   mpu_sample_cnt=0;
+   mpu_time=0;
+   mpu_is_first_sample=1;  
+   uart_println(usartx,"Max Sample Count has changed .....");
+  }
+  else
+  {
+   uart_println(usartx,"Please select a value between [1...1000]:\
+                  default value is 100.....\r\n");  
+  }
+
+   uart_print(usartx,"current Max Samples Count:");
+   uart_print_integer(usartx,mpu_settings.max_sample_cnt,10);
+}
+//-----------------------------------------------------------------------------
 //********************************************************************************************
 //
 // uart sub commaond command and frame handling definition
@@ -726,7 +951,6 @@ uint8_t uart_write_reg_exe(USART_TypeDef * usartx, MPU6050_t * mpu,uint8_t reg_a
   return error;
   }
 //-----------------------------------------------------------------------------
-
 uint8_t uart_read_cmd_param_exe(USART_TypeDef * usartx,param_t p)
 {
  char buf[16]="";
@@ -738,15 +962,11 @@ uint8_t uart_read_cmd_param_exe(USART_TypeDef * usartx,param_t p)
     memcpy(buf,p.data,p.data_len);
     val=atol((const char *)buf); 
   }
-//   memset(buf,0,16);
-//   memcpy(buf,p.param,p.param_len);
-    //if(p.param_len> 0)
-    {
-		    memset(buf,0,16);
-   	    memcpy(buf,p.param,p.param_len);
-		    uart_print(usartx,"buf:");
-		    uart_println(usartx,buf);
-    }
+  if(p.param_len> 0)
+  {
+		memset(buf,0,16);
+   	memcpy(buf,p.param,p.param_len);
+  }
   if(strcasecmp((const char *)buf,"-r")==0)
   {
 	  if(val >= 0x0D && val <=0x75)
@@ -855,5 +1075,98 @@ uint8_t uart_read_temperature_exe(USART_TypeDef * usartx,MPU6050_t * mpu)
 		uart_println (usartx,"...............");						
 	}
 	return error;
+}
+//-----------------------------------------------------------------------------
+uint8_t uart_thr_cmd_param_exe(USART_TypeDef * usartx,param_t p)
+{
+ char buf[16]="";
+ int val=-1; 
+ uint8_t error=1;
+ if(p.data_len>0)
+  {
+    memset(buf,0,16);
+    memcpy(buf,p.data,p.data_len);
+    val=atol((const char *)buf); 
+  }  
+  if(p.param_len> 0)
+  {
+		memset(buf,0,16);
+   	memcpy(buf,p.param,p.param_len);
+  }
+  
+  if(strcasecmp((const char *)buf,"-all")==0)
+  {
+	   if(val > 0 && val <= 100)
+     {
+      mpu_settings.accel_thr=val;
+      mpu_settings.gyro_thr=val;
+      error=0;
+     }	
+  }          
+  else if(strcasecmp((const char *)buf,"-a")==0)
+  {
+	    if(val > 0 && val <= 100)
+     {
+      mpu_settings.accel_thr=val;
+      error=0;
+     }
+  }          
+ else if(strcasecmp((const char *)buf,"-g")==0)
+ {
+	    if(val > 0 && val <= 100)
+     {
+      mpu_settings.gyro_thr=val;
+      
+      error=0;
+     }
+ }          
+ else
+ {
+	  uart_print(usartx,"unknown parameter :");
+  	uart_println(usartx,(char *)buf);
+ }
+  return error;
+}
+//-----------------------------------------------------------------------------
+uint8_t uart_init_cmd_param_exe(USART_TypeDef * usartx,param_t p)
+{
+ char buf[16]="";
+ int val=-1; 
+ uint8_t error=1;
+ if(p.data_len>0)
+  {
+    memset(buf,0,16);
+    memcpy(buf,p.data,p.data_len);
+    val=atol((const char *)buf); 
+  }  
+  if(p.param_len> 0)
+  {
+		memset(buf,0,16);
+   	memcpy(buf,p.param,p.param_len);
+  }
+  
+  if(strcasecmp((const char *)buf,"-a")==0)
+  {    
+	  if(val>= 0 && val <= 3)
+     {
+      mpu_settings.accel_range=val;
+      error=0;
+     }	     
+
+  }          
+ else if(strcasecmp((const char *)buf,"-g")==0)
+ {
+	    if(val >= 0 && val <= 3)
+     {
+      mpu_settings.gyro_range=val;
+      error=0;
+     }
+ }          
+ else
+ {
+	  uart_print(usartx,"unknown parameter :");
+  	uart_println(usartx,(char *)buf);
+ }
+  return error;
 }
 //-----------------------------------------------------------------------------

@@ -388,6 +388,8 @@ uint8_t uart_data_is_available()
  char * delim=" ;\r\n";
  if(rx_buffer_length!=0)
  {	 
+	//uart_println(USART1,"rx message:");
+	//uart_println(USART1,(char *)rx_buffer);
 	//const uint8_t * tmp=0;
    const uint8_t * tmp=(uint8_t *) memmem((uint8_t *)rx_buffer,rx_buffer_length,
    										  (uint8_t *)delim,sizeof(delim));
@@ -585,14 +587,16 @@ void uart_print_integer(USART_TypeDef * usartx ,uint32_t dword,uint8_t base)
 //------------------------------------------------------------------------------------------------------------
 void uart_print_float(USART_TypeDef * usartx ,float val,uint8_t digits)
 {
-char buf[16]="";
-	real_t r;
+   char buf[16]="";
+	lreal_t r;
 	r=float_to_real(val,digits);
 	if(r.sig==1)
 	uart_print(usartx,"-");
     itoa(r.integer,buf,10);
     uart_print(usartx,buf);
-	uart_print(usartx,".");	  
+	uart_print(usartx,".");
+	if(r.zero)	  
+	uart_print(usartx,"0");
     itoa(r.decimal,buf,10);
     uart_print(usartx,buf);
 }

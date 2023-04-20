@@ -1,0 +1,9 @@
+./system/system-mpu.c:48:6:save_sample	16	static
+./system/system-mpu.c:69:6:copy_sample	16	static
+./system/system-mpu.c:90:9:compare_sample	32	static
+./system/system-mpu.c:124:6:mpu_wait_handle	4	static
+./system/system-mpu.c:133:6:mpu_init_handle	16	static
+./system/system-mpu.c:148:6:mpu_acq_handle	16	static
+./system/system-mpu.c:161:6:mpu_read_handle	24	static
+./system/system-mpu.c:185:6:mpu_proc_handle	24	static
+./system/system-mpu.c:229:6:mpu_error_handle	16	static

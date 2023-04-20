@@ -89,7 +89,6 @@ enum CMD_TYPES
 //********************************************************************************************
 
 
-
 //********************************************************************************************
 //
 // Method protoypes
@@ -109,20 +108,22 @@ extern void uart_handle_cmd(USART_TypeDef * usartx ,uint8_t * cmd,size_t cmd_len
 //! handle frame received on the uart rx buffer 
 extern  void uart_handle_frame(USART_TypeDef * usartx);
 
-//! run command: force system to run data acquestion of MPU6050 sensors
-extern void  uart_run_cmd_handle(USART_TypeDef * usartx);
 //! halt command: force system to stop data acquestion of MPU6050 sensors
 extern void  uart_hlt_cmd_handle(USART_TypeDef * usartx);
 
-//! init command: initialize MPU6050 Module
-extern void  uart_init_cmd_handle(USART_TypeDef * usartx);
 //! info command: returns the current mpu6050 status
 extern void  uart_info_cmd_handle(USART_TypeDef * usartx);
 //! who command: returns the content of WHO_IAM register 
 extern void  uart_who_cmd_handle(USART_TypeDef * usartx);
-
 //! reset command: reset the module MPU6050 
 extern void  uart_rst_cmd_handle(USART_TypeDef * usartx);
+
+
+//! run command: force system to run data acquestion of MPU6050 sensors
+extern void  uart_run_cmd_handle(USART_TypeDef * usartx);
+
+//! init command: initialize MPU6050 Module
+extern void  uart_init_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
 
 //! read command: read aspecific register or sensor in MPU6050 Module
 extern void  uart_read_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
@@ -151,6 +152,15 @@ extern void  uart_tst_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t d
 //! cyc command: activate  cyclic data aqusation due to specific period  MPU6050 Module 
 extern void  uart_cyc_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
 
+//! thr command: change  the testing THershold for accelerometer & gyroscope sensors of MPU6050 Module 
+extern void  uart_thr_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
+
+//! acq-sen command: change  the sensing methods between accelerometer, gyroscope and Temperature sensors of MPU6050 Module 
+extern void  uart_acq_sense_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
+//! acq-mod command: change  the acqustion methods between collecting data, or read and evaluate the vibration  
+extern void  uart_acq_mode_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
+//! acq-smp command: change the maximum samples to collect 
+extern void  uart_acq_smple_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t data_len);
 //********************************************************************************************
 //
 // uart sub command command and frame handling definition
@@ -158,7 +168,6 @@ extern void  uart_cyc_cmd_handle(USART_TypeDef * usartx,uint8_t * data, size_t d
 //********************************************************************************************
 //! 
 extern void uart_write_cmd_param_exe(USART_TypeDef * usartx,param_t p, uint8_t * reg_address, uint8_t * reg_val);
-
 extern uint8_t uart_write_reg_exe(USART_TypeDef * usartx, MPU6050_t * mpu,uint8_t reg_address, uint8_t reg_val);
 
 extern uint8_t uart_read_cmd_param_exe(USART_TypeDef * usartx,param_t p);
@@ -168,6 +177,10 @@ extern uint8_t uart_read_accelerometer_exe(USART_TypeDef * usartx,MPU6050_t * mp
 extern uint8_t uart_read_gyroscope_exe(USART_TypeDef * usartx,MPU6050_t * mpu);
 extern uint8_t uart_read_temperature_exe(USART_TypeDef * usartx,MPU6050_t * mpu);
 
+
+extern uint8_t uart_thr_cmd_param_exe(USART_TypeDef * usartx,param_t p);
+
+extern uint8_t uart_init_cmd_param_exe(USART_TypeDef * usartx,param_t p);
 
 
 

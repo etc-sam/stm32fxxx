@@ -57,7 +57,9 @@ typedef union _rly_t
 // Global variables 
 //
 //********************************************************************************************
-extern uint32_t systemticks;
+extern uint64_t systemticks;
+extern uint64_t pre_ticks;
+
 extern uint8_t is_tick;
 extern minute_t logout_timeout;
 

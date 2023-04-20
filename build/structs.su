@@ -7,10 +7,10 @@
 ./basic/structs.c:179:8:sub_real	32	static
 ./basic/structs.c:193:6:inc_real	48	static
 ./basic/structs.c:210:6:dec_real	48	static
-./basic/structs.c:229:9:reverse_byte	24	static
-./basic/structs.c:251:10:reverse_word	24	static
-./basic/structs.c:282:10:reverse_dword	24	static
-./basic/structs.c:330:10:bcd_to_bin	24	static
-./basic/structs.c:348:9:bin_to_bcd	24	static
-./basic/structs.c:365:8:float_to_real	64	static
-./basic/structs.c:404:7:real_to_float	40	static
+./basic/structs.c:230:9:reverse_byte	24	static
+./basic/structs.c:252:10:reverse_word	24	static
+./basic/structs.c:283:10:reverse_dword	24	static
+./basic/structs.c:331:10:bcd_to_bin	24	static
+./basic/structs.c:349:9:bin_to_bcd	24	static
+./basic/structs.c:366:9:float_to_real	72	static
+./basic/structs.c:412:7:real_to_float	40	static

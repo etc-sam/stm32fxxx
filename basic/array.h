@@ -65,7 +65,7 @@ typedef struct _cmd_t
    uint8_t cmd;                 //! a command value 
    uint8_t param_len;           //! defines the parameters array length
    array_t parameters[6];       //! up to six paramtere a command may have   
-   array_t msg;                 //! the data portion of the command
+   //array_t msg;                 //! the data portion of the command
 }cmd_t;
 
 

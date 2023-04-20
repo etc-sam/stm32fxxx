@@ -139,18 +139,18 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+   // system base tick 
+   systemticks++;
+
+  // Time out for normal delay
  	if(TimingDelay!=0)
 		TimingDelay--;
 
-if(I2Cx_Timeout!=0)
-   I2Cx_Timeout--;
-  //if(BlinkTimingDelay!=0)  
-  //  BlinkTimingDelay--;
-  //else
-  //  blink_update=1;  
-    
-    //my_gnc.is_tick=true;    
-    //my_gnc.tick();
+  // a Time out for the I2C drive 
+  if(I2Cx_Timeout!=0)
+      I2Cx_Timeout--;
+
+  // system task ticks      
     if(is_tick)
       system_ticks();
 

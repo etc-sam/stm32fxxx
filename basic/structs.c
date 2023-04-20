@@ -209,8 +209,9 @@ void inc_real(real_t * ptr)
  */
 void dec_real(real_t * ptr)
 {
-real_t a;
-a.val=0;
+real_t a={0};
+a.integer=0;
+a.sig=0;
 a.decimal=1;
 *ptr=sub_real((real_t)*ptr,a);
 }
@@ -362,10 +363,15 @@ uint8_t bin_to_bcd(uint16_t bin_val)
  * @param digits  number of decimal digits (resolution)
  * @return real_t 
  */
-real_t float_to_real(float number,uint8_t digits)
+lreal_t float_to_real(double number,uint8_t digits)
 {
-	real_t r;
-    r.val=0;	
+	lreal_t r={0};
+    //r.val=0;	
+	r.decimal=0;
+	r.integer=0;
+	r.sig=0;
+	r.zero=0;
+
 	if(number<0)
 	 {
 		 r.sig=1;
@@ -373,22 +379,24 @@ real_t float_to_real(float number,uint8_t digits)
 	 }
 
 	// Round correctly so that print(1.999, 2) prints as "2.00"
-	double rounding = 0.5;
-	for (uint8_t i=0; i<digits; ++i)
+	double rounding = 0.5f;
+	for (uint8_t i=0; i<digits; i++)
 	rounding /= 10.0;
-
 	number += rounding;//number += 0.05f;
 
 	// Extract the integer part of the number and print it
 	unsigned long int_part = (unsigned long)number;
-    float reminder = number - (double)int_part;
-	
+    float reminder = number - int_part;	
+
+	if(reminder<0.1f)
+		r.zero=1;
 	// Extract digits from the remainder one at a time
-	while (digits-- > 0)
+	for (uint8_t i=0; i<digits; i++) //while (digits-- > 0)
 	   reminder *=10.0f;
-		
+	//reminder+= 0.5f;
+
 	r.integer=int_part;		
-	r.decimal=(uint8_t) reminder;	 
+	r.decimal=reminder;	 
 		
 	return r;	
 }

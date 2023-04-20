@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
   31:./.driver/CMSIS/Core/core_cm3.h ****  *     register uint32_t __regBasePri         __asm("basepri"); \n
   32:./.driver/CMSIS/Core/core_cm3.h ****  *     Error 10: Expecting ';'
   33:./.driver/CMSIS/Core/core_cm3.h ****  * .
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 2
 
 
   34:./.driver/CMSIS/Core/core_cm3.h ****  *   - Error 530: \n
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
   88:./.driver/CMSIS/Core/core_cm3.h **** #define __CORTEX_M                (0x03)                                                       /*!<
   89:./.driver/CMSIS/Core/core_cm3.h **** 
   90:./.driver/CMSIS/Core/core_cm3.h **** #include <stdint.h>                           /* Include standard types */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 3
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 3
 
 
   91:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  145:./.driver/CMSIS/Core/core_cm3.h ****        uint32_t RESERVED5[644];                                  
  146:./.driver/CMSIS/Core/core_cm3.h ****   __O  uint32_t STIR;                         /*!< Offset: 0xE00  Software Trigger Interrupt Regist
  147:./.driver/CMSIS/Core/core_cm3.h **** }  NVIC_Type;                                               
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 4
 
 
  148:./.driver/CMSIS/Core/core_cm3.h **** /*@}*/ /* end of group CMSIS_CM3_NVIC */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  202:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_ICSR_PENDSTSET_Msk             (1ul << SCB_ICSR_PENDSTSET_Pos)                /*!< SCB 
  203:./.driver/CMSIS/Core/core_cm3.h **** 
  204:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_ICSR_PENDSTCLR_Pos             25                                             /*!< SCB 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 5
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 5
 
 
  205:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_ICSR_PENDSTCLR_Msk             (1ul << SCB_ICSR_PENDSTCLR_Pos)                /*!< SCB 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  259:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_SCR_SLEEPONEXIT_Msk            (1ul << SCB_SCR_SLEEPONEXIT_Pos)               /*!< SCB 
  260:./.driver/CMSIS/Core/core_cm3.h **** 
  261:./.driver/CMSIS/Core/core_cm3.h **** /* SCB Configuration Control Register Definitions */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 6
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 6
 
 
  262:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_CCR_STKALIGN_Pos                9                                             /*!< SCB 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  316:./.driver/CMSIS/Core/core_cm3.h **** 
  317:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_SHCSR_BUSFAULTACT_Pos           1                                             /*!< SCB 
  318:./.driver/CMSIS/Core/core_cm3.h **** #define SCB_SHCSR_BUSFAULTACT_Msk          (1ul << SCB_SHCSR_BUSFAULTACT_Pos)             /*!< SCB 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 7
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 7
 
 
  319:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  373:./.driver/CMSIS/Core/core_cm3.h **** /* SysTick Control / Status Register Definitions */
  374:./.driver/CMSIS/Core/core_cm3.h **** #define SysTick_CTRL_COUNTFLAG_Pos         16                                             /*!< SysT
  375:./.driver/CMSIS/Core/core_cm3.h **** #define SysTick_CTRL_COUNTFLAG_Msk         (1ul << SysTick_CTRL_COUNTFLAG_Pos)            /*!< SysT
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 8
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 8
 
 
  376:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  430:./.driver/CMSIS/Core/core_cm3.h ****   __IO uint32_t LSR;                          /*!< Offset:       ITM Lock Status Register          
  431:./.driver/CMSIS/Core/core_cm3.h ****        uint32_t RESERVED5[6];                                   
  432:./.driver/CMSIS/Core/core_cm3.h ****   __I  uint32_t PID4;                         /*!< Offset:       ITM Peripheral Identification Regi
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 9
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 9
 
 
  433:./.driver/CMSIS/Core/core_cm3.h ****   __I  uint32_t PID5;                         /*!< Offset:       ITM Peripheral Identification Regi
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  487:./.driver/CMSIS/Core/core_cm3.h **** /* ITM Lock Status Register Definitions */
  488:./.driver/CMSIS/Core/core_cm3.h **** #define ITM_LSR_ByteAcc_Pos                 2                                             /*!< ITM 
  489:./.driver/CMSIS/Core/core_cm3.h **** #define ITM_LSR_ByteAcc_Msk                (1ul << ITM_LSR_ByteAcc_Pos)                   /*!< ITM 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 10
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 10
 
 
  490:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  544:./.driver/CMSIS/Core/core_cm3.h ****   __IO uint32_t RBAR_A2;                      /*!< Offset: 0x1C  MPU Alias 2 Region Base Address Re
  545:./.driver/CMSIS/Core/core_cm3.h ****   __IO uint32_t RASR_A2;                      /*!< Offset: 0x20  MPU Alias 2 Region Attribute and S
  546:./.driver/CMSIS/Core/core_cm3.h ****   __IO uint32_t RBAR_A3;                      /*!< Offset: 0x24  MPU Alias 3 Region Base Address Re
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 11
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 11
 
 
  547:./.driver/CMSIS/Core/core_cm3.h ****   __IO uint32_t RASR_A3;                      /*!< Offset: 0x28  MPU Alias 3 Region Attribute and S
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  601:./.driver/CMSIS/Core/core_cm3.h **** #define MPU_RASR_B_Msk                     (1ul << MPU_RASR_B_Pos)                        /*!< MPU 
  602:./.driver/CMSIS/Core/core_cm3.h **** 
  603:./.driver/CMSIS/Core/core_cm3.h **** #define MPU_RASR_SRD_Pos                    8                                             /*!< MPU 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 12
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 12
 
 
  604:./.driver/CMSIS/Core/core_cm3.h **** #define MPU_RASR_SRD_Msk                   (0xFFul << MPU_RASR_SRD_Pos)                   /*!< MPU 
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  658:./.driver/CMSIS/Core/core_cm3.h **** 
  659:./.driver/CMSIS/Core/core_cm3.h **** #define CoreDebug_DHCSR_C_HALT_Pos          1                                             /*!< Core
  660:./.driver/CMSIS/Core/core_cm3.h **** #define CoreDebug_DHCSR_C_HALT_Msk         (1ul << CoreDebug_DHCSR_C_HALT_Pos)            /*!< Core
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 13
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 13
 
 
  661:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  715:./.driver/CMSIS/Core/core_cm3.h **** #define SCS_BASE            (0xE000E000)                              /*!< System Control Space Bas
  716:./.driver/CMSIS/Core/core_cm3.h **** #define ITM_BASE            (0xE0000000)                              /*!< ITM Base Address        
  717:./.driver/CMSIS/Core/core_cm3.h **** #define CoreDebug_BASE      (0xE000EDF0)                              /*!< Core Debug Base Address 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 14
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 14
 
 
  718:./.driver/CMSIS/Core/core_cm3.h **** #define SysTick_BASE        (SCS_BASE +  0x0010)                      /*!< SysTick Base Address    
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  772:./.driver/CMSIS/Core/core_cm3.h **** #define __ISB()                           __isb(0)
  773:./.driver/CMSIS/Core/core_cm3.h **** #define __DSB()                           __dsb(0)
  774:./.driver/CMSIS/Core/core_cm3.h **** #define __DMB()                           __dmb(0)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 15
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 15
 
 
  775:./.driver/CMSIS/Core/core_cm3.h **** #define __REV                             __rev
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  829:./.driver/CMSIS/Core/core_cm3.h **** 
  830:./.driver/CMSIS/Core/core_cm3.h **** /**
  831:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Reverse byte order in unsigned short value
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 16
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 16
 
 
  832:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  886:./.driver/CMSIS/Core/core_cm3.h **** 
  887:./.driver/CMSIS/Core/core_cm3.h **** /**
  888:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Set the Priority Mask value
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 17
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 17
 
 
  889:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  943:./.driver/CMSIS/Core/core_cm3.h ****  *
  944:./.driver/CMSIS/Core/core_cm3.h ****  * @return BasePriority
  945:./.driver/CMSIS/Core/core_cm3.h ****  *
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 18
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 18
 
 
  946:./.driver/CMSIS/Core/core_cm3.h ****  * Return the content of the base priority register
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1000:./.driver/CMSIS/Core/core_cm3.h **** static __INLINE uint32_t __get_FAULTMASK(void)
 1001:./.driver/CMSIS/Core/core_cm3.h **** {
 1002:./.driver/CMSIS/Core/core_cm3.h ****   register uint32_t __regFaultMask       __ASM("faultmask");
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 19
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 19
 
 
 1003:./.driver/CMSIS/Core/core_cm3.h ****   return(__regFaultMask);
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1057:./.driver/CMSIS/Core/core_cm3.h **** 
 1058:./.driver/CMSIS/Core/core_cm3.h **** #define __NOP                                     __no_operation            /*!< no operation intri
 1059:./.driver/CMSIS/Core/core_cm3.h **** static __INLINE  void __WFI()                     { __ASM ("wfi"); }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 20
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 20
 
 
 1060:./.driver/CMSIS/Core/core_cm3.h **** static __INLINE  void __WFE()                     { __ASM ("wfe"); }
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1114:./.driver/CMSIS/Core/core_cm3.h **** extern void __set_MSP(uint32_t topOfMainStack);
 1115:./.driver/CMSIS/Core/core_cm3.h **** 
 1116:./.driver/CMSIS/Core/core_cm3.h **** /**
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 21
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 21
 
 
 1117:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Reverse byte order in unsigned short value
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1171:./.driver/CMSIS/Core/core_cm3.h ****  * @return        successful / failed
 1172:./.driver/CMSIS/Core/core_cm3.h ****  *
 1173:./.driver/CMSIS/Core/core_cm3.h ****  * Exclusive STR command for 8 bit values
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 22
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 22
 
 
 1174:./.driver/CMSIS/Core/core_cm3.h ****  */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1228:./.driver/CMSIS/Core/core_cm3.h **** 
 1229:./.driver/CMSIS/Core/core_cm3.h **** /**
 1230:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Set the Process Stack Pointer
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 23
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 23
 
 
 1231:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1285:./.driver/CMSIS/Core/core_cm3.h **** 
 1286:./.driver/CMSIS/Core/core_cm3.h **** /**
 1287:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Set the Priority Mask value
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 24
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 24
 
 
 1288:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1342:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Reverse byte order in unsigned short value
 1343:./.driver/CMSIS/Core/core_cm3.h ****  *
 1344:./.driver/CMSIS/Core/core_cm3.h ****  * @param  value  value to reverse
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 25
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 25
 
 
 1345:./.driver/CMSIS/Core/core_cm3.h ****  * @return        reversed value
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1399:./.driver/CMSIS/Core/core_cm3.h **** extern uint32_t __LDREXW(uint32_t *addr);
 1400:./.driver/CMSIS/Core/core_cm3.h **** 
 1401:./.driver/CMSIS/Core/core_cm3.h **** /**
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 26
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 26
 
 
 1402:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  STR Exclusive (8 bit)
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1456:./.driver/CMSIS/Core/core_cm3.h **** 
 1457:./.driver/CMSIS/Core/core_cm3.h **** /**
 1458:./.driver/CMSIS/Core/core_cm3.h ****  * @brief  Set the Priority Grouping in NVIC Interrupt Controller
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 27
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 27
 
 
 1459:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1513:./.driver/CMSIS/Core/core_cm3.h ****  * The interrupt number cannot be a negative value.
 1514:./.driver/CMSIS/Core/core_cm3.h ****  */
 1515:./.driver/CMSIS/Core/core_cm3.h **** static __INLINE void NVIC_DisableIRQ(IRQn_Type IRQn)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 28
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 28
 
 
 1516:./.driver/CMSIS/Core/core_cm3.h **** {
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1570:./.driver/CMSIS/Core/core_cm3.h **** {
 1571:./.driver/CMSIS/Core/core_cm3.h ****   return((uint32_t)((NVIC->IABR[(uint32_t)(IRQn) >> 5] & (1 << ((uint32_t)(IRQn) & 0x1F)))?1:0)); /
 1572:./.driver/CMSIS/Core/core_cm3.h **** }
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 29
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 29
 
 
 1573:./.driver/CMSIS/Core/core_cm3.h **** 
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
   63 0028 1A76     		strb	r2, [r3, #24]
 1590:./.driver/CMSIS/Core/core_cm3.h ****   else {
 1591:./.driver/CMSIS/Core/core_cm3.h ****     NVIC->IP[(uint32_t)(IRQn)] = ((priority << (8 - __NVIC_PRIO_BITS)) & 0xff);    }        /* set 
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 30
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 30
 
 
 1592:./.driver/CMSIS/Core/core_cm3.h **** }
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1596:./.driver/CMSIS/Core/core_cm3.h ****  *
 1597:./.driver/CMSIS/Core/core_cm3.h ****  * @param  IRQn      The number of the interrupt for get priority
 1598:./.driver/CMSIS/Core/core_cm3.h ****  * @return           The priority for the interrupt
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 31
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 31
 
 
 1599:./.driver/CMSIS/Core/core_cm3.h ****  *
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
 1653:./.driver/CMSIS/Core/core_cm3.h ****  * @param  Priority           The priority for the interrupt
 1654:./.driver/CMSIS/Core/core_cm3.h ****  * @param  PriorityGroup      The used priority group
 1655:./.driver/CMSIS/Core/core_cm3.h ****  * @param  pPreemptPriority   The preemptive priority value (starting from 0)
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 32
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 32
 
 
 1656:./.driver/CMSIS/Core/core_cm3.h ****  * @param  pSubPriority       The sub priority value (starting from 0)
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  125              		.cfi_def_cfa_register 7
  126 0006 7860     		str	r0, [r7, #4]
 1696:./.driver/CMSIS/Core/core_cm3.h ****   if (ticks > SysTick_LOAD_RELOAD_Msk)  return (1);            /* Reload value impossible */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 33
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 33
 
 
  127              		.loc 1 1696 6
@@ -1978,52 +1978,59 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
  172              		.align	2
  173              	.L10:
  174 0040 10E000E0 		.word	-536813552
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 34
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 34
 
 
  175              		.cfi_endproc
  176              	.LFE24:
  178              		.global	systemticks
  179              		.section	.bss.systemticks,"aw",%nobits
- 180              		.align	2
+ 180              		.align	3
  183              	systemticks:
- 184 0000 00000000 		.space	4
- 185              		.global	is_tick
- 186              		.section	.bss.is_tick,"aw",%nobits
- 189              	is_tick:
- 190 0000 00       		.space	1
- 191              		.global	logout_timeout
- 192              		.section	.bss.logout_timeout,"aw",%nobits
- 193              		.align	2
- 196              	logout_timeout:
- 197 0000 0000     		.space	2
- 198              		.global	me_address
- 199              		.section	.data.me_address,"aw"
- 202              	me_address:
- 203 0000 01       		.byte	1
- 204              		.global	src_address
- 205              		.section	.bss.src_address,"aw",%nobits
- 208              	src_address:
- 209 0000 00       		.space	1
- 210              		.global	dst_address
- 211              		.section	.bss.dst_address,"aw",%nobits
- 214              	dst_address:
- 215 0000 00       		.space	1
- 216              		.section	.rodata
- 217              		.align	2
- 218              	.LC0:
- 219 0000 73746D33 		.ascii	"stm32f10x  \000"
- 219      32663130 
- 219      78202000 
- 220              		.section	.text.system_init,"ax",%progbits
- 221              		.align	1
- 222              		.global	system_init
- 223              		.syntax unified
- 224              		.thumb
- 225              		.thumb_func
- 227              	system_init:
- 228              	.LFB33:
- 229              		.file 2 "./system/system.c"
+ 184 0000 00000000 		.space	8
+ 184      00000000 
+ 185              		.global	pre_ticks
+ 186              		.section	.bss.pre_ticks,"aw",%nobits
+ 187              		.align	3
+ 190              	pre_ticks:
+ 191 0000 00000000 		.space	8
+ 191      00000000 
+ 192              		.global	is_tick
+ 193              		.section	.bss.is_tick,"aw",%nobits
+ 196              	is_tick:
+ 197 0000 00       		.space	1
+ 198              		.global	logout_timeout
+ 199              		.section	.bss.logout_timeout,"aw",%nobits
+ 200              		.align	2
+ 203              	logout_timeout:
+ 204 0000 0000     		.space	2
+ 205              		.global	me_address
+ 206              		.section	.data.me_address,"aw"
+ 209              	me_address:
+ 210 0000 01       		.byte	1
+ 211              		.global	src_address
+ 212              		.section	.bss.src_address,"aw",%nobits
+ 215              	src_address:
+ 216 0000 00       		.space	1
+ 217              		.global	dst_address
+ 218              		.section	.bss.dst_address,"aw",%nobits
+ 221              	dst_address:
+ 222 0000 00       		.space	1
+ 223              		.section	.rodata
+ 224              		.align	2
+ 225              	.LC0:
+ 226 0000 73746D33 		.ascii	"stm32f10x  \000"
+ 226      32663130 
+ 226      78202000 
+ 227              		.section	.text.system_init,"ax",%progbits
+ 228              		.align	1
+ 229              		.global	system_init
+ 230              		.syntax unified
+ 231              		.thumb
+ 232              		.thumb_func
+ 234              	system_init:
+ 235              	.LFB33:
+ 236              		.file 2 "./system/system.c"
    1:./system/system.c **** /**
    2:./system/system.c ****  * @brief system.c
    3:./system/system.c ****  *
@@ -2031,6 +2038,9 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
    5:./system/system.c ****  * @param ID: 679699
    6:./system/system.c ****  * @param University TU-Chemnitz
    7:./system/system.c ****  * @param Master : ASE(Automotive Software Engineering )
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 35
+
+
    8:./system/system.c ****  */ 
    9:./system/system.c **** 
   10:./system/system.c **** //********************************************************************************************
@@ -2038,708 +2048,710 @@ ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 1
   12:./system/system.c **** // including header  files
   13:./system/system.c **** //
   14:./system/system.c **** //********************************************************************************************
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 35
-
-
   15:./system/system.c ****  #include "init.h"
   16:./system/system.c **** //********************************************************************************************
   17:./system/system.c **** //
   18:./system/system.c **** // Global variables 
   19:./system/system.c **** //
   20:./system/system.c **** //********************************************************************************************
-  21:./system/system.c **** uint32_t systemticks=0;
-  22:./system/system.c **** uint8_t  is_tick=0;
-  23:./system/system.c **** minute_t logout_timeout;
-  24:./system/system.c **** 
-  25:./system/system.c **** uint8_t me_address=1; 
-  26:./system/system.c **** uint8_t src_address=0 ;
-  27:./system/system.c **** uint8_t dst_address=0; 
-  28:./system/system.c **** //********************************************************************************************
-  29:./system/system.c **** //
-  30:./system/system.c **** // Method definitions
+  21:./system/system.c **** uint64_t systemticks=0;
+  22:./system/system.c **** uint64_t pre_ticks=0;
+  23:./system/system.c **** 
+  24:./system/system.c **** uint8_t  is_tick=0;
+  25:./system/system.c **** minute_t logout_timeout;
+  26:./system/system.c **** 
+  27:./system/system.c **** uint8_t me_address=1; 
+  28:./system/system.c **** uint8_t src_address=0 ;
+  29:./system/system.c **** uint8_t dst_address=0; 
+  30:./system/system.c **** //********************************************************************************************
   31:./system/system.c **** //
-  32:./system/system.c **** //********************************************************************************************
-  33:./system/system.c **** void system_init(void)
-  34:./system/system.c **** {
- 230              		.loc 2 34 1
- 231              		.cfi_startproc
- 232              		@ args = 0, pretend = 0, frame = 0
- 233              		@ frame_needed = 1, uses_anonymous_args = 0
- 234 0000 80B5     		push	{r7, lr}
- 235              	.LCFI11:
- 236              		.cfi_def_cfa_offset 8
- 237              		.cfi_offset 7, -8
- 238              		.cfi_offset 14, -4
- 239 0002 00AF     		add	r7, sp, #0
- 240              	.LCFI12:
- 241              		.cfi_def_cfa_register 7
-  35:./system/system.c **** 
-  36:./system/system.c **** //********************************************************************************************
-  37:./system/system.c **** //
-  38:./system/system.c **** //  NVIC Global Interrupts Priority Group
+  32:./system/system.c **** // Method definitions
+  33:./system/system.c **** //
+  34:./system/system.c **** //********************************************************************************************
+  35:./system/system.c **** void system_init(void)
+  36:./system/system.c **** {
+ 237              		.loc 2 36 1
+ 238              		.cfi_startproc
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 1, uses_anonymous_args = 0
+ 241 0000 80B5     		push	{r7, lr}
+ 242              	.LCFI11:
+ 243              		.cfi_def_cfa_offset 8
+ 244              		.cfi_offset 7, -8
+ 245              		.cfi_offset 14, -4
+ 246 0002 00AF     		add	r7, sp, #0
+ 247              	.LCFI12:
+ 248              		.cfi_def_cfa_register 7
+  37:./system/system.c **** 
+  38:./system/system.c **** //********************************************************************************************
   39:./system/system.c **** //
-  40:./system/system.c **** //********************************************************************************************
-  41:./system/system.c ****   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0); 
- 242              		.loc 2 41 3
- 243 0004 4FF4E060 		mov	r0, #1792
- 244 0008 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
+  40:./system/system.c **** //  NVIC Global Interrupts Priority Group
+  41:./system/system.c **** //
   42:./system/system.c **** //********************************************************************************************
-  43:./system/system.c **** //
-  44:./system/system.c **** //  Configure SysTick  and  other clock module
+  43:./system/system.c ****   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0); 
+ 249              		.loc 2 43 3
+ 250 0004 4FF4E060 		mov	r0, #1792
+ 251 0008 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
+  44:./system/system.c **** //********************************************************************************************
   45:./system/system.c **** //
-  46:./system/system.c **** //
-  47:./system/system.c **** //********************************************************************************************
-  48:./system/system.c ****     //Configure SysTick Timer interrupt for 100 uS micro second
-  49:./system/system.c ****     if(SysTick_Config(SystemCoreClock/100000)) while(1);	 
- 245              		.loc 2 49 8
- 246 000c 344B     		ldr	r3, .L15
- 247 000e 1B68     		ldr	r3, [r3]
- 248 0010 5B09     		lsrs	r3, r3, #5
- 249 0012 344A     		ldr	r2, .L15+4
- 250 0014 A2FB0323 		umull	r2, r3, r2, r3
- 251 0018 DB09     		lsrs	r3, r3, #7
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 36
+  46:./system/system.c **** //  Configure SysTick  and  other clock module
+  47:./system/system.c **** //
+  48:./system/system.c **** //
+  49:./system/system.c **** //********************************************************************************************
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 36
 
 
- 252 001a 1846     		mov	r0, r3
- 253 001c FFF7FEFF 		bl	SysTick_Config
- 254 0020 0346     		mov	r3, r0
- 255              		.loc 2 49 7
- 256 0022 002B     		cmp	r3, #0
- 257 0024 00D0     		beq	.L13
- 258              	.L14:
- 259              		.loc 2 49 53 discriminator 1
- 260 0026 FEE7     		b	.L14
- 261              	.L13:
-  50:./system/system.c **** 
-  51:./system/system.c ****     systemticks=0;
- 262              		.loc 2 51 16
- 263 0028 2F4B     		ldr	r3, .L15+8
- 264 002a 0022     		movs	r2, #0
- 265 002c 1A60     		str	r2, [r3]
-  52:./system/system.c ****     is_tick=0;
- 266              		.loc 2 52 12
- 267 002e 2F4B     		ldr	r3, .L15+12
- 268 0030 0022     		movs	r2, #0
- 269 0032 1A70     		strb	r2, [r3]
-  53:./system/system.c ****     logout_timeout.sec=5;
- 270              		.loc 2 53 23
- 271 0034 2E4B     		ldr	r3, .L15+16
- 272 0036 0522     		movs	r2, #5
- 273 0038 1A70     		strb	r2, [r3]
-  54:./system/system.c ****     logout_timeout.min=0;
- 274              		.loc 2 54 23
- 275 003a 2D4B     		ldr	r3, .L15+16
- 276 003c 0022     		movs	r2, #0
- 277 003e 5A70     		strb	r2, [r3, #1]
-  55:./system/system.c **** //********************************************************************************************
-  56:./system/system.c **** //
-  57:./system/system.c **** //  Configure RCC clock  for other peripherals module
-  58:./system/system.c **** //  mainly for GPIOx and AFIO
-  59:./system/system.c **** //
-  60:./system/system.c **** //********************************************************************************************
-  61:./system/system.c **** 
-  62:./system/system.c **** 	// Enable peripheral clocks
-  63:./system/system.c ****    	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
- 278              		.loc 2 63 5
- 279 0040 0121     		movs	r1, #1
- 280 0042 0420     		movs	r0, #4
- 281 0044 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  64:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
- 282              		.loc 2 64 4
- 283 0048 0121     		movs	r1, #1
- 284 004a 0820     		movs	r0, #8
- 285 004c FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  65:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
- 286              		.loc 2 65 4
- 287 0050 0121     		movs	r1, #1
- 288 0052 1020     		movs	r0, #16
- 289 0054 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  66:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
+  50:./system/system.c ****     //Configure SysTick Timer interrupt for 100 uS micro second
+  51:./system/system.c ****     if(SysTick_Config(SystemCoreClock/100000)) while(1);	 
+ 252              		.loc 2 51 8
+ 253 000c 364B     		ldr	r3, .L15
+ 254 000e 1B68     		ldr	r3, [r3]
+ 255 0010 5B09     		lsrs	r3, r3, #5
+ 256 0012 364A     		ldr	r2, .L15+4
+ 257 0014 A2FB0323 		umull	r2, r3, r2, r3
+ 258 0018 DB09     		lsrs	r3, r3, #7
+ 259 001a 1846     		mov	r0, r3
+ 260 001c FFF7FEFF 		bl	SysTick_Config
+ 261 0020 0346     		mov	r3, r0
+ 262              		.loc 2 51 7
+ 263 0022 002B     		cmp	r3, #0
+ 264 0024 00D0     		beq	.L13
+ 265              	.L14:
+ 266              		.loc 2 51 53 discriminator 1
+ 267 0026 FEE7     		b	.L14
+ 268              	.L13:
+  52:./system/system.c **** 
+  53:./system/system.c ****     systemticks=0;
+ 269              		.loc 2 53 16
+ 270 0028 3149     		ldr	r1, .L15+8
+ 271 002a 4FF00002 		mov	r2, #0
+ 272 002e 4FF00003 		mov	r3, #0
+ 273 0032 C1E90023 		strd	r2, [r1]
+  54:./system/system.c ****     is_tick=0;
+ 274              		.loc 2 54 12
+ 275 0036 2F4B     		ldr	r3, .L15+12
+ 276 0038 0022     		movs	r2, #0
+ 277 003a 1A70     		strb	r2, [r3]
+  55:./system/system.c ****     logout_timeout.sec=5;
+ 278              		.loc 2 55 23
+ 279 003c 2E4B     		ldr	r3, .L15+16
+ 280 003e 0522     		movs	r2, #5
+ 281 0040 1A70     		strb	r2, [r3]
+  56:./system/system.c ****     logout_timeout.min=0;
+ 282              		.loc 2 56 23
+ 283 0042 2D4B     		ldr	r3, .L15+16
+ 284 0044 0022     		movs	r2, #0
+ 285 0046 5A70     		strb	r2, [r3, #1]
+  57:./system/system.c **** //********************************************************************************************
+  58:./system/system.c **** //
+  59:./system/system.c **** //  Configure RCC clock  for other peripherals module
+  60:./system/system.c **** //  mainly for GPIOx and AFIO
+  61:./system/system.c **** //
+  62:./system/system.c **** //********************************************************************************************
+  63:./system/system.c **** 
+  64:./system/system.c **** 	// Enable peripheral clocks
+  65:./system/system.c ****    	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+ 286              		.loc 2 65 5
+ 287 0048 0121     		movs	r1, #1
+ 288 004a 0420     		movs	r0, #4
+ 289 004c FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  66:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
  290              		.loc 2 66 4
- 291 0058 0121     		movs	r1, #1
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 37
+ 291 0050 0121     		movs	r1, #1
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 37
 
 
- 292 005a 2020     		movs	r0, #32
- 293 005c FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  67:./system/system.c **** 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
- 294              		.loc 2 67 3
- 295 0060 0121     		movs	r1, #1
- 296 0062 0120     		movs	r0, #1
- 297 0064 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
-  68:./system/system.c **** 
-  69:./system/system.c **** 	 TimingDelay=0; 
- 298              		.loc 2 69 14
- 299 0068 224B     		ldr	r3, .L15+20
- 300 006a 0022     		movs	r2, #0
- 301 006c 1A60     		str	r2, [r3]
-  70:./system/system.c ****  
-  71:./system/system.c **** //********************************************************************************************
-  72:./system/system.c **** //
-  73:./system/system.c **** //  the GPIO Module Initialize
+ 292 0052 0820     		movs	r0, #8
+ 293 0054 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  67:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
+ 294              		.loc 2 67 4
+ 295 0058 0121     		movs	r1, #1
+ 296 005a 1020     		movs	r0, #16
+ 297 005c FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  68:./system/system.c **** 	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
+ 298              		.loc 2 68 4
+ 299 0060 0121     		movs	r1, #1
+ 300 0062 2020     		movs	r0, #32
+ 301 0064 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  69:./system/system.c **** 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
+ 302              		.loc 2 69 3
+ 303 0068 0121     		movs	r1, #1
+ 304 006a 0120     		movs	r0, #1
+ 305 006c FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  70:./system/system.c **** 
+  71:./system/system.c **** 	 TimingDelay=0; 
+ 306              		.loc 2 71 14
+ 307 0070 224B     		ldr	r3, .L15+20
+ 308 0072 0022     		movs	r2, #0
+ 309 0074 1A60     		str	r2, [r3]
+  72:./system/system.c ****  
+  73:./system/system.c **** //********************************************************************************************
   74:./system/system.c **** //
-  75:./system/system.c **** //********************************************************************************************    
-  76:./system/system.c **** 
-  77:./system/system.c ****    blink_init();
- 302              		.loc 2 77 4
- 303 006e FFF7FEFF 		bl	blink_init
-  78:./system/system.c ****    pilot_init();
- 304              		.loc 2 78 4
- 305 0072 FFF7FEFF 		bl	pilot_init
-  79:./system/system.c ****    rly_init();
- 306              		.loc 2 79 4
- 307 0076 FFF7FEFF 		bl	rly_init
-  80:./system/system.c ****    pilots.val=0xff;
- 308              		.loc 2 80 14
- 309 007a 1F4B     		ldr	r3, .L15+24
- 310 007c FF22     		movs	r2, #255
- 311 007e 1A70     		strb	r2, [r3]
-  81:./system/system.c ****    relays.val=0;
- 312              		.loc 2 81 14
- 313 0080 1E4B     		ldr	r3, .L15+28
- 314 0082 0022     		movs	r2, #0
- 315 0084 1A70     		strb	r2, [r3]
-  82:./system/system.c ****    pilot_write(pilots.val); 
- 316              		.loc 2 82 4
- 317 0086 1C4B     		ldr	r3, .L15+24
- 318 0088 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 319 008a 1846     		mov	r0, r3
- 320 008c FFF7FEFF 		bl	pilot_write
-  83:./system/system.c ****    rly_write(relays.val);
- 321              		.loc 2 83 4
- 322 0090 1A4B     		ldr	r3, .L15+28
- 323 0092 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 324 0094 1846     		mov	r0, r3
- 325 0096 FFF7FEFF 		bl	rly_write
-  84:./system/system.c **** 
-  85:./system/system.c ****    blink_update=0;
- 326              		.loc 2 85 16
- 327 009a 194B     		ldr	r3, .L15+32
- 328 009c 0022     		movs	r2, #0
- 329 009e 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 38
+  75:./system/system.c **** //  the GPIO Module Initialize
+  76:./system/system.c **** //
+  77:./system/system.c **** //********************************************************************************************    
+  78:./system/system.c **** 
+  79:./system/system.c ****    blink_init();
+ 310              		.loc 2 79 4
+ 311 0076 FFF7FEFF 		bl	blink_init
+  80:./system/system.c ****    pilot_init();
+ 312              		.loc 2 80 4
+ 313 007a FFF7FEFF 		bl	pilot_init
+  81:./system/system.c ****    rly_init();
+ 314              		.loc 2 81 4
+ 315 007e FFF7FEFF 		bl	rly_init
+  82:./system/system.c ****    pilots.val=0xff;
+ 316              		.loc 2 82 14
+ 317 0082 1F4B     		ldr	r3, .L15+24
+ 318 0084 FF22     		movs	r2, #255
+ 319 0086 1A70     		strb	r2, [r3]
+  83:./system/system.c ****    relays.val=0;
+ 320              		.loc 2 83 14
+ 321 0088 1E4B     		ldr	r3, .L15+28
+ 322 008a 0022     		movs	r2, #0
+ 323 008c 1A70     		strb	r2, [r3]
+  84:./system/system.c ****    pilot_write(pilots.val); 
+ 324              		.loc 2 84 4
+ 325 008e 1C4B     		ldr	r3, .L15+24
+ 326 0090 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 327 0092 1846     		mov	r0, r3
+ 328 0094 FFF7FEFF 		bl	pilot_write
+  85:./system/system.c ****    rly_write(relays.val);
+ 329              		.loc 2 85 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 38
 
 
-  86:./system/system.c **** //********************************************************************************************
-  87:./system/system.c **** //
-  88:./system/system.c **** //  Keypad Module Initialize
+ 330 0098 1A4B     		ldr	r3, .L15+28
+ 331 009a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 332 009c 1846     		mov	r0, r3
+ 333 009e FFF7FEFF 		bl	rly_write
+  86:./system/system.c **** 
+  87:./system/system.c ****    blink_update=0;
+ 334              		.loc 2 87 16
+ 335 00a2 194B     		ldr	r3, .L15+32
+ 336 00a4 0022     		movs	r2, #0
+ 337 00a6 1A70     		strb	r2, [r3]
+  88:./system/system.c **** //********************************************************************************************
   89:./system/system.c **** //
-  90:./system/system.c **** //********************************************************************************************
-  91:./system/system.c ****     keypad_init(0xfc);
- 330              		.loc 2 91 5
- 331 00a0 FC20     		movs	r0, #252
- 332 00a2 FFF7FEFF 		bl	keypad_init
+  90:./system/system.c **** //  Keypad Module Initialize
+  91:./system/system.c **** //
   92:./system/system.c **** //********************************************************************************************
-  93:./system/system.c **** //
-  94:./system/system.c **** //  character lcd module
+  93:./system/system.c ****     keypad_init(0xfc);
+ 338              		.loc 2 93 5
+ 339 00a8 FC20     		movs	r0, #252
+ 340 00aa FFF7FEFF 		bl	keypad_init
+  94:./system/system.c **** //********************************************************************************************
   95:./system/system.c **** //
-  96:./system/system.c **** //********************************************************************************************
-  97:./system/system.c ****     lcd_init();
- 333              		.loc 2 97 5
- 334 00a6 FFF7FEFF 		bl	lcd_init
-  98:./system/system.c **** 	  lcd_refresh();
- 335              		.loc 2 98 4
- 336 00aa FFF7FEFF 		bl	lcd_refresh
-  99:./system/system.c ****     lcd_print_xy(0,0,"stm32f10x  ");
- 337              		.loc 2 99 5
- 338 00ae 154A     		ldr	r2, .L15+36
- 339 00b0 0021     		movs	r1, #0
- 340 00b2 0020     		movs	r0, #0
- 341 00b4 FFF7FEFF 		bl	lcd_print_xy
- 100:./system/system.c ****     lcd_update=0;
- 342              		.loc 2 100 15
- 343 00b8 134B     		ldr	r3, .L15+40
- 344 00ba 0022     		movs	r2, #0
- 345 00bc 1A70     		strb	r2, [r3]
- 101:./system/system.c **** //********************************************************************************************
- 102:./system/system.c **** //
- 103:./system/system.c **** //  Configure Timer module
+  96:./system/system.c **** //  character lcd module
+  97:./system/system.c **** //
+  98:./system/system.c **** //********************************************************************************************
+  99:./system/system.c ****     lcd_init();
+ 341              		.loc 2 99 5
+ 342 00ae FFF7FEFF 		bl	lcd_init
+ 100:./system/system.c **** 	  lcd_refresh();
+ 343              		.loc 2 100 4
+ 344 00b2 FFF7FEFF 		bl	lcd_refresh
+ 101:./system/system.c ****     lcd_print_xy(0,0,"stm32f10x  ");
+ 345              		.loc 2 101 5
+ 346 00b6 154A     		ldr	r2, .L15+36
+ 347 00b8 0021     		movs	r1, #0
+ 348 00ba 0020     		movs	r0, #0
+ 349 00bc FFF7FEFF 		bl	lcd_print_xy
+ 102:./system/system.c ****     lcd_update=0;
+ 350              		.loc 2 102 15
+ 351 00c0 134B     		ldr	r3, .L15+40
+ 352 00c2 0022     		movs	r2, #0
+ 353 00c4 1A70     		strb	r2, [r3]
+ 103:./system/system.c **** //********************************************************************************************
  104:./system/system.c **** //
- 105:./system/system.c **** //********************************************************************************************
- 106:./system/system.c ****     //TIM2_init();
- 107:./system/system.c ****     TIM3_init();
- 346              		.loc 2 107 5
- 347 00be FFF7FEFF 		bl	TIM3_init
- 108:./system/system.c **** 
- 109:./system/system.c **** //********************************************************************************************
- 110:./system/system.c **** //
- 111:./system/system.c **** //  Configure USART module
+ 105:./system/system.c **** //  Configure Timer module
+ 106:./system/system.c **** //
+ 107:./system/system.c **** //********************************************************************************************
+ 108:./system/system.c ****     //TIM2_init();
+ 109:./system/system.c ****     TIM3_init();
+ 354              		.loc 2 109 5
+ 355 00c6 FFF7FEFF 		bl	TIM3_init
+ 110:./system/system.c **** 
+ 111:./system/system.c **** //********************************************************************************************
  112:./system/system.c **** //
- 113:./system/system.c **** //********************************************************************************************
- 114:./system/system.c ****     //USART1_init();
- 115:./system/system.c ****     uart_init(USART1);
- 348              		.loc 2 115 5
- 349 00c2 1248     		ldr	r0, .L15+44
- 350 00c4 FFF7FEFF 		bl	uart_init
- 116:./system/system.c **** //********************************************************************************************
- 117:./system/system.c **** //
- 118:./system/system.c **** //  Configure I2c module
+ 113:./system/system.c **** //  Configure USART module
+ 114:./system/system.c **** //
+ 115:./system/system.c **** //********************************************************************************************
+ 116:./system/system.c ****     //USART1_init();
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 39
+
+
+ 117:./system/system.c ****     uart_init(USART1);
+ 356              		.loc 2 117 5
+ 357 00ca 1248     		ldr	r0, .L15+44
+ 358 00cc FFF7FEFF 		bl	uart_init
+ 118:./system/system.c **** //********************************************************************************************
  119:./system/system.c **** //
- 120:./system/system.c **** //********************************************************************************************
- 121:./system/system.c **** 	/* Initialize I2C */
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 39
-
-
- 122:./system/system.c ****   i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
- 351              		.loc 2 122 3
- 352 00c8 2022     		movs	r2, #32
- 353 00ca 1149     		ldr	r1, .L15+48
- 354 00cc 1148     		ldr	r0, .L15+52
- 355 00ce FFF7FEFF 		bl	i2c_init_std
- 123:./system/system.c **** 
- 124:./system/system.c **** //********************************************************************************************
- 125:./system/system.c **** //
- 126:./system/system.c **** //  Configure  module
+ 120:./system/system.c **** //  Configure I2c module
+ 121:./system/system.c **** //
+ 122:./system/system.c **** //********************************************************************************************
+ 123:./system/system.c **** 	/* Initialize I2C */
+ 124:./system/system.c ****   i2c_init_std(MPU6050_I2C,MPU6050_I2C_CLOCK,0x20);
+ 359              		.loc 2 124 3
+ 360 00d0 2022     		movs	r2, #32
+ 361 00d2 1149     		ldr	r1, .L15+48
+ 362 00d4 1148     		ldr	r0, .L15+52
+ 363 00d6 FFF7FEFF 		bl	i2c_init_std
+ 125:./system/system.c **** 
+ 126:./system/system.c **** //********************************************************************************************
  127:./system/system.c **** //
- 128:./system/system.c **** //********************************************************************************************
- 129:./system/system.c ****   system_tasks_init();
- 356              		.loc 2 129 3
- 357 00d2 FFF7FEFF 		bl	system_tasks_init
- 130:./system/system.c ****    is_tick=1;
- 358              		.loc 2 130 11
- 359 00d6 054B     		ldr	r3, .L15+12
- 360 00d8 0122     		movs	r2, #1
- 361 00da 1A70     		strb	r2, [r3]
- 131:./system/system.c **** }
- 362              		.loc 2 131 1
- 363 00dc 00BF     		nop
- 364 00de 80BD     		pop	{r7, pc}
- 365              	.L16:
- 366              		.align	2
- 367              	.L15:
- 368 00e0 00000000 		.word	SystemCoreClock
- 369 00e4 C55A7C0A 		.word	175921861
- 370 00e8 00000000 		.word	systemticks
- 371 00ec 00000000 		.word	is_tick
- 372 00f0 00000000 		.word	logout_timeout
- 373 00f4 00000000 		.word	TimingDelay
- 374 00f8 00000000 		.word	pilots
- 375 00fc 00000000 		.word	relays
- 376 0100 00000000 		.word	blink_update
- 377 0104 00000000 		.word	.LC0
- 378 0108 00000000 		.word	lcd_update
- 379 010c 00380140 		.word	1073821696
- 380 0110 801A0600 		.word	400000
- 381 0114 00540040 		.word	1073763328
- 382              		.cfi_endproc
- 383              	.LFE33:
- 385              		.section	.text.system_run,"ax",%progbits
- 386              		.align	1
- 387              		.global	system_run
- 388              		.syntax unified
- 389              		.thumb
- 390              		.thumb_func
- 392              	system_run:
- 393              	.LFB34:
- 132:./system/system.c **** //--------------------------------------------------------------------------------------------
- 133:./system/system.c **** void system_run(void)
- 134:./system/system.c **** {
- 394              		.loc 2 134 1
- 395              		.cfi_startproc
- 396              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 40
+ 128:./system/system.c **** //  Configure  module
+ 129:./system/system.c **** //
+ 130:./system/system.c **** //********************************************************************************************
+ 131:./system/system.c ****   system_tasks_init();
+ 364              		.loc 2 131 3
+ 365 00da FFF7FEFF 		bl	system_tasks_init
+ 132:./system/system.c ****    is_tick=1;
+ 366              		.loc 2 132 11
+ 367 00de 054B     		ldr	r3, .L15+12
+ 368 00e0 0122     		movs	r2, #1
+ 369 00e2 1A70     		strb	r2, [r3]
+ 133:./system/system.c **** }
+ 370              		.loc 2 133 1
+ 371 00e4 00BF     		nop
+ 372 00e6 80BD     		pop	{r7, pc}
+ 373              	.L16:
+ 374              		.align	2
+ 375              	.L15:
+ 376 00e8 00000000 		.word	SystemCoreClock
+ 377 00ec C55A7C0A 		.word	175921861
+ 378 00f0 00000000 		.word	systemticks
+ 379 00f4 00000000 		.word	is_tick
+ 380 00f8 00000000 		.word	logout_timeout
+ 381 00fc 00000000 		.word	TimingDelay
+ 382 0100 00000000 		.word	pilots
+ 383 0104 00000000 		.word	relays
+ 384 0108 00000000 		.word	blink_update
+ 385 010c 00000000 		.word	.LC0
+ 386 0110 00000000 		.word	lcd_update
+ 387 0114 00380140 		.word	1073821696
+ 388 0118 801A0600 		.word	400000
+ 389 011c 00540040 		.word	1073763328
+ 390              		.cfi_endproc
+ 391              	.LFE33:
+ 393              		.section	.text.system_run,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	system_run
+ 396              		.syntax unified
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 40
 
 
- 397              		@ frame_needed = 1, uses_anonymous_args = 0
- 398 0000 80B5     		push	{r7, lr}
- 399              	.LCFI13:
- 400              		.cfi_def_cfa_offset 8
- 401              		.cfi_offset 7, -8
- 402              		.cfi_offset 14, -4
- 403 0002 00AF     		add	r7, sp, #0
- 404              	.LCFI14:
- 405              		.cfi_def_cfa_register 7
- 135:./system/system.c ****  
- 136:./system/system.c ****  // Task1 to read  external analog voltage
- 137:./system/system.c ****   //adc_task();	
- 138:./system/system.c **** 
- 139:./system/system.c **** // Task2 to scan keypad
- 140:./system/system.c ****   keypad_task();	
- 406              		.loc 2 140 3
- 407 0004 FFF7FEFF 		bl	keypad_task
- 141:./system/system.c **** 
- 142:./system/system.c **** // Task3 to read input buffer
- 143:./system/system.c ****   //inbuf_task();
- 144:./system/system.c **** 
- 145:./system/system.c **** // Task3 to read MPU : I2C Bus 
- 146:./system/system.c **** if(mpu_settings.acq_run)//mpu_acq_run)
- 408              		.loc 2 146 16
- 409 0008 064B     		ldr	r3, .L19
- 410 000a 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
- 411              		.loc 2 146 3
- 412 000c 002B     		cmp	r3, #0
- 413 000e 01D0     		beq	.L18
- 147:./system/system.c ****     mpu6050_task();	
- 414              		.loc 2 147 5
- 415 0010 FFF7FEFF 		bl	mpu6050_task
- 416              	.L18:
- 148:./system/system.c **** 
- 149:./system/system.c ****  // Task4 to read uart buffer
- 150:./system/system.c ****    uart_task();	
- 417              		.loc 2 150 4
- 418 0014 FFF7FEFF 		bl	uart_task
- 151:./system/system.c **** 
- 152:./system/system.c ****  // Task5 to update lcd buffer
- 153:./system/system.c ****   lcd_task();
- 419              		.loc 2 153 3
- 420 0018 FFF7FEFF 		bl	lcd_task
- 154:./system/system.c **** 
- 155:./system/system.c **** // Task6 to real time clock to refresh the whole system
- 156:./system/system.c ****    rtc_task();    
- 421              		.loc 2 156 4
- 422 001c FFF7FEFF 		bl	rtc_task
- 157:./system/system.c **** 
- 158:./system/system.c **** }
- 423              		.loc 2 158 1
- 424 0020 00BF     		nop
- 425 0022 80BD     		pop	{r7, pc}
- 426              	.L20:
- 427              		.align	2
- 428              	.L19:
- 429 0024 00000000 		.word	mpu_settings
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 41
+ 397              		.thumb
+ 398              		.thumb_func
+ 400              	system_run:
+ 401              	.LFB34:
+ 134:./system/system.c **** //--------------------------------------------------------------------------------------------
+ 135:./system/system.c **** void system_run(void)
+ 136:./system/system.c **** {
+ 402              		.loc 2 136 1
+ 403              		.cfi_startproc
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 1, uses_anonymous_args = 0
+ 406 0000 80B5     		push	{r7, lr}
+ 407              	.LCFI13:
+ 408              		.cfi_def_cfa_offset 8
+ 409              		.cfi_offset 7, -8
+ 410              		.cfi_offset 14, -4
+ 411 0002 00AF     		add	r7, sp, #0
+ 412              	.LCFI14:
+ 413              		.cfi_def_cfa_register 7
+ 137:./system/system.c ****  
+ 138:./system/system.c ****  // Task1 to read  external analog voltage
+ 139:./system/system.c ****   //adc_task();	
+ 140:./system/system.c **** 
+ 141:./system/system.c **** // Task2 to scan keypad
+ 142:./system/system.c ****   keypad_task();	
+ 414              		.loc 2 142 3
+ 415 0004 FFF7FEFF 		bl	keypad_task
+ 143:./system/system.c **** 
+ 144:./system/system.c **** // Task3 to read input buffer
+ 145:./system/system.c ****   //inbuf_task();
+ 146:./system/system.c **** 
+ 147:./system/system.c **** // Task3 to read MPU : I2C Bus 
+ 148:./system/system.c **** if(mpu_settings.acq_run)//mpu_acq_run)
+ 416              		.loc 2 148 16
+ 417 0008 064B     		ldr	r3, .L19
+ 418 000a 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 419              		.loc 2 148 3
+ 420 000c 002B     		cmp	r3, #0
+ 421 000e 01D0     		beq	.L18
+ 149:./system/system.c ****     mpu6050_task();	
+ 422              		.loc 2 149 5
+ 423 0010 FFF7FEFF 		bl	mpu6050_task
+ 424              	.L18:
+ 150:./system/system.c **** 
+ 151:./system/system.c ****  // Task4 to read uart buffer
+ 152:./system/system.c ****    uart_task();	
+ 425              		.loc 2 152 4
+ 426 0014 FFF7FEFF 		bl	uart_task
+ 153:./system/system.c **** 
+ 154:./system/system.c ****  // Task5 to update lcd buffer
+ 155:./system/system.c ****   lcd_task();
+ 427              		.loc 2 155 3
+ 428 0018 FFF7FEFF 		bl	lcd_task
+ 156:./system/system.c **** 
+ 157:./system/system.c **** // Task6 to real time clock to refresh the whole system
+ 158:./system/system.c ****    rtc_task();    
+ 429              		.loc 2 158 4
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 41
 
 
- 430              		.cfi_endproc
- 431              	.LFE34:
- 433              		.section	.text.system_ticks,"ax",%progbits
- 434              		.align	1
- 435              		.global	system_ticks
- 436              		.syntax unified
- 437              		.thumb
- 438              		.thumb_func
- 440              	system_ticks:
- 441              	.LFB35:
- 159:./system/system.c **** //--------------------------------------------------------------------------------------------
- 160:./system/system.c **** void system_ticks(void)
- 161:./system/system.c **** {
- 442              		.loc 2 161 1
- 443              		.cfi_startproc
- 444              		@ args = 0, pretend = 0, frame = 0
- 445              		@ frame_needed = 1, uses_anonymous_args = 0
- 446              		@ link register save eliminated.
- 447 0000 80B4     		push	{r7}
- 448              	.LCFI15:
- 449              		.cfi_def_cfa_offset 4
- 450              		.cfi_offset 7, -4
- 451 0002 00AF     		add	r7, sp, #0
- 452              	.LCFI16:
- 453              		.cfi_def_cfa_register 7
- 162:./system/system.c **** // keypad task tick
- 163:./system/system.c ****   if(keypad_state==KEYPAD_WAIT)
- 454              		.loc 2 163 18
- 455 0004 134B     		ldr	r3, .L27
- 456 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 457              		.loc 2 163 5
- 458 0008 002B     		cmp	r3, #0
- 459 000a 04D1     		bne	.L22
- 164:./system/system.c ****      keypad_ticks++;
- 460              		.loc 2 164 18
- 461 000c 124B     		ldr	r3, .L27+4
- 462 000e 1B68     		ldr	r3, [r3]
- 463 0010 0133     		adds	r3, r3, #1
- 464 0012 114A     		ldr	r2, .L27+4
- 465 0014 1360     		str	r3, [r2]
- 466              	.L22:
- 165:./system/system.c **** 
- 166:./system/system.c **** // mpu task tick
- 167:./system/system.c ****   if(mpu_state==MPU_WAIT)
- 467              		.loc 2 167 15
- 468 0016 114B     		ldr	r3, .L27+8
- 469 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 470              		.loc 2 167 5
- 471 001a 002B     		cmp	r3, #0
- 472 001c 04D1     		bne	.L23
- 168:./system/system.c ****       mpu_ticks++;
- 473              		.loc 2 168 16
- 474 001e 104B     		ldr	r3, .L27+12
- 475 0020 1B68     		ldr	r3, [r3]
- 476 0022 0133     		adds	r3, r3, #1
- 477 0024 0E4A     		ldr	r2, .L27+12
- 478 0026 1360     		str	r3, [r2]
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 42
+ 430 001c FFF7FEFF 		bl	rtc_task
+ 159:./system/system.c **** 
+ 160:./system/system.c **** }
+ 431              		.loc 2 160 1
+ 432 0020 00BF     		nop
+ 433 0022 80BD     		pop	{r7, pc}
+ 434              	.L20:
+ 435              		.align	2
+ 436              	.L19:
+ 437 0024 00000000 		.word	mpu_settings
+ 438              		.cfi_endproc
+ 439              	.LFE34:
+ 441              		.section	.text.system_ticks,"ax",%progbits
+ 442              		.align	1
+ 443              		.global	system_ticks
+ 444              		.syntax unified
+ 445              		.thumb
+ 446              		.thumb_func
+ 448              	system_ticks:
+ 449              	.LFB35:
+ 161:./system/system.c **** //--------------------------------------------------------------------------------------------
+ 162:./system/system.c **** void system_ticks(void)
+ 163:./system/system.c **** {
+ 450              		.loc 2 163 1
+ 451              		.cfi_startproc
+ 452              		@ args = 0, pretend = 0, frame = 0
+ 453              		@ frame_needed = 1, uses_anonymous_args = 0
+ 454              		@ link register save eliminated.
+ 455 0000 80B4     		push	{r7}
+ 456              	.LCFI15:
+ 457              		.cfi_def_cfa_offset 4
+ 458              		.cfi_offset 7, -4
+ 459 0002 00AF     		add	r7, sp, #0
+ 460              	.LCFI16:
+ 461              		.cfi_def_cfa_register 7
+ 164:./system/system.c **** // keypad task tick
+ 165:./system/system.c ****   if(keypad_state==KEYPAD_WAIT)
+ 462              		.loc 2 165 18
+ 463 0004 134B     		ldr	r3, .L27
+ 464 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 465              		.loc 2 165 5
+ 466 0008 002B     		cmp	r3, #0
+ 467 000a 04D1     		bne	.L22
+ 166:./system/system.c ****      keypad_ticks++;
+ 468              		.loc 2 166 18
+ 469 000c 124B     		ldr	r3, .L27+4
+ 470 000e 1B68     		ldr	r3, [r3]
+ 471 0010 0133     		adds	r3, r3, #1
+ 472 0012 114A     		ldr	r2, .L27+4
+ 473 0014 1360     		str	r3, [r2]
+ 474              	.L22:
+ 167:./system/system.c **** 
+ 168:./system/system.c **** // mpu task tick
+ 169:./system/system.c ****   if(mpu_state==MPU_WAIT)
+ 475              		.loc 2 169 15
+ 476 0016 114B     		ldr	r3, .L27+8
+ 477 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 42
 
 
- 479              	.L23:
- 169:./system/system.c **** 
- 170:./system/system.c **** // keypad debounce tick
- 171:./system/system.c ****   if(keypad_state==KEYPAD_DEBOUNCE)
- 480              		.loc 2 171 18
- 481 0028 0A4B     		ldr	r3, .L27
- 482 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 483              		.loc 2 171 5
- 484 002c 022B     		cmp	r3, #2
- 485 002e 04D1     		bne	.L24
- 172:./system/system.c ****       keypad_debounce_cnt++;
- 486              		.loc 2 172 26
- 487 0030 0C4B     		ldr	r3, .L27+16
- 488 0032 1B68     		ldr	r3, [r3]
- 489 0034 0133     		adds	r3, r3, #1
- 490 0036 0B4A     		ldr	r2, .L27+16
- 491 0038 1360     		str	r3, [r2]
- 492              	.L24:
- 173:./system/system.c **** 
- 174:./system/system.c **** // rtc task tick
- 175:./system/system.c ****   if(rtc_state==RTC_WAIT)
- 493              		.loc 2 175 15
- 494 003a 0B4B     		ldr	r3, .L27+20
- 495 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 496              		.loc 2 175 5
- 497 003e 002B     		cmp	r3, #0
- 498 0040 04D1     		bne	.L26
- 176:./system/system.c ****      rtc_ticks++;
- 499              		.loc 2 176 15
- 500 0042 0A4B     		ldr	r3, .L27+24
- 501 0044 1B68     		ldr	r3, [r3]
- 502 0046 0133     		adds	r3, r3, #1
- 503 0048 084A     		ldr	r2, .L27+24
- 504 004a 1360     		str	r3, [r2]
- 505              	.L26:
- 177:./system/system.c **** 
- 178:./system/system.c **** }
- 506              		.loc 2 178 1
- 507 004c 00BF     		nop
- 508 004e BD46     		mov	sp, r7
- 509              	.LCFI17:
- 510              		.cfi_def_cfa_register 13
- 511              		@ sp needed
- 512 0050 80BC     		pop	{r7}
- 513              	.LCFI18:
- 514              		.cfi_restore 7
- 515              		.cfi_def_cfa_offset 0
- 516 0052 7047     		bx	lr
- 517              	.L28:
- 518              		.align	2
- 519              	.L27:
- 520 0054 00000000 		.word	keypad_state
- 521 0058 00000000 		.word	keypad_ticks
- 522 005c 00000000 		.word	mpu_state
- 523 0060 00000000 		.word	mpu_ticks
- 524 0064 00000000 		.word	keypad_debounce_cnt
- 525 0068 00000000 		.word	rtc_state
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 43
+ 478              		.loc 2 169 5
+ 479 001a 002B     		cmp	r3, #0
+ 480 001c 04D1     		bne	.L23
+ 170:./system/system.c ****       mpu_ticks++;
+ 481              		.loc 2 170 16
+ 482 001e 104B     		ldr	r3, .L27+12
+ 483 0020 1B68     		ldr	r3, [r3]
+ 484 0022 0133     		adds	r3, r3, #1
+ 485 0024 0E4A     		ldr	r2, .L27+12
+ 486 0026 1360     		str	r3, [r2]
+ 487              	.L23:
+ 171:./system/system.c **** 
+ 172:./system/system.c **** // keypad debounce tick
+ 173:./system/system.c ****   if(keypad_state==KEYPAD_DEBOUNCE)
+ 488              		.loc 2 173 18
+ 489 0028 0A4B     		ldr	r3, .L27
+ 490 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 491              		.loc 2 173 5
+ 492 002c 022B     		cmp	r3, #2
+ 493 002e 04D1     		bne	.L24
+ 174:./system/system.c ****       keypad_debounce_cnt++;
+ 494              		.loc 2 174 26
+ 495 0030 0C4B     		ldr	r3, .L27+16
+ 496 0032 1B68     		ldr	r3, [r3]
+ 497 0034 0133     		adds	r3, r3, #1
+ 498 0036 0B4A     		ldr	r2, .L27+16
+ 499 0038 1360     		str	r3, [r2]
+ 500              	.L24:
+ 175:./system/system.c **** 
+ 176:./system/system.c **** // rtc task tick
+ 177:./system/system.c ****   if(rtc_state==RTC_WAIT)
+ 501              		.loc 2 177 15
+ 502 003a 0B4B     		ldr	r3, .L27+20
+ 503 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 504              		.loc 2 177 5
+ 505 003e 002B     		cmp	r3, #0
+ 506 0040 04D1     		bne	.L26
+ 178:./system/system.c ****      rtc_ticks++;
+ 507              		.loc 2 178 15
+ 508 0042 0A4B     		ldr	r3, .L27+24
+ 509 0044 1B68     		ldr	r3, [r3]
+ 510 0046 0133     		adds	r3, r3, #1
+ 511 0048 084A     		ldr	r2, .L27+24
+ 512 004a 1360     		str	r3, [r2]
+ 513              	.L26:
+ 179:./system/system.c **** 
+ 180:./system/system.c **** }
+ 514              		.loc 2 180 1
+ 515 004c 00BF     		nop
+ 516 004e BD46     		mov	sp, r7
+ 517              	.LCFI17:
+ 518              		.cfi_def_cfa_register 13
+ 519              		@ sp needed
+ 520 0050 80BC     		pop	{r7}
+ 521              	.LCFI18:
+ 522              		.cfi_restore 7
+ 523              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 43
 
 
- 526 006c 00000000 		.word	rtc_ticks
- 527              		.cfi_endproc
- 528              	.LFE35:
- 530              		.section	.text.system_tasks_init,"ax",%progbits
- 531              		.align	1
- 532              		.global	system_tasks_init
- 533              		.syntax unified
- 534              		.thumb
- 535              		.thumb_func
- 537              	system_tasks_init:
- 538              	.LFB36:
- 179:./system/system.c **** //--------------------------------------------------------------------------------------------
- 180:./system/system.c **** void system_tasks_init(void)
- 181:./system/system.c **** {
- 539              		.loc 2 181 1
- 540              		.cfi_startproc
- 541              		@ args = 0, pretend = 0, frame = 0
- 542              		@ frame_needed = 1, uses_anonymous_args = 0
- 543              		@ link register save eliminated.
- 544 0000 80B4     		push	{r7}
- 545              	.LCFI19:
- 546              		.cfi_def_cfa_offset 4
- 547              		.cfi_offset 7, -4
- 548 0002 00AF     		add	r7, sp, #0
- 549              	.LCFI20:
- 550              		.cfi_def_cfa_register 7
- 182:./system/system.c ****   keypad_state=0;
- 551              		.loc 2 182 15
- 552 0004 124B     		ldr	r3, .L30
- 553 0006 0022     		movs	r2, #0
- 554 0008 1A70     		strb	r2, [r3]
- 183:./system/system.c ****   keypad_ticks=0;
- 555              		.loc 2 183 15
- 556 000a 124B     		ldr	r3, .L30+4
- 557 000c 0022     		movs	r2, #0
- 558 000e 1A60     		str	r2, [r3]
- 184:./system/system.c ****   keypad_debounce_cnt=0;
- 559              		.loc 2 184 22
- 560 0010 114B     		ldr	r3, .L30+8
- 561 0012 0022     		movs	r2, #0
- 562 0014 1A60     		str	r2, [r3]
- 185:./system/system.c ****  
- 186:./system/system.c ****   mpu_state=0;
- 563              		.loc 2 186 12
- 564 0016 114B     		ldr	r3, .L30+12
- 565 0018 0022     		movs	r2, #0
- 566 001a 1A70     		strb	r2, [r3]
- 187:./system/system.c ****   mpu_ticks=0;
- 567              		.loc 2 187 12
- 568 001c 104B     		ldr	r3, .L30+16
- 569 001e 0022     		movs	r2, #0
- 570 0020 1A60     		str	r2, [r3]
- 188:./system/system.c ****  
- 189:./system/system.c ****   
- 190:./system/system.c ****   lcd_state=0;
- 571              		.loc 2 190 12
- 572 0022 104B     		ldr	r3, .L30+20
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 44
+ 524 0052 7047     		bx	lr
+ 525              	.L28:
+ 526              		.align	2
+ 527              	.L27:
+ 528 0054 00000000 		.word	keypad_state
+ 529 0058 00000000 		.word	keypad_ticks
+ 530 005c 00000000 		.word	mpu_state
+ 531 0060 00000000 		.word	mpu_ticks
+ 532 0064 00000000 		.word	keypad_debounce_cnt
+ 533 0068 00000000 		.word	rtc_state
+ 534 006c 00000000 		.word	rtc_ticks
+ 535              		.cfi_endproc
+ 536              	.LFE35:
+ 538              		.section	.text.system_tasks_init,"ax",%progbits
+ 539              		.align	1
+ 540              		.global	system_tasks_init
+ 541              		.syntax unified
+ 542              		.thumb
+ 543              		.thumb_func
+ 545              	system_tasks_init:
+ 546              	.LFB36:
+ 181:./system/system.c **** //--------------------------------------------------------------------------------------------
+ 182:./system/system.c **** void system_tasks_init(void)
+ 183:./system/system.c **** {
+ 547              		.loc 2 183 1
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 1, uses_anonymous_args = 0
+ 551              		@ link register save eliminated.
+ 552 0000 80B4     		push	{r7}
+ 553              	.LCFI19:
+ 554              		.cfi_def_cfa_offset 4
+ 555              		.cfi_offset 7, -4
+ 556 0002 00AF     		add	r7, sp, #0
+ 557              	.LCFI20:
+ 558              		.cfi_def_cfa_register 7
+ 184:./system/system.c ****   keypad_state=0;
+ 559              		.loc 2 184 15
+ 560 0004 124B     		ldr	r3, .L30
+ 561 0006 0022     		movs	r2, #0
+ 562 0008 1A70     		strb	r2, [r3]
+ 185:./system/system.c ****   keypad_ticks=0;
+ 563              		.loc 2 185 15
+ 564 000a 124B     		ldr	r3, .L30+4
+ 565 000c 0022     		movs	r2, #0
+ 566 000e 1A60     		str	r2, [r3]
+ 186:./system/system.c ****   keypad_debounce_cnt=0;
+ 567              		.loc 2 186 22
+ 568 0010 114B     		ldr	r3, .L30+8
+ 569 0012 0022     		movs	r2, #0
+ 570 0014 1A60     		str	r2, [r3]
+ 187:./system/system.c ****  
+ 188:./system/system.c ****   mpu_state=0;
+ 571              		.loc 2 188 12
+ 572 0016 114B     		ldr	r3, .L30+12
+ 573 0018 0022     		movs	r2, #0
+ 574 001a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 44
 
 
- 573 0024 0022     		movs	r2, #0
- 574 0026 1A70     		strb	r2, [r3]
- 191:./system/system.c ****   lcd_ticks=0;
- 575              		.loc 2 191 12
- 576 0028 0F4B     		ldr	r3, .L30+24
- 577 002a 0022     		movs	r2, #0
- 578 002c 1A60     		str	r2, [r3]
- 192:./system/system.c ****  
- 193:./system/system.c ****   pilot_state=0;
- 579              		.loc 2 193 14
- 580 002e 0F4B     		ldr	r3, .L30+28
- 581 0030 0022     		movs	r2, #0
- 582 0032 1A70     		strb	r2, [r3]
- 194:./system/system.c ****   pilot_ticks=0;
- 583              		.loc 2 194 14
- 584 0034 0E4B     		ldr	r3, .L30+32
- 585 0036 0022     		movs	r2, #0
- 586 0038 1A60     		str	r2, [r3]
- 195:./system/system.c ****   
- 196:./system/system.c ****   rtc_state=0;
- 587              		.loc 2 196 12
- 588 003a 0E4B     		ldr	r3, .L30+36
- 589 003c 0022     		movs	r2, #0
- 590 003e 1A70     		strb	r2, [r3]
- 197:./system/system.c ****   rtc_ticks=0;  
- 591              		.loc 2 197 12
- 592 0040 0D4B     		ldr	r3, .L30+40
- 593 0042 0022     		movs	r2, #0
- 594 0044 1A60     		str	r2, [r3]
- 198:./system/system.c **** }
- 595              		.loc 2 198 1
- 596 0046 00BF     		nop
- 597 0048 BD46     		mov	sp, r7
- 598              	.LCFI21:
- 599              		.cfi_def_cfa_register 13
- 600              		@ sp needed
- 601 004a 80BC     		pop	{r7}
- 602              	.LCFI22:
- 603              		.cfi_restore 7
- 604              		.cfi_def_cfa_offset 0
- 605 004c 7047     		bx	lr
- 606              	.L31:
- 607 004e 00BF     		.align	2
- 608              	.L30:
- 609 0050 00000000 		.word	keypad_state
- 610 0054 00000000 		.word	keypad_ticks
- 611 0058 00000000 		.word	keypad_debounce_cnt
- 612 005c 00000000 		.word	mpu_state
- 613 0060 00000000 		.word	mpu_ticks
- 614 0064 00000000 		.word	lcd_state
- 615 0068 00000000 		.word	lcd_ticks
- 616 006c 00000000 		.word	pilot_state
- 617 0070 00000000 		.word	pilot_ticks
- 618 0074 00000000 		.word	rtc_state
- 619 0078 00000000 		.word	rtc_ticks
- 620              		.cfi_endproc
- 621              	.LFE36:
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 45
+ 189:./system/system.c ****   mpu_ticks=0;
+ 575              		.loc 2 189 12
+ 576 001c 104B     		ldr	r3, .L30+16
+ 577 001e 0022     		movs	r2, #0
+ 578 0020 1A60     		str	r2, [r3]
+ 190:./system/system.c ****  
+ 191:./system/system.c ****   
+ 192:./system/system.c ****   lcd_state=0;
+ 579              		.loc 2 192 12
+ 580 0022 104B     		ldr	r3, .L30+20
+ 581 0024 0022     		movs	r2, #0
+ 582 0026 1A70     		strb	r2, [r3]
+ 193:./system/system.c ****   lcd_ticks=0;
+ 583              		.loc 2 193 12
+ 584 0028 0F4B     		ldr	r3, .L30+24
+ 585 002a 0022     		movs	r2, #0
+ 586 002c 1A60     		str	r2, [r3]
+ 194:./system/system.c ****  
+ 195:./system/system.c ****   pilot_state=0;
+ 587              		.loc 2 195 14
+ 588 002e 0F4B     		ldr	r3, .L30+28
+ 589 0030 0022     		movs	r2, #0
+ 590 0032 1A70     		strb	r2, [r3]
+ 196:./system/system.c ****   pilot_ticks=0;
+ 591              		.loc 2 196 14
+ 592 0034 0E4B     		ldr	r3, .L30+32
+ 593 0036 0022     		movs	r2, #0
+ 594 0038 1A60     		str	r2, [r3]
+ 197:./system/system.c ****   
+ 198:./system/system.c ****   rtc_state=0;
+ 595              		.loc 2 198 12
+ 596 003a 0E4B     		ldr	r3, .L30+36
+ 597 003c 0022     		movs	r2, #0
+ 598 003e 1A70     		strb	r2, [r3]
+ 199:./system/system.c ****   rtc_ticks=0;  
+ 599              		.loc 2 199 12
+ 600 0040 0D4B     		ldr	r3, .L30+40
+ 601 0042 0022     		movs	r2, #0
+ 602 0044 1A60     		str	r2, [r3]
+ 200:./system/system.c **** }
+ 603              		.loc 2 200 1
+ 604 0046 00BF     		nop
+ 605 0048 BD46     		mov	sp, r7
+ 606              	.LCFI21:
+ 607              		.cfi_def_cfa_register 13
+ 608              		@ sp needed
+ 609 004a 80BC     		pop	{r7}
+ 610              	.LCFI22:
+ 611              		.cfi_restore 7
+ 612              		.cfi_def_cfa_offset 0
+ 613 004c 7047     		bx	lr
+ 614              	.L31:
+ 615 004e 00BF     		.align	2
+ 616              	.L30:
+ 617 0050 00000000 		.word	keypad_state
+ 618 0054 00000000 		.word	keypad_ticks
+ 619 0058 00000000 		.word	keypad_debounce_cnt
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 45
 
 
- 623              		.section	.text.system_rtc,"ax",%progbits
- 624              		.align	1
- 625              		.global	system_rtc
- 626              		.syntax unified
- 627              		.thumb
- 628              		.thumb_func
- 630              	system_rtc:
- 631              	.LFB37:
- 199:./system/system.c **** //--------------------------------------------------------------------------------------------
- 200:./system/system.c **** void system_rtc(void)
- 201:./system/system.c **** {
- 632              		.loc 2 201 1
- 633              		.cfi_startproc
- 634              		@ args = 0, pretend = 0, frame = 0
- 635              		@ frame_needed = 1, uses_anonymous_args = 0
- 636 0000 80B5     		push	{r7, lr}
- 637              	.LCFI23:
- 638              		.cfi_def_cfa_offset 8
- 639              		.cfi_offset 7, -8
- 640              		.cfi_offset 14, -4
- 641 0002 00AF     		add	r7, sp, #0
- 642              	.LCFI24:
- 643              		.cfi_def_cfa_register 7
- 202:./system/system.c ****     pilot_write(pilots.val);
- 644              		.loc 2 202 5
- 645 0004 034B     		ldr	r3, .L33
- 646 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 647 0008 1846     		mov	r0, r3
- 648 000a FFF7FEFF 		bl	pilot_write
- 203:./system/system.c **** 	//lcd_refresh();
- 204:./system/system.c **** 	
- 205:./system/system.c **** 	//lcd_print_double_xy_str(0,0,"t1:",t1,2);
- 206:./system/system.c ****     //lcd_print_double_xy_str(0,1,"t2:",t2,2);
- 207:./system/system.c **** 
- 208:./system/system.c **** 	//lcd_print_uint32_xy(10,0,systemticks,10);
- 209:./system/system.c **** 	//lcd.print(0,1,SystemCoreClock);
- 210:./system/system.c **** 
- 211:./system/system.c **** }
- 649              		.loc 2 211 1
- 650 000e 00BF     		nop
- 651 0010 80BD     		pop	{r7, pc}
- 652              	.L34:
- 653 0012 00BF     		.align	2
- 654              	.L33:
- 655 0014 00000000 		.word	pilots
- 656              		.cfi_endproc
- 657              	.LFE37:
- 659              		.text
- 660              	.Letext0:
- 661              		.file 3 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
- 662              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
- 663              		.file 5 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
- 664              		.file 6 "./basic/time.h"
- 665              		.file 7 "./mpu6050/mpu6050.h"
- 666              		.file 8 "./.driver/CMSIS/Device/STM32F10x/system_stm32f10x.h"
- 667              		.file 9 "./system/system-task.h"
- 668              		.file 10 "./system/system.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 46
+ 620 005c 00000000 		.word	mpu_state
+ 621 0060 00000000 		.word	mpu_ticks
+ 622 0064 00000000 		.word	lcd_state
+ 623 0068 00000000 		.word	lcd_ticks
+ 624 006c 00000000 		.word	pilot_state
+ 625 0070 00000000 		.word	pilot_ticks
+ 626 0074 00000000 		.word	rtc_state
+ 627 0078 00000000 		.word	rtc_ticks
+ 628              		.cfi_endproc
+ 629              	.LFE36:
+ 631              		.section	.text.system_rtc,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	system_rtc
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	system_rtc:
+ 639              	.LFB37:
+ 201:./system/system.c **** //--------------------------------------------------------------------------------------------
+ 202:./system/system.c **** void system_rtc(void)
+ 203:./system/system.c **** {
+ 640              		.loc 2 203 1
+ 641              		.cfi_startproc
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 1, uses_anonymous_args = 0
+ 644 0000 80B5     		push	{r7, lr}
+ 645              	.LCFI23:
+ 646              		.cfi_def_cfa_offset 8
+ 647              		.cfi_offset 7, -8
+ 648              		.cfi_offset 14, -4
+ 649 0002 00AF     		add	r7, sp, #0
+ 650              	.LCFI24:
+ 651              		.cfi_def_cfa_register 7
+ 204:./system/system.c ****     pilot_write(pilots.val);
+ 652              		.loc 2 204 5
+ 653 0004 034B     		ldr	r3, .L33
+ 654 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 655 0008 1846     		mov	r0, r3
+ 656 000a FFF7FEFF 		bl	pilot_write
+ 205:./system/system.c **** 	//lcd_refresh();
+ 206:./system/system.c **** 	
+ 207:./system/system.c **** 	//lcd_print_double_xy_str(0,0,"t1:",t1,2);
+ 208:./system/system.c ****     //lcd_print_double_xy_str(0,1,"t2:",t2,2);
+ 209:./system/system.c **** 
+ 210:./system/system.c **** 	//lcd_print_uint32_xy(10,0,systemticks,10);
+ 211:./system/system.c **** 	//lcd.print(0,1,SystemCoreClock);
+ 212:./system/system.c **** 
+ 213:./system/system.c **** }
+ 657              		.loc 2 213 1
+ 658 000e 00BF     		nop
+ 659 0010 80BD     		pop	{r7, pc}
+ 660              	.L34:
+ 661 0012 00BF     		.align	2
+ 662              	.L33:
+ 663 0014 00000000 		.word	pilots
+ 664              		.cfi_endproc
+ 665              	.LFE37:
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 46
 
 
- 669              		.file 11 "./init/init.h"
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 47
+ 667              		.text
+ 668              	.Letext0:
+ 669              		.file 3 "./.driver/CMSIS/Device/STM32F10x/stm32f10x.h"
+ 670              		.file 4 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\machine\\_default_t
+ 671              		.file 5 "c:\\arm-tool\\gcc-arm-none-eabi-10.3-2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 672              		.file 6 "./basic/time.h"
+ 673              		.file 7 "./mpu6050/mpu6050.h"
+ 674              		.file 8 "./.driver/CMSIS/Device/STM32F10x/system_stm32f10x.h"
+ 675              		.file 9 "./system/system-task.h"
+ 676              		.file 10 "./system/system.h"
+ 677              		.file 11 "./init/init.h"
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 47
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system.c
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:18     .text.NVIC_SetPriority:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:98     .text.NVIC_SetPriority:0000004c $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:104    .text.SysTick_Config:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:109    .text.SysTick_Config:00000000 SysTick_Config
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:174    .text.SysTick_Config:00000040 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:183    .bss.systemticks:00000000 systemticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:180    .bss.systemticks:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:189    .bss.is_tick:00000000 is_tick
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:190    .bss.is_tick:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:196    .bss.logout_timeout:00000000 logout_timeout
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:193    .bss.logout_timeout:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:202    .data.me_address:00000000 me_address
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:208    .bss.src_address:00000000 src_address
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:209    .bss.src_address:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:214    .bss.dst_address:00000000 dst_address
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:215    .bss.dst_address:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:217    .rodata:00000000 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:221    .text.system_init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:227    .text.system_init:00000000 system_init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:537    .text.system_tasks_init:00000000 system_tasks_init
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:368    .text.system_init:000000e0 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:386    .text.system_run:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:392    .text.system_run:00000000 system_run
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:429    .text.system_run:00000024 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:434    .text.system_ticks:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:440    .text.system_ticks:00000000 system_ticks
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:520    .text.system_ticks:00000054 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:531    .text.system_tasks_init:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:609    .text.system_tasks_init:00000050 $d
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:624    .text.system_rtc:00000000 $t
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:630    .text.system_rtc:00000000 system_rtc
-C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:655    .text.system_rtc:00000014 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:18     .text.NVIC_SetPriority:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:23     .text.NVIC_SetPriority:00000000 NVIC_SetPriority
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:98     .text.NVIC_SetPriority:0000004c $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:104    .text.SysTick_Config:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:109    .text.SysTick_Config:00000000 SysTick_Config
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:174    .text.SysTick_Config:00000040 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:183    .bss.systemticks:00000000 systemticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:180    .bss.systemticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:190    .bss.pre_ticks:00000000 pre_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:187    .bss.pre_ticks:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:196    .bss.is_tick:00000000 is_tick
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:197    .bss.is_tick:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:203    .bss.logout_timeout:00000000 logout_timeout
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:200    .bss.logout_timeout:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:209    .data.me_address:00000000 me_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:215    .bss.src_address:00000000 src_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:216    .bss.src_address:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:221    .bss.dst_address:00000000 dst_address
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:222    .bss.dst_address:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:224    .rodata:00000000 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:228    .text.system_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:234    .text.system_init:00000000 system_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:545    .text.system_tasks_init:00000000 system_tasks_init
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:376    .text.system_init:000000e8 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:394    .text.system_run:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:400    .text.system_run:00000000 system_run
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:437    .text.system_run:00000024 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:442    .text.system_ticks:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:448    .text.system_ticks:00000000 system_ticks
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:528    .text.system_ticks:00000054 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:539    .text.system_tasks_init:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:617    .text.system_tasks_init:00000050 $d
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:632    .text.system_rtc:00000000 $t
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:638    .text.system_rtc:00000000 system_rtc
+C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s:663    .text.system_rtc:00000014 $d
                            .group:00000000 wm4.0.f4779009c199947b70d43074c2c41c8e
                            .group:00000000 wm4.stm32f10x.h.50.d4f13d34ecdc4ac490487d4d35cb5131
                            .group:00000000 wm4.core_cm3.h.25.d35e9a9b04ec4aaebae9bf79fff061f9
@@ -2760,11 +2772,11 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:655    .text.system_rtc:0000
                            .group:00000000 wm4.stm32f10x_dma.h.24.a48d4478db5b2956954d84bc5fd35ae1
                            .group:00000000 wm4.stm32f10x_exti.h.24.377f48157d7e463bb3841cf6c97a1c93
                            .group:00000000 wm4.stm32f10x_flash.h.24.877157533caf7ce4331c44a3d0ea5612
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 48
+
+
                            .group:00000000 wm4.stm32f10x_fsmc.h.24.0518485f192fab09dd5cfc912ded3186
                            .group:00000000 wm4.stm32f10x_gpio.h.24.b627ee324fedf5e3b8730fa015ea30de
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 48
-
-
                            .group:00000000 wm4.stm32f10x_i2c.h.24.8bc26b82f9e7563ca7234eabea47534c
                            .group:00000000 wm4.stm32f10x_iwdg.h.24.129c4cff233d2076aefd5fc4fbf5956b
                            .group:00000000 wm4.stm32f10x_pwr.h.24.98a178bf0c8fa18634174f1c1123c7bc
@@ -2820,11 +2832,11 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:655    .text.system_rtc:0000
                            .group:00000000 wm4.limits.h.60.56a1ae353e2028a24298ec6463b8b593
                            .group:00000000 wm4.string.h.8.c4b8571ce60dff2817f43fec8b86aecd
                            .group:00000000 wm4.basic.h.43.2d669d0e281f2a7583ad0da99046413d
+ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccxDzlBE.s 			page 49
+
+
                            .group:00000000 wm4.phy.h.43.a806668fd6b193a83e00fcf9e3814821
                            .group:00000000 wm4.structs.h.12.142e94c12fffe9b2bba6755d00a8ad91
-ARM GAS  C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s 			page 49
-
-
                            .group:00000000 wm4.time.h.12.ca6eecf26198e1bc6166f71fd8292735
                            .group:00000000 wm4.initmacro.h.4.2927af5a543f65dade9f92f80a04dc35
                            .group:00000000 wm4.i2ccom.h.10.147b279fb90e839345ab35ddb589e0ce
@@ -2833,7 +2845,7 @@ C:\Users\SAMEER~1.ALM\AppData\Local\Temp\ccDiUEK6.s:655    .text.system_rtc:0000
                            .group:00000000 wm4.mpu6050.h.10.38cdb8b04d26be567bd69a6269d225c3
                            .group:00000000 wm4.uart.h.10.038a6d9ab9b8d6aefd66f3a92e73c3f1
                            .group:00000000 wm4.lcd.h.11.3a2e2f95e46d234fe99d1d3e8f20de18
-                           .group:00000000 wm4.systemtask.h.12.296b6a27be8b79a110bf5281d2fc993a
+                           .group:00000000 wm4.systemtask.h.12.4111f050c12db00791331b8757fbd5d2
 
 UNDEFINED SYMBOLS
 NVIC_PriorityGroupConfig

@@ -521,6 +521,7 @@ typedef union _real_t
 {
 	uint8_t Array[4];
 	uint32_t val;
+
 	struct
 	{
 		uint8_t decimal;
@@ -528,6 +529,29 @@ typedef union _real_t
 		uint8_t sig;
 	};
 }real_t;
+
+
+/*typedef union _lreal_t
+{
+	uint8_t Array[9];
+	uint64_t val;
+	struct
+	{
+		
+		uint32_t decimal;
+		uint32_t integer;
+		uint8_t sig;
+	};
+}lreal_t;
+*/
+typedef struct _lreal_t
+{
+	unsigned long decimal;
+	unsigned long integer;
+	uint8_t sig;
+	uint8_t zero;
+
+}lreal_t;
 
 /** 
  * @brief 	 unsigned real format (small size 8bit)
@@ -601,7 +625,8 @@ extern void inc_real(real_t * ptr);
 extern void dec_real(real_t * ptr);
 
 //!< converts float number to real 
-extern real_t float_to_real(float val,uint8_t digits);
+extern lreal_t float_to_real(double val,uint8_t digits);
+//extern real_t float_to_real(float val,uint8_t digits);
 //!< converts real number to float 
 extern float  real_to_float(real_t val,uint8_t digits);
 
